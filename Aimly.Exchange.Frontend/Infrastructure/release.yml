@@ -91,13 +91,14 @@ stages:
     #     fileType: json
     #     targetFiles: assets/config.json
 
-    - task: AzureCLI@1
+    - task: AzureCLI@2
       displayName: 'Delete existing files from $web'
       inputs:
         azureSubscription: '$(azure-resource-manager-connection)'
+        scriptType: 'ps'
         scriptLocation: inlineScript
-        # inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source "$web"'
-        inlineScript: 'az storage blob delete-batch --help'
+        inlineScript: az storage blob delete-batch --account-name aimlyexchangefrontend --auth-mode key -d -s '$web'
+        # inlineScript: 'az storage blob delete-batch --help'
 
     - task: CmdLine@2
       displayName: 'List directories for debugging'
@@ -119,11 +120,17 @@ stages:
           echo build contents
           cd build
           dir
-
-    - task: AzureFileCopy@4
+    - task: AzureCLI@2
       inputs:
-        SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)'
-        azureSubscription: '$(azure-resource-manager-connection)'
-        Destination: 'AzureBlob'
-        storage: 'aimlyexchangefrontend'
-        ContainerName: 'blah'
+        azureSubscription: 'DevEnvironment'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: az storage blob upload-batch --account-name aimlyexchangefrontend  --auth-mode key -d '$web' -s $(System.ArtifactsDirectory)\$(artifact-name)
+
+    # - task: AzureFileCopy@4
+    #   inputs:
+    #     SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)'
+    #     azureSubscription: '$(azure-resource-manager-connection)'
+    #     Destination: 'AzureBlob'
+    #     storage: 'aimlyexchangefrontend'
+    #     ContainerName: 'blah'
