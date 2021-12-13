@@ -98,7 +98,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(path-working-folder)'
-    customCommand: 'run $(npm.build-arguments)'
+    customCommand: 'run build'
 
 # Publish Artifact
 - task: PublishBuildArtifacts@1
