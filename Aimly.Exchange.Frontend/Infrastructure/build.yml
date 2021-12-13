@@ -113,10 +113,10 @@ steps:
       echo $(path-working-folder)
       dir
 
-      echo Change to $(build)
-      cd $(build)
+      echo Change to build
+      cd build
 
-      echo $(build)
+      echo build
       dir
 
 # Publish Artifact
@@ -124,7 +124,7 @@ steps:
   displayName: 'Publish Artifact'
   condition: and(succeeded(), variables['publish-artifact'])
   inputs:
-    pathtoPublish: '$(path-working-folder)\build'
+    pathtoPublish: '$(path-working-folder)/build'
     # Ensure that our artifact is specific to the branch name
     # to ensure that the release pipeline picks the correct artifact for the environment
     artifactName: 'artifact_$(Build.SourceBranchName)'
