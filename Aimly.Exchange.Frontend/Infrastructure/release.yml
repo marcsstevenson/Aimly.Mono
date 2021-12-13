@@ -32,3 +32,51 @@ variables:
   workspace_name: 'Aimly'
   workspace_resource_group: 'Ludily-Shared-$(environment)'
   artifact-name: 'artifact_$(environment)'
+
+stages:
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    displayName: Deploy to Blob Storage - aimlyexchangefrontend
+    steps:
+    - checkout: none # Don't check out any git repos
+
+    # Get values from key vault
+    # The purpose of this task is to get all keys from the environment's shared key vault and use these to populate the product's key vault
+    # Note that the deployment-project secret value is used in further steps
+    - task: AzureKeyVault@1
+      inputs:
+        azureSubscription: '$(azure-resource-manager-connection)'
+        KeyVaultName: '$(shared-key-vault)'
+        SecretsFilter: '*'
+        RunAsPreJob: true
+
+    # We should now have access to these variables that have been populated from the shared Key Vault
+    #
+    # deployment-project
+    # deployment-location
+    # deployment-subscription-Id
+
+    # Output all environment variables for debugging purposes
+    - task: PowerShell@2
+      displayName: 'Display all environment variables'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "deployment-project - $DEPLOYMENT_PROJECT"
+
+          Write-Host "List all environment variables"
+
+          gci env:
+
+    # Download the finished artifact from the build pipeline
+    - task: DownloadPipelineArtifact@2
+      displayName: Download Build Pipeline Artifact
+      inputs:
+        buildType: 'specific'
+        project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
+        pipeline: 'AimlyExchangeFrontendBuild'
+        preferTriggeringPipeline: true
+        buildVersionToDownload: 'latestFromBranch'
+        branchName: '$(Build.SourceBranch)'
+        targetPath: '$(System.ArtifactsDirectory)'
