@@ -80,3 +80,49 @@ stages:
         buildVersionToDownload: 'latestFromBranch'
         branchName: '$(Build.SourceBranch)'
         targetPath: '$(System.ArtifactsDirectory)'
+        
+    # - task: FileTransform@1
+    #   displayName: 'Environment Configuration'
+
+    #   inputs:
+    #     folderPath: '$(System.DefaultWorkingDirectory)/_Ludily.Main/dist/home-site'
+    #     fileType: json
+    #     targetFiles: assets/config.json
+
+    - task: AzureCLI@1
+      displayName: 'Delete existing files from $web'
+      inputs:
+        azureSubscription: '$(azure-resource-manager-connection)'
+        scriptLocation: inlineScript
+        inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source $web'
+
+    - task: CmdLine@2
+      displayName: 'List directories for debugging'
+      inputs:
+        script: |
+          echo List the root dir
+          dir
+
+          echo Change to $(System.ArtifactsDirectory)
+          cd $(System.ArtifactsDirectory)
+
+          echo $(System.ArtifactsDirectory)
+          dir
+
+          echo artifact contents
+          cd $(artifact-name)
+          dir
+
+          echo build contents
+          cd build
+          dir
+
+    - task: AzureFileCopy@2
+      displayName: 'Copy files to $web'
+      inputs:
+        SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)\build'
+        azureSubscription: '$(azure-resource-manager-connection)'
+        Destination: AzureBlob
+        storage: ludilyhosting
+        ContainerName: '$web'
+
