@@ -21,10 +21,10 @@ pr:
       - '*'
 
 variables:
-  product-name: 'Customer'
+  product-name: 'Exchange'
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
-  target-resource-group: 'Ludily-$(product-name)-$(environment)' # Where the resources will be deployed
+  target-resource-group: '$(workspace_name)-$(product-name)-$(environment)' # Where the resources will be deployed
   target-web-app: '$(workspace_name)-$(product-name)-$(environment)' # The name of the application to deploy
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
@@ -91,14 +91,14 @@ stages:
     #     fileType: json
     #     targetFiles: assets/config.json
 
-    - task: AzureCLI@2
-      displayName: 'Delete existing files from $web'
-      inputs:
-        azureSubscription: '$(azure-resource-manager-connection)'
-        scriptType: 'ps'
-        scriptLocation: inlineScript
-        inlineScript: az storage blob delete-batch --account-name aimlyexchangefrontend --auth-mode key -s '$web'
-        # inlineScript: 'az storage blob delete-batch --help'
+    # - task: AzureCLI@2
+    #   displayName: 'Delete existing files from $web'
+    #   inputs:
+    #     azureSubscription: '$(azure-resource-manager-connection)'
+    #     scriptType: 'ps'
+    #     scriptLocation: inlineScript
+    #     inlineScript: az storage blob delete-batch --account-name aimlyexchangefrontend --auth-mode key -s '$web'
+
 
     - task: CmdLine@2
       displayName: 'List directories for debugging'
@@ -120,7 +120,9 @@ stages:
           echo build contents
           cd build
           dir
+
     - task: AzureCLI@2
+      displayName: Upload to blob storage
       inputs:
         azureSubscription: 'DevEnvironment'
         scriptType: 'ps'
@@ -134,3 +136,11 @@ stages:
     #     Destination: 'AzureBlob'
     #     storage: 'aimlyexchangefrontend'
     #     ContainerName: 'blah'
+
+    - task: AzureCLI@2
+      displayName: Purge CDN endpoint
+      inputs:
+        azureSubscription: 'DevEnvironment'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: az cdn endpoint purge --content-paths  "/*" --profile-name aimlyexchangefrontendstatic --name aimlyexchangefrontendstatic --resource-group $(target-resource-group)
