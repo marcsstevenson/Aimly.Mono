@@ -94,7 +94,8 @@ stages:
       inputs:
         azureSubscription: '$(azure-resource-manager-connection)'
         scriptLocation: inlineScript
-        inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source "$web"'
+        # inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source "$web"'
+        inlineScript: 'az storage blob delete-batch --help'
 
     - task: CmdLine@2
       displayName: 'List directories for debugging'
@@ -120,9 +121,9 @@ stages:
     - task: AzureFileCopy@2
       displayName: 'Copy files to $web'
       inputs:
-        SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)\build'
+        SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)'
         azureSubscription: '$(azure-resource-manager-connection)'
         Destination: AzureBlob
-        storage: ludilyhosting
+        storage: aimlyexchangefrontend
         ContainerName: '$web'
 
