@@ -118,12 +118,10 @@ stages:
           cd build
           dir
 
-    - task: AzureFileCopy@2
-      displayName: 'Copy files to $web'
+    - task: AzureFileCopy@4
       inputs:
         SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)'
         azureSubscription: '$(azure-resource-manager-connection)'
-        Destination: AzureBlob
-        storage: aimlyexchangefrontend
+        Destination: 'AzureBlob'
+        storage: 'aimlyexchangefrontend'
         ContainerName: '$web'
-
