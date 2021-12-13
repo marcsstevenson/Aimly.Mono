@@ -80,7 +80,7 @@ stages:
         buildVersionToDownload: 'latestFromBranch'
         branchName: '$(Build.SourceBranch)'
         targetPath: '$(System.ArtifactsDirectory)'
-        
+
     # - task: FileTransform@1
     #   displayName: 'Environment Configuration'
 
@@ -94,7 +94,7 @@ stages:
       inputs:
         azureSubscription: '$(azure-resource-manager-connection)'
         scriptLocation: inlineScript
-        inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source $web'
+        inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source "$web"'
 
     - task: CmdLine@2
       displayName: 'List directories for debugging'
