@@ -77,12 +77,12 @@ steps:
 #   displayName: 'NPM Audit Fix'
 
 # Run Tests
-- task: Npm@1
-  displayName: 'NPM Tests'
-  inputs:
-    command: 'custom'
-    workingDir: '$(path-working-folder)'
-    customCommand: 'run test-ci'
+# - task: Npm@1
+#   displayName: 'NPM Tests'
+#   inputs:
+#     command: 'custom'
+#     workingDir: '$(path-working-folder)'
+#     customCommand: 'run test-ci'
 
 # # Publish Test Results
 # - task: PublishTestResults@2
