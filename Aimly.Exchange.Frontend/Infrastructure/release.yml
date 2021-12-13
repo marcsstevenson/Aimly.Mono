@@ -97,7 +97,7 @@ stages:
         azureSubscription: '$(azure-resource-manager-connection)'
         scriptType: 'ps'
         scriptLocation: inlineScript
-        inlineScript: az storage blob delete-batch --account-name aimlyexchangefrontend --auth-mode key -d -s '$web'
+        inlineScript: az storage blob delete-batch --account-name aimlyexchangefrontend --auth-mode key -s '$web'
         # inlineScript: 'az storage blob delete-batch --help'
 
     - task: CmdLine@2
