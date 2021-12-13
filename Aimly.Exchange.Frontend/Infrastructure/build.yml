@@ -25,6 +25,7 @@ pool:
 variables:
   # Create a variable which determines if we are to publish build artifacts for release
   # We will only publish if the source branch is dev, test or prod
+  # TODO - remove main when we have a dev, test, prod setup for front ends
   publishArtifact: in(variables['Build.SourceBranchName'], 'main' 'dev', 'test', 'prod')
 
 steps:
