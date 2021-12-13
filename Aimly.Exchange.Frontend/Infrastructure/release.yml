@@ -126,4 +126,4 @@ stages:
         azureSubscription: '$(azure-resource-manager-connection)'
         Destination: 'AzureBlob'
         storage: 'aimlyexchangefrontend'
-        ContainerName: '$web'
+        ContainerName: '"$web"'
