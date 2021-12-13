@@ -26,7 +26,8 @@ variables:
   # Create a variable which determines if we are to publish build artifacts for release
   # We will only publish if the source branch is dev, test or prod
   # TODO - remove main when we have a dev, test, prod setup for front ends
-  publishArtifact: in(variables['Build.SourceBranchName'], 'main' 'dev', 'test', 'prod')
+  publish-artifact: in(variables['Build.SourceBranchName'], 'main' 'dev', 'test', 'prod')
+  path-working-folder: 'Aimly.Exchange.Frontend'
 
 steps:
 - task: CmdLine@2
@@ -57,7 +58,7 @@ steps:
 - task: Tokenizer@0
   displayName: 'Inject Variables dateTimeStamp.txt'
   inputs:
-    sourceFilesPattern: '$(path.working-folder)/src/dateTimeStamp.txt'
+    sourceFilesPattern: '$(path-working-folder)/src/dateTimeStamp.txt'
     tokenDataSource: 'environmentVariables'
 
 # NPM Install
@@ -65,13 +66,13 @@ steps:
   displayName: 'NPM Install'
   inputs:
     command: 'install'
-    workingDir: '$(path.working-folder)'
+    workingDir: '$(path-working-folder)'
 
 # NPM Audit Fix
 # - task: Npm@1
 #   inputs:
 #     command: 'custom'
-#     workingDir: '$(path.working-folder)'
+#     workingDir: '$(path-working-folder)'
 #     customCommand: 'audit fix'
 #   displayName: 'NPM Audit Fix'
 
@@ -80,7 +81,7 @@ steps:
   displayName: 'NPM Tests'
   inputs:
     command: 'custom'
-    workingDir: '$(path.working-folder)'
+    workingDir: '$(path-working-folder)'
     customCommand: 'run test-ci'
 
 # # Publish Test Results
@@ -96,13 +97,13 @@ steps:
   displayName: 'NPM Build'
   inputs:
     command: 'custom'
-    workingDir: '$(path.working-folder)'
+    workingDir: '$(path-working-folder)'
     customCommand: 'run $(npm.build-arguments)'
 
 # Publish Artifact
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
-  condition: and(succeeded(), variables['publishArtifact'])
+  condition: and(succeeded(), variables['publish-artifact'])
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
     # Ensure that our artifact is specific to the branch name
