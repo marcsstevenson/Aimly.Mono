@@ -42,8 +42,8 @@ const App = () => {
               <Route path="/" exact component={Home} />
               <Route path="/profile" component={Profile} />
               <Route path="/external-api" component={ExternalApi} />
+              <Route path="/testing" component={Testing} />
             </Switch>
-            <Route path="/testing" component={Testing} />
           </Container>
           {error ? (
             <div>Oops... {error.message}</div>
