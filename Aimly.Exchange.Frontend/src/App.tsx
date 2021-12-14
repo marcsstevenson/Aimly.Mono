@@ -10,6 +10,7 @@ import Profile from "./views/Profile";
 import ExternalApi from "./views/ExternalApi";
 import { useAuth0 } from "@auth0/auth0-react";
 import history from "./utils/history";
+import ErrorBoundary from "./ErrorBoundary";
 
 // styles
 import "./App.css";
@@ -22,7 +23,8 @@ const App = () => {
   const { isLoading, error } = useAuth0();
 
   if (error) {
-    return <div>Oops... {error.message}</div>;
+    // return <div>Oops... {error.message}</div>;
+    console.log(error);
   }
 
   if (isLoading) {
@@ -31,17 +33,24 @@ const App = () => {
 
   return (
     <Router history={history}>
-      <div id="app" className="d-flex flex-column h-100">
-        <NavBar />
-        <Container className="flex-grow-1 mt-5">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/external-api" component={ExternalApi} />
-          </Switch>
-        </Container>
-        <Footer />
-      </div>
+      <ErrorBoundary>
+        <div id="app" className="d-flex flex-column h-100">
+          <NavBar />
+          <Container className="flex-grow-1 mt-5">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/external-api" component={ExternalApi} />
+            </Switch>
+          </Container>
+          {error ? (
+            <div>Oops... {error.message}</div>
+          ) : (
+            <Footer />
+          )
+          }
+        </div>
+      </ErrorBoundary>
     </Router>
   );
 };
