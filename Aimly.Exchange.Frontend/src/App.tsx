@@ -11,6 +11,7 @@ import ExternalApi from "./views/ExternalApi";
 import { useAuth0 } from "@auth0/auth0-react";
 import history from "./utils/history";
 import ErrorBoundary from "./ErrorBoundary";
+import Testing from "./components/Testing";
 
 // styles
 import "./App.css";
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="/profile" component={Profile} />
               <Route path="/external-api" component={ExternalApi} />
             </Switch>
+            <Route path="/testing" component={Testing} />
           </Container>
           {error ? (
             <div>Oops... {error.message}</div>
