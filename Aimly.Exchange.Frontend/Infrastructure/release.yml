@@ -21,10 +21,10 @@ pr:
       - '*'
 
 variables:
-  product-name: 'Customer'
+  product-name: 'Exchange'
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
-  target-resource-group: 'Ludily-$(product-name)-$(environment)' # Where the resources will be deployed
+  target-resource-group: '$(workspace_name)-$(product-name)-$(environment)' # Where the resources will be deployed
   target-web-app: '$(workspace_name)-$(product-name)-$(environment)' # The name of the application to deploy
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
@@ -38,6 +38,8 @@ stages:
   jobs:
   - job: Deploy
     displayName: Deploy to Blob Storage - aimlyexchangefrontend
+    pool:
+      vmImage: windows-latest
     steps:
     - checkout: none # Don't check out any git repos
 
@@ -80,7 +82,7 @@ stages:
         buildVersionToDownload: 'latestFromBranch'
         branchName: '$(Build.SourceBranch)'
         targetPath: '$(System.ArtifactsDirectory)'
-        
+
     # - task: FileTransform@1
     #   displayName: 'Environment Configuration'
 
@@ -89,12 +91,14 @@ stages:
     #     fileType: json
     #     targetFiles: assets/config.json
 
-    - task: AzureCLI@1
-      displayName: 'Delete existing files from $web'
-      inputs:
-        azureSubscription: '$(azure-resource-manager-connection)'
-        scriptLocation: inlineScript
-        inlineScript: 'az storage blob delete-batch --account-name aimlyexchangefrontend --source $web'
+    # - task: AzureCLI@2
+    #   displayName: 'Delete existing files from $web'
+    #   inputs:
+    #     azureSubscription: '$(azure-resource-manager-connection)'
+    #     scriptType: 'ps'
+    #     scriptLocation: inlineScript
+    #     inlineScript: az storage blob delete-batch --account-name aimlyexchangefrontend --auth-mode key -s '$web'
+
 
     - task: CmdLine@2
       displayName: 'List directories for debugging'
@@ -117,12 +121,26 @@ stages:
           cd build
           dir
 
-    - task: AzureFileCopy@2
-      displayName: 'Copy files to $web'
+    - task: AzureCLI@2
+      displayName: Upload to blob storage
       inputs:
-        SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)\build'
-        azureSubscription: '$(azure-resource-manager-connection)'
-        Destination: AzureBlob
-        storage: ludilyhosting
-        ContainerName: '$web'
+        azureSubscription: 'DevEnvironment'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: az storage blob upload-batch --account-name aimlyexchangefrontend  --auth-mode key -d '$web' -s $(System.ArtifactsDirectory)\$(artifact-name)
 
+    # - task: AzureFileCopy@4
+    #   inputs:
+    #     SourcePath: '$(System.ArtifactsDirectory)\$(artifact-name)'
+    #     azureSubscription: '$(azure-resource-manager-connection)'
+    #     Destination: 'AzureBlob'
+    #     storage: 'aimlyexchangefrontend'
+    #     ContainerName: 'blah'
+
+    - task: AzureCLI@2
+      displayName: Purge CDN endpoint
+      inputs:
+        azureSubscription: 'DevEnvironment'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: az cdn endpoint purge --content-paths  "/*" --profile-name aimlyexchangefrontendstatic --name aimlyexchangefrontendstatic --resource-group $(target-resource-group)
