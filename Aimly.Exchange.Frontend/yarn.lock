@@ -1661,6 +1661,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/highlightjs@^9.12.2":
+  "integrity" "sha512-oW2pEKwshxwBW1nVUizWQg/tnhboRtKrUKnF2hd6l4BZ0shr5ZjQ4ra/82+NEH6uWeM8JjrMGCux5enQXOQbTA=="
+  "resolved" "https://registry.npmjs.org/@types/highlightjs/-/highlightjs-9.12.2.tgz"
+  "version" "9.12.2"
+
 "@types/history@*":
   "integrity" "sha512-MUc6zSmU3tEVnkQ78q0peeEjKWPUADMlC/t++2bI8WnAG2tvYRPIgHG8lWkXwqc8MsUF6Z2MOf+Mh5sazOmhiQ=="
   "resolved" "https://registry.npmjs.org/@types/history/-/history-4.7.9.tgz"

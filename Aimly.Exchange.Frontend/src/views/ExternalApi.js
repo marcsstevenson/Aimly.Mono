@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Button, Alert } from "reactstrap";
-import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { getConfig } from "../config";
 import Loading from "../components/Loading";
 
 export const ExternalApiComponent = () => {
-  const { apiOrigin = "http://localhost:3001", audience } = getConfig();
+  const config = getConfig();
+  const apiOrigin = config.exchangeApiUri;
+  const audience = config.Auth.exchangeApiAudience;
 
   const [state, setState] = useState({
     showResult: false,
@@ -185,9 +186,7 @@ export const ExternalApiComponent = () => {
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="muted">Result</h6>
-            <Highlight>
               <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
-            </Highlight>
           </div>
         )}
       </div>
