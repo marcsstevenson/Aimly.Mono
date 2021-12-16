@@ -19,6 +19,7 @@ export const ExternalApiComponent = () => {
     getAccessTokenSilently,
     loginWithPopup,
     getAccessTokenWithPopup,
+    user
   } = useAuth0();
 
   const handleConsent = async () => {
@@ -53,6 +54,137 @@ export const ExternalApiComponent = () => {
     }
 
     await callApi();
+  };
+
+  const checkInWithApi = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+
+      const response = await fetch(`${apiOrigin}/api/graphql`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          query: `mutation {
+          checkIn(input: {
+            name: "${user.name}",
+            sub: "${user.sub}",
+            email: "${user.email}",
+            email_verified: ${user.email_verified},
+            family_name: "${user.family_name}",
+            given_name: "${user.given_name}",
+            locale: "${user.locale}",
+            picture: "${user.picture}",
+            updated_at: "${user.updated_at}",
+          })
+        }`})
+      });
+
+      const responseData = await response.json();
+
+      setState({
+        ...state,
+        showResult: true,
+        apiMessage: responseData,
+      });
+    } catch (error) {
+      setState({
+        ...state,
+        error: error.error,
+      });
+    }
+  };
+
+  const greet = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+
+      const response = await fetch(`${apiOrigin}/api/graphql`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          query: `{ greetings }`})
+      });
+
+      const responseData = await response.json();
+
+      setState({
+        ...state,
+        showResult: true,
+        apiMessage: responseData,
+      });
+    } catch (error) {
+      setState({
+        ...state,
+        error: error.error,
+      });
+    }
+  };
+
+  const setGreetings = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+
+      const response = await fetch(`${apiOrigin}/api/graphql`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          query: `mutation { setGreetings(message: "hai") }`})
+      });
+
+      const responseData = await response.json();
+
+      setState({
+        ...state,
+        showResult: true,
+        apiMessage: responseData,
+      });
+    } catch (error) {
+      setState({
+        ...state,
+        error: error.error,
+      });
+    }
+  };
+
+  const getNotesForCompany = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+
+      const response = await fetch(`${apiOrigin}/api/graphql`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          query: `{ notesForCompany(command: {tenantId: "33420904-D55D-4C84-A8D4-81E1FA781B17", companyId: "33420904-D55D-4C84-A8D4-81E1FA781B17", afterDateTime: "200-01-01"})
+          {
+            body
+          } }`})
+      });
+
+      const responseData = await response.json();
+
+      setState({
+        ...state,
+        showResult: true,
+        apiMessage: responseData,
+      });
+    } catch (error) {
+      setState({
+        ...state,
+        error: error.error,
+      });
+    }
   };
 
   const callApi = async () => {
@@ -98,6 +230,7 @@ export const ExternalApiComponent = () => {
             >
               consent to get access to users api
             </a>
+
           </Alert>
         )}
 
@@ -179,6 +312,42 @@ export const ExternalApiComponent = () => {
           disabled={!audience}
         >
           Ping API
+        </Button>
+
+        <Button
+          color="primary"
+          className="mt-5 ml-1"
+          onClick={checkInWithApi}
+          disabled={!audience}
+        >
+          Check In
+        </Button>
+
+        <Button
+          color="primary"
+          className="mt-5 ml-1"
+          onClick={greet}
+          disabled={!audience}
+        >
+          Greetings
+        </Button>
+
+        <Button
+          color="primary"
+          className="mt-5 ml-1"
+          onClick={getNotesForCompany}
+          disabled={!audience}
+        >
+          Notes For Company
+        </Button>
+
+        <Button
+          color="primary"
+          className="mt-5 ml-1"
+          onClick={setGreetings}
+          disabled={!audience}
+        >
+          Set Greetings
         </Button>
       </div>
 
