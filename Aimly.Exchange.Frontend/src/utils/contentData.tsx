@@ -1,27 +1,42 @@
-const contentData = [
+import {
+  IconProp,
+} from '@fortawesome/fontawesome-svg-core'
+
+export interface ContentItem{
+  title: string;
+  icon: IconProp;
+  link: string;
+  description: string;
+}
+
+const contentData: ContentItem[] = [
   {
-    title: "Configure other identity providers",
-    link: "https://auth0.com/docs/connections",
+    title: "Mentorship",
+    icon: "link",
+    link: "/Mentorship",
     description:
-      "Auth0 supports social providers as Facebook, Twitter, Instagram and 100+, Enterprise providers as Microsoft Office 365, Google Apps, Azure, and more. You can also use any OAuth2 Authorization Server."
+      "Starting up is rarely easy so use Aimly to gain access to mentors who will help you find the right people to succeed and guide you through the startup journey from idea to MVP to exit.",
   },
   {
-    title: "Enable Multifactor Authentication",
-    link: "https://auth0.com/docs/multifactor-authentication",
+    title: "Experts",
+    icon: "link",
+    link: "/Experts",
     description:
-      "Add an extra layer of security by enabling Multi-factor Authentication, requiring your users to provide more than one piece of identifying information. Push notifications, authenticator apps, SMS, and DUO Security are supported."
+      "Most startup founders are strong in specific areas. Aimly provides a community of capable subject matter experts who can support you in areas that you do not yet have in-house resource. Need advice on intellectual property? Unsure of how to draft a service contract? Lacking a marketing strategy? Aimly has the expertise to help you."
   },
   {
-    title: "Anomaly Detection",
-    link: "https://auth0.com/docs/anomaly-detection",
+    title: "Community",
+    icon: "link",
+    link: "/Community",
     description:
-      "Auth0 can detect anomalies and stop malicious attempts to access your application. Anomaly detection can alert you and your users of suspicious activity, as well as block further login attempts."
+      "Join a community of likeminded problem solvers to see what other problems are being worked on. Create a profile to showcase your start-up. Access case studies on successful approaches, stay in touch with industry trends and use Aimly to look for funding."
   },
   {
-    title: "Learn About Rules",
-    link: "https://auth0.com/docs/rules",
+    title: "All in one accessible market",
+    icon: "link",
+    link: "Market",
     description:
-      "Rules are JavaScript functions that execute when a user authenticates to your application. They run once the authentication process is complete, and you can use them to customize and extend Auth0's capabilities."
+      "Start-ups, mentors, experts, and investors. Only Aimly has all these integrated in within the same marketplace so that important problems can be solved incredibly quickly."
   }
 ];
 

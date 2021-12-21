@@ -1,10 +1,12 @@
 import React from "react";
 
 const Footer = () => (
-  <footer className="bg-light p-3 text-center">
-    <div className="logo" />
+  <footer className="bg-primary p-3 text-center">
+    <div className="d-flex justify-content-center">
+      <div className="logo" />
+    </div>
     <p>
-      Sample project provided by <a href="https://auth0.com">Auth0</a>
+      Copyright Aimly 2022
     </p>
   </footer>
 );

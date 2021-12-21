@@ -12,15 +12,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import history from "./utils/history";
 import ErrorBoundary from "./ErrorBoundary";
 import Testing from "./components/Testing";
-
-// styles
-import "./App.css";
+import VideoCall from "./components/VideoCall";
 
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
-const App = () => {
+const App = (): JSX.Element => {
   const { isLoading, error } = useAuth0();
 
   if (error) {
@@ -43,10 +41,11 @@ const App = () => {
               <Route path="/profile" component={Profile} />
               <Route path="/external-api" component={ExternalApi} />
               <Route path="/testing" component={Testing} />
+              <Route path="/videoCall" component={VideoCall} />
             </Switch>
           </Container>
           {error ? (
-            <div>Oops... {error.message}</div>
+            <div>Oops... {error?.message}</div>
           ) : (
             <Footer />
           )

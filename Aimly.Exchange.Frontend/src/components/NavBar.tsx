@@ -36,13 +36,12 @@ const NavBar = () => {
     });
 
   return (
-    <div className="nav-container">
-      <Navbar color="light" light expand="md">
+    <div className="nav-container bg-primary">
+      <Navbar primary expand="md">
         <Container>
-          <NavbarBrand className="logo" />
-          <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <NavbarBrand className="logo" href="../" />
+            <Nav className="mr-auto" navbar pills>
               <NavItem>
                 <NavLink
                   tag={RouterNavLink}
@@ -75,6 +74,16 @@ const NavBar = () => {
                   Testing
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/videoCall"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Video Call
+                </NavLink>
+              </NavItem>
             </Nav>
             <Nav className="d-none d-md-block" navbar>
               {!isAuthenticated && (
@@ -93,14 +102,14 @@ const NavBar = () => {
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">
                     <img
-                      src={user.picture}
+                      src={user?.picture}
                       alt="Profile"
                       className="nav-user-profile rounded-circle"
                       width="50"
                     />
                   </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem header>{user.name}</DropdownItem>
+                    <DropdownItem header>{user?.name}</DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
                       to="/profile"
@@ -143,12 +152,12 @@ const NavBar = () => {
                 <NavItem>
                   <span className="user-info">
                     <img
-                      src={user.picture}
+                      src={user?.picture}
                       alt="Profile"
                       className="nav-user-profile d-inline-block rounded-circle mr-3"
                       width="50"
                     />
-                    <h6 className="d-inline-block">{user.name}</h6>
+                    <h6 className="d-inline-block">{user?.name}</h6>
                   </span>
                 </NavItem>
                 <NavItem>
