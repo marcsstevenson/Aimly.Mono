@@ -28,7 +28,7 @@ $frosted-opacity: .3 !default;
 
 // Body
 
-$body-bg-image: linear-gradient(45deg, shade-color($cyan, 10%), shade-color($purple, 10%), shade-color($pink, 5%)) !default;
+$body-bg-image: linear-gradient(90deg, shade-color($cyan, 10%), shade-color($purple, 10%), shade-color($pink, 5%)) !default;
 // body {
 //   background-image: $body-bg-image;
 // }
@@ -61,21 +61,6 @@ body {
 
 // Buttons
 
-.btn {
-  &-secondary {
-    border: none;
-    color: $white;
-
-    &:hover,
-    &:focus {
-      color: $white;
-    }
-
-    &.disabled {
-      color: $white;
-    }
-  }
-}
 
 .btn-group > .btn:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
@@ -85,6 +70,9 @@ body {
 .btn-group-vertical > .btn:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: 0;
+}
+input, select, textarea{
+  color: $muted-grey!Important;
 }
 
 .bg-light .btn {

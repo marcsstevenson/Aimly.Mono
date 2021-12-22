@@ -6,7 +6,6 @@ import {
   Collapse,
   Container,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -21,14 +20,13 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen] = useState(false);
   const {
     user,
     isAuthenticated,
     loginWithRedirect,
     logout,
   } = useAuth0();
-  const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
     logout({
@@ -37,11 +35,11 @@ const NavBar = () => {
 
   return (
     <div className="nav-container bg-primary">
-      <Navbar primary expand="md">
+      <Navbar expand="md">
         <Container>
           <Collapse isOpen={isOpen} navbar>
             <NavbarBrand className="logo" href="../" />
-            <Nav className="mr-auto" navbar pills>
+            <Nav className="me-auto" navbar pills>
               <NavItem>
                 <NavLink
                   tag={RouterNavLink}
@@ -52,38 +50,48 @@ const NavBar = () => {
                   Home
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/mentorship"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Mentorship
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/experts"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Experts
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/community"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Community
+                </NavLink>
+              </NavItem>
               {isAuthenticated && (
                 <NavItem>
                   <NavLink
                     tag={RouterNavLink}
-                    to="/external-api"
+                    to="/market"
                     exact
                     activeClassName="router-link-exact-active"
                   >
-                    External API
+                    Market
                   </NavLink>
                 </NavItem>
               )}
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/testing"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Testing
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/videoCall"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Video Call
-                </NavLink>
-              </NavItem>
             </Nav>
             <Nav className="d-none d-md-block" navbar>
               {!isAuthenticated && (
@@ -116,13 +124,13 @@ const NavBar = () => {
                       className="dropdown-profile"
                       activeClassName="router-link-exact-active"
                     >
-                      <FontAwesomeIcon icon="user" className="mr-3" /> Profile
+                      <FontAwesomeIcon icon="user" className="me-3" /> Profile
                     </DropdownItem>
                     <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
                     >
-                      <FontAwesomeIcon icon="power-off" className="mr-3" /> Log
+                      <FontAwesomeIcon icon="power-off" className="me-3" /> Log
                       out
                     </DropdownItem>
                   </DropdownMenu>
@@ -130,7 +138,7 @@ const NavBar = () => {
               )}
             </Nav>
             {!isAuthenticated && (
-              <Nav className="d-md-none" navbar>
+              <Nav className="d-md-none me-auto" navbar>
                 <NavItem>
                   <Button
                     id="qsLoginBtn"
@@ -154,14 +162,14 @@ const NavBar = () => {
                     <img
                       src={user?.picture}
                       alt="Profile"
-                      className="nav-user-profile d-inline-block rounded-circle mr-3"
+                      className="nav-user-profile d-inline-block rounded-circle me-3"
                       width="50"
                     />
                     <h6 className="d-inline-block">{user?.name}</h6>
                   </span>
                 </NavItem>
                 <NavItem>
-                  <FontAwesomeIcon icon="user" className="mr-3" />
+                  <FontAwesomeIcon icon="user" className="me-3" />
                   <RouterNavLink
                     to="/profile"
                     activeClassName="router-link-exact-active"
@@ -170,7 +178,7 @@ const NavBar = () => {
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>
-                  <FontAwesomeIcon icon="power-off" className="mr-3" />
+                  <FontAwesomeIcon icon="power-off" className="me-3" />
                   <RouterNavLink
                     to="#"
                     id="qsLogoutBtn"

@@ -1,8 +1,8 @@
 <svg version="1.0" width="256" height="256" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <style>
-    path { fill: black; }
+    path { fill: #e83283; }
     @media (prefers-color-scheme: dark) {
-      path { fill: white; }
+      path { fill: #e83283; }
     }
   </style>
   <g transform="matrix(0.025534, 0, 0, -0.025534, 3.30197, 98.058701)" stroke="none" style="">

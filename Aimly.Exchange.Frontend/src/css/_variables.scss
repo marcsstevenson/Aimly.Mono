@@ -37,6 +37,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $orange !default;
 $light:         $gray-200 !default;
+$muted-grey:         #6c757d !default;
 $dark:          $gray-900 !default;
 
 $min-contrast-ratio:   1.5 !default;
@@ -56,7 +57,7 @@ $link-color:                              $white !default;
 
 // Components
 
-$border-color:                rgba($white, .2) !default;
+$border-color:                $primary !default;
 
 $border-radius:               .5rem !default;
 $border-radius-sm:            .6rem !default;
@@ -70,7 +71,7 @@ $box-shadow-sm:               0 1px 1px rgba($black, .1) !default;
 
 $headings-font-weight:        700 !default;
 
-$text-muted:                  rgba($white, .7) !default;
+$text-muted:                  $muted-grey !default;
 
 $blockquote-footer-color:     $text-muted !default;
 
@@ -95,10 +96,10 @@ $btn-box-shadow:              $box-shadow !default;
 $input-bg:                              transparent !default;
 $input-disabled-bg:                     rgba($white, .1) !default;
 
-$input-border-color:                    rgba($white, .4) !default;
+$input-border-color:                    $muted-grey !default;
 $input-border-width:                    1px !default;
 
-$input-focus-border-color:              $input-border-color !default;
+$input-focus-border-color:              $primary !default;
 $input-focus-box-shadow:                none !default;
 
 $input-placeholder-color:               $text-muted !default;

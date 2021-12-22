@@ -5,7 +5,7 @@ import {
 export interface ContentItem{
   title: string;
   icon: IconProp;
-  link: string;
+  link: string | undefined;
   description: string;
 }
 
@@ -29,7 +29,7 @@ const contentData: ContentItem[] = [
     icon: "link",
     link: "/Community",
     description:
-      "Join a community of likeminded problem solvers to see what other problems are being worked on. Create a profile to showcase your start-up. Access case studies on successful approaches, stay in touch with industry trends and use Aimly to look for funding."
+      "Join a community of like-minded problem solvers to see what other problems are being worked on. Create a profile to showcase your start-up. Access case studies on successful approaches, stay in touch with industry trends and use Aimly to look for funding."
   },
   {
     title: "All in one accessible market",
