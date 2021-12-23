@@ -8,7 +8,7 @@ import Experts from './views/Experts';
 import Community from './views/Community';
 import Market from './views/Market';
 import Loading from './components/Loading';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar2';
 import Footer from './components/Footer';
 import Profile from './views/Profile';
 import ExternalApi from './views/ExternalApi';
