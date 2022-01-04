@@ -1,6 +1,12 @@
 import React from 'react';
 
-import logo from '../assets/logo.svg';
+import office1 from '../assets/hero/Office-1.png';
+import office2 from '../assets/hero/Office-2.png';
+import office3 from '../assets/hero/Office-3.png';
+import office4 from '../assets/hero/Office-4.png';
+import office5 from '../assets/hero/Office-5.jpg';
+import office6 from '../assets/hero/Office-6.png';
+import office7 from '../assets/hero/Office-7.png';
 
 /* This example requires Tailwind CSS v2.0+ */
 const Hero = () => (
@@ -32,37 +38,14 @@ const Hero = () => (
                   <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                     <div className="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
+                        src={ office1 }
                         alt=""
                         className="w-full h-full object-center object-cover"
                       />
                     </div>
                     <div className="w-44 h-64 rounded-lg overflow-hidden">
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                        alt=""
-                        className="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div className="w-44 h-64 rounded-lg overflow-hidden">
-                      <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                        alt=""
-                        className="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                    <div className="w-44 h-64 rounded-lg overflow-hidden">
-                      <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                        alt=""
-                        className="w-full h-full object-center object-cover"
-                      />
-                    </div>
-                    <div className="w-44 h-64 rounded-lg overflow-hidden">
-                      <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+                        src={ office2 }
                         alt=""
                         className="w-full h-full object-center object-cover"
                       />
@@ -71,14 +54,37 @@ const Hero = () => (
                   <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                     <div className="w-44 h-64 rounded-lg overflow-hidden">
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+                        src={ office4 }
                         alt=""
                         className="w-full h-full object-center object-cover"
                       />
                     </div>
                     <div className="w-44 h-64 rounded-lg overflow-hidden">
                       <img
-                        src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+                        src={ office3 }
+                        alt=""
+                        className="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                    <div className="w-44 h-64 rounded-lg overflow-hidden">
+                      <img
+                        src={ office5 }
+                        alt=""
+                        className="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div className="w-44 h-64 rounded-lg overflow-hidden">
+                      <img
+                        src={ office6 }
+                        alt=""
+                        className="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                    <div className="w-44 h-64 rounded-lg overflow-hidden">
+                      <img
+                        src={ office7 }
                         alt=""
                         className="w-full h-full object-center object-cover"
                       />
