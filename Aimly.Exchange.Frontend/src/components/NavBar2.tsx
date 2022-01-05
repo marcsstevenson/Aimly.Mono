@@ -10,11 +10,11 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Mentorship', href: '/Mentorship', current: false },
-  { name: 'Experts', href: '/Experts', current: false },
-  { name: 'Community', href: '/Community', current: false },
-  { name: 'Market', href: '/Market', current: false },
+  { name: 'Home', href: '/' },
+  { name: 'Mentorship', href: '/Mentorship' },
+  { name: 'Experts', href: '/Experts' },
+  { name: 'Community', href: '/Community' },
+  { name: 'Market', href: '/Market' },
 ];
 
 function classNames(...classes: any[]) {
@@ -66,7 +66,7 @@ const NavBar = () => {
                         exact
                         to={{ pathname: item.href }}
                         key={item.name}
-                        activeClassName="bg-gray-900 text-white"
+                        activeClassName="bg-gray-900 text-white hover:bg-gray-900"
                         className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                       >
                         {item.name}
@@ -141,22 +141,20 @@ const NavBar = () => {
             </div>
           </div>
 
+          {/* This is the dropdown menu content of burger menu */}
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
+                <Disclosure.Button className="flex flex-col">
+                  <NavLink
+                    exact
+                    to={{ pathname: item.href }}
+                    key={item.name}
+                    activeClassName="bg-gray-900 text-white hover:bg-gray-900"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    {item.name}
+                  </NavLink>
                 </Disclosure.Button>
               ))}
             </div>
