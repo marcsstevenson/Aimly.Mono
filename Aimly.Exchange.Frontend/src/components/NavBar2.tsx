@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink as RouterNavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavLink } from 'react-router-dom';
 import DarkModeSelector from './DarkModeSelector';
 
 /* This example requires Tailwind CSS v2.0+ */
@@ -9,7 +8,6 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button } from 'reactstrap';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -33,7 +31,7 @@ const NavBar = () => {
     });
 
   return (
-    <Disclosure as="nav" className="bg-pink-600">
+    <Disclosure as="nav" className="bg-indigo-600">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -50,7 +48,7 @@ const NavBar = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <Link to={{ pathname: "/"}}>
+                <NavLink to={{ pathname: "/"}}>
                   <div className="flex-shrink-0 flex items-center">
                     <svg version="1.0" width="40.000000" height="35.000000"  viewBox="0 0 100.000000 100.000000" xmlns="http://www.w3.org/2000/svg">
                       <g transform="matrix(0.025534, 0, 0, -0.025534, 3.30197, 98.058701)" stroke="none" fill="#fff">
@@ -60,22 +58,19 @@ const NavBar = () => {
                       </g>
                     </svg>
                   </div>
-                </Link>
+                </NavLink>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link
+                      <NavLink
+                        exact
                         to={{ pathname: item.href }}
                         key={item.name}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
+                        activeClassName="bg-gray-900 text-white"
+                        className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                       >
                         {item.name}
-                      </Link>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -108,41 +103,32 @@ const NavBar = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute z-50 top-full right-0 bg-white rounded-lg ring-1 ring-gray-900/10 shadow-lg overflow-hidden w-36 py-1 text-sm text-gray-700 font-semibold dark:bg-gray-800 dark:ring-0 dark:highlight-white/5 dark:text-gray-300 mt-6">
                       <Menu.Item>
                         {({ active }) => (
-                            <Link
+                            <NavLink
                               to={{pathname: 'profile'}}
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
-                              )}
+                              className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none"
                           >
                             Your Profile
-                          </Link>
+                          </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
+                          <NavLink
                             to={{pathname: 'settings'}}
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none"
                           >
                             Settings
-                          </Link>
+                          </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <div
                             onClick={() => logoutWithRedirect()}
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'cursor-pointer block px-4 py-2 text-sm text-gray-700'
-                            )}
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none"
                           >
                             Sign out
                           </div>

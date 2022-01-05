@@ -16,7 +16,7 @@ const Hero = () => (
         <div className="sm:max-w-lg">
           <h1 className="text-4xl font font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl">
             The time to startup is{' '}
-            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-500 relative inline-block">
               <span className="relative text-white">NOW</span>
             </span>
           </h1>
@@ -96,9 +96,9 @@ const Hero = () => (
 
             <a
               href="#"
-              className="inline-block text-center bg-pink-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-pink-700"
+              className="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700"
             >
-              Free sign up
+              Get started now
             </a>
           </div>
         </div>
