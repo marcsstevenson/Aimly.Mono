@@ -10,16 +10,12 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Mentorship', href: '/Mentorship' },
-  { name: 'Experts', href: '/Experts' },
-  { name: 'Community', href: '/Community' },
-  { name: 'Market', href: '/Market' },
+  { name: 'Home', href: '/', AuthenticatedOnly: false },
+  { name: 'Mentorship', href: '/Mentorship', AuthenticatedOnly: false },
+  { name: 'Experts', href: '/Experts', AuthenticatedOnly: false },
+  { name: 'Community', href: '/Community', AuthenticatedOnly: false },
+  { name: 'Market', href: '/Market', AuthenticatedOnly: true },
 ];
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 const NavBar = () => {
   const [isOpen] = useState(false);
@@ -31,7 +27,7 @@ const NavBar = () => {
     });
 
   return (
-    <Disclosure as="nav" className="bg-indigo-600">
+    <Disclosure as="nav" className="z-20 bg-indigo-600">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -61,7 +57,7 @@ const NavBar = () => {
                 </NavLink>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {navigation.filter(i => isAuthenticated || !i.AuthenticatedOnly).map((item) => (
                       <NavLink
                         exact
                         to={{ pathname: item.href }}
@@ -86,14 +82,24 @@ const NavBar = () => {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button> */}
                 <DarkModeSelector />
-                {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
-                  <div>
-                    <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                      <span className="sr-only">Open user menu</span>
-                      <img className="h-8 w-8 rounded-full" src={user?.picture} alt={user?.name} />
-                    </Menu.Button>
+
+                {!isAuthenticated && (
+                  <div
+                      className="ml-3 cursor-pointer px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                      onClick={() => loginWithRedirect()}
+                    >
+                      Log in
                   </div>
+                )}
+                {/* Profile dropdown */}
+                {isAuthenticated && (
+                  <Menu as="div" className="ml-3 relative">
+                    <div>
+                      <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <span className="sr-only">Open user menu</span>
+                        <img className="h-8 w-8 rounded-full" src={user?.picture} alt={user?.name} />
+                      </Menu.Button>
+                    </div>
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -128,7 +134,7 @@ const NavBar = () => {
                         {({ active }) => (
                           <div
                             onClick={() => logoutWithRedirect()}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none"
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none cursor-pointer"
                           >
                             Sign out
                           </div>
@@ -136,7 +142,8 @@ const NavBar = () => {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                  </Menu>
+                )}
               </div>
             </div>
           </div>

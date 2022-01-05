@@ -486,6 +486,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: 0px;
 }
 
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
+
 .top-full {
   top: 100%;
 }
@@ -508,6 +513,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .z-50 {
   z-index: 50;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-0 {
+  z-index: 0;
 }
 
 .mx-auto {
@@ -660,6 +673,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 11rem;
 }
 
+.w-\[108rem\] {
+  width: 108rem;
+}
+
+.w-\[90rem\] {
+  width: 90rem;
+}
+
+.w-\[71\.75rem\] {
+  width: 71.75rem;
+}
+
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -668,8 +693,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 42rem;
 }
 
+.max-w-none {
+  max-width: none;
+}
+
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.flex-none {
+  flex: none;
 }
 
 .flex-shrink-0 {
@@ -714,6 +747,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .items-center {
   align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1186,6 +1223,10 @@ code {
 
 .focus\:ring-offset-gray-800:focus {
   --tw-ring-offset-color: #1f2937;
+}
+
+.dark .dark\:block {
+  display: block;
 }
 
 .dark .dark\:inline {

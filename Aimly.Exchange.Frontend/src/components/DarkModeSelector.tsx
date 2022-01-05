@@ -41,7 +41,7 @@ const DarkModeSelector = () => {
   };
 
   return (
-    <Disclosure as="nav" className="bg-indigo-600">
+    <Disclosure as="nav">
       {() => (
         <Menu as="div" className="ml-3 relative">
           <div>
