@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Mentorship = () => (
   <div className="bg-white vh-100">
