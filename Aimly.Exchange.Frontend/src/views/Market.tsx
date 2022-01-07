@@ -1,83 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import { getConfig } from '../config';
+import React, { useEffect } from 'react';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 import Loading from '../components/Loading';
-import { Button, Input, Form, FormGroup } from 'reactstrap';
 import userIcon from '../assets/abstract-user-flat-4.svg';
-
-export interface UserSearchResult {
-  id: string;
-  fullName: string;
-  pictureUrl: string;
-}
-
-export interface MarketState {
-  showResult: boolean;
-  apiMessage: string;
-  error: any;
-  userSearchResults: UserSearchResult[];
-}
+import useMarketSearch from '../hooks/useMarketSearch';
 
 export const MarketComponent = () => {
-  const config = getConfig();
-  const apiOrigin = config.exchangeApiUri;
 
-  const [state, setState] = useState<MarketState>({
-    showResult: false,
-    apiMessage: '',
-    error: null,
-    userSearchResults: [],
-  });
+  const { marketSearch, state } = useMarketSearch();
 
-  // Onload
-  useEffect(() => {
-    userSearch();
-  }, []);
-
-  const { getAccessTokenSilently } = useAuth0();
-
-  const userSearch = async () => {
-    try {
-      const token = await getAccessTokenSilently();
-
-      const response = await fetch(`${apiOrigin}/api/graphql`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-          query: `{
-            userSearch{
-              id
-              fullName
-              pictureUrl
-            }
-        }`,
-        }),
-      });
-
-      const responseData = await response.json();
-
-      setState({
-        ...state,
-        showResult: true,
-        apiMessage: responseData,
-        userSearchResults: responseData.data.userSearch,
-      });
-    } catch (error) {
-      setState({
-        ...state,
-        // error: error.error,
-      });
-    }
-  };
+    // Onload
+    useEffect(() => {
+      marketSearch();
+    }, []);
 
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto py-6 sm:py-4 lg:py-8 lg:max-w-none">
-          <h2 className="text-2xl font-extrabold text-gray-100">Market Search</h2>
+          <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">Market Search</h2>
         </div>
       </div>
       <div className="mb-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

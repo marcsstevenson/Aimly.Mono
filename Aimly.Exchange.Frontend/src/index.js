@@ -6,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "@auth0/auth0-react";
 import history from "./utils/history";
 import { getProviderConfig } from "./config";
+import { ThemeProvider } from "./components/ThemeContext";
 
 const onRedirectCallback = (appState) => {
   history.push(
@@ -16,9 +17,11 @@ const onRedirectCallback = (appState) => {
 const providerConfig = getProviderConfig(onRedirectCallback);
 
 ReactDOM.render(
-  <Auth0Provider {...providerConfig}>
-    <App />
-  </Auth0Provider>,
+  <ThemeProvider>
+    <Auth0Provider {...providerConfig}>
+      <App />
+    </Auth0Provider>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 
