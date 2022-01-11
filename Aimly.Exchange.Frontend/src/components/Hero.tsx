@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import office1 from '../assets/hero/Office-1.png';
 import office2 from '../assets/hero/Office-2.png';
@@ -93,12 +94,11 @@ const Hero = () => (
             </div>
           </div>
 
-          <a
-            href="#"
+          <Link to={{ pathname: '/getStarted/AboutYou' }}
             className="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700"
           >
             Get started now
-          </a>
+          </Link>
         </div>
       </div>
     </div>

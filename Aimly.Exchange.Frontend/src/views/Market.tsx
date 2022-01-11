@@ -23,9 +23,9 @@ export const MarketComponent = () => {
       <div className="mb-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <form action="#" method="POST">
           <div className="shadow overflow-hidden sm:rounded-md">
-            <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+            <div className="px-4 py-5 space-y-6 sm:p-6 bg-white dark:bg-gray-700 dark:text-white">
               <fieldset>
-                <legend className="text-base font-medium text-gray-900">Filter by role</legend>
+                <legend className="text-base font-medium text-gray-900 dark:text-white">Filter by role</legend>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
@@ -38,7 +38,7 @@ export const MarketComponent = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="mentors" className="font-medium text-gray-700">
+                      <label htmlFor="mentors" className="font-medium text-gray-700 dark:text-gray-100">
                         Mentors
                       </label>
                       <p className="text-gray-500">
@@ -56,7 +56,7 @@ export const MarketComponent = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="startUps" className="font-medium text-gray-700">
+                      <label htmlFor="startUps" className="font-medium text-gray-700 dark:text-gray-100">
                         Start-ups
                       </label>
                       <p className="text-gray-500">Search for start-ups.</p>
@@ -72,7 +72,7 @@ export const MarketComponent = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="experts" className="font-medium text-gray-700">
+                      <label htmlFor="experts" className="font-medium text-gray-700 dark:text-gray-100">
                         Experts
                       </label>
                       <p className="text-gray-500">Search for subject matter experts.</p>
@@ -82,7 +82,7 @@ export const MarketComponent = () => {
               </fieldset>
               <fieldset>
                 <div>
-                  <legend className="text-base font-medium text-gray-900">
+                  <legend className="text-base font-medium text-gray-900 dark:text-white">
                     Filter Options
                   </legend>
                   <p className="text-sm text-gray-500">
@@ -99,7 +99,7 @@ export const MarketComponent = () => {
                     />
                     <label
                       htmlFor="name-contains"
-                      className="ml-3 block text-sm font-medium text-gray-700"
+                      className="ml-3 block text-sm font-medium text-gray-700 dark:text-white"
                     >
                       Name contains
                     </label>
@@ -113,7 +113,7 @@ export const MarketComponent = () => {
                     />
                     <label
                       htmlFor="name-starts-with"
-                      className="ml-3 block text-sm font-medium text-gray-700"
+                      className="ml-3 block text-sm font-medium text-gray-700 dark:text-white"
                     >
                       Name starts with
                     </label>
@@ -127,7 +127,7 @@ export const MarketComponent = () => {
                     />
                     <label
                       htmlFor="name-exact"
-                      className="ml-3 block text-sm font-medium text-gray-700"
+                      className="ml-3 block text-sm font-medium text-gray-700 dark:text-white"
                     >
                       Name exact
                     </label>
@@ -135,7 +135,7 @@ export const MarketComponent = () => {
                 </div>
               </fieldset>
             </div>
-            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <div className="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-right sm:px-6">
               <button
                 type="submit"
                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -152,33 +152,33 @@ export const MarketComponent = () => {
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200 bg-white">
-                  <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600 bg-white dark:bg-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-800">
                     <tr>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
                       >
                         Name
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
                       >
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
                       >
                         Role
                       </th>
                       <th scope="col" className="relative px-6 py-3">
-                        <span className="sr-only">Edit</span>
+                        <span className="sr-only">Follow</span>
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-800 dark:text-gray-100 divide-y divide-gray-200 dark:divide-gray-600">
                     {state.showResult &&
                       state.userSearchResults.map((user, i) => (
                         <tr key={i}>
@@ -192,7 +192,7 @@ export const MarketComponent = () => {
                                 />
                               </div>
                               <div className="ml-4">
-                                <div className="text-sm font-medium text-gray-900">
+                                <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
                                   {user.fullName}
                                 </div>
                               </div>
