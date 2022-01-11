@@ -46,6 +46,13 @@ const steps: StartupQuestionnaireSteps[] = [
     description: 'How big an effect can you have?',
     status: StepStatusOptions.Complete,
   },
+  {
+    id: 0,
+    path:'Customise',
+    name: 'Customise',
+    description: 'Customise your profile',
+    status: StepStatusOptions.Complete,
+  },
 ];
 
 function classNames(...classes: string[]) {

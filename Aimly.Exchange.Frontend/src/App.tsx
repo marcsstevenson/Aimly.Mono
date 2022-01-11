@@ -7,6 +7,7 @@ import AboutYou from './views/GetStarted/1-AboutYou';
 import TheProblem from './views/GetStarted/2-TheProblem';
 import TheSolution from './views/GetStarted/3-TheSolution';
 import Potential from './views/GetStarted/4-Potential';
+import Customise from './views/GetStarted/5-Customise';
 import Mentorship from './views/Mentorship';
 import Experts from './views/Experts';
 import Community from './views/Community';
@@ -58,6 +59,7 @@ const App = (): JSX.Element => {
               <Route path="/getStarted/TheProblem" component={TheProblem} />
               <Route path="/getStarted/TheSolution" component={TheSolution} />
               <Route path="/getStarted/Potential" component={Potential} />
+              <Route path="/getStarted/Customise" component={Customise} />
             </Switch>
           </Container>
           {error ? <div>Oops... {error?.message}</div> : <Footer />}
