@@ -128,14 +128,14 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                     >
                       <span className="flex-shrink-0">
                         <span className="w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-                          <span className="text-indigo-600">{step.id}</span>
+                          <span className="text-indigo-600 dark:text-indigo-200">{step.id}</span>
                         </span>
                       </span>
                       <span className="mt-0.5 ml-4 min-w-0 flex flex-col">
-                        <span className="text-xs font-semibold text-indigo-600 tracking-wide uppercase">
+                        <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-300 tracking-wide uppercase">
                           {step.name}
                         </span>
-                        <span className="text-sm font-medium text-gray-500">
+                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                           {step.description}
                         </span>
                       </span>
