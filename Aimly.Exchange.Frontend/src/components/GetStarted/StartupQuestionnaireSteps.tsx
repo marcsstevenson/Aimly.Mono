@@ -2,6 +2,7 @@
 import { CheckIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { classNames } from '../../utils/classNames';
 
 export enum StepStatusOptions {
   Complete,
@@ -11,7 +12,7 @@ export enum StepStatusOptions {
 
 export interface StartupQuestionnaireSteps {
   id: number;
-  path:string;
+  path: string;
   name: string;
   description: string;
   status: StepStatusOptions;
@@ -20,44 +21,40 @@ export interface StartupQuestionnaireSteps {
 const steps: StartupQuestionnaireSteps[] = [
   {
     id: 0,
-    path:'AboutYou',
+    path: 'AboutYou',
     name: 'About You',
     description: 'Help us to know you',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path:'TheProblem',
+    path: 'TheProblem',
     name: 'The Problem',
     description: 'What problem are you aiming to solve?',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path:'TheSolution',
+    path: 'TheSolution',
     name: 'The Solution',
     description: 'Your solution to the problem',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path:'Potential',
+    path: 'Potential',
     name: 'Potential',
     description: 'How big an effect can you have?',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path:'Customise',
+    path: 'Customise',
     name: 'Customise',
     description: 'Customise your profile',
     status: StepStatusOptions.Complete,
   },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export interface StartupQuestionnaireStepsProps {
   currentStep: string;

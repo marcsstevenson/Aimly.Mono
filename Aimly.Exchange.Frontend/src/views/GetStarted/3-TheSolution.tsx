@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Loading from '../../components/Loading';
 import GetStartedHeader from '../../components/GetStarted/GetStartedHeader';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
@@ -7,15 +7,19 @@ import { useHistory } from 'react-router-dom';
 
 const TheSolution = () => {
   const history = useHistory();
+  const topRef = useRef<HTMLDivElement>(null);
 
   const next = () => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
     history.push('/getStarted/Potential');
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <GetStartedHeader title="Profile Builder" />
-      <div>
+      <div ref={topRef}>
         <StartupQuestionnaireSteps currentStep="TheSolution"></StartupQuestionnaireSteps>
       </div>
       <div></div>
