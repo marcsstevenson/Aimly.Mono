@@ -8,6 +8,7 @@ import office4 from '../assets/hero/Office-4.png';
 import office5 from '../assets/hero/Office-5.jpg';
 import office6 from '../assets/hero/Office-6.png';
 import office7 from '../assets/hero/Office-7.png';
+import { ChevronDoubleRightIcon } from '@heroicons/react/solid';
 
 /* This example requires Tailwind CSS v2.0+ */
 const Hero = () => (
@@ -94,11 +95,14 @@ const Hero = () => (
             </div>
           </div>
 
-          <Link to={{ pathname: '/getStarted/AboutYou' }}
-            className="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700"
+          <Link
+            to={{ pathname: '/getStarted/AboutYou' }}
+            className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Get started now
+            Get started NOW
+            <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
           </Link>
+
         </div>
       </div>
     </div>

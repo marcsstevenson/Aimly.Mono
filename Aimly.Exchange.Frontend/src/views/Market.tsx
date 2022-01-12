@@ -1,23 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import Loading from '../components/Loading';
-import userIcon from '../assets/abstract-user-flat-4.svg';
+import MarketListResults from '../components/Market/MarketListResults';
+import MarketGridResults from '../components/Market/MarketGridResults';
+import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
 import useMarketSearch from '../hooks/useMarketSearch';
 
+enum displayModeOptions {
+  grid,
+  list,
+}
+
 export const MarketComponent = () => {
+  const [displayMode, setDisplayMode] = useState(displayModeOptions.grid);
 
   const { marketSearch, state } = useMarketSearch();
 
-    // Onload
-    useEffect(() => {
-      marketSearch();
-    }, []);
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(' ');
+  }
+
+  // Onload
+  useEffect(() => {
+    marketSearch();
+  }, []);
 
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto py-6 sm:py-4 lg:py-8 lg:max-w-none">
-          <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">Market Search</h2>
+          <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">
+            Market Search
+          </h2>
         </div>
       </div>
       <div className="mb-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +39,9 @@ export const MarketComponent = () => {
           <div className="shadow overflow-hidden sm:rounded-md">
             <div className="px-4 py-5 space-y-6 sm:p-6 bg-white dark:bg-gray-700 dark:text-white">
               <fieldset>
-                <legend className="text-base font-medium text-gray-900 dark:text-white">Filter by role</legend>
+                <legend className="text-base font-medium text-gray-900 dark:text-white">
+                  Filter by role
+                </legend>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
@@ -38,7 +54,10 @@ export const MarketComponent = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="mentors" className="font-medium text-gray-700 dark:text-gray-100">
+                      <label
+                        htmlFor="mentors"
+                        className="font-medium text-gray-700 dark:text-gray-100"
+                      >
                         Mentors
                       </label>
                       <p className="text-gray-500">
@@ -56,7 +75,10 @@ export const MarketComponent = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="startUps" className="font-medium text-gray-700 dark:text-gray-100">
+                      <label
+                        htmlFor="startUps"
+                        className="font-medium text-gray-700 dark:text-gray-100"
+                      >
                         Start-ups
                       </label>
                       <p className="text-gray-500">Search for start-ups.</p>
@@ -72,7 +94,10 @@ export const MarketComponent = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="experts" className="font-medium text-gray-700 dark:text-gray-100">
+                      <label
+                        htmlFor="experts"
+                        className="font-medium text-gray-700 dark:text-gray-100"
+                      >
                         Experts
                       </label>
                       <p className="text-gray-500">Search for subject matter experts.</p>
@@ -85,9 +110,7 @@ export const MarketComponent = () => {
                   <legend className="text-base font-medium text-gray-900 dark:text-white">
                     Filter Options
                   </legend>
-                  <p className="text-sm text-gray-500">
-                    Choose how to filter your search
-                  </p>
+                  <p className="text-sm text-gray-500">Choose how to filter your search</p>
                 </div>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-center">
@@ -152,69 +175,40 @@ export const MarketComponent = () => {
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600 bg-white dark:bg-gray-700">
-                  <thead className="bg-gray-50 dark:bg-gray-800">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
-                      >
-                        Name
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
-                      >
-                        Status
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
-                      >
-                        Role
-                      </th>
-                      <th scope="col" className="relative px-6 py-3">
-                        <span className="sr-only">Follow</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white dark:bg-gray-800 dark:text-gray-100 divide-y divide-gray-200 dark:divide-gray-600">
-                    {state.showResult &&
-                      state.userSearchResults.map((user, i) => (
-                        <tr key={i}>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 h-10 w-10">
-                                <img
-                                  className="h-10 w-10 rounded-full"
-                                  src={user.pictureUrl ?? userIcon}
-                                  alt={user.fullName}
-                                />
-                              </div>
-                              <div className="ml-4">
-                                <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                                  {user.fullName}
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                              Active
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            Mentor
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                              Follow
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+                <div className="ml-auto flex px-6 py-3 items-center space-x-5 bg-gray-50 dark:bg-gray-800">
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => setDisplayMode(displayModeOptions.grid)}
+                      type="button"
+                      className={classNames(
+                        displayMode === displayModeOptions.grid ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
+                        '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
+                      )}
+                    >
+                      <span className="sr-only">View as grid</span>
+                      <ViewGridIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                  </div>
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => setDisplayMode(displayModeOptions.list)}
+                      type="button"
+                      className={classNames(
+                        displayMode === displayModeOptions.list ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
+                        '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
+                      )}
+                    >
+                      <span className="sr-only">View results as list</span>
+                      <ViewListIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                  </div>
+                </div>
+                {displayMode === displayModeOptions.grid && (
+                  <MarketGridResults userSearchResults={state.userSearchResults} />
+                )}
+                {displayMode === displayModeOptions.list && (
+                  <MarketListResults userSearchResults={state.userSearchResults} />
+                )}
               </div>
             </div>
           </div>
