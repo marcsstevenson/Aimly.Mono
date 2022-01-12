@@ -5,6 +5,7 @@ import MarketListResults from '../components/Market/MarketListResults';
 import MarketGridResults from '../components/Market/MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
 import useMarketSearch from '../hooks/useMarketSearch';
+import { classNames } from '../utils/classNames';
 
 enum DisplayModeOptions {
   grid,
@@ -33,10 +34,6 @@ export const MarketComponent = () => {
   const [displayMode, setDisplayMode] = useState(getStartingDisplayMode());
 
   const { marketSearch, state } = useMarketSearch();
-
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
-  }
 
   /// Request a display mode change
   const requestDisplayMode = (displayModeOption: DisplayModeOptions) => {
