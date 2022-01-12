@@ -6,18 +6,45 @@ import MarketGridResults from '../components/Market/MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
 import useMarketSearch from '../hooks/useMarketSearch';
 
-enum displayModeOptions {
+enum DisplayModeOptions {
   grid,
   list,
 }
 
 export const MarketComponent = () => {
-  const [displayMode, setDisplayMode] = useState(displayModeOptions.grid);
+  const displayModeStorageItemName = 'market-display-mode';
+
+  /// Return the current display mode using the localStorage value if any
+  const getStartingDisplayMode = (): DisplayModeOptions => {
+    const localStorageValue = localStorage.getItem(displayModeStorageItemName);
+
+    if (!localStorageValue) {
+      return DisplayModeOptions.grid;
+    }
+
+    switch (localStorageValue) {
+      case DisplayModeOptions.list.toString():
+        return DisplayModeOptions.list;
+      default:
+        return DisplayModeOptions.grid;
+    }
+  }
+
+  const [displayMode, setDisplayMode] = useState(getStartingDisplayMode());
 
   const { marketSearch, state } = useMarketSearch();
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
+  }
+
+  /// Request a display mode change
+  const requestDisplayMode = (displayModeOption: DisplayModeOptions) => {
+    // Remember choice for next time
+    localStorage.setItem(displayModeStorageItemName, displayModeOption.toString());
+
+    // Update the state value
+    setDisplayMode(displayModeOption);
   }
 
   // Onload
@@ -178,10 +205,10 @@ export const MarketComponent = () => {
                 <div className="ml-auto flex px-6 py-3 items-center space-x-5 bg-gray-50 dark:bg-gray-800">
                   <div className="flex items-center">
                     <button
-                      onClick={() => setDisplayMode(displayModeOptions.grid)}
+                      onClick={() => requestDisplayMode(DisplayModeOptions.grid)}
                       type="button"
                       className={classNames(
-                        displayMode === displayModeOptions.grid ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
+                        displayMode === DisplayModeOptions.grid ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
                         '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
                       )}
                     >
@@ -191,10 +218,10 @@ export const MarketComponent = () => {
                   </div>
                   <div className="flex items-center">
                     <button
-                      onClick={() => setDisplayMode(displayModeOptions.list)}
+                      onClick={() => requestDisplayMode(DisplayModeOptions.list)}
                       type="button"
                       className={classNames(
-                        displayMode === displayModeOptions.list ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
+                        displayMode === DisplayModeOptions.list ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
                         '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
                       )}
                     >
@@ -203,10 +230,10 @@ export const MarketComponent = () => {
                     </button>
                   </div>
                 </div>
-                {displayMode === displayModeOptions.grid && (
+                {displayMode === DisplayModeOptions.grid && (
                   <MarketGridResults userSearchResults={state.userSearchResults} />
                 )}
-                {displayMode === displayModeOptions.list && (
+                {displayMode === DisplayModeOptions.list && (
                   <MarketListResults userSearchResults={state.userSearchResults} />
                 )}
               </div>
