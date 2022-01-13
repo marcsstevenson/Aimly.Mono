@@ -2,59 +2,8 @@
 import { CheckIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { steps, StepStatusOptions } from './StartupQuestionnaireManager';
 import { classNames } from '../../utils/classNames';
-
-export enum StepStatusOptions {
-  Complete,
-  Current,
-  Upcoming,
-}
-
-export interface StartupQuestionnaireSteps {
-  id: number;
-  path: string;
-  name: string;
-  description: string;
-  status: StepStatusOptions;
-}
-
-const steps: StartupQuestionnaireSteps[] = [
-  {
-    id: 0,
-    path: 'AboutYou',
-    name: 'About You',
-    description: 'Help us to know you',
-    status: StepStatusOptions.Complete,
-  },
-  {
-    id: 0,
-    path: 'TheProblem',
-    name: 'The Problem',
-    description: 'What problem are you aiming to solve?',
-    status: StepStatusOptions.Complete,
-  },
-  {
-    id: 0,
-    path: 'TheSolution',
-    name: 'The Solution',
-    description: 'Your solution to the problem',
-    status: StepStatusOptions.Complete,
-  },
-  {
-    id: 0,
-    path: 'Potential',
-    name: 'Potential',
-    description: 'How big an effect can you have?',
-    status: StepStatusOptions.Complete,
-  },
-  {
-    id: 0,
-    path: 'Customise',
-    name: 'Customise',
-    description: 'Customise your profile',
-    status: StepStatusOptions.Complete,
-  },
-];
 
 export interface StartupQuestionnaireStepsProps {
   currentStep: string;
