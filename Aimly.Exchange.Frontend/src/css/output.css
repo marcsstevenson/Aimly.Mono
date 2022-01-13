@@ -616,6 +616,34 @@ select {
   --tw-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Using https://www.joshwcomeau.com/gradient-generator/ */
 
 .index-light {
@@ -648,6 +676,9 @@ select {
       hsl(214deg 58% 98%) 88%,
       hsl(0deg 0% 100%) 100%
     );
+  background-size: 150% 150%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
 }
 
 .sr-only {
@@ -1843,6 +1874,9 @@ code {
       hsl(218deg 42% 12%) 79%,
       hsl(221deg 39% 11%) 100%
     );
+  background-size: 200% 200%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
 }
 
 .dark .dark\:block {
