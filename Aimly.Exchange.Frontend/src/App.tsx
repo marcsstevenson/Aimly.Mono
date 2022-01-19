@@ -2,21 +2,21 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
-import Home from './views/Home';
-import AboutYou from './views/for-startups/profile/edit/1-AboutYou';
-import TheProblem from './views/for-startups/profile/edit/2-TheProblem';
-import TheSolution from './views/for-startups/profile/edit/3-TheSolution';
-import Potential from './views/for-startups/profile/edit/4-Potential';
-import Customise from './views/for-startups/profile/edit/5-Customise';
-import Mentorship from './views/Mentorship';
-import Experts from './views/Experts';
-import Community from './views/Community';
-import Market from './views/Market';
+import Home from './components/home/Home';
+import AboutYou from './components/for-startups/profile/edit/1-AboutYou';
+import TheProblem from './components/for-startups/profile/edit/2-TheProblem';
+import TheSolution from './components/for-startups/profile/edit/3-TheSolution';
+import Potential from './components/for-startups/profile/edit/4-Potential';
+import Customise from './components/for-startups/profile/edit/5-Customise';
+import Mentorship from './components/Mentorship';
+import Experts from './components/Experts';
+import Community from './components/Community';
+import Market from './components/market/Market';
 import Loading from './components/Loading';
-import NavBar from './components/NavBar2';
+import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import Profile from './views/Profile';
-import ExternalApi from './views/ExternalApi';
+import Profile from './components/Profile';
+import ExternalApi from './components/ExternalApi';
 import { useAuth0 } from '@auth0/auth0-react';
 import history from './utils/history';
 import ErrorBoundary from './ErrorBoundary';
@@ -47,8 +47,9 @@ const App = (): JSX.Element => {
           <Container className="flex-grow-1">
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/mentorship" exact component={Mentorship} />
-              <Route path="/experts" exact component={Experts} />
+              <Route path="/for-startups" exact component={Home} />
+              <Route path="/for-mentors" exact component={Mentorship} />
+              <Route path="/for-experts" exact component={Experts} />
               <Route path="/community" exact component={Community} />
               <Route path="/market" exact component={Market} />
               <Route path="/profile" component={Profile} />
