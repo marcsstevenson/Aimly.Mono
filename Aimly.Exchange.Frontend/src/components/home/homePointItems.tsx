@@ -1,7 +1,7 @@
 import { EmojiHappyIcon, SupportIcon, UserGroupIcon, GlobeIcon } from '@heroicons/react/outline'
-import { ContentItem } from 'types/ContentItem'
+import { PointItem } from 'types/PointItem';
 
-const contentData: ContentItem[] = [
+const homePointItems: PointItem[] = [
   {
     title: "Mentorship",
     icon: SupportIcon,
@@ -32,4 +32,4 @@ const contentData: ContentItem[] = [
   }
 ];
 
-export default contentData;
+export default homePointItems;

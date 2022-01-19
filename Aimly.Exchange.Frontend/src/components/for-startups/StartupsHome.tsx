@@ -1,13 +1,14 @@
 import React, { Fragment } from "react";
 
-import Hero from "./StartupsHero";
-import Content from "./StartupsContent";
+import StartupsHero from "./StartupsHero";
+import Points from "components/shared/Points";
+import startupsPointItems from "./startupsPointItems";
 
 const Home = () => (
   <Fragment>
-    <Hero />
+    <StartupsHero />
     <hr />
-    <Content />
+    <Points pointData={ startupsPointItems } />
   </Fragment>
 );
 

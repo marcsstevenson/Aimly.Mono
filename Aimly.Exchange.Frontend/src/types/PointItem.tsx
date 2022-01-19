@@ -1,6 +1,6 @@
 type HeroIcon = (props: React.ComponentProps<'svg'>) => JSX.Element;
 
-export interface ContentItem{
+export interface PointItem{
   title: string;
   icon: HeroIcon;
   link: string | undefined;

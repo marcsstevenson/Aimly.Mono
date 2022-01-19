@@ -11,7 +11,7 @@ import office7 from 'assets/hero/Office-7.png';
 import { ChevronDoubleRightIcon } from '@heroicons/react/solid';
 
 /* This example requires Tailwind CSS v2.0+ */
-const Hero = () => (
+const StartupsHero = () => (
   <div className="relative overflow-hidden">
     <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
@@ -109,4 +109,4 @@ const Hero = () => (
   </div>
 );
 
-export default Hero;
+export default StartupsHero;
