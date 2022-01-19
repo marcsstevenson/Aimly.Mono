@@ -5,7 +5,7 @@ import MarketListResults from '../components/Market/MarketListResults';
 import MarketGridResults from '../components/Market/MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
 import useMarketSearch from '../hooks/useMarketSearch';
-import { classNames } from '../utils/classNames';
+import { classNames } from 'utils/classNames';
 
 enum DisplayModeOptions {
   grid,

@@ -1,19 +1,19 @@
 import React, { useRef } from 'react';
-import Loading from '../../components/Loading';
+import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
-import StartupQuestionnaireManager from '../../components/GetStarted/StartupQuestionnaireManager';
+import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 
-const TheProblem = () => {
+const Potential = () => {
   const history = useHistory();
   const topRef = useRef<HTMLDivElement>(null);
-  const currentStep = 'TheProblem';
+  const currentStep = 'Potential';
 
   const next = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    history.push('/getStarted/TheSolution');
+    history.push('/for-startups/profile/edit/Customise');
   };
 
   return (
@@ -24,18 +24,18 @@ const TheProblem = () => {
             <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               <div className="sm:col-span-6">
                 <label
-                  htmlFor="your-why"
+                  htmlFor="value"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-200"
                 >
-                  Your Why
+                  Value
                 </label>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                  Why are you doing this?
+                  How would you value your movement today?
                 </p>
                 <div className="mt-1">
                   <textarea
-                    id="your-why"
-                    name="your-why"
+                    id="value"
+                    name="value"
                     rows={3}
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
                     defaultValue={''}
@@ -44,18 +44,39 @@ const TheProblem = () => {
               </div>
               <div className="sm:col-span-6">
                 <label
-                  htmlFor="the-problem"
+                  htmlFor="potential-size"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-200"
                 >
-                  The Problem
+                  Potential size
                 </label>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                  What is the problem that you aim to solve?
+                  How big could your movement be?
                 </p>
                 <div className="mt-1">
                   <textarea
-                    id="the-problem"
-                    name="the-problem"
+                    id="potential-size"
+                    name="potential-size"
+                    rows={3}
+                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    defaultValue={''}
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="potential-value"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                >
+                  Potential value
+                </label>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
+                  Have you thought about what your movement would be valued in the future? If so,
+                  what?
+                </p>
+                <div className="mt-1">
+                  <textarea
+                    id="potential-value"
+                    name="potential-value"
                     rows={3}
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
                     defaultValue={''}
@@ -88,6 +109,6 @@ const TheProblem = () => {
   );
 };
 
-export default withAuthenticationRequired(TheProblem, {
+export default withAuthenticationRequired(Potential, {
   onRedirecting: () => <Loading />,
 });

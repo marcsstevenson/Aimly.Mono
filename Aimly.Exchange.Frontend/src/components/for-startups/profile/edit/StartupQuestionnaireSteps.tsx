@@ -3,7 +3,7 @@ import { CheckIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { steps, StepStatusOptions } from './StartupQuestionnaireManager';
-import { classNames } from '../../utils/classNames';
+import { classNames } from 'utils/classNames';
 
 export interface StartupQuestionnaireStepsProps {
   currentStep: string;

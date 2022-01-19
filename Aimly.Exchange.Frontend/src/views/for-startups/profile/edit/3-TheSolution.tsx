@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import Loading from '../../components/Loading';
+import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
-import StartupQuestionnaireManager from '../../components/GetStarted/StartupQuestionnaireManager';
+import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 
 const TheSolution = () => {
   const history = useHistory();
@@ -13,7 +13,7 @@ const TheSolution = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    history.push('/getStarted/Potential');
+    history.push('/for-startups/profile/edit/Potential');
   };
 
   return (

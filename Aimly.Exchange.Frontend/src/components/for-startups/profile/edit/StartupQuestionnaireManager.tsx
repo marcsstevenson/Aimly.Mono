@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
-import GetStartedHeader from '../../components/GetStarted/GetStartedHeader';
+import GetStartedHeader from 'components/for-startups/profile/edit/GetStartedHeader';
 
 // export interface StartupQuestionnaireManagerState {
 //   test: string;
@@ -84,7 +84,7 @@ const StartupQuestionnaireManager = ({
   //           topRef.current.scrollIntoView({ behavior: 'smooth' });
   //         }
 
-  //         history.push('/getStarted/' + steps[index + 1].path);
+  //         history.push('/for-startups/profile/edit/' + steps[index + 1].path);
   //       }
   //     }
   //   }

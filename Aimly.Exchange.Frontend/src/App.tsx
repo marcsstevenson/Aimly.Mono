@@ -3,11 +3,11 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import Home from './views/Home';
-import AboutYou from './views/GetStarted/1-AboutYou';
-import TheProblem from './views/GetStarted/2-TheProblem';
-import TheSolution from './views/GetStarted/3-TheSolution';
-import Potential from './views/GetStarted/4-Potential';
-import Customise from './views/GetStarted/5-Customise';
+import AboutYou from './views/for-startups/profile/edit/1-AboutYou';
+import TheProblem from './views/for-startups/profile/edit/2-TheProblem';
+import TheSolution from './views/for-startups/profile/edit/3-TheSolution';
+import Potential from './views/for-startups/profile/edit/4-Potential';
+import Customise from './views/for-startups/profile/edit/5-Customise';
 import Mentorship from './views/Mentorship';
 import Experts from './views/Experts';
 import Community from './views/Community';
@@ -55,11 +55,11 @@ const App = (): JSX.Element => {
               <Route path="/external-api" component={ExternalApi} />
               <Route path="/testing" component={Testing} />
               <Route path="/videoCall" component={VideoCall} />
-              <Route path="/getStarted/AboutYou" component={AboutYou} />
-              <Route path="/getStarted/TheProblem" component={TheProblem} />
-              <Route path="/getStarted/TheSolution" component={TheSolution} />
-              <Route path="/getStarted/Potential" component={Potential} />
-              <Route path="/getStarted/Customise" component={Customise} />
+              <Route path="/for-startups/profile/edit/AboutYou" component={AboutYou} />
+              <Route path="/for-startups/profile/edit/TheProblem" component={TheProblem} />
+              <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />
+              <Route path="/for-startups/profile/edit/Potential" component={Potential} />
+              <Route path="/for-startups/profile/edit/Customise" component={Customise} />
             </Switch>
           </Container>
           {error ? <div>Oops... {error?.message}</div> : <Footer />}

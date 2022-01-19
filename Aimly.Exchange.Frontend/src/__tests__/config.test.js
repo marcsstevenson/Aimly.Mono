@@ -25,7 +25,7 @@ describe("The config module", () => {
   it("should omit the audience if not in the config json", () => {
     mockConfig();
 
-    const { getConfig } = require("../config");
+    const { getConfig } = require("config");
 
     expect(getConfig().audience).not.toBeDefined();
   });
@@ -33,7 +33,7 @@ describe("The config module", () => {
   it("should omit the audience if left at a default value", () => {
     mockConfig({ audience: "YOUR_API_IDENTIFIER" });
 
-    const { getConfig } = require("../config");
+    const { getConfig } = require("config");
 
     expect(getConfig().audience).not.toBeDefined();
   });
@@ -41,7 +41,7 @@ describe("The config module", () => {
   it("should return the audience if specified", () => {
     mockConfig({ audience: "test-api" });
 
-    const { getConfig } = require("../config");
+    const { getConfig } = require("config");
 
     expect(getConfig().audience).toEqual("test-api");
   });

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import Loading from '../../components/Loading';
+import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import StartupQuestionnaireManager from '../../components/GetStarted/StartupQuestionnaireManager';
+import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useHistory } from 'react-router-dom';
 
 const AboutYou = () => {
@@ -13,7 +13,7 @@ const AboutYou = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    history.push('/getStarted/TheProblem');
+    history.push('/for-startups/profile/edit/TheProblem');
   };
 
   return (
