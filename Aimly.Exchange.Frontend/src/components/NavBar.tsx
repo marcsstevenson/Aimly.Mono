@@ -10,9 +10,10 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const navigation = [
-  { name: 'For Startups', href: '/', AuthenticatedOnly: false },
+  { name: 'Home', href: '/', AuthenticatedOnly: false },
+  { name: 'For Startups', href: '/for-startups', AuthenticatedOnly: false },
   { name: 'For Mentors', href: '/for-mentors', AuthenticatedOnly: false },
-  { name: 'For Talent', href: '/for-experts', AuthenticatedOnly: false },
+  { name: 'For Experts', href: '/for-experts', AuthenticatedOnly: false },
   // { name: 'Community', href: '/Community', AuthenticatedOnly: false },
   { name: 'Marketplace', href: '/Market', AuthenticatedOnly: true },
 ];

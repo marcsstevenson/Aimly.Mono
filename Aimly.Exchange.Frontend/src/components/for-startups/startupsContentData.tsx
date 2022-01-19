@@ -1,13 +1,5 @@
 import { EmojiHappyIcon, SupportIcon, UserGroupIcon, GlobeIcon } from '@heroicons/react/outline'
-
-type HeroIcon = (props: React.ComponentProps<'svg'>) => JSX.Element;
-
-export interface ContentItem{
-  title: string;
-  icon: HeroIcon;
-  link: string | undefined;
-  description: string;
-}
+import { ContentItem } from 'types/ContentItem'
 
 const contentData: ContentItem[] = [
   {

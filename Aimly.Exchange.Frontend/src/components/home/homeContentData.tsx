@@ -1,26 +1,18 @@
 import { EmojiHappyIcon, SupportIcon, UserGroupIcon, GlobeIcon } from '@heroicons/react/outline'
-
-type HeroIcon = (props: React.ComponentProps<'svg'>) => JSX.Element;
-
-export interface ContentItem{
-  title: string;
-  icon: HeroIcon;
-  link: string | undefined;
-  description: string;
-}
+import { ContentItem } from 'types/ContentItem'
 
 const contentData: ContentItem[] = [
   {
     title: "Mentorship",
     icon: SupportIcon,
-    link: "/Mentorship",
+    link: "/for-mentors",
     description:
       "Starting up is rarely easy so use Aimly to gain access to mentors who will help you find the right people to succeed and guide you through the startup journey from idea to MVP to exit.",
   },
   {
     title: "Experts",
     icon: UserGroupIcon,
-    link: "/Experts",
+    link: "/for-experts",
     description:
       "Most startup founders are strong in specific areas. Aimly provides a community of capable subject matter experts who can support you in areas that you do not yet have in-house resource. Need advice on intellectual property? Unsure of how to draft a service contract? Lacking a marketing strategy? Aimly has the expertise to help you."
   },

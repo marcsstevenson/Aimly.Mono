@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import Home from './components/home/Home';
+import StartupsHome from './components/for-startups/StartupsHome';
 import AboutYou from './components/for-startups/profile/edit/1-AboutYou';
 import TheProblem from './components/for-startups/profile/edit/2-TheProblem';
 import TheSolution from './components/for-startups/profile/edit/3-TheSolution';
@@ -47,7 +48,7 @@ const App = (): JSX.Element => {
           <Container className="flex-grow-1">
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/for-startups" exact component={Home} />
+              <Route path="/for-startups" exact component={StartupsHome} />
               <Route path="/for-mentors" exact component={Mentorship} />
               <Route path="/for-experts" exact component={Experts} />
               <Route path="/community" exact component={Community} />
