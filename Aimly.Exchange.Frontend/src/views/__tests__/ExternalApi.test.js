@@ -12,7 +12,7 @@ jest.mock("@auth0/auth0-react", () => ({
   withAuthenticationRequired: jest.fn(),
 }));
 
-jest.mock("../../config", () => ({
+jest.mock("../config", () => ({
   getConfig: jest.fn(() => ({
     domain: "test-domain.com",
     clientId: "123",
@@ -44,7 +44,7 @@ describe("The ExternalApi component", () => {
   });
 
   it("shows the warning content when there is no audience", async () => {
-    const { getConfig } = require("../../config");
+    const { getConfig } = require("../config");
 
     getConfig.mockImplementation(() => ({
       getConfig: () => ({

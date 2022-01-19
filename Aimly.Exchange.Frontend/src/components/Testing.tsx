@@ -1,5 +1,5 @@
 import React from "react";
-import { getConfig } from "../config";
+import { getConfig } from "config";
 
 const Testing = () => (
   <div className="text-center my-5">

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import office1 from '../assets/hero/Office-1.png';
-import office2 from '../assets/hero/Office-2.png';
-import office3 from '../assets/hero/Office-3.png';
-import office4 from '../assets/hero/Office-4.png';
-import office5 from '../assets/hero/Office-5.jpg';
-import office6 from '../assets/hero/Office-6.png';
-import office7 from '../assets/hero/Office-7.png';
+import office1 from 'assets/hero/Office-1.png';
+import office2 from 'assets/hero/Office-2.png';
+import office3 from 'assets/hero/Office-3.png';
+import office4 from 'assets/hero/Office-4.png';
+import office5 from 'assets/hero/Office-5.jpg';
+import office6 from 'assets/hero/Office-6.png';
+import office7 from 'assets/hero/Office-7.png';
 import { ChevronDoubleRightIcon } from '@heroicons/react/solid';
 
 /* This example requires Tailwind CSS v2.0+ */
@@ -96,7 +96,7 @@ const Hero = () => (
           </div>
 
           <Link
-            to={{ pathname: '/getStarted/AboutYou' }}
+            to={{ pathname: '/for-startups/profile/edit/AboutYou' }}
             className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Get started NOW

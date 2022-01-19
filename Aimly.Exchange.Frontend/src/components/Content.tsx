@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import features from "../utils/contentData";
+import features from "utils/contentData";
 import { Link } from "react-router-dom";
 
 class Content extends Component {
