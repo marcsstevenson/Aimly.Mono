@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import Loading from '../components/Loading';
-import MarketListResults from '../components/Market/MarketListResults';
-import MarketGridResults from '../components/Market/MarketGridResults';
+import Loading from 'components/Loading';
+import MarketListResults from './MarketListResults';
+import MarketGridResults from './MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
-import useMarketSearch from '../hooks/useMarketSearch';
+import useMarketSearch from 'hooks/useMarketSearch';
 import { classNames } from 'utils/classNames';
 
 enum DisplayModeOptions {
