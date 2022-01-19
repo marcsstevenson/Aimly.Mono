@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import features from "./homeContentData";
 import { Link } from "react-router-dom";
 
-class Content extends Component {
+class HomeContent extends Component {
   render() {
     return (
       <div className="py-12 bg-white dark:text-gray-100 dark:bg-gray-800">
@@ -44,4 +44,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default HomeContent;
