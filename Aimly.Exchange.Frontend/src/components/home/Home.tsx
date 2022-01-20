@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 
 import HomeHero from "./HomeHero";
 import Points from "components/shared/Points";
-import homePointItems from "./homePointItems";
+import HomePointsModel from "./HomePointsModel";
 
 const Home = () => (
   <Fragment>
     <HomeHero />
     <hr />
-    <Points pointData={ homePointItems } />
+    <Points pointsModel={ HomePointsModel } />
   </Fragment>
 );
 

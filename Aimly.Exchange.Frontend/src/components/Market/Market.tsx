@@ -103,9 +103,9 @@ export const MarketComponent = () => {
                         htmlFor="startUps"
                         className="font-medium text-gray-700 dark:text-gray-100"
                       >
-                        Start-ups
+                        Startups
                       </label>
-                      <p className="text-gray-500">Search for start-ups.</p>
+                      <p className="text-gray-500">Search for startups.</p>
                     </div>
                   </div>
                   <div className="flex items-start">

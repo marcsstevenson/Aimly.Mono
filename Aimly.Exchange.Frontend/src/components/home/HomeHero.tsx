@@ -37,7 +37,7 @@ const HomeHero = () => (
             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <Link
                 to={{ pathname: '/for-experts' }}
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-100 bg-gray-800 hover:bg-gray-700 md:py-4 md:text-lg md:px-10 dark:bg-gray-300 dark:hover:bg-gray-400 dark:text-indigo-600"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10 text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
               >
                 Experts
                 <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

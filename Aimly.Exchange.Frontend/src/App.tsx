@@ -9,8 +9,10 @@ import TheProblem from './components/for-startups/profile/edit/2-TheProblem';
 import TheSolution from './components/for-startups/profile/edit/3-TheSolution';
 import Potential from './components/for-startups/profile/edit/4-Potential';
 import Customise from './components/for-startups/profile/edit/5-Customise';
+import MentorsHome from './components/for-mentors/MentorsHome';
 import Mentorship from './components/Mentorship';
 import Experts from './components/Experts';
+import ExpertsHome from './components/for-experts/ExpertsHome';
 import Community from './components/Community';
 import Market from './components/market/Market';
 import Loading from './components/Loading';
@@ -49,8 +51,8 @@ const App = (): JSX.Element => {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/for-startups" exact component={StartupsHome} />
-              <Route path="/for-mentors" exact component={Mentorship} />
-              <Route path="/for-experts" exact component={Experts} />
+              <Route path="/for-mentors" exact component={MentorsHome} />
+              <Route path="/for-experts" exact component={ExpertsHome} />
               <Route path="/community" exact component={Community} />
               <Route path="/market" exact component={Market} />
               <Route path="/profile" component={Profile} />
