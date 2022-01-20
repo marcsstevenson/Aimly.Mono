@@ -12,7 +12,7 @@ enum DisplayModeOptions {
   list,
 }
 
-export const MarketComponent = () => {
+export const Market = () => {
   const displayModeStorageItemName = 'market-display-mode';
 
   /// Return the current display mode using the localStorage value if any
@@ -242,6 +242,6 @@ export const MarketComponent = () => {
   );
 };
 
-export default withAuthenticationRequired(MarketComponent, {
+export default withAuthenticationRequired(Market, {
   onRedirecting: () => <Loading />,
 });
