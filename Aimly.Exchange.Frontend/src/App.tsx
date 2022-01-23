@@ -25,7 +25,7 @@ import history from './utils/history';
 import ErrorBoundary from './ErrorBoundary';
 import Testing from './components/Testing';
 import VideoCall from './components/VideoCall';
-import Test from 'test';
+import TestRoot from 'test';
 
 // fontawesome
 import initFontAwesome from './utils/initFontAwesome';
@@ -65,7 +65,7 @@ const App = (): JSX.Element => {
               <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />
               <Route path="/for-startups/profile/edit/Potential" component={Potential} />
               <Route path="/for-startups/profile/edit/Customise" component={Customise} />
-              <Route path="/test" component={Test} />
+              <Route path="/test" component={TestRoot} />
             </Switch>
           </Container>
           {error ? <div>Oops... {error?.message}</div> : <Footer />}
