@@ -12,8 +12,10 @@ const { Suspense } = React;
 // Define a query
 const RepositoryNameQuery = graphql`
   query testRepositoryNameQuery {
-    repository(owner: "facebook", name: "relay") {
-      name
+    userSearch{
+      id
+      fullName
+      pictureUrl
     }
   }
 `;
@@ -26,11 +28,12 @@ const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
 
 function Test(props) {
   const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
-
+  console.log(data);
   return (
     <div className="App">
       <header className="App-header">
-        <p>{data.repository.name}</p>
+        {/* <p>{data.repository.name}</p> */}
+        <p>Loaded</p>
       </header>
     </div>
   );

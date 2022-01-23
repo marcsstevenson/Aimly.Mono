@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<412b4eb75afe23ea4da3e5800bb7b14d>>
+ * @generated SignedSource<<cd02010ccb62988ad740077c39f09b75>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -14,9 +14,11 @@ import type { ConcreteRequest, Query } from 'relay-runtime';
 export type testRepositoryNameQuery$variables = {||};
 export type testRepositoryNameQueryVariables = testRepositoryNameQuery$variables;
 export type testRepositoryNameQuery$data = {|
-  +repository: ?{|
-    +name: string,
-  |},
+  +userSearch: ?$ReadOnlyArray<?{|
+    +id: any,
+    +fullName: ?string,
+    +pictureUrl: ?string,
+  |}>,
 |};
 export type testRepositoryNameQueryResponse = testRepositoryNameQuery$data;
 export type testRepositoryNameQuery = {|
@@ -28,43 +30,45 @@ export type testRepositoryNameQuery = {|
 var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
-    "kind": "Literal",
-    "name": "name",
-    "value": "relay"
-  },
-  {
-    "kind": "Literal",
-    "name": "owner",
-    "value": "facebook"
+    "alias": null,
+    "args": null,
+    "concreteType": "UserSearchResult",
+    "kind": "LinkedField",
+    "name": "userSearch",
+    "plural": true,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "id",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "fullName",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "pictureUrl",
+        "storageKey": null
+      }
+    ],
+    "storageKey": null
   }
-],
-v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "name",
-  "storageKey": null
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "testRepositoryNameQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": (v0/*: any*/),
-        "concreteType": "Repository",
-        "kind": "LinkedField",
-        "name": "repository",
-        "plural": false,
-        "selections": [
-          (v1/*: any*/)
-        ],
-        "storageKey": "repository(name:\"relay\",owner:\"facebook\")"
-      }
-    ],
+    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -73,40 +77,20 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "testRepositoryNameQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": (v0/*: any*/),
-        "concreteType": "Repository",
-        "kind": "LinkedField",
-        "name": "repository",
-        "plural": false,
-        "selections": [
-          (v1/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": "repository(name:\"relay\",owner:\"facebook\")"
-      }
-    ]
+    "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "27eb02cf61ab331756e2900c268f9373",
+    "cacheID": "99eea5644df78dcdf6b1ac7fd8620df5",
     "id": null,
     "metadata": {},
     "name": "testRepositoryNameQuery",
     "operationKind": "query",
-    "text": "query testRepositoryNameQuery {\n  repository(owner: \"facebook\", name: \"relay\") {\n    name\n    id\n  }\n}\n"
+    "text": "query testRepositoryNameQuery {\n  userSearch {\n    id\n    fullName\n    pictureUrl\n  }\n}\n"
   }
 };
 })();
 
-(node/*: any*/).hash = "fd673758431736f67ae32e0ddc06d613";
+(node/*: any*/).hash = "7570ef9fb20c5a4826bb707264072ca8";
 
 module.exports = ((node/*: any*/)/*: Query<
   testRepositoryNameQuery$variables,

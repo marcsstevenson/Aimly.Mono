@@ -1,0 +1,155 @@
+"""
+The `@defer` directive may be provided for fragment spreads and inline fragments
+to inform the executor to delay the execution of the current fragment to
+indicate deprioritization of the current fragment. A query with `@defer`
+directive will cause the request to potentially return multiple responses, where
+non-deferred data is delivered in the initial response and data deferred is
+delivered in a subsequent response. `@include` and `@skip` take precedence over `@defer`.
+"""
+directive @defer(
+  """
+  If this argument label has a value other than null, it will be passed on to
+  the result of this defer directive. This label is intended to give client
+  applications a way to identify to which fragment a deferred result belongs to.
+  """
+  label: String
+
+  """Deferred when true."""
+  if: Boolean
+) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""
+The `@stream` directive may be provided for a field of `List` type so that the
+backend can leverage technology such as asynchronous iterators to provide a
+partial list in the initial response, and additional list items in subsequent
+responses. `@include` and `@skip` take precedence over `@stream`.
+"""
+directive @stream(
+  """
+  If this argument label has a value other than null, it will be passed on to
+  the result of this stream directive. This label is intended to give client
+  applications a way to identify to which fragment a streamed result belongs to.
+  """
+  label: String
+
+  """The initial elements that shall be send down to the consumer."""
+  initialCount: Int! = 0
+
+  """Streamed when true."""
+  if: Boolean
+) on FIELD
+
+"""
+The `@specifiedBy` directive is used within the type system definition language
+to provide a URL for specifying the behavior of custom scalar definitions.
+"""
+directive @specifiedBy(
+  """
+  The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types.
+  """
+  url: String!
+) on SCALAR
+
+"""Adds a note to an existing company"""
+input AddNoteToCompanyCommandInput {
+  tenantId: UUID!
+
+  """The Id of the company to add the note to"""
+  companyId: UUID!
+
+  """The parent note if any. Notes with a parent are considered a comment."""
+  parentNoteId: UUID
+
+  """If the note is to be sticky"""
+  sticky: Boolean
+
+  """The type of the alert, if any."""
+  alertType: AlertType
+
+  """The body of the note. This is HTML."""
+  body: String!
+}
+
+enum AlertType {
+  PRIMARY
+  SECONDARY
+  SUCCESS
+  DANGER
+  WARNING
+  INFO
+  LIGHT
+  DARK
+}
+
+"""
+Encapsulates the Auth profile that is obtained when a user logs into an OAuth provider
+"""
+input AuthProfileInput {
+  given_name: String
+  family_name: String
+  nickname: String
+  name: String
+  picture: String
+  locale: String
+  updated_at: DateTime
+  email: String
+  email_verified: Boolean
+  sub: String
+}
+
+"""The `DateTime` scalar represents an ISO-8601 compliant date time type."""
+scalar DateTime
+
+type GetAccessResponse {
+  exceptionMessage: String
+  endpointUrl: String
+  identityId: String
+  token: String
+  expiresOn: DateTime!
+}
+
+input GetAccessToMeetingCommandInput {
+  userId: UUID!
+}
+
+type Mutation {
+  checkIn(input: AuthProfileInput): UUID!
+  addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
+  accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
+}
+
+type NoteSearchResultModel {
+  body: String
+  createdByUserName: String
+  lastEditedByUserName: String
+  comments: [NoteSearchResultModel]
+}
+
+input NotesForCompanyCommandInput {
+  tenantId: UUID!
+  companyId: UUID!
+  afterDateTime: DateTime!
+}
+
+type Query {
+  userSearch(command: UserSearchCommandInput): [UserSearchResult]
+  notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+}
+
+input UserSearchCommandInput {
+  fullNameContains: String
+}
+
+type UserSearchResult {
+  """The user's Id"""
+  id: UUID!
+
+  """The associated user's full name"""
+  fullName: String
+
+  """The URL of the user's profile image"""
+  pictureUrl: String
+}
+
+scalar UUID
+
