@@ -25,8 +25,11 @@ const RepositoryNameQuery = graphql`
 const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
   /* query variables */
 });
+interface Props {
+  preloadedQuery: any;
+}
 
-function Test(props) {
+function Test(props: Props) {
   const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
   console.log(data);
   return (
@@ -45,7 +48,7 @@ function Test(props) {
 // - <RelayEnvironmentProvider> tells child components how to talk to the current
 //   Relay Environment instance
 // - <Suspense> specifies a fallback in case a child suspends.
-function TestRoot(props) {
+function TestRoot(props: Props) {
   return (
     <RelayEnvironmentProvider environment={RelayEnvironment}>
       <Suspense fallback={'Loading...'}>

@@ -14,7 +14,11 @@
   "relay": {
     "src": "./src/",
     "schema": "./aimly-backend.schema.graphql",
-    "exclude": ["**/node_modules/**", "**/__mocks__/**", "**/__generated__/**"]
+    "exclude": [
+      "**/node_modules/**",
+      "**/__mocks__/**",
+      "**/__generated__/**"
+    ]
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
@@ -30,6 +34,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "@types/react-relay": "^13.0.0",
     "@types/react-router-dom": "^5.3.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -45,7 +50,7 @@
     "react-scripts": "^3.4.0",
     "reactstrap": "^9.0.1",
     "relay-runtime": "^13.0.1",
-    "typescript": "^3.9.10"
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.10.1",
@@ -57,6 +62,7 @@
     "nodemon": "^2.0.4",
     "postcss": "^8.4.5",
     "relay-compiler": "^13.0.1",
+    "relay-compiler-language-typescript": "^15.0.0",
     "tailwindcss": "^3.0.5"
   },
   "eslintConfig": {
