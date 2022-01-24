@@ -10,10 +10,10 @@ const HomeHero = () => (
         <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
           <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
             <span className="block xl:inline">The ultimate platform for</span>{' '}
-            <span className="block text-indigo-600 xl:inline"> startups</span>
+            <span className="block text-indigo-600 xl:inline"> Startups</span>
           </h1>
           <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 dark:text-gray-300 sm:text-xl md:mt-5 md:max-w-3xl">
-            Starting up to solve a big problem? Wanting to mentor startups? Looking for a mentor? Wanting gig work to within the exciting startup space? We’re here to help.
+            Starting up to solve a big problem? Wanting to mentor startups? Looking for a mentor? Wanting gig work within the exciting startup space? We’re here to help.
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
             <div className="rounded-md shadow">
