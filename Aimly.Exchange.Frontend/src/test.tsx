@@ -6,7 +6,7 @@ import {
   loadQuery,
   usePreloadedQuery,
 } from 'react-relay/hooks';
-import RelayEnvironment from './RelayEnvironment';
+import RelayEnvironment from 'RelayEnvironment';
 
 const { Suspense } = React;
 // Define a query
@@ -50,11 +50,9 @@ function Test(props: Props) {
 // - <Suspense> specifies a fallback in case a child suspends.
 function TestRoot(props: Props) {
   return (
-    <RelayEnvironmentProvider environment={RelayEnvironment}>
       <Suspense fallback={'Loading...'}>
         <Test preloadedQuery={preloadedQuery} />
       </Suspense>
-    </RelayEnvironmentProvider>
   );
 }
 
