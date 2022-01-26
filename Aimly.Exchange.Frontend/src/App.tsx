@@ -23,7 +23,6 @@ import history from './utils/history';
 import ErrorBoundary from './ErrorBoundary';
 import Testing from './components/Testing';
 import VideoCall from './components/VideoCall';
-import TestRoot from 'test';
 
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import RelayEnvironment from 'RelayEnvironment';
@@ -103,7 +102,6 @@ const App = (): JSX.Element => {
                   <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />
                   <Route path="/for-startups/profile/edit/Potential" component={Potential} />
                   <Route path="/for-startups/profile/edit/Customise" component={Customise} />
-                  <Route path="/test" component={TestRoot} />
                 </Switch>
               </Container>
             </RelayEnvironmentProvider>

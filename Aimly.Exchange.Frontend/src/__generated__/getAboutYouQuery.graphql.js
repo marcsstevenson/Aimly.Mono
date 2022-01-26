@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<19fc87e8cbb0e35831b69f64845e1f4b>>
+ * @generated SignedSource<<c41c1c40d533a848bddbf96660615a86>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -12,7 +12,7 @@
 /*::
 import type { ConcreteRequest, Query } from 'relay-runtime';
 export type getAboutYouQuery$variables = {|
-  bob: any,
+  id: any,
 |};
 export type getAboutYouQueryVariables = getAboutYouQuery$variables;
 export type getAboutYouQuery$data = {|
@@ -35,7 +35,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "bob"
+    "name": "id"
   }
 ],
 v1 = [
@@ -47,7 +47,7 @@ v1 = [
           {
             "kind": "Variable",
             "name": "userId",
-            "variableName": "bob"
+            "variableName": "id"
           }
         ],
         "kind": "ObjectValue",
@@ -109,17 +109,17 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "10b98e05da1b0d965bd8d0e2b1f725f1",
+    "cacheID": "09915e8045b6924ec57f2ce4cf94043d",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $bob: UUID!\n) {\n  getAboutYou(command: {userId: $bob}) {\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n) {\n  getAboutYou(command: {userId: $id}) {\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n  }\n}\n"
   }
 };
 })();
 
-(node/*: any*/).hash = "5bba310d5991a536ed492bdf346b82d1";
+(node/*: any*/).hash = "ecb4f3463a2a3c40415a3787647f51b5";
 
 module.exports = ((node/*: any*/)/*: Query<
   getAboutYouQuery$variables,

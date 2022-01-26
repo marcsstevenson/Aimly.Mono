@@ -9,13 +9,11 @@ import {
   usePreloadedQuery,
 } from 'react-relay/hooks';
 import { getAboutYouQuery } from 'getAboutYou'
-import { appQuery } from 'appQuery'
 
 const queryReference = loadQuery(
   RelayEnvironment,
-  appQuery,
+  getAboutYouQuery,
   {id: '33420904-D55D-4C84-A8D4-81E1FA781B17'},
-  // {fetchPolicy: 'store-or-network'},
 );
 
 const AboutYou = () => {
@@ -23,16 +21,7 @@ const AboutYou = () => {
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = "AboutYou";
 
-  // const userId = '33420904-D55D-4C84-A8D4-81E1FA781B17';
-
-  // const loadedQuery = loadQuery(
-  //   RelayEnvironment,
-  //   getAboutYouQuery,
-  //   { "bob": '33420904-D55D-4C84-A8D4-81E1FA781B17' },
-  // );
-
-  //const data = usePreloadedQuery<any>(getAboutYouQuery, loadedQuery);
-  const data = usePreloadedQuery<any>(appQuery, queryReference);
+  const data = usePreloadedQuery<any>(getAboutYouQuery, queryReference);
 
   const next = () => {
     if (topRef.current) {
