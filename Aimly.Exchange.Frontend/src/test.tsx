@@ -2,7 +2,6 @@ import React from 'react';
 // import fetchGraphQL from './fetchGraphQL';
 import graphql from 'babel-plugin-relay/macro';
 import {
-  RelayEnvironmentProvider,
   loadQuery,
   usePreloadedQuery,
 } from 'react-relay/hooks';
@@ -10,19 +9,29 @@ import RelayEnvironment from 'RelayEnvironment';
 
 const { Suspense } = React;
 // Define a query
-const RepositoryNameQuery = graphql`
-  query testRepositoryNameQuery {
-    userSearch{
-      id
-      fullName
-      pictureUrl
-    }
+// const RepositoryNameQuery = graphql`
+//   query testRepositoryNameQuery {
+//     userSearch{
+//       id
+//       fullName
+//       pictureUrl
+//     }
+//   }
+// `;
+
+export const marketSearchQuery = graphql`
+query marketSearchQuery {
+  userSearch{
+    id
+    fullName
+    pictureUrl
   }
+}
 `;
 
 // Immediately load the query as our app starts. For a real app, we'd move this
 // into our routing configuration, preloading data as we transition to new routes.
-const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
+const preloadedQuery = loadQuery(RelayEnvironment, marketSearchQuery, {
   /* query variables */
 });
 interface Props {
@@ -30,7 +39,7 @@ interface Props {
 }
 
 function Test(props: Props) {
-  const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
+  const data = usePreloadedQuery(marketSearchQuery, props.preloadedQuery);
   console.log(data);
   return (
     <div className="App">
