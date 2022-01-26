@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<19fc87e8cbb0e35831b69f64845e1f4b>>
+ * @generated SignedSource<<ab21657a470d3dace899526cebab82d0>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -11,11 +11,11 @@
 
 /*::
 import type { ConcreteRequest, Query } from 'relay-runtime';
-export type getAboutYouQuery$variables = {|
-  bob: any,
+export type appQuery$variables = {|
+  id: any,
 |};
-export type getAboutYouQueryVariables = getAboutYouQuery$variables;
-export type getAboutYouQuery$data = {|
+export type appQueryVariables = appQuery$variables;
+export type appQuery$data = {|
   +getAboutYou: ?{|
     +givenName: ?string,
     +familyName: ?string,
@@ -23,10 +23,10 @@ export type getAboutYouQuery$data = {|
     +linkedInProfile: ?string,
   |},
 |};
-export type getAboutYouQueryResponse = getAboutYouQuery$data;
-export type getAboutYouQuery = {|
-  variables: getAboutYouQueryVariables,
-  response: getAboutYouQuery$data,
+export type appQueryResponse = appQuery$data;
+export type appQuery = {|
+  variables: appQueryVariables,
+  response: appQuery$data,
 |};
 */
 
@@ -35,7 +35,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "bob"
+    "name": "id"
   }
 ],
 v1 = [
@@ -47,7 +47,7 @@ v1 = [
           {
             "kind": "Variable",
             "name": "userId",
-            "variableName": "bob"
+            "variableName": "id"
           }
         ],
         "kind": "ObjectValue",
@@ -96,7 +96,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "getAboutYouQuery",
+    "name": "appQuery",
     "selections": (v1/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -105,23 +105,23 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "getAboutYouQuery",
+    "name": "appQuery",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "10b98e05da1b0d965bd8d0e2b1f725f1",
+    "cacheID": "ffbcb550545c5f8990f3a20d09ce0cea",
     "id": null,
     "metadata": {},
-    "name": "getAboutYouQuery",
+    "name": "appQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $bob: UUID!\n) {\n  getAboutYou(command: {userId: $bob}) {\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n  }\n}\n"
+    "text": "query appQuery(\n  $id: UUID!\n) {\n  getAboutYou(command: {userId: $id}) {\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n  }\n}\n"
   }
 };
 })();
 
-(node/*: any*/).hash = "5bba310d5991a536ed492bdf346b82d1";
+(node/*: any*/).hash = "fd2e9f0335b709b237230fc4e81763fc";
 
 module.exports = ((node/*: any*/)/*: Query<
-  getAboutYouQuery$variables,
-  getAboutYouQuery$data,
+  appQuery$variables,
+  appQuery$data,
 >*/);

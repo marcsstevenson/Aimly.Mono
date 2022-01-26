@@ -4,7 +4,7 @@ import Loading from 'components/Loading';
 import MarketListResults from './MarketListResults';
 import MarketGridResults from './MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
-import useMarketSearch from 'hooks/useMarketSearch';
+import useMarketSearch from './useMarketSearch';
 import { classNames } from 'utils/classNames';
 
 enum DisplayModeOptions {
@@ -228,10 +228,10 @@ export const Market = () => {
                   </div>
                 </div>
                 {displayMode === DisplayModeOptions.grid && (
-                  <MarketGridResults userSearchResults={state.userSearchResults} />
+                  <MarketGridResults userSearchResults={state.results} />
                 )}
                 {displayMode === DisplayModeOptions.list && (
-                  <MarketListResults userSearchResults={state.userSearchResults} />
+                  <MarketListResults userSearchResults={state.results} />
                 )}
               </div>
             </div>

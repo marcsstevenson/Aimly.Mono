@@ -3,11 +3,36 @@ import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useHistory } from 'react-router-dom';
+import RelayEnvironment from 'RelayEnvironment';
+import {
+  loadQuery,
+  usePreloadedQuery,
+} from 'react-relay/hooks';
+import { getAboutYouQuery } from 'getAboutYou'
+import { appQuery } from 'appQuery'
+
+const queryReference = loadQuery(
+  RelayEnvironment,
+  appQuery,
+  {id: '33420904-D55D-4C84-A8D4-81E1FA781B17'},
+  // {fetchPolicy: 'store-or-network'},
+);
 
 const AboutYou = () => {
   const history = useHistory();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = "AboutYou";
+
+  // const userId = '33420904-D55D-4C84-A8D4-81E1FA781B17';
+
+  // const loadedQuery = loadQuery(
+  //   RelayEnvironment,
+  //   getAboutYouQuery,
+  //   { "bob": '33420904-D55D-4C84-A8D4-81E1FA781B17' },
+  // );
+
+  //const data = usePreloadedQuery<any>(getAboutYouQuery, loadedQuery);
+  const data = usePreloadedQuery<any>(appQuery, queryReference);
 
   const next = () => {
     if (topRef.current) {

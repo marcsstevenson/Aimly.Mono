@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserSearchResult } from 'hooks/useMarketSearch';
+import { UserSearchResult } from './useMarketSearch';
 import userIcon from 'assets/abstract-user-flat-4.svg';
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid';
 
