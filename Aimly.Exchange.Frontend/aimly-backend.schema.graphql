@@ -100,6 +100,17 @@ input AuthProfileInput {
 """The `DateTime` scalar represents an ISO-8601 compliant date time type."""
 scalar DateTime
 
+input GetAboutYouCommandInput {
+  userId: UUID!
+}
+
+type GetAboutYouModel {
+  givenName: String
+  familyName: String
+  phoneNumber: String
+  linkedInProfile: String
+}
+
 type GetAccessResponse {
   exceptionMessage: String
   endpointUrl: String
@@ -134,6 +145,7 @@ input NotesForCompanyCommandInput {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
 }
 
 input UserSearchCommandInput {
