@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import RelayEnvironment from 'RelayEnvironment';
 import {
   loadQuery,
@@ -17,7 +17,7 @@ const queryReference = loadQuery(
 );
 
 const AboutYou = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = "AboutYou";
 
@@ -27,7 +27,7 @@ const AboutYou = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    history.push('/for-startups/profile/edit/TheProblem');
+    navigate('/for-startups/profile/edit/TheProblem');
   };
 
   return (

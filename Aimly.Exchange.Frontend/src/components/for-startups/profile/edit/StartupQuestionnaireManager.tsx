@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
 import GetStartedHeader from 'components/for-startups/profile/edit/GetStartedHeader';
 
@@ -25,35 +25,35 @@ export interface StartupQuestionnaireSteps {
 export const steps: StartupQuestionnaireSteps[] = [
   {
     id: 0,
-    path: 'AboutYou',
+    path: '/for-startups/profile/edit/AboutYou',
     name: 'About You',
     description: 'Help us to know you',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path: 'TheProblem',
+    path: '/for-startups/profile/edit/TheProblem',
     name: 'The Problem',
     description: 'What problem are you aiming to solve?',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path: 'TheSolution',
+    path: '/for-startups/profile/edit/TheSolution',
     name: 'The Solution',
     description: 'Your solution to the problem',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path: 'Potential',
+    path: '/for-startups/profile/edit/Potential',
     name: 'Potential',
     description: 'How big an effect can you have?',
     status: StepStatusOptions.Complete,
   },
   {
     id: 0,
-    path: 'Customise',
+    path: '/for-startups/profile/edit/Customise',
     name: 'Customise',
     description: 'Customise your profile',
     status: StepStatusOptions.Complete,
@@ -69,7 +69,7 @@ const StartupQuestionnaireManager = ({
   currentStep,
   children,
 }: StartupQuestionnaireManagerProps) => {
-  // const history = useHistory();
+  // const navigate = useNavigate();
   const topRef = useRef<HTMLDivElement>(null);
 
   // function GoNext() {
@@ -84,7 +84,7 @@ const StartupQuestionnaireManager = ({
   //           topRef.current.scrollIntoView({ behavior: 'smooth' });
   //         }
 
-  //         history.push('/for-startups/profile/edit/' + steps[index + 1].path);
+  //         navigate('/for-startups/profile/edit/' + steps[index + 1].path);
   //       }
   //     }
   //   }

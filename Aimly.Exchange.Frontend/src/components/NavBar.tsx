@@ -1,3 +1,12 @@
+// ******************************************************************
+
+// Note the 2 //activeClassName below which need updating
+
+// ******************************************************************
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import DarkModeSelector from './DarkModeSelector';
@@ -62,11 +71,11 @@ const NavBar = () => {
                   <div className="flex space-x-4">
                     {navigation.filter(i => isAuthenticated || !i.AuthenticatedOnly).map((item) => (
                       <NavLink
-                        exact
                         to={{ pathname: item.href }}
                         key={item.name}
-                        activeClassName="bg-gray-900 text-white hover:bg-gray-900"
-                        className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                        className={({ isActive }) =>
+                          (isActive ? 'bg-gray-900 text-white' : ' text-gray-300 hover:text-white block hover:bg-gray-700') + '  px-3 py-2 rounded-md text-base font-medium'
+                        }
                       >
                         {item.name}
                       </NavLink>
@@ -159,10 +168,10 @@ const NavBar = () => {
                   className="flex flex-col"
                   key={item.name}>
                   <NavLink
-                    exact
                     to={{ pathname: item.href }}
-                    activeClassName="bg-gray-900 text-white hover:bg-gray-900"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className={({ isActive }) =>
+                      (isActive ? 'bg-gray-900 text-white' : ' text-gray-300 hover:text-white block hover:bg-gray-700') + '  px-3 py-2 rounded-md text-base font-medium'
+                    }
                   >
                     {item.name}
                   </NavLink>

@@ -20,6 +20,7 @@ ReactDOM.render(
   <ThemeProvider>
     <Auth0Provider {...providerConfig}>
       <App />
+      {/* <div>Wut</div> */}
     </Auth0Provider>
   </ThemeProvider>,
   document.getElementById("root")

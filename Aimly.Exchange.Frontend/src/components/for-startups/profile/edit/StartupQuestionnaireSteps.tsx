@@ -14,7 +14,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
   let workingStepStatusOptions = StepStatusOptions.Complete;
   let stepCounter = 1;
   steps.forEach((step) => {
-    if (currentStep === step.path) {
+    if (step.path.endsWith(currentStep)) {
       // If the current step is the step we're on, set the status to current
       step.status = StepStatusOptions.Current;
 

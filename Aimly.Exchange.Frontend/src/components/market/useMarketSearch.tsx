@@ -3,12 +3,14 @@ import { useAuth0 } from '@auth0/auth0-react';
 // import { getConfig } from 'config';
 import {
   loadQuery,
-  useLazyLoadQuery,
+  usePreloadedQuery,
 } from 'react-relay/hooks';
+import graphql from 'babel-plugin-relay/macro';
 import RelayEnvironment from 'RelayEnvironment';
-import { marketSearchQuery } from 'marketSearch'
+import { marketSearchQuery } from 'marketSearchQuery'
 import { BaseApiCallingState } from 'components/shared/BaseApiCallingState'
 // import type { marketSearchQuery$data } from "__generated__/marketSearchQuery.graphql"
+// import * as blah from "__generated__/marketSearchQuery.graphql"
 
 export interface UserSearchResult {
   id: string;
@@ -27,6 +29,7 @@ const preloadedQuery = loadQuery(RelayEnvironment, marketSearchQuery, {
   /* query variables */
 });
 
+
 function useMarketSearch() {
   const [state, setState] = useState<MarketState>({
     showResult: false,
@@ -36,7 +39,7 @@ function useMarketSearch() {
   });
 
   const { getAccessTokenSilently } = useAuth0();
-  const data = useLazyLoadQuery<any>(marketSearchQuery, preloadedQuery);
+  const data = usePreloadedQuery<any>(marketSearchQuery, preloadedQuery);
 
   const marketSearch = async () => {
     try {

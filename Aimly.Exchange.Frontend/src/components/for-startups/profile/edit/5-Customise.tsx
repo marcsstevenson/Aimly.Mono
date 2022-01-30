@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 
 const Customise = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = 'Customise';
 
@@ -13,7 +13,7 @@ const Customise = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    history.push('/');
+    navigate('/');
   };
 
   return (

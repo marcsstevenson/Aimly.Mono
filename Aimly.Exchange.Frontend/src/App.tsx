@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './components/home/Home';
 import StartupsHome from './components/for-startups/StartupsHome';
@@ -76,37 +76,38 @@ const App = (): JSX.Element => {
   if (isLoading) {
     return <Loading />;
   }
-
+  // navigator={history}
   return (
-    <Router history={history}>
+
+    <BrowserRouter>
       <ErrorBoundary>
         <div id="app" className="d-flex flex-column h-100">
           <Suspense fallback={'Loading...'}>
             <RelayEnvironmentProvider environment={RelayEnvironment}>
               <NavBar />
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/for-startups" exact component={StartupsHome} />
-                <Route path="/for-mentors" exact component={MentorsHome} />
-                <Route path="/for-experts" exact component={ExpertsHome} />
-                <Route path="/community" exact component={Community} />
-                <Route path="/market" exact component={Market} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/external-api" component={ExternalApi} />
-                <Route path="/testing" component={Testing} />
+              <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/for-startups" element={<StartupsHome/>} />
+                <Route path="/for-mentors" element={<MentorsHome/>} />
+                <Route path="/for-experts" element={<ExpertsHome/>} />
+                <Route path="/community" element={<Community/>} />
+                <Route path="/market" element={<Market/>} />
+                <Route path="/profile" element={<Profile/>} />
+                <Route path="/external-api" element={<ExternalApi/>} />
+                <Route path="/testing" element={<Testing/>} />
+                <Route path="/for-startups/profile/edit/AboutYou" element={<AboutYou/>} />
+                <Route path="/for-startups/profile/edit/TheProblem" element={<TheProblem/>} />
+                <Route path="/for-startups/profile/edit/TheSolution" element={<TheSolution/>} />
+                <Route path="/for-startups/profile/edit/Potential" element={<Potential/>} />
+                <Route path="/for-startups/profile/edit/Customise" element={<Customise/>} />
                 {/* <Route path="/videoCall" component={VideoCall} /> */}
-                <Route path="/for-startups/profile/edit/AboutYou" component={AboutYou} />
-                <Route path="/for-startups/profile/edit/TheProblem" component={TheProblem} />
-                <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />
-                <Route path="/for-startups/profile/edit/Potential" component={Potential} />
-                <Route path="/for-startups/profile/edit/Customise" component={Customise} />
-              </Switch>
+              </Routes>
             </RelayEnvironmentProvider>
           </Suspense>
           {error ? <div>Oops... {error?.message}</div> : <Footer />}
         </div>
       </ErrorBoundary>
-    </Router>
+    </BrowserRouter>
   );
 };
 
