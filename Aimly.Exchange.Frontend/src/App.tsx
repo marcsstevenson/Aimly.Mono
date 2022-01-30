@@ -22,7 +22,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import history from './utils/history';
 import ErrorBoundary from './ErrorBoundary';
 import Testing from './components/Testing';
-import VideoCall from './components/VideoCall';
+// import VideoCall from './components/VideoCall.CommentedOut';
 
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import RelayEnvironment from 'RelayEnvironment';
@@ -96,7 +96,7 @@ const App = (): JSX.Element => {
                   <Route path="/profile" component={Profile} />
                   <Route path="/external-api" component={ExternalApi} />
                   <Route path="/testing" component={Testing} />
-                  <Route path="/videoCall" component={VideoCall} />
+                  {/* <Route path="/videoCall" component={VideoCall} /> */}
                   <Route path="/for-startups/profile/edit/AboutYou" component={AboutYou} />
                   <Route path="/for-startups/profile/edit/TheProblem" component={TheProblem} />
                   <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />

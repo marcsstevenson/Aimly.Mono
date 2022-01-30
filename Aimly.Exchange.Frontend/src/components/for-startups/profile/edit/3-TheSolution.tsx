@@ -214,7 +214,7 @@ const TheSolution = () => {
                 </label>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
                   Have you received external funding from government grants, incubation labs, angel
-                  investors, ect.?
+                  investors, etc.?
                 </p>
                 <div className="mt-1">
                   <textarea
