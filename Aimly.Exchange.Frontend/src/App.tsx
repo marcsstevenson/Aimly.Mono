@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import { Container } from 'reactstrap';
 
 import Home from './components/home/Home';
 import StartupsHome from './components/for-startups/StartupsHome';
@@ -85,25 +84,23 @@ const App = (): JSX.Element => {
           <Suspense fallback={'Loading...'}>
             <RelayEnvironmentProvider environment={RelayEnvironment}>
               <NavBar />
-              <Container className="flex-grow-1">
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/for-startups" exact component={StartupsHome} />
-                  <Route path="/for-mentors" exact component={MentorsHome} />
-                  <Route path="/for-experts" exact component={ExpertsHome} />
-                  <Route path="/community" exact component={Community} />
-                  <Route path="/market" exact component={Market} />
-                  <Route path="/profile" component={Profile} />
-                  <Route path="/external-api" component={ExternalApi} />
-                  <Route path="/testing" component={Testing} />
-                  {/* <Route path="/videoCall" component={VideoCall} /> */}
-                  <Route path="/for-startups/profile/edit/AboutYou" component={AboutYou} />
-                  <Route path="/for-startups/profile/edit/TheProblem" component={TheProblem} />
-                  <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />
-                  <Route path="/for-startups/profile/edit/Potential" component={Potential} />
-                  <Route path="/for-startups/profile/edit/Customise" component={Customise} />
-                </Switch>
-              </Container>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/for-startups" exact component={StartupsHome} />
+                <Route path="/for-mentors" exact component={MentorsHome} />
+                <Route path="/for-experts" exact component={ExpertsHome} />
+                <Route path="/community" exact component={Community} />
+                <Route path="/market" exact component={Market} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/external-api" component={ExternalApi} />
+                <Route path="/testing" component={Testing} />
+                {/* <Route path="/videoCall" component={VideoCall} /> */}
+                <Route path="/for-startups/profile/edit/AboutYou" component={AboutYou} />
+                <Route path="/for-startups/profile/edit/TheProblem" component={TheProblem} />
+                <Route path="/for-startups/profile/edit/TheSolution" component={TheSolution} />
+                <Route path="/for-startups/profile/edit/Potential" component={Potential} />
+                <Route path="/for-startups/profile/edit/Customise" component={Customise} />
+              </Switch>
             </RelayEnvironmentProvider>
           </Suspense>
           {error ? <div>Oops... {error?.message}</div> : <Footer />}

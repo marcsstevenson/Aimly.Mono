@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, Alert } from "reactstrap";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { getConfig } from "config";
 import Loading from "../components/Loading";
@@ -221,7 +220,7 @@ export const ExternalApiComponent = () => {
     <>
       <div className="mb-5">
         {state.error === "consent_required" && (
-          <Alert color="warning">
+          <div color="warning">
             You need to{" "}
             <a
               href="#/"
@@ -231,11 +230,11 @@ export const ExternalApiComponent = () => {
               consent to get access to users api
             </a>
 
-          </Alert>
+          </div>
         )}
 
         {state.error === "login_required" && (
-          <Alert color="warning">
+          <div color="warning">
             You need to{" "}
             <a
               href="#/"
@@ -244,7 +243,7 @@ export const ExternalApiComponent = () => {
             >
               log in again
             </a>
-          </Alert>
+          </div>
         )}
 
         <h1>External API</h1>
@@ -260,7 +259,7 @@ export const ExternalApiComponent = () => {
         </p>
 
         {!audience && (
-          <Alert color="warning">
+          <div color="warning">
             <p>
               You can't call the API at the moment because your application does
               not have any configuration for <code>audience</code>, or it is
@@ -302,53 +301,48 @@ export const ExternalApiComponent = () => {
               Once you have configured the value for <code>audience</code>,
               please restart the app and try to use the "Ping API" button below.
             </p>
-          </Alert>
+          </div>
         )}
 
-        <Button
-          color="primary"
-          className="mt-5"
+        <button
+          className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={callApi}
           disabled={!audience}
         >
           Ping API
-        </Button>
+        </button>
 
-        <Button
-          color="primary"
-          className="mt-5 ml-1"
+        <button
+          className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={checkInWithApi}
           disabled={!audience}
         >
           Check In
-        </Button>
+        </button>
 
-        <Button
-          color="primary"
-          className="mt-5 ml-1"
+        <button
+          className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={greet}
           disabled={!audience}
         >
           Greetings
-        </Button>
+        </button>
 
-        <Button
-          color="primary"
-          className="mt-5 ml-1"
+        <button
+          className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={getNotesForCompany}
           disabled={!audience}
         >
           Notes For Company
-        </Button>
+        </button>
 
-        <Button
-          color="primary"
-          className="mt-5 ml-1"
+        <button
+          className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={setGreetings}
           disabled={!audience}
         >
           Set Greetings
-        </Button>
+        </button>
       </div>
 
       <div className="result-block-container">
