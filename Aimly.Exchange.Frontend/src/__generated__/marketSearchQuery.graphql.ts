@@ -1,33 +1,30 @@
 /**
- * @generated SignedSource<<38cb54e6084cdeaee9b2e108cd3374bd>>
- * @flow
+ * @generated SignedSource<<b68c0d118e300513dc5cee81aa0c79a5>>
  * @lightSyntaxTransform
  * @nogrep
  */
 
+/* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-'use strict';
-
-/*::
-import type { ConcreteRequest, Query } from 'relay-runtime';
-export type marketSearchQuery$variables = {||};
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type marketSearchQuery$variables = {};
 export type marketSearchQueryVariables = marketSearchQuery$variables;
-export type marketSearchQuery$data = {|
-  +userSearch: ?$ReadOnlyArray<?{|
-    +id: any,
-    +fullName: ?string,
-    +pictureUrl: ?string,
-  |}>,
-|};
+export type marketSearchQuery$data = {
+  readonly userSearch: ReadonlyArray<{
+    readonly id: any;
+    readonly fullName: string | null;
+    readonly pictureUrl: string | null;
+  } | null> | null;
+};
 export type marketSearchQueryResponse = marketSearchQuery$data;
-export type marketSearchQuery = {|
-  variables: marketSearchQueryVariables,
-  response: marketSearchQuery$data,
-|};
-*/
+export type marketSearchQuery = {
+  variables: marketSearchQueryVariables;
+  response: marketSearchQuery$data;
+};
 
-var node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "alias": null,
@@ -90,9 +87,6 @@ return {
 };
 })();
 
-(node/*: any*/).hash = "3281b5c1b66677050da37de01c11f9e7";
+(node as any).hash = "3281b5c1b66677050da37de01c11f9e7";
 
-module.exports = ((node/*: any*/)/*: Query<
-  marketSearchQuery$variables,
-  marketSearchQuery$data,
->*/);
+export default node;

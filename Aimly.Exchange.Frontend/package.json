@@ -15,6 +15,7 @@
     "src": "./src/",
     "schema": "./aimly-backend.schema.graphql",
     "artifactDirectory": "./src/__generated__",
+    "language": "typescript",
     "exclude": [
       "**/node_modules/**",
       "**/__mocks__/**",

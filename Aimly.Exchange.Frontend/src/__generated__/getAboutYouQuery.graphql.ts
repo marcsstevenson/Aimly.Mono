@@ -1,36 +1,33 @@
 /**
- * @generated SignedSource<<c41c1c40d533a848bddbf96660615a86>>
- * @flow
+ * @generated SignedSource<<107080ba18b0fcbda54d51ffbc5c75fe>>
  * @lightSyntaxTransform
  * @nogrep
  */
 
+/* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-'use strict';
-
-/*::
-import type { ConcreteRequest, Query } from 'relay-runtime';
-export type getAboutYouQuery$variables = {|
-  id: any,
-|};
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type getAboutYouQuery$variables = {
+  id: any;
+};
 export type getAboutYouQueryVariables = getAboutYouQuery$variables;
-export type getAboutYouQuery$data = {|
-  +getAboutYou: ?{|
-    +givenName: ?string,
-    +familyName: ?string,
-    +phoneNumber: ?string,
-    +linkedInProfile: ?string,
-  |},
-|};
+export type getAboutYouQuery$data = {
+  readonly getAboutYou: {
+    readonly givenName: string | null;
+    readonly familyName: string | null;
+    readonly phoneNumber: string | null;
+    readonly linkedInProfile: string | null;
+  } | null;
+};
 export type getAboutYouQueryResponse = getAboutYouQuery$data;
-export type getAboutYouQuery = {|
-  variables: getAboutYouQueryVariables,
-  response: getAboutYouQuery$data,
-|};
-*/
+export type getAboutYouQuery = {
+  variables: getAboutYouQueryVariables;
+  response: getAboutYouQuery$data;
+};
 
-var node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -119,9 +116,6 @@ return {
 };
 })();
 
-(node/*: any*/).hash = "ecb4f3463a2a3c40415a3787647f51b5";
+(node as any).hash = "ecb4f3463a2a3c40415a3787647f51b5";
 
-module.exports = ((node/*: any*/)/*: Query<
-  getAboutYouQuery$variables,
-  getAboutYouQuery$data,
->*/);
+export default node;
