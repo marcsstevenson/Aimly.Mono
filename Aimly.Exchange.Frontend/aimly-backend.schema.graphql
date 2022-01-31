@@ -105,10 +105,45 @@ input GetAboutYouCommandInput {
 }
 
 type GetAboutYouModel {
+  userId: UUID
   givenName: String
   familyName: String
   phoneNumber: String
   linkedInProfile: String
+  companyProfileId: UUID
+  companyName: String
+  website: String
+  numberOfFounders: Int
+  floor: String
+  streetNumber: String
+  streetName: String
+  addressLocality: String
+  addressCity: String
+  addressRegion: String
+  addressCountry: String
+  postalCode: String
+  postOfficeBoxNumber: String
+}
+
+input GetAboutYouModelInput {
+  userId: UUID
+  givenName: String
+  familyName: String
+  phoneNumber: String
+  linkedInProfile: String
+  companyProfileId: UUID
+  companyName: String
+  website: String
+  numberOfFounders: Int
+  floor: String
+  streetNumber: String
+  streetName: String
+  addressLocality: String
+  addressCity: String
+  addressRegion: String
+  addressCountry: String
+  postalCode: String
+  postOfficeBoxNumber: String
 }
 
 type GetAccessResponse {
@@ -127,6 +162,7 @@ type Mutation {
   checkIn(input: AuthProfileInput): UUID!
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
+  setAboutYou(input: SetAboutYouCommandInput): UUID!
 }
 
 type NoteSearchResultModel {
@@ -146,6 +182,10 @@ type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
+}
+
+input SetAboutYouCommandInput {
+  getAboutYouModel: GetAboutYouModelInput
 }
 
 input UserSearchCommandInput {
