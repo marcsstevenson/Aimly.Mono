@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
@@ -9,6 +9,10 @@ import {
   usePreloadedQuery,
 } from 'react-relay/hooks';
 import { getAboutYouQuery } from 'getAboutYou'
+import useSetAboutYouMutation from 'useSetAboutYouMutation'
+import {
+  GetAboutYouModelInput,
+} from "__generated__/useSetAboutYouMutation.graphql";
 
 const queryReference = loadQuery(
   RelayEnvironment,
@@ -22,12 +26,29 @@ const AboutYou = () => {
   const currentStep = "AboutYou";
 
   const data = usePreloadedQuery<any>(getAboutYouQuery, queryReference);
+  const [setAboutYouMutation] = useSetAboutYouMutation();
+
+  let model: GetAboutYouModelInput = {
+    userId: "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8",
+    companyName: "ACME",
+    givenName: 'me',
+    familyName: 'us'
+  };
+
+  const handleSave = useCallback(
+    (text: string) => {
+      setAboutYouMutation(model);
+    },
+    [setAboutYouMutation, ""]
+  );
 
   const next = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-    navigate('/for-startups/profile/edit/TheProblem');
+    console.log(model);
+    handleSave("testing 123");
+    // if (topRef.current) {
+    //   topRef.current.scrollIntoView({ behavior: 'smooth' });
+    // }
+    // navigate('/for-startups/profile/edit/TheProblem');
   };
 
   return (
