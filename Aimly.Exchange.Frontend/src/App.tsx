@@ -16,6 +16,7 @@ import Loading from './components/Loading';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
+import PageNotFound from './components/PageNotFound';
 import ExternalApi from './components/ExternalApi';
 import { useAuth0 } from '@auth0/auth0-react';
 import history from './utils/history';
@@ -78,7 +79,6 @@ const App = (): JSX.Element => {
   }
   // navigator={history}
   return (
-
     <BrowserRouter>
       <ErrorBoundary>
         <div id="app" className="d-flex flex-column h-100">
@@ -86,21 +86,25 @@ const App = (): JSX.Element => {
             <RelayEnvironmentProvider environment={RelayEnvironment}>
               <NavBar />
               <Routes>
-                <Route path="/" element={<Home/>} />
-                <Route path="/for-startups" element={<StartupsHome/>} />
-                <Route path="/for-mentors" element={<MentorsHome/>} />
-                <Route path="/for-experts" element={<ExpertsHome/>} />
-                <Route path="/community" element={<Community/>} />
-                <Route path="/market" element={<Market/>} />
-                <Route path="/profile" element={<Profile/>} />
-                <Route path="/external-api" element={<ExternalApi/>} />
-                <Route path="/testing" element={<Testing/>} />
-                <Route path="/for-startups/profile/edit/AboutYou" element={<AboutYou/>} />
-                <Route path="/for-startups/profile/edit/TheProblem" element={<TheProblem/>} />
-                <Route path="/for-startups/profile/edit/TheSolution" element={<TheSolution/>} />
-                <Route path="/for-startups/profile/edit/Potential" element={<Potential/>} />
-                <Route path="/for-startups/profile/edit/Customise" element={<Customise/>} />
+                <Route path="/" element={<Home />} />
+                <Route path="/for-startups" element={<StartupsHome />} />
+                <Route path="/for-mentors" element={<MentorsHome />} />
+                <Route path="/for-experts" element={<ExpertsHome />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/market" element={<Market />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/external-api" element={<ExternalApi />} />
+                <Route path="/testing" element={<Testing />} />
+                <Route path="/for-startups/profile/edit/AboutYou" element={<AboutYou />} />
+                <Route path="/for-startups/profile/edit/TheProblem" element={<TheProblem />} />
+                <Route path="/for-startups/profile/edit/TheSolution" element={<TheSolution />} />
+                <Route path="/for-startups/profile/edit/Potential" element={<Potential />} />
+                <Route path="/for-startups/profile/edit/Customise" element={<Customise />} />
                 {/* <Route path="/videoCall" component={VideoCall} /> */}
+                {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+                <Route path="*" element={<PageNotFound />} />
               </Routes>
             </RelayEnvironmentProvider>
           </Suspense>
