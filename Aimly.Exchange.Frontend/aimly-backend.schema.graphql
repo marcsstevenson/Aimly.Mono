@@ -162,7 +162,7 @@ type Mutation {
   checkIn(input: AuthProfileInput): UUID!
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
-  setAboutYou(input: SetAboutYouCommandInput): UUID!
+  setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
 }
 
 type NoteSearchResultModel {
@@ -186,6 +186,11 @@ type Query {
 
 input SetAboutYouCommandInput {
   getAboutYouModel: GetAboutYouModelInput
+}
+
+type SetAboutYouResponse {
+  updatedPersonalProfileId: UUID!
+  updatedCompanyProfileId: UUID!
 }
 
 input UserSearchCommandInput {

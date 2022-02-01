@@ -7,44 +7,52 @@ import RelayEnvironment from 'RelayEnvironment';
 import {
   loadQuery,
   usePreloadedQuery,
+  useLazyLoadQuery,
 } from 'react-relay/hooks';
-import { getAboutYouQuery } from 'getAboutYou'
 import useSetAboutYouMutation from 'useSetAboutYouMutation'
 import {
   GetAboutYouModelInput,
 } from "__generated__/useSetAboutYouMutation.graphql";
+import * as GetAboutYouQuery from "__generated__/getAboutYouQuery.graphql";
 
-const queryReference = loadQuery(
-  RelayEnvironment,
-  getAboutYouQuery,
-  {id: '33420904-D55D-4C84-A8D4-81E1FA781B17'},
-);
+const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
+const getAboutYouQueryVariables = { id: userId };
+// const queryReference2 = loadQuery<GetAboutYouQuery.getAboutYouQuery>(
+//   RelayEnvironment,
+//   GetAboutYouQuery.default,
+//   getAboutYouQueryVariables,
+// );
 
 const AboutYou = () => {
   const navigate = useNavigate();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = "AboutYou";
 
-  const data = usePreloadedQuery<any>(getAboutYouQuery, queryReference);
+  // const data2 = usePreloadedQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, queryReference2);
+
+  // Lazy load this query because it is only relevant to this component
+  const data2 = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, getAboutYouQueryVariables);
+  console.log(data2.getAboutYou);
+
   const [setAboutYouMutation] = useSetAboutYouMutation();
 
   let model: GetAboutYouModelInput = {
-    userId: "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8",
+    userId: userId,
     companyName: "ACME",
-    givenName: 'me',
-    familyName: 'us'
+    givenName: 'Marc',
+    familyName: 'Stevenson'
   };
 
   const handleSave = useCallback(
-    (text: string) => {
-      setAboutYouMutation(model);
+    (getAboutYouModel: GetAboutYouModelInput) => {
+      setAboutYouMutation(getAboutYouModel);
     },
     [setAboutYouMutation, ""]
   );
 
   const next = () => {
     console.log(model);
-    handleSave("testing 123");
+    handleSave(model);
     // if (topRef.current) {
     //   topRef.current.scrollIntoView({ behavior: 'smooth' });
     // }

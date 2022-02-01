@@ -9,20 +9,29 @@ import { useCallback } from "react";
 import {
   SetAboutYouCommandInput,
   GetAboutYouModelInput,
+  useSetAboutYouMutation$data,
 } from "__generated__/useSetAboutYouMutation.graphql";
 
 import graphql from 'babel-plugin-relay/macro';
 
 const mutation = graphql`
   mutation useSetAboutYouMutation($input: SetAboutYouCommandInput!) {
-    setAboutYou(input: $input)
+    setAboutYou(input: $input){
+      updatedPersonalProfileId
+      updatedCompanyProfileId
+    }
   }
 `;
 
 function getOptimisticResponse(
   getAboutYouModel: GetAboutYouModelInput
-): string {
-  return "";
+): useSetAboutYouMutation$data {
+  return {
+    setAboutYou: {
+      updatedPersonalProfileId: "",
+      updatedCompanyProfileId: "",
+    }
+  };
 }
 
 export default function useSetAboutYouMutation() {

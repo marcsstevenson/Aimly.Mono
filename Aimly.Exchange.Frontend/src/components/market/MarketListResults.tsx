@@ -1,9 +1,12 @@
 import React from 'react';
-import { UserSearchResult } from './useMarketSearch';
 import userIcon from 'assets/abstract-user-flat-4.svg';
 
 interface props {
-  userSearchResults: UserSearchResult[] | null;
+  userSearchResults: ReadonlyArray<{
+    readonly id: any;
+    readonly fullName: string | null;
+    readonly pictureUrl: string | null;
+  } | null> | null;
 }
 
 const MarketListResults = ({ userSearchResults }: props) => (
@@ -42,13 +45,13 @@ const MarketListResults = ({ userSearchResults }: props) => (
                 <div className="flex-shrink-0 h-10 w-10">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={user.pictureUrl ?? userIcon}
-                    alt={user.fullName}
+                    src={user?.pictureUrl ?? userIcon}
+                    alt={user ? (user.fullName ? user.fullName : "") : ""}
                   />
                 </div>
                 <div className="ml-4">
                   <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                    {user.fullName}
+                    {user?.fullName}
                   </div>
                 </div>
               </div>

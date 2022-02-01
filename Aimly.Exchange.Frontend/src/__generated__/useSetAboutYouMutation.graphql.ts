@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d6abe1ade32026d4ca8a6f0697988e9e>>
+ * @generated SignedSource<<74c14d71d0d1e364e4a54b8c8c96dfca>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -37,7 +37,10 @@ export type useSetAboutYouMutation$variables = {
 };
 export type useSetAboutYouMutationVariables = useSetAboutYouMutation$variables;
 export type useSetAboutYouMutation$data = {
-  readonly setAboutYou: any;
+  readonly setAboutYou: {
+    readonly updatedPersonalProfileId: any;
+    readonly updatedCompanyProfileId: any;
+  } | null;
 };
 export type useSetAboutYouMutationResponse = useSetAboutYouMutation$data;
 export type useSetAboutYouMutation = {
@@ -63,8 +66,26 @@ v1 = [
         "variableName": "input"
       }
     ],
-    "kind": "ScalarField",
+    "concreteType": "SetAboutYouResponse",
+    "kind": "LinkedField",
     "name": "setAboutYou",
+    "plural": false,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "updatedPersonalProfileId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "updatedCompanyProfileId",
+        "storageKey": null
+      }
+    ],
     "storageKey": null
   }
 ];
@@ -86,16 +107,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "76c5dd62de4af79d0b3568eb26e8b291",
+    "cacheID": "5e2e16f1e0e4b64720159422e358874d",
     "id": null,
     "metadata": {},
     "name": "useSetAboutYouMutation",
     "operationKind": "mutation",
-    "text": "mutation useSetAboutYouMutation(\n  $input: SetAboutYouCommandInput!\n) {\n  setAboutYou(input: $input)\n}\n"
+    "text": "mutation useSetAboutYouMutation(\n  $input: SetAboutYouCommandInput!\n) {\n  setAboutYou(input: $input) {\n    updatedPersonalProfileId\n    updatedCompanyProfileId\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e46962c8b31d1e9766ba258ff2e767f0";
+(node as any).hash = "4b7da34e3792f6ac7660e562e881b905";
 
 export default node;

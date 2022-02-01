@@ -1,10 +1,14 @@
 import React from 'react';
-import { UserSearchResult } from './useMarketSearch';
+// import { UserSearchResult } from './useMarketSearch';
 import userIcon from 'assets/abstract-user-flat-4.svg';
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid';
 
 interface props {
-  userSearchResults: UserSearchResult[] | null;
+  userSearchResults: ReadonlyArray<{
+    readonly id: any;
+    readonly fullName: string | null;
+    readonly pictureUrl: string | null;
+  } | null> | null;
 }
 
 const MarketGridResults = ({ userSearchResults }: props) => (
@@ -18,10 +22,10 @@ const MarketGridResults = ({ userSearchResults }: props) => (
           <div className="flex-1 flex flex-col p-8">
             <img
               className="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
-              src={user.pictureUrl ?? userIcon}
+              src={ user?.pictureUrl ?? userIcon}
               alt=""
             />
-            <h3 className="mt-6 text-gray-900 text-sm font-medium">{user.fullName}</h3>
+            <h3 className="mt-6 text-gray-900 text-sm font-medium">{user?.fullName}</h3>
             <dl className="mt-1 flex-grow flex flex-col justify-between">
               <dt className="sr-only">Title</dt>
               <dd className="text-gray-500 text-sm">Title</dd>
