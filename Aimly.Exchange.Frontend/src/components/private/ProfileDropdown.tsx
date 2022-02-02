@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { NavLink } from 'react-router-dom';
+import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
 const ProfileDropdown = (): JSX.Element => {
   const { user, logout } = useAuth0();
@@ -44,7 +45,7 @@ const ProfileDropdown = (): JSX.Element => {
           >
             <Menu.Item>
               <NavLink
-                to={{ pathname: 'profile' }}
+                to={{ pathname: GetPathForPage(Pages.Profile) }}
                 className="font-medium block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600"
               >
                 Your Profile
@@ -52,7 +53,7 @@ const ProfileDropdown = (): JSX.Element => {
             </Menu.Item>
             <Menu.Item>
               <NavLink
-                to={{ pathname: 'settings' }}
+                to={{ pathname: GetPathForPage(Pages.Settings) }}
                 className="font-medium block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600"
               >
                 Settings

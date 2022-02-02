@@ -23,7 +23,7 @@ const getAboutYouQueryVariables = { id: userId };
 
 const AboutYou = () => {
   const navigate = useNavigate();
-  const topRef = useRef<HTMLDivElement>(null);
+  // const topRef = useRef<HTMLDivElement>(null);
   const currentStep = "AboutYou";
 
   // const data2 = usePreloadedQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, queryReference2);

@@ -1,13 +1,27 @@
 import React from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import {
   SearchIcon,
 } from '@heroicons/react/solid';
+import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
 const QuickSearch = (): JSX.Element => {
+  const navigate = useNavigate();
+  // let [searchParams, setSearchParams] = useSearchParams();
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    navigate(GetPathForPage(Pages.Market), {
+      // TODO - link the input to the search params for the market page
+      // search: searchParams,
+    });
+  }
+
   return (
     <div className="flex-1 flex">
-      <form className="w-full flex" action="#" method="GET">
+      <form onSubmit={handleSubmit} className="w-full flex" action="#" method="GET">
         <label htmlFor="search-field" className="sr-only">
           Search
         </label>

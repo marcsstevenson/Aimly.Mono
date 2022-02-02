@@ -15,6 +15,7 @@ import Potential from 'components/for-startups/profile/edit/4-Potential';
 import Customise from 'components/for-startups/profile/edit/5-Customise';
 import Market from 'components/market/Market';
 import Profile from 'components/Profile';
+import Settings from 'components/Settings';
 import PageNotFound from 'components/PageNotFound';
 import ExternalApi from 'components/ExternalApi';
 import { JsxEmit } from 'typescript';
@@ -34,6 +35,7 @@ export enum Pages {
   DashBoard,
   Market,
   Profile,
+  Settings,
   ExternalApi,
   AboutYou,
   TheProblem,
@@ -49,6 +51,7 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard},
   { path: '/market', element: <Market />, page: Pages.Market},
   { path: '/profile', element: <Profile />, page: Pages.Profile},
+  { path: '/settings', element: <Settings />, page: Pages.Settings},
   { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi},
   { path: '/for-startups/profile/edit/AboutYou', element: <AboutYou />, page: Pages.AboutYou},
   { path: '/for-startups/profile/edit/TheProblem', element: <TheProblem />, page: Pages.TheProblem},
