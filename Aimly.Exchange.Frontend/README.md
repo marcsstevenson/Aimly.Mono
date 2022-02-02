@@ -8,7 +8,7 @@ Use `npm` to install the project dependencies:
 npm install
 ```
 
-## Deployment
+## Startup
 
 npm run start
 npm run tailwind

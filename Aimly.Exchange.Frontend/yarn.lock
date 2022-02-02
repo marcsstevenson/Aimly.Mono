@@ -1100,32 +1100,6 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
-"@fortawesome/fontawesome-common-types@^0.2.29":
-  "integrity" "sha512-XcIn3iYbTEzGIxD0/dY5+4f019jIcEIWBiHc3KrmK/ROahwxmZ/s+tdj97p/5K0klz4zZUiMfUlYP0ajhSJjmA=="
-  "resolved" "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.34.tgz"
-  "version" "0.2.34"
-
-"@fortawesome/fontawesome-svg-core@^1.2.17", "@fortawesome/fontawesome-svg-core@^1.2.20":
-  "integrity" "sha512-xmPmP2t8qrdo8RyKihTkGb09RnZoc+7HFBCnr0/6ZhStdGDSLeEd7ajV181+2W29NWIFfylO13rU+s3fpy3cnA=="
-  "resolved" "https://registry.npmjs.org/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.29.tgz"
-  "version" "1.2.29"
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.29"
-
-"@fortawesome/free-solid-svg-icons@^5.8.1":
-  "integrity" "sha512-LQH/0L1p4+rqtoSHa9qFYR84hpuRZKqaQ41cfBQx8b68p21zoWSekTAeA54I/2x9VlCHDLFlG74Nmdg4iTPQOg=="
-  "resolved" "https://registry.npmjs.org/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.13.1.tgz"
-  "version" "5.13.1"
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.29"
-
-"@fortawesome/react-fontawesome@^0.1.4":
-  "integrity" "sha512-sClfojasRifQKI0OPqTy8Ln8iIhnxR/Pv/hukBhWnBz9kQRmqi6JSH3nghlhAY7SUeIIM7B5/D2G8WjX0iepVg=="
-  "resolved" "https://registry.npmjs.org/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.11.tgz"
-  "version" "0.1.11"
-  dependencies:
-    "prop-types" "^15.7.2"
-
 "@headlessui/react@^1.4.2":
   "integrity" "sha512-N8tv7kLhg9qGKBkVdtg572BvKvWhmiudmeEpOCyNwzOsZHCXBtl8AazGikIfUS+vBoub20Fse3BjawXDVPPdug=="
   "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.4.2.tgz"
@@ -8408,7 +8382,7 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
-"react@*", "react@^16 || ^17 || ^18", "react@^16.11.0 || ^17", "react@^16.9.0 || ^17", "react@^17.0.2", "react@>= 16", "react@>=16.8", "react@16.x", "react@17.0.2":
+"react@*", "react@^16 || ^17 || ^18", "react@^16.11.0 || ^17", "react@^16.9.0 || ^17", "react@^17.0.2", "react@>= 16", "react@>=16.8", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Mentorship = (): JSX.Element => (
+const PrivateShellNav = () => (
   <div className="bg-white vh-100">
 
   </div>
 );
 
-export default Mentorship;
+export default PrivateShellNav;

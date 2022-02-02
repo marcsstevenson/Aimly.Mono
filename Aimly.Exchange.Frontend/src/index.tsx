@@ -7,8 +7,9 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import history from "./utils/history";
 import { getProviderConfig } from "./config";
 import { ThemeProvider } from "./components/ThemeContext";
+import { useAuth0, User, withAuthenticationRequired } from "@auth0/auth0-react";
 
-const onRedirectCallback = (appState) => {
+const onRedirectCallback = (appState: any) => {
   history.push(
     appState && appState.returnTo ? appState.returnTo : window.location.pathname
   );
@@ -16,11 +17,14 @@ const onRedirectCallback = (appState) => {
 
 const providerConfig = getProviderConfig(onRedirectCallback);
 
+// const { user } = useAuth0<User>();
+
+// console.log(user);
+
 ReactDOM.render(
   <ThemeProvider>
     <Auth0Provider {...providerConfig}>
       <App />
-      {/* <div>Wut</div> */}
     </Auth0Provider>
   </ThemeProvider>,
   document.getElementById("root")
