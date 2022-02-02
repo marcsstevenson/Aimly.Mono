@@ -3,6 +3,7 @@ import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
+import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
 const Potential = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Potential = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigate('/for-startups/profile/edit/Customise');
+    navigate(GetPathForPage(Pages.Customise));
   };
 
   return (

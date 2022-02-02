@@ -3,10 +3,7 @@ import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useNavigate } from 'react-router-dom';
-import RelayEnvironment from 'RelayEnvironment';
 import {
-  loadQuery,
-  usePreloadedQuery,
   useLazyLoadQuery,
 } from 'react-relay/hooks';
 import useSetAboutYouMutation from 'useSetAboutYouMutation'
@@ -14,6 +11,7 @@ import {
   GetAboutYouModelInput,
 } from "__generated__/useSetAboutYouMutation.graphql";
 import * as GetAboutYouQuery from "__generated__/getAboutYouQuery.graphql";
+import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
 const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
 const getAboutYouQueryVariables = { id: userId };
@@ -56,11 +54,11 @@ const AboutYou = () => {
 
   const next = () => {
     console.log(model);
-    handleSave(model);
+    // handleSave(model);
     // if (topRef.current) {
     //   topRef.current.scrollIntoView({ behavior: 'smooth' });
     // }
-    // navigate('/for-startups/profile/edit/TheProblem');
+    navigate(GetPathForPage(Pages.TheProblem));
   };
 
   return (

@@ -4,7 +4,7 @@
 
 // ******************************************************************
 
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import DarkModeSelector from './DarkModeSelector';
 
@@ -25,7 +25,6 @@ const navigation = [
 ];
 
 const NavBar = () => {
-  const [isOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const logoutWithRedirect = () =>

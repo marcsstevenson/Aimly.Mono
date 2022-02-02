@@ -3,6 +3,7 @@ import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
+import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
 const Customise = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Customise = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigate('/');
+    navigate(GetPathForPage(Pages.DashBoard));
   };
 
   return (

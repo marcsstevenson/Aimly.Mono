@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import RelayEnvironment from 'RelayEnvironment';
-import DashBoard from '../DashBoard';
 
+import DashBoard from '../DashBoard';
 import AboutYou from '../for-startups/profile/edit/1-AboutYou';
 import TheProblem from '../for-startups/profile/edit/2-TheProblem';
 import TheSolution from '../for-startups/profile/edit/3-TheSolution';
@@ -40,6 +40,7 @@ import {
   SearchIcon,
 } from '@heroicons/react/solid';
 import TopBar from './TopBar';
+import { GetPrivateRoutes } from 'components/shared/AppRoutes';
 
 const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: true },
@@ -285,23 +286,7 @@ const PrivateShell = (): JSX.Element => {
         <div className="lg:pl-64 flex flex-col flex-1">
           <TopBar />
           <main className="flex-1 pb-8">
-            <Routes>
-              <Route path="/" element={<DashBoard />} />
-              <Route path="/market" element={<Market />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/external-api" element={<ExternalApi />} />
-
-              <Route path="/for-startups/profile/edit/AboutYou" element={<AboutYou />} />
-              <Route path="/for-startups/profile/edit/TheProblem" element={<TheProblem />} />
-              <Route path="/for-startups/profile/edit/TheSolution" element={<TheSolution />} />
-              <Route path="/for-startups/profile/edit/Potential" element={<Potential />} />
-              <Route path="/for-startups/profile/edit/Customise" element={<Customise />} />
-              {/* <Route path="/videoCall" component={VideoCall} /> */}
-              {/* Using path="*"" means "match anything", so this route
-                acts like a catch-all for URLs that we don't have explicit
-                routes for. */}
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
+            { GetPrivateRoutes() }
           </main>
         </div>
       </div>
