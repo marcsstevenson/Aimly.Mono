@@ -31,7 +31,7 @@ const DarkModeSelector = () => {
       {() => (
         <Menu as="div" className="ml-3 relative">
           <div>
-            <Menu.Button className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-offset-gray-800 focus:ring-white">
+            <Menu.Button className="bg-white: dark:bg-gray-800 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-offset-gray-800 focus:ring-white">
               <span className="sr-only">Open user menu</span>
               <span className="dark:hidden">
                 <svg
@@ -83,7 +83,7 @@ const DarkModeSelector = () => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute z-50 top-full right-0 bg-white rounded-lg ring-1 ring-gray-900/10 shadow-lg overflow-hidden w-36 py-1 text-sm text-gray-700 font-semibold dark:bg-gray-800 dark:ring-0 dark:highlight-white/5 dark:text-gray-300 mt-6">
+            <Menu.Items className="absolute z-50 top-full right-0 bg-white rounded-lg ring-1 ring-gray-900/10 shadow-lg overflow-hidden w-36 py-1 text-sm text-gray-700 font-semibold dark:bg-gray-700 dark:ring-0 dark:highlight-white/5 dark:text-gray-300 mt-3">
               <Menu.Item>
                 {({ active }) => (
                   <button onClick={() => setLightMode()} className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none">

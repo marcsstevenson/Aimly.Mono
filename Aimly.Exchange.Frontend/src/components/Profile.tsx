@@ -1,6 +1,6 @@
-import React from "react";
-import Loading from "./Loading";
-import { useAuth0, User, withAuthenticationRequired } from "@auth0/auth0-react";
+import React from 'react';
+import Loading from './Loading';
+import { useAuth0, User, withAuthenticationRequired } from '@auth0/auth0-react';
 
 export const ProfileComponent = () => {
   const { user } = useAuth0<User>();
@@ -9,7 +9,10 @@ export const ProfileComponent = () => {
 
   return (
     <div className="mb-5">
-      <div className="align-items-center profile-header mb-5 text-center text-md-left">
+      <h1 className="mt-2 text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight sm:text-5xl">
+        Your Profile - Work in progress!
+      </h1>
+      <div className="align-items-center profile-header my-5 text-center text-md-left">
         <div>
           <img
             src={user?.picture}
@@ -22,9 +25,7 @@ export const ProfileComponent = () => {
           <p className="lead text-muted">{user?.email}</p>
         </div>
       </div>
-      <div>
-        {JSON.stringify(user, null, 2)}
-      </div>
+      <div>{JSON.stringify(user, null, 2)}</div>
     </div>
   );
 };
