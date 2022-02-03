@@ -2981,6 +2981,16 @@ code {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -3236,6 +3246,11 @@ code {
     line-height: 1;
   }
 
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .lg\:opacity-100 {
     opacity: 1;
   }
@@ -3271,5 +3286,15 @@ code {
   .xl\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .xl\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .xl\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
