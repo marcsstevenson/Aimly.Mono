@@ -19,15 +19,15 @@ import { NavLink } from 'react-router-dom';
 import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 import AimlyLogo from './AimlyLogo';
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: true },
+  { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },
+  { name: 'Market', href: GetPathForPage(Pages.Market), icon: UserGroupIcon, current: false },
   { name: 'History', href: '#', icon: ClockIcon, current: false },
   { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
   { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Recipients', href: '#', icon: UserGroupIcon, current: false },
   { name: 'Reports', href: '#', icon: DocumentReportIcon, current: false },
 ];
 const secondaryNavigation = [
-  { name: 'Settings', href: '#', icon: CogIcon },
+  { name: 'Settings', href: GetPathForPage(Pages.Settings), icon: CogIcon },
   { name: 'Help', href: '#', icon: QuestionMarkCircleIcon },
   { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
 ];
@@ -88,15 +88,15 @@ const SideBar = (): JSX.Element => {
               >
                 <div className="px-2 space-y-1">
                   {navigation.map((item) => (
-                    <a
+                    <NavLink
                       key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        item.current
+                      to={{ pathname: item.href }}
+                      className={({ isActive }) =>
+                        (isActive
                           ? 'bg-indigo-800 text-white'
-                          : 'text-indigo-100 hover:text-white hover:bg-indigo-600',
-                        'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                      )}
+                          : ' text-indigo-100 hover:text-white hover:bg-indigo-600') +
+                        '  group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                      }
                       aria-current={item.current ? 'page' : undefined}
                     >
                       <item.icon
@@ -104,20 +104,25 @@ const SideBar = (): JSX.Element => {
                         aria-hidden="true"
                       />
                       {item.name}
-                    </a>
+                    </NavLink>
                   ))}
                 </div>
                 <div className="mt-6 pt-6">
                   <div className="px-2 space-y-1">
                     {secondaryNavigation.map((item) => (
-                      <a
+                      <NavLink
                         key={item.name}
-                        href={item.href}
-                        className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-indigo-100 hover:text-white hover:bg-indigo-600"
+                        to={{ pathname: item.href }}
+                        className={({ isActive }) =>
+                            (isActive
+                              ? 'bg-indigo-800 text-white'
+                              : ' text-indigo-100 hover:text-white hover:bg-indigo-600') +
+                            '  group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                          }
                       >
                         <item.icon className="mr-4 h-6 w-6 text-indigo-200" aria-hidden="true" />
                         {item.name}
-                      </a>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -143,15 +148,15 @@ const SideBar = (): JSX.Element => {
           >
             <div className="px-2 space-y-1">
               {navigation.map((item) => (
-                <a
+                <NavLink
                   key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
+                  to={{ pathname: item.href }}
+                  className={({ isActive }) =>
+                    (isActive
                       ? 'bg-indigo-800 text-white'
-                      : 'text-indigo-100 hover:text-white hover:bg-indigo-600',
-                    'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
-                  )}
+                      : ' text-indigo-100 hover:text-white hover:bg-indigo-600') +
+                    '  group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                  }
                   aria-current={item.current ? 'page' : undefined}
                 >
                   <item.icon
@@ -159,20 +164,25 @@ const SideBar = (): JSX.Element => {
                     aria-hidden="true"
                   />
                   {item.name}
-                </a>
+                </NavLink>
               ))}
             </div>
             <div className="mt-6 pt-6">
               <div className="px-2 space-y-1">
                 {secondaryNavigation.map((item) => (
-                  <a
+                  <NavLink
                     key={item.name}
-                    href={item.href}
-                    className="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-indigo-100 hover:text-white hover:bg-indigo-600"
+                    to={{ pathname: item.href }}
+                    className={({ isActive }) =>
+                      (isActive
+                        ? 'bg-indigo-800 text-white'
+                        : ' text-indigo-100 hover:text-white hover:bg-indigo-600') +
+                      '  group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                    }
                   >
                     <item.icon className="mr-4 h-6 w-6 text-indigo-200" aria-hidden="true" />
                     {item.name}
-                  </a>
+                  </NavLink>
                 ))}
               </div>
             </div>

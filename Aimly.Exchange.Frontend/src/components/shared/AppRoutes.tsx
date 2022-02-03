@@ -18,6 +18,7 @@ import Profile from 'components/Profile';
 import Settings from 'components/Settings';
 import PageNotFound from 'components/PageNotFound';
 import ExternalApi from 'components/ExternalApi';
+import { ConsoleSpanExporter } from '@opentelemetry/tracing';
 
 export interface RouteItem {
   // The relative path for the route
@@ -76,7 +77,9 @@ export const GetPathForPage = (page: Pages): string => {
 
   if (match) return match.path;
 
-  throw new Error("No path found for page: " + page);
+  // throw new Error(`No path found for page: ${page}`);
+  console.log(`No path found for page: ${page}`);
+  return "";
 }
 
 export const GetPrivateRoutes = (): JSX.Element => {
