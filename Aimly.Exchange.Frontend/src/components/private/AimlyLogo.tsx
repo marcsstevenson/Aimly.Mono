@@ -23,7 +23,7 @@ const AimlyLogo = () =>
           <path d="M1451 2175 c-267 -61 -454 -300 -452 -575 1 -157 50 -276 164 -396 115 -122 244 -176 419 -175 115 1 160 12 267 66 209 105 342 362 305 588 -4 20 -9 37 -13 37 -3 0 -103 -71 -221 -157 -286 -207 -316 -221 -426 -188 -157 47 -220 224 -130 363 12 20 114 101 248 198 125 91 230 169 233 174 3 5 -7 16 -22 23 -91 47 -264 66 -372 42z" />
         </g>
       </svg>
-      <span className="tracking-tight font-extrabold text-gray-900 dark:text-gray-100 text-4xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl">
+      <span className="tracking-tight font-extrabold text-gray-100 text-4xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl">
         Aimly
       </span>
     </div>
