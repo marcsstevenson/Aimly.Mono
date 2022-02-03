@@ -2,7 +2,6 @@ import React, { useCallback, useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import { useNavigate } from 'react-router-dom';
 import {
   useLazyLoadQuery,
 } from 'react-relay/hooks';
@@ -11,7 +10,9 @@ import {
   GetAboutYouModelInput,
 } from "__generated__/useSetAboutYouMutation.graphql";
 import * as GetAboutYouQuery from "__generated__/getAboutYouQuery.graphql";
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { Pages } from 'components/shared/AppRoutes';
+import useNavigateToPage from "components/shared/useNavigateToPage";
+
 
 const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
 const getAboutYouQueryVariables = { id: userId };
@@ -22,11 +23,14 @@ const getAboutYouQueryVariables = { id: userId };
 // );
 
 const AboutYou = () => {
-  const navigate = useNavigate();
+  const navigateToPage = useNavigateToPage();
+  // const navigateToPage = useNavigateToPage();
   // const topRef = useRef<HTMLDivElement>(null);
   const currentStep = "AboutYou";
 
   // const data2 = usePreloadedQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, queryReference2);
+
+  // navigateToPage.
 
   // Lazy load this query because it is only relevant to this component
   const data2 = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, getAboutYouQueryVariables);
@@ -58,7 +62,8 @@ const AboutYou = () => {
     // if (topRef.current) {
     //   topRef.current.scrollIntoView({ behavior: 'smooth' });
     // }
-    navigate(GetPathForPage(Pages.TheProblem));
+    // navigate(GetPathForPage(Pages.TheProblem));
+    navigateToPage(Pages.TheProblem);
   };
 
   return (

@@ -12,8 +12,8 @@ import DarkModeSelector from './DarkModeSelector';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-
 import { useAuth0 } from '@auth0/auth0-react';
+import { GetPathForPage, Pages } from './shared/AppRoutes';
 
 const navigation = [
   { name: 'Home', href: '/', AuthenticatedOnly: false },
@@ -53,7 +53,7 @@ const NavBar = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <NavLink to={{ pathname: '/' }}>
+                <NavLink to={{ pathname: GetPathForPage(Pages.Home) }}>
                   <div className="flex-shrink-0 flex items-center">
                     <svg
                       version="1.0"
