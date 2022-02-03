@@ -1,36 +1,18 @@
-import React, { Fragment, useState } from 'react';
-import { classNames } from 'utils/classNames';
+import React, { useContext } from 'react';
 
 import ProfileDropdown from './ProfileDropdown';
 import QuickSearch from './QuickSearch'
 
-import { Dialog, Menu, Transition } from '@headlessui/react';
 import {
   BellIcon,
-  ClockIcon,
-  CogIcon,
-  CreditCardIcon,
-  DocumentReportIcon,
-  HomeIcon,
   MenuAlt1Icon,
-  QuestionMarkCircleIcon,
-  ScaleIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-  XIcon,
 } from '@heroicons/react/outline';
-import {
-  CashIcon,
-  CheckCircleIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  OfficeBuildingIcon,
-  SearchIcon,
-} from '@heroicons/react/solid';
+
 import DarkModeSelector from 'components/DarkModeSelector';
+import { PrivateContext } from './PrivateContext';
 
 const TopBar = (): JSX.Element => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { setSidebarOpen } = useContext(PrivateContext);
 
   return (
     <div className="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900">

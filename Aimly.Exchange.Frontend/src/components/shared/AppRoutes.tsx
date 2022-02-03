@@ -18,7 +18,6 @@ import Profile from 'components/Profile';
 import Settings from 'components/Settings';
 import PageNotFound from 'components/PageNotFound';
 import ExternalApi from 'components/ExternalApi';
-import { JsxEmit } from 'typescript';
 
 export interface RouteItem {
   // The relative path for the route
@@ -30,6 +29,7 @@ export interface RouteItem {
 export enum Pages {
   // Shared
   Home,
+  PageNotFound,
 
   // Private
   DashBoard,
@@ -57,7 +57,9 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/for-startups/profile/edit/TheProblem', element: <TheProblem />, page: Pages.TheProblem},
   { path: '/for-startups/profile/edit/TheSolution', element: <TheSolution />, page: Pages.TheSolution},
   { path: '/for-startups/profile/edit/Potential', element: <Potential />, page: Pages.Potential},
-  { path: '/for-startups/profile/edit/Customise', element: <Customise />, page: Pages.Customise},
+  { path: '/for-startups/profile/edit/Customise', element: <Customise />, page: Pages.Customise },
+
+  { path: '*', element: <PageNotFound />, page: Pages.PageNotFound},
 ];
 
 // Returns the path for a given
@@ -81,7 +83,7 @@ export const GetPrivateRoutes = (): JSX.Element => {
   return (
     <Routes>
       {PrivateRoutes.map((routeItem) => (
-        <Route path={ routeItem.path } element={ routeItem.element } />
+        <Route key={ routeItem.path } path={ routeItem.path } element={ routeItem.element } />
       ))}
     </Routes>
   );
