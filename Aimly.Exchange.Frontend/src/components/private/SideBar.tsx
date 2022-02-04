@@ -1,7 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
-import { classNames } from 'utils/classNames';
 import {
   ClockIcon,
   CogIcon,
