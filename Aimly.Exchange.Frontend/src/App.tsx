@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { RelayEnvironmentProvider } from 'react-relay/hooks';
+import RelayEnvironment from 'RelayEnvironment';
 
 import Loading from './components/Loading';
 import Footer from './components/Footer';
@@ -28,8 +30,10 @@ const App = (): JSX.Element => {
       <ErrorBoundary>
         <div id="app" className="d-flex flex-column h-100">
           <Suspense fallback={'Loading...'}>
-            {!user && <PublicShell />}
-            {user && <PrivateShell />}
+            <RelayEnvironmentProvider environment={RelayEnvironment}>
+              {!user && <PublicShell />}
+              {user && <PrivateShell />}
+            </RelayEnvironmentProvider>
           </Suspense>
           {error ? <div>Oops... {error?.message}</div> : <Footer />}
         </div>

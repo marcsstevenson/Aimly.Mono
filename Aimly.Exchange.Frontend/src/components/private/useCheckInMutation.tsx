@@ -20,6 +20,20 @@ function getOptimisticResponse(
   };
 }
 
+
+// export default function useCheckInMutation() {
+//   // const [commit] = useMutation(checkInMutation);
+//   return [
+//     useCallback(
+//       () => {
+
+//       },
+//       []
+//     )
+//   ];
+// }
+
+
 export default function useCheckInMutation() {
   const [commit] = useMutation(checkInMutation);
   return [

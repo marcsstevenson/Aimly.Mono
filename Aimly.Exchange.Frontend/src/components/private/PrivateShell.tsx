@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import { RelayEnvironmentProvider } from 'react-relay/hooks';
-import RelayEnvironment from 'RelayEnvironment';
 
 import TopBar from './TopBar';
 import Loading from 'components/Loading';
@@ -15,19 +13,22 @@ const PrivateShell = (): JSX.Element => {
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-  // const [checkInMutation] = useCheckInMutation();
+  const [checkInMutation] = useCheckInMutation();
+
+  useEffect(() => {
+    if (user) {
+      // Check in the user
+      var userId = checkInMutation(user);
+      console.log(userId);
+    }
+  }, [user, checkInMutation]); // [] means that this effect will only run once
+
 
   // if (user) {
   //   // Check in the user
   //   var userId = checkInMutation(user);
   //   console.log(userId);
   // }
-
-  // const [privateContextValue, setPrivateContext] = useState<PrivateContextType>({
-  //   isSidebarOpen: false,
-  //   testValue: 'Hai',
-  //   user: user,
-  // });
 
   // async function fetchGraphQL(text: any, variables: any) {
   //   const REACT_APP_BACKEND_API = process.env.REACT_APP_EXCHANGE_API_URI;
@@ -85,7 +86,6 @@ const PrivateShell = (): JSX.Element => {
   };
 
   return (
-    <RelayEnvironmentProvider environment={RelayEnvironment}>
       <PrivateContext.Provider value={privateContextValue}>
         <div className="min-h-full">
           <SideBar />
@@ -95,7 +95,6 @@ const PrivateShell = (): JSX.Element => {
           </div>
         </div>
       </PrivateContext.Provider>
-    </RelayEnvironmentProvider>
   );
 };
 
