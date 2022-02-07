@@ -8,11 +8,20 @@ import Loading from 'components/Loading';
 import { GetPrivateRoutes } from 'components/shared/AppRoutes';
 import SideBar from './SideBar';
 import { PrivateContext, PrivateContextType } from './PrivateContext';
+import useCheckInMutation from './useCheckInMutation';
 
 const PrivateShell = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0();
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
+  // const [checkInMutation] = useCheckInMutation();
+
+  // if (user) {
+  //   // Check in the user
+  //   var userId = checkInMutation(user);
+  //   console.log(userId);
+  // }
 
   // const [privateContextValue, setPrivateContext] = useState<PrivateContextType>({
   //   isSidebarOpen: false,
@@ -66,12 +75,13 @@ const PrivateShell = (): JSX.Element => {
   //   PrivateContextValue.isSidebarOpen = !PrivateContextValue.isSidebarOpen;
   // };
 
-
+  // Instantiate the initial state values
+  // Note that userId is stored in browser storage
   const privateContextValue: PrivateContextType = {
     isSidebarOpen: isSidebarOpen,
     setSidebarOpen: setSidebarOpen,
-    testValue: 'Hai',
-    user: user
+    user: user,
+    userId: null,
   };
 
   return (
@@ -79,7 +89,6 @@ const PrivateShell = (): JSX.Element => {
       <PrivateContext.Provider value={privateContextValue}>
         <div className="min-h-full">
           <SideBar />
-
           <div className="lg:pl-64 flex flex-col flex-1">
             <TopBar />
             <main className="flex-1 pb-8">{GetPrivateRoutes()}</main>
