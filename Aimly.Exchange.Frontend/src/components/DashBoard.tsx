@@ -18,7 +18,6 @@ const cards = [
 ];
 
 export interface transactionType {
-  id: number,
   name: string,
   href: string,
   amount: number,
@@ -41,16 +40,41 @@ export const statuses: StatusType[] = [
 
 const transactions: transactionType[] = [
   {
-    id: 1,
     name: 'Payment to Molly Sanders',
     href: '#',
-    amount: 20000,
+    amount: -20000,
     currency: 'USD',
     status: statuses[0],
     date: '11th July, 2020',
     datetime: '2020-07-11',
   },
-  // More transactions...
+  {
+    name: 'Payment to Jimmy Pike',
+    href: '#',
+    amount: -8060,
+    currency: 'USD',
+    status: statuses[1],
+    date: '10th July, 2020',
+    datetime: '2020-07-10',
+  },
+  {
+    name: 'Payment from Smart Services Ltd.',
+    href: '#',
+    amount: 14630,
+    currency: 'USD',
+    status: statuses[0],
+    date: '10th July, 2020',
+    datetime: '2020-07-10',
+  },
+  {
+    name: 'Payment from Smarter Services Ltd.',
+    href: '#',
+    amount: 5630,
+    currency: 'USD',
+    status: statuses[2],
+    date: '8th July, 2020',
+    datetime: '2020-07-08',
+  },
 ];
 
 const DashBoard = () => {
@@ -177,8 +201,8 @@ const DashBoard = () => {
         {/* Activity list (smallest breakpoint only) */}
         <div className="shadow sm:hidden">
           <ul role="list" className="mt-2 divide-y divide-gray-200 dark:divide-gray-600 overflow-hidden shadow sm:hidden">
-            {transactions.map((transaction) => (
-              <li key={transaction.id}>
+            {transactions.map((transaction, index) => (
+              <li key={index}>
                 <a href={transaction.href} className="block px-4 py-4 bg-white hover:bg-gray-50 dark:bg-gray-800">
                   <span className="flex items-center space-x-4">
                     <span className="flex-1 flex space-x-2 truncate">
@@ -248,8 +272,8 @@ const DashBoard = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-600">
-                    {transactions.map((transaction) => (
-                      <tr key={transaction.id} className="bg-white dark:bg-gray-700">
+                    {transactions.map((transaction, index) => (
+                      <tr key={index} className="bg-white dark:bg-gray-700">
                         <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-50">
                           <div className="flex">
                             <a
