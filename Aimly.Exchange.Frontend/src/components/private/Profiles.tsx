@@ -87,7 +87,7 @@ const Profiles = () => {
           Add new profile
         </h2>
 
-        <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+        <div className="mt-2 sm:flex sm:justify-center lg:justify-start">
           <div className="rounded-md shadow">
             <Link
               to={{ pathname: GetPathForPage(Pages.AboutYou) }}
