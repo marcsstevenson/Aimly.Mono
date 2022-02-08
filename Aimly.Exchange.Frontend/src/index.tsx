@@ -7,7 +7,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import history from "./utils/history";
 import { getProviderConfig } from "./config";
 import { ThemeProvider } from "./components/ThemeContext";
-import { useAuth0, User, withAuthenticationRequired } from "@auth0/auth0-react";
+// import { useAuth0, User, withAuthenticationRequired } from "@auth0/auth0-react";
 
 const onRedirectCallback = (appState: any) => {
   history.push(
@@ -33,4 +33,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
