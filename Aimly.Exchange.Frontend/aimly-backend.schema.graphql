@@ -158,10 +158,34 @@ input GetAccessToMeetingCommandInput {
   userId: UUID!
 }
 
+input GetTheProblemCommandInput {
+  userId: UUID!
+  companyProfileId: UUID!
+}
+
+type GetTheProblemModel {
+  userId: UUID!
+  companyProfileId: UUID!
+  purposeDetails: String
+  problemDetails: String
+}
+
+input GetTheProblemModelInput {
+  userId: UUID!
+  companyProfileId: UUID!
+  purposeDetails: String
+  problemDetails: String
+}
+
 type Mutation {
+  """
+  Takes an auth profile model and either creates a user if unknown or updates a
+  user if already known. The Id of the user is then returned.
+  """
   checkIn(input: AuthProfileInput): UUID!
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
+  setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
 }
 
@@ -181,6 +205,7 @@ input NotesForCompanyCommandInput {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
 }
 
@@ -190,6 +215,14 @@ input SetAboutYouCommandInput {
 
 type SetAboutYouResponse {
   updatedPersonalProfileId: UUID!
+  updatedCompanyProfileId: UUID!
+}
+
+input SetTheProblemCommandInput {
+  getTheProblemModel: GetTheProblemModelInput
+}
+
+type SetTheProblemResponse {
   updatedCompanyProfileId: UUID!
 }
 
