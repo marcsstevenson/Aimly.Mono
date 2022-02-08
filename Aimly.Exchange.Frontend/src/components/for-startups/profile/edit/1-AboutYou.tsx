@@ -82,6 +82,20 @@ const AboutYou = () => {
           <div className="space-y-8 divide-y divide-gray-200">
             <div className="pt-8">
               <div className="text-gray-700 mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div className="sm:col-span-6">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Email address
+                  </label>
+                  <div className="mt-1">
+                    <label id="email" className="block text-sm text-gray-700 dark:text-gray-200">
+                      {user?.email}
+                    </label>
+                  </div>
+                </div>
+
                 <div className="sm:col-span-3">
                   <label
                     htmlFor="givenName"
@@ -120,15 +134,19 @@ const AboutYou = () => {
 
                 <div className="sm:col-span-3">
                   <label
-                    htmlFor="email"
+                    htmlFor="linkedInProfile"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-200"
                   >
-                    Email address
+                    LinkedIn Profile
                   </label>
                   <div className="mt-1">
-                    <label id="email" className="block text-sm text-gray-700 dark:text-gray-200">
-                      {user?.email}
-                    </label>
+                    <Field
+                      type="text"
+                      name="linkedInProfile"
+                      id="linkedInProfile"
+                      autoComplete="family-name"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
                   </div>
                 </div>
 
