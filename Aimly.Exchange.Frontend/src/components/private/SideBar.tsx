@@ -10,6 +10,7 @@ import {
   QuestionMarkCircleIcon,
   ScaleIcon,
   ShieldCheckIcon,
+  UserCircleIcon,
   UserGroupIcon,
   XIcon,
 } from '@heroicons/react/outline';
@@ -19,6 +20,7 @@ import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 import AimlyLogo from './AimlyLogo';
 const navigation = [
   { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },
+  { name: 'Profiles', href: GetPathForPage(Pages.Profiles), icon: UserCircleIcon, current: false },
   { name: 'Market', href: GetPathForPage(Pages.Market), icon: UserGroupIcon, current: false },
   { name: 'History', href: '#', icon: ClockIcon, current: false },
   { name: 'Balances', href: '#', icon: ScaleIcon, current: false },

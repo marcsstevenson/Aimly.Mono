@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 
 import DashBoard from 'components/DashBoard';
+import Profiles from 'components/private/Profiles';
 import AboutYou from 'components/for-startups/profile/edit/1-AboutYou';
 import TheProblem from 'components/for-startups/profile/edit/2-TheProblem';
 import TheSolution from 'components/for-startups/profile/edit/3-TheSolution';
@@ -35,6 +36,7 @@ export enum Pages {
   // Private
   DashBoard,
   Market,
+  Profiles, // The place to add, edit, remove profiles for startups, mentors, etc
   Profile,
   Settings,
   ExternalApi,
@@ -51,6 +53,7 @@ export const PublicRoutes: RouteItem[] = [];
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard},
   { path: '/market', element: <Market />, page: Pages.Market},
+  { path: '/profiles', element: <Profiles />, page: Pages.Profiles},
   { path: '/profile', element: <Profile />, page: Pages.Profile},
   { path: '/settings', element: <Settings />, page: Pages.Settings},
   { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi},

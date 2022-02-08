@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
@@ -11,37 +11,23 @@ import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 
-// const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
-// const queryReference2 = loadQuery<GetAboutYouQuery.getAboutYouQuery>(
-//   RelayEnvironment,
-//   GetAboutYouQuery.default,
-//   getAboutYouQueryVariables,
-// );
-
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
-  // const [ getAboutYouModelInput, setGetAboutYouModelInput ] = useState<GetAboutYouModelInput>({});
   const navigateToPage = useNavigateToPage();
-  // const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = 'AboutYou';
-
   const getAboutYouQueryVariables = { id: userId };
 
-  // const data2 = usePreloadedQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, queryReference2);
-
-  // navigateToPage.
-
   // Lazy load this query because it is only relevant to this component
-  const data2 = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(
+  const data = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(
     GetAboutYouQuery.default,
     getAboutYouQueryVariables
   );
 
-  const loadedData = data2.getAboutYou;
+  const loadedData = data.getAboutYou;
 
   let model: GetAboutYouModelInput = {
-    ...data2.getAboutYou,
+    ...data.getAboutYou,
     userId: userId,
     givenName: loadedData?.givenName ?? '',
     familyName: loadedData?.familyName ?? '',
@@ -62,15 +48,7 @@ const AboutYou = () => {
     postOfficeBoxNumber: loadedData?.postOfficeBoxNumber ?? '',
   };
 
-  // setGetAboutYouModelInput(model);
-
-  console.log(model);
-
-  // if(!loadedData.phoneNumber) loadedData.phoneNumber = '';
-
   const [setAboutYouMutation] = useSetAboutYouMutation();
-
-
 
   const handleSave = useCallback(
     (getAboutYouModel: GetAboutYouModelInput) => {
@@ -79,17 +57,13 @@ const AboutYou = () => {
     [setAboutYouMutation, '']
   );
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-  };
-
   const onSubmit = (
     values: GetAboutYouModelInput,
     { setSubmitting }: FormikHelpers<GetAboutYouModelInput>
   ) => {
     next(values);
     model = values; // Update the model for it the user goes backwards
-    // *** TODO - set the company profile Id that comes back from the mutation
+    // *** TODO - set the company profile Id that comes back from the mutation and make available for the next steps
   };
 
   const next = (values: GetAboutYouModelInput) => {
@@ -107,7 +81,7 @@ const AboutYou = () => {
         <Form className="space-y-8 divide-y divide-gray-200">
           <div className="space-y-8 divide-y divide-gray-200">
             <div className="pt-8">
-              <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+              <div className="text-gray-700 mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                 <div className="sm:col-span-3">
                   <label
                     htmlFor="givenName"
@@ -337,12 +311,10 @@ const AboutYou = () => {
               </button>
               <button
                 type="submit"
-                // onClick={() => next()}
                 className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Next
               </button>
-              {/* <button type="submit">Submit</button> */}
             </div>
           </div>
         </Form>
