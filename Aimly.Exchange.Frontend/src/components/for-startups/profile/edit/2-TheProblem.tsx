@@ -37,7 +37,7 @@ const TheProblem = () => {
                   <textarea
                     id="your-why"
                     name="your-why"
-                    rows={3}
+                    rows={8}
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
                     defaultValue={''}
                   />
@@ -57,7 +57,7 @@ const TheProblem = () => {
                   <textarea
                     id="the-problem"
                     name="the-problem"
-                    rows={3}
+                    rows={8}
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
                     defaultValue={''}
                   />
