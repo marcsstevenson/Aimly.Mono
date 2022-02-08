@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<107080ba18b0fcbda54d51ffbc5c75fe>>
+ * @generated SignedSource<<021fb9ca84ff7fd7ded2d2b213d712ef>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,10 +15,24 @@ export type getAboutYouQuery$variables = {
 export type getAboutYouQueryVariables = getAboutYouQuery$variables;
 export type getAboutYouQuery$data = {
   readonly getAboutYou: {
+    readonly userId: any | null;
     readonly givenName: string | null;
     readonly familyName: string | null;
     readonly phoneNumber: string | null;
     readonly linkedInProfile: string | null;
+    readonly companyProfileId: any | null;
+    readonly companyName: string | null;
+    readonly website: string | null;
+    readonly numberOfFounders: number | null;
+    readonly floor: string | null;
+    readonly streetNumber: string | null;
+    readonly streetName: string | null;
+    readonly addressLocality: string | null;
+    readonly addressCity: string | null;
+    readonly addressRegion: string | null;
+    readonly addressCountry: string | null;
+    readonly postalCode: string | null;
+    readonly postOfficeBoxNumber: string | null;
   } | null;
 };
 export type getAboutYouQueryResponse = getAboutYouQuery$data;
@@ -60,6 +74,13 @@ v1 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "userId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "givenName",
         "storageKey": null
       },
@@ -82,6 +103,97 @@ v1 = [
         "args": null,
         "kind": "ScalarField",
         "name": "linkedInProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyProfileId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyName",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "website",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "numberOfFounders",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "floor",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "streetNumber",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "streetName",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressLocality",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressCity",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressRegion",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressCountry",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "postalCode",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "postOfficeBoxNumber",
         "storageKey": null
       }
     ],
@@ -106,16 +218,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "09915e8045b6924ec57f2ce4cf94043d",
+    "cacheID": "c03e1529b319fc6be2781f2cbf80a963",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $id: UUID!\n) {\n  getAboutYou(command: {userId: $id}) {\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n) {\n  getAboutYou(command: {userId: $id}) {\n    userId\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ecb4f3463a2a3c40415a3787647f51b5";
+(node as any).hash = "c1a0dab41769424e8811856fa42e0c7e";
 
 export default node;

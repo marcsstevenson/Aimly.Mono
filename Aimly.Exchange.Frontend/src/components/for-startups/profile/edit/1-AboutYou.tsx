@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
@@ -9,6 +9,7 @@ import * as GetAboutYouQuery from '__generated__/getAboutYouQuery.graphql';
 import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
+import { Field, Form, Formik, FormikHelpers } from 'formik';
 
 // const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
 // const queryReference2 = loadQuery<GetAboutYouQuery.getAboutYouQuery>(
@@ -18,7 +19,8 @@ import { PrivateContext } from 'components/private/PrivateContext';
 // );
 
 const AboutYou = () => {
-  const { userId } = useContext(PrivateContext);
+  const { user, userId } = useContext(PrivateContext);
+  // const [ getAboutYouModelInput, setGetAboutYouModelInput ] = useState<GetAboutYouModelInput>({});
   const navigateToPage = useNavigateToPage();
   // const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
@@ -35,17 +37,40 @@ const AboutYou = () => {
     GetAboutYouQuery.default,
     getAboutYouQueryVariables
   );
-  console.log(data2.getAboutYou);
 
-  const [setAboutYouMutation] = useSetAboutYouMutation();
+  const loadedData = data2.getAboutYou;
 
   let model: GetAboutYouModelInput = {
     ...data2.getAboutYou,
     userId: userId,
-    // companyName: 'ACME',
-    // givenName: 'Marc',
-    // familyName: 'Stevenson',
+    givenName: loadedData?.givenName ?? '',
+    familyName: loadedData?.familyName ?? '',
+    phoneNumber: loadedData?.phoneNumber ?? '',
+    linkedInProfile: loadedData?.linkedInProfile ?? '',
+    companyProfileId: loadedData?.companyProfileId ?? '',
+    companyName: loadedData?.companyName ?? '',
+    website: loadedData?.website ?? '',
+    numberOfFounders: loadedData?.numberOfFounders ?? 1,
+    floor: loadedData?.floor ?? '',
+    streetNumber: loadedData?.streetNumber ?? '',
+    streetName: loadedData?.streetName ?? '',
+    addressLocality: loadedData?.addressLocality ?? '',
+    addressCity: loadedData?.addressCity ?? '',
+    addressRegion: loadedData?.addressRegion ?? '',
+    addressCountry: loadedData?.addressCountry ?? '',
+    postalCode: loadedData?.postalCode ?? '',
+    postOfficeBoxNumber: loadedData?.postOfficeBoxNumber ?? '',
   };
+
+  // setGetAboutYouModelInput(model);
+
+  console.log(model);
+
+  // if(!loadedData.phoneNumber) loadedData.phoneNumber = '';
+
+  const [setAboutYouMutation] = useSetAboutYouMutation();
+
+
 
   const handleSave = useCallback(
     (getAboutYouModel: GetAboutYouModelInput) => {
@@ -58,9 +83,18 @@ const AboutYou = () => {
     event.preventDefault();
   };
 
-  const next = () => {
-    console.log(model);
-    handleSave(model);
+  const onSubmit = (
+    values: GetAboutYouModelInput,
+    { setSubmitting }: FormikHelpers<GetAboutYouModelInput>
+  ) => {
+    next(values);
+    model = values; // Update the model for it the user goes backwards
+    // *** TODO - set the company profile Id that comes back from the mutation
+  };
+
+  const next = (values: GetAboutYouModelInput) => {
+    console.log(values);
+    handleSave(values);
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -69,250 +103,250 @@ const AboutYou = () => {
 
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
-      <form onSubmit={handleSubmit} className="space-y-8 divide-y divide-gray-200">
-        <div className="space-y-8 divide-y divide-gray-200">
-          <div className="pt-8">
-            <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="first-name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  First name
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Last name
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Email address
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="phoneNumber"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Phone number
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    type="text"
-                    autoComplete="tel"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="company-name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Company name
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="company-name"
-                    id="company-name"
-                    autoComplete="organization"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="company-url"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Company website
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="company-url"
-                    id="company-url"
-                    autoComplete="url"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-1">
-                <label
-                  htmlFor="number-of-founders"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Number of founders
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="number"
-                    min="1"
-                    name="number-of-founders"
-                    id="number-of-founders"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="street-address"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Street address
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="street-address"
-                    id="street-address"
-                    autoComplete="street-address"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  City
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autoComplete="address-level2"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="region"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  State / Province
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="region"
-                    id="region"
-                    autoComplete="address-level1"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="postal-code"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  ZIP / Postal code
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="postal-code"
-                    id="postal-code"
-                    autoComplete="postal-code"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Country
-                </label>
-                <div className="mt-1">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+      <Formik initialValues={model} onSubmit={onSubmit}>
+        <Form className="space-y-8 divide-y divide-gray-200">
+          <div className="space-y-8 divide-y divide-gray-200">
+            <div className="pt-8">
+              <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="givenName"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
                   >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
+                    First name
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="givenName"
+                      id="givenName"
+                      autoComplete="given-name"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="familyName"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Last name
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="familyName"
+                      id="familyName"
+                      autoComplete="family-name"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Email address
+                  </label>
+                  <div className="mt-1">
+                    <label id="email" className="block text-sm text-gray-700 dark:text-gray-200">
+                      {user?.email}
+                    </label>
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="phoneNumber"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Phone number
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      autoComplete="tel"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="companyName"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Company name
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="companyName"
+                      id="companyName"
+                      autoComplete="organization"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="website"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Company website
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="website"
+                      id="website"
+                      autoComplete="url"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="numberOfFounders"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Number of founders
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="number"
+                      min="1"
+                      name="numberOfFounders"
+                      id="numberOfFounders"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-6">
+                  <label
+                    htmlFor="streetName"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Street address
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="streetName"
+                      id="streetName"
+                      autoComplete="street-address"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="addressCity"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    City
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="addressCity"
+                      id="addressCity"
+                      autoComplete="address-level2"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="addressCity"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    State / Province
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="addressCity"
+                      id="addressCity"
+                      autoComplete="address-level1"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="postalCode"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    ZIP / Postal code
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="postalCode"
+                      id="postalCode"
+                      autoComplete="postal-code"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="addressCountry"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Country
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      id="addressCountry"
+                      name="addressCountry"
+                      autoComplete="country-name"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+
+                      // <option>United States</option>
+                      // <option>Canada</option>
+                      // <option>Mexico</option>
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="py-5">
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Done
-            </button>
-            <button
-              type="button"
-              onClick={() => next()}
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Next
-            </button>
+          <div className="py-5">
+            <div className="flex justify-end">
+              <button
+                type="button"
+                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Done
+              </button>
+              <button
+                type="submit"
+                // onClick={() => next()}
+                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Next
+              </button>
+              {/* <button type="submit">Submit</button> */}
+            </div>
           </div>
-        </div>
-      </form>
+        </Form>
+      </Formik>
     </StartupQuestionnaireManager>
   );
 };
