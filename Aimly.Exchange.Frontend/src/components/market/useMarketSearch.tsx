@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { loadQuery, usePreloadedQuery, useLazyLoadQuery } from 'react-relay/hooks';
-import RelayEnvironment from 'RelayEnvironment';
+// import RelayEnvironment from 'RelayEnvironment';
 import * as MarketSearchQuery from '__generated__/marketSearchQuery.graphql';
 
 class MarketState {
@@ -24,7 +24,7 @@ function useMarketSearch() {
 
   const variables = {};
   // const data = usePreloadedQuery<MarketSearchQuery.marketSearchQuery>(MarketSearchQuery.default, preloadedQuery);
-  
+
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<MarketSearchQuery.marketSearchQuery>(
     MarketSearchQuery.default,

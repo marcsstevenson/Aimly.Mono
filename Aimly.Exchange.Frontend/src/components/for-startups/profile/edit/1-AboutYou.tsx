@@ -1,21 +1,16 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import {
-  useLazyLoadQuery,
-} from 'react-relay/hooks';
-import useSetAboutYouMutation from 'useSetAboutYouMutation'
-import {
-  GetAboutYouModelInput,
-} from "__generated__/useSetAboutYouMutation.graphql";
-import * as GetAboutYouQuery from "__generated__/getAboutYouQuery.graphql";
+import { useLazyLoadQuery } from 'react-relay/hooks';
+import useSetAboutYouMutation from 'useSetAboutYouMutation';
+import { GetAboutYouModelInput } from '__generated__/useSetAboutYouMutation.graphql';
+import * as GetAboutYouQuery from '__generated__/getAboutYouQuery.graphql';
 import { Pages } from 'components/shared/AppRoutes';
-import useNavigateToPage from "components/shared/useNavigateToPage";
+import useNavigateToPage from 'components/shared/useNavigateToPage';
+import { PrivateContext } from 'components/private/PrivateContext';
 
-
-const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
-const getAboutYouQueryVariables = { id: userId };
+// const userId = "57E37CF3-FE25-4B10-93F5-19AAFB9E53E8";
 // const queryReference2 = loadQuery<GetAboutYouQuery.getAboutYouQuery>(
 //   RelayEnvironment,
 //   GetAboutYouQuery.default,
@@ -23,51 +18,57 @@ const getAboutYouQueryVariables = { id: userId };
 // );
 
 const AboutYou = () => {
+  const { userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   // const navigateToPage = useNavigateToPage();
-  // const topRef = useRef<HTMLDivElement>(null);
-  const currentStep = "AboutYou";
+  const topRef = useRef<HTMLDivElement>(null);
+  const currentStep = 'AboutYou';
+
+  const getAboutYouQueryVariables = { id: userId };
 
   // const data2 = usePreloadedQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, queryReference2);
 
   // navigateToPage.
 
   // Lazy load this query because it is only relevant to this component
-  const data2 = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(GetAboutYouQuery.default, getAboutYouQueryVariables);
+  const data2 = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(
+    GetAboutYouQuery.default,
+    getAboutYouQueryVariables
+  );
   console.log(data2.getAboutYou);
 
   const [setAboutYouMutation] = useSetAboutYouMutation();
 
   let model: GetAboutYouModelInput = {
+    ...data2.getAboutYou,
     userId: userId,
-    companyName: "ACME",
-    givenName: 'Marc',
-    familyName: 'Stevenson'
+    // companyName: 'ACME',
+    // givenName: 'Marc',
+    // familyName: 'Stevenson',
   };
 
   const handleSave = useCallback(
     (getAboutYouModel: GetAboutYouModelInput) => {
       setAboutYouMutation(getAboutYouModel);
     },
-    [setAboutYouMutation, ""]
+    [setAboutYouMutation, '']
   );
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-  }
+  };
 
   const next = () => {
     console.log(model);
-    // handleSave(model);
-    // if (topRef.current) {
-    //   topRef.current.scrollIntoView({ behavior: 'smooth' });
-    // }
-    // navigate(GetPathForPage(Pages.TheProblem));
+    handleSave(model);
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
     navigateToPage(Pages.TheProblem);
   };
 
   return (
-    <StartupQuestionnaireManager currentStep={ currentStep }>
+    <StartupQuestionnaireManager currentStep={currentStep}>
       <form onSubmit={handleSubmit} className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200">
           <div className="pt-8">

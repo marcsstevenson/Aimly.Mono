@@ -6,23 +6,39 @@ import Loading from 'components/Loading';
 import { GetPrivateRoutes } from 'components/shared/AppRoutes';
 import SideBar from './SideBar';
 import { PrivateContext, PrivateContextType } from './PrivateContext';
-import useCheckInMutation from './useCheckInMutation';
+// import useCheckInMutation from './useCheckInMutation';
+import useCheckInMutation2 from './useCheckInMutation2';
 
 const PrivateShell = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0();
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
-  const [checkInMutation] = useCheckInMutation();
+  // const [checkInMutation] = useCheckInMutation();
+  const { checkIn, checkedInUserId } = useCheckInMutation2();
+
+  // Instantiate the initial state values
+  // Note that userId is stored in browser storage
+  const privateContextValue: PrivateContextType = {
+    isSidebarOpen: isSidebarOpen,
+    setSidebarOpen: setSidebarOpen,
+    user: user,
+    userId: userId,
+    checkInUser: setUserId,
+  };
 
   useEffect(() => {
     if (user) {
       // Check in the user
-      var userId = checkInMutation(user);
-      console.log(userId);
+      checkIn(user);
     }
-  }, [user, checkInMutation]); // [] means that this effect will only run once
+  }, []);
 
+  useEffect(() => {
+    console.log(checkedInUserId);
+    setUserId(checkedInUserId);
+  }, [checkedInUserId]);
 
   // if (user) {
   //   // Check in the user
@@ -72,45 +88,23 @@ const PrivateShell = (): JSX.Element => {
     return <Loading />;
   }
 
-  // const ToggleSidebarOpen = () => {
-  //   PrivateContextValue.isSidebarOpen = !PrivateContextValue.isSidebarOpen;
-  // };
-
-  // Instantiate the initial state values
-  // Note that userId is stored in browser storage
-  const privateContextValue: PrivateContextType = {
-    isSidebarOpen: isSidebarOpen,
-    setSidebarOpen: setSidebarOpen,
-    user: user,
-    userId: null,
-  };
-
   return (
-      <PrivateContext.Provider value={privateContextValue}>
+    <PrivateContext.Provider value={privateContextValue}>
+      {!userId && <span>Checking you in...</span>}
+      {userId && (
         <div className="min-h-full">
           <SideBar />
           <div className="lg:pl-64 flex flex-col flex-1">
+            {/* <span> state: { userId }</span> */}
             <TopBar />
             <main className="flex-1 pb-8">{GetPrivateRoutes()}</main>
           </div>
         </div>
-      </PrivateContext.Provider>
+      )}
+    </PrivateContext.Provider>
   );
 };
 
 export default withAuthenticationRequired(PrivateShell, {
   onRedirecting: () => <Loading />,
 });
-
-// export function Main() {
-//   const value: PrivateContextType = {
-//     isSidebarOpen: false,
-//     testValue: "Hai",
-//   };
-
-//   return (
-//     <PrivateContext.Provider value={value}>
-//       <PrivateShell />
-//     </PrivateContext.Provider>
-//   );
-// }

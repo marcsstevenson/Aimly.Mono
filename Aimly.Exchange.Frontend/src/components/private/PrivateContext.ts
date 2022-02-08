@@ -11,6 +11,8 @@ export interface PrivateContextType {
   user: User | null | undefined;
   // The Id of the user within the backend database
   userId: string | null
+  // Check in the user with their Id
+  checkInUser:(userId: string) => void
 }
 
 export const PrivateContext = createContext<PrivateContextType>({
@@ -18,6 +20,7 @@ export const PrivateContext = createContext<PrivateContextType>({
   setSidebarOpen: (isSidebarOpen: boolean) => {},
   user: null,
   userId: null,
+  checkInUser: (userId: string) => {},
 });
 
 // export const PrivateContext = createContext(null);
