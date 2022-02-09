@@ -24,7 +24,10 @@ const AboutYou = () => {
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(
     GetAboutYouQuery.default,
-    getAboutYouQueryVariables
+    getAboutYouQueryVariables,
+    {
+      fetchPolicy: 'network-only',
+    }
   );
 
   const loadedData = data.getAboutYou;
@@ -70,9 +73,6 @@ const AboutYou = () => {
     // { setSubmitting }: FormikHelpers<GetAboutYouModelInput>
   ) => {
     handleSave(values);
-    model = values; // Update the model for it the user goes backwards
-    // setSubmitting(false);
-    // *** TODO - set the company profile Id that comes back from the mutation and make available for the next steps
   };
 
   const goNext = (companyProfileId: string) => {
@@ -333,17 +333,10 @@ const AboutYou = () => {
 
             <div className="py-5">
               <div className="flex justify-end">
-                <button
-                  type="button"
-                  className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-200"
-                >
+                <button disabled={isSubmitting} type="button" className="form-done">
                   Done
                 </button>
-                <button
-                  disabled={isSubmitting}
-                  type="submit"
-                  className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-300"
-                >
+                <button disabled={isSubmitting} type="submit" className="form-next ml-3">
                   Next
                 </button>
               </div>
