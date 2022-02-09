@@ -51,13 +51,13 @@ export const steps: StartupQuestionnaireSteps[] = [
     description: 'How big an effect can you have?',
     status: StepStatusOptions.Complete,
   },
-  {
-    id: 0,
-    path: '/for-startups/profile/edit/Customise',
-    name: 'Customise',
-    description: 'Customise your profile',
-    status: StepStatusOptions.Complete,
-  },
+  // {
+  //   id: 0,
+  //   path: '/for-startups/profile/edit/Customise',
+  //   name: 'Customise',
+  //   description: 'Customise your profile',
+  //   status: StepStatusOptions.Complete,
+  // },
 ];
 
 export interface StartupQuestionnaireManagerProps {

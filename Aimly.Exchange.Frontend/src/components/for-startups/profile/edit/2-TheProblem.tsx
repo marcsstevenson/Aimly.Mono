@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useRef } from 'react';
+import useLocationQuery from 'components/shared/useLocationQuery';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
@@ -15,10 +16,12 @@ const TheProblem = () => {
   const { userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
+  let locationQuery = useLocationQuery();
+
   const currentStep = 'TheProblem';
   const getTheProblemQueryVariables = {
     id: userId ?? '',
-    companyProfileId: '21F299A9-DB01-45A2-13F3-08D9E422A60E',
+    companyProfileId: locationQuery.get('companyProfileId'),
   };
 
   // Lazy load this query because it is only relevant to this component
@@ -47,10 +50,7 @@ const TheProblem = () => {
     [setTheProblemMutation, '']
   );
 
-  const onSubmit = (
-    values: GetTheProblemModelInput,
-    { setSubmitting }: FormikHelpers<GetTheProblemModelInput>
-  ) => {
+  const onSubmit = (values: GetTheProblemModelInput) => {
     next(values);
     model = values; // Update the model for it the user goes backwards
     // *** TODO - set the company profile Id that comes back from the mutation and make available for the next steps
@@ -61,7 +61,7 @@ const TheProblem = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigateToPage(Pages.TheSolution);
+    navigateToPage(Pages.TheSolution, '?companyProfileId=' + values.companyProfileId);
   };
 
   return (
@@ -70,7 +70,7 @@ const TheProblem = () => {
         <Form className="space-y-8 divide-y divide-gray-200">
           <div className="space-y-8 divide-y divide-gray-200">
             <div className="pt-8">
-              <div className="text-gray-700 mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+              <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 text-gray-700 sm:grid-cols-6">
                 <div className="sm:col-span-6">
                   <label
                     htmlFor="purposeDetails"
@@ -87,7 +87,7 @@ const TheProblem = () => {
                       name="purposeDetails"
                       as="textarea"
                       rows={8}
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                      className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
                 </div>
@@ -107,8 +107,7 @@ const TheProblem = () => {
                       name="problemDetails"
                       as="textarea"
                       rows={8}
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
-
+                      className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
                 </div>
@@ -120,13 +119,13 @@ const TheProblem = () => {
             <div className="flex justify-end">
               <button
                 type="button"
-                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-200"
               >
                 Done
               </button>
               <button
                 type="submit"
-                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Next
               </button>

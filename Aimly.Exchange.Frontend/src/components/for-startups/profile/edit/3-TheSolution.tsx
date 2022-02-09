@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { Pages } from 'components/shared/AppRoutes';
+
+import useNavigateToPage from 'components/shared/useNavigateToPage';
 
 const TheSolution = () => {
-  const navigate = useNavigate();
+  const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = 'TheSolution';
 
@@ -14,7 +15,7 @@ const TheSolution = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigate(GetPathForPage(Pages.Potential));
+    navigateToPage(Pages.Potential); //, "?companyProfileId=" + values.companyProfileId);
   };
 
   return (
@@ -22,7 +23,7 @@ const TheSolution = () => {
       <form className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200">
           <div className="pt-8">
-            <div className="text-gray-700 mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 text-gray-700 sm:grid-cols-6">
               <div className="sm:col-span-6">
                 <label
                   htmlFor="solution-novelty"
@@ -38,7 +39,7 @@ const TheSolution = () => {
                     id="solution-novelty"
                     name="solution-novelty"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -58,7 +59,7 @@ const TheSolution = () => {
                     id="solution-description"
                     name="solution-description"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -78,7 +79,7 @@ const TheSolution = () => {
                     id="state-of-validation"
                     name="state-of-validation"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -98,7 +99,7 @@ const TheSolution = () => {
                     id="competition"
                     name="competition"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -118,7 +119,7 @@ const TheSolution = () => {
                     id="position-vs-competition"
                     name="position-vs-competition"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -138,7 +139,7 @@ const TheSolution = () => {
                     id="business-model"
                     name="business-model"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -158,7 +159,7 @@ const TheSolution = () => {
                     id="traction"
                     name="traction"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -178,7 +179,7 @@ const TheSolution = () => {
                     id="founders"
                     name="founders"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -197,7 +198,7 @@ const TheSolution = () => {
                   <select
                     id="current-annual-revenue"
                     name="current-annual-revenue"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   >
                     <option>Pre-Revenue</option>
                     <option>Less than $500K/annum</option>
@@ -222,7 +223,7 @@ const TheSolution = () => {
                     id="external-funding"
                     name="external-funding"
                     rows={3}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -235,14 +236,14 @@ const TheSolution = () => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-200"
             >
               Done
             </button>
             <button
               type="button"
               onClick={() => next()}
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               Next
             </button>

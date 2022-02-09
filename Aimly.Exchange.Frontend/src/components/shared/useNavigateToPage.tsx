@@ -5,8 +5,13 @@ import { GetPathForPage, Pages } from "./AppRoutes"
 const useNavigateToPage = () => {
   const navigate = useNavigate();
 
-  const navigateToPage = (page: Pages): void => {
-    navigate(GetPathForPage(page));
+  const navigateToPage = (page: Pages, extras: string | null = null): void => {
+    let path = GetPathForPage(page);
+    if (extras) {
+      path += `${extras}`;
+    }
+
+    navigate(path);
   }
 
   return navigateToPage;

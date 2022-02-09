@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { loadQuery, usePreloadedQuery, useLazyLoadQuery } from 'react-relay/hooks';
-// import RelayEnvironment from 'RelayEnvironment';
+import { useLazyLoadQuery } from 'react-relay/hooks';
 import * as MarketSearchQuery from '__generated__/marketSearchQuery.graphql';
 
 class MarketState {

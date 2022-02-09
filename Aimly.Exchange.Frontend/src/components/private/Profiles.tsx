@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import {
-  CheckCircleIcon,
   ChevronDoubleRightIcon,
   UserCircleIcon,
   LightningBoltIcon,
@@ -14,8 +13,8 @@ import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
 const cards = [
   { name: 'Personal', href: '#', icon: UserCircleIcon, amount: 'Marc Stevenson' },
-  { name: 'Startup', href: '#', icon: LightningBoltIcon, amount: 'Aimly.io' },
-  { name: 'Startup', href: '#', icon: LightningBoltIcon, amount: 'Ludily.com' },
+  { name: 'Startup (admin)', href: '#', icon: LightningBoltIcon, amount: 'Aimly.io' },
+  { name: 'Startup (founder)', href: '#', icon: LightningBoltIcon, amount: 'Ludily.com' },
   { name: 'Mentor', href: '#', icon: UserGroupIcon, amount: 'Innovation' },
   { name: 'Expert', href: '#', icon: StarIcon, amount: 'Software Engineer' },
   { name: 'Expert', href: '#', icon: StarIcon, amount: 'Technology consultant' },

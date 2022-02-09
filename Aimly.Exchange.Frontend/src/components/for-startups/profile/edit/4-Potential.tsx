@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { Pages } from 'components/shared/AppRoutes';
+
+import useNavigateToPage from 'components/shared/useNavigateToPage';
 
 const Potential = () => {
-  const navigate = useNavigate();
+  const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
   const currentStep = 'Potential';
 
@@ -14,7 +15,7 @@ const Potential = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigate(GetPathForPage(Pages.Customise));
+    navigateToPage(Pages.DashBoard);
   };
 
   return (
