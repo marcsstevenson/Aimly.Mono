@@ -40,7 +40,7 @@ const QuickSearch = (): JSX.Element => {
               dark:bg-gray-800 dark:focus:bg-white
               text-gray-900 placeholder-gray-500
               shadow-sm
-              focus:outline-none focus:ring-3 focus:ring-indigo-500
+              focus:outline-none focus:ring-3 focus:ring-primary-500
               sm:text-sm"
             placeholder="Search market"
             type="search"

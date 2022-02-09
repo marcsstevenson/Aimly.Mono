@@ -57,7 +57,7 @@ const Customise = () => {
                     <div className="flex text-sm text-gray-600 dark:text-gray-400">
                       <label
                         htmlFor="file-upload"
-                        className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                        className="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500"
                       >
                         <span>Upload a file</span>
                         <input
@@ -96,7 +96,7 @@ const Customise = () => {
                       </span>
                       <button
                         type="button"
-                        className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                       >
                         Change
                       </button>
@@ -128,7 +128,7 @@ const Customise = () => {
                         id="comments"
                         name="comments"
                         type="checkbox"
-                        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -149,7 +149,7 @@ const Customise = () => {
                         id="candidates"
                         name="candidates"
                         type="checkbox"
-                        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -170,7 +170,7 @@ const Customise = () => {
                         id="offers"
                         name="offers"
                         type="checkbox"
-                        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -202,7 +202,7 @@ const Customise = () => {
                       id="push-everything"
                       name="push-notifications"
                       type="radio"
-                      className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
                     />
                     <label
                       htmlFor="push-everything"
@@ -216,7 +216,7 @@ const Customise = () => {
                       id="push-email"
                       name="push-notifications"
                       type="radio"
-                      className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
                     />
                     <label
                       htmlFor="push-email"
@@ -230,7 +230,7 @@ const Customise = () => {
                       id="push-nothing"
                       name="push-notifications"
                       type="radio"
-                      className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
                     />
                     <label
                       htmlFor="push-nothing"
@@ -250,7 +250,7 @@ const Customise = () => {
             <button
               type="button"
               onClick={() => next()}
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >
               Done
             </button>

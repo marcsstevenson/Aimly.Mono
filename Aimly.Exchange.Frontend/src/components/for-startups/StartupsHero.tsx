@@ -18,7 +18,7 @@ const StartupsHero = () => (
         <div className="sm:max-w-lg">
           <h1 className="text-4xl font font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl">
             The time to startup is{' '}
-            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-500 relative inline-block">
+            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-primary-500 relative inline-block">
               <span className="relative text-white">NOW</span>
             </span>
           </h1>
@@ -97,7 +97,7 @@ const StartupsHero = () => (
 
           <Link
             to={{ pathname: '/for-startups/profile/edit/AboutYou' }}
-            className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
           >
             Get started NOW
             <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

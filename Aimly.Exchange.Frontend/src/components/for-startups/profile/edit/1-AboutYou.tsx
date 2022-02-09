@@ -121,7 +121,7 @@ const AboutYou = () => {
                         name="givenName"
                         id="givenName"
                         autoComplete="given-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -139,7 +139,7 @@ const AboutYou = () => {
                         name="familyName"
                         id="familyName"
                         autoComplete="family-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -157,7 +157,7 @@ const AboutYou = () => {
                         name="linkedInProfile"
                         id="linkedInProfile"
                         autoComplete="family-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -175,7 +175,7 @@ const AboutYou = () => {
                         id="phoneNumber"
                         name="phoneNumber"
                         autoComplete="tel"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -193,7 +193,7 @@ const AboutYou = () => {
                         name="companyName"
                         id="companyName"
                         autoComplete="organization"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -211,7 +211,7 @@ const AboutYou = () => {
                         name="website"
                         id="website"
                         autoComplete="url"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -229,7 +229,7 @@ const AboutYou = () => {
                         min="1"
                         name="numberOfFounders"
                         id="numberOfFounders"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -247,7 +247,7 @@ const AboutYou = () => {
                         name="streetName"
                         id="streetName"
                         autoComplete="street-address"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -265,7 +265,7 @@ const AboutYou = () => {
                         name="addressCity"
                         id="addressCity"
                         autoComplete="address-level2"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -283,7 +283,7 @@ const AboutYou = () => {
                         name="addressCity"
                         id="addressCity"
                         autoComplete="address-level1"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -301,7 +301,7 @@ const AboutYou = () => {
                         name="postalCode"
                         id="postalCode"
                         autoComplete="postal-code"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -319,7 +319,7 @@ const AboutYou = () => {
                         id="addressCountry"
                         name="addressCountry"
                         autoComplete="country-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
 
                         // <option>United States</option>
                         // <option>Canada</option>

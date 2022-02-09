@@ -74,7 +74,7 @@ export const Market = () => {
                         name="mentors"
                         type="checkbox"
                         checked={true}
-                        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -95,7 +95,7 @@ export const Market = () => {
                         id="startUps"
                         name="startUps"
                         type="checkbox"
-                        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -114,7 +114,7 @@ export const Market = () => {
                         id="experts"
                         name="experts"
                         type="checkbox"
-                        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -142,7 +142,7 @@ export const Market = () => {
                       id="name-contains"
                       name="name-filter-type"
                       type="radio"
-                      className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
                     />
                     <label
                       htmlFor="name-contains"
@@ -156,7 +156,7 @@ export const Market = () => {
                       id="name-starts-with"
                       name="name-filter-type"
                       type="radio"
-                      className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
                     />
                     <label
                       htmlFor="name-starts-with"
@@ -170,7 +170,7 @@ export const Market = () => {
                       id="name-exact"
                       name="name-filter-type"
                       type="radio"
-                      className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
                     />
                     <label
                       htmlFor="name-exact"
@@ -185,7 +185,7 @@ export const Market = () => {
             <div className="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-right sm:px-6">
               <button
                 type="submit"
-                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
                 Search
               </button>
@@ -205,7 +205,7 @@ export const Market = () => {
                       onClick={() => requestDisplayMode(DisplayModeOptions.grid)}
                       type="button"
                       className={classNames(
-                        displayMode === DisplayModeOptions.grid ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
+                        displayMode === DisplayModeOptions.grid ? 'text-primary-800' : 'text-gray-400 hover:text-primary-500',
                         '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
                       )}
                     >
@@ -218,7 +218,7 @@ export const Market = () => {
                       onClick={() => requestDisplayMode(DisplayModeOptions.list)}
                       type="button"
                       className={classNames(
-                        displayMode === DisplayModeOptions.list ? 'text-indigo-800' : 'text-gray-400 hover:text-indigo-500',
+                        displayMode === DisplayModeOptions.list ? 'text-primary-800' : 'text-gray-400 hover:text-primary-500',
                         '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
                       )}
                     >

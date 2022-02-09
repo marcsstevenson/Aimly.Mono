@@ -33,7 +33,7 @@ const NavBar = () => {
     });
 
   return (
-    <Disclosure as="nav" className="z-20 bg-indigo-600">
+    <Disclosure as="nav" className="z-20 bg-primary-600">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -145,7 +145,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <NavLink
                             to={{ pathname: 'profile' }}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none"
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none"
                           >
                             Your Profile
                           </NavLink>
@@ -153,7 +153,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <NavLink
                             to={{ pathname: 'settings' }}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none"
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none"
                           >
                             Settings
                           </NavLink>
@@ -161,7 +161,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <div
                             onClick={() => logoutWithRedirect()}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none cursor-pointer"
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none cursor-pointer"
                           >
                             Sign out
                           </div>

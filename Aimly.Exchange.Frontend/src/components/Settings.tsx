@@ -17,7 +17,7 @@ export const Settings = () => {
 
   return (
     <div>
-      <Disclosure as="div" className="relative bg-indigo-700 pb-32 overflow-hidden">
+      <Disclosure as="div" className="relative bg-primary-700 pb-32 overflow-hidden">
         {({ open }) => (
           <>
             <div
@@ -35,10 +35,10 @@ export const Settings = () => {
                   viewBox="0 0 1750 308"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M284.161 308H1465.84L875.001 182.413 284.161 308z" className="fill-indigo-600" />
-                  <path d="M1465.84 308L16.816 0H1750v308h-284.16z" className="fill-indigo-700" />
-                  <path d="M1733.19 0L284.161 308H0V0h1733.19z" className="fill-indigo-800" />
-                  <path d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z" className="fill-indigo-900" />
+                  <path d="M284.161 308H1465.84L875.001 182.413 284.161 308z" className="fill-primary-600" />
+                  <path d="M1465.84 308L16.816 0H1750v308h-284.16z" className="fill-primary-700" />
+                  <path d="M1733.19 0L284.161 308H0V0h1733.19z" className="fill-primary-800" />
+                  <path d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z" className="fill-primary-900" />
                 </svg>
               </div>
             </div>
@@ -77,7 +77,7 @@ export const Settings = () => {
                             id="about"
                             name="about"
                             rows={3}
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                            className="shadow-sm focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                             defaultValue={''}
                           />
                         </div>
@@ -104,7 +104,7 @@ export const Settings = () => {
                             />
                           </div>
                           <div className="ml-5 rounded-md shadow-sm">
-                            <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                            <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
                               <label
                                 htmlFor="mobile-user-photo"
                                 className="relative text-sm leading-4 font-medium text-gray-700 dark:text-gray-200 pointer-events-none"
@@ -160,7 +160,7 @@ export const Settings = () => {
                         id="first-name"
                         autoComplete="given-name"
                         defaultValue={ user?.given_name }
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                       />
                     </div>
 
@@ -177,7 +177,7 @@ export const Settings = () => {
                         id="last-name"
                         autoComplete="family-name"
                         defaultValue={ user?.family_name }
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                       />
                     </div>
 
@@ -189,7 +189,7 @@ export const Settings = () => {
                         type="text"
                         name="url"
                         id="url"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                       />
                     </div>
 
@@ -202,7 +202,7 @@ export const Settings = () => {
                         name="company"
                         id="company"
                         autoComplete="organization"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -235,8 +235,8 @@ export const Settings = () => {
                           checked={availableToHire}
                           onChange={setAvailableToHire}
                           className={classNames(
-                            availableToHire ? 'bg-indigo-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            availableToHire ? 'bg-primary-500' : 'bg-gray-200',
+                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
                           )}
                         >
                           <span
@@ -265,8 +265,8 @@ export const Settings = () => {
                           checked={privateAccount}
                           onChange={setPrivateAccount}
                           className={classNames(
-                            privateAccount ? 'bg-indigo-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            privateAccount ? 'bg-primary-500' : 'bg-gray-200',
+                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
                           )}
                         >
                           <span
@@ -295,8 +295,8 @@ export const Settings = () => {
                           checked={allowCommenting}
                           onChange={setAllowCommenting}
                           className={classNames(
-                            allowCommenting ? 'bg-indigo-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            allowCommenting ? 'bg-primary-500' : 'bg-gray-200',
+                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
                           )}
                         >
                           <span
@@ -325,8 +325,8 @@ export const Settings = () => {
                           checked={allowMentions}
                           onChange={setAllowMentions}
                           className={classNames(
-                            allowMentions ? 'bg-indigo-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            allowMentions ? 'bg-primary-500' : 'bg-gray-200',
+                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
                           )}
                         >
                           <span
@@ -343,13 +343,13 @@ export const Settings = () => {
                   <div className="mt-4 py-4 px-4 flex justify-end sm:px-6">
                     <button
                       type="button"
-                      className="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="ml-5 bg-indigo-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="ml-5 bg-primary-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
                       Save
                     </button>

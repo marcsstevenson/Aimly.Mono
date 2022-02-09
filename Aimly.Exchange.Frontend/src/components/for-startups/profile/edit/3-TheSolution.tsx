@@ -39,7 +39,7 @@ const TheSolution = () => {
                     id="solution-novelty"
                     name="solution-novelty"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -59,7 +59,7 @@ const TheSolution = () => {
                     id="solution-description"
                     name="solution-description"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -79,7 +79,7 @@ const TheSolution = () => {
                     id="state-of-validation"
                     name="state-of-validation"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -99,7 +99,7 @@ const TheSolution = () => {
                     id="competition"
                     name="competition"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -119,7 +119,7 @@ const TheSolution = () => {
                     id="position-vs-competition"
                     name="position-vs-competition"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -139,7 +139,7 @@ const TheSolution = () => {
                     id="business-model"
                     name="business-model"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -159,7 +159,7 @@ const TheSolution = () => {
                     id="traction"
                     name="traction"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -179,7 +179,7 @@ const TheSolution = () => {
                     id="founders"
                     name="founders"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -198,7 +198,7 @@ const TheSolution = () => {
                   <select
                     id="current-annual-revenue"
                     name="current-annual-revenue"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                   >
                     <option>Pre-Revenue</option>
                     <option>Less than $500K/annum</option>
@@ -223,7 +223,7 @@ const TheSolution = () => {
                     id="external-funding"
                     name="external-funding"
                     rows={3}
-                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                     defaultValue={''}
                   />
                 </div>
@@ -236,14 +236,14 @@ const TheSolution = () => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-200"
+              className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:text-gray-200"
             >
               Done
             </button>
             <button
               type="button"
               onClick={() => next()}
-              className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-primary-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
             >
               Next
             </button>

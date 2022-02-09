@@ -23,7 +23,7 @@ const MentorsHero = () => (
           <div className="sm:text-center lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl">
               <span className="block xl:inline">Tap into a rich ecosystem of</span>{' '}
-              <span className="block text-indigo-600 xl:inline"> Startups</span>
+              <span className="block text-primary-600 xl:inline"> Startups</span>
             </h1>
             <p className="mt-3 text-base text-gray-500 dark:text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
               It has never been a better time to startup but they need your help. Get mentoring today and help solve impactful problems.
@@ -33,7 +33,7 @@ const MentorsHero = () => (
               <Link
                 to={{ pathname: '/for-mentors/profile/edit/AboutYou' }}
                   // href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10"
                 >
                   Start mentoring
                   <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

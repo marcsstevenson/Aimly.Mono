@@ -18,7 +18,7 @@ const ProfileDropdown = (): JSX.Element => {
       {/* Profile dropdown */}
       <Menu as="div" className="ml-3 relative">
         <div>
-          <Menu.Button className="max-w-xs rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-100 dark:hover:bg-gray-800">
+          <Menu.Button className="max-w-xs rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-100 dark:hover:bg-gray-800">
             <img className="h-8 w-8 rounded-full" src={user?.picture} alt={user?.name} />
             <span className="hidden ml-3 text-gray-700 dark:text-gray-200 text-sm font-medium lg:block">
               <span className="sr-only">Open user menu for </span>
@@ -46,7 +46,7 @@ const ProfileDropdown = (): JSX.Element => {
             <Menu.Item>
               <NavLink
                 to={{ pathname: GetPathForPage(Pages.Profile) }}
-                className="font-medium block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600"
+                className="font-medium block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600"
               >
                 Your Profile
               </NavLink>
@@ -54,7 +54,7 @@ const ProfileDropdown = (): JSX.Element => {
             <Menu.Item>
               <NavLink
                 to={{ pathname: GetPathForPage(Pages.Settings) }}
-                className="font-medium block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600"
+                className="font-medium block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600"
               >
                 Settings
               </NavLink>
@@ -62,7 +62,7 @@ const ProfileDropdown = (): JSX.Element => {
             <Menu.Item>
               <div
                 onClick={() => logoutWithRedirect()}
-                className="inline-flex w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-600 focus:outline-none cursor-pointer"
+                className="inline-flex w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none cursor-pointer"
               >
                 Sign out
               </div>

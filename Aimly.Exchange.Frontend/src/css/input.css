@@ -13,7 +13,7 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply rounded-lg bg-indigo-500 py-2 px-4 font-semibold text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75;
+    @apply bg-primary-500 hover:bg-primary-700 focus:ring-primary-400 rounded-lg py-2 px-4 font-semibold text-white shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75;
   }
 
   @keyframes gradient {
@@ -95,9 +95,9 @@ body {
 }
 
 .form-next {
-  @apply ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-300;
+  @apply bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 disabled:bg-primary-300 ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
 .form-done {
-  @apply inline-flex justify-center rounded-md border border-transparent bg-gray-50 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-gray-50 disabled:text-gray-500;
+  @apply focus:ring-primary-500 inline-flex justify-center rounded-md border border-transparent bg-gray-50 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:bg-gray-50 disabled:text-gray-500;
 }
