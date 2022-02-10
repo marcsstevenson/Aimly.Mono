@@ -2,11 +2,7 @@
 import { CheckIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  StartupQuestionnaireStepOptions,
-  steps,
-  StepStatusOptions,
-} from './StartupQuestionnaireManager';
+import { steps, StepStatusOptions } from './StartupQuestionnaireManager';
 import { classNames } from 'utils/classNames';
 import { useSearchParams } from 'react-router-dom';
 

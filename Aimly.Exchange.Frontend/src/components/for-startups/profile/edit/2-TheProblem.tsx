@@ -15,12 +15,14 @@ import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';
+import { useSearchParams } from 'react-router-dom';
 
 const TheProblem = () => {
   const { userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
   let locationQuery = useLocationQuery();
+  const [searchParams] = useSearchParams();
 
   const currentStep = 'TheProblem';
   const getTheProblemQueryVariables = {
@@ -64,17 +66,17 @@ const TheProblem = () => {
 
   // This is called once the SetTheProblem mutation has completed
   const handleSubmitCompleted = (response: useSetTheProblemMutation$data): void => {
-    const companyProfileId = response.setTheProblem?.updatedCompanyProfileId;
+    let queryString = '';
 
-    if (!companyProfileId) {
-      console.log('Cannot navigate forward without a company profile Id');
+    if (searchParams) {
+      queryString += `?${searchParams}`;
     }
 
     scrollToTop();
-    navigateToPage(Pages.TheSolution, '?companyProfileId=' + companyProfileId);
+    navigateToPage(Pages.TheSolution, queryString);
   };
 
-  /// Scroll the user to the top of the page
+  // Scroll the user to the top of the page
   const scrollToTop = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });

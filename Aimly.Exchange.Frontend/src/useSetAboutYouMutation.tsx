@@ -28,7 +28,7 @@ export default function useSetAboutYouMutation() {
 
   const SetAboutYou = (
     getAboutYouModel: GetAboutYouModelInput,
-    onCompleted: (response: useSetAboutYouMutation$data) => void
+    onCompleted: (response: useSetAboutYouMutation$data, companyName: string | null | undefined) => void
   ) => {
     const input: SetAboutYouCommandInput = {
       getAboutYouModel,
@@ -38,7 +38,7 @@ export default function useSetAboutYouMutation() {
       mutation: def,
       variables: { input },
       onCompleted: (response) => {
-        onCompleted(response);
+        onCompleted(response, getAboutYouModel.companyName);
       } /* Mutation completed */,
     });
   };

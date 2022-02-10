@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
 import GetStartedHeader from 'components/for-startups/profile/edit/GetStartedHeader';
 
@@ -69,39 +68,12 @@ const StartupQuestionnaireManager = ({
   currentStep,
   children,
 }: StartupQuestionnaireManagerProps) => {
-  // const navigate = useNavigate();
   const topRef = useRef<HTMLDivElement>(null);
-
-  // function GoNext() {
-  //   for (let index = 0; index < steps.length; index++) {
-  //     const step = steps[index];
-
-  //     if (step.path === currentStep) {
-  //       // Match found, go to next step
-  //       if (index < steps.length - 1) {
-  //         // Scroll to top first
-  //         if (topRef.current) {
-  //           topRef.current.scrollIntoView({ behavior: 'smooth' });
-  //         }
-
-  //         navigate('/for-startups/profile/edit/' + steps[index + 1].path);
-  //       }
-  //     }
-  //   }
-  // }
-
-  // const [ startupQuestionnaireManagerState ] = useState<StartupQuestionnaireManagerState>(
-  //   {
-  //     test: 'Hai',
-  //     goNextFunction: GoNext,
-  //   });
-
-  // startupQuestionnaireManagerState.goNextFunction();
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <GetStartedHeader title="Startup Profile Builder" />
       <div ref={topRef}>
+        <GetStartedHeader title="Startup Profile Builder" />
         <StartupQuestionnaireSteps currentStep={currentStep}></StartupQuestionnaireSteps>
       </div>
       <div></div>

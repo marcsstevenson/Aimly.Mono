@@ -15,6 +15,7 @@ import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import validateRequiredString from 'validators/validateRequiredString';
+import { companyProfileId, context } from 'components/for-startups/UrlConstants';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -24,7 +25,7 @@ const AboutYou = () => {
   const currentStep = 'AboutYou';
   const getAboutYouQueryVariables = {
     id: userId,
-    companyProfileId: locationQuery.get('companyProfileId'),
+    companyProfileId: locationQuery.get(companyProfileId),
   };
 
   // Lazy load this query because it is only relevant to this component
@@ -62,7 +63,6 @@ const AboutYou = () => {
     postOfficeBoxNumber: loadedData?.postOfficeBoxNumber ?? '',
   };
 
-  // const [setAboutYouMutation] = useSetAboutYouMutation();
   const SetAboutYou = useSetAboutYouMutation();
 
   const onSubmit = (getAboutYouModel: GetAboutYouModelInput) => {
@@ -78,15 +78,26 @@ const AboutYou = () => {
   );
 
   // This is called once the SetAboutYou mutation has completed
-  const handleSubmitCompleted = (response: useSetAboutYouMutation$data): void => {
-    const companyProfileId = response.setAboutYou?.updatedCompanyProfileId;
+  const handleSubmitCompleted = (
+    response: useSetAboutYouMutation$data,
+    companyName: string | null | undefined
+  ): void => {
+    const companyProfileIdVal = response.setAboutYou?.updatedCompanyProfileId;
 
-    if (!companyProfileId) {
+    if (!companyProfileIdVal) {
       console.log('Cannot navigate forward without a company profile Id');
     }
 
+    let queryString = `?${companyProfileId}=${companyProfileIdVal}`;
+
+    // Add a context so that our title component knows what to display
+    // and the user can see at a glance what profile they are editing
+    if (companyName) {
+      queryString += `&${context}=${companyName}`;
+    }
+
     scrollToTop();
-    navigateToPage(Pages.TheProblem, '?companyProfileId=' + companyProfileId);
+    navigateToPage(Pages.TheProblem, queryString);
   };
 
   /// Scroll the user to the top of the page
@@ -170,7 +181,7 @@ const AboutYou = () => {
 
                   <div className="sm:col-span-3">
                     <label htmlFor="phoneNumber" className="form-label">
-                      Phone number
+                      Your phone number
                     </label>
                     <div className="mt-1">
                       <Field
@@ -234,7 +245,7 @@ const AboutYou = () => {
 
                   <div className="sm:col-span-6">
                     <label htmlFor="streetName" className="form-label">
-                      Street address
+                      Company Street address
                     </label>
                     <div className="mt-1">
                       <Field
@@ -249,7 +260,7 @@ const AboutYou = () => {
 
                   <div className="sm:col-span-2">
                     <label htmlFor="addressCity" className="form-label">
-                      City
+                      Company City
                     </label>
                     <div className="mt-1">
                       <Field
