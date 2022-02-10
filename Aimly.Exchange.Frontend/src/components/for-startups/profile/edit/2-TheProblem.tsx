@@ -80,11 +80,6 @@ const TheProblem = () => {
     }
   };
 
-  const onFinishHere = () => {
-    scrollToTop();
-    navigateToPage(Pages.Profiles);
-  };
-
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
       <Formik initialValues={model} onSubmit={onSubmit}>
@@ -139,14 +134,6 @@ const TheProblem = () => {
 
             <div className="py-5">
               <div className="flex justify-end">
-                <button
-                  disabled={isSubmitting || isValidating}
-                  type="button"
-                  className="form-done"
-                  onClick={() => onFinishHere()}
-                >
-                  Finish here
-                </button>
                 <button
                   disabled={isSubmitting || isValidating}
                   type="submit"

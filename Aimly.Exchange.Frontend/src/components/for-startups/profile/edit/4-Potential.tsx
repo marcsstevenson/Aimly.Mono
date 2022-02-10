@@ -1,112 +1,162 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
+import useLocationQuery from 'components/shared/useLocationQuery';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
+import { useLazyLoadQuery } from 'react-relay/hooks';
+import useSetPotentialMutation from 'useSetPotentialMutation';
+import {
+  GetPotentialModelInput,
+  useSetPotentialMutation$data,
+} from '__generated__/useSetPotentialMutation.graphql';
+import * as GetPotentialQuery from '__generated__/getPotentialQuery.graphql';
 import { Pages } from 'components/shared/AppRoutes';
-
 import useNavigateToPage from 'components/shared/useNavigateToPage';
+import { PrivateContext } from 'components/private/PrivateContext';
+import { Field, Form, Formik } from 'formik';
+import validateRequiredString from 'validators/validateRequiredString';
 
 const Potential = () => {
+  const { userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
-  const currentStep = 'Potential';
+  let locationQuery = useLocationQuery();
 
-  const next = () => {
+  const currentStep = 'Potential';
+  const getPotentialQueryVariables = {
+    id: userId,
+    companyProfileId: locationQuery.get('companyProfileId'),
+  };
+
+  // Lazy load this query because it is only relevant to this component
+  const data = useLazyLoadQuery<GetPotentialQuery.getPotentialQuery>(
+    GetPotentialQuery.default,
+    getPotentialQueryVariables,
+    // Ideally we could use commitLocalUpdate to update the relay cache when setAboutYouMutation is called
+    // However, for now, we'll simply always refresh this query when the component is mounted
+    {
+      fetchPolicy: 'network-only',
+    }
+  );
+
+  const loadedData = data.getPotential;
+
+  let model: GetPotentialModelInput = {
+    userId: userId,
+    companyProfileId: loadedData?.companyProfileId,
+    value: loadedData?.value ?? '',
+    potentialSize: loadedData?.potentialSize ?? '',
+    potentialValue: loadedData?.potentialValue ?? '',
+  };
+
+  const SetPotential = useSetPotentialMutation();
+
+  const onSubmit = (getAboutYouModel: GetPotentialModelInput) => {
+    handleSave(getAboutYouModel);
+  };
+
+  const handleSave = useCallback(
+    (getPotentialModel: GetPotentialModelInput) => {
+      return SetPotential(getPotentialModel, handleSubmitCompleted);
+    },
+    [SetPotential, '']
+  );
+
+  // This is called once the SetPotential mutation has completed
+  const handleSubmitCompleted = (response: useSetPotentialMutation$data): void => {
+    const companyProfileId = response.setPotential?.updatedCompanyProfileId;
+
+    if (!companyProfileId) {
+      console.log('Cannot navigate forward without a company profile Id');
+    }
+
+    scrollToTop();
+    navigateToPage(Pages.Profiles, '?companyProfileId=' + companyProfileId);
+  };
+
+  /// Scroll the user to the top of the page
+  const scrollToTop = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigateToPage(Pages.DashBoard);
   };
 
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
-      <form className="space-y-8 divide-y divide-gray-200">
-        <div className="space-y-8 divide-y divide-gray-200">
-          <div className="pt-8">
-            <div className="text-gray-700 mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="value"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Value
-                </label>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                  How would you value your movement today?
-                </p>
-                <div className="mt-1">
-                  <textarea
-                    id="value"
-                    name="value"
-                    rows={3}
-                    className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border border-gray-300 rounded-md"
-                    defaultValue={''}
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="potential-size"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Potential size
-                </label>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                  How big could your movement be?
-                </p>
-                <div className="mt-1">
-                  <textarea
-                    id="potential-size"
-                    name="potential-size"
-                    rows={3}
-                    className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border border-gray-300 rounded-md"
-                    defaultValue={''}
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="potential-value"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                >
-                  Potential value
-                </label>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                  Have you thought about what your movement would be valued in the future? If so,
-                  what?
-                </p>
-                <div className="mt-1">
-                  <textarea
-                    id="potential-value"
-                    name="potential-value"
-                    rows={3}
-                    className="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border border-gray-300 rounded-md"
-                    defaultValue={''}
-                  />
+      <Formik initialValues={model} onSubmit={onSubmit}>
+        {({ isValidating, isSubmitting }) => (
+          <Form className="space-y-8 divide-y divide-gray-200">
+            <div className="space-y-8 divide-y divide-gray-200">
+              <div className="pt-8">
+                <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 text-gray-700 sm:grid-cols-6">
+                  <div className="sm:col-span-6">
+                    <label htmlFor="value" className="form-label">
+                      Value
+                    </label>
+                    <p className="form-input-description">
+                      How would you value your movement today?
+                    </p>
+                    <div className="mt-1">
+                      <Field
+                        id="value"
+                        name="value"
+                        as="textarea"
+                        rows={4}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-6">
+                    <label htmlFor="potentialSize" className="form-label">
+                      Potential Size
+                    </label>
+                    <p className="form-input-description">How big could your movement be?</p>
+                    <div className="mt-1">
+                      <Field
+                        id="potentialSize"
+                        name="potentialSize"
+                        as="textarea"
+                        rows={4}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-6">
+                    <label htmlFor="potentialValue" className="form-label">
+                      Potential value
+                    </label>
+                    <p className="form-input-description">
+                      Have you thought about what your movement would be valued in the future? If
+                      so, what?
+                    </p>
+                    <div className="mt-1">
+                      <Field
+                        id="potentialValue"
+                        name="potentialValue"
+                        as="textarea"
+                        rows={4}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="py-5">
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-            >
-              Done
-            </button>
-            <button
-              type="button"
-              onClick={() => next()}
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      </form>
+            <div className="py-5">
+              <div className="flex justify-end">
+                <button
+                  disabled={isSubmitting || isValidating}
+                  type="submit"
+                  className="form-next ml-3"
+                >
+                  Complete
+                </button>
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </StartupQuestionnaireManager>
   );
 };
