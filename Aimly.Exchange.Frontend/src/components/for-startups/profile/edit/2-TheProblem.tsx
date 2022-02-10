@@ -5,12 +5,16 @@ import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import useSetTheProblemMutation from 'useSetTheProblemMutation';
-import { GetTheProblemModelInput } from '__generated__/useSetTheProblemMutation.graphql';
+import {
+  GetTheProblemModelInput,
+  useSetTheProblemMutation$data,
+} from '__generated__/useSetTheProblemMutation.graphql';
 import * as GetTheProblemQuery from '__generated__/getTheProblemQuery.graphql';
 import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
+import validateRequiredString from 'validators/validateRequiredString';
 
 const TheProblem = () => {
   const { userId } = useContext(PrivateContext);
@@ -20,17 +24,20 @@ const TheProblem = () => {
 
   const currentStep = 'TheProblem';
   const getTheProblemQueryVariables = {
-    id: userId ?? '',
+    id: userId,
     companyProfileId: locationQuery.get('companyProfileId'),
   };
 
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<GetTheProblemQuery.getTheProblemQuery>(
     GetTheProblemQuery.default,
-    getTheProblemQueryVariables
+    getTheProblemQueryVariables,
+    // Ideally we could use commitLocalUpdate to update the relay cache when setAboutYouMutation is called
+    // However, for now, we'll simply always refresh this query when the component is mounted
+    {
+      fetchPolicy: 'network-only',
+    }
   );
-
-  console.log(data);
 
   const loadedData = data.getTheProblem;
 
@@ -41,97 +48,116 @@ const TheProblem = () => {
     problemDetails: loadedData?.problemDetails ?? '',
   };
 
-  const [setTheProblemMutation] = useSetTheProblemMutation();
+  const SetTheProblem = useSetTheProblemMutation();
+
+  const onSubmit = (getAboutYouModel: GetTheProblemModelInput) => {
+    handleSave(getAboutYouModel);
+  };
 
   const handleSave = useCallback(
     (getTheProblemModel: GetTheProblemModelInput) => {
-      setTheProblemMutation(getTheProblemModel);
+      return SetTheProblem(getTheProblemModel, handleSubmitCompleted);
     },
-    [setTheProblemMutation, '']
+    [SetTheProblem, '']
   );
 
-  const onSubmit = (values: GetTheProblemModelInput) => {
-    next(values);
-    model = values; // Update the model for it the user goes backwards
-    // *** TODO - set the company profile Id that comes back from the mutation and make available for the next steps
+  // This is called once the SetTheProblem mutation has completed
+  const handleSubmitCompleted = (response: useSetTheProblemMutation$data): void => {
+    const companyProfileId = response.setTheProblem?.updatedCompanyProfileId;
+
+    if (!companyProfileId) {
+      console.log('Cannot navigate forward without a company profile Id');
+    }
+
+    scrollToTop();
+    navigateToPage(Pages.TheSolution, '?companyProfileId=' + companyProfileId);
   };
 
-  const next = (values: GetTheProblemModelInput) => {
-    handleSave(values);
+  /// Scroll the user to the top of the page
+  const scrollToTop = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    navigateToPage(Pages.TheSolution, '?companyProfileId=' + values.companyProfileId);
+  };
+
+  const onFinishHere = () => {
+    scrollToTop();
+    navigateToPage(Pages.Profiles);
   };
 
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
       <Formik initialValues={model} onSubmit={onSubmit}>
-        <Form className="space-y-8 divide-y divide-gray-200">
-          <div className="space-y-8 divide-y divide-gray-200">
-            <div className="pt-8">
-              <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 text-gray-700 sm:grid-cols-6">
-                <div className="sm:col-span-6">
-                  <label
-                    htmlFor="purposeDetails"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
-                    Your Why
-                  </label>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                    Why are you doing this?
-                  </p>
-                  <div className="mt-1">
-                    <Field
-                      id="purposeDetails"
-                      name="purposeDetails"
-                      as="textarea"
-                      rows={8}
-                      className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border border-gray-300 shadow-sm sm:text-sm"
-                    />
+        {({ errors, touched, isValidating, isSubmitting }) => (
+          <Form className="space-y-8 divide-y divide-gray-200">
+            <div className="space-y-8 divide-y divide-gray-200">
+              <div className="pt-8">
+                <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 text-gray-700 sm:grid-cols-6">
+                  <div className="sm:col-span-6">
+                    <label htmlFor="purposeDetails" className="form-label">
+                      Your Why *
+                    </label>
+                    <p className="form-input-description">Why are you doing this?</p>
+                    <div className="mt-1">
+                      <Field
+                        id="purposeDetails"
+                        name="purposeDetails"
+                        as="textarea"
+                        rows={8}
+                        validate={validateRequiredString}
+                        className={errors.purposeDetails ? 'form-input-error' : 'form-input'}
+                      />
+                      {errors.purposeDetails && touched.purposeDetails && (
+                        <div className="form-input-validation">{errors.purposeDetails}</div>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="sm:col-span-6">
-                  <label
-                    htmlFor="problemDetails"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
-                    The Problem
-                  </label>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                    What is the problem that you aim to solve?
-                  </p>
-                  <div className="mt-1">
-                    <Field
-                      id="problemDetails"
-                      name="problemDetails"
-                      as="textarea"
-                      rows={8}
-                      className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border border-gray-300 shadow-sm sm:text-sm"
-                    />
+                  <div className="sm:col-span-6">
+                    <label htmlFor="problemDetails" className="form-label">
+                      The Problem *
+                    </label>
+                    <p className="form-input-description">
+                      What is the problem that you aim to solve?
+                    </p>
+                    <div className="mt-1">
+                      <Field
+                        id="problemDetails"
+                        name="problemDetails"
+                        as="textarea"
+                        rows={8}
+                        validate={validateRequiredString}
+                        className={errors.problemDetails ? 'form-input-error' : 'form-input'}
+                      />
+                      {errors.problemDetails && touched.problemDetails && (
+                        <div className="form-input-validation">{errors.problemDetails}</div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="py-5">
-            <div className="flex justify-end">
-              <button
-                type="button"
-                className="focus:ring-primary-500 rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:text-gray-200"
-              >
-                Done
-              </button>
-              <button
-                type="submit"
-                className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
-              >
-                Next
-              </button>
+            <div className="py-5">
+              <div className="flex justify-end">
+                <button
+                  disabled={isSubmitting || isValidating}
+                  type="button"
+                  className="form-done"
+                  onClick={() => onFinishHere()}
+                >
+                  Finish here
+                </button>
+                <button
+                  disabled={isSubmitting || isValidating}
+                  type="submit"
+                  className="form-next ml-3"
+                >
+                  Next
+                </button>
+              </div>
             </div>
-          </div>
-        </Form>
+          </Form>
+        )}
       </Formik>
     </StartupQuestionnaireManager>
   );

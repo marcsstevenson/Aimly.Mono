@@ -14,7 +14,7 @@ export enum StepStatusOptions {
   Upcoming,
 }
 
-export interface StartupQuestionnaireSteps {
+export interface StartupQuestionnaireStepOptions {
   id: number;
   path: string;
   name: string;
@@ -22,7 +22,7 @@ export interface StartupQuestionnaireSteps {
   status: StepStatusOptions;
 }
 
-export const steps: StartupQuestionnaireSteps[] = [
+export const steps: StartupQuestionnaireStepOptions[] = [
   {
     id: 0,
     path: '/for-startups/profile/edit/AboutYou',
@@ -96,10 +96,10 @@ const StartupQuestionnaireManager = ({
   //     goNextFunction: GoNext,
   //   });
 
-    // startupQuestionnaireManagerState.goNextFunction();
+  // startupQuestionnaireManagerState.goNextFunction();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <GetStartedHeader title="Startup Profile Builder" />
       <div ref={topRef}>
         <StartupQuestionnaireSteps currentStep={currentStep}></StartupQuestionnaireSteps>

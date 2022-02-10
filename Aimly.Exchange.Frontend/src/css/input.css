@@ -102,6 +102,10 @@ body {
   @apply focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-sm;
 }
 
+.form-input-description {
+  @apply mt-2 text-sm text-gray-500 dark:text-gray-300;
+}
+
 .form-input-error {
   @apply block w-full rounded-md border-red-500 bg-red-50 shadow-sm focus:ring-red-500;
 }

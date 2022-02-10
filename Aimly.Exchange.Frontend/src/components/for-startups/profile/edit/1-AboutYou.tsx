@@ -14,6 +14,7 @@ import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import useLocationQuery from 'components/shared/useLocationQuery';
+import validateRequiredString from 'validators/validateRequiredString';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -62,40 +63,41 @@ const AboutYou = () => {
   };
 
   // const [setAboutYouMutation] = useSetAboutYouMutation();
-  const { SetAboutYou } = useSetAboutYouMutation();
+  const SetAboutYou = useSetAboutYouMutation();
+
+  const onSubmit = (getAboutYouModel: GetAboutYouModelInput) => {
+    handleSave(getAboutYouModel);
+  };
 
   const handleSave = useCallback(
     (getAboutYouModel: GetAboutYouModelInput) => {
-      return SetAboutYou(getAboutYouModel, handleSaveCompleted);
+      return SetAboutYou(getAboutYouModel, handleSubmitCompleted);
     },
     [SetAboutYou, '']
   );
 
-  const handleSaveCompleted = (response: useSetAboutYouMutation$data): void => {
-    goNext(response.setAboutYou?.updatedCompanyProfileId);
-  };
+  // This is called once the SetAboutYou mutation has completed
+  const handleSubmitCompleted = (response: useSetAboutYouMutation$data): void => {
+    const companyProfileId = response.setAboutYou?.updatedCompanyProfileId;
 
-  const onSubmit = (values: GetAboutYouModelInput) => {
-    handleSave(values);
-  };
-
-  const goNext = (companyProfileId: string) => {
     if (!companyProfileId) {
       console.log('Cannot navigate forward without a company profile Id');
     }
 
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToTop();
     navigateToPage(Pages.TheProblem, '?companyProfileId=' + companyProfileId);
   };
 
-  const validateRequiredString = (value: string): string | undefined => {
-    let error: string | undefined;
-    if (!value) {
-      error = 'Required';
+  /// Scroll the user to the top of the page
+  const scrollToTop = () => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    return error;
+  };
+
+  const onFinishHere = () => {
+    scrollToTop();
+    navigateToPage(Pages.DashBoard);
   };
 
   return (
@@ -318,8 +320,13 @@ const AboutYou = () => {
 
             <div className="py-5">
               <div className="flex justify-end">
-                <button disabled={isSubmitting || isValidating} type="button" className="form-done">
-                  Done
+                <button
+                  disabled={isSubmitting || isValidating}
+                  type="button"
+                  className="form-done"
+                  onClick={() => onFinishHere()}
+                >
+                  Finish here
                 </button>
                 <button
                   disabled={isSubmitting || isValidating}

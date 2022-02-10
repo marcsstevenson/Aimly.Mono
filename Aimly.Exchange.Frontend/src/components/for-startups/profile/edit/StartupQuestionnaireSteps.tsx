@@ -2,8 +2,13 @@
 import { CheckIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { steps, StepStatusOptions } from './StartupQuestionnaireManager';
+import {
+  StartupQuestionnaireStepOptions,
+  steps,
+  StepStatusOptions,
+} from './StartupQuestionnaireManager';
 import { classNames } from 'utils/classNames';
+import { useSearchParams } from 'react-router-dom';
 
 export interface StartupQuestionnaireStepsProps {
   currentStep: string;
@@ -13,6 +18,8 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
   // Set the status of each step
   let workingStepStatusOptions = StepStatusOptions.Complete;
   let stepCounter = 1;
+  const [searchParams] = useSearchParams();
+
   steps.forEach((step) => {
     if (step.path.endsWith(currentStep)) {
       // If the current step is the step we're on, set the status to current
@@ -24,8 +31,19 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
       step.status = workingStepStatusOptions;
     }
     step.id = stepCounter;
+
     stepCounter++;
   });
+
+  const buildPathForStep = (basePath: string): string => {
+    // Do we have a query string? Eg, "?companyProfileId=21f299a9-db01-45a2-13f3-08d9e422a60e"
+    // If so then we want to add it to the path
+    if (searchParams) {
+      return `${basePath}?${searchParams}`;
+    }
+
+    return basePath;
+  };
 
   return (
     <div className="lg:border-t lg:border-b lg:border-gray-200">
@@ -41,7 +59,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                 )}
               >
                 {step.status === StepStatusOptions.Complete ? (
-                  <Link to={{ pathname: step.path }} className="group">
+                  <Link to={{ pathname: buildPathForStep(step.path) }} className="group">
                     <span
                       className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                       aria-hidden="true"

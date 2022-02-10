@@ -4,49 +4,43 @@
 // An example of this template's use can be found here:
 // https://codesandbox.io/s/relay-sandbox-nxl7i?file=/src/Todo.tsx:470-491
 
-import { useMutation } from "react-relay";
-import { useCallback } from "react";
+import { commitMutation, useRelayEnvironment } from 'react-relay';
 import {
+  useSetTheProblemMutation as mutationType,
   SetTheProblemCommandInput,
   GetTheProblemModelInput,
   useSetTheProblemMutation$data,
-} from "__generated__/useSetTheProblemMutation.graphql";
+} from '__generated__/useSetTheProblemMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 
-const mutation = graphql`
+const def = graphql`
   mutation useSetTheProblemMutation($input: SetTheProblemCommandInput!) {
-    setTheProblem(input: $input){
+    setTheProblem(input: $input) {
       updatedCompanyProfileId
     }
   }
 `;
 
-function getOptimisticResponse(
-  getTheProblemModel: GetTheProblemModelInput
-): useSetTheProblemMutation$data {
-  return {
-    setTheProblem: {
-      updatedCompanyProfileId: "",
-    }
-  };
-}
-
 export default function useSetTheProblemMutation() {
-  const [commit] = useMutation(mutation);
-  return [
-    useCallback(
-      (getTheProblemModel: GetTheProblemModelInput) => {
-        const input: SetTheProblemCommandInput = {
-          getTheProblemModel
-        };
+  const environment = useRelayEnvironment();
 
-        return commit({
-          variables: { input },
-          optimisticResponse: getOptimisticResponse(getTheProblemModel)
-        });
-      },
-      [commit]
-    )
-  ];
+  const SetTheProblem = (
+    getTheProblemModel: GetTheProblemModelInput,
+    onCompleted: (response: useSetTheProblemMutation$data) => void
+  ) => {
+    const input: SetTheProblemCommandInput = {
+      getTheProblemModel,
+    };
+
+    return commitMutation<mutationType>(environment, {
+      mutation: def,
+      variables: { input },
+      onCompleted: (response) => {
+        onCompleted(response);
+      } /* Mutation completed */,
+    });
+  };
+
+  return SetTheProblem;
 }

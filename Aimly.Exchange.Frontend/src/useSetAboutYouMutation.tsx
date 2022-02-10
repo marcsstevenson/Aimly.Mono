@@ -43,5 +43,5 @@ export default function useSetAboutYouMutation() {
     });
   };
 
-  return { SetAboutYou };
+  return SetAboutYou;
 }
