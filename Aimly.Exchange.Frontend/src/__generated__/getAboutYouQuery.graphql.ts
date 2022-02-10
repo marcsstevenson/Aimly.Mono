@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<021fb9ca84ff7fd7ded2d2b213d712ef>>
+ * @generated SignedSource<<cc38f1b5bb2b8d9d54a01a775bd6762a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,7 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getAboutYouQuery$variables = {
   id: any;
+  companyProfileId?: any | null;
 };
 export type getAboutYouQueryVariables = getAboutYouQuery$variables;
 export type getAboutYouQuery$data = {
@@ -42,19 +43,27 @@ export type getAboutYouQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "id"
-  }
-],
-v1 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "companyProfileId"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "id"
+},
+v2 = [
   {
     "alias": null,
     "args": [
       {
         "fields": [
+          {
+            "kind": "Variable",
+            "name": "companyProfileId",
+            "variableName": "companyProfileId"
+          },
           {
             "kind": "Variable",
             "name": "userId",
@@ -202,32 +211,38 @@ v1 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "getAboutYouQuery",
-    "selections": (v1/*: any*/),
+    "selections": (v2/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "getAboutYouQuery",
-    "selections": (v1/*: any*/)
+    "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "c03e1529b319fc6be2781f2cbf80a963",
+    "cacheID": "435ac7007c83b9862443831c22e236de",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $id: UUID!\n) {\n  getAboutYou(command: {userId: $id}) {\n    userId\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c1a0dab41769424e8811856fa42e0c7e";
+(node as any).hash = "e01218c0d1239a4023a41bd52b44140a";
 
 export default node;

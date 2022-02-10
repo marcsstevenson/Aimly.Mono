@@ -30,35 +30,35 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
   return (
     <div className="lg:border-t lg:border-b lg:border-gray-200">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Progress">
-        <ol className="rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200 lg:rounded-none">
+        <ol className="overflow-hidden rounded-md lg:flex lg:rounded-none lg:border-l lg:border-r lg:border-gray-200">
           {steps.map((step, stepIdx) => (
             <li key={step.id} className="relative overflow-hidden lg:flex-1">
               <div
                 className={classNames(
-                  stepIdx === 0 ? 'border-b-0 rounded-t-md' : '',
-                  stepIdx === steps.length - 1 ? 'border-t-0 rounded-b-md' : '',
-                  'border border-gray-200 overflow-hidden lg:border-0'
+                  stepIdx === 0 ? 'rounded-t-md border-b-0' : '',
+                  stepIdx === steps.length - 1 ? 'rounded-b-md border-t-0' : '',
+                  'overflow-hidden border border-gray-200 lg:border-0'
                 )}
               >
                 {step.status === StepStatusOptions.Complete ? (
                   <Link to={{ pathname: step.path }} className="group">
                     <span
-                      className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
+                      className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                       aria-hidden="true"
                     />
                     <span
                       className={classNames(
                         stepIdx !== 0 ? 'lg:pl-9' : '',
-                        'px-6 py-5 flex items-start text-sm font-medium'
+                        'flex items-start px-6 py-5 text-sm font-medium'
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="w-10 h-10 flex items-center justify-center bg-primary-600 rounded-full">
-                          <CheckIcon className="w-6 h-6 text-white" aria-hidden="true" />
+                        <span className="bg-primary-600 flex h-10 w-10 items-center justify-center rounded-full">
+                          <CheckIcon className="h-6 w-6 text-white" aria-hidden="true" />
                         </span>
                       </span>
-                      <span className="mt-0.5 ml-4 min-w-0 flex flex-col">
-                        <span className="text-xs font-semibold tracking-wide uppercase">
+                      <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
+                        <span className="text-xs font-semibold uppercase tracking-wide">
                           {step.name}
                         </span>
                         <span className="text-sm font-medium text-gray-500">
@@ -70,25 +70,25 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                 ) : step.status === StepStatusOptions.Current ? (
                   <span aria-current="step">
                     <span
-                      className="absolute top-0 left-0 w-1 h-full bg-primary-600 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
+                      className="bg-primary-600 absolute top-0 left-0 h-full w-1 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                       aria-hidden="true"
                     />
                     <span
                       className={classNames(
                         stepIdx !== 0 ? 'lg:pl-9' : '',
-                        'px-6 py-5 flex items-start text-sm font-medium'
+                        'flex items-start px-6 py-5 text-sm font-medium'
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="w-10 h-10 flex items-center justify-center border-2 border-primary-600 rounded-full">
+                        <span className="border-primary-600 flex h-10 w-10 items-center justify-center rounded-full border-2">
                           <span className="text-primary-600 dark:text-primary-200">{step.id}</span>
                         </span>
                       </span>
-                      <span className="mt-0.5 ml-4 min-w-0 flex flex-col">
-                        <span className="text-xs font-semibold text-primary-600 dark:text-primary-300 tracking-wide uppercase">
+                      <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
+                        <span className="text-primary-600 dark:text-primary-300 text-xs font-semibold uppercase tracking-wide">
                           {step.name}
                         </span>
-                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        <span className="text-sm font-medium text-gray-500 dark:text-gray-300">
                           {step.description}
                         </span>
                       </span>
@@ -97,22 +97,22 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                 ) : (
                   <span className="group">
                     <span
-                      className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
+                      className="absolute top-0 left-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                       aria-hidden="true"
                     />
                     <span
                       className={classNames(
                         stepIdx !== 0 ? 'lg:pl-9' : '',
-                        'px-6 py-5 flex items-start text-sm font-medium'
+                        'flex items-start px-6 py-5 text-sm font-medium'
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-300">
                           <span className="text-gray-500">{step.id}</span>
                         </span>
                       </span>
-                      <span className="mt-0.5 ml-4 min-w-0 flex flex-col">
-                        <span className="text-xs font-semibold text-gray-500 tracking-wide uppercase">
+                      <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                           {step.name}
                         </span>
                         <span className="text-sm font-medium text-gray-500">
@@ -127,7 +127,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                   <>
                     {/* Separator */}
                     <div
-                      className="hidden absolute top-0 left-0 w-3 inset-0 lg:block"
+                      className="absolute inset-0 top-0 left-0 hidden w-3 lg:block"
                       aria-hidden="true"
                     >
                       <svg

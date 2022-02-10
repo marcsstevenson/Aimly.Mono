@@ -102,6 +102,7 @@ scalar DateTime
 
 input GetAboutYouCommandInput {
   userId: UUID!
+  companyProfileId: UUID
 }
 
 type GetAboutYouModel {
@@ -158,6 +159,27 @@ input GetAccessToMeetingCommandInput {
   userId: UUID!
 }
 
+input GetPotentialCommandInput {
+  userId: UUID!
+  companyProfileId: UUID!
+}
+
+type GetPotentialModel {
+  userId: UUID!
+  companyProfileId: UUID!
+  value: String
+  potentialSize: String
+  potentialValue: String
+}
+
+input GetPotentialModelInput {
+  userId: UUID!
+  companyProfileId: UUID!
+  value: String
+  potentialSize: String
+  potentialValue: String
+}
+
 input GetTheProblemCommandInput {
   userId: UUID!
   companyProfileId: UUID!
@@ -177,6 +199,41 @@ input GetTheProblemModelInput {
   problemDetails: String
 }
 
+input GetTheSolutionCommandInput {
+  userId: UUID!
+  companyProfileId: UUID!
+}
+
+type GetTheSolutionModel {
+  userId: UUID!
+  companyProfileId: UUID!
+  solutionNovelty: String
+  solutionDescription: String
+  stateOfValidation: String
+  competition: String
+  positionVsCompetition: String
+  businessModel: String
+  traction: String
+  founders: String
+  currentAnnualRevenue: String
+  externalFunding: String
+}
+
+input GetTheSolutionModelInput {
+  userId: UUID!
+  companyProfileId: UUID!
+  solutionNovelty: String
+  solutionDescription: String
+  stateOfValidation: String
+  competition: String
+  positionVsCompetition: String
+  businessModel: String
+  traction: String
+  founders: String
+  currentAnnualRevenue: String
+  externalFunding: String
+}
+
 type Mutation {
   """
   Takes an auth profile model and either creates a user if unknown or updates a
@@ -185,7 +242,9 @@ type Mutation {
   checkIn(input: AuthProfileInput): UUID!
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
+  setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
+  setPotential(input: SetPotentialCommandInput): SetPotentialResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
 }
 
@@ -205,7 +264,9 @@ input NotesForCompanyCommandInput {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
+  getPotential(command: GetPotentialCommandInput): GetPotentialModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
 }
 
@@ -218,11 +279,27 @@ type SetAboutYouResponse {
   updatedCompanyProfileId: UUID!
 }
 
+input SetPotentialCommandInput {
+  getPotentialModel: GetPotentialModelInput
+}
+
+type SetPotentialResponse {
+  updatedCompanyProfileId: UUID!
+}
+
 input SetTheProblemCommandInput {
   getTheProblemModel: GetTheProblemModelInput
 }
 
 type SetTheProblemResponse {
+  updatedCompanyProfileId: UUID!
+}
+
+input SetTheSolutionCommandInput {
+  getTheSolutionModel: GetTheSolutionModelInput
+}
+
+type SetTheSolutionResponse {
   updatedCompanyProfileId: UUID!
 }
 

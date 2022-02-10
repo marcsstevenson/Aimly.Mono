@@ -6,6 +6,7 @@ module.exports = {
   colors: {},
   theme: {
     colors: {
+      primary: colors.indigo,
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
@@ -13,8 +14,8 @@ module.exports = {
       gray: colors.gray,
       green: colors.green,
       yellow: colors.yellow,
+      red: colors.red,
       indigo: colors.indigo,
-      primary: colors.indigo,
     },
     extend: {
     },

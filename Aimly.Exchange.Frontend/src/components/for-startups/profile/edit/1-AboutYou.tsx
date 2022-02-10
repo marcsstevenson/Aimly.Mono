@@ -12,19 +12,26 @@ import * as GetAboutYouQuery from '__generated__/getAboutYouQuery.graphql';
 import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Field, Form, Formik } from 'formik';
+import useLocationQuery from 'components/shared/useLocationQuery';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
+  let locationQuery = useLocationQuery();
   const currentStep = 'AboutYou';
-  const getAboutYouQueryVariables = { id: userId };
+  const getAboutYouQueryVariables = {
+    id: userId,
+    companyProfileId: locationQuery.get('companyProfileId'),
+  };
 
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(
     GetAboutYouQuery.default,
     getAboutYouQueryVariables,
+    // Ideally we could use commitLocalUpdate to update the relay cache when setAboutYouMutation is called
+    // However, for now, we'll simply always refresh this query when the component is mounted
     {
       fetchPolicy: 'network-only',
     }
@@ -68,10 +75,7 @@ const AboutYou = () => {
     goNext(response.setAboutYou?.updatedCompanyProfileId);
   };
 
-  const onSubmit = (
-    values: GetAboutYouModelInput
-    // { setSubmitting }: FormikHelpers<GetAboutYouModelInput>
-  ) => {
+  const onSubmit = (values: GetAboutYouModelInput) => {
     handleSave(values);
   };
 
@@ -86,19 +90,24 @@ const AboutYou = () => {
     navigateToPage(Pages.TheProblem, '?companyProfileId=' + companyProfileId);
   };
 
+  const validateRequiredString = (value: string): string | undefined => {
+    let error: string | undefined;
+    if (!value) {
+      error = 'Required';
+    }
+    return error;
+  };
+
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
       <Formik initialValues={model} onSubmit={onSubmit}>
-        {({ isSubmitting }) => (
+        {({ errors, touched, isValidating, isSubmitting }) => (
           <Form className="space-y-8 divide-y divide-gray-200">
             <div className="space-y-8 divide-y divide-gray-200">
               <div className="pt-8">
                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 text-gray-700 sm:grid-cols-6">
                   <div className="sm:col-span-6">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="email" className="form-label">
                       Email address
                     </label>
                     <div className="mt-1">
@@ -109,11 +118,8 @@ const AboutYou = () => {
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label
-                      htmlFor="givenName"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
-                      First name
+                    <label htmlFor="givenName" className="form-label">
+                      First name *
                     </label>
                     <div className="mt-1">
                       <Field
@@ -121,17 +127,18 @@ const AboutYou = () => {
                         name="givenName"
                         id="givenName"
                         autoComplete="given-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        validate={validateRequiredString}
+                        className={errors.givenName ? 'form-input-error' : 'form-input'}
                       />
+                      {errors.givenName && touched.givenName && (
+                        <div className="form-input-validation">{errors.givenName}</div>
+                      )}
                     </div>
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label
-                      htmlFor="familyName"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
-                      Last name
+                    <label htmlFor="familyName" className="form-label">
+                      Last name *
                     </label>
                     <div className="mt-1">
                       <Field
@@ -139,16 +146,17 @@ const AboutYou = () => {
                         name="familyName"
                         id="familyName"
                         autoComplete="family-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        validate={validateRequiredString}
+                        className={errors.familyName ? 'form-input-error' : 'form-input'}
                       />
+                      {errors.familyName && touched.familyName && (
+                        <div className="form-input-validation">{errors.familyName}</div>
+                      )}
                     </div>
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label
-                      htmlFor="linkedInProfile"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="linkedInProfile" className="form-label">
                       LinkedIn Profile
                     </label>
                     <div className="mt-1">
@@ -157,16 +165,13 @@ const AboutYou = () => {
                         name="linkedInProfile"
                         id="linkedInProfile"
                         autoComplete="family-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label
-                      htmlFor="phoneNumber"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="phoneNumber" className="form-label">
                       Phone number
                     </label>
                     <div className="mt-1">
@@ -175,17 +180,14 @@ const AboutYou = () => {
                         id="phoneNumber"
                         name="phoneNumber"
                         autoComplete="tel"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label
-                      htmlFor="companyName"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
-                      Company name
+                    <label htmlFor="companyName" className="form-label">
+                      Company name *
                     </label>
                     <div className="mt-1">
                       <Field
@@ -193,16 +195,17 @@ const AboutYou = () => {
                         name="companyName"
                         id="companyName"
                         autoComplete="organization"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        validate={validateRequiredString}
+                        className={errors.companyName ? 'form-input-error' : 'form-input'}
                       />
+                      {errors.companyName && touched.companyName && (
+                        <div className="form-input-validation">{errors.companyName}</div>
+                      )}
                     </div>
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label
-                      htmlFor="website"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="website" className="form-label">
                       Company website
                     </label>
                     <div className="mt-1">
@@ -211,16 +214,13 @@ const AboutYou = () => {
                         name="website"
                         id="website"
                         autoComplete="url"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-1">
-                    <label
-                      htmlFor="numberOfFounders"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="numberOfFounders" className="form-label">
                       Number of founders
                     </label>
                     <div className="mt-1">
@@ -229,16 +229,13 @@ const AboutYou = () => {
                         min="1"
                         name="numberOfFounders"
                         id="numberOfFounders"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-6">
-                    <label
-                      htmlFor="streetName"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="streetName" className="form-label">
                       Street address
                     </label>
                     <div className="mt-1">
@@ -247,16 +244,13 @@ const AboutYou = () => {
                         name="streetName"
                         id="streetName"
                         autoComplete="street-address"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label
-                      htmlFor="addressCity"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="addressCity" className="form-label">
                       City
                     </label>
                     <div className="mt-1">
@@ -265,16 +259,13 @@ const AboutYou = () => {
                         name="addressCity"
                         id="addressCity"
                         autoComplete="address-level2"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label
-                      htmlFor="addressCity"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="addressCity" className="form-label">
                       State / Province
                     </label>
                     <div className="mt-1">
@@ -283,16 +274,13 @@ const AboutYou = () => {
                         name="addressCity"
                         id="addressCity"
                         autoComplete="address-level1"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label
-                      htmlFor="postalCode"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="postalCode" className="form-label">
                       ZIP / Postal code
                     </label>
                     <div className="mt-1">
@@ -301,16 +289,13 @@ const AboutYou = () => {
                         name="postalCode"
                         id="postalCode"
                         autoComplete="postal-code"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label
-                      htmlFor="addressCountry"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                    >
+                    <label htmlFor="addressCountry" className="form-label">
                       Country
                     </label>
                     <div className="mt-1">
@@ -319,7 +304,7 @@ const AboutYou = () => {
                         id="addressCountry"
                         name="addressCountry"
                         autoComplete="country-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        className="form-input"
 
                         // <option>United States</option>
                         // <option>Canada</option>
@@ -333,10 +318,14 @@ const AboutYou = () => {
 
             <div className="py-5">
               <div className="flex justify-end">
-                <button disabled={isSubmitting} type="button" className="form-done">
+                <button disabled={isSubmitting || isValidating} type="button" className="form-done">
                   Done
                 </button>
-                <button disabled={isSubmitting} type="submit" className="form-next ml-3">
+                <button
+                  disabled={isSubmitting || isValidating}
+                  type="submit"
+                  className="form-next ml-3"
+                >
                   Next
                 </button>
               </div>
