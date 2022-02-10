@@ -73,7 +73,8 @@ const AboutYou = () => {
     (getAboutYouModel: GetAboutYouModelInput) => {
       return SetAboutYou(getAboutYouModel, handleSubmitCompleted);
     },
-    [SetAboutYou, '']
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [SetAboutYou]
   );
 
   // This is called once the SetAboutYou mutation has completed

@@ -65,7 +65,8 @@ const TheSolution = () => {
     (getTheSolutionModel: GetTheSolutionModelInput) => {
       return SetTheSolution(getTheSolutionModel, handleSubmitCompleted);
     },
-    [SetTheSolution, '']
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [SetTheSolution]
   );
 
   // This is called once the SetTheSolution mutation has completed

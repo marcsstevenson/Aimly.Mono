@@ -14,7 +14,6 @@ import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
-import validateRequiredString from 'validators/validateRequiredString';
 
 const Potential = () => {
   const { userId } = useContext(PrivateContext);
@@ -59,7 +58,8 @@ const Potential = () => {
     (getPotentialModel: GetPotentialModelInput) => {
       return SetPotential(getPotentialModel, handleSubmitCompleted);
     },
-    [SetPotential, '']
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [SetPotential]
   );
 
   // This is called once the SetPotential mutation has completed

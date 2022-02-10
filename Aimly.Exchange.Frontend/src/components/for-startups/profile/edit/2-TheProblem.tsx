@@ -58,7 +58,8 @@ const TheProblem = () => {
     (getTheProblemModel: GetTheProblemModelInput) => {
       return SetTheProblem(getTheProblemModel, handleSubmitCompleted);
     },
-    [SetTheProblem, '']
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [SetTheProblem]
   );
 
   // This is called once the SetTheProblem mutation has completed
