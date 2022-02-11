@@ -1,8 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
-import RelayEnvironment from 'RelayEnvironment';
-
+import useRelayEnvironment from 'useRelayEnvironment';
 import Loading from './components/Loading';
 import Footer from './components/Footer';
 import PublicShell from './components/PublicShell';
@@ -13,6 +12,7 @@ import PrivateShell from 'components/private/PrivateShell';
 
 const App = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0<User>();
+  const getRelayEnvironment = useRelayEnvironment();
 
   console.log(user);
 
@@ -24,13 +24,12 @@ const App = (): JSX.Element => {
   if (isLoading) {
     return <Loading />;
   }
-  // navigator={history}
   return (
     <BrowserRouter>
       <ErrorBoundary>
         <div id="app" className="d-flex flex-column h-100">
           <Suspense fallback={'Loading...'}>
-            <RelayEnvironmentProvider environment={RelayEnvironment}>
+            <RelayEnvironmentProvider environment={getRelayEnvironment()}>
               {!user && <PublicShell />}
               {user && <PrivateShell />}
             </RelayEnvironmentProvider>

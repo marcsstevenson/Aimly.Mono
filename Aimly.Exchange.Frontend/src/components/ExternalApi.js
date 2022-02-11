@@ -107,7 +107,8 @@ export const ExternalApiComponent = () => {
         },
         method: "POST",
         body: JSON.stringify({
-          query: `{ greetings }`})
+          query: `{ greetings }`
+        })
       });
 
       const responseData = await response.json();
@@ -136,7 +137,8 @@ export const ExternalApiComponent = () => {
         },
         method: "POST",
         body: JSON.stringify({
-          query: `mutation { setGreetings(message: "hai") }`})
+          query: `mutation { setGreetings(message: "hai") }`
+        })
       });
 
       const responseData = await response.json();
@@ -349,7 +351,7 @@ export const ExternalApiComponent = () => {
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="muted">Result</h6>
-              <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
+            <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
           </div>
         )}
       </div>
