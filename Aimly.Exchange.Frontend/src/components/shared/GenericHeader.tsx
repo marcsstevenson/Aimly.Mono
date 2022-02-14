@@ -6,7 +6,7 @@ interface props {
   title: string;
 }
 
-const GetStartedHeader = ({ title }: props) => {
+const GenericHeader = ({ title }: props) => {
   let locationQuery = useLocationQuery();
   const contextVal = locationQuery.get(context ?? '(New)');
 
@@ -22,4 +22,4 @@ const GetStartedHeader = ({ title }: props) => {
   );
 };
 
-export default GetStartedHeader;
+export default GenericHeader;

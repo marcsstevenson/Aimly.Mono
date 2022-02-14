@@ -141,21 +141,6 @@ export const Settings = () => {
                         className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:outline-none sm:text-sm"
                       />
                     </div>
-
-                    <div className="col-span-12">
-                      <label
-                        htmlFor="url"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                      >
-                        URL
-                      </label>
-                      <input
-                        type="text"
-                        name="url"
-                        id="url"
-                        className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:outline-none sm:text-sm"
-                      />
-                    </div>
                   </div>
                 </div>
 

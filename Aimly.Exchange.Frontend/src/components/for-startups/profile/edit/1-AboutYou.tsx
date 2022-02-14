@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
@@ -18,6 +18,8 @@ import validateRequiredString from 'validators/validateRequiredString';
 import { companyProfileId, context } from 'components/for-startups/UrlConstants';
 // import TimezoneSelect from 'react-timezone-select';
 import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
+import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
+import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -41,32 +43,6 @@ const AboutYou = () => {
     }
   );
 
-  // Returns the user's language. Eg: en-GB
-  const usersLanguage = useMemo(() => {
-    var language;
-    if (window.navigator.languages) {
-      language = window.navigator.languages[0];
-    } else {
-      language = window.navigator.language;
-    }
-    return language;
-  }, []);
-
-  // We should be able to determine the user's LinkedIn profile if
-  // they have used LinkedIn to sign in.
-  const getLinkedInProfileFromAuth = useMemo(() => {
-    if (!user) return null;
-
-    // Is the user using LinkedIn?
-    if (!user.sub?.startsWith('linkedin')) return null;
-
-    // Does the auth profile contain a nickname?
-    if (!user.nickname) return null;
-
-    // LinkedIn uses the nickname field to store the user's profile name
-    return `https://www.linkedin.com/in/${user.nickname}`;
-  }, [user]);
-
   const loadedData = data.getAboutYou;
 
   let model: GetAboutYouModelInput = {
@@ -74,12 +50,12 @@ const AboutYou = () => {
     userId: userId,
     about: loadedData?.about ?? '',
     personalProfilePictureUrl: loadedData?.personalProfilePictureUrl ?? user?.picture ?? '', // Note we are using the Auth profile values as the first fallback
-    language: loadedData?.language ?? usersLanguage,
+    language: loadedData?.language ?? getUsersLanguage(),
     timezone: loadedData?.timezone ?? '',
     givenName: loadedData?.givenName ?? user?.given_name ?? '', // Note we are using the Auth profile values as the first fallback
     familyName: loadedData?.familyName ?? user?.family_name ?? '', // Note we are using the Auth profile values as the first fallback
     phoneNumber: loadedData?.phoneNumber ?? '',
-    linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuth ?? '',
+    linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
     companyProfileId: loadedData?.companyProfileId ?? '',
     companyName: loadedData?.companyName ?? '',
     website: loadedData?.website ?? '',
@@ -105,7 +81,7 @@ const AboutYou = () => {
     getAboutYouModel.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     // Just use the browser version of the language for now
-    getAboutYouModel.language = usersLanguage;
+    getAboutYouModel.language = getUsersLanguage();
 
     handleSave(getAboutYouModel);
   };

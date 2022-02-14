@@ -65,6 +65,7 @@ const MyProfileItem = (props: Props) => {
             to={{
               pathname: getUrlForProfileTypeOptionType(
                 props.item?.id,
+                props.item?.name,
                 props.item ? props.item.type : 'PERSONAL'
               ),
             }}

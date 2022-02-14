@@ -169,6 +169,30 @@ input GetAccessToMeetingCommandInput {
   userId: UUID!
 }
 
+type GetPersonalProfileModel {
+  userId: UUID
+  language: String
+  personalProfilePictureUrl: String
+  about: String
+  timezone: String
+  givenName: String
+  familyName: String
+  phoneNumber: String
+  linkedInProfile: String
+}
+
+input GetPersonalProfileModelInput {
+  userId: UUID
+  language: String
+  personalProfilePictureUrl: String
+  about: String
+  timezone: String
+  givenName: String
+  familyName: String
+  phoneNumber: String
+  linkedInProfile: String
+}
+
 input GetPotentialCommandInput {
   userId: UUID!
   companyProfileId: UUID!
@@ -252,6 +276,7 @@ type Mutation {
   checkIn(input: AuthProfileInput): UUID!
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
+  setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
@@ -303,6 +328,7 @@ type Query {
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
   myProfiles(userId: UUID!): [MyProfilesResult]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
+  getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
@@ -316,6 +342,14 @@ input SetAboutYouCommandInput {
 type SetAboutYouResponse {
   updatedPersonalProfileId: UUID!
   updatedCompanyProfileId: UUID!
+}
+
+input SetPersonalProfileCommandInput {
+  getPersonalProfileModel: GetPersonalProfileModelInput
+}
+
+type SetPersonalProfileResponse {
+  updatedPersonalProfileId: UUID!
 }
 
 input SetPotentialCommandInput {

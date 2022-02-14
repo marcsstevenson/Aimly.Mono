@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
-import GetStartedHeader from 'components/for-startups/profile/edit/GetStartedHeader';
+import GenericHeader from 'components/shared/GenericHeader';
 
 // export interface StartupQuestionnaireManagerState {
 //   test: string;
@@ -73,7 +73,7 @@ const StartupQuestionnaireManager = ({
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div ref={topRef}>
-        <GetStartedHeader title="Startup Profile Builder" />
+        <GenericHeader title="Startup Profile Builder" />
         <StartupQuestionnaireSteps currentStep={currentStep}></StartupQuestionnaireSteps>
       </div>
       <div></div>
