@@ -97,7 +97,7 @@ export const Settings = () => {
                           />
                         </div>
                         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                          Brief description for your profile. URLs are hyperlinked.
+                          A brief description for your personal profile.
                         </p>
                       </div>
                     </div>

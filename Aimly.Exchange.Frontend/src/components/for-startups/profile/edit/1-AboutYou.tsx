@@ -162,7 +162,9 @@ const AboutYou = () => {
                   <div className="mt-1">
                     <Field id="about" name="about" as="textarea" rows={4} className="form-input" />
                   </div>
-                  <p className="form-input-description">Brief description for your profile.</p>
+                  <p className="form-input-description">
+                    A brief description for your personal profile.
+                  </p>
                 </div>
               </div>
 
