@@ -271,9 +271,25 @@ input NotesForCompanyCommandInput {
   afterDateTime: DateTime!
 }
 
+input ProfileSearchCommandInput {
+  userId: UUID!
+  usersProfilesOnly: Boolean!
+  typesFilter: [String]
+}
+
+type ProfileSearchResult {
+  guid: UUID!
+  name: String
+  profilePictureUrl: String
+  language: String
+  description: String
+  type: String
+}
+
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
