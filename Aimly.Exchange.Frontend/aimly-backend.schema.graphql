@@ -107,11 +107,16 @@ input GetAboutYouCommandInput {
 
 type GetAboutYouModel {
   userId: UUID
+  language: String
+  personalProfilePictureUrl: String
+  about: String
+  timezone: String
   givenName: String
   familyName: String
   phoneNumber: String
   linkedInProfile: String
   companyProfileId: UUID
+  companyProfilePictureUrl: String
   companyName: String
   website: String
   numberOfFounders: Int
@@ -128,11 +133,16 @@ type GetAboutYouModel {
 
 input GetAboutYouModelInput {
   userId: UUID
+  language: String
+  personalProfilePictureUrl: String
+  about: String
+  timezone: String
   givenName: String
   familyName: String
   phoneNumber: String
   linkedInProfile: String
   companyProfileId: UUID
+  companyProfilePictureUrl: String
   companyName: String
   website: String
   numberOfFounders: Int

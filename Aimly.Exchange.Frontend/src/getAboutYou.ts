@@ -4,11 +4,16 @@ export const getAboutYouQuery = graphql`
   query getAboutYouQuery($id: UUID! $companyProfileId: UUID) {
     getAboutYou(command: { userId: $id companyProfileId: $companyProfileId}) {
       userId
+      about
+      language
+      personalProfilePictureUrl
+      timezone
       givenName
       familyName
       phoneNumber
       linkedInProfile
       companyProfileId
+      companyProfilePictureUrl
       companyName
       website
       numberOfFounders

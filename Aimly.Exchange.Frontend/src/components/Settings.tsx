@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Disclosure, Switch } from '@headlessui/react';
 import { PrivateContext } from 'components/private/PrivateContext';
 
+import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
 import { classNames } from 'utils/classNames';
 
 export const Settings = () => {
@@ -17,14 +18,14 @@ export const Settings = () => {
 
   return (
     <div>
-      <Disclosure as="div" className="relative bg-primary-700 pb-32 overflow-hidden">
+      <Disclosure as="div" className="bg-primary-700 relative overflow-hidden pb-32">
         {({ open }) => (
           <>
             <div
               aria-hidden="true"
               className={classNames(
                 open ? 'bottom-0' : 'inset-y-0',
-                'absolute inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0'
+                'absolute inset-x-0 left-1/2 w-full -translate-x-1/2 transform overflow-hidden lg:inset-y-0'
               )}
             >
               <div className="relative flex justify-center">
@@ -35,15 +36,21 @@ export const Settings = () => {
                   viewBox="0 0 1750 308"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M284.161 308H1465.84L875.001 182.413 284.161 308z" className="fill-primary-600" />
+                  <path
+                    d="M284.161 308H1465.84L875.001 182.413 284.161 308z"
+                    className="fill-primary-600"
+                  />
                   <path d="M1465.84 308L16.816 0H1750v308h-284.16z" className="fill-primary-700" />
                   <path d="M1733.19 0L284.161 308H0V0h1733.19z" className="fill-primary-800" />
-                  <path d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z" className="fill-primary-900" />
+                  <path
+                    d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z"
+                    className="fill-primary-900"
+                  />
                 </svg>
               </div>
             </div>
             <header className="relative py-10">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h1 className="text-3xl font-bold text-white">Settings (work in progress)</h1>
               </div>
             </header>
@@ -52,14 +59,20 @@ export const Settings = () => {
       </Disclosure>
 
       <main className="relative -mt-32">
-        <div className="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
+          <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
             <div className="divide-y divide-gray-200 dark:divide-gray-700 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-              <form className="divide-y divide-gray-200 dark:divide-gray-700 lg:col-span-12" action="#" method="POST">
+              <form
+                className="divide-y divide-gray-200 dark:divide-gray-700 lg:col-span-12"
+                action="#"
+                method="POST"
+              >
                 {/* Profile section */}
                 <div className="py-6 px-4 sm:p-6 lg:pb-8">
                   <div>
-                    <h2 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">Public Profile</h2>
+                    <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+                      Public Profile
+                    </h2>
                     <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                       This information will be displayed publicly so be careful what you share.
                     </p>
@@ -67,9 +80,11 @@ export const Settings = () => {
 
                   <div className="mt-6 flex flex-col lg:flex-row">
                     <div className="flex-grow space-y-6">
-
                       <div>
-                        <label htmlFor="about" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        <label
+                          htmlFor="about"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                        >
                           About
                         </label>
                         <div className="mt-1">
@@ -77,7 +92,7 @@ export const Settings = () => {
                             id="about"
                             name="about"
                             rows={3}
-                            className="shadow-sm focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                            className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border border-gray-300 shadow-sm sm:text-sm"
                             defaultValue={''}
                           />
                         </div>
@@ -87,62 +102,8 @@ export const Settings = () => {
                       </div>
                     </div>
 
-                    <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
-                      <p className="text-sm font-medium text-gray-700 dark:text-gray-200" aria-hidden="true">
-                        Photo
-                      </p>
-                      <div className="mt-1 lg:hidden">
-                        <div className="flex items-center">
-                          <div
-                            className="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12"
-                            aria-hidden="true"
-                          >
-                            <img
-                              className="rounded-full h-full w-full"
-                              src={user?.picture}
-                              alt=""
-                            />
-                          </div>
-                          <div className="ml-5 rounded-md shadow-sm">
-                            <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
-                              <label
-                                htmlFor="mobile-user-photo"
-                                className="relative text-sm leading-4 font-medium text-gray-700 dark:text-gray-200 pointer-events-none"
-                              >
-                                <span>Change</span>
-                                <span className="sr-only"> user photo</span>
-                              </label>
-                              <input
-                                id="mobile-user-photo"
-                                name="user-photo"
-                                type="file"
-                                className="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="hidden relative rounded-full overflow-hidden lg:block">
-                        <img
-                          className="relative rounded-full w-40 h-40"
-                          src={user?.picture}
-                          alt=""
-                        />
-                        <label
-                          htmlFor="desktop-user-photo"
-                          className="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100"
-                        >
-                          <span>Change</span>
-                          <span className="sr-only"> user photo</span>
-                          <input
-                            type="file"
-                            id="desktop-user-photo"
-                            name="user-photo"
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
-                          />
-                        </label>
-                      </div>
+                    <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
+                      <ProfilePhotoSelector profilePictureUrl={user?.picture} allowChange={false} />
                     </div>
                   </div>
 
@@ -159,8 +120,8 @@ export const Settings = () => {
                         name="first-name"
                         id="first-name"
                         autoComplete="given-name"
-                        defaultValue={ user?.given_name }
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                        defaultValue={user?.given_name}
+                        className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:outline-none sm:text-sm"
                       />
                     </div>
 
@@ -176,49 +137,41 @@ export const Settings = () => {
                         name="last-name"
                         id="last-name"
                         autoComplete="family-name"
-                        defaultValue={ user?.family_name }
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                        defaultValue={user?.family_name}
+                        className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:outline-none sm:text-sm"
                       />
                     </div>
 
                     <div className="col-span-12">
-                      <label htmlFor="url" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                      <label
+                        htmlFor="url"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                      >
                         URL
                       </label>
                       <input
                         type="text"
                         name="url"
                         id="url"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-                      />
-                    </div>
-
-                    <div className="col-span-12 sm:col-span-6">
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-                        Company
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        id="company"
-                        autoComplete="organization"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                        className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:outline-none sm:text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Privacy section */}
-                <div className="pt-6 divide-y divide-gray-200 dark:divide-gray-700">
+                <div className="divide-y divide-gray-200 pt-6 dark:divide-gray-700">
                   <div className="px-4 sm:px-6">
                     <div>
-                      <h2 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">Privacy</h2>
+                      <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+                        Privacy
+                      </h2>
                       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Ornare eu a volutpat eget vulputate. Fringilla commodo amet.
+                        Adjust you privacy settings here.
                       </p>
                     </div>
-                    <ul role="list" className="mt-2 divide-y divide-gray-200 dark:divide-gray-700">
-                      <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                    <ul className="mt-2 divide-y divide-gray-200 dark:divide-gray-700">
+                      <Switch.Group as="li" className="flex items-center justify-between py-4">
                         <div className="flex flex-col">
                           <Switch.Label
                             as="p"
@@ -228,7 +181,7 @@ export const Settings = () => {
                             Available to hire
                           </Switch.Label>
                           <Switch.Description className="text-sm text-gray-500 dark:text-gray-400">
-                            Nulla amet tempus sit accumsan. Aliquet turpis sed sit lacinia.
+                            If you which to be visible on the market.
                           </Switch.Description>
                         </div>
                         <Switch
@@ -236,19 +189,19 @@ export const Settings = () => {
                           onChange={setAvailableToHire}
                           className={classNames(
                             availableToHire ? 'bg-primary-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
+                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
                             aria-hidden="true"
                             className={classNames(
                               availableToHire ? 'translate-x-5' : 'translate-x-0',
-                              'inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                             )}
                           />
                         </Switch>
                       </Switch.Group>
-                      <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                      <Switch.Group as="li" className="flex items-center justify-between py-4">
                         <div className="flex flex-col">
                           <Switch.Label
                             as="p"
@@ -258,7 +211,7 @@ export const Settings = () => {
                             Make account private
                           </Switch.Label>
                           <Switch.Description className="text-sm text-gray-500 dark:text-gray-400">
-                            Pharetra morbi dui mi mattis tellus sollicitudin cursus pharetra.
+                            If you which to be hidden from the community entirely.
                           </Switch.Description>
                         </div>
                         <Switch
@@ -266,19 +219,19 @@ export const Settings = () => {
                           onChange={setPrivateAccount}
                           className={classNames(
                             privateAccount ? 'bg-primary-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
+                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
                             aria-hidden="true"
                             className={classNames(
                               privateAccount ? 'translate-x-5' : 'translate-x-0',
-                              'inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                             )}
                           />
                         </Switch>
                       </Switch.Group>
-                      <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                      <Switch.Group as="li" className="flex items-center justify-between py-4">
                         <div className="flex flex-col">
                           <Switch.Label
                             as="p"
@@ -288,7 +241,7 @@ export const Settings = () => {
                             Allow commenting
                           </Switch.Label>
                           <Switch.Description className="text-sm text-gray-500 dark:text-gray-400">
-                            Integer amet, nunc hendrerit adipiscing nam. Elementum ame
+                            If commenting on your profile events is enabled.
                           </Switch.Description>
                         </div>
                         <Switch
@@ -296,19 +249,19 @@ export const Settings = () => {
                           onChange={setAllowCommenting}
                           className={classNames(
                             allowCommenting ? 'bg-primary-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
+                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
                             aria-hidden="true"
                             className={classNames(
                               allowCommenting ? 'translate-x-5' : 'translate-x-0',
-                              'inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                             )}
                           />
                         </Switch>
                       </Switch.Group>
-                      <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                      <Switch.Group as="li" className="flex items-center justify-between py-4">
                         <div className="flex flex-col">
                           <Switch.Label
                             as="p"
@@ -318,7 +271,7 @@ export const Settings = () => {
                             Allow mentions
                           </Switch.Label>
                           <Switch.Description className="text-sm text-gray-500 dark:text-gray-400">
-                            Adipiscing est venenatis enim molestie commodo eu gravid
+                            You you want to allow yourself to be mentioned within user's comments.
                           </Switch.Description>
                         </div>
                         <Switch
@@ -326,30 +279,30 @@ export const Settings = () => {
                           onChange={setAllowMentions}
                           className={classNames(
                             allowMentions ? 'bg-primary-500' : 'bg-gray-200',
-                            'ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
+                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
                             aria-hidden="true"
                             className={classNames(
                               allowMentions ? 'translate-x-5' : 'translate-x-0',
-                              'inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                             )}
                           />
                         </Switch>
                       </Switch.Group>
                     </ul>
                   </div>
-                  <div className="mt-4 py-4 px-4 flex justify-end sm:px-6">
+                  <div className="mt-4 flex justify-end py-4 px-4 sm:px-6">
                     <button
                       type="button"
-                      className="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                      className="focus:ring-primary-500 inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:text-gray-200"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="ml-5 bg-primary-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                      className="bg-primary-700 hover:bg-primary-800 focus:ring-primary-500 ml-5 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
                     >
                       Save
                     </button>

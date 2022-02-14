@@ -15,6 +15,8 @@ const App = (): JSX.Element => {
   const getRelayEnvironment = useRelayEnvironment();
 
   console.log(user);
+  console.log(window.navigator.language);
+  console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
 
   if (error) {
     // return <div>Oops... {error.message}</div>;

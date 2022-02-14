@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<cc38f1b5bb2b8d9d54a01a775bd6762a>>
+ * @generated SignedSource<<3bbc8aaebf8670e778996aee34a290fe>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,11 +17,16 @@ export type getAboutYouQueryVariables = getAboutYouQuery$variables;
 export type getAboutYouQuery$data = {
   readonly getAboutYou: {
     readonly userId: any | null;
+    readonly about: string | null;
+    readonly language: string | null;
+    readonly personalProfilePictureUrl: string | null;
+    readonly timezone: string | null;
     readonly givenName: string | null;
     readonly familyName: string | null;
     readonly phoneNumber: string | null;
     readonly linkedInProfile: string | null;
     readonly companyProfileId: any | null;
+    readonly companyProfilePictureUrl: string | null;
     readonly companyName: string | null;
     readonly website: string | null;
     readonly numberOfFounders: number | null;
@@ -90,6 +95,34 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "about",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "language",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "personalProfilePictureUrl",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "timezone",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "givenName",
         "storageKey": null
       },
@@ -119,6 +152,13 @@ v2 = [
         "args": null,
         "kind": "ScalarField",
         "name": "companyProfileId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyProfilePictureUrl",
         "storageKey": null
       },
       {
@@ -233,16 +273,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "435ac7007c83b9862443831c22e236de",
+    "cacheID": "40cb9f45ad763274f8b9b95819b269a5",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e01218c0d1239a4023a41bd52b44140a";
+(node as any).hash = "9f72a819ba529e5f338ef46952f806da";
 
 export default node;

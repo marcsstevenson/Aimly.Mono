@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<74c14d71d0d1e364e4a54b8c8c96dfca>>
+ * @generated SignedSource<<9b8556c3cea390e7316aac87a33b9621>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,11 +14,16 @@ export type SetAboutYouCommandInput = {
 };
 export type GetAboutYouModelInput = {
   userId?: any | null;
+  language?: string | null;
+  personalProfilePictureUrl?: string | null;
+  about?: string | null;
+  timezone?: string | null;
   givenName?: string | null;
   familyName?: string | null;
   phoneNumber?: string | null;
   linkedInProfile?: string | null;
   companyProfileId?: any | null;
+  companyProfilePictureUrl?: string | null;
   companyName?: string | null;
   website?: string | null;
   numberOfFounders?: number | null;
