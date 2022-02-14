@@ -258,6 +258,12 @@ type Mutation {
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
 }
 
+type MyProfilesResult {
+  id: UUID!
+  name: String
+  type: ProfileTypeOption!
+}
+
 type NoteSearchResultModel {
   body: String
   createdByUserName: String
@@ -273,22 +279,29 @@ input NotesForCompanyCommandInput {
 
 input ProfileSearchCommandInput {
   userId: UUID!
-  usersProfilesOnly: Boolean!
-  typesFilter: [String]
+  typesFilter: [ProfileTypeOption!]
 }
 
 type ProfileSearchResult {
-  guid: UUID!
+  id: UUID!
   name: String
   profilePictureUrl: String
   language: String
   description: String
-  type: String
+  type: ProfileTypeOption!
+}
+
+enum ProfileTypeOption {
+  PERSONAL
+  STARTUP
+  MENTOR
+  EXPERT
 }
 
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  myProfiles(userId: UUID!): [MyProfilesResult]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
