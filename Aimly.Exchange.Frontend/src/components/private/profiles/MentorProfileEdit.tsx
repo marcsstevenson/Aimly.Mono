@@ -18,7 +18,7 @@ import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
 import GenericHeader from 'components/shared/GenericHeader';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
 
-const PersonalProfileEdit = () => {
+const MentorProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
@@ -246,4 +246,4 @@ const PersonalProfileEdit = () => {
   );
 };
 
-export default PersonalProfileEdit;
+export default MentorProfileEdit;

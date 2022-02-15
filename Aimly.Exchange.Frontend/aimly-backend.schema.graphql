@@ -179,6 +179,7 @@ type GetPersonalProfileModel {
   familyName: String
   phoneNumber: String
   linkedInProfile: String
+  industries: [String]
 }
 
 input GetPersonalProfileModelInput {
@@ -191,6 +192,7 @@ input GetPersonalProfileModelInput {
   familyName: String
   phoneNumber: String
   linkedInProfile: String
+  industries: [String]
 }
 
 input GetPotentialCommandInput {

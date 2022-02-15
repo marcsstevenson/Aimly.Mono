@@ -12,6 +12,7 @@ export const getPersonalProfileQuery = graphql`
       familyName
       phoneNumber
       linkedInProfile
+      industries
     }
   }
 `;

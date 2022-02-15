@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3959adb965d315f29423e21f71e456f0>>
+ * @generated SignedSource<<64d354d432f5284a3537bb10cfb800e9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,6 +22,7 @@ export type GetPersonalProfileModelInput = {
   familyName?: string | null;
   phoneNumber?: string | null;
   linkedInProfile?: string | null;
+  industries?: ReadonlyArray<string | null> | null;
 };
 export type useSetPersonalProfileMutation$variables = {
   input: SetPersonalProfileCommandInput;

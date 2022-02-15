@@ -2334,6 +2334,11 @@ body {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
+button, input, optgroup, select, textarea {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
