@@ -1,6 +1,6 @@
 import { ProfileTypeOption } from '__generated__/profileSearchQuery.graphql';
 import { getStartupEditUrl } from 'components/for-startups/UrlBuilder';
-import { getPersonalProfileEditUrl } from 'components/private/profiles/UrlBuilder';
+import { getPersonalProfileEditUrl, getMentorProfileEditUrl } from 'components/private/profiles/UrlBuilder';
 
 export const getUrlForProfileTypeOptionType = (id: string, name: string | null | undefined, type: ProfileTypeOption): string => {
   switch (type) {
@@ -9,7 +9,7 @@ export const getUrlForProfileTypeOptionType = (id: string, name: string | null |
     case 'STARTUP':
       return getStartupEditUrl(id, name);
     case 'MENTOR':
-      return getStartupEditUrl(id, name);
+      return getMentorProfileEditUrl(id, name);
     case 'EXPERT':
       return getStartupEditUrl(id, name);
     default:

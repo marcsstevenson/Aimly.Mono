@@ -4,4 +4,8 @@ const getPersonalProfileEditUrl = (): string => {
   return `${GetPathForPage(Pages.PersonalProfileEdit)}?context=Personal`;
 };
 
-export { getPersonalProfileEditUrl }
+const getMentorProfileEditUrl = (id: string, name: string | null | undefined): string => {
+  return `${GetPathForPage(Pages.MentorProfileEdit)}?id=${id}&context=${name}`;
+};
+
+export { getPersonalProfileEditUrl, getMentorProfileEditUrl }

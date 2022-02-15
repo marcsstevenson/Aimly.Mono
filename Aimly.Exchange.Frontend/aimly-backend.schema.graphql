@@ -169,6 +169,22 @@ input GetAccessToMeetingCommandInput {
   userId: UUID!
 }
 
+type GetMentorProfileModel {
+  userId: UUID!
+  id: UUID
+  about: String!
+  industry: String!
+  listOnMarket: Boolean!
+}
+
+input GetMentorProfileModelInput {
+  userId: UUID!
+  id: UUID
+  about: String!
+  industry: String!
+  listOnMarket: Boolean!
+}
+
 type GetPersonalProfileModel {
   userId: UUID
   language: String
@@ -279,6 +295,7 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
+  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
@@ -331,6 +348,7 @@ type Query {
   myProfiles(userId: UUID!): [MyProfilesResult]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
+  getMentorProfile(userId: UUID!, mentorProfileId: UUID): GetMentorProfileModel
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
@@ -344,6 +362,14 @@ input SetAboutYouCommandInput {
 type SetAboutYouResponse {
   updatedPersonalProfileId: UUID!
   updatedCompanyProfileId: UUID!
+}
+
+input SetMentorProfileCommandInput {
+  getMentorProfileModel: GetMentorProfileModelInput
+}
+
+type SetMentorProfileResponse {
+  updatedMentorProfileId: UUID!
 }
 
 input SetPersonalProfileCommandInput {

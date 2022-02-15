@@ -1,26 +1,14 @@
 import React, { useContext } from 'react';
 
-import {
-  ChevronDoubleRightIcon,
-  UserCircleIcon,
-  LightningBoltIcon,
-  UserGroupIcon,
-  StarIcon,
-} from '@heroicons/react/solid';
+import { ChevronDoubleRightIcon } from '@heroicons/react/solid';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Link } from 'react-router-dom';
 import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 import MyProfilesList from './MyProfilesList';
-
-const cards = [
-  { name: 'Personal', href: '#', icon: UserCircleIcon, amount: 'Marc Stevenson' },
-  { name: 'Startup (admin)', href: '#', icon: LightningBoltIcon, amount: 'Aimly.io' },
-  { name: 'Startup (founder)', href: '#', icon: LightningBoltIcon, amount: 'Ludily.com' },
-  { name: 'Mentor', href: '#', icon: UserGroupIcon, amount: 'Innovation' },
-  { name: 'Expert', href: '#', icon: StarIcon, amount: 'Software Engineer' },
-  { name: 'Expert', href: '#', icon: StarIcon, amount: 'Technology consultant' },
-  // More items...
-];
+import {
+  getPersonalProfileEditUrl,
+  getMentorProfileEditUrl,
+} from 'components/private/profiles/UrlBuilder';
 
 export interface StatusType {
   name: string;
@@ -34,7 +22,7 @@ export const statuses: StatusType[] = [
 ];
 
 const Profiles = () => {
-  const { user } = useContext(PrivateContext);
+  const { user, userId } = useContext(PrivateContext);
 
   return (
     <div className="flex-1 pb-8">
@@ -65,18 +53,19 @@ const Profiles = () => {
               </div>
             </div>
             <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-              <button
+              {/* <button
                 type="button"
                 className="focus:ring-primary-500 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-900"
               >
                 View personal profile
-              </button>
-              <button
+              </button> */}
+              <Link
+                to={{ pathname: getPersonalProfileEditUrl() }}
                 type="button"
                 className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
                 Edit personal profile
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -99,7 +88,7 @@ const Profiles = () => {
           </div>
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
             <Link
-              to={{ pathname: '/for-mentors' }}
+              to={{ pathname: getMentorProfileEditUrl('', 'New') }}
               className="text-primary-600 flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
             >
               Mentor

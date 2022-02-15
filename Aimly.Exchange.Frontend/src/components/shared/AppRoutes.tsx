@@ -17,6 +17,7 @@ import Customise from 'components/for-startups/profile/edit/5-Customise';
 import Market from 'components/market/Market';
 import Profile from 'components/Profile';
 import PersonalProfileEdit from 'components/private/profiles/PersonalProfileEdit';
+import MentorProfileEdit from 'components/private/profiles/MentorProfileEdit';
 import Settings from 'components/Settings';
 import PageNotFound from 'components/PageNotFound';
 import ExternalApi from 'components/ExternalApi';
@@ -39,6 +40,7 @@ export enum Pages {
   Profiles, // The place to add, edit, remove profiles for startups, mentors, etc
   Profile,
   PersonalProfileEdit,
+  MentorProfileEdit,
   Settings,
   ExternalApi,
   AboutYou,
@@ -59,6 +61,11 @@ export const PrivateRoutes: RouteItem[] = [
     path: '/profile/personal-profile-edit',
     element: <PersonalProfileEdit />,
     page: Pages.PersonalProfileEdit,
+  },
+  {
+    path: '/profile/mentor-profile-edit',
+    element: <MentorProfileEdit />,
+    page: Pages.MentorProfileEdit,
   },
   { path: '/settings', element: <Settings />, page: Pages.Settings },
   { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },
