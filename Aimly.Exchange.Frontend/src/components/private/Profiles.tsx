@@ -7,7 +7,7 @@ import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 import MyProfilesList from './MyProfilesList';
 import {
   getPersonalProfileEditUrl,
-  getMentorProfileEditUrl,
+  getMentorProfileNewUrl,
 } from 'components/private/profiles/UrlBuilder';
 
 export interface StatusType {
@@ -22,7 +22,7 @@ export const statuses: StatusType[] = [
 ];
 
 const Profiles = () => {
-  const { user, userId } = useContext(PrivateContext);
+  const { user } = useContext(PrivateContext);
 
   return (
     <div className="flex-1 pb-8">
@@ -88,7 +88,7 @@ const Profiles = () => {
           </div>
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
             <Link
-              to={{ pathname: getMentorProfileEditUrl('', 'New') }}
+              to={{ pathname: getMentorProfileNewUrl() }}
               className="text-primary-600 flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
             >
               Mentor

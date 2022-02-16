@@ -1,11 +1,13 @@
 import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 
-const getPersonalProfileEditUrl = (): string => {
+export const getPersonalProfileEditUrl = (): string => {
   return `${GetPathForPage(Pages.PersonalProfileEdit)}?context=Personal`;
 };
 
-const getMentorProfileEditUrl = (id: string, name: string | null | undefined): string => {
-  return `${GetPathForPage(Pages.MentorProfileEdit)}?id=${id}&context=${name}`;
+export const getMentorProfileNewUrl = (): string => {
+  return `${GetPathForPage(Pages.MentorProfileNew)}`;
 };
 
-export { getPersonalProfileEditUrl, getMentorProfileEditUrl }
+export const getMentorProfileEditUrl = (id: string): string => {
+  return `${GetPathForPage(Pages.MentorProfileEdit)}?id=${id}`;
+};

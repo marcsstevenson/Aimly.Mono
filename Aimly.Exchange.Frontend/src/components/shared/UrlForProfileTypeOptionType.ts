@@ -9,7 +9,7 @@ export const getUrlForProfileTypeOptionType = (id: string, name: string | null |
     case 'STARTUP':
       return getStartupEditUrl(id, name);
     case 'MENTOR':
-      return getMentorProfileEditUrl(id, name);
+      return getMentorProfileEditUrl(id);
     case 'EXPERT':
       return getStartupEditUrl(id, name);
     default:
