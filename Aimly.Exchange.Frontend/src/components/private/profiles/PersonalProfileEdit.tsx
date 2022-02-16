@@ -209,7 +209,7 @@ const PersonalProfileEdit = () => {
                       </div>
                     </div>
 
-                    <div className="sm:col-span-3">
+                    <div className="sm:col-span-6">
                       <label htmlFor="phoneNumber" className="form-label">
                         Industries
                       </label>

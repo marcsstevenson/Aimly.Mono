@@ -1,5 +1,8 @@
+// The purpose of this component is to receive an array of optionTypes and
+// allow the user to select one or more of them within a multi-select input.
+
 import React from 'react';
-import Select, { OnChangeValue } from 'react-select';
+import Select from 'react-select';
 import { useField } from 'formik';
 
 interface optionType {
@@ -48,11 +51,17 @@ const options: optionType[] = [
 ];
 
 export const IndustrySelector = (props: any) => {
-  const [field, state, { setValue, setTouched }] = useField<string[]>(props.field.name);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [field, state, { setValue }] = useField<string[]>(props.field.name);
+
+  // Our state.initialValue is a string[]
+  // We need to filter our options (optionType[]) to those in the initialValue
+  // and set the filtered list as our defaultValue
+  const defaultValue = options.filter((option) => state.initialValue?.includes(option.value));
 
   const onChange = (newValue: optionType[]) => {
+    // Map from optionType[] to string[]
     setValue(newValue.map((o: optionType) => o.value));
-    console.log(newValue);
   };
 
   return (
@@ -62,7 +71,8 @@ export const IndustrySelector = (props: any) => {
       className="form-input"
       onChange={onChange}
       options={options}
-      // defaultValue={[options[0], options[1]]}
+      defaultValue={defaultValue}
+      isSearchable={true}
     />
   );
 };
