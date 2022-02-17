@@ -11,12 +11,12 @@ import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';
-// import TimezoneSelect from 'react-timezone-select';
 import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
 import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
 import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
 import GenericHeader from 'components/shared/GenericHeader';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -53,6 +53,8 @@ const PersonalProfileEdit = () => {
     industries: loadedData?.industries ?? [],
   };
 
+  console.log(`Model.timezone: ${model.timezone}`);
+
   const SetPersonalProfile = useSetPersonalProfileMutation();
 
   const onSubmit = (getPersonalProfileModel: GetPersonalProfileModelInput) => {
@@ -60,7 +62,7 @@ const PersonalProfileEdit = () => {
     getPersonalProfileModel.personalProfilePictureUrl = model.personalProfilePictureUrl;
 
     // Just use the browser version of the timezone for now
-    getPersonalProfileModel.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    //getPersonalProfileModel.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     // Just use the browser version of the language for now
     getPersonalProfileModel.language = getUsersLanguage();
@@ -219,6 +221,20 @@ const PersonalProfileEdit = () => {
                           component={IndustrySelector}
                           id="industries"
                           name="industries"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label htmlFor="timezone" className="form-label">
+                        Your timezone
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          className="form-input"
+                          component={TimezoneSelectWrapper}
+                          id="timezone"
+                          name="timezone"
                         />
                       </div>
                     </div>

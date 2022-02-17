@@ -1,15 +1,29 @@
 {
-  "short_name": "Aimly",
-  "name": "Aimly",
+  "short_name": "Aimly.io",
+  "name": "Aimly.io",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicon.svg",
+      "sizes": "any",
       "type": "image/x-icon"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#4338CA"
+  "theme_color": "#4338ca",
+  "background_color": "#4338ca",
+  "shortcuts": [
+    {
+      "name": "Aimly Market",
+      "short_name": "Market",
+      "description": "Search the Aimly market",
+      "url": "/market"
+    },
+    {
+      "name": "Aimly Profiles",
+      "short_name": "Profiles",
+      "description": "See your Aimly profiles",
+      "url": "/profiles"
+    }
+  ]
 }
