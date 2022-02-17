@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0e68ca095235f63c62cb3a42728ef2d2>>
+ * @generated SignedSource<<a45cc58fba1090da280ffdc172e5bbb0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,9 +15,10 @@ export type SetMentorProfileCommandInput = {
 export type GetMentorProfileModelInput = {
   userId: any;
   id?: any | null;
+  name: string;
   about: string;
-  industry: string;
   listOnMarket: boolean;
+  industries?: ReadonlyArray<string | null> | null;
 };
 export type useSetMentorProfileMutation$variables = {
   input: SetMentorProfileCommandInput;

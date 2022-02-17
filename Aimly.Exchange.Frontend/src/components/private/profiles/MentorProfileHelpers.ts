@@ -10,8 +10,9 @@ export const PopulateInputModel = (mentorProfileId: string | null,
   let model: GetMentorProfileModelInput = {
     userId: userId,
     id: mentorProfileId,
+    name: loadedData?.name ?? '',
     about: loadedData?.about ?? '',
-    industry: loadedData?.industry ?? '',
+    industries: loadedData?.industries ?? [],
     listOnMarket: loadedData?.listOnMarket ?? true,
   };
 

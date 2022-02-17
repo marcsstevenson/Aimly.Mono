@@ -20,7 +20,7 @@ const MentorProfileEdit = () => {
 
   const getMentorProfileQueryVariables = {
     userId: userId,
-    mentorProfileId: mentorProfileId,
+    id: mentorProfileId,
   };
 
   // Lazy load this query because it is only relevant to this component

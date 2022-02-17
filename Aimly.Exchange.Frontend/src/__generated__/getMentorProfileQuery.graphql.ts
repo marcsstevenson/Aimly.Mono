@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0c04372cc5d537e526a8f5ef5e6b989a>>
+ * @generated SignedSource<<b3615fca76ea4c0b274ce7803609253c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,15 +11,16 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getMentorProfileQuery$variables = {
   userId: any;
-  mentorProfileId: any;
+  id: any;
 };
 export type getMentorProfileQueryVariables = getMentorProfileQuery$variables;
 export type getMentorProfileQuery$data = {
   readonly getMentorProfile: {
     readonly userId: any;
     readonly id: any | null;
+    readonly name: string;
     readonly about: string;
-    readonly industry: string;
+    readonly industries: ReadonlyArray<string | null> | null;
     readonly listOnMarket: boolean;
   } | null;
 };
@@ -33,7 +34,7 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "mentorProfileId"
+  "name": "id"
 },
 v1 = {
   "defaultValue": null,
@@ -46,8 +47,8 @@ v2 = [
     "args": [
       {
         "kind": "Variable",
-        "name": "mentorProfileId",
-        "variableName": "mentorProfileId"
+        "name": "id",
+        "variableName": "id"
       },
       {
         "kind": "Variable",
@@ -78,6 +79,13 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "name",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "about",
         "storageKey": null
       },
@@ -85,7 +93,7 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "industry",
+        "name": "industries",
         "storageKey": null
       },
       {
@@ -123,16 +131,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "f764e51036e26eda7d71f9fa578288d7",
+    "cacheID": "958e8fc5d88619d53df3f1f18713372b",
     "id": null,
     "metadata": {},
     "name": "getMentorProfileQuery",
     "operationKind": "query",
-    "text": "query getMentorProfileQuery(\n  $userId: UUID!\n  $mentorProfileId: UUID!\n) {\n  getMentorProfile(userId: $userId, mentorProfileId: $mentorProfileId) {\n    userId\n    id\n    about\n    industry\n    listOnMarket\n  }\n}\n"
+    "text": "query getMentorProfileQuery(\n  $userId: UUID!\n  $id: UUID!\n) {\n  getMentorProfile(userId: $userId, id: $id) {\n    userId\n    id\n    name\n    about\n    industries\n    listOnMarket\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "518a0062175091dc9f80f209b7917a1f";
+(node as any).hash = "66324f25595d58b3e067c20138d114c4";
 
 export default node;
