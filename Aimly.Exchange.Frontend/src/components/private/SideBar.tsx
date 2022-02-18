@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect, useMemo } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
 import {
@@ -15,7 +15,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 import { PrivateContext } from './PrivateContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
 import AimlyLogo from './AimlyLogo';
 const navigation = [
@@ -35,10 +35,17 @@ const secondaryNavigation = [
 
 const SideBar = (): JSX.Element => {
   const { isSidebarOpen, setSidebarOpen } = useContext(PrivateContext);
+  const { pathname } = useLocation();
+
+  // We want to close the sidebar if the user clicks on a link and navigates to a different page
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname, setSidebarOpen]);
+
   return (
     <>
       <Transition.Root show={isSidebarOpen} as={Fragment}>
-        <Dialog as="div" className="fixed inset-0 flex z-40 lg:hidden" onClose={setSidebarOpen}>
+        <Dialog as="div" className="fixed inset-0 z-40 flex lg:hidden" onClose={setSidebarOpen}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -59,7 +66,7 @@ const SideBar = (): JSX.Element => {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-primary-700">
+            <div className="bg-primary-700 relative flex w-full max-w-xs flex-1 flex-col pt-5 pb-4">
               <Transition.Child
                 as={Fragment}
                 enter="ease-in-out duration-300"
@@ -72,7 +79,7 @@ const SideBar = (): JSX.Element => {
                 <div className="absolute top-0 right-0 -mr-12 pt-2">
                   <button
                     type="button"
-                    className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     onClick={() => setSidebarOpen(false)}
                   >
                     <span className="sr-only">Close sidebar</span>
@@ -80,14 +87,14 @@ const SideBar = (): JSX.Element => {
                   </button>
                 </div>
               </Transition.Child>
-              <div className="flex-shrink-0 flex items-center px-4">
+              <div className="flex flex-shrink-0 items-center px-4">
                 <AimlyLogo />
               </div>
               <nav
-                className="mt-5 flex-shrink-0 h-full divide-y divide-primary-800 overflow-y-auto"
+                className="divide-primary-800 mt-5 h-full flex-shrink-0 divide-y overflow-y-auto"
                 aria-label="Sidebar"
               >
-                <div className="px-2 space-y-1">
+                <div className="space-y-1 px-2">
                   {navigation.map((item) => (
                     <NavLink
                       key={item.name}
@@ -95,13 +102,13 @@ const SideBar = (): JSX.Element => {
                       className={({ isActive }) =>
                         (isActive
                           ? 'bg-primary-800 text-white'
-                          : ' text-primary-100 hover:text-white hover:bg-primary-600') +
-                        '  group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                          : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
+                        '  group flex items-center rounded-md px-2 py-2 text-base font-medium'
                       }
                       aria-current={item.current ? 'page' : undefined}
                     >
                       <item.icon
-                        className="mr-4 flex-shrink-0 h-6 w-6 text-primary-200"
+                        className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
                         aria-hidden="true"
                       />
                       {item.name}
@@ -109,19 +116,19 @@ const SideBar = (): JSX.Element => {
                   ))}
                 </div>
                 <div className="mt-6 pt-6">
-                  <div className="px-2 space-y-1">
+                  <div className="space-y-1 px-2">
                     {secondaryNavigation.map((item) => (
                       <NavLink
                         key={item.name}
                         to={{ pathname: item.href }}
                         className={({ isActive }) =>
-                            (isActive
-                              ? 'bg-primary-800 text-white'
-                              : ' text-primary-100 hover:text-white hover:bg-primary-600') +
-                            '  group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                          }
+                          (isActive
+                            ? 'bg-primary-800 text-white'
+                            : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
+                          '  group flex items-center rounded-md px-2 py-2 text-base font-medium'
+                        }
                       >
-                        <item.icon className="mr-4 h-6 w-6 text-primary-200" aria-hidden="true" />
+                        <item.icon className="text-primary-200 mr-4 h-6 w-6" aria-hidden="true" />
                         {item.name}
                       </NavLink>
                     ))}
@@ -130,24 +137,24 @@ const SideBar = (): JSX.Element => {
               </nav>
             </div>
           </Transition.Child>
-          <div className="flex-shrink-0 w-14" aria-hidden="true">
+          <div className="w-14 flex-shrink-0" aria-hidden="true">
             {/* Dummy element to force sidebar to shrink to fit close icon */}
           </div>
         </Dialog>
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+      <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex flex-col flex-grow bg-primary-700 pt-5 pb-4 overflow-y-auto">
-          <div className="flex items-center flex-shrink-0 px-4">
+        <div className="bg-primary-700 flex flex-grow flex-col overflow-y-auto pt-5 pb-4">
+          <div className="flex flex-shrink-0 items-center px-4">
             <AimlyLogo />
           </div>
           <nav
-            className="mt-5 flex-1 flex flex-col divide-y divide-primary-800 overflow-y-auto"
+            className="divide-primary-800 mt-5 flex flex-1 flex-col divide-y overflow-y-auto"
             aria-label="Sidebar"
           >
-            <div className="px-2 space-y-1">
+            <div className="space-y-1 px-2">
               {navigation.map((item) => (
                 <NavLink
                   key={item.name}
@@ -155,13 +162,13 @@ const SideBar = (): JSX.Element => {
                   className={({ isActive }) =>
                     (isActive
                       ? 'bg-primary-800 text-white'
-                      : ' text-primary-100 hover:text-white hover:bg-primary-600') +
-                    '  group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                      : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
+                    '  group flex items-center rounded-md px-2 py-2 text-base font-medium'
                   }
                   aria-current={item.current ? 'page' : undefined}
                 >
                   <item.icon
-                    className="mr-4 flex-shrink-0 h-6 w-6 text-primary-200"
+                    className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
                     aria-hidden="true"
                   />
                   {item.name}
@@ -169,7 +176,7 @@ const SideBar = (): JSX.Element => {
               ))}
             </div>
             <div className="mt-6 pt-6">
-              <div className="px-2 space-y-1">
+              <div className="space-y-1 px-2">
                 {secondaryNavigation.map((item) => (
                   <NavLink
                     key={item.name}
@@ -177,11 +184,11 @@ const SideBar = (): JSX.Element => {
                     className={({ isActive }) =>
                       (isActive
                         ? 'bg-primary-800 text-white'
-                        : ' text-primary-100 hover:text-white hover:bg-primary-600') +
-                      '  group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                        : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
+                      '  group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6'
                     }
                   >
-                    <item.icon className="mr-4 h-6 w-6 text-primary-200" aria-hidden="true" />
+                    <item.icon className="text-primary-200 mr-4 h-6 w-6" aria-hidden="true" />
                     {item.name}
                   </NavLink>
                 ))}

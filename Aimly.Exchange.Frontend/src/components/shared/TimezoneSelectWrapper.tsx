@@ -32,6 +32,7 @@ export const TimezoneSelectWrapper = (props: any) => {
         timezones={{
           ...allTimezones,
         }}
+        className="form-input"
       />
     </div>
   );

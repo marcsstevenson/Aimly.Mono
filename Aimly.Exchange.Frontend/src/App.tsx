@@ -25,7 +25,7 @@ const App = (): JSX.Element => {
   return (
     <BrowserRouter>
       <ErrorBoundary>
-        <div id="app" className="d-flex flex-column h-100">
+        <div id="app" className="d-flex flex-column min-h-screen">
           <Suspense fallback={'Loading...'}>
             <RelayEnvironmentProvider environment={getRelayEnvironment()}>
               {!user && <PublicShell />}

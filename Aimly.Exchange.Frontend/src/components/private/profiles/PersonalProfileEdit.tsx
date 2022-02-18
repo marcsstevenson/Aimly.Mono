@@ -53,8 +53,6 @@ const PersonalProfileEdit = () => {
     industries: loadedData?.industries ?? [],
   };
 
-  console.log(`Model.timezone: ${model.timezone}`);
-
   const SetPersonalProfile = useSetPersonalProfileMutation();
 
   const onSubmit = (getPersonalProfileModel: GetPersonalProfileModelInput) => {
@@ -131,18 +129,33 @@ const PersonalProfileEdit = () => {
 
               <div className="space-y-8 divide-y divide-gray-200">
                 <div className="pt-8">
-                  <div className="sm:col-span-6">
-                    <label htmlFor="email" className="form-label">
-                      Email address
-                    </label>
-                    <div className="mt-1">
-                      <label id="email" className="block text-sm text-gray-700 dark:text-gray-200">
-                        {user?.email}
-                      </label>
-                    </div>
-                  </div>
-
                   <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <div className="sm:col-span-3">
+                      <label htmlFor="email" className="form-label">
+                        Email address
+                      </label>
+                      <div className="mt-1">
+                        <label
+                          id="email"
+                          className="block text-sm text-gray-700 dark:text-gray-200"
+                        >
+                          {user?.email}
+                        </label>
+                      </div>
+                    </div>
+                    <div className="sm:col-span-3">
+                      <label htmlFor="language" className="form-label">
+                        Detected language
+                      </label>
+                      <div className="mt-1">
+                        <label
+                          id="language"
+                          className="block text-sm text-gray-700 dark:text-gray-200"
+                        >
+                          {model?.language}
+                        </label>
+                      </div>
+                    </div>
                     <div className="sm:col-span-3">
                       <label htmlFor="givenName" className="form-label">
                         First name *
