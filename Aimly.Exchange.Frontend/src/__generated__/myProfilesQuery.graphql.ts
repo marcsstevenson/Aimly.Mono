@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<69dca1d6037fcf1522274fbfea7f0458>>
+ * @generated SignedSource<<b886eced9c995387950762ccfd6976c2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,6 +17,7 @@ export type myProfilesQueryVariables = myProfilesQuery$variables;
 export type myProfilesQuery$data = {
   readonly myProfiles: ReadonlyArray<{
     readonly id: any;
+    readonly profileId: any;
     readonly name: string | null;
     readonly type: ProfileTypeOption;
   } | null> | null;
@@ -61,6 +62,13 @@ v1 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "profileId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "name",
         "storageKey": null
       },
@@ -93,16 +101,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "9c7976e66f2daa3f82bd101648f7bb35",
+    "cacheID": "3a0b1d43ab83596f53a4c652256b53b5",
     "id": null,
     "metadata": {},
     "name": "myProfilesQuery",
     "operationKind": "query",
-    "text": "query myProfilesQuery(\n  $userId: UUID!\n) {\n  myProfiles(userId: $userId) {\n    id\n    name\n    type\n  }\n}\n"
+    "text": "query myProfilesQuery(\n  $userId: UUID!\n) {\n  myProfiles(userId: $userId) {\n    id\n    profileId\n    name\n    type\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fd2b9a5094aa85f068179cf02c6137a5";
+(node as any).hash = "5c76f69ff64d3abdcf2c89faafba203f";
 
 export default node;

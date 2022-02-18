@@ -7,7 +7,7 @@ import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@her
 import { getUrlForProfileTypeOptionType } from 'components/shared/UrlForProfileTypeOptionType';
 
 export interface ProfileSearchResult {
-  readonly id: any;
+  readonly profileId: any;
   readonly name: string | null;
   readonly type: ProfileTypeOption;
 }
@@ -64,7 +64,7 @@ const MyProfileItem = (props: Props) => {
           <Link
             to={{
               pathname: getUrlForProfileTypeOptionType(
-                props.item?.id,
+                props.item?.profileId,
                 props.item?.name,
                 props.item ? props.item.type : 'PERSONAL'
               ),

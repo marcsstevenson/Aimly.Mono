@@ -306,6 +306,7 @@ type Mutation {
 
 type MyProfilesResult {
   id: UUID!
+  profileId: UUID!
   name: String
   type: ProfileTypeOption!
 }
