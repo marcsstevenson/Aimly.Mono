@@ -15,7 +15,7 @@ const MentorProfileNew = () => {
   // Just new up a model to use with the defaults (no loaded data from the API)
   let model: GetMentorProfileModelInput = PopulateInputModel(null, userId, null);
 
-  return <MentorProfileForm model={model} />;
+  return <MentorProfileForm model={model} allowDelete={false} />;
 };
 
 export default MentorProfileNew;

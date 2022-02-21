@@ -36,7 +36,7 @@ const MentorProfileEdit = () => {
 
   let model: GetMentorProfileModelInput = PopulateInputModel(mentorProfileId, userId, data);
 
-  return <MentorProfileForm model={model} />;
+  return <MentorProfileForm model={model} allowDelete={true} />;
 };
 
 export default MentorProfileEdit;

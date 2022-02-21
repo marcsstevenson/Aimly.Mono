@@ -4,6 +4,7 @@
 
 import React, { useCallback, useRef } from 'react';
 import useSetMentorProfileMutation from 'useSetMentorProfileMutation';
+import useDeleteMentorProfileMutation from 'useDeleteMentorProfileMutation';
 import {
   GetMentorProfileModelInput,
   useSetMentorProfileMutation$data,
@@ -19,14 +20,21 @@ import { IndustrySelector } from 'components/shared/IndustrySelector';
 import { useState } from 'react';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 import { useUrlParser } from 'components/shared/useUrlParser';
+import {
+  useDeleteMentorProfileMutation$data,
+  useDeleteMentorProfileMutationVariables,
+} from '__generated__/useDeleteMentorProfileMutation.graphql';
 
 interface Props {
   model: GetMentorProfileModelInput;
+  allowDelete: boolean;
 }
 
 const MentorProfileForm = (props: Props) => {
   const { getPromptForDeleteValue } = useUrlParser();
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(getPromptForDeleteValue());
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(
+    props.allowDelete && getPromptForDeleteValue()
+  );
   const [isDeleting, setIsDeleting] = useState(false);
 
   const navigateToPage = useNavigateToPage();
@@ -35,6 +43,7 @@ const MentorProfileForm = (props: Props) => {
   let model: GetMentorProfileModelInput = props.model;
 
   const SetMentorProfile = useSetMentorProfileMutation();
+  const DeleteMentorProfile = useDeleteMentorProfileMutation();
 
   const onSubmit = (getMentorProfileModel: GetMentorProfileModelInput) => {
     handleSave(getMentorProfileModel);
@@ -52,6 +61,11 @@ const MentorProfileForm = (props: Props) => {
   const handleSubmitCompleted = (response: useSetMentorProfileMutation$data): void => {
     let queryString = `?$id=${response.setMentorProfile?.updatedMentorProfileId}`;
 
+    outro(queryString);
+  };
+
+  // Head back to profiles
+  const outro = (queryString: string | null = null) => {
     scrollToTop();
     navigateToPage(Pages.Profiles, queryString);
   };
@@ -63,8 +77,28 @@ const MentorProfileForm = (props: Props) => {
     }
   };
 
+  const handleDelete = useCallback(
+    () => {
+      if (model.id === null) return;
+
+      setIsDeleting(true);
+      const variables: useDeleteMentorProfileMutationVariables = {
+        userId: model.userId,
+        profileId: model.id,
+      };
+      return DeleteMentorProfile(variables, handleDeleteCompleted);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [DeleteMentorProfile]
+  );
+
+  // This is called once the SetMentorProfile mutation has completed
+  const handleDeleteCompleted = (response: useDeleteMentorProfileMutation$data): void => {
+    outro();
+  };
+
   const handleDeleteConfirm = () => {
-    setIsDeleting(true);
+    handleDelete();
   };
 
   const handleDeleteCancel = () => {
@@ -173,14 +207,16 @@ const MentorProfileForm = (props: Props) => {
 
               <div className="py-5">
                 <div className="flex justify-end">
-                  <button
-                    disabled={isSubmitting || isValidating}
-                    type="button"
-                    onClick={() => setShowDeleteConfirmation(true)}
-                    className="form-delete"
-                  >
-                    Delete Profile
-                  </button>
+                  {props.allowDelete && (
+                    <button
+                      disabled={isSubmitting || isValidating}
+                      type="button"
+                      onClick={() => setShowDeleteConfirmation(true)}
+                      className="form-delete"
+                    >
+                      Delete Profile
+                    </button>
+                  )}
                   <button
                     disabled={isSubmitting || isValidating}
                     type="submit"

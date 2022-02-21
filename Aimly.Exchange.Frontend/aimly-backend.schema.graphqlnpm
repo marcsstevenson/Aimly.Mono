@@ -100,6 +100,10 @@ input AuthProfileInput {
 """The `DateTime` scalar represents an ISO-8601 compliant date time type."""
 scalar DateTime
 
+type DeleteProfileResponse {
+  deletedProfileId: UUID!
+}
+
 input GetAboutYouCommandInput {
   userId: UUID!
   companyProfileId: UUID
@@ -303,11 +307,12 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
-  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
+  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
+  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
 }
 
 type MyProfilesResult {
@@ -357,12 +362,12 @@ type Query {
   myProfiles(userId: UUID!): [MyProfilesResult]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
-  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
-  getSkillOptions(nameStartingWith: String): [String]
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
+  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
+  getSkillOptions(nameStartingWith: String): [String]
 }
 
 input SetAboutYouCommandInput {
