@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3bbc8aaebf8670e778996aee34a290fe>>
+ * @generated SignedSource<<18d15c0c544aedc3e9703be29cd4271e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -39,6 +39,7 @@ export type getAboutYouQuery$data = {
     readonly addressCountry: string | null;
     readonly postalCode: string | null;
     readonly postOfficeBoxNumber: string | null;
+    readonly industries: ReadonlyArray<string | null> | null;
   } | null;
 };
 export type getAboutYouQueryResponse = getAboutYouQuery$data;
@@ -244,6 +245,13 @@ v2 = [
         "kind": "ScalarField",
         "name": "postOfficeBoxNumber",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "industries",
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -273,16 +281,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "40cb9f45ad763274f8b9b95819b269a5",
+    "cacheID": "41ad03f67ae7e55c96b0060b7a451fa7",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    industries\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9f72a819ba529e5f338ef46952f806da";
+(node as any).hash = "fe8610ee9288b86fc0b147260c014c36";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a561c7747ee8fb429c12b9454743db71>>
+ * @generated SignedSource<<5ae8c16091405561960548578be5b76c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,6 +25,7 @@ export type getPersonalProfileQuery$data = {
     readonly phoneNumber: string | null;
     readonly linkedInProfile: string | null;
     readonly industries: ReadonlyArray<string | null> | null;
+    readonly skills: ReadonlyArray<string | null> | null;
   } | null;
 };
 export type getPersonalProfileQueryResponse = getPersonalProfileQuery$data;
@@ -125,6 +126,13 @@ v1 = [
         "kind": "ScalarField",
         "name": "industries",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "skills",
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -148,16 +156,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "09426ac630c11a425225322942158f4c",
+    "cacheID": "a56a0f95523fcad013466f69f2844c11",
     "id": null,
     "metadata": {},
     "name": "getPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n  }\n}\n"
+    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7d61e941ab1376dcf529879332330c2f";
+(node as any).hash = "76c83b0799058e9f1c645f13dbc9a5ee";
 
 export default node;

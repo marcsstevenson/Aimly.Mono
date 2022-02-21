@@ -13,6 +13,7 @@ export const getPersonalProfileQuery = graphql`
       phoneNumber
       linkedInProfile
       industries
+      skills
     }
   }
 `;

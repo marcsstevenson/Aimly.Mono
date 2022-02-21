@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9b8556c3cea390e7316aac87a33b9621>>
+ * @generated SignedSource<<dd871f4b5d360b825b170df4ee843a57>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -27,6 +27,7 @@ export type GetAboutYouModelInput = {
   companyName?: string | null;
   website?: string | null;
   numberOfFounders?: number | null;
+  industries?: ReadonlyArray<string | null> | null;
   floor?: string | null;
   streetNumber?: string | null;
   streetName?: string | null;

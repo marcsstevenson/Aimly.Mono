@@ -26,6 +26,7 @@ export const getAboutYouQuery = graphql`
       addressCountry
       postalCode
       postOfficeBoxNumber
+      industries
     }
   }
 `;

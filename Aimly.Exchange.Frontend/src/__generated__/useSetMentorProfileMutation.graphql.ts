@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a45cc58fba1090da280ffdc172e5bbb0>>
+ * @generated SignedSource<<89ccb16ec68a2e9c8d4294cc4b99c33d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,6 +19,7 @@ export type GetMentorProfileModelInput = {
   about: string;
   listOnMarket: boolean;
   industries?: ReadonlyArray<string | null> | null;
+  skills?: ReadonlyArray<string | null> | null;
 };
 export type useSetMentorProfileMutation$variables = {
   input: SetMentorProfileCommandInput;

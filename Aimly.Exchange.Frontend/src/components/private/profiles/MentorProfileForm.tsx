@@ -16,12 +16,19 @@ import GenericHeader from 'components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { useState } from 'react';
+import { ConfirmDelete } from 'components/shared/ConfirmDelete';
+import { useUrlParser } from 'components/shared/useUrlParser';
 
 interface Props {
   model: GetMentorProfileModelInput;
 }
 
 const MentorProfileForm = (props: Props) => {
+  const { getPromptForDeleteValue } = useUrlParser();
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(getPromptForDeleteValue());
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const navigateToPage = useNavigateToPage();
   const topRef = useRef<HTMLDivElement>(null);
 
@@ -56,10 +63,29 @@ const MentorProfileForm = (props: Props) => {
     }
   };
 
+  const handleDeleteConfirm = () => {
+    setIsDeleting(true);
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteConfirmation(false);
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div ref={topRef}>
         <GenericHeader title="Mentor Profile Builder" contextVal={model.id ? model.name : 'New'} />
+
+        <ConfirmDelete
+          show={showDeleteConfirmation}
+          working={isDeleting}
+          Title="Delete Profile"
+          Message="Are you sure that you want to delete this profile? This action cannot be undone!"
+          ConfirmButtonText="Confirm Delete"
+          onConfirm={handleDeleteConfirm}
+          onCancel={handleDeleteCancel}
+        />
+
         <Formik initialValues={model} onSubmit={onSubmit}>
           {({ errors, touched, isValidating, isSubmitting }) => (
             <Form className="space-y-8 divide-y divide-gray-200">
@@ -149,6 +175,14 @@ const MentorProfileForm = (props: Props) => {
                 <div className="flex justify-end">
                   <button
                     disabled={isSubmitting || isValidating}
+                    type="button"
+                    onClick={() => setShowDeleteConfirmation(true)}
+                    className="form-delete"
+                  >
+                    Delete Profile
+                  </button>
+                  <button
+                    disabled={isSubmitting || isValidating}
                     type="submit"
                     className="form-next ml-3"
                   >
@@ -160,7 +194,6 @@ const MentorProfileForm = (props: Props) => {
           )}
         </Formik>
       </div>
-      <div></div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     colors: {
       primary: colors.indigo,
+      validation: colors.red,
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,

@@ -16,6 +16,7 @@ import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProf
 import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
 import GenericHeader from 'components/shared/GenericHeader';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { SkillSelector } from 'components/shared/SkillSelector';
 import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
 
 const PersonalProfileEdit = () => {
@@ -51,6 +52,7 @@ const PersonalProfileEdit = () => {
     phoneNumber: loadedData?.phoneNumber ?? '',
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
     industries: loadedData?.industries ?? [],
+    skills: loadedData?.skills ?? [],
   };
 
   const SetPersonalProfile = useSetPersonalProfileMutation();
@@ -225,7 +227,7 @@ const PersonalProfileEdit = () => {
                     </div>
 
                     <div className="sm:col-span-6">
-                      <label htmlFor="phoneNumber" className="form-label">
+                      <label htmlFor="industries" className="form-label">
                         Industries
                       </label>
                       <div className="mt-1">
@@ -237,6 +239,20 @@ const PersonalProfileEdit = () => {
                         />
                       </div>
                     </div>
+
+                    {/* <div className="sm:col-span-6">
+                      <label htmlFor="skills" className="form-label">
+                        Skills
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          className="form-input"
+                          component={SkillSelector}
+                          id="skills"
+                          name="skills"
+                        />
+                      </div>
+                    </div> */}
 
                     <div className="sm:col-span-3">
                       <label htmlFor="timezone" className="form-label">

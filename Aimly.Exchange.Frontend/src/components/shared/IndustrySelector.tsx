@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { useField } from 'formik';
 import { IndustryOptionsValues, optionType } from 'components/shared/IndustryOptions';
 
+
 const options: optionType[] = IndustryOptionsValues;
 
 export const IndustrySelector = (props: any) => {

@@ -6,8 +6,6 @@ import Loading from 'components/Loading';
 import { GetPrivateRoutes } from 'components/shared/AppRoutes';
 import SideBar from './SideBar';
 import { PrivateContext, PrivateContextType } from './PrivateContext';
-// import loadingImage from 'assets/loading.svg';
-import loadingImage from 'assets/logo-loading.svg';
 import useCheckInMutation2 from './useCheckInMutation2';
 import { LoadingArea } from 'components/shared/LoadingArea';
 
@@ -47,7 +45,7 @@ const PrivateShell = (): JSX.Element => {
   }
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingArea title="Loading..." />;
   }
 
   const testingCheckIn = false;

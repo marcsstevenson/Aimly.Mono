@@ -1,6 +1,6 @@
 import React from 'react';
 import useLocationQuery from 'components/shared/useLocationQuery';
-import { context } from 'components/for-startups/UrlConstants';
+import { context } from 'components/shared/UrlConstants';
 
 interface Props {
   title: string;

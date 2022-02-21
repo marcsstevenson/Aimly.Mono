@@ -15,11 +15,12 @@ import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import validateRequiredString from 'validators/validateRequiredString';
-import { companyProfileId, context } from 'components/for-startups/UrlConstants';
+import { companyProfileId, context } from 'components/shared/UrlConstants';
 // import TimezoneSelect from 'react-timezone-select';
 import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
 import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
 import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
+import { IndustrySelector } from 'components/shared/IndustrySelector';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -69,6 +70,7 @@ const AboutYou = () => {
     addressCountry: loadedData?.addressCountry ?? '',
     postalCode: loadedData?.postalCode ?? '',
     postOfficeBoxNumber: loadedData?.postOfficeBoxNumber ?? '',
+    industries: loadedData?.industries ?? [],
   };
 
   const SetAboutYou = useSetAboutYouMutation();
@@ -281,7 +283,19 @@ const AboutYou = () => {
                       />
                     </div>
                   </div>
-
+                  <div className="sm:col-span-6">
+                    <label htmlFor="phoneNumber" className="form-label">
+                      Industries
+                    </label>
+                    <div className="mt-1">
+                      <Field
+                        className="form-input"
+                        component={IndustrySelector}
+                        id="industries"
+                        name="industries"
+                      />
+                    </div>
+                  </div>
                   <div className="sm:col-span-6">
                     <label htmlFor="streetName" className="form-label">
                       Company Street address
