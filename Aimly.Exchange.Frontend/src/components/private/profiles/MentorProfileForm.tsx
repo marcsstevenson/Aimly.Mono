@@ -219,6 +219,14 @@ const MentorProfileForm = (props: Props) => {
                   )}
                   <button
                     disabled={isSubmitting || isValidating}
+                    type="button"
+                    onClick={() => outro()}
+                    className="form-button-flat"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    disabled={isSubmitting || isValidating}
                     type="submit"
                     className="form-next ml-3"
                   >

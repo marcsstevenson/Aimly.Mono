@@ -307,6 +307,7 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
+  deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse

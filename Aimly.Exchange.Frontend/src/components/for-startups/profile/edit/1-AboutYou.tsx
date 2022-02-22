@@ -1,9 +1,15 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import useSetAboutYouMutation from 'useSetAboutYouMutation';
+import useDeleteCompanyProfileMutation from 'useDeleteCompanyProfileMutation';
+import {
+  useDeleteCompanyProfileMutation$data,
+  useDeleteCompanyProfileMutationVariables,
+} from '__generated__/useDeleteCompanyProfileMutation.graphql';
+
 import {
   GetAboutYouModelInput,
   useSetAboutYouMutation$data,
@@ -21,6 +27,8 @@ import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
 import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
 import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { useUrlParser } from 'components/shared/useUrlParser';
+import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -46,6 +54,15 @@ const AboutYou = () => {
 
   const loadedData = data.getAboutYou;
 
+  const { getPromptForDeleteValue } = useUrlParser();
+
+  const allowDelete: boolean = loadedData?.companyProfileId !== null;
+
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(
+    allowDelete && getPromptForDeleteValue()
+  );
+  const [isDeleting, setIsDeleting] = useState(false);
+
   let model: GetAboutYouModelInput = {
     ...data.getAboutYou,
     userId: userId,
@@ -57,7 +74,7 @@ const AboutYou = () => {
     familyName: loadedData?.familyName ?? user?.family_name ?? '', // Note we are using the Auth profile values as the first fallback
     phoneNumber: loadedData?.phoneNumber ?? '',
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
-    companyProfileId: loadedData?.companyProfileId ?? '',
+    companyProfileId: loadedData?.companyProfileId ?? null,
     companyName: loadedData?.companyName ?? '',
     website: loadedData?.website ?? '',
     numberOfFounders: loadedData?.numberOfFounders ?? 1,
@@ -74,6 +91,7 @@ const AboutYou = () => {
   };
 
   const SetAboutYou = useSetAboutYouMutation();
+  const DeleteCompanyProfile = useDeleteCompanyProfileMutation();
 
   const onSubmit = (getAboutYouModel: GetAboutYouModelInput) => {
     // Just relay the personal profile picture url to the backend for now (until we allow this to be updated)
@@ -119,15 +137,59 @@ const AboutYou = () => {
     navigateToPage(Pages.TheProblem, queryString);
   };
 
-  /// Scroll the user to the top of the page
+  // Scroll the user to the top of the page
   const scrollToTop = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  // Head back to profiles
+  const outro = (queryString: string | null = null) => {
+    scrollToTop();
+    navigateToPage(Pages.Profiles, queryString);
+  };
+
+  const handleDelete = useCallback(
+    () => {
+      if (model.companyProfileId === null) return;
+
+      setIsDeleting(true);
+      const variables: useDeleteCompanyProfileMutationVariables = {
+        userId: model.userId,
+        profileId: model.companyProfileId,
+      };
+      return DeleteCompanyProfile(variables, handleDeleteCompleted);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [DeleteCompanyProfile]
+  );
+
+  // This is called once the SetCompanyProfile mutation has completed
+  const handleDeleteCompleted = (response: useDeleteCompanyProfileMutation$data): void => {
+    outro();
+  };
+
+  const handleDeleteConfirm = () => {
+    handleDelete();
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteConfirmation(false);
+  };
+
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
+      <ConfirmDelete
+        show={showDeleteConfirmation}
+        working={isDeleting}
+        Title="Delete Profile"
+        Message="Are you sure that you want to delete this profile? This action cannot be undone!"
+        ConfirmButtonText="Confirm Delete"
+        onConfirm={handleDeleteConfirm}
+        onCancel={handleDeleteCancel}
+      />
+
       <Formik initialValues={model} onSubmit={onSubmit}>
         {({ errors, touched, isValidating, isSubmitting }) => (
           <Form className="space-y-8 divide-y divide-gray-200">
@@ -380,6 +442,16 @@ const AboutYou = () => {
 
             <div className="py-5">
               <div className="flex justify-end">
+                {allowDelete && (
+                  <button
+                    disabled={isSubmitting || isValidating}
+                    type="button"
+                    onClick={() => setShowDeleteConfirmation(true)}
+                    className="form-delete"
+                  >
+                    Delete Profile
+                  </button>
+                )}
                 <button
                   disabled={isSubmitting || isValidating}
                   type="submit"
