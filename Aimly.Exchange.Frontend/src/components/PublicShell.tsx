@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from './home/Home';
-import Login from 'components/private/Login';
+import Login from 'components/Login';
 import StartupsHome from './for-startups/StartupsHome';
 import MentorsHome from './for-mentors/MentorsHome';
 import ExpertsHome from './for-experts/ExpertsHome';

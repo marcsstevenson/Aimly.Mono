@@ -8,7 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 
 import DashBoard from 'components/DashBoard';
-import Login from 'components/private/Login';
+import GoDashboard from 'components/private/GoDashboard';
 import Profiles from 'components/private/Profiles';
 import AboutYou from 'components/for-startups/profile/edit/1-AboutYou';
 import TheProblem from 'components/for-startups/profile/edit/2-TheProblem';
@@ -61,7 +61,7 @@ export const PublicRoutes: RouteItem[] = [
 
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
-  { path: '/login', element: <DashBoard />, page: Pages.DashBoard },
+  { path: '/login', element: <GoDashboard />, page: Pages.Login },
   { path: '/market', element: <Market />, page: Pages.Market },
   { path: '/profiles', element: <Profiles />, page: Pages.Profiles },
   { path: '/profile', element: <Profile />, page: Pages.Profile },
