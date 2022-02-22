@@ -765,18 +765,6 @@ select {
   left: 50%;
 }
 
-.right-3\.5 {
-  right: 0.875rem;
-}
-
-.right-3 {
-  right: 0.75rem;
-}
-
-.bottom-full {
-  bottom: 100%;
-}
-
 .z-50 {
   z-index: 50;
 }
@@ -950,48 +938,20 @@ select {
   margin-left: 4rem;
 }
 
-.mt-0\.5 {
-  margin-top: 0.125rem;
-}
-
-.mt-0 {
-  margin-top: 0px;
-}
-
-.ml-0\.5 {
-  margin-left: 0.125rem;
-}
-
-.ml-0 {
-  margin-left: 0px;
-}
-
-.ml-6 {
-  margin-left: 1.5rem;
-}
-
-.ml-2\.5 {
-  margin-left: 0.625rem;
-}
-
-.mb-2\.5 {
-  margin-bottom: 0.625rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
-.-ml-2 {
-  margin-left: -0.5rem;
-}
-
 .-ml-1 {
   margin-left: -0.25rem;
 }
 
 .mr-3 {
   margin-right: 0.75rem;
+}
+
+.mt-0\.5 {
+  margin-top: 0.125rem;
+}
+
+.mt-0 {
+  margin-top: 0px;
 }
 
 .block {
@@ -1082,10 +1042,6 @@ select {
   height: 10rem;
 }
 
-.h-9 {
-  height: 2.25rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1170,14 +1126,6 @@ select {
   width: 0.75rem;
 }
 
-.w-px {
-  width: 1px;
-}
-
-.w-9 {
-  width: 2.25rem;
-}
-
 .min-w-0 {
   min-width: 0px;
 }
@@ -1223,10 +1171,6 @@ select {
   flex: 1 1 0%;
 }
 
-.flex-none {
-  flex: none;
-}
-
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -1242,11 +1186,6 @@ select {
 .origin-top-right {
   -webkit-transform-origin: top right;
           transform-origin: top right;
-}
-
-.origin-bottom {
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
 }
 
 .translate-y-1\/4 {
@@ -1311,12 +1250,6 @@ select {
 
 .translate-y-0 {
   --tw-translate-y: 0px;
-  -webkit-transform: var(--tw-transform);
-          transform: var(--tw-transform);
-}
-
-.translate-y-0\.5 {
-  --tw-translate-y: 0.125rem;
   -webkit-transform: var(--tw-transform);
           transform: var(--tw-transform);
 }
@@ -1529,10 +1462,6 @@ select {
   border-radius: 0.25rem;
 }
 
-.rounded-none {
-  border-radius: 0px;
-}
-
 .rounded-t-md {
   border-top-left-radius: 0.375rem;
   border-top-right-radius: 0.375rem;
@@ -1557,10 +1486,6 @@ select {
 
 .border-2 {
   border-width: 2px;
-}
-
-.border-0 {
-  border-width: 0px;
 }
 
 .border-t {
@@ -1740,10 +1665,6 @@ select {
   stroke: #6366f1;
 }
 
-.stroke-current {
-  stroke: currentColor;
-}
-
 .object-cover {
   object-fit: cover;
 }
@@ -1766,18 +1687,6 @@ select {
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-0\.5 {
-  padding: 0.125rem;
-}
-
-.p-0 {
-  padding: 0px;
-}
-
-.p-1\.5 {
-  padding: 0.375rem;
 }
 
 .py-1 {
@@ -1946,18 +1855,6 @@ select {
   padding-left: 0.25rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
-.pl-3\.5 {
-  padding-left: 0.875rem;
-}
-
-.pr-\[1\.875rem\] {
-  padding-right: 1.875rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -2021,10 +1918,6 @@ select {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
-}
-
-.text-\[0\.625rem\] {
-  font-size: 0.625rem;
 }
 
 .font-semibold {
@@ -2260,12 +2153,6 @@ select {
   --tw-ring-opacity: 0.05;
 }
 
-.drop-shadow-md {
-  --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
-  -webkit-filter: var(--tw-filter);
-          filter: var(--tw-filter);
-}
-
 .filter {
   -webkit-filter: var(--tw-filter);
           filter: var(--tw-filter);
@@ -2370,6 +2257,15 @@ body {
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
+}
+
+.dark .form-input {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .form-input-description {
@@ -2736,11 +2632,6 @@ button, input, optgroup, select, textarea {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -2771,11 +2662,6 @@ button, input, optgroup, select, textarea {
   color: rgb(127 29 29 / var(--tw-text-opacity));
 }
 
-.hover\:text-gray-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
 .hover\:opacity-100:hover {
   opacity: 1;
 }
@@ -2783,12 +2669,6 @@ button, input, optgroup, select, textarea {
 .focus\:border-primary-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
-}
-
-.focus\:shadow-none:focus {
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .focus\:outline-none:focus {
@@ -2834,20 +2714,6 @@ button, input, optgroup, select, textarea {
   --tw-ring-offset-color: #1f2937;
 }
 
-.focus-visible\:ring-2:focus-visible {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
-.focus-visible\:ring-offset-2:focus-visible {
-  --tw-ring-offset-width: 2px;
-}
-
-.focus-visible\:ring-offset-gray-100:focus-visible {
-  --tw-ring-offset-color: #f3f4f6;
-}
-
 .disabled\:bg-validation-300:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
@@ -2861,12 +2727,6 @@ button, input, optgroup, select, textarea {
 .disabled\:hover\:bg-white:hover:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.group:hover .group-hover\:rotate-\[-4deg\] {
-  --tw-rotate: -4deg;
-  -webkit-transform: var(--tw-transform);
-          transform: var(--tw-transform);
 }
 
 .group:hover .group-hover\:bg-gray-200 {
@@ -3294,10 +3154,6 @@ button, input, optgroup, select, textarea {
     align-items: flex-start;
   }
 
-  .sm\:items-center {
-    align-items: center;
-  }
-
   .sm\:items-stretch {
     align-items: stretch;
   }
@@ -3562,17 +3418,6 @@ button, input, optgroup, select, textarea {
 }
 
 @media (min-width: 1024px) {
-  .lg\:not-sr-only {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-
   .lg\:fixed {
     position: fixed;
   }
@@ -3639,10 +3484,6 @@ button, input, optgroup, select, textarea {
 
   .lg\:mt-20 {
     margin-top: 5rem;
-  }
-
-  .lg\:mr-2 {
-    margin-right: 0.5rem;
   }
 
   .lg\:block {
@@ -3857,22 +3698,6 @@ button, input, optgroup, select, textarea {
 
   .lg\:pl-9 {
     padding-left: 2.25rem;
-  }
-
-  .lg\:pl-2\.5 {
-    padding-left: 0.625rem;
-  }
-
-  .lg\:pr-3\.5 {
-    padding-right: 0.875rem;
-  }
-
-  .lg\:pl-2 {
-    padding-left: 0.5rem;
-  }
-
-  .lg\:pr-3 {
-    padding-right: 0.75rem;
   }
 
   .lg\:text-left {
