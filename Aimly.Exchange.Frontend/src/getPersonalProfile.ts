@@ -14,6 +14,16 @@ export const getPersonalProfileQuery = graphql`
       linkedInProfile
       industries
       skills
+      employmentExperience {
+        id
+        experienceId
+        title
+        organisation
+        startMonth
+        startYear
+        endMonth
+        endYear
+      }
     }
   }
 `;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<097896c83b5407625461cb42c08bf921>>
+ * @generated SignedSource<<e9b0033e38c8f5d2ff709ed1c96c6969>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,6 +24,17 @@ export type GetPersonalProfileModelInput = {
   linkedInProfile?: string | null;
   industries?: ReadonlyArray<string | null> | null;
   skills?: ReadonlyArray<string | null> | null;
+  employmentExperience?: ReadonlyArray<ExperienceBriefModelInput | null> | null;
+};
+export type ExperienceBriefModelInput = {
+  id?: string | null;
+  experienceId: any;
+  title?: string | null;
+  organisation?: string | null;
+  startMonth: number;
+  startYear: number;
+  endMonth?: number | null;
+  endYear?: number | null;
 };
 export type useSetPersonalProfileMutation$variables = {
   input: SetPersonalProfileCommandInput;

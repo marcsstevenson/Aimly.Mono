@@ -137,3 +137,7 @@ select,
 textarea {
   @apply text-gray-600;
 }
+
+.default-h2 {
+  @apply text-2xl font-extrabold text-gray-900 dark:text-gray-100;
+}

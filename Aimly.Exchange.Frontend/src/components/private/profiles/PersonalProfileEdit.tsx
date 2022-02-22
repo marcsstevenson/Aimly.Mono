@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import useSetPersonalProfileMutation from 'useSetPersonalProfileMutation';
 import {
@@ -18,6 +18,7 @@ import GenericHeader from 'components/shared/GenericHeader';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
 import { SkillSelector } from 'components/shared/SkillSelector';
 import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
+import { PersonalProfileExperienceList } from 'components/private/profiles/PersonalProfileExperienceList';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -53,6 +54,7 @@ const PersonalProfileEdit = () => {
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
     industries: loadedData?.industries ?? [],
     skills: loadedData?.skills ?? [],
+    employmentExperience: loadedData?.employmentExperience ?? [],
   };
 
   const SetPersonalProfile = useSetPersonalProfileMutation();
@@ -82,8 +84,7 @@ const PersonalProfileEdit = () => {
   const handleSubmitCompleted = (response: useSetPersonalProfileMutation$data): void => {
     let queryString = `?$id=${response.setPersonalProfile?.updatedPersonalProfileId}`;
 
-    scrollToTop();
-    navigateToPage(Pages.Profiles, queryString);
+    outro(queryString);
   };
 
   /// Scroll the user to the top of the page
@@ -91,6 +92,12 @@ const PersonalProfileEdit = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  // Head back to profiles
+  const outro = (queryString: string | null = null) => {
+    scrollToTop();
+    navigateToPage(Pages.Profiles, queryString);
   };
 
   return (
@@ -267,12 +274,30 @@ const PersonalProfileEdit = () => {
                         />
                       </div>
                     </div>
+
+                    <div className="mt-4 sm:col-span-6">
+                      <PersonalProfileExperienceList
+                        employmentExperience={
+                          loadedData?.employmentExperience == null
+                            ? []
+                            : loadedData.employmentExperience.filter((e) => e !== null)
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="py-5">
                 <div className="flex justify-end">
+                  <button
+                    disabled={isSubmitting || isValidating}
+                    type="button"
+                    onClick={() => outro()}
+                    className="form-button-flat"
+                  >
+                    Cancel
+                  </button>
                   <button
                     disabled={isSubmitting || isValidating}
                     type="submit"

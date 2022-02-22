@@ -62,7 +62,7 @@ const MyProfileItem = (props: Props) => {
         </div>
       </div>
       <div className="grid grid-cols-2 bg-gray-50 px-5 py-3 dark:bg-gray-800">
-        <div className="">
+        <div>
           <Link
             to={{
               pathname: getUrlForProfileTypeOptionType(

@@ -104,6 +104,40 @@ type DeleteProfileResponse {
   deletedProfileId: UUID!
 }
 
+type ExperienceBriefModel {
+  id: String
+  experienceId: UUID!
+  title: String
+  organisation: String
+  startMonth: Int!
+  startYear: Int!
+  endMonth: Int
+  endYear: Int
+}
+
+input ExperienceBriefModelInput {
+  id: String
+  experienceId: UUID!
+  title: String
+  organisation: String
+  startMonth: Int!
+  startYear: Int!
+  endMonth: Int
+  endYear: Int
+}
+
+input ExperienceDetailedModelInput {
+  id: UUID
+  userId: UUID!
+  description: String
+  title: String
+  organisation: String
+  startMonth: Int!
+  startYear: Int!
+  endMonth: Int
+  endYear: Int
+}
+
 input GetAboutYouCommandInput {
   userId: UUID!
   companyProfileId: UUID
@@ -207,6 +241,7 @@ type GetPersonalProfileModel {
   linkedInProfile: String
   industries: [String]
   skills: [String]
+  employmentExperience: [ExperienceBriefModel]
 }
 
 input GetPersonalProfileModelInput {
@@ -221,6 +256,7 @@ input GetPersonalProfileModelInput {
   linkedInProfile: String
   industries: [String]
   skills: [String]
+  employmentExperience: [ExperienceBriefModelInput]
 }
 
 input GetPotentialCommandInput {
@@ -307,11 +343,12 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
-  deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
+  deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
+  setExperienceDetailed(experienceDetailedModel: ExperienceDetailedModelInput): SetExperienceDetailedResponse
   deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
 }
@@ -378,6 +415,10 @@ input SetAboutYouCommandInput {
 type SetAboutYouResponse {
   updatedPersonalProfileId: UUID!
   updatedCompanyProfileId: UUID!
+}
+
+type SetExperienceDetailedResponse {
+  updatedExperienceId: UUID!
 }
 
 input SetMentorProfileCommandInput {
