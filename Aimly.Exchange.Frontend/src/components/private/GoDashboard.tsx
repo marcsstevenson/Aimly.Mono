@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
 import { LoadingArea } from 'components/shared/LoadingArea';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { Pages } from 'components/shared/AppRoutes';
+import { useNavigate } from 'react-router-dom';
 
 export const GoDashboard = () => {
-  const navigateToPage = useNavigateToPage();
+  const navigate = useNavigate();
   useEffect(() => {
-    navigateToPage(Pages.DashBoard);
+    // Navigating onload seems to be cause WebPack to crash
+    // Add a small timeout to allow the loading area to render
+    new Promise(() => {
+      setTimeout(() => {
+        navigate('/');
+      }, 100);
+    });
   }, []); // Run this onload
 
   return <LoadingArea title="Logging in..." />;

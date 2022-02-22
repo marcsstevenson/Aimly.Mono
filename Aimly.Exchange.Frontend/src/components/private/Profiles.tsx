@@ -26,10 +26,6 @@ const Profiles = () => {
 
   return (
     <div className="flex-1 pb-8">
-      {/* This is just to trigger Tailwind to include the statusStyles classes in the output.css*/}
-      <span className="hidden bg-green-100 text-green-800"></span>
-      <span className="hidden bg-yellow-100 text-yellow-800"></span>
-      <span className="hidden bg-gray-100 text-gray-800"></span>
       {/* Page header */}
       <div className="bg-white shadow dark:bg-gray-700">
         <div className="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
@@ -53,12 +49,6 @@ const Profiles = () => {
               </div>
             </div>
             <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-              {/* <button
-                type="button"
-                className="focus:ring-primary-500 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-900"
-              >
-                View personal profile
-              </button> */}
               <Link
                 to={{ pathname: getPersonalProfileEditUrl() }}
                 type="button"

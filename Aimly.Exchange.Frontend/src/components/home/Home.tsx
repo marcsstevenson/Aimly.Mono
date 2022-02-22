@@ -3,16 +3,14 @@ import React, { Fragment, useEffect } from 'react';
 import HomeHero from './HomeHero';
 import Points from 'components/shared/Points';
 import HomePointsModel from './HomePointsModel';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { Pages } from 'components/shared/AppRoutes';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Home = () => {
-  const navigateToPage = useNavigateToPage();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.get('login')) {
-      navigateToPage(Pages.Login);
+      navigate('/login');
     }
   }, []); // Run this onload
 
