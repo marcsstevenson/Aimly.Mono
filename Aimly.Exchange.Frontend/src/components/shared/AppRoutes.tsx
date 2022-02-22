@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 
 import DashBoard from 'components/DashBoard';
+import Login from 'components/private/Login';
 import Profiles from 'components/private/Profiles';
 import AboutYou from 'components/for-startups/profile/edit/1-AboutYou';
 import TheProblem from 'components/for-startups/profile/edit/2-TheProblem';
@@ -33,6 +34,7 @@ export interface RouteItem {
 export enum Pages {
   // Shared
   Home,
+  Login,
   PageNotFound,
 
   // Private
@@ -52,10 +54,14 @@ export enum Pages {
   Customise,
 }
 
-export const PublicRoutes: RouteItem[] = [];
+export const PublicRoutes: RouteItem[] = [
+  // { path: '/', element: <DashBoard />, page: Pages.DashBoard },
+  // { path: '/login', element: <Login />, page: Pages.Login },
+];
 
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
+  { path: '/login', element: <DashBoard />, page: Pages.DashBoard },
   { path: '/market', element: <Market />, page: Pages.Market },
   { path: '/profiles', element: <Profiles />, page: Pages.Profiles },
   { path: '/profile', element: <Profile />, page: Pages.Profile },
