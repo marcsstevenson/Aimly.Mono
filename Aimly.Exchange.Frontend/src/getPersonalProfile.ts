@@ -16,9 +16,9 @@ export const getPersonalProfileQuery = graphql`
       skills
       employmentExperience {
         id
-        experienceId
         title
         organisation
+        description
         startMonth
         startYear
         endMonth

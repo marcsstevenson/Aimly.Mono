@@ -133,7 +133,7 @@ const ExpertProfileForm = (props: Props) => {
                             Available to hire
                           </Switch.Label>
                           <Switch.Description className="form-input-description">
-                            If you which to be visible on the market.
+                            If you wish to be visible on the market.
                           </Switch.Description>
                         </div>
 
@@ -155,7 +155,6 @@ const ExpertProfileForm = (props: Props) => {
                           id="name"
                           name="name"
                           type="text"
-                          maxLength={20}
                           validate={validateRequiredString}
                           className={errors.name ? 'form-input-error' : 'form-input'}
                         />
@@ -163,9 +162,7 @@ const ExpertProfileForm = (props: Props) => {
                           <div className="form-input-validation">{errors.name}</div>
                         )}
                       </div>
-                      <p className="form-input-description">
-                        A short name for your profile (20 characters max).
-                      </p>
+                      <p className="form-input-description">A short name for your profile.</p>
                     </div>
                     <div className="sm:col-span-6">
                       <label htmlFor="phoneNumber" className="form-label">

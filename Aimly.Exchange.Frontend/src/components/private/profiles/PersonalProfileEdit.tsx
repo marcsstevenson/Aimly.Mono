@@ -311,7 +311,6 @@ const PersonalProfileEdit = () => {
           )}
         </Formik>
       </div>
-      <div></div>
     </div>
   );
 };

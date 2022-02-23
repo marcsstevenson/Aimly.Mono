@@ -4,7 +4,8 @@
 import React, { useRef } from 'react';
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationIcon, XIcon } from '@heroicons/react/outline';
+import { BriefcaseIcon, PlusIcon, XIcon } from '@heroicons/react/outline';
+import { employmentExperience } from 'components/private/profiles/EmploymentExperience';
 
 interface Props {
   show: boolean;
@@ -14,10 +15,12 @@ interface Props {
   Title: string;
   Message: string;
   ConfirmButtonText: string;
+  model: employmentExperience | null;
 }
 
-export const ConfirmDelete = (props: Props) => {
+export const PersonalProfileExperienceEdit = (props: Props) => {
   // const [open, setOpen] = useState(true);
+  let model = props.model;
 
   const cancelButtonRef = useRef(null);
 
@@ -67,8 +70,8 @@ export const ConfirmDelete = (props: Props) => {
                 </button>
               </div>
               <div className="sm:flex sm:items-start">
-                <div className="bg-validation-100 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10">
-                  <ExclamationIcon className="text-validation-600 h-6 w-6" aria-hidden="true" />
+                <div className="bg-primary-100 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10">
+                  <BriefcaseIcon className="text-primary-600 h-6 w-6" aria-hidden="true" />
                 </div>
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <Dialog.Title
@@ -85,12 +88,12 @@ export const ConfirmDelete = (props: Props) => {
               <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="disabled:bg-validation-300 bg-validation-600 hover:bg-validation-700 focus:ring-validation-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="disabled:bg-primary-300 bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => props.onConfirm()}
                   disabled={props.working}
                 >
-                  {props.ConfirmButtonText}
-                  <ExclamationIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
+                  Add Experience
+                  <PlusIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
                 </button>
                 <button
                   type="button"

@@ -4,6 +4,7 @@ import { employmentExperience } from 'components/private/profiles/EmploymentExpe
 
 interface Props {
   item: employmentExperience | null;
+  triggerDelete: () => void;
 }
 
 export const PersonalProfileExperienceItem = (props: Props) => {
@@ -36,12 +37,19 @@ export const PersonalProfileExperienceItem = (props: Props) => {
       </div>
       <div className="grid grid-cols-2 bg-gray-50 px-5 py-3 dark:bg-gray-800">
         <div className="">
-          <button className="text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-primary-400 font-medium">
+          <button
+            type="button"
+            className="text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-primary-400 font-medium"
+          >
             Edit
           </button>
         </div>
         <div className="justify-self-end">
-          <button className="text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500 font-medium">
+          <button
+            type="button"
+            onClick={props.triggerDelete}
+            className="text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500 font-medium"
+          >
             Delete
           </button>
         </div>

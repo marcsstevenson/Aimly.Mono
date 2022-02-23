@@ -42,7 +42,7 @@ export const Settings = () => {
                             Available to hire
                           </Switch.Label>
                           <Switch.Description className="text-sm text-gray-500 dark:text-gray-400">
-                            If you which to be visible on the market.
+                            If you wish to be visible on the market.
                           </Switch.Description>
                         </div>
                         <Switch
@@ -72,7 +72,7 @@ export const Settings = () => {
                             Make account private
                           </Switch.Label>
                           <Switch.Description className="text-sm text-gray-500 dark:text-gray-400">
-                            If you which to be hidden from the community entirely.
+                            If you wish to be hidden from the community entirely.
                           </Switch.Description>
                         </div>
                         <Switch

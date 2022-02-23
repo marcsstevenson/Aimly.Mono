@@ -1,15 +1,10 @@
-import React, { Fragment, useContext, useEffect, useMemo } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
 import {
-  ClockIcon,
   CogIcon,
-  CreditCardIcon,
-  DocumentReportIcon,
   HomeIcon,
   QuestionMarkCircleIcon,
-  ScaleIcon,
-  ShieldCheckIcon,
   UserCircleIcon,
   UserGroupIcon,
   XIcon,

@@ -7,7 +7,7 @@ export const getUrlForProfileTypeOptionType = (id: string, name: string | null |
     case 'PERSONAL':
       return getPersonalProfileEditUrl();
     case 'STARTUP':
-      return getStartupEditUrl(id, name);
+      return getStartupEditUrl(id, name, promptDelete);
     case 'MENTOR':
       return getMentorProfileEditUrl(id, promptDelete);
     case 'EXPERT':

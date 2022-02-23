@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e9b0033e38c8f5d2ff709ed1c96c6969>>
+ * @generated SignedSource<<d19e5a89f6660bee988b1d1b4c90b6cc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,11 +24,11 @@ export type GetPersonalProfileModelInput = {
   linkedInProfile?: string | null;
   industries?: ReadonlyArray<string | null> | null;
   skills?: ReadonlyArray<string | null> | null;
-  employmentExperience?: ReadonlyArray<ExperienceBriefModelInput | null> | null;
+  employmentExperience?: ReadonlyArray<ExperienceModelInput | null> | null;
 };
-export type ExperienceBriefModelInput = {
-  id?: string | null;
-  experienceId: any;
+export type ExperienceModelInput = {
+  id?: any | null;
+  description?: string | null;
   title?: string | null;
   organisation?: string | null;
   startMonth: number;

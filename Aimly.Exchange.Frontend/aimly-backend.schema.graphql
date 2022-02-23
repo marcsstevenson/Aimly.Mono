@@ -104,31 +104,19 @@ type DeleteProfileResponse {
   deletedProfileId: UUID!
 }
 
-type ExperienceBriefModel {
-  id: String
-  experienceId: UUID!
-  title: String
-  organisation: String
-  startMonth: Int!
-  startYear: Int!
-  endMonth: Int
-  endYear: Int
-}
-
-input ExperienceBriefModelInput {
-  id: String
-  experienceId: UUID!
-  title: String
-  organisation: String
-  startMonth: Int!
-  startYear: Int!
-  endMonth: Int
-  endYear: Int
-}
-
-input ExperienceDetailedModelInput {
+type ExperienceModel {
   id: UUID
-  userId: UUID!
+  description: String
+  title: String
+  organisation: String
+  startMonth: Int!
+  startYear: Int!
+  endMonth: Int
+  endYear: Int
+}
+
+input ExperienceModelInput {
+  id: UUID
   description: String
   title: String
   organisation: String
@@ -261,7 +249,7 @@ type GetPersonalProfileModel {
   linkedInProfile: String
   industries: [String]
   skills: [String]
-  employmentExperience: [ExperienceBriefModel]
+  employmentExperience: [ExperienceModel]
 }
 
 input GetPersonalProfileModelInput {
@@ -276,7 +264,7 @@ input GetPersonalProfileModelInput {
   linkedInProfile: String
   industries: [String]
   skills: [String]
-  employmentExperience: [ExperienceBriefModelInput]
+  employmentExperience: [ExperienceModelInput]
 }
 
 input GetPotentialCommandInput {
@@ -372,7 +360,7 @@ type Mutation {
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
   deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExpertProfile(input: SetExpertProfileCommandInput): SetExpertProfileResponse
-  setExperienceDetailed(experienceDetailedModel: ExperienceDetailedModelInput): SetExperienceDetailedResponse
+  setExperienceDetailed(userId: UUID!, experienceDetailedModel: ExperienceModelInput): SetExperienceDetailedResponse
 }
 
 type MyProfilesResult {

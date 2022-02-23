@@ -29,7 +29,7 @@ export const Market = () => {
       default:
         return DisplayModeOptions.grid;
     }
-  }
+  };
 
   const [displayMode, setDisplayMode] = useState(getStartingDisplayMode());
 
@@ -42,7 +42,7 @@ export const Market = () => {
 
     // Update the state value
     setDisplayMode(displayModeOption);
-  }
+  };
 
   // Onload
   useEffect(() => {
@@ -51,30 +51,30 @@ export const Market = () => {
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto py-6 sm:py-4 lg:py-8 lg:max-w-none">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl py-6 sm:py-4 lg:max-w-none lg:py-8">
           <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">
-            Market Search
+            Market Search (work in progress)
           </h2>
         </div>
       </div>
-      <div className="mb-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto mb-3 max-w-7xl px-4 sm:px-6 lg:px-8">
         <form action="#" method="POST">
-          <div className="shadow overflow-hidden sm:rounded-md">
-            <div className="px-4 py-5 space-y-6 sm:p-6 bg-white dark:bg-gray-700 dark:text-white">
+          <div className="overflow-hidden shadow sm:rounded-md">
+            <div className="space-y-6 bg-white px-4 py-5 dark:bg-gray-700 dark:text-white sm:p-6">
               <fieldset>
                 <legend className="text-base font-medium text-gray-900 dark:text-white">
                   Filter by role
                 </legend>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-start">
-                    <div className="flex items-center h-5">
+                    <div className="flex h-5 items-center">
                       <input
                         id="mentors"
                         name="mentors"
                         type="checkbox"
                         checked={true}
-                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -90,12 +90,12 @@ export const Market = () => {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="flex items-center h-5">
+                    <div className="flex h-5 items-center">
                       <input
                         id="startUps"
                         name="startUps"
                         type="checkbox"
-                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -109,12 +109,12 @@ export const Market = () => {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="flex items-center h-5">
+                    <div className="flex h-5 items-center">
                       <input
                         id="experts"
                         name="experts"
                         type="checkbox"
-                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -142,7 +142,7 @@ export const Market = () => {
                       id="name-contains"
                       name="name-filter-type"
                       type="radio"
-                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
+                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 border-gray-300"
                     />
                     <label
                       htmlFor="name-contains"
@@ -156,7 +156,7 @@ export const Market = () => {
                       id="name-starts-with"
                       name="name-filter-type"
                       type="radio"
-                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
+                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 border-gray-300"
                     />
                     <label
                       htmlFor="name-starts-with"
@@ -170,7 +170,7 @@ export const Market = () => {
                       id="name-exact"
                       name="name-filter-type"
                       type="radio"
-                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
+                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 border-gray-300"
                     />
                     <label
                       htmlFor="name-exact"
@@ -182,10 +182,10 @@ export const Market = () => {
                 </div>
               </fieldset>
             </div>
-            <div className="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-right sm:px-6">
+            <div className="bg-gray-50 px-4 py-3 text-right dark:bg-gray-800 sm:px-6">
               <button
                 type="submit"
-                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
                 Search
               </button>
@@ -194,19 +194,21 @@ export const Market = () => {
         </form>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="z-50 flex flex-col">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <div className="ml-auto flex px-6 py-3 items-center space-x-5 bg-gray-50 dark:bg-gray-800">
+            <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                <div className="ml-auto flex items-center space-x-5 bg-gray-50 px-6 py-3 dark:bg-gray-800">
                   <div className="flex items-center">
                     <button
                       onClick={() => requestDisplayMode(DisplayModeOptions.grid)}
                       type="button"
                       className={classNames(
-                        displayMode === DisplayModeOptions.grid ? 'text-primary-800' : 'text-gray-400 hover:text-primary-500',
-                        '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
+                        displayMode === DisplayModeOptions.grid
+                          ? 'text-primary-800'
+                          : 'hover:text-primary-500 text-gray-400',
+                        '-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full'
                       )}
                     >
                       <span className="sr-only">View as grid</span>
@@ -218,8 +220,10 @@ export const Market = () => {
                       onClick={() => requestDisplayMode(DisplayModeOptions.list)}
                       type="button"
                       className={classNames(
-                        displayMode === DisplayModeOptions.list ? 'text-primary-800' : 'text-gray-400 hover:text-primary-500',
-                        '-m-2.5 w-10 h-10 rounded-full inline-flex items-center justify-center'
+                        displayMode === DisplayModeOptions.list
+                          ? 'text-primary-800'
+                          : 'hover:text-primary-500 text-gray-400',
+                        '-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full'
                       )}
                     >
                       <span className="sr-only">View results as list</span>

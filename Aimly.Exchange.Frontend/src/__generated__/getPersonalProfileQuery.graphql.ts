@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9f27dcad89f4d903808e7da0dc5b17be>>
+ * @generated SignedSource<<10d33cd0041e01775368462e37b95da3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -27,10 +27,10 @@ export type getPersonalProfileQuery$data = {
     readonly industries: ReadonlyArray<string | null> | null;
     readonly skills: ReadonlyArray<string | null> | null;
     readonly employmentExperience: ReadonlyArray<{
-      readonly id: string | null;
-      readonly experienceId: any;
+      readonly id: any | null;
       readonly title: string | null;
       readonly organisation: string | null;
+      readonly description: string | null;
       readonly startMonth: number;
       readonly startYear: number;
       readonly endMonth: number | null;
@@ -147,7 +147,7 @@ v1 = [
       {
         "alias": null,
         "args": null,
-        "concreteType": "ExperienceBriefModel",
+        "concreteType": "ExperienceModel",
         "kind": "LinkedField",
         "name": "employmentExperience",
         "plural": true,
@@ -163,13 +163,6 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "experienceId",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
             "name": "title",
             "storageKey": null
           },
@@ -178,6 +171,13 @@ v1 = [
             "args": null,
             "kind": "ScalarField",
             "name": "organisation",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "description",
             "storageKey": null
           },
           {
@@ -233,16 +233,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "662ba97ccaea8f0dba7d267dad0216dc",
+    "cacheID": "2201598978f06d5d4858beeb58a7b64e",
     "id": null,
     "metadata": {},
     "name": "getPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      experienceId\n      title\n      organisation\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
+    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "85a2bbd7508a221015ef0ffc8aaa3323";
+(node as any).hash = "6b00772562917adb0e98ff470295e557";
 
 export default node;
