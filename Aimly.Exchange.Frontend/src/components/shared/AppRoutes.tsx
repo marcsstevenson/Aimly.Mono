@@ -16,7 +16,7 @@ import TheSolution from 'components/for-startups/profile/edit/3-TheSolution';
 import Potential from 'components/for-startups/profile/edit/4-Potential';
 import Customise from 'components/for-startups/profile/edit/5-Customise';
 import Market from 'components/market/Market';
-import Profile from 'components/Profile';
+import Help from 'components/private/Help';
 import PersonalProfileEdit from 'components/private/profiles/PersonalProfileEdit';
 import MentorProfileNew from 'components/private/profiles/MentorProfileNew';
 import MentorProfileEdit from 'components/private/profiles/MentorProfileEdit';
@@ -43,7 +43,7 @@ export enum Pages {
   DashBoard,
   Market,
   Profiles, // The place to add, edit, remove profiles for startups, mentors, etc
-  Profile,
+  Help,
   PersonalProfileEdit,
   MentorProfileNew,
   MentorProfileEdit,
@@ -68,7 +68,7 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/login', element: <GoDashboard />, page: Pages.Login },
   { path: '/market', element: <Market />, page: Pages.Market },
   { path: '/profiles', element: <Profiles />, page: Pages.Profiles },
-  { path: '/profile', element: <Profile />, page: Pages.Profile },
+  { path: '/help', element: <Help />, page: Pages.Help },
   {
     path: '/profiles/personal-profile-edit',
     element: <PersonalProfileEdit />,

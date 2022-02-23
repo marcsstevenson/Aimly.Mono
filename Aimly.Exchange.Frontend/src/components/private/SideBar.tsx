@@ -22,15 +22,15 @@ const navigation = [
   { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },
   { name: 'Profiles', href: GetPathForPage(Pages.Profiles), icon: UserCircleIcon, current: false },
   { name: 'Market', href: GetPathForPage(Pages.Market), icon: UserGroupIcon, current: false },
-  { name: 'History', href: '#', icon: ClockIcon, current: false },
-  { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
-  { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Reports', href: '#', icon: DocumentReportIcon, current: false },
+  // { name: 'History', href: '#', icon: ClockIcon, current: false },
+  // { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
+  // { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },
+  // { name: 'Reports', href: '#', icon: DocumentReportIcon, current: false },
 ];
 const secondaryNavigation = [
   { name: 'Settings', href: GetPathForPage(Pages.Settings), icon: CogIcon },
-  { name: 'Help', href: '#', icon: QuestionMarkCircleIcon },
-  { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
+  { name: 'Help', href: GetPathForPage(Pages.Help), icon: QuestionMarkCircleIcon },
+  // { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
 ];
 
 const SideBar = (): JSX.Element => {
