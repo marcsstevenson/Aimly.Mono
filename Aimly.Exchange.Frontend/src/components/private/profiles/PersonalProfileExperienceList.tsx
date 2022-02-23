@@ -28,8 +28,8 @@ export const PersonalProfileExperienceList = (prop: Props) => {
       </div>
       <div>
         <div className="mt-1">
-          {prop.employmentExperience.map((item) => (
-            <PersonalProfileExperienceItem item={item} />
+          {prop.employmentExperience.map((item, index) => (
+            <PersonalProfileExperienceItem item={item} key={index} />
           ))}
         </div>
       </div>
