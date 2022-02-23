@@ -14,6 +14,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 import { GetPathForPage, Pages } from './shared/AppRoutes';
+import { getPersonalProfileEditUrl } from 'components/private/profiles/UrlBuilder';
 
 const navigation = [
   { name: 'Home', href: '/', AuthenticatedOnly: false },
@@ -33,16 +34,16 @@ const NavBar = () => {
     });
 
   return (
-    <Disclosure as="nav" className="z-20 bg-primary-600">
+    <Disclosure as="nav" className="bg-primary-600 z-20">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button
                   key="burgerIcon"
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 >
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -52,9 +53,9 @@ const NavBar = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <NavLink to={{ pathname: GetPathForPage(Pages.Home) }}>
-                  <div className="flex-shrink-0 flex items-center">
+                  <div className="flex flex-shrink-0 items-center">
                     <svg
                       version="1.0"
                       width="40.000000"
@@ -74,7 +75,7 @@ const NavBar = () => {
                     </svg>
                   </div>
                 </NavLink>
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {/* ********* Note *********
                      * The component no longer handles the isAuthenticated case
@@ -89,8 +90,8 @@ const NavBar = () => {
                           className={({ isActive }) =>
                             (isActive
                               ? 'bg-gray-900 text-white'
-                              : ' text-gray-300 hover:text-white block hover:bg-gray-700') +
-                            '  px-3 py-2 rounded-md text-base font-medium'
+                              : ' block text-gray-300 hover:bg-gray-700 hover:text-white') +
+                            '  rounded-md px-3 py-2 text-base font-medium'
                           }
                         >
                           {item.name}
@@ -108,7 +109,7 @@ const NavBar = () => {
                  */}
                 {!isAuthenticated && (
                   <div
-                    className="ml-3 cursor-pointer px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                    className="ml-3 cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     onClick={() => loginWithRedirect()}
                   >
                     Log in
@@ -121,9 +122,9 @@ const NavBar = () => {
                  */}
 
                 {isAuthenticated && (
-                  <Menu as="div" className="ml-3 relative">
+                  <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
@@ -141,11 +142,11 @@ const NavBar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute z-50 top-full right-0 rounded-lg ring-1 ring-gray-900/10 shadow-lg overflow-hidden w-36 py-1 text-sm text-gray-700 font-semibold dark:bg-gray-800 dark:ring-0 dark:highlight-white/5 dark:text-gray-300 mt-6">
+                      <Menu.Items className="dark:highlight-white/5 absolute top-full right-0 z-50 mt-6 w-36 overflow-hidden rounded-lg py-1 text-sm font-semibold text-gray-700 shadow-lg ring-1 ring-gray-900/10 dark:bg-gray-800 dark:text-gray-300 dark:ring-0">
                         <Menu.Item>
                           <NavLink
-                            to={{ pathname: 'profile' }}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none"
+                            to={{ pathname: getPersonalProfileEditUrl() }}
+                            className="hover:bg-primary-50 inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
                           >
                             Your Profile
                           </NavLink>
@@ -153,7 +154,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <NavLink
                             to={{ pathname: 'settings' }}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none"
+                            className="hover:bg-primary-50 inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
                           >
                             Settings
                           </NavLink>
@@ -161,7 +162,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <div
                             onClick={() => logoutWithRedirect()}
-                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-600 focus:outline-none cursor-pointer"
+                            className="hover:bg-primary-50 inline-flex w-full cursor-pointer px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
                           >
                             Sign out
                           </div>
@@ -176,7 +177,7 @@ const NavBar = () => {
 
           {/* This is the dropdown menu content of burger menu */}
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
                 <Disclosure.Button className="flex flex-col" key={item.name}>
                   <NavLink
@@ -184,8 +185,8 @@ const NavBar = () => {
                     className={({ isActive }) =>
                       (isActive
                         ? 'bg-gray-900 text-white'
-                        : ' text-gray-300 hover:text-white block hover:bg-gray-700') +
-                      '  px-3 py-2 rounded-md text-base font-medium'
+                        : ' block text-gray-300 hover:bg-gray-700 hover:text-white') +
+                      '  rounded-md px-3 py-2 text-base font-medium'
                     }
                   >
                     {item.name}

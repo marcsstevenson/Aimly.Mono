@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { ChevronDoubleRightIcon } from '@heroicons/react/solid';
+import { PlusIcon } from '@heroicons/react/solid';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Link } from 'react-router-dom';
 import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
@@ -73,7 +73,7 @@ const Profiles = () => {
               className="bg-primary-600 hover:bg-primary-700 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white md:py-4 md:px-10 md:text-lg"
             >
               Startup
-              <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+              <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
@@ -82,7 +82,7 @@ const Profiles = () => {
               className="text-primary-600 flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
             >
               Mentor
-              <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+              <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
@@ -91,7 +91,7 @@ const Profiles = () => {
               className="text-primary-700 bg-primary-100 hover:bg-primary-200 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium md:py-4 md:px-10 md:text-lg"
             >
               Expert
-              <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+              <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
         </div>
