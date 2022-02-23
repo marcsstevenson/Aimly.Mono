@@ -8,6 +8,7 @@ import MyProfilesList from './MyProfilesList';
 import {
   getPersonalProfileEditUrl,
   getMentorProfileNewUrl,
+  getExpertProfileNewUrl,
 } from 'components/private/profiles/UrlBuilder';
 
 export interface StatusType {
@@ -87,7 +88,7 @@ const Profiles = () => {
           </div>
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
             <Link
-              to={{ pathname: '/for-experts' }}
+              to={{ pathname: getExpertProfileNewUrl() }}
               className="text-primary-700 bg-primary-100 hover:bg-primary-200 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium md:py-4 md:px-10 md:text-lg"
             >
               Expert

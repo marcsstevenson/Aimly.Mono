@@ -209,6 +209,26 @@ input GetAccessToMeetingCommandInput {
   userId: UUID!
 }
 
+type GetExpertProfileModel {
+  userId: UUID!
+  id: UUID
+  name: String!
+  about: String!
+  listOnMarket: Boolean!
+  industries: [String]
+  skills: [String]
+}
+
+input GetExpertProfileModelInput {
+  userId: UUID!
+  id: UUID
+  name: String!
+  about: String!
+  listOnMarket: Boolean!
+  industries: [String]
+  skills: [String]
+}
+
 type GetMentorProfileModel {
   userId: UUID!
   id: UUID
@@ -343,14 +363,16 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
+  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
+  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
   deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
+  deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
+  setExpertProfile(input: SetExpertProfileCommandInput): SetExpertProfileResponse
   setExperienceDetailed(experienceDetailedModel: ExperienceDetailedModelInput): SetExperienceDetailedResponse
-  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
-  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
 }
 
 type MyProfilesResult {
@@ -400,12 +422,13 @@ type Query {
   myProfiles(userId: UUID!): [MyProfilesResult]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
+  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
+  getSkillOptions(nameStartingWith: String): [String]
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
-  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
-  getSkillOptions(nameStartingWith: String): [String]
+  getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
 }
 
 input SetAboutYouCommandInput {
@@ -419,6 +442,14 @@ type SetAboutYouResponse {
 
 type SetExperienceDetailedResponse {
   updatedExperienceId: UUID!
+}
+
+input SetExpertProfileCommandInput {
+  getExpertProfileModel: GetExpertProfileModelInput
+}
+
+type SetExpertProfileResponse {
+  updatedExpertProfileId: UUID!
 }
 
 input SetMentorProfileCommandInput {

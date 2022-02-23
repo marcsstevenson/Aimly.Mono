@@ -20,6 +20,8 @@ import Profile from 'components/Profile';
 import PersonalProfileEdit from 'components/private/profiles/PersonalProfileEdit';
 import MentorProfileNew from 'components/private/profiles/MentorProfileNew';
 import MentorProfileEdit from 'components/private/profiles/MentorProfileEdit';
+import ExpertProfileNew from 'components/private/profiles/ExpertProfileNew';
+import ExpertProfileEdit from 'components/private/profiles/ExpertProfileEdit';
 import Settings from 'components/Settings';
 import PageNotFound from 'components/PageNotFound';
 import ExternalApi from 'components/ExternalApi';
@@ -45,6 +47,8 @@ export enum Pages {
   PersonalProfileEdit,
   MentorProfileNew,
   MentorProfileEdit,
+  ExpertProfileNew,
+  ExpertProfileEdit,
   Settings,
   ExternalApi,
   AboutYou,
@@ -79,6 +83,16 @@ export const PrivateRoutes: RouteItem[] = [
     path: '/profiles/mentor-profile-edit',
     element: <MentorProfileEdit />,
     page: Pages.MentorProfileEdit,
+  },
+  {
+    path: '/profiles/expert-profile-new',
+    element: <ExpertProfileNew />,
+    page: Pages.ExpertProfileNew,
+  },
+  {
+    path: '/profiles/expert-profile-edit',
+    element: <ExpertProfileEdit />,
+    page: Pages.ExpertProfileEdit,
   },
   { path: '/settings', element: <Settings />, page: Pages.Settings },
   { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },
