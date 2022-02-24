@@ -168,7 +168,7 @@ const DashBoard = () => {
                 <div className="mt-2 text-sm text-green-700">
                   <p>
                     Please note that we are currently in an early access alpha phase so there may be
-                    some bugs and issues and there is still many more features to be added in the
+                    some bugs and issues and there are still many more features to be added in the
                     near future.
                   </p>
                   <p className="mt-4">
