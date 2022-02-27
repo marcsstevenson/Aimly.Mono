@@ -1,92 +1,49 @@
 import React, { useState } from 'react';
+import { SearchIcon } from '@heroicons/react/solid';
 
 interface Props {
-  onChange: (value: string) => void;
+  onChange: (searchTerm: string) => void;
 }
 
-export const MarketSearchInput = () => {
+export const MarketSearchInput = (props: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    props.onChange(searchTerm);
+  };
+
   return (
-    <div className="mx-auto mb-3 max-w-7xl px-4 sm:px-6 lg:px-8">
-      <form action="#" method="POST">
+    <div className="mx-auto mb-3 mt-6 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <form onSubmit={handleSubmit} method="POST">
         <div className="overflow-hidden shadow sm:rounded-md">
-          <div className="space-y-6 bg-white px-4 py-5 dark:bg-gray-700 dark:text-white sm:p-6">
-            <fieldset>
-              <legend className="text-base font-medium text-gray-900 dark:text-white">
-                Filter by role
-              </legend>
-              <div className="mt-4 space-y-4">
-                <div className="flex items-start">
-                  <div className="flex h-5 items-center">
-                    <input
-                      id="mentors"
-                      name="mentors"
-                      type="checkbox"
-                      checked={true}
-                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="mentors"
-                      className="font-medium text-gray-700 dark:text-gray-100"
-                    >
-                      Mentors
-                    </label>
-                    <p className="text-gray-500">
-                      Find people that provide mentorship for startups.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex h-5 items-center">
-                    <input
-                      id="startUps"
-                      name="startUps"
-                      type="checkbox"
-                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="startUps"
-                      className="font-medium text-gray-700 dark:text-gray-100"
-                    >
-                      Startups
-                    </label>
-                    <p className="text-gray-500">Search for startups.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex h-5 items-center">
-                    <input
-                      id="experts"
-                      name="experts"
-                      type="checkbox"
-                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="experts"
-                      className="font-medium text-gray-700 dark:text-gray-100"
-                    >
-                      Experts
-                    </label>
-                    <p className="text-gray-500">Search for subject matter experts.</p>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <div className="bg-gray-50 px-4 py-3 text-right dark:bg-gray-800 sm:px-6">
-            <button
-              type="submit"
-              className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
-            >
+          <div className="bg-white px-8 py-10 dark:bg-gray-800 dark:text-white">
+            <label htmlFor="search-field" className="sr-only">
               Search
-            </button>
+            </label>
+            <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+              <div
+                className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                aria-hidden="true"
+              >
+                <SearchIcon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <input
+                id="search-field"
+                name="search-field"
+                className="focus:ring-primary-500 block w-full rounded-xl border
+                border-gray-300 py-3 pl-10 pr-5 font-medium
+                  leading-5 text-gray-900
+                  placeholder-gray-500 focus:border-transparent
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-900
+                  dark:text-gray-200 dark:placeholder-gray-400 dark:focus:bg-gray-800 sm:text-sm"
+                placeholder="Search..."
+                onChange={(event) => setSearchTerm(event.target.value)}
+                value={searchTerm}
+                type="search"
+              />
+            </div>
           </div>
         </div>
       </form>

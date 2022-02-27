@@ -1,6 +1,6 @@
 import React from 'react';
 import Pages from 'components/shared/Pages';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { SearchIcon } from '@heroicons/react/solid';
 import { GetPathForPage } from 'components/shared/AppRoutes';

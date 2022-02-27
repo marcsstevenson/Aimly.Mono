@@ -57,9 +57,9 @@ export const MarketTabs = (props: Props) => {
                 to={{ pathname: GetPathForPage(tab.page) }}
                 className={classNames(
                   tab.page === currentTab.page
-                    ? 'border-primary-500 text-primary-600'
+                    ? 'border-primary-500 text-primary-600 dark:text-primary-400'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                  'w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium'
+                  'text-md w-1/4 border-b-2 py-4 px-1 text-center font-medium'
                 )}
                 aria-current={tab.page === currentTab.page ? 'page' : undefined}
               >
