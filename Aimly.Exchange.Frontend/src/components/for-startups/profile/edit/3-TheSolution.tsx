@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useRef } from 'react';
+import Pages from 'components/shared/Pages';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
@@ -10,7 +11,6 @@ import {
   useSetTheSolutionMutation$data,
 } from '__generated__/useSetTheSolutionMutation.graphql';
 import * as GetTheSolutionQuery from '__generated__/getTheSolutionQuery.graphql';
-import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';

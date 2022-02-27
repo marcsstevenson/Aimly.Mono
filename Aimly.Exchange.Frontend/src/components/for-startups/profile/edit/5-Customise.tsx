@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
+import Pages from 'components/shared/Pages';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { GetPathForPage } from 'components/shared/AppRoutes';
 
 const Customise = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Customise = () => {
         <div className="space-y-8 divide-y divide-gray-200">
           <div className="pt-8">
             <div>
-              <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
                 Profile Image
               </h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
@@ -38,7 +39,7 @@ const Customise = () => {
                 >
                   Cover photo
                 </label>
-                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
                   <div className="space-y-1 text-center">
                     <svg
                       className="mx-auto h-12 w-12 text-gray-400"
@@ -57,7 +58,7 @@ const Customise = () => {
                     <div className="flex text-sm text-gray-600 dark:text-gray-400">
                       <label
                         htmlFor="file-upload"
-                        className="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500"
+                        className="text-primary-600 hover:text-primary-500 focus-within:ring-primary-500 relative cursor-pointer rounded-md bg-white font-medium focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2"
                       >
                         <span>Upload a file</span>
                         <input
@@ -85,7 +86,7 @@ const Customise = () => {
                       Photo
                     </label>
                     <div className="mt-1 flex items-center">
-                      <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                      <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-100">
                         <svg
                           className="h-full w-full text-gray-300"
                           fill="currentColor"
@@ -96,7 +97,7 @@ const Customise = () => {
                       </span>
                       <button
                         type="button"
-                        className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                        className="focus:ring-primary-500 ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:text-gray-200"
                       >
                         Change
                       </button>
@@ -108,7 +109,7 @@ const Customise = () => {
           </div>
           <div className="pt-8">
             <div>
-              <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
                 Notifications
               </h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
@@ -123,12 +124,12 @@ const Customise = () => {
                 </legend>
                 <div className="mt-4 space-y-4">
                   <div className="relative flex items-start">
-                    <div className="flex items-center h-5">
+                    <div className="flex h-5 items-center">
                       <input
                         id="comments"
                         name="comments"
                         type="checkbox"
-                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -144,12 +145,12 @@ const Customise = () => {
                     </div>
                   </div>
                   <div className="relative flex items-start">
-                    <div className="flex items-center h-5">
+                    <div className="flex h-5 items-center">
                       <input
                         id="candidates"
                         name="candidates"
                         type="checkbox"
-                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -165,12 +166,12 @@ const Customise = () => {
                     </div>
                   </div>
                   <div className="relative flex items-start">
-                    <div className="flex items-center h-5">
+                    <div className="flex h-5 items-center">
                       <input
                         id="offers"
                         name="offers"
                         type="checkbox"
-                        className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+                        className="focus:ring-primary-500 text-primary-600 h-4 w-4 rounded border-gray-300"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -202,7 +203,7 @@ const Customise = () => {
                       id="push-everything"
                       name="push-notifications"
                       type="radio"
-                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
+                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 border-gray-300"
                     />
                     <label
                       htmlFor="push-everything"
@@ -216,7 +217,7 @@ const Customise = () => {
                       id="push-email"
                       name="push-notifications"
                       type="radio"
-                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
+                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 border-gray-300"
                     />
                     <label
                       htmlFor="push-email"
@@ -230,7 +231,7 @@ const Customise = () => {
                       id="push-nothing"
                       name="push-notifications"
                       type="radio"
-                      className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300"
+                      className="focus:ring-primary-500 text-primary-600 h-4 w-4 border-gray-300"
                     />
                     <label
                       htmlFor="push-nothing"
@@ -250,7 +251,7 @@ const Customise = () => {
             <button
               type="button"
               onClick={() => next()}
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               Done
             </button>

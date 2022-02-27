@@ -3,13 +3,13 @@
 // Both the ExpertProfileEdit and ExpertProfileNew components use this component.
 
 import React, { useCallback, useRef } from 'react';
+import Pages from 'components/shared/Pages';
 import useSetExpertProfileMutation from 'useSetExpertProfileMutation';
 import useDeleteExpertProfileMutation from 'useDeleteExpertProfileMutation';
 import {
   GetExpertProfileModelInput,
   useSetExpertProfileMutation$data,
 } from '__generated__/useSetExpertProfileMutation.graphql';
-import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';

@@ -1,4 +1,6 @@
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+
+import Pages from 'components/shared/Pages';
+import { GetPathForPage } from 'components/shared/AppRoutes';
 import { promptDeleteValue } from 'components/shared/UrlConstants';
 
 export const getPersonalProfileEditUrl = (): string => {

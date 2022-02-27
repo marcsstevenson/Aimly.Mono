@@ -1,4 +1,5 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
+import Pages from 'components/shared/Pages';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import useSetPersonalProfileMutation from 'useSetPersonalProfileMutation';
 import {
@@ -6,7 +7,6 @@ import {
   useSetPersonalProfileMutation$data,
 } from '__generated__/useSetPersonalProfileMutation.graphql';
 import * as GetPersonalProfileQuery from '__generated__/getPersonalProfileQuery.graphql';
-import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';

@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import Pages from 'components/shared/Pages';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { NavLink } from 'react-router-dom';
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { GetPathForPage } from 'components/shared/AppRoutes';
 import { getPersonalProfileEditUrl } from 'components/private/profiles/UrlBuilder';
 
 const ProfileDropdown = (): JSX.Element => {

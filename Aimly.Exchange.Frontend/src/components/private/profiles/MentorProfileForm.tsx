@@ -3,13 +3,13 @@
 // Both the MentorProfileEdit and MentorProfileNew components use this component.
 
 import React, { useCallback, useRef } from 'react';
+import Pages from 'components/shared/Pages';
 import useSetMentorProfileMutation from 'useSetMentorProfileMutation';
 import useDeleteMentorProfileMutation from 'useDeleteMentorProfileMutation';
 import {
   GetMentorProfileModelInput,
   useSetMentorProfileMutation$data,
 } from '__generated__/useSetMentorProfileMutation.graphql';
-import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';

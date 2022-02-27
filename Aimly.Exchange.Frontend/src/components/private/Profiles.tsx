@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import Pages from 'components/shared/Pages';
 
 import { PlusIcon } from '@heroicons/react/solid';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Link } from 'react-router-dom';
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { GetPathForPage } from 'components/shared/AppRoutes';
 import MyProfilesList from './MyProfilesList';
 import {
   getPersonalProfileEditUrl,

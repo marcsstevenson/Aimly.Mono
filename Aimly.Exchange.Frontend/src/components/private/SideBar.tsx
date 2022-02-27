@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
+import Pages from 'components/shared/Pages';
 
 import { Dialog, Transition } from '@headlessui/react';
 import {
@@ -11,7 +12,7 @@ import {
 } from '@heroicons/react/outline';
 import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
-import { GetPathForPage, Pages } from 'components/shared/AppRoutes';
+import { GetPathForPage } from 'components/shared/AppRoutes';
 import AimlyLogo from './AimlyLogo';
 const navigation = [
   { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },

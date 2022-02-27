@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useRef, useState } from 'react';
+import Pages from 'components/shared/Pages';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
@@ -15,7 +16,6 @@ import {
   useSetAboutYouMutation$data,
 } from '__generated__/useSetAboutYouMutation.graphql';
 import * as GetAboutYouQuery from '__generated__/getAboutYouQuery.graphql';
-import { Pages } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/private/PrivateContext';
 import { Field, Form, Formik } from 'formik';

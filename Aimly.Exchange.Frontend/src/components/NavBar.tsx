@@ -7,13 +7,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import DarkModeSelector from './DarkModeSelector';
+import Pages from 'components/shared/Pages';
 
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
-import { GetPathForPage, Pages } from './shared/AppRoutes';
+import { GetPathForPage } from 'components/shared/AppRoutes';
 import { getPersonalProfileEditUrl } from 'components/private/profiles/UrlBuilder';
 
 const navigation = [

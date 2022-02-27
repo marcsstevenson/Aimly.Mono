@@ -342,6 +342,31 @@ input GetTheSolutionModelInput {
   externalFunding: String
 }
 
+input MarketSearchCommandInput {
+  profileType: ProfileTypeOption!
+  searchTerm: String
+  pageSize: Int!
+  currentPage: Int!
+  orderBy: String
+  orderByAscending: Boolean!
+}
+
+type MarketSearchResult {
+  id: UUID!
+  profileId: UUID!
+  name: String
+  description: String
+  profileUrl: String
+  type: ProfileTypeOption!
+}
+
+type MarketSearchResults {
+  results: [MarketSearchResult]
+  totalResultCount: Int!
+  currentPage: Int!
+  totalPageCount: Int!
+}
+
 type Mutation {
   """
   Takes an auth profile model and either creates a user if unknown or updates a
@@ -407,11 +432,12 @@ enum ProfileTypeOption {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
-  myProfiles(userId: UUID!): [MyProfilesResult]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
+  myProfiles(userId: UUID!): [MyProfilesResult]
   getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   getSkillOptions(nameStartingWith: String): [String]
+  marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
