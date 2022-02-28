@@ -1,13 +1,12 @@
 import React from 'react';
-// import { UserSearchResult } from './useMarketSearch';
-import userIcon from 'assets/abstract-user-flat-4.svg';
+import resultIcon from 'assets/user-flat.svg';
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid';
 import { MarketSearchResultsProps } from 'components/market/MarketSearchResultsProps';
 
-const MarketGridResults = ({ userSearchResults }: MarketSearchResultsProps) => (
-  <ul className="grid grid-cols-1 gap-6 bg-gray-50 px-5 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    {userSearchResults &&
-      userSearchResults.map((user, i) => (
+const MarketGridResults = ({ marketSearchResults }: MarketSearchResultsProps) => (
+  <ul className="grid grid-cols-1 gap-6 bg-gray-50 px-5 pb-5 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {marketSearchResults &&
+      marketSearchResults.map((result, i) => (
         <li
           key={i}
           className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow dark:divide-gray-700 dark:bg-gray-900"
@@ -15,15 +14,15 @@ const MarketGridResults = ({ userSearchResults }: MarketSearchResultsProps) => (
           <div className="flex flex-1 flex-col p-8">
             <img
               className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
-              src={user?.pictureUrl ?? userIcon}
+              src={result?.profileUrl ?? resultIcon}
               alt=""
             />
             <h3 className="mt-6 text-sm font-medium text-gray-900 dark:text-gray-100">
-              {user?.fullName}
+              {result?.name}
             </h3>
             <dl className="mt-1 flex flex-grow flex-col justify-between">
               <dt className="sr-only">Title</dt>
-              <dd className="text-sm text-gray-500 dark:text-gray-400">Title</dd>
+              <dd className="text-sm text-gray-500 dark:text-gray-400">{result?.description}</dd>
               <dt className="sr-only">Role</dt>
               <dd className="mt-3">
                 <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">

@@ -16,8 +16,11 @@ import TheProblem from 'components/for-startups/profile/edit/2-TheProblem';
 import TheSolution from 'components/for-startups/profile/edit/3-TheSolution';
 import Potential from 'components/for-startups/profile/edit/4-Potential';
 import Customise from 'components/for-startups/profile/edit/5-Customise';
-import Market from 'components/market/Market';
+// import Market from 'components/market/Market';
 import MarketStartups from 'components/market/MarketStartups';
+import MarketMentor from 'components/market/MarketMentor';
+import MarketExpert from 'components/market/MarketExpert';
+import MarketCommunity from 'components/market/MarketCommunity';
 import Help from 'components/private/Help';
 import PersonalProfileEdit from 'components/private/profiles/PersonalProfileEdit';
 import MentorProfileNew from 'components/private/profiles/MentorProfileNew';
@@ -43,11 +46,11 @@ export const PublicRoutes: RouteItem[] = [
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
   { path: '/login', element: <GoDashboard />, page: Pages.Login },
-  { path: '/market', element: <Market />, page: Pages.Market },
+  { path: '/market', element: <MarketStartups />, page: Pages.Market },
   { path: '/market/start-ups', element: <MarketStartups />, page: Pages.MarketStartups },
-  { path: '/market/mentors', element: <Market />, page: Pages.MarketMentors },
-  { path: '/market/experts', element: <Market />, page: Pages.MarketExperts },
-  { path: '/market/community', element: <Market />, page: Pages.MarketCommunity },
+  { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors },
+  { path: '/market/experts', element: <MarketExpert />, page: Pages.MarketExperts },
+  { path: '/market/community', element: <MarketCommunity />, page: Pages.MarketCommunity },
   { path: '/profiles', element: <Profiles />, page: Pages.Profiles },
   { path: '/help', element: <Help />, page: Pages.Help },
   {

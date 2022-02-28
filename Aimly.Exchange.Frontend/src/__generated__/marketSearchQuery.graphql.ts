@@ -26,7 +26,7 @@ export type marketSearchQuery$data = {
   readonly marketSearch: {
     readonly results: ReadonlyArray<{
       readonly id: any;
-      readonly profileId: any;useMemo
+      readonly profileId: any;
       readonly name: string | null;
       readonly description: string | null;
       readonly profileUrl: string | null;

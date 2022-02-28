@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
+import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import MarketListResults from 'components/market/MarketListResults';
 import MarketGridResults from 'components/market/MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
 import { classNames } from 'utils/classNames';
 import { MarketSearchResultsProps } from 'components/market/MarketSearchResultsProps';
+import AppQuery, {
+  marketSearchQuery,
+  marketSearchQuery$data,
+} from '__generated__/marketSearchQuery.graphql';
 
 enum DisplayModeOptions {
   grid,
   list,
 }
+interface Props {
+  queryRef: PreloadedQuery<marketSearchQuery>;
+}
 
-export const MarketSearchResults = ({ userSearchResults }: MarketSearchResultsProps) => {
+export const MarketSearchResults = (props: Props) => {
   const displayModeStorageItemName = 'market-display-mode';
+  const { queryRef } = props;
 
   // Return the current display mode using the localStorage value if any
   const getStartingDisplayMode = (): DisplayModeOptions => {
@@ -40,12 +49,16 @@ export const MarketSearchResults = ({ userSearchResults }: MarketSearchResultsPr
     setDisplayMode(displayModeOption);
   };
 
+  const response: marketSearchQuery$data = usePreloadedQuery<marketSearchQuery>(AppQuery, queryRef);
+
+  console.log(response);
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="z-50 flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+            <div className="overflow-hidden sm:rounded-lg">
               <div className="ml-auto flex items-center space-x-5 bg-gray-50 px-6 py-3 dark:bg-gray-800">
                 <div className="flex items-center">
                   <button
@@ -79,10 +92,10 @@ export const MarketSearchResults = ({ userSearchResults }: MarketSearchResultsPr
                 </div>
               </div>
               {displayMode === DisplayModeOptions.grid && (
-                <MarketGridResults userSearchResults={userSearchResults} />
+                <MarketGridResults marketSearchResults={response.marketSearch?.results} />
               )}
               {displayMode === DisplayModeOptions.list && (
-                <MarketListResults userSearchResults={userSearchResults} />
+                <MarketListResults marketSearchResults={response.marketSearch?.results} />
               )}
             </div>
           </div>

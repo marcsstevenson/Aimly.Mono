@@ -1,14 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import Pages from 'components/shared/Pages';
 import { MarketTabs } from 'components/market/MarketTabs';
+import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 
 interface Props {
-  children: React.ReactNode;
-  CurrentPage: Pages;
+  // CurrentPage: Pages;
+  CurrentProfileType: ProfileTypeOption;
 }
 
-export const MarketHeader = ({ children }: Props) => {
+export const MarketHeader = ({ CurrentProfileType }: Props) => {
   const topRef = useRef<HTMLDivElement>(null);
+
+  const currentPage = useMemo(() => {
+    switch (CurrentProfileType) {
+      case 'MENTOR':
+        return Pages.MarketMentors;
+      case 'STARTUP':
+        return Pages.MarketStartups;
+      case 'EXPERT':
+        return Pages.MarketExperts;
+      case 'PERSONAL':
+        return Pages.MarketCommunity;
+      default:
+        return Pages.MarketStartups;
+    }
+  }, [CurrentProfileType]);
 
   // Add context here to store:
   // search params for each tab (term, sort, page, etc)
@@ -17,18 +33,9 @@ export const MarketHeader = ({ children }: Props) => {
   return (
     <div>
       <div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl py-6 sm:py-4 lg:max-w-none lg:py-8">
-            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100">
-              Market Search (work in progress)
-            </h2>
-          </div>
-        </div>
+        <MarketTabs CurrentPage={currentPage} />
       </div>
-      <div>
-        <MarketTabs CurrentPage={Pages.MarketStartups} />
-      </div>
-      <div ref={topRef}>{children}</div>
+      <div ref={topRef}></div>
     </div>
   );
 };

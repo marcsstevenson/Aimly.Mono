@@ -1,7 +1,12 @@
+import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+
 export interface MarketSearchResultsProps {
-  userSearchResults: ReadonlyArray<{
+  marketSearchResults: ReadonlyArray<{
     readonly id: any;
-    readonly fullName: string | null;
-    readonly pictureUrl: string | null;
-  } | null> | null;
+    readonly profileId: any;
+    readonly name: string | null;
+    readonly description: string | null;
+    readonly profileUrl: string | null;
+    readonly type: ProfileTypeOption;
+  } | null> | null | undefined;
 }

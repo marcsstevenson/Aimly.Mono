@@ -15,10 +15,10 @@ export const MarketSearchInput = (props: Props) => {
   };
 
   return (
-    <div className="mx-auto mb-3 mt-6 max-w-7xl px-4 sm:px-6 lg:px-8">
-      <form onSubmit={handleSubmit} method="POST">
-        <div className="overflow-hidden shadow sm:rounded-md">
-          <div className="bg-white px-8 py-10 dark:bg-gray-800 dark:text-white">
+    <div className="mx-auto mb-3 bg-white dark:bg-gray-800">
+      <form onSubmit={handleSubmit}>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="py-10 dark:text-white">
             <label htmlFor="search-field" className="sr-only">
               Search
             </label>

@@ -232,10 +232,10 @@ export const Market = () => {
                   </div>
                 </div>
                 {displayMode === DisplayModeOptions.grid && (
-                  <MarketGridResults userSearchResults={null} />
+                  <MarketGridResults marketSearchResults={null} />
                 )}
                 {displayMode === DisplayModeOptions.list && (
-                  <MarketListResults userSearchResults={null} />
+                  <MarketListResults marketSearchResults={null} />
                 )}
               </div>
             </div>
