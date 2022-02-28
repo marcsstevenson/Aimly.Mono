@@ -2,16 +2,9 @@ import React from 'react';
 // import { UserSearchResult } from './useMarketSearch';
 import userIcon from 'assets/abstract-user-flat-4.svg';
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid';
+import { MarketSearchResultsProps } from 'components/market/MarketSearchResultsProps';
 
-interface props {
-  userSearchResults: ReadonlyArray<{
-    readonly id: any;
-    readonly fullName: string | null;
-    readonly pictureUrl: string | null;
-  } | null> | null;
-}
-
-const MarketGridResults = ({ userSearchResults }: props) => (
+const MarketGridResults = ({ userSearchResults }: MarketSearchResultsProps) => (
   <ul className="grid grid-cols-1 gap-6 bg-gray-50 px-5 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {userSearchResults &&
       userSearchResults.map((user, i) => (

@@ -1,33 +1,26 @@
 import React from 'react';
 import userIcon from 'assets/abstract-user-flat-4.svg';
+import { MarketSearchResultsProps } from 'components/market/MarketSearchResultsProps';
 
-interface props {
-  userSearchResults: ReadonlyArray<{
-    readonly id: any;
-    readonly fullName: string | null;
-    readonly pictureUrl: string | null;
-  } | null> | null;
-}
-
-const MarketListResults = ({ userSearchResults }: props) => (
-  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600 bg-white dark:bg-gray-700">
+const MarketListResults = ({ userSearchResults }: MarketSearchResultsProps) => (
+  <table className="min-w-full divide-y divide-gray-200 bg-white dark:divide-gray-600 dark:bg-gray-700">
     <thead className="bg-gray-50 dark:bg-gray-800">
       <tr>
         <th
           scope="col"
-          className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
+          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-200"
         >
           Name
         </th>
         <th
           scope="col"
-          className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
+          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-200"
         >
           Status
         </th>
         <th
           scope="col"
-          className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider"
+          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-200"
         >
           Role
         </th>
@@ -36,17 +29,17 @@ const MarketListResults = ({ userSearchResults }: props) => (
         </th>
       </tr>
     </thead>
-    <tbody className="bg-white dark:bg-gray-800 dark:text-gray-100 divide-y divide-gray-200 dark:divide-gray-600">
+    <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-600 dark:bg-gray-800 dark:text-gray-100">
       {userSearchResults &&
         userSearchResults.map((user, i) => (
           <tr key={i}>
-            <td className="px-6 py-4 whitespace-nowrap">
+            <td className="whitespace-nowrap px-6 py-4">
               <div className="flex items-center">
-                <div className="flex-shrink-0 h-10 w-10">
+                <div className="h-10 w-10 flex-shrink-0">
                   <img
                     className="h-10 w-10 rounded-full"
                     src={user?.pictureUrl ?? userIcon}
-                    alt={user ? (user.fullName ? user.fullName : "") : ""}
+                    alt={user ? (user.fullName ? user.fullName : '') : ''}
                   />
                 </div>
                 <div className="ml-4">
@@ -56,13 +49,13 @@ const MarketListResults = ({ userSearchResults }: props) => (
                 </div>
               </div>
             </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+            <td className="whitespace-nowrap px-6 py-4">
+              <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
                 Active
               </span>
             </td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mentor</td>
-            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Mentor</td>
+            <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
               <a href="#" className="text-primary-600 hover:text-primary-900">
                 Follow
               </a>
