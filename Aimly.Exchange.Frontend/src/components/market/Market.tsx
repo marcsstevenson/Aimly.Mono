@@ -4,7 +4,7 @@ import Loading from 'components/Loading';
 import MarketListResults from './MarketListResults';
 import MarketGridResults from './MarketGridResults';
 import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
-import useMarketSearch from './useMarketSearch';
+// import useMarketSearch from './useMarketSearch';
 import { classNames } from 'utils/classNames';
 
 enum DisplayModeOptions {
@@ -33,7 +33,7 @@ export const Market = () => {
 
   const [displayMode, setDisplayMode] = useState(getStartingDisplayMode());
 
-  const { marketSearch, state } = useMarketSearch();
+  // const { marketSearch, state } = useMarketSearch();
 
   /// Request a display mode change
   const requestDisplayMode = (displayModeOption: DisplayModeOptions) => {
@@ -45,9 +45,9 @@ export const Market = () => {
   };
 
   // Onload
-  useEffect(() => {
-    marketSearch();
-  }, []);
+  // useEffect(() => {
+  //   marketSearch();
+  // }, []);
 
   return (
     <div>
@@ -232,10 +232,10 @@ export const Market = () => {
                   </div>
                 </div>
                 {displayMode === DisplayModeOptions.grid && (
-                  <MarketGridResults userSearchResults={state.results} />
+                  <MarketGridResults userSearchResults={null} />
                 )}
                 {displayMode === DisplayModeOptions.list && (
-                  <MarketListResults userSearchResults={state.results} />
+                  <MarketListResults userSearchResults={null} />
                 )}
               </div>
             </div>
