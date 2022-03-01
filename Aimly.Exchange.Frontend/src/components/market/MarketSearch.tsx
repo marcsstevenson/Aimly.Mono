@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { MarketSearchResults } from 'components/market/MarketSearchResultsComponent';
 import { MarketHeader } from 'components/market/MarketHeader';
 import { MarketSearchInput } from 'components/market/MarketSearchInput';
@@ -9,6 +9,8 @@ import AppQuery, {
 import { useQueryLoader } from 'react-relay';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { PageHeader } from 'components/shared/PageHeader';
+import { useNavigate, useLocation } from 'react-router-dom';
+import useLocationQuery from 'components/shared/useLocationQuery';
 
 interface Props {
   // CurrentPage: Pages;
@@ -20,6 +22,10 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [queryRef, loadQuery] = useQueryLoader<marketSearchQuery>(AppQuery, null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const locationQuery = useLocationQuery();
+  const searchQueryStringVariable = 's';
 
   const buildVariables = useCallback(
     (searchTerm: string, page: number, profileType: ProfileTypeOption) => {
@@ -37,21 +43,6 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     []
   );
 
-  const handleSearchRequest = (searchTerm: string) => {
-    // Build the updated variables
-    var variables = buildVariables(searchTerm, currentPage, CurrentProfileType);
-
-    console.log('searchTerm: ', searchTerm);
-
-    // Remember the search term
-    setSearchTerm(searchTerm);
-
-    // Re-run the search
-    refetch(variables);
-
-    setHaveSearchResults(true);
-  };
-
   const refetch = useCallback(
     (variables: marketSearchQuery$variables) => {
       // Load the query again using the same original variables.
@@ -62,6 +53,43 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     },
     [loadQuery]
   );
+
+  const requestSearch = useCallback(
+    (searchTerm: string) => {
+      navigate(`${location.pathname}?s=${searchTerm}`);
+    },
+    [navigate, location.pathname]
+  );
+
+  const handleSearchRequest = useCallback(
+    (searchTerm: string) => {
+      // Build the updated variables
+      var variables = buildVariables(searchTerm, currentPage, CurrentProfileType);
+
+      console.log('searchTerm: ', searchTerm);
+
+      // Remember the search term
+      setSearchTerm(searchTerm);
+
+      // Re-run the search
+      refetch(variables);
+
+      navigate(`${location.pathname}?s=${searchTerm}`);
+
+      setHaveSearchResults(true);
+    },
+    [CurrentProfileType, currentPage, refetch, buildVariables, navigate, location.pathname]
+  );
+
+  // useEffect(() => {
+  //   console.log('MarketSearch.useEffect');
+  //   // Do we have a search param? Use it if yes.
+  //   const searchQueryStringValue = locationQuery.get(searchQueryStringVariable);
+
+  //   if (searchQueryStringValue) {
+  //     handleSearchRequest(searchQueryStringValue);
+  //   }
+  // }, [locationQuery]); //locationQuery, handleSearchRequest
 
   return (
     <div className="flex-1 pb-8">

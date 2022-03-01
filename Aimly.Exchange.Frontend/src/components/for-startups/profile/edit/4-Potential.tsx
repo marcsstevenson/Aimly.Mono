@@ -73,7 +73,7 @@ const Potential = () => {
     }
 
     scrollToTop();
-    navigateToPage(Pages.Profiles, queryString);
+    navigateToPage(Pages.MyProfiles, queryString);
   };
 
   // Scroll the user to the top of the page

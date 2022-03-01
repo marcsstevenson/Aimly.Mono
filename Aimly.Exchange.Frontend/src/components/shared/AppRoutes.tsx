@@ -7,6 +7,7 @@
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import Pages from 'components/shared/Pages';
+import { profileId } from 'components/shared/UrlConstants';
 
 import DashBoard from 'components/DashBoard';
 import GoDashboard from 'components/private/GoDashboard';
@@ -16,11 +17,16 @@ import TheProblem from 'components/for-startups/profile/edit/2-TheProblem';
 import TheSolution from 'components/for-startups/profile/edit/3-TheSolution';
 import Potential from 'components/for-startups/profile/edit/4-Potential';
 import Customise from 'components/for-startups/profile/edit/5-Customise';
-// import Market from 'components/market/Market';
+
+// Market search
 import MarketStartups from 'components/market/MarketStartups';
 import MarketMentor from 'components/market/MarketMentor';
 import MarketExpert from 'components/market/MarketExpert';
 import MarketCommunity from 'components/market/MarketCommunity';
+
+// View public profiles on market
+import ViewCompanyProfile from 'components/market/ViewCompanyProfile';
+
 import Help from 'components/private/Help';
 import PersonalProfileEdit from 'components/private/profiles/PersonalProfileEdit';
 import MentorProfileNew from 'components/private/profiles/MentorProfileNew';
@@ -46,12 +52,22 @@ export const PublicRoutes: RouteItem[] = [
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
   { path: '/login', element: <GoDashboard />, page: Pages.Login },
+
+  // Market search
   { path: '/market', element: <MarketStartups />, page: Pages.Market },
   { path: '/market/start-ups', element: <MarketStartups />, page: Pages.MarketStartups },
   { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors },
   { path: '/market/experts', element: <MarketExpert />, page: Pages.MarketExperts },
   { path: '/market/community', element: <MarketCommunity />, page: Pages.MarketCommunity },
-  { path: '/profiles', element: <Profiles />, page: Pages.Profiles },
+
+  // View public profiles on market
+  {
+    path: `/market/company-profile/:${profileId}`,
+    element: <ViewCompanyProfile />,
+    page: Pages.MarketViewCompanyProfile,
+  },
+
+  { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },
   { path: '/help', element: <Help />, page: Pages.Help },
   {
     path: '/profiles/personal-profile-edit',

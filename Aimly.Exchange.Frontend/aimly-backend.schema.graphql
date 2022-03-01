@@ -447,6 +447,7 @@ type Query {
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
+  getViewCompanyProfile(companyProfileId: UUID!): ViewCompanyProfileModel
 }
 
 input SetAboutYouCommandInput {
@@ -526,4 +527,16 @@ type UserSearchResult {
 }
 
 scalar UUID
+
+type ViewCompanyProfileModel {
+  id: String
+  companyProfileId: UUID!
+  companyName: String
+  profilePictureUrl: String
+  website: String
+  addressRegion: String
+  addressCountry: String
+  industries: [String]
+  problemDetails: String
+}
 

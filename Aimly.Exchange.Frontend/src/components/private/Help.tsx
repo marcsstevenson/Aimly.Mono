@@ -6,7 +6,7 @@ import TopGraphic from 'components/shared/TopGraphic';
 export const Help = () => {
   return (
     <div>
-      <TopGraphic title="Help (work in progress)" />
+      <TopGraphic title="Help (work in progress)" context={null} />
 
       <main className="relative -mt-32">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">

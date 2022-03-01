@@ -12,8 +12,8 @@ export const Settings = () => {
   const [allowMentions, setAllowMentions] = useState(true);
 
   return (
-    <div>
-      <TopGraphic title="Settings (work in progress)" />
+    <>
+      <TopGraphic title="Settings (work in progress)" context={null} />
 
       <main className="relative -mt-32">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
@@ -160,7 +160,7 @@ export const Settings = () => {
           </div>
         </div>
       </main>
-    </div>
+    </>
   );
 };
 

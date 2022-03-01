@@ -6,12 +6,21 @@ enum Pages {
 
   // Private
   DashBoard,
+
+  // Market search
   Market,
   MarketStartups,
   MarketMentors,
   MarketExperts,
   MarketCommunity,
-  Profiles, // The place to add, edit, remove profiles for startups, mentors, etc
+
+  // View public profiles on market
+  MarketViewCompanyProfile,
+  MarketViewMentorProfile,
+  MarketViewExpertProfile,
+  MarketViewPersonalProfile,
+
+  MyProfiles, // The place to add, edit, remove profiles for startups, mentors, etc
   Help,
   PersonalProfileEdit,
   MentorProfileNew,

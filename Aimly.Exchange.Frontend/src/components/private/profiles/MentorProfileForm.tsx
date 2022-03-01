@@ -67,7 +67,7 @@ const MentorProfileForm = (props: Props) => {
   // Head back to profiles
   const outro = (queryString: string | null = null) => {
     scrollToTop();
-    navigateToPage(Pages.Profiles, queryString);
+    navigateToPage(Pages.MyProfiles, queryString);
   };
 
   // Scroll the user to the top of the page

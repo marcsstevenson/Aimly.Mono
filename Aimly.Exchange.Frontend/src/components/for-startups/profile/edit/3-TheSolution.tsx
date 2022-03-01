@@ -92,7 +92,7 @@ const TheSolution = () => {
 
   const onFinishHere = () => {
     scrollToTop();
-    navigateToPage(Pages.Profiles);
+    navigateToPage(Pages.MyProfiles);
   };
 
   return (
