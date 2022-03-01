@@ -16,6 +16,7 @@ interface Props {
 }
 
 const MarketSearch = ({ CurrentProfileType }: Props) => {
+  const [haveSearchResults, setHaveSearchResults] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [queryRef, loadQuery] = useQueryLoader<marketSearchQuery>(AppQuery, null);
@@ -47,6 +48,8 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
 
     // Re-run the search
     refetch(variables);
+
+    setHaveSearchResults(true);
   };
 
   const refetch = useCallback(
@@ -65,7 +68,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
       <PageHeader Title="Market" />
       <MarketHeader CurrentProfileType={CurrentProfileType} />
       <MarketSearchInput onChange={handleSearchRequest} />
-      {searchTerm && queryRef && <MarketSearchResults queryRef={queryRef} />}
+      {haveSearchResults && queryRef && <MarketSearchResults queryRef={queryRef} />}
     </div>
   );
 };
