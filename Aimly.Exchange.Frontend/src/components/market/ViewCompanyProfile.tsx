@@ -28,14 +28,14 @@ const ViewCompanyProfile = () => {
     <>
       {model !== null && model !== undefined && (
         <div>
-          <TopGraphic title="Company Profile" context={model.companyName} />
+          <TopGraphic title="Company Profile (work in progress)" context={model.companyName} />
 
           <main className="relative -mt-32">
             <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
               <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
                 <div className="default-divide lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
                   <div className="default-divide lg:col-span-12">
-                    <div className="default-divide p-6">
+                    <div className="space-y-12 p-6">
                       <div className="sm:col-span-6">
                         <div className="flex flex-col lg:flex-row">
                           <div className="flex-grow space-y-6">
@@ -53,6 +53,18 @@ const ViewCompanyProfile = () => {
                               imageRoundnessClass="rounded-md"
                             />
                           </div>
+                        </div>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="form-label">Company name</label>
+                        <div className="mt-1">
+                          <label className="text-6xl">{model.companyName}</label>
+                        </div>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="form-label">Company website</label>
+                        <div className="mt-1">
+                          <label className="text-4xl">{model.website}</label>
                         </div>
                       </div>
                     </div>
