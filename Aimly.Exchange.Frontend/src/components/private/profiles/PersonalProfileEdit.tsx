@@ -19,6 +19,8 @@ import { IndustrySelector } from 'components/shared/IndustrySelector';
 import { SkillSelector } from 'components/shared/SkillSelector';
 import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
 import { PersonalProfileExperienceList } from 'components/private/profiles/PersonalProfileExperienceList';
+import { Switch } from '@headlessui/react';
+import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -44,6 +46,7 @@ const PersonalProfileEdit = () => {
   let model: GetPersonalProfileModelInput = {
     ...data.getPersonalProfile,
     userId: userId,
+    listOnMarket: loadedData?.listOnMarket ?? true,
     about: loadedData?.about ?? '',
     personalProfilePictureUrl: loadedData?.personalProfilePictureUrl ?? user?.picture ?? '', // Note we are using the Auth profile values as the first fallback
     language: loadedData?.language ?? getUsersLanguage(),
@@ -106,37 +109,58 @@ const PersonalProfileEdit = () => {
         <GenericHeader title="Profile Builder" contextVal="Personal" />
         <Formik initialValues={model} onSubmit={onSubmit}>
           {({ errors, touched, isValidating, isSubmitting }) => (
-            <Form className="space-y-8 divide-y divide-gray-200">
-              <div className="mt-6 flex flex-col lg:flex-row">
-                <div className="flex-grow space-y-6">
-                  <div>
-                    <label htmlFor="about" className="form-label">
-                      About
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        id="about"
-                        name="about"
-                        as="textarea"
-                        rows={4}
-                        className="form-input"
+            <Form className="default-divide space-y-8">
+              <div className="default-divide space-y-8">
+                <div className="sm:col-span-6">
+                  <Switch.Group as="li" className="flex items-center justify-between py-4">
+                    <div className="flex flex-col">
+                      <Switch.Label as="p" className="form-label" passive>
+                        List on market
+                      </Switch.Label>
+                      <Switch.Description className="form-input-description">
+                        If you wish for this startup to be visible on the market.
+                      </Switch.Description>
+                    </div>
+
+                    <Field
+                      className="form-input"
+                      component={SwitchWrapper}
+                      id="listOnMarket"
+                      name="listOnMarket"
+                    />
+                  </Switch.Group>
+                </div>
+                <div className="sm:col-span-6">
+                  <div className="mt-6 flex flex-col lg:flex-row">
+                    <div className="flex-grow space-y-6">
+                      <div>
+                        <label htmlFor="about" className="form-label">
+                          About
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            id="about"
+                            name="about"
+                            as="textarea"
+                            rows={4}
+                            className="form-input"
+                          />
+                        </div>
+                        <p className="form-input-description">
+                          A brief description for your personal profile.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
+                      <ProfilePhotoSelector
+                        profilePictureUrl={model.personalProfilePictureUrl}
+                        allowChange={false}
                       />
                     </div>
-                    <p className="form-input-description">
-                      A brief description for your personal profile.
-                    </p>
                   </div>
                 </div>
 
-                <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
-                  <ProfilePhotoSelector
-                    profilePictureUrl={model.personalProfilePictureUrl}
-                    allowChange={false}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-8 divide-y divide-gray-200">
                 <div className="pt-8">
                   <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                     <div className="sm:col-span-3">

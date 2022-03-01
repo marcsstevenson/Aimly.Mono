@@ -29,6 +29,9 @@ import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
 import { useUrlParser } from 'components/shared/useUrlParser';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
+import { Switch } from '@headlessui/react';
+import { SwitchWrapper } from 'components/shared/SwitchWrapper';
+import { LinkIcon } from '@heroicons/react/solid';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -76,6 +79,8 @@ const AboutYou = () => {
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
     companyProfileId: loadedData?.companyProfileId ?? null,
     companyName: loadedData?.companyName ?? '',
+    listOnMarket: loadedData?.listOnMarket ?? true,
+    companyProfilePictureUrl: loadedData?.companyProfilePictureUrl ?? '',
     website: loadedData?.website ?? '',
     numberOfFounders: loadedData?.numberOfFounders ?? 1,
     floor: loadedData?.floor ?? '',
@@ -89,6 +94,10 @@ const AboutYou = () => {
     postOfficeBoxNumber: loadedData?.postOfficeBoxNumber ?? '',
     industries: loadedData?.industries ?? [],
   };
+
+  const [companyProfilePictureUrl, setCompanyProfilePictureUrl] = useState<
+    string | null | undefined
+  >(model.companyProfilePictureUrl);
 
   const SetAboutYou = useSetAboutYouMutation();
   const DeleteCompanyProfile = useDeleteCompanyProfileMutation();
@@ -178,6 +187,10 @@ const AboutYou = () => {
     setShowDeleteConfirmation(false);
   };
 
+  const onImageError = (ev: any) => {
+    ev.target.src = 'https://www.svgrepo.com/show/42214/broken-link.svg';
+  };
+
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
       <ConfirmDelete
@@ -192,249 +205,307 @@ const AboutYou = () => {
 
       <Formik initialValues={model} onSubmit={onSubmit}>
         {({ errors, touched, isValidating, isSubmitting }) => (
-          <Form className="space-y-8 divide-y divide-gray-200">
-            <div className="mt-6 flex flex-col lg:flex-row">
-              <div className="flex-grow space-y-6">
-                <div>
-                  <label htmlFor="about" className="form-label">
-                    About
-                  </label>
-                  <div className="mt-1">
-                    <Field id="about" name="about" as="textarea" rows={4} className="form-input" />
+          <Form className="dark: space-y-8 divide-y divide-gray-200 dark:divide-gray-500">
+            <div className="space-y-8 pt-8">
+              <div className="sm:col-span-6">
+                <Switch.Group as="li" className="flex items-center justify-between py-4">
+                  <div className="flex flex-col">
+                    <Switch.Label as="p" className="form-label" passive>
+                      List on market
+                    </Switch.Label>
+                    <Switch.Description className="form-input-description">
+                      If you wish for this startup to be visible on the market.
+                    </Switch.Description>
                   </div>
-                  <p className="form-input-description">
-                    A brief description for your personal profile.
-                  </p>
+
+                  <Field
+                    className="form-input"
+                    component={SwitchWrapper}
+                    id="listOnMarket"
+                    name="listOnMarket"
+                  />
+                </Switch.Group>
+              </div>
+
+              <div className="sm:col-span-6">
+                <div className="mt-6 flex flex-col lg:flex-row">
+                  <div className="flex-grow space-y-6">
+                    <div>
+                      <label htmlFor="about" className="form-label">
+                        About you
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          id="about"
+                          name="about"
+                          as="textarea"
+                          rows={4}
+                          className="form-input"
+                        />
+                      </div>
+                      <p className="form-input-description">
+                        A brief description for your personal profile.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
+                    <ProfilePhotoSelector
+                      profilePictureUrl={model.personalProfilePictureUrl}
+                      allowChange={false}
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
-                <ProfilePhotoSelector
-                  profilePictureUrl={model.personalProfilePictureUrl}
-                  allowChange={false}
-                />
+              <div className="sm:col-span-6">
+                <label htmlFor="email" className="form-label">
+                  Email address
+                </label>
+                <div className="mt-1">
+                  <label id="email" className="block text-sm text-gray-700 dark:text-gray-200">
+                    {user?.email}
+                  </label>
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-8 divide-y divide-gray-200">
-              <div className="pt-8">
+              <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                  <label htmlFor="givenName" className="form-label">
+                    First name *
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="givenName"
+                      id="givenName"
+                      autoComplete="given-name"
+                      validate={validateRequiredString}
+                      className={errors.givenName ? 'form-input-error' : 'form-input'}
+                    />
+                    {errors.givenName && touched.givenName && (
+                      <div className="form-input-validation">{errors.givenName}</div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label htmlFor="familyName" className="form-label">
+                    Last name *
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="familyName"
+                      id="familyName"
+                      autoComplete="family-name"
+                      validate={validateRequiredString}
+                      className={errors.familyName ? 'form-input-error' : 'form-input'}
+                    />
+                    {errors.familyName && touched.familyName && (
+                      <div className="form-input-validation">{errors.familyName}</div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label htmlFor="linkedInProfile" className="form-label">
+                    LinkedIn Profile
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="linkedInProfile"
+                      id="linkedInProfile"
+                      autoComplete="family-name"
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label htmlFor="phoneNumber" className="form-label">
+                    Your phone number
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      autoComplete="tel"
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="companyName" className="form-label">
+                    Company name *
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="companyName"
+                      id="companyName"
+                      autoComplete="organization"
+                      validate={validateRequiredString}
+                      className={errors.companyName ? 'form-input-error' : 'form-input'}
+                    />
+                    {errors.companyName && touched.companyName && (
+                      <div className="form-input-validation">{errors.companyName}</div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label htmlFor="website" className="form-label">
+                    Company website
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="website"
+                      id="website"
+                      autoComplete="url"
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-1">
+                  <label htmlFor="numberOfFounders" className="form-label">
+                    Number of founders
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="number"
+                      min="1"
+                      name="numberOfFounders"
+                      id="numberOfFounders"
+                      className="form-input"
+                    />
+                  </div>
+                </div>
                 <div className="sm:col-span-6">
-                  <label htmlFor="email" className="form-label">
-                    Email address
+                  <label htmlFor="companyProfilePictureUrl" className="form-label">
+                    Company logo
+                  </label>
+                  <div className="relative mt-1 rounded-md shadow-sm">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                      <LinkIcon
+                        className="h-5 w-5 text-gray-400 dark:text-gray-600"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <Field
+                      type="text"
+                      name="companyProfilePictureUrl"
+                      id="companyProfilePictureUrl"
+                      className="form-input pl-10"
+                      placeholder="https://path.to/my_logo.png"
+                      // onChange={(e: any) => {
+                      //   setCompanyProfilePictureUrl(e.target.value);
+                      // }}
+                    />
+                  </div>
+                  {/* {companyProfilePictureUrl !== null && companyProfilePictureUrl !== undefined && (
+                    <img
+                      style={{ maxWidth: '100px', maxHeight: '100px' }}
+                      // onError={onImageError}
+                      src={companyProfilePictureUrl}
+                      alt="Company logo"
+                      className="mt-1"
+                    />
+                  )} */}
+                </div>
+                <div className="sm:col-span-6">
+                  <label htmlFor="industries" className="form-label">
+                    Industries
                   </label>
                   <div className="mt-1">
-                    <label id="email" className="block text-sm text-gray-700 dark:text-gray-200">
-                      {user?.email}
-                    </label>
+                    <Field
+                      className="form-input"
+                      component={IndustrySelector}
+                      id="industries"
+                      name="industries"
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-6">
+                  <label htmlFor="streetName" className="form-label">
+                    Company Street address
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="streetName"
+                      id="streetName"
+                      autoComplete="street-address"
+                      className="form-input"
+                    />
                   </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                  <div className="sm:col-span-3">
-                    <label htmlFor="givenName" className="form-label">
-                      First name *
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="givenName"
-                        id="givenName"
-                        autoComplete="given-name"
-                        validate={validateRequiredString}
-                        className={errors.givenName ? 'form-input-error' : 'form-input'}
-                      />
-                      {errors.givenName && touched.givenName && (
-                        <div className="form-input-validation">{errors.givenName}</div>
-                      )}
-                    </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="addressCity" className="form-label">
+                    Company City
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="addressCity"
+                      id="addressCity"
+                      autoComplete="address-level2"
+                      className="form-input"
+                    />
                   </div>
+                </div>
 
-                  <div className="sm:col-span-3">
-                    <label htmlFor="familyName" className="form-label">
-                      Last name *
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="familyName"
-                        id="familyName"
-                        autoComplete="family-name"
-                        validate={validateRequiredString}
-                        className={errors.familyName ? 'form-input-error' : 'form-input'}
-                      />
-                      {errors.familyName && touched.familyName && (
-                        <div className="form-input-validation">{errors.familyName}</div>
-                      )}
-                    </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="addressRegion" className="form-label">
+                    State / Province
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="addressRegion"
+                      id="addressRegion"
+                      autoComplete="address-level1"
+                      className="form-input"
+                    />
                   </div>
+                </div>
 
-                  <div className="sm:col-span-3">
-                    <label htmlFor="linkedInProfile" className="form-label">
-                      LinkedIn Profile
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="linkedInProfile"
-                        id="linkedInProfile"
-                        autoComplete="family-name"
-                        className="form-input"
-                      />
-                    </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="postalCode" className="form-label">
+                    ZIP / Postal code
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      name="postalCode"
+                      id="postalCode"
+                      autoComplete="postal-code"
+                      className="form-input"
+                    />
                   </div>
+                </div>
 
-                  <div className="sm:col-span-3">
-                    <label htmlFor="phoneNumber" className="form-label">
-                      Your phone number
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        autoComplete="tel"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label htmlFor="companyName" className="form-label">
-                      Company name *
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="companyName"
-                        id="companyName"
-                        autoComplete="organization"
-                        validate={validateRequiredString}
-                        className={errors.companyName ? 'form-input-error' : 'form-input'}
-                      />
-                      {errors.companyName && touched.companyName && (
-                        <div className="form-input-validation">{errors.companyName}</div>
-                      )}
-                    </div>
-                  </div>
+                <div className="sm:col-span-3">
+                  <label htmlFor="addressCountry" className="form-label">
+                    Country
+                  </label>
+                  <div className="mt-1">
+                    <Field
+                      type="text"
+                      id="addressCountry"
+                      name="addressCountry"
+                      autoComplete="country-name"
+                      className="form-input"
 
-                  <div className="sm:col-span-3">
-                    <label htmlFor="website" className="form-label">
-                      Company website
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="website"
-                        id="website"
-                        autoComplete="url"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-1">
-                    <label htmlFor="numberOfFounders" className="form-label">
-                      Number of founders
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="number"
-                        min="1"
-                        name="numberOfFounders"
-                        id="numberOfFounders"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-6">
-                    <label htmlFor="phoneNumber" className="form-label">
-                      Industries
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        className="form-input"
-                        component={IndustrySelector}
-                        id="industries"
-                        name="industries"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-6">
-                    <label htmlFor="streetName" className="form-label">
-                      Company Street address
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="streetName"
-                        id="streetName"
-                        autoComplete="street-address"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label htmlFor="addressCity" className="form-label">
-                      Company City
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="addressCity"
-                        id="addressCity"
-                        autoComplete="address-level2"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label htmlFor="addressCity" className="form-label">
-                      State / Province
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="addressCity"
-                        id="addressCity"
-                        autoComplete="address-level1"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label htmlFor="postalCode" className="form-label">
-                      ZIP / Postal code
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        name="postalCode"
-                        id="postalCode"
-                        autoComplete="postal-code"
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label htmlFor="addressCountry" className="form-label">
-                      Country
-                    </label>
-                    <div className="mt-1">
-                      <Field
-                        type="text"
-                        id="addressCountry"
-                        name="addressCountry"
-                        autoComplete="country-name"
-                        className="form-input"
-
-                        // <option>United States</option>
-                        // <option>Canada</option>
-                        // <option>Mexico</option>
-                      />
-                    </div>
+                      // <option>United States</option>
+                      // <option>Canada</option>
+                      // <option>Mexico</option>
+                    />
                   </div>
                 </div>
               </div>

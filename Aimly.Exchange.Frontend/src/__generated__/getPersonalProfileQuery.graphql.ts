@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<10d33cd0041e01775368462e37b95da3>>
+ * @generated SignedSource<<827ad494a219b66a6d58ee6f4945a832>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type getPersonalProfileQueryVariables = getPersonalProfileQuery$variables
 export type getPersonalProfileQuery$data = {
   readonly getPersonalProfile: {
     readonly userId: any | null;
+    readonly listOnMarket: boolean;
     readonly about: string | null;
     readonly language: string | null;
     readonly personalProfilePictureUrl: string | null;
@@ -72,6 +73,13 @@ v1 = [
         "args": null,
         "kind": "ScalarField",
         "name": "userId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "listOnMarket",
         "storageKey": null
       },
       {
@@ -233,16 +241,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "2201598978f06d5d4858beeb58a7b64e",
+    "cacheID": "f748fb492ba10ecc1dbf71e401a90a4b",
     "id": null,
     "metadata": {},
     "name": "getPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
+    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    listOnMarket\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "6b00772562917adb0e98ff470295e557";
+(node as any).hash = "b617754a2e3c78bb3c096a8c2a932b32";
 
 export default node;

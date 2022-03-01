@@ -4,6 +4,7 @@ export const getPersonalProfileQuery = graphql`
   query getPersonalProfileQuery($id: UUID!) {
     getPersonalProfile(userId: $id) {
       userId
+      listOnMarket
       about
       language
       personalProfilePictureUrl

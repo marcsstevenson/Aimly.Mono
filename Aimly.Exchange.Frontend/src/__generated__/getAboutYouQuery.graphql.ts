@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<18d15c0c544aedc3e9703be29cd4271e>>
+ * @generated SignedSource<<093241a5492c2b99d24b4db2c61f9379>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,6 +28,7 @@ export type getAboutYouQuery$data = {
     readonly companyProfileId: any | null;
     readonly companyProfilePictureUrl: string | null;
     readonly companyName: string | null;
+    readonly listOnMarket: boolean;
     readonly website: string | null;
     readonly numberOfFounders: number | null;
     readonly floor: string | null;
@@ -173,6 +174,13 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "listOnMarket",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "website",
         "storageKey": null
       },
@@ -281,16 +289,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "41ad03f67ae7e55c96b0060b7a451fa7",
+    "cacheID": "bfd1d2fdb3152f87c694a8d4b902331a",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    industries\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    listOnMarket\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    industries\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fe8610ee9288b86fc0b147260c014c36";
+(node as any).hash = "06a6b0903a94c990ded733ed252bf528";
 
 export default node;

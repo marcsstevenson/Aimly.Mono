@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d19e5a89f6660bee988b1d1b4c90b6cc>>
+ * @generated SignedSource<<5b29346f7d63481325e3a66621e511ea>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type SetPersonalProfileCommandInput = {
 };
 export type GetPersonalProfileModelInput = {
   userId?: any | null;
+  listOnMarket: boolean;
   language?: string | null;
   personalProfilePictureUrl?: string | null;
   about?: string | null;

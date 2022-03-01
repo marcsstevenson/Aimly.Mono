@@ -141,3 +141,7 @@ textarea {
 .default-h2 {
   @apply text-2xl font-extrabold text-gray-900 dark:text-gray-100;
 }
+
+.default-divide {
+  @apply divide-y divide-gray-200 dark:divide-gray-500;
+}

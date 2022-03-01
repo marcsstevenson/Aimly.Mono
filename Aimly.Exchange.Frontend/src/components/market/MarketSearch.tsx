@@ -17,24 +17,28 @@ interface Props {
 
 const MarketSearch = ({ CurrentProfileType }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [queryRef, loadQuery] = useQueryLoader<marketSearchQuery>(AppQuery, null);
 
-  const buildVariables = useCallback((searchTerm: string, profileType: ProfileTypeOption) => {
-    return {
-      marketSearchCommand: {
-        searchTerm: searchTerm,
-        profileType: profileType,
-        currentPage: 3,
-        pageSize: 3,
-        orderByAscending: true,
-        orderBy: 'Name',
-      },
-    };
-  }, []);
+  const buildVariables = useCallback(
+    (searchTerm: string, page: number, profileType: ProfileTypeOption) => {
+      return {
+        marketSearchCommand: {
+          searchTerm: searchTerm,
+          profileType: profileType,
+          currentPage: page,
+          pageSize: 9,
+          orderByAscending: true,
+          orderBy: 'Name',
+        },
+      };
+    },
+    []
+  );
 
   const handleSearchRequest = (searchTerm: string) => {
     // Build the updated variables
-    var variables = buildVariables(searchTerm, CurrentProfileType);
+    var variables = buildVariables(searchTerm, currentPage, CurrentProfileType);
 
     console.log('searchTerm: ', searchTerm);
 

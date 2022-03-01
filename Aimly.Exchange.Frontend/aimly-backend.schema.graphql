@@ -144,6 +144,7 @@ type GetAboutYouModel {
   companyProfileId: UUID
   companyProfilePictureUrl: String
   companyName: String
+  listOnMarket: Boolean!
   website: String
   numberOfFounders: Int
   industries: [String]
@@ -171,6 +172,7 @@ input GetAboutYouModelInput {
   companyProfileId: UUID
   companyProfilePictureUrl: String
   companyName: String
+  listOnMarket: Boolean!
   website: String
   numberOfFounders: Int
   industries: [String]
@@ -239,6 +241,7 @@ input GetMentorProfileModelInput {
 
 type GetPersonalProfileModel {
   userId: UUID
+  listOnMarket: Boolean!
   language: String
   personalProfilePictureUrl: String
   about: String
@@ -254,6 +257,7 @@ type GetPersonalProfileModel {
 
 input GetPersonalProfileModelInput {
   userId: UUID
+  listOnMarket: Boolean!
   language: String
   personalProfilePictureUrl: String
   about: String
