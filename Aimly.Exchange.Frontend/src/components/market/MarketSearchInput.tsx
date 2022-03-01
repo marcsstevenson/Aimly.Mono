@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 
 interface Props {
@@ -7,6 +7,12 @@ interface Props {
 
 export const MarketSearchInput = (props: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Focus the input when the component is mounted
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -32,6 +38,7 @@ export const MarketSearchInput = (props: Props) => {
               <input
                 id="search-field"
                 name="search-field"
+                ref={searchInputRef}
                 className="focus:ring-primary-500 block w-full rounded-xl border
                 border-gray-300 py-3 pl-10 pr-5 font-medium
                   leading-5 text-gray-900
