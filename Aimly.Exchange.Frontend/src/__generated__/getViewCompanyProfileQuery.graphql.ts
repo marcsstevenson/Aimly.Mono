@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9170b3199f7e5c800830231cb4f7fe78>>
+ * @generated SignedSource<<30647a594a814cf7fd17f0123227c5b9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,7 @@ export type getViewCompanyProfileQuery$data = {
     readonly companyName: string | null;
     readonly profilePictureUrl: string | null;
     readonly website: string | null;
-    readonly addressRegion: string | null;
+    readonly addressCity: string | null;
     readonly addressCountry: string | null;
     readonly industries: ReadonlyArray<string | null> | null;
     readonly problemDetails: string | null;
@@ -94,7 +94,7 @@ v1 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "addressRegion",
+        "name": "addressCity",
         "storageKey": null
       },
       {
@@ -140,16 +140,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "92fa3cef89aa0d120e4bf025206f21a5",
+    "cacheID": "ccfced7565e660e4a6a747225e7454fc",
     "id": null,
     "metadata": {},
     "name": "getViewCompanyProfileQuery",
     "operationKind": "query",
-    "text": "query getViewCompanyProfileQuery(\n  $companyProfileId: UUID!\n) {\n  getViewCompanyProfile(companyProfileId: $companyProfileId) {\n    id\n    companyProfileId\n    companyName\n    profilePictureUrl\n    website\n    addressRegion\n    addressCountry\n    industries\n    problemDetails\n  }\n}\n"
+    "text": "query getViewCompanyProfileQuery(\n  $companyProfileId: UUID!\n) {\n  getViewCompanyProfile(companyProfileId: $companyProfileId) {\n    id\n    companyProfileId\n    companyName\n    profilePictureUrl\n    website\n    addressCity\n    addressCountry\n    industries\n    problemDetails\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "2817328db9d927ba99d22170a56cd6ef";
+(node as any).hash = "2dd364cfd4e1e133eccdcb825126d67b";
 
 export default node;

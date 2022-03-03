@@ -700,6 +700,10 @@ select {
   visibility: visible;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .static {
   position: static;
 }
@@ -787,6 +791,10 @@ select {
 
 .col-span-1 {
   grid-column: span 1 / span 1;
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
 }
 
 .-m-2\.5 {
@@ -926,6 +934,10 @@ select {
   margin-bottom: -1px;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .-mr-12 {
   margin-right: -3rem;
 }
@@ -948,10 +960,6 @@ select {
 
 .-ml-1 {
   margin-left: -0.25rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
 }
 
 .mt-0\.5 {
@@ -1203,6 +1211,10 @@ select {
   flex-grow: 1;
 }
 
+.basis-1\/4 {
+  flex-basis: 25%;
+}
+
 .origin-top-right {
   -webkit-transform-origin: top right;
           transform-origin: top right;
@@ -1305,12 +1317,20 @@ select {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.place-content-center {
+  place-content: center;
 }
 
 .items-start {
@@ -1347,6 +1367,11 @@ select {
 
 .gap-y-6 {
   row-gap: 1.5rem;
+}
+
+.gap-x-2 {
+  -webkit-column-gap: 0.5rem;
+          column-gap: 0.5rem;
 }
 
 .gap-x-4 {
@@ -1560,10 +1585,6 @@ select {
   border-top-width: 0px;
 }
 
-.border-t-2 {
-  border-top-width: 2px;
-}
-
 .border-dashed {
   border-style: dashed;
 }
@@ -1597,6 +1618,11 @@ select {
   border-color: rgb(79 70 229 / var(--tw-border-opacity));
 }
 
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1625,11 +1651,6 @@ select {
 .bg-green-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(240 253 244 / var(--tw-bg-opacity));
-}
-
-.bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
 .bg-gray-900 {
@@ -1771,6 +1792,10 @@ select {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .py-1 {
@@ -2011,8 +2036,8 @@ select {
   line-height: 1.75rem;
 }
 
-.text-6xl {
-  font-size: 3.75rem;
+.text-8xl {
+  font-size: 6rem;
   line-height: 1;
 }
 
@@ -2024,11 +2049,6 @@ select {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-9xl {
-  font-size: 8rem;
-  line-height: 1;
 }
 
 .font-semibold {
@@ -2200,6 +2220,16 @@ select {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.underline {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.decoration-primary-500 {
+  -webkit-text-decoration-color: #6366f1;
+          text-decoration-color: #6366f1;
 }
 
 .antialiased {
@@ -2963,14 +2993,19 @@ button, input, optgroup, select, textarea {
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
 .dark .dark\:border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 
-.dark .dark\:border-gray-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+.dark .dark\:bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:bg-black {
@@ -2986,11 +3021,6 @@ button, input, optgroup, select, textarea {
 .dark .dark\:bg-gray-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-}
-
-.dark .dark\:bg-gray-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:fill-gray-500 {
@@ -3148,6 +3178,10 @@ button, input, optgroup, select, textarea {
 }
 
 @media (min-width: 640px) {
+  .sm\:visible {
+    visibility: visible;
+  }
+
   .sm\:static {
     position: static;
   }
@@ -3288,6 +3322,10 @@ button, input, optgroup, select, textarea {
     height: 2.5rem;
   }
 
+  .sm\:h-40 {
+    height: 10rem;
+  }
+
   .sm\:w-full {
     width: 100%;
   }
@@ -3298,6 +3336,10 @@ button, input, optgroup, select, textarea {
 
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:w-40 {
+    width: 10rem;
   }
 
   .sm\:max-w-xl {
@@ -3518,6 +3560,10 @@ button, input, optgroup, select, textarea {
 }
 
 @media (min-width: 768px) {
+  .md\:visible {
+    visibility: visible;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -3554,6 +3600,10 @@ button, input, optgroup, select, textarea {
     display: grid;
   }
 
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:h-96 {
     height: 24rem;
   }
@@ -3574,6 +3624,10 @@ button, input, optgroup, select, textarea {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 
   .md\:place-items-center {
@@ -3617,6 +3671,10 @@ button, input, optgroup, select, textarea {
     padding-bottom: 5rem;
   }
 
+  .md\:text-left {
+    text-align: left;
+  }
+
   .md\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
@@ -3639,6 +3697,10 @@ button, input, optgroup, select, textarea {
 }
 
 @media (min-width: 1024px) {
+  .lg\:visible {
+    visibility: visible;
+  }
+
   .lg\:fixed {
     position: fixed;
   }
@@ -3680,6 +3742,14 @@ button, input, optgroup, select, textarea {
     grid-column: span 12 / span 12;
   }
 
+  .lg\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .lg\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -3701,6 +3771,10 @@ button, input, optgroup, select, textarea {
 
   .lg\:mt-0 {
     margin-top: 0px;
+  }
+
+  .lg\:ml-14 {
+    margin-left: 3.5rem;
   }
 
   .lg\:ml-6 {
@@ -3946,6 +4020,10 @@ button, input, optgroup, select, textarea {
 }
 
 @media (min-width: 1280px) {
+  .xl\:visible {
+    visibility: visible;
+  }
+
   .xl\:mt-28 {
     margin-top: 7rem;
   }
@@ -3974,5 +4052,11 @@ button, input, optgroup, select, textarea {
   .xl\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:visible {
+    visibility: visible;
   }
 }

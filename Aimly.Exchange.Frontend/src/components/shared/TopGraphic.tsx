@@ -42,7 +42,7 @@ const TopGraphic = ({ title, context }: Props) => {
           </div>
           <header className="relative py-10">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h1 className="default-h2 text-center">{title}</h1>
+              <h1 className="text-center text-2xl font-extrabold text-gray-100">{title}</h1>
               {context && (
                 <h1 className="dark:text-primary-400 text-primary-700 text-center text-5xl font-extrabold">
                   {context}

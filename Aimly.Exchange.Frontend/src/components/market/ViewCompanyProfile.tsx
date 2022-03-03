@@ -5,6 +5,9 @@ import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
 import TopGraphic from 'components/shared/TopGraphic';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
+import ShowBreakPoints from 'components/shared/ShowBreakPoints';
+import { LocationMarkerIcon } from '@heroicons/react/solid';
+import { ExternalLinkIcon } from '@heroicons/react/outline';
 
 const ViewCompanyProfile = () => {
   // Read the Id from the route context
@@ -26,48 +29,51 @@ const ViewCompanyProfile = () => {
 
   return (
     <>
+      <ShowBreakPoints />
+
       {model !== null && model !== undefined && (
         <div>
-          <TopGraphic title="Company Profile (work in progress)" context={model.companyName} />
+          <TopGraphic title="Company Profile (work in progress)" context={null} />
 
           <main className="relative -mt-32">
             <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
               <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
-                <div className="default-divide lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-                  <div className="default-divide lg:col-span-12">
-                    <div className="space-y-12 p-6">
-                      <div className="sm:col-span-6">
-                        <div className="flex flex-col lg:flex-row">
-                          <div className="flex-grow space-y-6">
-                            <div>
-                              <label htmlFor="about" className="form-label">
-                                The Problem
-                              </label>
-                              <p className="form-input-description">{model.problemDetails}</p>
-                            </div>
-                          </div>
-
-                          <div className="flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
-                            <ProfilePhotoViewer
-                              profilePictureUrl={model.profilePictureUrl}
-                              imageRoundnessClass="rounded-md"
-                            />
-                          </div>
-                        </div>
+                <div className="grid space-y-12 p-6 sm:grid-cols-6">
+                  <div className="col-span-6 sm:col-span-6">
+                    <div className="flex flex-col md:flex-row">
+                      <div className="flex-grow lg:mt-0 lg:flex-shrink-0 lg:flex-grow-0">
+                        <ProfilePhotoViewer
+                          profilePictureUrl={model.profilePictureUrl}
+                          imageRoundnessClass="rounded-lg"
+                        />
                       </div>
-                      <div className="sm:col-span-2">
-                        <label className="form-label">Company name</label>
-                        <div className="mt-1">
-                          <label className="text-6xl">{model.companyName}</label>
-                        </div>
-                      </div>
-                      <div className="sm:col-span-2">
-                        <label className="form-label">Company website</label>
-                        <div className="mt-1">
-                          <label className="text-4xl">{model.website}</label>
+                      <div className="flex-grow space-y-6">
+                        <div className="decoration-primary-500 mt-1 text-center text-8xl text-gray-800 underline dark:text-gray-100 md:text-left lg:ml-14">
+                          {model.companyName}
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div className="sm:col-span-2"></div>
+                  <div className="md:justify-left col-span-6 mt-1 flex justify-center sm:col-span-2">
+                    <ExternalLinkIcon className="mr-3 h-5 w-5" aria-hidden="true" />
+                    {model.website}
+                  </div>
+                  <div className="md:justify-left col-span-6 mt-1 flex justify-center sm:col-span-2">
+                    <LocationMarkerIcon className="mr-3 h-5 w-5" aria-hidden="true" />
+                    {model.addressCity && model.addressCity.length > 0 && (
+                      <span>{model.addressCity}, </span>
+                    )}{' '}
+                    {model.addressCountry}
+                  </div>
+
+                  {/* Long form elements */}
+
+                  <div className="col-span-6 lg:col-span-2">
+                    <span className="text-5xl">The Problem</span>
+                  </div>
+                  <div className="col-span-6 lg:col-span-4">
+                    <div className="mt-1">{model.problemDetails}</div>
                   </div>
                 </div>
               </div>

@@ -534,7 +534,7 @@ type ViewCompanyProfileModel {
   companyName: String
   profilePictureUrl: String
   website: String
-  addressRegion: String
+  addressCity: String
   addressCountry: String
   industries: [String]
   problemDetails: String

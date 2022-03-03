@@ -8,7 +8,7 @@ export const getAboutYouQuery = graphql`
       companyName
       profilePictureUrl
       website
-      addressRegion
+      addressCity
       addressCountry
       industries
       problemDetails
