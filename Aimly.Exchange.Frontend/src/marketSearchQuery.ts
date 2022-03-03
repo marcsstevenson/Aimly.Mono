@@ -8,7 +8,7 @@ query marketSearchQuery($marketSearchCommand: MarketSearchCommandInput!) {
       profileId
       name
       description
-      profileUrl
+      profilePictureUrl
       type
     }
     totalResultCount

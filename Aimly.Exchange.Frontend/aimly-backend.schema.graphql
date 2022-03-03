@@ -360,7 +360,7 @@ type MarketSearchResult {
   profileId: UUID!
   name: String
   description: String
-  profileUrl: String
+  profilePictureUrl: String
   type: ProfileTypeOption!
 }
 
@@ -540,5 +540,6 @@ type ViewCompanyProfileModel {
   industries: [String]
   problemDetails: String
   solutionDescription: String
+  associatedProfiles: [MarketSearchResult]
 }
 

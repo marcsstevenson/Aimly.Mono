@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0cd086c44895caf71033b9ad730e35a7>>
+ * @generated SignedSource<<d8dfa7f0a6fd3f823b749ca97317430c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -29,7 +29,7 @@ export type marketSearchQuery$data = {
       readonly profileId: any;
       readonly name: string | null;
       readonly description: string | null;
-      readonly profileUrl: string | null;
+      readonly profilePictureUrl: string | null;
       readonly type: ProfileTypeOption;
     } | null> | null;
     readonly totalResultCount: number;
@@ -106,7 +106,7 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "profileUrl",
+            "name": "profilePictureUrl",
             "storageKey": null
           },
           {
@@ -162,16 +162,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "44b4a576a81c05fa3177ebe8720a6927",
+    "cacheID": "9fd82385613185dc7bf7b1c19776462b",
     "id": null,
     "metadata": {},
     "name": "marketSearchQuery",
     "operationKind": "query",
-    "text": "query marketSearchQuery(\n  $marketSearchCommand: MarketSearchCommandInput!\n) {\n  marketSearch(marketSearchCommand: $marketSearchCommand) {\n    results {\n      id\n      profileId\n      name\n      description\n      profileUrl\n      type\n    }\n    totalResultCount\n    currentPage\n    totalPageCount\n  }\n}\n"
+    "text": "query marketSearchQuery(\n  $marketSearchCommand: MarketSearchCommandInput!\n) {\n  marketSearch(marketSearchCommand: $marketSearchCommand) {\n    results {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    totalResultCount\n    currentPage\n    totalPageCount\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "51f1d5a8173b9a40b5d7fbd260e54ea5";
+(node as any).hash = "7313129d2ea2285170d3580b51345f32";
 
 export default node;

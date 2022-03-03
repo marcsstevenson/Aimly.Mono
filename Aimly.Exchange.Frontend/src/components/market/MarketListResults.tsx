@@ -49,7 +49,7 @@ const MarketListResults = ({ marketSearchResults }: MarketSearchResultsProps) =>
                   <div className="h-10 w-10 flex-shrink-0">
                     <img
                       className={classNames(getRoundedClassName(result?.type), 'h-10')}
-                      src={result?.profileUrl ?? resultIcon}
+                      src={result?.profilePictureUrl ?? resultIcon}
                       alt={result ? (result.name ? result.name : '') : ''}
                       onError={onImageError}
                     />

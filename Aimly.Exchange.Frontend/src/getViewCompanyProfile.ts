@@ -14,6 +14,14 @@ export const getAboutYouQuery = graphql`
       industries
       problemDetails
       solutionDescription
+      associatedProfiles {
+        id
+        profileId
+        name
+        description
+        profilePictureUrl
+        type
+      }
     }
   }
 `;

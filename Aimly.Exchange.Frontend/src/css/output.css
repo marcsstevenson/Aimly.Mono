@@ -1174,6 +1174,20 @@ select {
   min-width: 100%;
 }
 
+.min-w-fit {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
+.min-w-\[200px\] {
+  min-width: 200px;
+}
+
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -3953,6 +3967,10 @@ button, input, optgroup, select, textarea {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -4130,5 +4148,9 @@ button, input, optgroup, select, textarea {
 @media (min-width: 1536px) {
   .\32xl\:visible {
     visibility: visible;
+  }
+
+  .\32xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

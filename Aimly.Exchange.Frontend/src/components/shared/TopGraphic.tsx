@@ -1,3 +1,5 @@
+// The purpose of this component is to display a stylish graphic at the top of the main area
+
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
 import { classNames } from 'utils/classNames';
