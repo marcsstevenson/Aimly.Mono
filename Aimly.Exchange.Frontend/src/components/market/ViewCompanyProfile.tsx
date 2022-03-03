@@ -2,15 +2,10 @@
 
 import React, { useMemo } from 'react';
 import * as ViewCompanyProfileQuery from '__generated__/getViewCompanyProfileQuery.graphql';
-
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
-import TopGraphic from 'components/shared/TopGraphic';
-import ViewProfileHeader from 'components/market/ViewProfileHeader';
-import ViewAssociatedProfiles from 'components/market/ViewAssociatedProfiles';
-import ViewProfileLongFormElements, {
-  LongFormElement,
-} from 'components/market/ViewProfileLongFormElements';
+import { LongFormElement, ViewProfileProps } from 'components/market/ViewProfileInterfaces';
+import ViewProfile from 'components/market/ViewProfile';
 
 const ViewCompanyProfile = () => {
   // Read the Id from the route context
@@ -43,45 +38,30 @@ const ViewCompanyProfile = () => {
     return longFormElements;
   }, [model?.problemDetails, model?.solutionDescription]);
 
-  return (
-    <>
-      {model !== null && model !== undefined && (
-        <div>
-          <TopGraphic title="Company Profile" context={null} />
+  // Build the ViewProfileProps
+  const viewProfileProps = useMemo<ViewProfileProps>(() => {
+    // Copy values from the model to a model for the ViewProfile component
+    const viewProfileProps = Object.assign(
+      {
+        name: model?.companyName,
+        skills: null, // Now skills for company profiles
+        title: 'Company Profile',
+        // associatedProfilesSets: [],
+        associatedProfilesSets: [
+          {
+            label: 'Their Team',
+            profiles: model?.associatedProfiles,
+          },
+        ],
+        longFormElements: longFormElements,
+      },
+      model // Copy all other properties that don't need manual mapping
+    );
 
-          <main className="relative -mt-32">
-            <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
-              <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
-                <div className="grid grid-cols-6 space-y-12 p-6">
-                  <ViewProfileHeader
-                    addressCity={model.addressCity}
-                    addressRegion={model.addressRegion}
-                    addressCountry={model.addressCountry}
-                    industries={model.industries}
-                    name={model.companyName}
-                    profilePictureUrl={model.profilePictureUrl}
-                    skills={null}
-                    website={model.website}
-                  />
+    return viewProfileProps;
+  }, [longFormElements, model]);
 
-                  {/* Long form elements */}
-                  <ViewProfileLongFormElements longFormElements={longFormElements} />
-
-                  {/* Associated admin personal profiles */}
-                  {model.associatedProfiles && model.associatedProfiles.length > 0 && (
-                    <ViewAssociatedProfiles
-                      label="Their Team"
-                      profiles={model.associatedProfiles}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      )}
-    </>
-  );
+  return <>{model && <ViewProfile model={viewProfileProps} />}</>;
 };
 
 export default ViewCompanyProfile;

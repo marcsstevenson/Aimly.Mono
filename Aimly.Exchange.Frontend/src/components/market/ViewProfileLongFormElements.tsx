@@ -1,17 +1,9 @@
 // The purpose of this component is to display a list long form elements (big label with long form text)
 
 import React from 'react';
+import { LongFormElementsProps } from 'components/market/ViewProfileInterfaces';
 
-interface Props {
-  readonly longFormElements: ReadonlyArray<LongFormElement>;
-}
-
-export interface LongFormElement {
-  readonly label: string;
-  readonly content: string;
-}
-
-const ViewProfileLongFormElements = ({ longFormElements }: Props) => {
+const ViewProfileLongFormElements = ({ longFormElements }: LongFormElementsProps) => {
   return (
     <>
       {longFormElements.map((element, index) => (

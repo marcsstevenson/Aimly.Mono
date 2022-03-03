@@ -4,19 +4,9 @@ import React from 'react';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
+import { ViewProfileHeaderProps } from 'components/market/ViewProfileInterfaces';
 
-export interface Props {
-  readonly name: string | null;
-  readonly profilePictureUrl: string | null;
-  readonly website: string | null;
-  readonly addressCity: string | null;
-  readonly addressRegion: string | null;
-  readonly addressCountry: string | null;
-  readonly industries: ReadonlyArray<string | null> | null;
-  readonly skills: ReadonlyArray<string | null> | null;
-}
-
-const ViewProfileHeader = (props: Props) => {
+const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
   return (
     <>
       <div className="col-span-8 mr-4 lg:col-span-2 lg:mt-0">

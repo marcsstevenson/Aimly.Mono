@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 import { getUrlForViewProfile } from 'components/shared/UrlForViewProfile';
 
 export interface Props {
-  result: MarketSearchResult | null;
+  result: MarketSearchResult | null | undefined;
   index: number;
 }
 

@@ -3,14 +3,9 @@
 import React from 'react';
 
 import MarketGridResult from 'components/market/MarketGridResult';
-import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
+import { AssociatedProfilesSet } from 'components/market/ViewProfileInterfaces';
 
-interface Props {
-  label: string;
-  profiles: ReadonlyArray<MarketSearchResult | null>;
-}
-
-const ViewAssociatedProfiles = ({ label, profiles }: Props) => {
+const ViewAssociatedProfiles = ({ label, profiles }: AssociatedProfilesSet) => {
   return (
     <>
       <div></div>
