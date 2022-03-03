@@ -15,7 +15,7 @@ const ProfilePhotoViewer = ({ profilePictureUrl, imageRoundnessClass }: Props) =
   return (
     <>
       {/* less than sm */}
-      <div className="mt-1 md:hidden">
+      <div className="mt-1 lg:hidden">
         <div className="flex place-content-center">
           <div
             className={classNames(
@@ -35,7 +35,7 @@ const ProfilePhotoViewer = ({ profilePictureUrl, imageRoundnessClass }: Props) =
       </div>
 
       {/* sm+ view */}
-      <div className={classNames('relative hidden overflow-hidden md:block', imageRoundnessClass)}>
+      <div className={classNames('relative hidden overflow-hidden lg:block', imageRoundnessClass)}>
         <img
           className={classNames('relative h-40 w-40', imageRoundnessClass)}
           src={profilePictureUrl ?? ''}

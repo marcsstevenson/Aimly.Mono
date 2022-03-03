@@ -1799,6 +1799,10 @@ select {
   object-position: center;
 }
 
+.object-left-top {
+  object-position: left top;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -3843,6 +3847,10 @@ button, input, optgroup, select, textarea {
 
   .lg\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .lg\:mt-1 {
+    margin-top: 0.25rem;
   }
 
   .lg\:block {

@@ -29,7 +29,7 @@ const ViewCompanyProfile = () => {
 
   return (
     <>
-      <ShowBreakPoints />
+      {/* <ShowBreakPoints /> */}
 
       {model !== null && model !== undefined && (
         <div>
@@ -39,19 +39,15 @@ const ViewCompanyProfile = () => {
             <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
               <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
                 <div className="grid grid-cols-6 space-y-12 p-6">
-                  <div className="col-span-6">
-                    <div className="flex flex-col md:flex-row">
-                      <div className="lg:mt-0">
-                        <ProfilePhotoViewer
-                          profilePictureUrl={model.profilePictureUrl}
-                          imageRoundnessClass="rounded-lg"
-                        />
-                      </div>
-                      <div className="flex-grow space-y-6">
-                        <div className="decoration-primary-500 mt-1 text-center text-8xl text-gray-800 underline dark:text-gray-100">
-                          {model.companyName}
-                        </div>
-                      </div>
+                  <div className="col-span-8 mr-4 lg:col-span-2 lg:mt-0">
+                    <ProfilePhotoViewer
+                      profilePictureUrl={model.profilePictureUrl}
+                      imageRoundnessClass="rounded-lg"
+                    />
+                  </div>
+                  <div className="col-span-8 lg:col-span-4">
+                    <div className="decoration-primary-500 flex justify-center text-8xl text-gray-800 underline dark:text-gray-100 lg:justify-start">
+                      {model.companyName}
                     </div>
                   </div>
                   <div className="col-span-6 space-y-6 md:col-start-3">
