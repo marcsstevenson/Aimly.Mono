@@ -145,3 +145,7 @@ textarea {
 .default-divide {
   @apply divide-y divide-gray-200 dark:divide-gray-500;
 }
+
+.default-a {
+  @apply decoration-primary-500 hover:underline;
+}

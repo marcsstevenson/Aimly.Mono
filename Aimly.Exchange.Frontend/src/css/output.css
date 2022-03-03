@@ -797,6 +797,10 @@ select {
   grid-column: span 6 / span 6;
 }
 
+.col-start-3 {
+  grid-column-start: 3;
+}
+
 .-m-2\.5 {
   margin: -0.625rem;
 }
@@ -934,10 +938,6 @@ select {
   margin-bottom: -1px;
 }
 
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
 .-mr-12 {
   margin-right: -3rem;
 }
@@ -960,6 +960,10 @@ select {
 
 .-ml-1 {
   margin-left: -0.25rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
 }
 
 .mt-0\.5 {
@@ -1345,6 +1349,10 @@ select {
   align-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -1377,6 +1385,11 @@ select {
 .gap-x-4 {
   -webkit-column-gap: 1rem;
           column-gap: 1rem;
+}
+
+.gap-x-1 {
+  -webkit-column-gap: 0.25rem;
+          column-gap: 0.25rem;
 }
 
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
@@ -2697,6 +2710,16 @@ button, input, optgroup, select, textarea {
   border-color: rgb(107 114 128 / var(--tw-divide-opacity));
 }
 
+.default-a {
+  -webkit-text-decoration-color: #6366f1;
+          text-decoration-color: #6366f1;
+}
+
+.default-a:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -2845,6 +2868,11 @@ button, input, optgroup, select, textarea {
 .hover\:text-validation-900:hover {
   --tw-text-opacity: 1;
   color: rgb(127 29 29 / var(--tw-text-opacity));
+}
+
+.hover\:underline:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 .hover\:opacity-100:hover {
@@ -3210,12 +3238,12 @@ button, input, optgroup, select, textarea {
     top: 0px;
   }
 
-  .sm\:col-span-6 {
-    grid-column: span 6 / span 6;
-  }
-
   .sm\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .sm\:col-span-6 {
+    grid-column: span 6 / span 6;
   }
 
   .sm\:col-span-3 {
@@ -3564,6 +3592,18 @@ button, input, optgroup, select, textarea {
     visibility: visible;
   }
 
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .md\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .md\:col-start-3 {
+    grid-column-start: 3;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -3638,6 +3678,10 @@ button, input, optgroup, select, textarea {
     align-items: center;
   }
 
+  .md\:justify-start {
+    justify-content: flex-start;
+  }
+
   .md\:justify-between {
     justify-content: space-between;
   }
@@ -3669,10 +3713,6 @@ button, input, optgroup, select, textarea {
 
   .md\:pb-20 {
     padding-bottom: 5rem;
-  }
-
-  .md\:text-left {
-    text-align: left;
   }
 
   .md\:text-6xl {
@@ -3750,6 +3790,10 @@ button, input, optgroup, select, textarea {
     grid-column: span 4 / span 4;
   }
 
+  .lg\:col-start-3 {
+    grid-column-start: 3;
+  }
+
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -3771,10 +3815,6 @@ button, input, optgroup, select, textarea {
 
   .lg\:mt-0 {
     margin-top: 0px;
-  }
-
-  .lg\:ml-14 {
-    margin-left: 3.5rem;
   }
 
   .lg\:ml-6 {

@@ -9,9 +9,11 @@ export const getAboutYouQuery = graphql`
       profilePictureUrl
       website
       addressCity
+      addressRegion
       addressCountry
       industries
       problemDetails
+      solutionDescription
     }
   }
 `;

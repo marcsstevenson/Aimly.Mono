@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<30647a594a814cf7fd17f0123227c5b9>>
+ * @generated SignedSource<<98005e515fd57e3506e1db2bb46fbabd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,9 +21,11 @@ export type getViewCompanyProfileQuery$data = {
     readonly profilePictureUrl: string | null;
     readonly website: string | null;
     readonly addressCity: string | null;
+    readonly addressRegion: string | null;
     readonly addressCountry: string | null;
     readonly industries: ReadonlyArray<string | null> | null;
     readonly problemDetails: string | null;
+    readonly solutionDescription: string | null;
   } | null;
 };
 export type getViewCompanyProfileQueryResponse = getViewCompanyProfileQuery$data;
@@ -101,6 +103,13 @@ v1 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "addressRegion",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "addressCountry",
         "storageKey": null
       },
@@ -116,6 +125,13 @@ v1 = [
         "args": null,
         "kind": "ScalarField",
         "name": "problemDetails",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "solutionDescription",
         "storageKey": null
       }
     ],
@@ -140,16 +156,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "ccfced7565e660e4a6a747225e7454fc",
+    "cacheID": "50eec290f64119e5e6d6052447a6dc67",
     "id": null,
     "metadata": {},
     "name": "getViewCompanyProfileQuery",
     "operationKind": "query",
-    "text": "query getViewCompanyProfileQuery(\n  $companyProfileId: UUID!\n) {\n  getViewCompanyProfile(companyProfileId: $companyProfileId) {\n    id\n    companyProfileId\n    companyName\n    profilePictureUrl\n    website\n    addressCity\n    addressCountry\n    industries\n    problemDetails\n  }\n}\n"
+    "text": "query getViewCompanyProfileQuery(\n  $companyProfileId: UUID!\n) {\n  getViewCompanyProfile(companyProfileId: $companyProfileId) {\n    id\n    companyProfileId\n    companyName\n    profilePictureUrl\n    website\n    addressCity\n    addressRegion\n    addressCountry\n    industries\n    problemDetails\n    solutionDescription\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "2dd364cfd4e1e133eccdcb825126d67b";
+(node as any).hash = "28e920ccea80f2eb4ad6afeda5c671d0";
 
 export default node;
