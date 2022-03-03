@@ -29,7 +29,7 @@ const ViewCompanyProfile = () => {
 
   return (
     <>
-      {/* <ShowBreakPoints /> */}
+      <ShowBreakPoints />
 
       {model !== null && model !== undefined && (
         <div>
@@ -38,7 +38,7 @@ const ViewCompanyProfile = () => {
           <main className="relative -mt-32">
             <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
               <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
-                <div className="grid space-y-12 p-6 sm:grid-cols-6">
+                <div className="grid grid-cols-6 space-y-12 p-6">
                   <div className="col-span-6">
                     <div className="flex flex-col md:flex-row">
                       <div className="lg:mt-0">
@@ -55,11 +55,14 @@ const ViewCompanyProfile = () => {
                     </div>
                   </div>
                   <div className="col-span-6 space-y-6 md:col-start-3">
+                    {/* Website */}
                     {model.website && (
                       <div className="col-span-6 mt-1 flex justify-center md:col-span-3 md:justify-start">
                         <ExternalLink url={model.website} />
                       </div>
                     )}
+
+                    {/* Location */}
                     {model.addressCountry && (
                       <div className="col-span-6 mt-1 flex justify-center md:col-span-3 md:justify-start">
                         <LocationLinker
@@ -84,23 +87,26 @@ const ViewCompanyProfile = () => {
                       </div>
                     )}
                   </div>
+
+                  <div className="col-span-8 border-b border-gray-200 dark:border-gray-500"></div>
+
                   {/* Long form elements */}
 
-                  <div className="col-span-6 mr-2 lg:col-span-2">
+                  <div className="col-span-8 mr-4 lg:col-span-2">
                     <span className="text-5xl text-gray-900 dark:text-gray-100">The Problem</span>
                   </div>
-                  <div className="col-span-6 lg:col-span-4">
+                  <div className="col-span-8 lg:col-span-4">
                     <div className="mt-1 text-gray-800 dark:text-gray-300">
                       {model.problemDetails}
                     </div>
                   </div>
                   <div></div>
-                  <div className="col-span-6 mr-2 lg:col-span-2">
+                  <div className="col-span-8 mr-4 lg:col-span-2">
                     <span className="text-5xl text-gray-900 dark:text-gray-100">
                       Their Solution
                     </span>
                   </div>
-                  <div className="col-span-6 lg:col-span-4">
+                  <div className="col-span-8 lg:col-span-4">
                     <div className="mt-1 text-gray-800 dark:text-gray-300">
                       {model.solutionDescription}
                     </div>
