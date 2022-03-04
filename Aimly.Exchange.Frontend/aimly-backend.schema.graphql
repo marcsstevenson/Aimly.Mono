@@ -438,6 +438,7 @@ type Query {
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
+  getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]
   getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   getSkillOptions(nameStartingWith: String): [String]
@@ -541,5 +542,20 @@ type ViewCompanyProfileModel {
   problemDetails: String
   solutionDescription: String
   associatedProfiles: [MarketSearchResult]
+}
+
+type ViewPersonalProfileModel {
+  id: String
+  personalProfileId: UUID!
+  fullName: String
+  profilePictureUrl: String
+  linkedInProfile: String
+  about: String
+  industries: [String]
+  skills: [String]
+  employmentExperience: [ExperienceModel]
+  associatedStartupProfiles: [MarketSearchResult]
+  associatedMentorProfiles: [MarketSearchResult]
+  associatedExpertProfiles: [MarketSearchResult]
 }
 
