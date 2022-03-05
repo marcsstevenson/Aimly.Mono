@@ -9,7 +9,7 @@ const ViewProfileLongFormElements = ({ longFormElements }: LongFormElementsProps
       {longFormElements.map((element, index) => (
         <React.Fragment key={index}>
           <div key={index} className="col-span-8 mr-4 lg:col-span-2">
-            <span className="text-5xl text-gray-900 dark:text-gray-100">{element.label}</span>
+            <span className="text-4xl text-gray-900 dark:text-gray-100">{element.label}</span>
           </div>
           <div className="col-span-8 lg:col-span-4">
             <div className="mt-1 text-gray-800 dark:text-gray-300">{element.content}</div>

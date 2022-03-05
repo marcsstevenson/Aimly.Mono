@@ -27,9 +27,9 @@ const ViewProfile = ({ model }: props) => {
                 addressRegion={model.addressRegion}
                 addressCountry={model.addressCountry}
                 industries={model.industries}
+                skills={model.skills}
                 name={model.name}
                 profilePictureUrl={model.profilePictureUrl}
-                skills={null}
                 website={model.website}
               />
 

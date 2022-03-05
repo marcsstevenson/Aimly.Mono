@@ -16,7 +16,7 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
         />
       </div>
       <div className="col-span-8 lg:col-span-4">
-        <div className="decoration-primary-500 flex justify-center text-8xl text-gray-800 underline dark:text-gray-100 lg:justify-start">
+        <div className="decoration-primary-500 flex justify-center text-6xl text-gray-800 underline dark:text-gray-100 lg:justify-start">
           {props.name}
         </div>
       </div>
@@ -48,6 +48,20 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
                 className="bg-primary-600 rounded-full py-1 px-3 text-center text-white"
               >
                 {industry}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* skills */}
+        {props.skills && props.skills.length > 0 && (
+          <div className="col-span-6 flex flex-row justify-center gap-x-2 md:justify-start">
+            {props.skills.map((skill, index) => (
+              <div
+                key={index}
+                className="bg-primary-600 rounded-full py-1 px-3 text-center text-white"
+              >
+                {skill}
               </div>
             ))}
           </div>

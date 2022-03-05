@@ -26,6 +26,7 @@ import MarketCommunity from 'components/market/MarketCommunity';
 
 // View public profiles on market
 import ViewCompanyProfile from 'components/market/ViewCompanyProfile';
+import ViewPersonalProfile from 'components/market/ViewPersonalProfile';
 
 import Help from 'components/private/Help';
 import PersonalProfileEdit from 'components/private/profiles/PersonalProfileEdit';
@@ -65,6 +66,13 @@ export const PrivateRoutes: RouteItem[] = [
     path: `/market/company-profile/:${profileId}`,
     element: <ViewCompanyProfile />,
     page: Pages.MarketViewCompanyProfile,
+  },
+
+  // View public profiles on market
+  {
+    path: `/market/personal-profile/:${profileId}`,
+    element: <ViewPersonalProfile />,
+    page: Pages.MarketViewPersonalProfile,
   },
 
   { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },

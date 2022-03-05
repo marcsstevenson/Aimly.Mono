@@ -6,7 +6,7 @@ import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 export interface ViewProfileHeaderProps {
   readonly name: string | null | undefined;
   readonly profilePictureUrl: string | null;
-  readonly website: string | null;
+  readonly website: string | null | undefined;
   readonly addressCity: string | null;
   readonly addressRegion: string | null;
   readonly addressCountry: string | null;
