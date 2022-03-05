@@ -1,5 +1,5 @@
 
-export interface employmentExperience {
+export interface EmploymentExperience {
   readonly id: string | null;
   readonly title: string | null;
   readonly organisation: string | null;

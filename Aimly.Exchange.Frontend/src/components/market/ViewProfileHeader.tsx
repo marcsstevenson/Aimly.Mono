@@ -5,10 +5,12 @@ import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/ViewProfileInterfaces';
+import ShowBreakPoints from 'components/shared/ShowBreakPoints';
 
 const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
   return (
     <>
+      {/* <ShowBreakPoints /> */}
       <div className="col-span-8 mr-4 lg:col-span-2 lg:mt-0">
         <ProfilePhotoViewer
           profilePictureUrl={props.profilePictureUrl}
@@ -20,17 +22,17 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
           {props.name}
         </div>
       </div>
-      <div className="col-span-6 space-y-6 md:col-start-3">
+      <div className="col-span-6 space-y-6 lg:col-start-3">
         {/* Website */}
         {props.website && (
-          <div className="col-span-6 mt-1 flex justify-center md:col-span-3 md:justify-start">
+          <div className="col-span-6 mt-1 flex justify-center text-gray-900 dark:text-gray-100 md:col-span-3 lg:justify-start">
             <ExternalLink url={props.website} />
           </div>
         )}
 
         {/* Location */}
         {props.addressCountry && (
-          <div className="col-span-6 mt-1 flex justify-center md:col-span-3 md:justify-start">
+          <div className="col-span-6 mt-1 flex justify-center text-gray-900 dark:text-gray-100 md:col-span-3 lg:justify-start">
             <LocationLinker
               addressCity={props.addressCity}
               addressRegion={props.addressRegion}
@@ -41,7 +43,7 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
 
         {/* Industries */}
         {props.industries && props.industries.length > 0 && (
-          <div className="col-span-6 flex flex-row justify-center gap-x-2 md:justify-start">
+          <div className="col-span-6 flex flex-row justify-center gap-x-2 lg:justify-start">
             {props.industries.map((industry, index) => (
               <div
                 key={index}
@@ -55,7 +57,7 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
 
         {/* skills */}
         {props.skills && props.skills.length > 0 && (
-          <div className="col-span-6 flex flex-row justify-center gap-x-2 md:justify-start">
+          <div className="col-span-6 flex flex-row justify-center gap-x-2 lg:justify-start">
             {props.skills.map((skill, index) => (
               <div
                 key={index}

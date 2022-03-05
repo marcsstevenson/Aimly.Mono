@@ -2,6 +2,7 @@
 // relating to the viewing of profiles
 
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
+import { EmploymentExperience } from 'components/private/profiles/EmploymentExperience';
 
 export interface ViewProfileHeaderProps {
   readonly name: string | null | undefined;
@@ -35,4 +36,6 @@ export interface ViewProfileProps
   // Groups of associated profiles
   // Eg, startups, mentor profiles, expert profiles, co-workers etc
   associatedProfilesSets: ReadonlyArray<AssociatedProfilesSet>;
+
+  employmentExperience: ReadonlyArray<EmploymentExperience | null> | null;
 }

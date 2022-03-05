@@ -8,14 +8,16 @@ import ViewProfileHeader from 'components/market/ViewProfileHeader';
 import ViewAssociatedProfiles from 'components/market/ViewAssociatedProfiles';
 import ViewProfileLongFormElements from 'components/market/ViewProfileLongFormElements';
 import { ViewProfileProps } from 'components/market/ViewProfileInterfaces';
+import ViewExperienceList from 'components/market/ViewExperienceList';
 
 interface props {
   model: ViewProfileProps;
 }
 
 const ViewProfile = ({ model }: props) => {
+  console.log(model.website);
   return (
-    <div>
+    <>
       <TopGraphic title={model.title} context={null} />
 
       <main className="relative -mt-32">
@@ -36,6 +38,9 @@ const ViewProfile = ({ model }: props) => {
               {/* Long form elements */}
               <ViewProfileLongFormElements longFormElements={model.longFormElements} />
 
+              {/* Experience */}
+              <ViewExperienceList employmentExperience={model?.employmentExperience} />
+
               {/* Associated profiles */}
               {model.associatedProfilesSets &&
                 model.associatedProfilesSets.map((set, index) => (
@@ -45,7 +50,7 @@ const ViewProfile = ({ model }: props) => {
           </div>
         </div>
       </main>
-    </div>
+    </>
   );
 };
 

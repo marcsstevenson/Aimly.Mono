@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { BriefcaseIcon, PlusIcon, XIcon } from '@heroicons/react/outline';
-import { employmentExperience } from 'components/private/profiles/EmploymentExperience';
+import { EmploymentExperience } from 'components/private/profiles/EmploymentExperience';
 
 interface Props {
   show: boolean;
@@ -15,7 +15,7 @@ interface Props {
   Title: string;
   Message: string;
   ConfirmButtonText: string;
-  model: employmentExperience | null;
+  model: EmploymentExperience | null;
 }
 
 export const PersonalProfileExperienceEdit = (props: Props) => {

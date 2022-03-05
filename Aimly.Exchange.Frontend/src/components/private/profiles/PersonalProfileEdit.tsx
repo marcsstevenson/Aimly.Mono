@@ -301,6 +301,7 @@ const PersonalProfileEdit = () => {
 
                     <div className="mt-4 sm:col-span-6">
                       <PersonalProfileExperienceList
+                        allowEdit={true}
                         employmentExperience={
                           loadedData?.employmentExperience == null
                             ? []

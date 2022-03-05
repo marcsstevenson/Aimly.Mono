@@ -54,6 +54,7 @@ const ViewCompanyProfile = () => {
           },
         ],
         longFormElements: longFormElements,
+        employmentExperience: null,
       },
       model // Copy all other properties that don't need manual mapping
     );
