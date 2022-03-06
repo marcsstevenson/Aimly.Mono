@@ -17,7 +17,7 @@ import {
 } from '__generated__/useSetAboutYouMutation.graphql';
 import * as GetAboutYouQuery from '__generated__/getAboutYouQuery.graphql';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/private/PrivateContext';
+import { PrivateContext } from 'components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import validateRequiredString from 'validators/validateRequiredString';

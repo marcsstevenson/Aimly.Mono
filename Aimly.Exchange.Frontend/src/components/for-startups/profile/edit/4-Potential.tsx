@@ -12,7 +12,7 @@ import {
 } from '__generated__/useSetPotentialMutation.graphql';
 import * as GetPotentialQuery from '__generated__/getPotentialQuery.graphql';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/private/PrivateContext';
+import { PrivateContext } from 'components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import { useSearchParams } from 'react-router-dom';
 

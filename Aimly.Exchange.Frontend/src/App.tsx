@@ -8,7 +8,7 @@ import ErrorBoundary from 'ErrorBoundary';
 import { LoadingArea } from 'components/shared/LoadingArea';
 
 import { useAuth0, User } from '@auth0/auth0-react';
-import PrivateShell from 'components/private/PrivateShell';
+import PrivateShell from 'components/PrivateShell';
 
 const App = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0<User>();

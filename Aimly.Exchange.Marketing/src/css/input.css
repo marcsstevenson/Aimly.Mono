@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-700 focus:ring-primary-400 rounded-lg py-2 px-4 font-semibold text-white shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Using https://www.joshwcomeau.com/gradient-generator/ */
+  .index-light {
+    /* https://www.joshwcomeau.com/gradient-generator?colors=ffffff|d9d7fc&angle=35&colorMode=lab&precision=6&easingCurve=0.8663793103448276|0.9595005430024246|0.9612068965517241|0.05432826075060614 */
+    /* background-image: linear-gradient(
+      35deg,
+      hsl(0deg 0% 100%) 0%,
+      hsl(245deg 88% 99%) 48%,
+      hsl(245deg 88% 98%) 66%,
+      hsl(245deg 87% 96%) 77%,
+      hsl(244deg 87% 95%) 85%,
+      hsl(244deg 87% 94%) 91%,
+      hsl(244deg 86% 93%) 96%,
+      hsl(243deg 86% 92%) 100%
+    ); */
+    /* https://www.joshwcomeau.com/gradient-generator?colors=ffffff|eef4fb|ffffff&angle=45&colorMode=lab&precision=10&easingCurve=0.8189655172413793|0.8948453705886315|0.6508620689655172|0.12760399127828664 */
+    background-image: linear-gradient(
+      45deg,
+      hsl(0deg 0% 100%) 0%,
+      hsl(213deg 62% 99%) 30%,
+      hsl(213deg 62% 99%) 43%,
+      hsl(213deg 62% 98%) 52%,
+      hsl(212deg 62% 97%) 59%,
+      hsl(212deg 62% 97%) 64%,
+      hsl(212deg 62% 96%) 68%,
+      hsl(212deg 62% 97%) 72%,
+      hsl(212deg 62% 97%) 75%,
+      hsl(213deg 62% 98%) 79%,
+      hsl(213deg 62% 99%) 83%,
+      hsl(213deg 62% 99%) 88%,
+      hsl(0deg 0% 100%) 100%
+    );
+    background-size: 150% 150%;
+    animation: gradient 15s ease infinite;
+  }
+  .index-dark {
+    /* https://www.joshwcomeau.com/gradient-generator?colors=111828|050045&angle=35&colorMode=lab&precision=6&easingCurve=0.8663793103448276|0.9595005430024246|0.6077586206896551|-0.001706353549299569 */
+    /* background-image: linear-gradient(
+      35deg,
+      hsl(221deg 39% 11%) 0%,
+      hsl(230deg 43% 12%) 43%,
+      hsl(236deg 47% 13%) 56%,
+      hsl(240deg 52% 14%) 64%,
+      hsl(243deg 62% 14%) 70%,
+      hsl(244deg 73% 14%) 75%,
+      hsl(244deg 84% 14%) 80%,
+      hsl(243deg 95% 14%) 100%
+    ); */
+    /* https://www.joshwcomeau.com/gradient-generator?colors=111827|15283e|111827&angle=35&colorMode=lab&precision=7&easingCurve=0.9870689655172413|0.9767420538540544|0.3922413793103448|0.1405351573023303 */
+    background-image: linear-gradient(
+      35deg,
+      hsl(221deg 39% 11%) 0%,
+      hsl(218deg 42% 12%) 44%,
+      hsl(216deg 44% 13%) 55%,
+      hsl(214deg 46% 15%) 61%,
+      hsl(213deg 48% 16%) 64%,
+      hsl(213deg 48% 16%) 66%,
+      hsl(214deg 46% 15%) 69%,
+      hsl(216deg 44% 13%) 72%,
+      hsl(218deg 42% 12%) 79%,
+      hsl(221deg 39% 11%) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-200;
+}
+
+.form-input {
+  @apply focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 text-gray-600 shadow-sm dark:border-gray-600 dark:bg-gray-900 dark:text-white;
+}
+
+.form-input-description {
+  @apply mt-2 text-sm text-gray-500 dark:text-gray-300;
+}
+
+.form-input-error {
+  @apply border-validation-500 bg-validation-50 focus:ring-validation-500 block w-full rounded-md shadow-sm;
+}
+
+.form-input-validation {
+  @apply bg-validation-500 mt-2 inline-flex items-center rounded-full px-2.5 py-0.5 text-gray-100;
+}
+
+.form-next {
+  @apply bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 disabled:bg-primary-300 ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.form-done {
+  @apply focus:ring-primary-500 inline-flex justify-center rounded-md border border-transparent bg-gray-50 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:bg-gray-50 disabled:text-gray-500;
+}
+
+.form-delete {
+  @apply hover:bg-validation-50 focus:ring-validation-500 disabled:text-validation-200 text-validation-600 ml-3 inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.form-button-flat {
+  @apply focus:ring-primary-500 ml-3 inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 hover:dark:bg-gray-900 disabled:dark:bg-gray-700;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  @apply text-gray-600;
+}
+
+.default-h2 {
+  @apply text-2xl font-extrabold text-gray-900 dark:text-gray-100;
+}
+
+.default-divide {
+  @apply divide-y divide-gray-200 dark:divide-gray-500;
+}
+
+.default-a {
+  @apply decoration-primary-500 hover:underline;
+}

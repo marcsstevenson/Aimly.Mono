@@ -7,7 +7,7 @@ import {
   OfficeBuildingIcon,
 } from '@heroicons/react/solid';
 import { classNames } from 'utils/classNames';
-import { PrivateContext } from 'components/private/PrivateContext';
+import { PrivateContext } from 'components/PrivateContext';
 import CurrencyFormat from 'react-currency-format';
 import { NavLink } from 'react-router-dom';
 

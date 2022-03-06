@@ -1,6 +1,6 @@
 import { ProfileTypeOption } from '__generated__/profileSearchQuery.graphql';
 import { getStartupEditUrl } from 'components/for-startups/UrlBuilder';
-import { getPersonalProfileEditUrl, getMentorProfileEditUrl, getExpertProfileEditUrl } from 'components/private/profiles/UrlBuilder';
+import { getPersonalProfileEditUrl, getMentorProfileEditUrl, getExpertProfileEditUrl } from 'components/profiles/UrlBuilder';
 
 export const getUrlForProfileTypeOptionType = (id: string, name: string | null | undefined, type: ProfileTypeOption, promptDelete: boolean): string => {
   switch (type) {

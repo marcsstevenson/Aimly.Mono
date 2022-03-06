@@ -12,7 +12,7 @@ import {
 } from '__generated__/useSetTheProblemMutation.graphql';
 import * as GetTheProblemQuery from '__generated__/getTheProblemQuery.graphql';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/private/PrivateContext';
+import { PrivateContext } from 'components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';
 import { useSearchParams } from 'react-router-dom';

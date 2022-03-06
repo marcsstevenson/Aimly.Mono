@@ -2,7 +2,7 @@
 // relating to the viewing of profiles
 
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
-import { EmploymentExperience } from 'components/private/profiles/EmploymentExperience';
+import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
 
 export interface ViewProfileHeaderProps {
   readonly name: string | null | undefined;

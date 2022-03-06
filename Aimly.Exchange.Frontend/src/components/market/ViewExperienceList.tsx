@@ -1,8 +1,8 @@
 // The purpose of this component is to
 // * display the experience of the user
 import React from 'react';
-import { EmploymentExperience } from 'components/private/profiles/EmploymentExperience';
-import { PersonalProfileExperienceItem } from 'components/private/profiles/PersonalProfileExperienceItem';
+import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
+import { PersonalProfileExperienceItem } from 'components/profiles/PersonalProfileExperienceItem';
 
 export interface Props {
   employmentExperience: readonly (EmploymentExperience | null)[] | null;

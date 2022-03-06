@@ -15,7 +15,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 import { GetPathForPage } from 'components/shared/AppRoutes';
-import { getPersonalProfileEditUrl } from 'components/private/profiles/UrlBuilder';
+import { getPersonalProfileEditUrl } from 'components/profiles/UrlBuilder';
 
 const navigation = [
   { name: 'Home', href: '/', AuthenticatedOnly: false },
