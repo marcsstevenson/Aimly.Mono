@@ -28,14 +28,14 @@ variables:
   product-name: 'App'
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
-  # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/ 
-  target-storage-account-raw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
-  target-storage-account: $[ lower(variables.target-storage-account-raw) ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
+  targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
+  target-storage-account: $[ lower(variables.targetstorageaccountraw) ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
   # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
-  target-cdn-endpoint-raw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
-  target-cdn-endpoint: $[ lower(variables.target-cdn-endpoint) ] # Eg, aimlyappcatallyzestaticprod
-  target-cdn-profile-raw: '$(company_name)$(product-name)shared$(environment)'
-  target-cdn-profile: $[ lower(variables.target-cdn-profile-raw) ] # Eg, aimlyappsharedprofileprod
+  targetcdnendpointraw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
+  target-cdn-endpoint: $[ lower(variables.targetcdnendpointraw) ] # Eg, aimlyappcatallyzestaticprod
+  targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
+  target-cdn-profile: $[ lower(variables.targetcdnprofileraw) ] # Eg, aimlyappsharedprofileprod
   target-web-app: '$(workspace_name)-$(environment)' # The name of the application to deploy
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
