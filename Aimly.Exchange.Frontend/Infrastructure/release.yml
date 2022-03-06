@@ -28,7 +28,7 @@ variables:
   product-name: 'App'
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
-  # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
+  # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/ 
   target-storage-account-raw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
   target-storage-account: $[ lower(variables.target-storage-account-raw) ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
   # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
