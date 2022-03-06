@@ -116,7 +116,8 @@ stages:
               azureSubscription: 'DevEnvironment'
               scriptType: 'ps'
               scriptLocation: 'inlineScript'
-              inlineScript: az storage blob upload-batch --account-name $(target-storage-account)  --auth-mode key -d '$web' -s $(System.ArtifactsDirectory)\$(artifact-name)
+              # Note that the key comes from the environment variable - AZURE_STORAGE_KEY
+              inlineScript: az storage blob upload-batch --account-name $(target-storage-account) --auth-mode key -d '$web' -s $(System.ArtifactsDirectory)\$(artifact-name)
 
           - task: AzureCLI@2
             displayName: Purge CDN endpoint
