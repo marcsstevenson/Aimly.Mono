@@ -29,9 +29,9 @@ variables:
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
-  target-storage-account: $[ lower() '$(company_name)$(product-name)$(tenant_name)$(environment) ]' # Where the resources will be deployed, eg, aimlyappcatallyzeprod
-  target-cdn-endpoint: $[ lower() '$(company_name)$(product-name)$(tenant_name)static$(environment) ]' # Eg, aimlyappcatallyzestaticprod
-  target-cdn-profile: $[ lower() '$(company_name)$(product-name)shared$(environment) ]' # Eg, aimlyappsharedprofileprod
+  target-storage-account: $[ lower('$(company_name)$(product-name)$(tenant_name)$(environment)) ]' # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  target-cdn-endpoint: $[ lower('$(company_name)$(product-name)$(tenant_name)static$(environment)) ]' # Eg, aimlyappcatallyzestaticprod
+  target-cdn-profile: $[ lower('$(company_name)$(product-name)shared$(environment)) ]' # Eg, aimlyappsharedprofileprod
   target-web-app: '$(workspace_name)-$(environment)' # The name of the application to deploy
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
