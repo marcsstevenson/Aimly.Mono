@@ -22,7 +22,10 @@ const ViewPersonalProfile = () => {
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<ViewPersonalProfileQuery.getViewPersonalProfileQuery>(
     ViewPersonalProfileQuery.default,
-    viewPersonalProfileQueryVariables
+    viewPersonalProfileQueryVariables,
+    {
+      fetchPolicy: 'network-only',
+    }
   );
 
   const model = data.getViewPersonalProfile;

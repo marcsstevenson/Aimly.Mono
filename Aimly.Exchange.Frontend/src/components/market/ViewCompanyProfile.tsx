@@ -18,7 +18,10 @@ const ViewCompanyProfile = () => {
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<ViewCompanyProfileQuery.getViewCompanyProfileQuery>(
     ViewCompanyProfileQuery.default,
-    viewCompanyProfileQueryVariables
+    viewCompanyProfileQueryVariables,
+    {
+      fetchPolicy: 'network-only',
+    }
   );
 
   const model = data.getViewCompanyProfile;
