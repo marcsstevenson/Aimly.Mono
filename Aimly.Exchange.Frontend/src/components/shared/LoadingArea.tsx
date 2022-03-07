@@ -13,7 +13,7 @@ export const LoadingArea = (props: Props) => (
       <main className="sm:flex">
         <div>
           {props.title && (
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
+            <h1 className="text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
               {props.title}
             </h1>
           )}
