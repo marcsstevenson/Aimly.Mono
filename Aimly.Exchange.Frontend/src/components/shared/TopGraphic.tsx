@@ -11,7 +11,7 @@ interface Props {
 
 const TopGraphic = ({ title, context }: Props) => {
   return (
-    <Disclosure as="div" className="bg-primary-700 relative overflow-hidden pb-32">
+    <Disclosure as="div" className="bg-primary-800 relative overflow-hidden pb-32">
       {({ open }) => (
         <>
           <div

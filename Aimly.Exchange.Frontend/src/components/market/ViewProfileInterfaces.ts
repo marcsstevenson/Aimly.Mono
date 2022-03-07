@@ -7,6 +7,7 @@ import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
 export interface ViewProfileHeaderProps {
   readonly name: string | null | undefined;
   readonly profilePictureUrl: string | null;
+  readonly profilePictureRound: boolean;
   readonly website: string | null | undefined;
   readonly addressCity: string | null;
   readonly addressRegion: string | null;

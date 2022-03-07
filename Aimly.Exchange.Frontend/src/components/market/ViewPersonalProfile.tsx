@@ -77,6 +77,7 @@ const ViewPersonalProfile = () => {
         addressRegion: null,
         addressCountry: null,
         website: model?.linkedInProfile,
+        profilePictureRound: true,
         // employmentExperiences: model?.employmentExperience,
       },
       model // Copy all other properties that don't need manual mapping

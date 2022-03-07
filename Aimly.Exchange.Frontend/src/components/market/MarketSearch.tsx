@@ -86,7 +86,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
   // Just run a full search onload for until the market is too large for this
   useEffect(() => {
     handleSearchRequest('');
-  }, []); //locationQuery, handleSearchRequest
+  }, [handleSearchRequest]); //locationQuery, handleSearchRequest
 
   // useEffect(() => {
   //   console.log('MarketSearch.useEffect');

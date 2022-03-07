@@ -14,7 +14,7 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
       <div className="col-span-8 mr-4 lg:col-span-2 lg:mt-0">
         <ProfilePhotoViewer
           profilePictureUrl={props.profilePictureUrl}
-          imageRoundnessClass="rounded-lg"
+          imageRoundnessClass={props.profilePictureRound ? 'rounded-full' : 'rounded-lg'}
         />
       </div>
       <div className="col-span-8 lg:col-span-4">
