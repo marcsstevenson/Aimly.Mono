@@ -39,7 +39,7 @@ const ViewProfile = ({ model }: props) => {
               <ViewProfileLongFormElements longFormElements={model.longFormElements} />
 
               {/* Experience */}
-              {model.employmentExperience && (
+              {model.employmentExperience && model.employmentExperience.length > 0 && (
                 <ViewExperienceList employmentExperience={model?.employmentExperience} />
               )}
 
