@@ -164,12 +164,22 @@ const DashBoard = () => {
                 <BadgeCheckIcon className="h-12 w-12 text-2xl text-green-400" aria-hidden="true" />
               </div>
               <div className="ml-3">
-                <h3 className="text-2xl font-medium text-green-800">Welcome to Aimly!</h3>
+                <h3 className="text-2xl font-medium text-green-800">
+                  Welcome to the Catallyze Exchange!
+                </h3>
                 <div className="mt-2 text-sm text-green-700">
                   <p>
                     Please note that we are currently in an early access alpha phase so there may be
                     some bugs and issues and there are still many more features to be added in the
                     near future.
+                  </p>
+                  <p className="mt-4">
+                    March 7th 2022 - The{' '}
+                    <NavLink className="mr-1 font-medium" to={{ pathname: '/market' }}>
+                      Market
+                    </NavLink>
+                    has been redeveloped and now displays results for startups, mentors, experts and
+                    community. Profiles can also be viewed in detail for startups and community.
                   </p>
                   <p className="mt-4">
                     Feb 24th 2022 - At time of writing, the{' '}
