@@ -13,7 +13,7 @@ import {
 import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
-import AimlyLogo from './AimlyLogo';
+import TopLeftLogo from 'components/TopLeftLogo';
 const navigation = [
   { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },
   {
@@ -89,7 +89,7 @@ const SideBar = (): JSX.Element => {
                 </div>
               </Transition.Child>
               <div className="flex flex-shrink-0 items-center px-4">
-                <AimlyLogo />
+                <TopLeftLogo />
               </div>
               <nav
                 className="divide-primary-800 mt-5 h-full flex-shrink-0 divide-y overflow-y-auto"
@@ -149,7 +149,7 @@ const SideBar = (): JSX.Element => {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="bg-primary-700 flex flex-grow flex-col overflow-y-auto pt-5 pb-4">
           <div className="flex flex-shrink-0 items-center px-4">
-            <AimlyLogo />
+            <TopLeftLogo />
           </div>
           <nav
             className="divide-primary-800 mt-5 flex flex-1 flex-col divide-y overflow-y-auto"

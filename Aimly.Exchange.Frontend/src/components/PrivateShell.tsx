@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import TopBar from './TopBar';
-import Loading from 'components/Loading';
 import { GetPrivateRoutes } from 'components/shared/AppRoutes';
 import SideBar from './SideBar';
 import { PrivateContext, PrivateContextType } from './PrivateContext';
@@ -66,6 +65,4 @@ const PrivateShell = (): JSX.Element => {
   );
 };
 
-export default withAuthenticationRequired(PrivateShell, {
-  onRedirecting: () => <Loading />,
-});
+export default PrivateShell;

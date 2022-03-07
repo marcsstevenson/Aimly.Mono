@@ -3,7 +3,7 @@ import Pages from 'components/shared/Pages';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import React from 'react';
 
-const AimlyLogo = () => (
+const TopLeftLogo = () => (
   <NavLink to={{ pathname: GetPathForPage(Pages.DashBoard) }}>
     <div className="flex flex-shrink-0 items-center">
       <svg
@@ -30,4 +30,4 @@ const AimlyLogo = () => (
   </NavLink>
 );
 
-export default AimlyLogo;
+export default TopLeftLogo;
