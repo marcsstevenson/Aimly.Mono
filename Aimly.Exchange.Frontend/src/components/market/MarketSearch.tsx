@@ -49,7 +49,9 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
       // Calling loadQuery will update the value of queryRef.
       // and this will update the usePreloadedQuery value for the MarketSearchResults
       // component which will in-turn trigger that component to rerender.
-      loadQuery(variables);
+      loadQuery(variables, {
+        fetchPolicy: 'network-only',
+      });
     },
     [loadQuery]
   );
@@ -81,6 +83,11 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     [CurrentProfileType, currentPage, refetch, buildVariables, navigate, location.pathname]
   );
 
+  // Just run a full search onload for until the market is too large for this
+  useEffect(() => {
+    handleSearchRequest('');
+  }, []); //locationQuery, handleSearchRequest
+
   // useEffect(() => {
   //   console.log('MarketSearch.useEffect');
   //   // Do we have a search param? Use it if yes.
@@ -96,7 +103,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
       <PageHeader Title="Market" />
       <MarketHeader CurrentProfileType={CurrentProfileType} />
       <MarketSearchInput onChange={handleSearchRequest} />
-      {haveSearchResults && queryRef && <MarketSearchResults queryRef={queryRef} />}
+      {queryRef && <MarketSearchResults queryRef={queryRef} />}
     </div>
   );
 };
