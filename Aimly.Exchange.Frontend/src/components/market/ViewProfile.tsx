@@ -39,7 +39,9 @@ const ViewProfile = ({ model }: props) => {
               <ViewProfileLongFormElements longFormElements={model.longFormElements} />
 
               {/* Experience */}
-              <ViewExperienceList employmentExperience={model?.employmentExperience} />
+              {model.employmentExperience && (
+                <ViewExperienceList employmentExperience={model?.employmentExperience} />
+              )}
 
               {/* Associated profiles */}
               {model.associatedProfilesSets &&

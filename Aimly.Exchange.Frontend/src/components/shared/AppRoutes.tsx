@@ -45,11 +45,6 @@ export interface RouteItem {
   element: JSX.Element;
 }
 
-export const PublicRoutes: RouteItem[] = [
-  // { path: '/', element: <DashBoard />, page: Pages.DashBoard },
-  // { path: '/login', element: <Login />, page: Pages.Login },
-];
-
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
   { path: '/login', element: <GoDashboard />, page: Pages.Login },
@@ -127,11 +122,6 @@ export const GetPathForPage = (page: Pages): string => {
 
   // Try the private routes first
   match = PrivateRoutes.find((route) => route.page === page);
-
-  if (match) return match.path;
-
-  // Try the public routes next
-  match = PublicRoutes.find((route) => route.page === page);
 
   if (match) return match.path;
 
