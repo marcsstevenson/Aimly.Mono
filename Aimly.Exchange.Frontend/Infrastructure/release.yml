@@ -28,6 +28,7 @@ variables:
   product-name: 'App'
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
+  target-resource-group: '$(workspace_name)-$(product-name)-$(environment)' # Where the resources will be deployed
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
   # targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
   # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
@@ -123,7 +124,8 @@ stages:
               azureSubscription: 'DevEnvironment'
               scriptType: 'ps'
               scriptLocation: 'inlineScript'
-              # Note that the key comes from the environment variable - AZURE_STORAGE_KEY
+              # NOTE: that the key comes from the environment variable -
+              # NOTE: a container with the name $web must exist in the storage account
               inlineScript: az storage blob upload-batch --account-name $(target-storage-account) --auth-mode key -d '$web' -s $(System.ArtifactsDirectory)\$(artifact-name)
 
           - task: AzureCLI@2
