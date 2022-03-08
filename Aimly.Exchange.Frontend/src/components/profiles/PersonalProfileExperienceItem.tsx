@@ -10,7 +10,7 @@ interface Props {
 
 export const PersonalProfileExperienceItem = ({ allowEdit, item, triggerDelete }: Props) => {
   return (
-    <div className="mt-4 overflow-hidden rounded-lg bg-white shadow dark:bg-gray-700">
+    <div className="overflow-hidden">
       <div className="p-5">
         <div className="flex items-center">
           <div className="flex-shrink-0">
@@ -22,16 +22,19 @@ export const PersonalProfileExperienceItem = ({ allowEdit, item, triggerDelete }
           <div className="ml-5 w-0 flex-1">
             <dl>
               <dd>
-                <div className="text-lg font-medium text-gray-900 dark:text-gray-50">
+                <div className="text-xl font-medium text-gray-900 dark:text-gray-50">
                   {item?.title}
                 </div>
               </dd>
-              <dt className="truncate text-sm text-gray-500 dark:text-gray-400">
+              <dt className="truncate text-sm text-gray-900 dark:text-gray-50">
                 <span className="font-medium">{item?.organisation}</span>
-                <span className="ml-2">{item?.startYear}</span>
-                <span className="ml-1">to</span>
-                <span className="ml-1">{item?.endYear ?? 'NOW'}</span>
               </dt>
+              <dt className="truncate text-sm text-gray-500 dark:text-gray-400">
+                <span>{item?.startYear}</span>
+                <span className="ml-1">to</span>
+                <span className="ml-1">{item?.endYear ?? 'Present'}</span>
+              </dt>
+              <dt className="text-sm text-gray-900 dark:text-gray-50">{item?.description}</dt>
             </dl>
           </div>
         </div>

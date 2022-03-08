@@ -15,7 +15,7 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
         <span className="text-4xl text-gray-900 dark:text-gray-100">Experience</span>
       </div>
       <div className="col-span-8 lg:col-span-4">
-        <div className="mt-1 text-gray-800 dark:text-gray-300">
+        <div className="default-divide mt-1 rounded-lg bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-300">
           {employmentExperience?.map((item, index) => (
             <PersonalProfileExperienceItem
               allowEdit={false}
