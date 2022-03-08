@@ -19,7 +19,7 @@ const ProfilePhotoViewer = ({ profilePictureUrl, imageRoundnessClass }: Props) =
         <div className="flex place-content-center">
           <div
             className={classNames(
-              'h-30 w-30 inline-block flex-shrink-0 overflow-hidden sm:h-40 sm:w-40',
+              'inline-block h-44 w-44 flex-shrink-0 overflow-hidden sm:h-48 sm:w-48',
               imageRoundnessClass
             )}
             aria-hidden="true"
@@ -34,10 +34,9 @@ const ProfilePhotoViewer = ({ profilePictureUrl, imageRoundnessClass }: Props) =
         </div>
       </div>
 
-      {/* sm+ view */}
       <div className={classNames('relative hidden overflow-hidden lg:block', imageRoundnessClass)}>
         <img
-          className={classNames('relative h-40 w-40', imageRoundnessClass)}
+          className={classNames('relative h-48 w-48', imageRoundnessClass)}
           src={profilePictureUrl ?? ''}
           alt=""
           onError={onImageError}
