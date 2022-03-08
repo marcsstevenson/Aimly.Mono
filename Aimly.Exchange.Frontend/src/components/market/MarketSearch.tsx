@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { MarketSearchResults } from 'components/market/MarketSearchResultsComponent';
 import { MarketHeader } from 'components/market/MarketHeader';
 import { MarketSearchInput } from 'components/market/MarketSearchInput';
@@ -11,6 +11,7 @@ import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql'
 import { PageHeader } from 'components/shared/PageHeader';
 import { useNavigate, useLocation } from 'react-router-dom';
 import useLocationQuery from 'components/shared/useLocationQuery';
+import { LoadingArea } from 'components/shared/LoadingArea';
 
 interface Props {
   // CurrentPage: Pages;
@@ -103,7 +104,9 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
       <PageHeader Title="Market" />
       <MarketHeader CurrentProfileType={CurrentProfileType} />
       <MarketSearchInput onChange={handleSearchRequest} />
-      {queryRef && <MarketSearchResults queryRef={queryRef} />}
+      <Suspense fallback={<LoadingArea title="Searching..." />}>
+        {queryRef && <MarketSearchResults queryRef={queryRef} />}
+      </Suspense>
     </div>
   );
 };

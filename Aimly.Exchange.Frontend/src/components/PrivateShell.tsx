@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import TopBar from './TopBar';
@@ -51,13 +51,17 @@ const PrivateShell = (): JSX.Element => {
 
   return (
     <PrivateContext.Provider value={privateContextValue}>
-      {!userId || (testingCheckIn && <LoadingArea title="Checking you in..." />)}
+      {(!userId || testingCheckIn) && <LoadingArea title="Checking you in..." />}
       {!testingCheckIn && userId && (
         <div className="min-h-full">
           <SideBar />
           <div className="flex flex-1 flex-col lg:pl-64">
             <TopBar />
-            <main className="flex-1 pb-8">{GetPrivateRoutes()}</main>
+            <main className="flex-1 pb-8">
+              <Suspense fallback={<LoadingArea title="Loading..." />}>
+                {GetPrivateRoutes()}
+              </Suspense>
+            </main>
           </div>
         </div>
       )}
