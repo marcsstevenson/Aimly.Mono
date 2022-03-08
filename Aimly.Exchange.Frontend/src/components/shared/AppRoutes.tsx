@@ -4,39 +4,47 @@
 //  constants for mapping paths to components (Note: the should be referenced when creating links to avoid accidental 404s)
 //  helper functions for creating React route objects
 
+import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import React from 'react';
 import Pages from 'components/shared/Pages';
 import { profileId } from 'components/shared/UrlConstants';
+import { LoadingArea } from 'components/shared/LoadingArea';
 
+// import ExternalApi from 'components/ExternalApi';
+// import GoDashboard from 'components/GoDashboard';
+
+// Always load pages
 import DashBoard from 'components/DashBoard';
-import GoDashboard from 'components/GoDashboard';
-import Profiles from 'components/profiles/Profiles';
-import AboutYou from 'components/for-startups/profile/edit/1-AboutYou';
-import TheProblem from 'components/for-startups/profile/edit/2-TheProblem';
-import TheSolution from 'components/for-startups/profile/edit/3-TheSolution';
-import Potential from 'components/for-startups/profile/edit/4-Potential';
-import Customise from 'components/for-startups/profile/edit/5-Customise';
+
+// General pages
+const Help = lazy(() => import('components/Help'));
+const Settings = lazy(() => import('components/Settings'));
+const PageNotFound = lazy(() => import('components/PageNotFound'));
 
 // Market search
-import MarketStartups from 'components/market/MarketStartups';
-import MarketMentor from 'components/market/MarketMentor';
-import MarketExpert from 'components/market/MarketExpert';
-import MarketCommunity from 'components/market/MarketCommunity';
+const MarketStartups = lazy(() => import('components/market/MarketStartups'));
+const MarketMentor = lazy(() => import('components/market/MarketMentor'));
+const MarketExpert = lazy(() => import('components/market/MarketExpert'));
+const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
 
-// View public profiles on market
-import ViewCompanyProfile from 'components/market/ViewCompanyProfile';
-import ViewPersonalProfile from 'components/market/ViewPersonalProfile';
+// View Profiles
+const ViewCompanyProfile = lazy(() => import('components/market/ViewCompanyProfile'));
+const ViewPersonalProfile = lazy(() => import('components/market/ViewPersonalProfile'));
 
-import Help from 'components/Help';
-import PersonalProfileEdit from 'components/profiles/PersonalProfileEdit';
-import MentorProfileNew from 'components/profiles/MentorProfileNew';
-import MentorProfileEdit from 'components/profiles/MentorProfileEdit';
-import ExpertProfileNew from 'components/profiles/ExpertProfileNew';
-import ExpertProfileEdit from 'components/profiles/ExpertProfileEdit';
-import Settings from 'components/Settings';
-import PageNotFound from 'components/PageNotFound';
-import ExternalApi from 'components/ExternalApi';
+// Edit Profiles
+const Profiles = lazy(() => import('components/profiles/Profiles'));
+const PersonalProfileEdit = lazy(() => import('components/profiles/PersonalProfileEdit'));
+const MentorProfileNew = lazy(() => import('components/profiles/MentorProfileNew'));
+const MentorProfileEdit = lazy(() => import('components/profiles/MentorProfileEdit'));
+const ExpertProfileNew = lazy(() => import('components/profiles/ExpertProfileNew'));
+const ExpertProfileEdit = lazy(() => import('components/profiles/ExpertProfileEdit'));
+
+// Startup profile builder
+const AboutYou = lazy(() => import('components/for-startups/profile/edit/1-AboutYou'));
+const TheProblem = lazy(() => import('components/for-startups/profile/edit/2-TheProblem'));
+const TheSolution = lazy(() => import('components/for-startups/profile/edit/3-TheSolution'));
+const Potential = lazy(() => import('components/for-startups/profile/edit/4-Potential'));
+const Customise = lazy(() => import('components/for-startups/profile/edit/5-Customise'));
 
 export interface RouteItem {
   // The relative path for the route
@@ -47,7 +55,7 @@ export interface RouteItem {
 
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
-  { path: '/login', element: <GoDashboard />, page: Pages.Login },
+  // { path: '/login', element: <GoDashboard />, page: Pages.Login },
 
   // Market search
   { path: '/market', element: <MarketStartups />, page: Pages.Market },
@@ -98,7 +106,7 @@ export const PrivateRoutes: RouteItem[] = [
     page: Pages.ExpertProfileEdit,
   },
   { path: '/settings', element: <Settings />, page: Pages.Settings },
-  { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },
+  // { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },
   { path: '/for-startups/profile/edit/AboutYou', element: <AboutYou />, page: Pages.AboutYou },
   {
     path: '/for-startups/profile/edit/TheProblem',
@@ -132,10 +140,12 @@ export const GetPathForPage = (page: Pages): string => {
 
 export const GetPrivateRoutes = (): JSX.Element => {
   return (
-    <Routes>
-      {PrivateRoutes.map((routeItem) => (
-        <Route key={routeItem.path} path={routeItem.path} element={routeItem.element} />
-      ))}
-    </Routes>
+    <Suspense fallback={<LoadingArea title={'Loading...'} />}>
+      <Routes>
+        {PrivateRoutes.map((routeItem) => (
+          <Route key={routeItem.path} path={routeItem.path} element={routeItem.element} />
+        ))}
+      </Routes>
+    </Suspense>
   );
 };
