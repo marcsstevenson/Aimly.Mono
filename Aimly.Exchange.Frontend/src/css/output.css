@@ -1623,6 +1623,11 @@ select {
   border-color: rgb(2 132 199 / var(--tw-border-opacity));
 }
 
+.border-r-primary-800 {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(7 89 133 / var(--tw-border-opacity));
+}
+
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -1720,6 +1725,16 @@ select {
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-primary-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+}
+
+.bg-primary-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 74 110 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-75 {

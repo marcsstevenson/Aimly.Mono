@@ -147,7 +147,7 @@ const SideBar = (): JSX.Element => {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="bg-primary-700 flex flex-grow flex-col overflow-y-auto pt-5 pb-4">
+        <div className="bg-primary-900 border-r-primary-800 flex flex-grow flex-col overflow-y-auto border-r pt-5 pb-4">
           <div className="flex flex-shrink-0 items-center px-4">
             <TopLeftLogo />
           </div>
