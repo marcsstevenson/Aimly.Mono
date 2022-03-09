@@ -6,7 +6,8 @@ import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
 
 export interface ViewProfileHeaderProps {
   readonly name: string | null | undefined;
-  readonly profilePictureUrl: string | null;
+  readonly subTitle: string | null | undefined;
+  readonly profilePictureUrl: string | null | undefined;
   readonly profilePictureRound: boolean;
   readonly website: string | null | undefined;
   readonly addressCity: string | null;
@@ -17,7 +18,7 @@ export interface ViewProfileHeaderProps {
 }
 export interface LongFormElement {
   readonly label: string;
-  readonly content: string;
+  readonly content: string | null | undefined;
 }
 
 export interface LongFormElementsProps {
@@ -38,5 +39,5 @@ export interface ViewProfileProps
   // Eg, startups, mentor profiles, expert profiles, co-workers etc
   associatedProfilesSets: ReadonlyArray<AssociatedProfilesSet>;
 
-  employmentExperience: ReadonlyArray<EmploymentExperience | null> | null;
+  employmentExperience: ReadonlyArray<EmploymentExperience | null> | null | undefined;
 }

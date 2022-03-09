@@ -74,6 +74,7 @@ const ViewPersonalProfile = () => {
       {
         name: model?.fullName,
         title: 'Personal Profile',
+        subTitle: null,
         associatedProfilesSets: associatedProfilesSets,
         longFormElements: longFormElements,
         addressCity: null,

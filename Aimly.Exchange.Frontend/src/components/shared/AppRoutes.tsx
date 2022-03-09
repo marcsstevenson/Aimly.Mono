@@ -30,6 +30,7 @@ const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
 // View Profiles
 const ViewCompanyProfile = lazy(() => import('components/market/ViewCompanyProfile'));
 const ViewPersonalProfile = lazy(() => import('components/market/ViewPersonalProfile'));
+const ViewMentorProfile = lazy(() => import('components/market/ViewMentorProfile'));
 
 // Edit Profiles
 const Profiles = lazy(() => import('components/profiles/Profiles'));
@@ -70,16 +71,19 @@ export const PrivateRoutes: RouteItem[] = [
     element: <ViewCompanyProfile />,
     page: Pages.MarketViewCompanyProfile,
   },
-
-  // View public profiles on market
   {
     path: `/market/personal-profile/:${profileId}`,
     element: <ViewPersonalProfile />,
     page: Pages.MarketViewPersonalProfile,
   },
+  {
+    path: `/market/mentor-profile/:${profileId}`,
+    element: <ViewMentorProfile />,
+    page: Pages.MarketViewMentorProfile,
+  },
 
+  // My profiles
   { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },
-  { path: '/help', element: <Help />, page: Pages.Help },
   {
     path: '/profiles/personal-profile-edit',
     element: <PersonalProfileEdit />,
@@ -105,7 +109,6 @@ export const PrivateRoutes: RouteItem[] = [
     element: <ExpertProfileEdit />,
     page: Pages.ExpertProfileEdit,
   },
-  { path: '/settings', element: <Settings />, page: Pages.Settings },
   // { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },
   { path: '/for-startups/profile/edit/AboutYou', element: <AboutYou />, page: Pages.AboutYou },
   {
@@ -121,6 +124,8 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/for-startups/profile/edit/Potential', element: <Potential />, page: Pages.Potential },
   { path: '/for-startups/profile/edit/Customise', element: <Customise />, page: Pages.Customise },
 
+  { path: '/help', element: <Help />, page: Pages.Help },
+  { path: '/settings', element: <Settings />, page: Pages.Settings },
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound },
 ];
 

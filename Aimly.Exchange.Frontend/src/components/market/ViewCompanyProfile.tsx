@@ -49,6 +49,7 @@ const ViewCompanyProfile = () => {
         name: model?.companyName,
         skills: null, // Now skills for company profiles
         title: 'Company Profile',
+        subTitle: null,
         // associatedProfilesSets: [],
         associatedProfilesSets: [
           {

@@ -31,6 +31,7 @@ const ViewProfile = ({ model }: props) => {
                 industries={model.industries}
                 skills={model.skills}
                 name={model.name}
+                subTitle={model.subTitle}
                 profilePictureUrl={model.profilePictureUrl}
                 profilePictureRound={model.profilePictureRound}
                 website={model.website}

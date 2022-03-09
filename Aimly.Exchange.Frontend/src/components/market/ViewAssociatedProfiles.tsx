@@ -13,7 +13,7 @@ const ViewAssociatedProfiles = ({ label, profiles }: AssociatedProfilesSet) => {
         <span className="text-4xl text-gray-900 dark:text-gray-100">{label}</span>
       </div>
       <div className="col-span-8 lg:col-span-4">
-        <ul className="grid grid-cols-1 gap-6 bg-gray-50 pb-5 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-6 pb-5 dark:bg-gray-800 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3">
           {profiles &&
             profiles.map((result, i) => <MarketGridResult key={i} index={i} result={result} />)}
         </ul>

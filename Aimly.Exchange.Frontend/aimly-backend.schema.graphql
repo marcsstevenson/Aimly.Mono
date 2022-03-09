@@ -380,16 +380,16 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
-  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
-  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
   deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
-  deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExpertProfile(input: SetExpertProfileCommandInput): SetExpertProfileResponse
+  deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExperienceDetailed(userId: UUID!, experienceDetailedModel: ExperienceModelInput): SetExperienceDetailedResponse
+  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
+  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
 }
 
 type MyProfilesResult {
@@ -437,11 +437,9 @@ type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
   profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
-  getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
+  getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]
-  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
-  getSkillOptions(nameStartingWith: String): [String]
   marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
@@ -449,6 +447,9 @@ type Query {
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
   getViewCompanyProfile(companyProfileId: UUID!): ViewCompanyProfileModel
+  getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
+  getSkillOptions(nameStartingWith: String): [String]
+  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
 }
 
 input SetAboutYouCommandInput {
@@ -548,6 +549,7 @@ type ViewPersonalProfileModel {
   id: String
   personalProfileId: UUID!
   fullName: String
+  givenName: String
   profilePictureUrl: String
   linkedInProfile: String
   about: String
@@ -557,5 +559,15 @@ type ViewPersonalProfileModel {
   associatedStartupProfiles: [MarketSearchResult]
   associatedMentorProfiles: [MarketSearchResult]
   associatedExpertProfiles: [MarketSearchResult]
+}
+
+type ViewTalentProfileModel {
+  id: String
+  profileId: UUID!
+  parentProfile: ViewPersonalProfileModel
+  name: String
+  about: String
+  industries: [String]
+  skills: [String]
 }
 

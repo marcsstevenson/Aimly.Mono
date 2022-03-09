@@ -24,6 +24,7 @@ npm run build
 ```bash
 npm run test
 ```
+
 ### To update the GraphQL schema
 
 The aimly-backend.schema.graphql file needs to be up to date so that relay knows what code to generate from queries and fragments.
@@ -43,3 +44,7 @@ get-graphql-schema http://localhost:7071/api/graphql > aimly-backend.schema.grap
 ### Relay
 
 [Refer to docs here](https://relay.dev/docs/getting-started)
+
+To update your generation relay files (src/**generated**):
+
+npm run relay
