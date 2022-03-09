@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Pages from 'components/shared/Pages';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
@@ -8,13 +8,9 @@ import { GetPathForPage } from 'components/shared/AppRoutes';
 
 const Customise = () => {
   const navigate = useNavigate();
-  const topRef = useRef<HTMLDivElement>(null);
   const currentStep = 'Customise';
 
   const next = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
     navigate(GetPathForPage(Pages.DashBoard));
   };
 

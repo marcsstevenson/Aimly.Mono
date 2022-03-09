@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
 import GenericHeader from 'components/shared/GenericHeader';
 
@@ -68,11 +68,9 @@ const StartupQuestionnaireManager = ({
   currentStep,
   children,
 }: StartupQuestionnaireManagerProps) => {
-  const topRef = useRef<HTMLDivElement>(null);
-
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div ref={topRef}>
+      <div>
         <GenericHeader title="Startup Profile Builder" contextVal={null} />
         <StartupQuestionnaireSteps currentStep={currentStep}></StartupQuestionnaireSteps>
       </div>

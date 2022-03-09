@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import useRelayEnvironment from 'useRelayEnvironment';
 import Footer from 'components/Footer';

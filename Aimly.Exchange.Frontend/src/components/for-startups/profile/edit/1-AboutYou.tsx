@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Pages from 'components/shared/Pages';
 import Loading from 'components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
@@ -36,7 +36,6 @@ import { LinkIcon } from '@heroicons/react/solid';
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
-  const topRef = useRef<HTMLDivElement>(null);
   let locationQuery = useLocationQuery();
   const currentStep = 'AboutYou';
   const getAboutYouQueryVariables = {
@@ -142,20 +141,11 @@ const AboutYou = () => {
       queryString += `&${context}=${companyName}`;
     }
 
-    scrollToTop();
     navigateToPage(Pages.TheProblem, queryString);
-  };
-
-  // Scroll the user to the top of the page
-  const scrollToTop = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   // Head back to profiles
   const outro = (queryString: string | null = null) => {
-    scrollToTop();
     navigateToPage(Pages.MyProfiles, queryString);
   };
 

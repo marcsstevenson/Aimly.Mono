@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext } from 'react';
 import Pages from 'components/shared/Pages';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import Loading from 'components/Loading';
@@ -20,7 +20,6 @@ import { useSearchParams } from 'react-router-dom';
 const TheProblem = () => {
   const { userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
-  const topRef = useRef<HTMLDivElement>(null);
   let locationQuery = useLocationQuery();
   const [searchParams] = useSearchParams();
 
@@ -72,15 +71,7 @@ const TheProblem = () => {
       queryString += `?${searchParams}`;
     }
 
-    scrollToTop();
     navigateToPage(Pages.TheSolution, queryString);
-  };
-
-  // Scroll the user to the top of the page
-  const scrollToTop = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (

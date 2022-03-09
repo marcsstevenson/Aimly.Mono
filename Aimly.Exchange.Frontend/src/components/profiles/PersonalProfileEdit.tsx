@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext } from 'react';
 import Pages from 'components/shared/Pages';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import useSetPersonalProfileMutation from 'useSetPersonalProfileMutation';
@@ -25,7 +25,6 @@ import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
-  const topRef = useRef<HTMLDivElement>(null);
   const getPersonalProfileQueryVariables = {
     id: userId,
   };
@@ -90,22 +89,14 @@ const PersonalProfileEdit = () => {
     outro(queryString);
   };
 
-  /// Scroll the user to the top of the page
-  const scrollToTop = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   // Head back to profiles
   const outro = (queryString: string | null = null) => {
-    scrollToTop();
     navigateToPage(Pages.MyProfiles, queryString);
   };
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div ref={topRef}>
+      <div>
         <GenericHeader title="Profile Builder" contextVal="Personal" />
         <Formik initialValues={model} onSubmit={onSubmit}>
           {({ errors, touched, isValidating, isSubmitting }) => (

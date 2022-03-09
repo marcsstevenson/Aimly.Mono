@@ -2,7 +2,7 @@
 // and allow the user to edit it.
 // Both the MentorProfileEdit and MentorProfileNew components use this component.
 
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback } from 'react';
 import Pages from 'components/shared/Pages';
 import useSetMentorProfileMutation from 'useSetMentorProfileMutation';
 import useDeleteMentorProfileMutation from 'useDeleteMentorProfileMutation';
@@ -38,7 +38,6 @@ const MentorProfileForm = (props: Props) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const navigateToPage = useNavigateToPage();
-  const topRef = useRef<HTMLDivElement>(null);
 
   let model: GetMentorProfileModelInput = props.model;
 
@@ -66,15 +65,7 @@ const MentorProfileForm = (props: Props) => {
 
   // Head back to profiles
   const outro = (queryString: string | null = null) => {
-    scrollToTop();
     navigateToPage(Pages.MyProfiles, queryString);
-  };
-
-  // Scroll the user to the top of the page
-  const scrollToTop = () => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   const handleDelete = useCallback(
@@ -107,7 +98,7 @@ const MentorProfileForm = (props: Props) => {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div ref={topRef}>
+      <div>
         <GenericHeader title="Mentor Profile Builder" contextVal={model.id ? model.name : 'New'} />
 
         <ConfirmDelete

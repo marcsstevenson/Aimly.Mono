@@ -7,6 +7,7 @@ import SideBar from './SideBar';
 import { PrivateContext, PrivateContextType } from './PrivateContext';
 import useCheckInMutation2 from './useCheckInMutation2';
 import { LoadingArea } from 'components/shared/LoadingArea';
+import { useLocation } from 'react-router-dom';
 
 const PrivateShell = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0();
@@ -16,6 +17,13 @@ const PrivateShell = (): JSX.Element => {
 
   // const [checkInMutation] = useCheckInMutation();
   const { checkIn, checkedInUserId } = useCheckInMutation2();
+
+  const location = useLocation();
+
+  // Scroll to the top of the page if the location changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   // Instantiate the initial state values
   // Note that userId is stored in browser storage

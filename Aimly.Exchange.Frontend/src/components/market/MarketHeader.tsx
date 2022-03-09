@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import Pages from 'components/shared/Pages';
 import { MarketTabs } from 'components/market/MarketTabs';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
@@ -9,8 +9,6 @@ interface Props {
 }
 
 export const MarketHeader = ({ CurrentProfileType }: Props) => {
-  const topRef = useRef<HTMLDivElement>(null);
-
   const currentPage = useMemo(() => {
     switch (CurrentProfileType) {
       case 'MENTOR':
@@ -35,7 +33,6 @@ export const MarketHeader = ({ CurrentProfileType }: Props) => {
       <div>
         <MarketTabs CurrentPage={currentPage} />
       </div>
-      <div ref={topRef}></div>
     </div>
   );
 };
