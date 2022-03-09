@@ -52,21 +52,21 @@ const PrivateShell = (): JSX.Element => {
   }
 
   if (isLoading) {
-    return <LoadingArea title="Loading..." />;
+    return <LoadingArea title="Loading..." fullHeight={true} />;
   }
 
   const testingCheckIn = false;
 
   return (
     <PrivateContext.Provider value={privateContextValue}>
-      {(!userId || testingCheckIn) && <LoadingArea title="Checking you in..." />}
+      {(!userId || testingCheckIn) && <LoadingArea title="Checking you in..." fullHeight={true} />}
       {!testingCheckIn && userId && (
         <div className="min-h-full">
           <SideBar />
           <div className="flex flex-1 flex-col lg:pl-64">
             <TopBar />
             <main className="flex-1 pb-8">
-              <Suspense fallback={<LoadingArea title="Loading..." />}>
+              <Suspense fallback={<LoadingArea title="Loading..." fullHeight={true} />}>
                 {GetPrivateRoutes()}
               </Suspense>
             </main>

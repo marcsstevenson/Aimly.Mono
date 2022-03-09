@@ -19,13 +19,13 @@ const App = (): JSX.Element => {
   }
 
   if (isLoading) {
-    return <LoadingArea title="Loading..." />;
+    return <LoadingArea title="Loading..." fullHeight={true} />;
   }
   return (
     <BrowserRouter>
       <ErrorBoundary>
         <div id="app" className="d-flex flex-column min-h-screen">
-          <Suspense fallback={<LoadingArea title="Loading..." />}>
+          <Suspense fallback={<LoadingArea title="Loading..." fullHeight={true} />}>
             <RelayEnvironmentProvider environment={getRelayEnvironment()}>
               {user && <PrivateShell />}
             </RelayEnvironmentProvider>

@@ -2,19 +2,26 @@
 
 import React from 'react';
 import loadingImage from 'assets/logo-loading.svg';
+import { classNames } from 'utils/classNames';
 
 interface Props {
   title: string | null;
+  fullHeight: boolean;
 }
 
-export const LoadingArea = (props: Props) => (
-  <div className="min-h-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+export const LoadingArea = ({ title, fullHeight }: Props) => (
+  <div
+    className={classNames(
+      fullHeight ? 'min-h-screen' : '',
+      ' px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8'
+    )}
+  >
     <div className="mx-auto max-w-max">
       <main className="sm:flex">
         <div>
-          {props.title && (
+          {title && (
             <h1 className="text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
-              {props.title}
+              {title}
             </h1>
           )}
           <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">

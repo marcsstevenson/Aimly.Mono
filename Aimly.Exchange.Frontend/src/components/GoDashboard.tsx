@@ -15,10 +15,10 @@ export const GoDashboard = () => {
     });
   }, []); // Run this onload
 
-  return <LoadingArea title="Logging in..." />;
+  return <LoadingArea title="Logging in..." fullHeight={true} />;
 };
 
 export default withAuthenticationRequired(GoDashboard, {
-  onRedirecting: () => <LoadingArea title="Logging in..." />,
+  onRedirecting: () => <LoadingArea title="Logging in..." fullHeight={true} />,
   //onRedirecting: () => <></>,
 });

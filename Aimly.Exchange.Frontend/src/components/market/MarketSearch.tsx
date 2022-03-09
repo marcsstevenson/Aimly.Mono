@@ -104,7 +104,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
       <PageHeader Title="Market" />
       <MarketHeader CurrentProfileType={CurrentProfileType} />
       <MarketSearchInput onChange={handleSearchRequest} />
-      <Suspense fallback={<LoadingArea title="Searching..." />}>
+      <Suspense fallback={<LoadingArea title="Searching..." fullHeight={false} />}>
         {queryRef && <MarketSearchResults queryRef={queryRef} />}
       </Suspense>
     </div>

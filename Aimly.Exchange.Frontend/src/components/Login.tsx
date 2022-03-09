@@ -10,11 +10,11 @@ export const Login = () => {
   //   navigateToPage(Pages.DashBoard);
   // }, []); // Run this onload
 
-  return <LoadingArea title="Logging in..." />;
+  return <LoadingArea title="Logging in..." fullHeight={true} />;
   //return <></>;
 };
 
 export default withAuthenticationRequired(Login, {
-  onRedirecting: () => <LoadingArea title="Logging in..." />,
+  onRedirecting: () => <LoadingArea title="Logging in..." fullHeight={true} />,
   //onRedirecting: () => <></>,
 });
