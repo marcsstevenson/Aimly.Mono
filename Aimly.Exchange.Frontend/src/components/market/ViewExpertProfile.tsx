@@ -37,7 +37,7 @@ const ViewExpertProfile = () => {
     let longFormElements: LongFormElement[] = [];
 
     if (model?.about && model.about.length > 0) {
-      longFormElements.push({ label: 'Expert', content: model.about });
+      longFormElements.push({ label: 'Expertise', content: model.about });
 
       if (model.parentProfile?.about && model.parentProfile.about.length > 0) {
         longFormElements.push({
