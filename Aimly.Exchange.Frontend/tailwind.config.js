@@ -6,7 +6,7 @@ module.exports = {
   colors: {},
   theme: {
     colors: {
-      primary: colors.sky,
+      primary: colors.slate,
       validation: colors.red,
       transparent: 'transparent',
       current: 'currentColor',
@@ -18,7 +18,7 @@ module.exports = {
       red: colors.red,
       // teal: colors.teal,
       // blue: colors.blue,
-      sky: colors.sky,
+      //sky: colors.sky,
       // blueGray: colors.blueGray,
     },
     extend: {
