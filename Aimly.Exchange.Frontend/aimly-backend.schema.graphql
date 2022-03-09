@@ -380,6 +380,8 @@ type Mutation {
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
+  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
+  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
@@ -388,8 +390,6 @@ type Mutation {
   setExpertProfile(input: SetExpertProfileCommandInput): SetExpertProfileResponse
   deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExperienceDetailed(userId: UUID!, experienceDetailedModel: ExperienceModelInput): SetExperienceDetailedResponse
-  setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
-  deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
 }
 
 type MyProfilesResult {
@@ -440,16 +440,17 @@ type Query {
   getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]
+  getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
+  getSkillOptions(nameStartingWith: String): [String]
+  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
+  getViewExpertProfile(profileId: UUID!): ViewTalentProfileModel
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
   getViewCompanyProfile(companyProfileId: UUID!): ViewCompanyProfileModel
-  getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
-  getSkillOptions(nameStartingWith: String): [String]
-  getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
 }
 
 input SetAboutYouCommandInput {

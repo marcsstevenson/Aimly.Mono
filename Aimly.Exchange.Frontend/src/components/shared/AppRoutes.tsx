@@ -31,6 +31,7 @@ const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
 const ViewCompanyProfile = lazy(() => import('components/market/ViewCompanyProfile'));
 const ViewPersonalProfile = lazy(() => import('components/market/ViewPersonalProfile'));
 const ViewMentorProfile = lazy(() => import('components/market/ViewMentorProfile'));
+const ViewExpertProfile = lazy(() => import('components/market/ViewExpertProfile'));
 
 // Edit Profiles
 const Profiles = lazy(() => import('components/profiles/Profiles'));
@@ -80,6 +81,11 @@ export const PrivateRoutes: RouteItem[] = [
     path: `/market/mentor-profile/:${profileId}`,
     element: <ViewMentorProfile />,
     page: Pages.MarketViewMentorProfile,
+  },
+  {
+    path: `/market/expert-profile/:${profileId}`,
+    element: <ViewExpertProfile />,
+    page: Pages.MarketViewExpertProfile,
   },
 
   // My profiles
