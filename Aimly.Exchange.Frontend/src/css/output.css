@@ -1012,15 +1012,11 @@ select {
           text-decoration-line: underline;
 }
 
-/*
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    @apply text-gray-900 dark:bg-gray-900 dark:text-gray-100;
-  }
-*/
+/* We want to display line breaks as in content */
+
+p {
+  white-space: pre-line;
+}
 
 .sr-only {
   position: absolute;
