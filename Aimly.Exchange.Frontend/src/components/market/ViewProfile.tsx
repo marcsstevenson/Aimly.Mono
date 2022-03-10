@@ -22,7 +22,7 @@ const ViewProfile = ({ model }: props) => {
 
       <main className="relative -mt-32">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
-          <div className="overflow-hidden rounded-lg bg-white shadow dark:bg-gray-800">
+          <div className="overflow-hidden rounded-lg bg-white drop-shadow-lg dark:bg-gray-800">
             <div className="grid grid-cols-6 space-y-12 p-6">
               <ViewProfileHeader
                 addressCity={model.addressCity}
