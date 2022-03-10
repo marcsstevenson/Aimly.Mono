@@ -1,7 +1,7 @@
 /// The purpose of this component is to show the user a delete
 /// confirmation dialog. There are two callbacks, one for cancel and one for confirmation.
 
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { BriefcaseIcon, PlusIcon, CheckCircleIcon, XIcon } from '@heroicons/react/outline';
@@ -36,6 +36,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
   );
   const isNew = useMemo<boolean>(() => props.model === null, [props.model]);
   const title = useMemo<string>(() => `${isNew ? 'Add' : 'Edit'} Experience`, [isNew]);
+  const [currentRole, setCurrentRole] = useState<boolean>(true);
 
   const cancelButtonRef = useRef(null);
 
@@ -82,7 +83,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
               <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
                 <button
                   type="button"
-                  className="focus:ring-primary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800"
+                  className="focus:ring-secondary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800"
                   onClick={() => props.onCancel()}
                 >
                   <span className="sr-only">Close</span>
@@ -130,6 +131,41 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                         </div>
                       </div>
                       <div className="sm:col-span-6">
+                        <div className="relative mt-1 flex items-start">
+                          <div className="flex h-5 items-center">
+                            <input
+                              id="currentRole"
+                              aria-describedby="current-role"
+                              name="currentRole"
+                              type="checkbox"
+                              checked={currentRole}
+                              onChange={() => setCurrentRole(!currentRole)}
+                            />
+                          </div>
+                          <div className="ml-3 text-sm">
+                            <label
+                              htmlFor="currentRole"
+                              className="text-sm text-gray-500 dark:text-gray-300"
+                            >
+                              I am still working in this role
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="sm:col-span-3">
+                        <label htmlFor="startMonth" className="form-label">
+                          Start Month
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            className="form-input"
+                            component={MonthSelector}
+                            id="startMonth"
+                            name="startMonth"
+                          />
+                        </div>
+                      </div>
+                      <div className="sm:col-span-6">
                         <label htmlFor="description" className="form-label">
                           Description
                         </label>
@@ -152,25 +188,12 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                           A brief description of this experience.
                         </p>
                       </div>
-                      <div className="sm:col-span-3">
-                        <label htmlFor="startMonth" className="form-label">
-                          Start Month
-                        </label>
-                        <div className="mt-1">
-                          <Field
-                            className="form-input"
-                            component={MonthSelector}
-                            id="startMonth"
-                            name="startMonth"
-                          />
-                        </div>
-                      </div>
                     </div>
                     {/* Modal footer */}
                     <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                       <button
                         type="submit"
-                        className="disabled:bg-primary-300 bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                        className="disabled:bg-secondary-300 bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                         onClick={() => props.onConfirm()}
                         disabled={props.working || isValidating}
                       >
@@ -190,7 +213,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                       </button>
                       <button
                         type="button"
-                        className="focus:ring-primary-500 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:text-gray-400 disabled:hover:bg-white sm:mt-0 sm:w-auto sm:text-sm"
+                        className="focus:ring-secondary-500 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:text-gray-400 disabled:hover:bg-white sm:mt-0 sm:w-auto sm:text-sm"
                         onClick={() => props.onCancel()}
                         ref={cancelButtonRef}
                         disabled={props.working || isValidating}

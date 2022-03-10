@@ -177,7 +177,7 @@ const ExpertProfileForm = (props: Props) => {
                           id="about"
                           name="about"
                           as="textarea"
-                          rows={4}
+                          rows={10}
                           validate={validateRequiredString}
                           className={errors.about ? 'form-input-error' : 'form-input'}
                         />

@@ -133,7 +133,7 @@ const PersonalProfileEdit = () => {
                             id="about"
                             name="about"
                             as="textarea"
-                            rows={4}
+                            rows={10}
                             className="form-input"
                           />
                         </div>
