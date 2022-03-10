@@ -11,7 +11,7 @@ interface Props {
 
 const TopGraphic = ({ title, context }: Props) => {
   return (
-    <Disclosure as="div" className="bg-secondary-900 relative overflow-hidden pb-32">
+    <Disclosure as="div" className="bg-primary-800 relative overflow-hidden pb-32">
       {({ open }) => (
         <>
           <div
@@ -31,13 +31,13 @@ const TopGraphic = ({ title, context }: Props) => {
               >
                 <path
                   d="M284.161 308H1465.84L875.001 182.413 284.161 308z"
-                  className="fill-secondary-600"
+                  className="fill-primary-600"
                 />
-                <path d="M1465.84 308L16.816 0H1750v308h-284.16z" className="fill-secondary-700" />
-                <path d="M1733.19 0L284.161 308H0V0h1733.19z" className="fill-secondary-800" />
+                <path d="M1465.84 308L16.816 0H1750v308h-284.16z" className="fill-primary-700" />
+                <path d="M1733.19 0L284.161 308H0V0h1733.19z" className="fill-primary-800" />
                 <path
                   d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z"
-                  className="fill-secondary-900"
+                  className="fill-primary-900"
                 />
               </svg>
             </div>
@@ -46,7 +46,7 @@ const TopGraphic = ({ title, context }: Props) => {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <h1 className="text-center text-2xl font-extrabold text-gray-100">{title}</h1>
               {context && (
-                <h1 className="dark:text-secondary-400 text-secondary-700 text-center text-5xl font-extrabold">
+                <h1 className="dark:text-primary-400 text-primary-700 text-center text-5xl font-extrabold">
                   {context}
                 </h1>
               )}
