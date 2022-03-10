@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     colors: {
       primary: colors.slate,
+      secondary: colors.sky,
       validation: colors.red,
       transparent: 'transparent',
       current: 'currentColor',

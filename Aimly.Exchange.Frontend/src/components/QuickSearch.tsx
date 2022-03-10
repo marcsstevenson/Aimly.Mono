@@ -34,7 +34,7 @@ const QuickSearch = (): JSX.Element => {
           <input
             id="search-field"
             name="search-field"
-            className="focus:ring-3 focus:ring-primary-500 mt-3 block w-full rounded-md
+            className="focus:ring-3 focus:ring-secondary-500 mt-3 block w-full rounded-md
               border-transparent py-2 pl-10 pr-3
               font-medium leading-5
               text-gray-900 placeholder-gray-500

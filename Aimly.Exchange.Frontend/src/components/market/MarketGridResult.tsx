@@ -26,7 +26,7 @@ const MarketGridResult = ({ result, index }: Props) => {
   return (
     <li
       key={index}
-      className="hover:border-primary-400 col-span-1 flex min-w-[200px] flex-col divide-y divide-gray-200 rounded-lg border-2 border-transparent bg-white text-center shadow dark:divide-gray-700 dark:bg-gray-900"
+      className="hover:border-secondary-400 col-span-1 flex min-w-[200px] flex-col divide-y divide-gray-200 rounded-lg border-2 border-transparent bg-white text-center shadow dark:divide-gray-700 dark:bg-gray-900"
     >
       <NavLink
         to={{

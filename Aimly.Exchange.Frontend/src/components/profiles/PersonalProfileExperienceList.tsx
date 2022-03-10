@@ -6,6 +6,7 @@
 import React, { useCallback, useState } from 'react';
 import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
 import { PersonalProfileExperienceItem } from 'components/profiles/PersonalProfileExperienceItem';
+import { PersonalProfileExperienceEdit } from 'components/profiles/PersonalProfileExperienceEdit';
 import { PlusIcon } from '@heroicons/react/outline';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 
@@ -24,7 +25,6 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
     if (!employmentExperience) return;
 
     setDeletingId(employmentExperience.id);
-
     setShowDeleteConfirmation(true);
   };
 
@@ -71,18 +71,83 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
     setShowDeleteConfirmation(false);
   };
 
+  const [showEditing, setShowEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingEmploymentExperience, setEditingEmploymentExperience] =
+    useState<EmploymentExperience | null>(null);
+
+  const handleTriggerEdit = (employmentExperience: EmploymentExperience | null) => {
+    // Show ConfirmEdit component
+    if (!employmentExperience) return;
+
+    setEditingEmploymentExperience(employmentExperience);
+    setShowEditing(true);
+  };
+
+  const handleEdit = useCallback(
+    () => {
+      if (!editingEmploymentExperience) return;
+
+      setShowEditing(false);
+      setEditingEmploymentExperience(null); // Clear this
+      setShowEditing(false);
+
+      // Remove the item of given Id from the model's list
+      //employmentExperience = employmentExperience.filter((i) => i?.id !== editingId);
+
+      // TODO - Call the API to edit and move the above to handleEditCompleted
+
+      // if (model.id === null) return;
+      // setIsEditing(true);
+      // const variables: useEditMentorProfileMutationVariables = {
+      //   userId: model.userId,
+      //   profileId: model.id,
+      // };
+      // return EditMentorProfile(variables, handleEditCompleted);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [] //EditMentorProfile
+  );
+
+  // This is called once the SetMentorProfile mutation has completed
+  // const handleEditCompleted = (response: useEditMentorProfileMutation$data): void => {
+  //   outro();
+  // };
+
+  const handleEditConfirm = () => {
+    if (!editingEmploymentExperience) {
+      console.log('editingId is null');
+      return;
+    }
+
+    handleEdit();
+  };
+
+  const handleEditCancel = () => {
+    setShowEditing(false);
+  };
+
   return (
     <>
       {allowEdit && (
-        <ConfirmDelete
-          show={showDeleteConfirmation}
-          working={isDeleting}
-          Title="Delete Experience"
-          Message="Are you sure that you want to delete this experience? This action cannot be undone!"
-          ConfirmButtonText="Confirm Delete"
-          onConfirm={handleDeleteConfirm}
-          onCancel={handleDeleteCancel}
-        />
+        <>
+          <ConfirmDelete
+            show={showDeleteConfirmation}
+            working={isDeleting}
+            Title="Delete Experience"
+            Message="Are you sure that you want to delete this experience? This action cannot be undone!"
+            ConfirmButtonText="Confirm Delete"
+            onConfirm={handleDeleteConfirm}
+            onCancel={handleDeleteCancel}
+          />
+          <PersonalProfileExperienceEdit
+            show={true}
+            working={isEditing}
+            onCancel={handleEditCancel}
+            onConfirm={handleEditConfirm}
+            model={editingEmploymentExperience}
+          />
+        </>
       )}
       <div className="mb-3 grid grid-cols-2">
         <div className="">

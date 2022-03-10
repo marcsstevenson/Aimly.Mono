@@ -91,27 +91,27 @@ export const PrivateRoutes: RouteItem[] = [
   // My profiles
   { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },
   {
-    path: '/profiles/personal-profile-edit',
+    path: '/my-profiles/personal-profile-edit',
     element: <PersonalProfileEdit />,
     page: Pages.PersonalProfileEdit,
   },
   {
-    path: '/profiles/mentor-profile-new',
+    path: '/my-profiles/mentor-profile-new',
     element: <MentorProfileNew />,
     page: Pages.MentorProfileNew,
   },
   {
-    path: '/profiles/mentor-profile-edit',
+    path: '/my-profiles/mentor-profile-edit',
     element: <MentorProfileEdit />,
     page: Pages.MentorProfileEdit,
   },
   {
-    path: '/profiles/expert-profile-new',
+    path: '/my-profiles/expert-profile-new',
     element: <ExpertProfileNew />,
     page: Pages.ExpertProfileNew,
   },
   {
-    path: '/profiles/expert-profile-edit',
+    path: '/my-profiles/expert-profile-edit',
     element: <ExpertProfileEdit />,
     page: Pages.ExpertProfileEdit,
   },

@@ -116,7 +116,7 @@ export const Help = () => {
                       </svg>
                     </div>
                     <h3 className="text-lg font-medium text-white">Contact information</h3>
-                    <p className="text-primary-50 mt-6 max-w-3xl text-base">
+                    <p className="text-secondary-50 mt-6 max-w-3xl text-base">
                       While we are still in an Alpha phase, we are open to feedback and suggestions
                       on how we can improve your experience. Please do not hesitate to contact us as
                       follows.
@@ -125,9 +125,9 @@ export const Help = () => {
                       {/* <dt>
                         <span className="sr-only">Phone number</span>
                       </dt>
-                      <dd className="flex text-base text-primary-50">
+                      <dd className="flex text-base text-secondary-50">
                         <PhoneIcon
-                          className="h-6 w-6 flex-shrink-0 text-primary-200"
+                          className="h-6 w-6 flex-shrink-0 text-secondary-200"
                           aria-hidden="true"
                         />
                         <span className="ml-3">+1 (555) 123-4567</span>
@@ -135,13 +135,13 @@ export const Help = () => {
                       <dt>
                         <span className="sr-only">Email</span>
                       </dt>
-                      <dd className="text-primary-50 flex text-base">
+                      <dd className="text-secondary-50 flex text-base">
                         <MailIcon
-                          className="text-primary-200 h-6 w-6 flex-shrink-0"
+                          className="text-secondary-200 h-6 w-6 flex-shrink-0"
                           aria-hidden="true"
                         />
                         <a
-                          className="hover:text-primary-500 ml-3"
+                          className="hover:text-secondary-500 ml-3"
                           href="mailto: marc.stevenson@aimly.io"
                         >
                           marc.stevenson@aimly.io
@@ -150,7 +150,7 @@ export const Help = () => {
                     </dl>
                     {/* <ul className="mt-8 flex space-x-12">
                       <li>
-                        <a className="text-primary-200 hover:text-primary-100" href="#">
+                        <a className="text-secondary-200 hover:text-secondary-100" href="#">
                           <span className="sr-only">Facebook</span>
                           <svg
                             width={24}
@@ -169,7 +169,7 @@ export const Help = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="text-primary-200 hover:text-primary-100" href="#">
+                        <a className="text-secondary-200 hover:text-secondary-100" href="#">
                           <span className="sr-only">GitHub</span>
                           <svg
                             width={24}
@@ -188,7 +188,7 @@ export const Help = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="text-primary-200 hover:text-primary-100" href="#">
+                        <a className="text-secondary-200 hover:text-secondary-100" href="#">
                           <span className="sr-only">Twitter</span>
                           <svg
                             width={24}

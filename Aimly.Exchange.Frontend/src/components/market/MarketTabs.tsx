@@ -40,7 +40,7 @@ export const MarketTabs = (props: Props) => {
         <select
           id="tabs"
           name="tabs"
-          className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300"
+          className="focus:border-secondary-500 focus:ring-secondary-500 block w-full rounded-md border-gray-300"
           defaultValue={currentTab.name}
         >
           {tabs.map((tab) => (
@@ -57,7 +57,7 @@ export const MarketTabs = (props: Props) => {
                 to={{ pathname: GetPathForPage(tab.page) }}
                 className={classNames(
                   tab.page === currentTab.page
-                    ? 'border-primary-500 text-primary-600 dark:text-primary-400'
+                    ? 'border-secondary-500 text-secondary-600 dark:text-secondary-400'
                     : 'dark: border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-400',
                   'text-md w-1/4 border-b-2 py-4 px-1 text-center font-medium'
                 )}

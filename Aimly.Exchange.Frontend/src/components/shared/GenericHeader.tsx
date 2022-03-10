@@ -15,7 +15,7 @@ const GenericHeader = (props: Props) => {
   return (
     <div className="mx-auto max-w-2xl py-6 sm:py-4 lg:max-w-none lg:py-8">
       <h1 className="default-h2 text-center">{props.title}</h1>
-      <h1 className="dark:text-primary-400 text-primary-700 text-center text-5xl font-extrabold">
+      <h1 className="dark:text-secondary-400 text-secondary-700 text-center text-5xl font-extrabold">
         {contextVal}
       </h1>
     </div>

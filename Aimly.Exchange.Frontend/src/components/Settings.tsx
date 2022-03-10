@@ -49,8 +49,8 @@ export const Settings = () => {
                           checked={availableToHire}
                           onChange={setAvailableToHire}
                           className={classNames(
-                            availableToHire ? 'bg-primary-500' : 'bg-gray-200',
-                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
+                            availableToHire ? 'bg-secondary-500' : 'bg-gray-200',
+                            'focus:ring-secondary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
@@ -79,8 +79,8 @@ export const Settings = () => {
                           checked={privateAccount}
                           onChange={setPrivateAccount}
                           className={classNames(
-                            privateAccount ? 'bg-primary-500' : 'bg-gray-200',
-                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
+                            privateAccount ? 'bg-secondary-500' : 'bg-gray-200',
+                            'focus:ring-secondary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
@@ -109,8 +109,8 @@ export const Settings = () => {
                           checked={allowCommenting}
                           onChange={setAllowCommenting}
                           className={classNames(
-                            allowCommenting ? 'bg-primary-500' : 'bg-gray-200',
-                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
+                            allowCommenting ? 'bg-secondary-500' : 'bg-gray-200',
+                            'focus:ring-secondary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span
@@ -139,8 +139,8 @@ export const Settings = () => {
                           checked={allowMentions}
                           onChange={setAllowMentions}
                           className={classNames(
-                            allowMentions ? 'bg-primary-500' : 'bg-gray-200',
-                            'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
+                            allowMentions ? 'bg-secondary-500' : 'bg-gray-200',
+                            'focus:ring-secondary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                           )}
                         >
                           <span

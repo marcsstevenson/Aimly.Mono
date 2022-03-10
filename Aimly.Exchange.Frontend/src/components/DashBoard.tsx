@@ -141,13 +141,13 @@ const DashBoard = () => {
             <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
               <button
                 type="button"
-                className="focus:ring-primary-500 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-900"
+                className="focus:ring-secondary-500 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-900"
               >
                 Add money
               </button>
               <button
                 type="button"
-                className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className="bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
                 Send money
               </button>
@@ -158,7 +158,7 @@ const DashBoard = () => {
 
       <div className="mt-8">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-4 bg-green-50 p-4">
+          <div className="mb-4 rounded-md bg-green-50 p-4">
             <div className="flex">
               <div className="flex-shrink-0">
                 <BadgeCheckIcon className="h-12 w-12 text-2xl text-green-400" aria-hidden="true" />

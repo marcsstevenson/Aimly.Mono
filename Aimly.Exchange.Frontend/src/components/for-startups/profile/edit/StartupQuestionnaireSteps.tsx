@@ -67,7 +67,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="bg-primary-600 flex h-10 w-10 items-center justify-center rounded-full">
+                        <span className="bg-secondary-600 flex h-10 w-10 items-center justify-center rounded-full">
                           <CheckIcon className="h-6 w-6 text-white" aria-hidden="true" />
                         </span>
                       </span>
@@ -84,7 +84,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                 ) : step.status === StepStatusOptions.Current ? (
                   <span aria-current="step">
                     <span
-                      className="bg-primary-600 absolute top-0 left-0 h-full w-1 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+                      className="bg-secondary-600 absolute top-0 left-0 h-full w-1 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                       aria-hidden="true"
                     />
                     <span
@@ -94,12 +94,14 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="border-primary-600 flex h-10 w-10 items-center justify-center rounded-full border-2">
-                          <span className="text-primary-600 dark:text-primary-200">{step.id}</span>
+                        <span className="border-secondary-600 flex h-10 w-10 items-center justify-center rounded-full border-2">
+                          <span className="text-secondary-600 dark:text-secondary-200">
+                            {step.id}
+                          </span>
                         </span>
                       </span>
                       <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
-                        <span className="text-primary-600 dark:text-primary-300 text-xs font-semibold uppercase tracking-wide">
+                        <span className="text-secondary-600 dark:text-secondary-300 text-xs font-semibold uppercase tracking-wide">
                           {step.name}
                         </span>
                         <span className="text-sm font-medium text-gray-500 dark:text-gray-300">

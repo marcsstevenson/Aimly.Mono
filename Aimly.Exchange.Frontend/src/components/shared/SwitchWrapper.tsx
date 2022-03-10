@@ -15,8 +15,8 @@ export const SwitchWrapper = (props: any) => {
       checked={field.value}
       onChange={setValue}
       className={classNames(
-        field.value ? 'bg-primary-500' : 'bg-gray-200',
-        'focus:ring-primary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
+        field.value ? 'bg-secondary-500' : 'bg-gray-200',
+        'focus:ring-secondary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
       )}
     >
       <span

@@ -65,8 +65,8 @@ export const MarketSearchResults = (props: Props) => {
                     type="button"
                     className={classNames(
                       displayMode === DisplayModeOptions.grid
-                        ? 'text-primary-500'
-                        : 'hover:text-primary-500 text-gray-400',
+                        ? 'text-secondary-500'
+                        : 'hover:text-secondary-500 text-gray-400',
                       '-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full'
                     )}
                   >
@@ -80,8 +80,8 @@ export const MarketSearchResults = (props: Props) => {
                     type="button"
                     className={classNames(
                       displayMode === DisplayModeOptions.list
-                        ? 'text-primary-500'
-                        : 'hover:text-primary-500 text-gray-400',
+                        ? 'text-secondary-500'
+                        : 'hover:text-secondary-500 text-gray-400',
                       '-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full'
                     )}
                   >

@@ -34,7 +34,9 @@ export const PersonalProfileExperienceItem = ({ allowEdit, item, triggerDelete }
                 <span className="ml-1">to</span>
                 <span className="ml-1">{item?.endYear ?? 'Present'}</span>
               </dt>
-              <dt className="text-sm text-gray-900 dark:text-gray-50">{item?.description}</dt>
+              <dt className="text-sm text-gray-900 dark:text-gray-50">
+                <p>{item?.description}</p>
+              </dt>
             </dl>
           </div>
         </div>

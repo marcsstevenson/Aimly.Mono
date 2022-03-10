@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 
 import ProfileDropdown from './ProfileDropdown';
-import QuickSearch from './QuickSearch'
+import QuickSearch from './QuickSearch';
 
-import {
-  BellIcon,
-  MenuAlt1Icon,
-} from '@heroicons/react/outline';
+import { BellIcon, MenuAlt1Icon } from '@heroicons/react/outline';
 
 import DarkModeSelector from 'components/DarkModeSelector';
 import { PrivateContext } from './PrivateContext';
@@ -15,22 +12,22 @@ const TopBar = (): JSX.Element => {
   const { setSidebarOpen } = useContext(PrivateContext);
 
   return (
-    <div className="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+    <div className="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
       <button
         type="button"
-        className="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 lg:hidden"
+        className="focus:ring-primary-500 border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset lg:hidden"
         onClick={() => setSidebarOpen(true)}
       >
         <span className="sr-only">Open sidebar</span>
         <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
       </button>
       {/* Search bar */}
-      <div className="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
+      <div className="flex flex-1 justify-between px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
         <QuickSearch />
         <div className="ml-4 flex items-center md:ml-6">
           <button
             type="button"
-            className="bg-white dark:bg-gray-800 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+            className="focus:ring-secondary-500 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800"
           >
             <span className="sr-only">View notifications</span>
             <BellIcon className="h-6 w-6" aria-hidden="true" />

@@ -28,11 +28,5 @@ export const MarketHeader = ({ CurrentProfileType }: Props) => {
   // search params for each tab (term, sort, page, etc)
   // display mode (list, grid, etc)
 
-  return (
-    <div>
-      <div>
-        <MarketTabs CurrentPage={currentPage} />
-      </div>
-    </div>
-  );
+  return <MarketTabs CurrentPage={currentPage} />;
 };

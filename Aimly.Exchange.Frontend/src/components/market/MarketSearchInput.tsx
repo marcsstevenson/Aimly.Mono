@@ -39,7 +39,7 @@ export const MarketSearchInput = (props: Props) => {
                 id="search-field"
                 name="search-field"
                 ref={searchInputRef}
-                className="focus:ring-primary-500 block w-full rounded-xl border
+                className="focus:ring-secondary-500 block w-full rounded-xl border
                 border-gray-300 py-3 pl-10 pr-5 font-medium
                   leading-5 text-gray-900
                   placeholder-gray-500 focus:border-transparent
