@@ -10,15 +10,52 @@ import { PersonalProfileExperienceEdit } from 'components/profiles/PersonalProfi
 import { PlusIcon } from '@heroicons/react/outline';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 
+import useSetExperienceMutation from 'useSetExperienceMutation';
+import {
+  ExperienceModelInput,
+  useSetExperienceMutation$data,
+} from '__generated__/useSetExperienceMutation.graphql';
+
+import useDeleteExperienceMutation from 'useDeleteExperienceMutation';
+import {
+  useDeleteExperienceMutation$data,
+  useDeleteExperienceMutationVariables,
+} from '__generated__/useDeleteExperienceMutation.graphql';
+
 export interface Props {
   allowEdit: boolean;
   employmentExperience: readonly (EmploymentExperience | null)[];
+  userId: string | null;
 }
 
-export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience }: Props) => {
+export const PersonalProfileExperienceList = ({
+  allowEdit,
+  employmentExperience,
+  userId,
+}: Props) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const SetExperience = useSetExperienceMutation();
+  const DeleteExperience = useDeleteExperienceMutation();
+
+  const sortEmploymentExperience = (
+    a: EmploymentExperience | null,
+    b: EmploymentExperience | null
+  ) => {
+    if (!a || !b) return 0;
+    return b.startYear * 100 + b.startMonth - (a.startYear * 100 + a.startMonth);
+  };
+
+  // useState for employmentExperience
+  const [employmentExperienceValues, setEmploymentExperienceStateValues] =
+    useState(employmentExperience);
+
+  // const relayEnvironment = useRelayEnvironment();
+  // const connectionRecord = ConnectionHandler.getConnection(
+  //   userRecord,
+  //   'CommentsComponent_comments_connection',
+  // );
 
   const handleTriggerDelete = (employmentExperience: EmploymentExperience | null) => {
     // Show ConfirmDelete component
@@ -29,34 +66,33 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
   };
 
   const handleDelete = useCallback(
-    () => {
-      if (!deletingId) return;
-
-      setShowDeleteConfirmation(false);
-      setDeletingId(null); // Clear this
-      setShowDeleteConfirmation(false);
-
-      // Remove the item of given Id from the model's list
-      employmentExperience = employmentExperience.filter((i) => i?.id !== deletingId);
-
-      // TODO - Call the API to delete and move the above to handleDeleteCompleted
-
-      // if (model.id === null) return;
-      // setIsDeleting(true);
-      // const variables: useDeleteMentorProfileMutationVariables = {
-      //   userId: model.userId,
-      //   profileId: model.id,
-      // };
-      // return DeleteMentorProfile(variables, handleDeleteCompleted);
+    (id: string) => {
+      setIsDeleting(true);
+      const variables: useDeleteExperienceMutationVariables = {
+        userId: userId,
+        id: id,
+      };
+      return DeleteExperience(variables, handleDeleteCompleted);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [] //DeleteMentorProfile
+    [] //DeleteExperience
   );
 
-  // This is called once the SetMentorProfile mutation has completed
-  // const handleDeleteCompleted = (response: useDeleteMentorProfileMutation$data): void => {
-  //   outro();
-  // };
+  // This is called once the SetExperience mutation has completed
+  const handleDeleteCompleted = (response: useDeleteExperienceMutation$data): void => {
+    setShowDeleteConfirmation(false);
+    setIsDeleting(false);
+    setDeletingId(null);
+    // How to update the data with the record removed?
+
+    if (response?.deleteExperience?.deletedId) {
+      setEmploymentExperienceStateValues([
+        ...employmentExperienceValues.filter(
+          (e) => e && e.id !== response?.deleteExperience?.deletedId
+        ),
+      ]);
+    }
+  };
 
   const handleDeleteConfirm = () => {
     if (!deletingId) {
@@ -64,7 +100,7 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
       return;
     }
 
-    handleDelete();
+    handleDelete(deletingId);
   };
 
   const handleDeleteCancel = () => {
@@ -78,49 +114,56 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
 
   const handleTriggerEdit = (employmentExperience: EmploymentExperience | null) => {
     // Show ConfirmEdit component
-    if (!employmentExperience) return;
+    // if (!employmentExperience) return;
 
     setEditingEmploymentExperience(employmentExperience);
     setShowEditing(true);
   };
 
   const handleEdit = useCallback(
-    () => {
-      if (!editingEmploymentExperience) return;
-
-      setShowEditing(false);
-      setEditingEmploymentExperience(null); // Clear this
-      setShowEditing(false);
-
-      // Remove the item of given Id from the model's list
-      //employmentExperience = employmentExperience.filter((i) => i?.id !== editingId);
-
-      // TODO - Call the API to edit and move the above to handleEditCompleted
-
-      // if (model.id === null) return;
-      // setIsEditing(true);
-      // const variables: useEditMentorProfileMutationVariables = {
-      //   userId: model.userId,
-      //   profileId: model.id,
-      // };
-      // return EditMentorProfile(variables, handleEditCompleted);
+    (experienceModel: ExperienceModelInput) => {
+      return SetExperience(userId ?? '', experienceModel, handleEditCompleted);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [] //EditMentorProfile
+    [SetExperience]
   );
 
-  // This is called once the SetMentorProfile mutation has completed
-  // const handleEditCompleted = (response: useEditMentorProfileMutation$data): void => {
-  //   outro();
-  // };
+  // This is called once the SetExperience mutation has completed
+  const handleEditCompleted = (
+    experienceModel: ExperienceModelInput,
+    response: useSetExperienceMutation$data
+  ): void => {
+    setIsEditing(false);
+    setShowEditing(false);
 
-  const handleEditConfirm = () => {
-    if (!editingEmploymentExperience) {
-      console.log('editingId is null');
-      return;
+    // How to update the data with the record updated?
+    if (response?.setExperience?.updatedExperienceId) {
+      const updated: EmploymentExperience = {
+        id: response?.setExperience?.updatedExperienceId,
+        title: experienceModel?.title ?? '',
+        description: experienceModel?.description ?? '',
+        organisation: experienceModel?.organisation ?? '',
+        startMonth: experienceModel?.startMonth ?? 1,
+        startYear: experienceModel?.startYear ?? 2020,
+        endMonth: experienceModel?.endMonth ?? null,
+        endYear: experienceModel?.endYear ?? null,
+      };
+
+      let newArray = [
+        updated, // Add the new
+        ...employmentExperienceValues.filter(
+          (e) => e && e.id !== response?.setExperience?.updatedExperienceId // Take away the old
+        ),
+      ].sort(sortEmploymentExperience);
+
+      setEmploymentExperienceStateValues(newArray);
     }
 
-    handleEdit();
+    setEditingEmploymentExperience(null);
+  };
+
+  const handleEditConfirm = (experienceModel: ExperienceModelInput) => {
+    handleEdit(experienceModel);
   };
 
   const handleEditCancel = () => {
@@ -141,7 +184,7 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
             onCancel={handleDeleteCancel}
           />
           <PersonalProfileExperienceEdit
-            show={true}
+            show={showEditing}
             working={isEditing}
             onCancel={handleEditCancel}
             onConfirm={handleEditConfirm}
@@ -155,7 +198,13 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
         </div>
         {allowEdit && (
           <div className="ml-auto">
-            <button type="button" className="form-button-flat">
+            <button
+              type="button"
+              className="form-button-flat"
+              onClick={() => {
+                handleTriggerEdit(null);
+              }}
+            >
               <PlusIcon className="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
               Add
             </button>
@@ -164,13 +213,13 @@ export const PersonalProfileExperienceList = ({ allowEdit, employmentExperience 
       </div>
       <div>
         <div className="mt-1">
-          {employmentExperience.map((item, index) => (
+          {employmentExperienceValues.map((item, index) => (
             <PersonalProfileExperienceItem
+              key={index}
               allowEdit={allowEdit}
               item={item}
-              key={index}
               triggerDelete={() => handleTriggerDelete(item)}
-              //triggerDelete={() => console.log('triggerDelete')}
+              triggerEdit={() => handleTriggerEdit(item)}
             />
           ))}
         </div>

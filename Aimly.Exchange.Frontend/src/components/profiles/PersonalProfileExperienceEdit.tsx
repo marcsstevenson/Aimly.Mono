@@ -9,12 +9,13 @@ import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';
 import { MonthSelector } from 'components/shared/MonthSelector';
+import { YearSelector } from 'components/shared/YearSelector';
 
 interface Props {
   show: boolean;
   working: boolean;
   onCancel: () => void;
-  onConfirm: () => void;
+  onConfirm: (model: EmploymentExperience) => void;
   model: EmploymentExperience | null;
 }
 
@@ -26,9 +27,9 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
         title: '',
         description: '',
         endMonth: 1,
-        endYear: 2020,
+        endYear: new Date().getFullYear(),
         startMonth: 1,
-        startYear: 2020,
+        startYear: new Date().getFullYear(),
         id: null,
         organisation: '',
       },
@@ -36,12 +37,21 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
   );
   const isNew = useMemo<boolean>(() => props.model === null, [props.model]);
   const title = useMemo<string>(() => `${isNew ? 'Add' : 'Edit'} Experience`, [isNew]);
-  const [currentRole, setCurrentRole] = useState<boolean>(true);
+
+  const [currentRole, setCurrentRole] = useState<boolean>(model?.endYear === null ? true : false);
 
   const cancelButtonRef = useRef(null);
 
   const onSubmit = (model: EmploymentExperience) => {
-    props.onConfirm();
+    // Remove the end year and month if the position is still current
+    if (currentRole) {
+      model = { ...model, endYear: null, endMonth: null };
+      console.log('updated model', model);
+    } else {
+      console.log('untouched model', model);
+    }
+
+    props.onConfirm(model);
   };
 
   return (
@@ -131,6 +141,24 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                         </div>
                       </div>
                       <div className="sm:col-span-6">
+                        <label htmlFor="organisation" className="form-label">
+                          Organisation *
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            type="text"
+                            name="organisation"
+                            id="organisation"
+                            autoComplete="given-name"
+                            validate={validateRequiredString}
+                            className={errors.organisation ? 'form-input-error' : 'form-input'}
+                          />
+                          {errors.organisation && touched.organisation && (
+                            <div className="form-input-validation">{errors.organisation}</div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="sm:col-span-6">
                         <div className="relative mt-1 flex items-start">
                           <div className="flex h-5 items-center">
                             <input
@@ -165,9 +193,52 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                           />
                         </div>
                       </div>
+                      <div className="sm:col-span-3">
+                        <label htmlFor="startYear" className="form-label">
+                          Start Year
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            className="form-input"
+                            component={YearSelector}
+                            id="startYear"
+                            name="startYear"
+                          />
+                        </div>
+                      </div>
+                      {!currentRole && (
+                        <>
+                          <div className="sm:col-span-3">
+                            <label htmlFor="endMonth" className="form-label">
+                              End Month
+                            </label>
+                            <div className="mt-1">
+                              <Field
+                                className="form-input"
+                                component={MonthSelector}
+                                id="endMonth"
+                                name="endMonth"
+                              />
+                            </div>
+                          </div>
+                          <div className="sm:col-span-3">
+                            <label htmlFor="endYear" className="form-label">
+                              End Year
+                            </label>
+                            <div className="mt-1">
+                              <Field
+                                className="form-input"
+                                component={YearSelector}
+                                id="endYear"
+                                name="endYear"
+                              />
+                            </div>
+                          </div>
+                        </>
+                      )}
                       <div className="sm:col-span-6">
                         <label htmlFor="description" className="form-label">
-                          Description
+                          Description *
                         </label>
                         <div className="mt-1">
                           <Field
@@ -175,7 +246,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                             name="description"
                             id="description"
                             as="textarea"
-                            rows={4}
+                            rows={8}
                             autoComplete="given-name"
                             validate={validateRequiredString}
                             className={errors.description ? 'form-input-error' : 'form-input'}
@@ -194,7 +265,6 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                       <button
                         type="submit"
                         className="disabled:bg-secondary-300 bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                        onClick={() => props.onConfirm()}
                         disabled={props.working || isValidating}
                       >
                         {isNew && (

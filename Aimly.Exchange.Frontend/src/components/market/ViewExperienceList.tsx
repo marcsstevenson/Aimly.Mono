@@ -22,6 +22,7 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
               item={item}
               key={index}
               triggerDelete={() => {}} // No need
+              triggerEdit={() => {}} // No need
             />
           ))}
         </div>

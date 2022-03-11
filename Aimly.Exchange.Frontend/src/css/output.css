@@ -769,6 +769,13 @@ select {
   --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
 }
 
+.dark .form-input-error {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .form-input-validation {
   margin-top: 0.5rem;
   display: inline-flex;
@@ -2958,6 +2965,11 @@ body {
   color: rgb(127 29 29 / var(--tw-text-opacity));
 }
 
+.hover\:text-secondary-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(12 74 110 / var(--tw-text-opacity));
+}
+
 .hover\:opacity-100:hover {
   opacity: 1;
 }
@@ -3254,6 +3266,11 @@ body {
 .dark .dark\:hover\:text-validation-500:hover {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+.dark .dark\:hover\:text-secondary-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(56 189 248 / var(--tw-text-opacity));
 }
 
 .dark .dark\:focus\:bg-white:focus {

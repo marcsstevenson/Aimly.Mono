@@ -2,14 +2,14 @@
 // allow the user to select one or more of them within a multi-select input.
 
 import React from 'react';
-import Select from 'react-select';
+import Select, { MultiValue } from 'react-select';
 import { useField } from 'formik';
 import { IndustryOptionsValues, optionType } from 'components/shared/IndustryOptions';
-
+import { FormikProps } from 'components/shared/FormikProps';
 
 const options: optionType[] = IndustryOptionsValues;
 
-export const IndustrySelector = (props: any) => {
+export const IndustrySelector = (props: FormikProps<optionType[]>) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, state, { setValue }] = useField<string[]>(props.field.name);
 
@@ -18,14 +18,15 @@ export const IndustrySelector = (props: any) => {
   // and set the filtered list as our defaultValue
   const defaultValue = options.filter((option) => state.initialValue?.includes(option.value));
 
-  const onChange = (newValue: optionType[]) => {
+  const onChange = (newValue: MultiValue<optionType>) => {
     // Map from optionType[] to string[]
     setValue(newValue.map((o: optionType) => o.value));
   };
 
   return (
     <Select
-      {...props}
+      form={ '' }
+      // {...props}
       isMulti
       className="form-input"
       onChange={onChange}

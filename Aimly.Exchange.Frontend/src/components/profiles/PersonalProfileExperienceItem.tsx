@@ -6,9 +6,15 @@ interface Props {
   allowEdit: boolean;
   item: EmploymentExperience | null;
   triggerDelete: () => void;
+  triggerEdit: () => void;
 }
 
-export const PersonalProfileExperienceItem = ({ allowEdit, item, triggerDelete }: Props) => {
+export const PersonalProfileExperienceItem = ({
+  allowEdit,
+  item,
+  triggerDelete,
+  triggerEdit,
+}: Props) => {
   return (
     <div className="overflow-hidden">
       <div className="p-5">
@@ -46,7 +52,8 @@ export const PersonalProfileExperienceItem = ({ allowEdit, item, triggerDelete }
           <div className="">
             <button
               type="button"
-              className="text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-primary-400 font-medium"
+              onClick={triggerEdit}
+              className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
             >
               Edit
             </button>

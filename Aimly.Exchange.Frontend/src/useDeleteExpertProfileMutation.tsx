@@ -1,4 +1,4 @@
-// The purpose of this file is to provide a hook which updates the About You values via a mutation
+// The purpose of this file is to provide a hook which deletes an expert profile via a mutation
 // Refer here as the template used for this hook:
 // https://codesandbox.io/s/relay-sandbox-nxl7i?file=/src/useRenameTodoMutation.ts
 // An example of this template's use can be found here:

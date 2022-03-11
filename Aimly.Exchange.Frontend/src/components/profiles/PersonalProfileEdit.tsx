@@ -298,6 +298,7 @@ const PersonalProfileEdit = () => {
                             ? []
                             : loadedData.employmentExperience.filter((e) => e !== null)
                         }
+                        userId={userId}
                       />
                     </div>
                   </div>

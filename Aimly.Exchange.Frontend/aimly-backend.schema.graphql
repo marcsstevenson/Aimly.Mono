@@ -104,6 +104,10 @@ type DeleteProfileResponse {
   deletedProfileId: UUID!
 }
 
+type DeleteResponse {
+  deletedId: UUID!
+}
+
 type ExperienceModel {
   id: UUID
   description: String
@@ -389,7 +393,8 @@ type Mutation {
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
   setExpertProfile(input: SetExpertProfileCommandInput): SetExpertProfileResponse
   deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
-  setExperienceDetailed(userId: UUID!, experienceDetailedModel: ExperienceModelInput): SetExperienceDetailedResponse
+  setExperience(userId: UUID!, experienceModel: ExperienceModelInput): SetExperienceResponse
+  deleteExperience(userId: UUID!, id: UUID!): DeleteResponse
 }
 
 type MyProfilesResult {
@@ -462,7 +467,7 @@ type SetAboutYouResponse {
   updatedCompanyProfileId: UUID!
 }
 
-type SetExperienceDetailedResponse {
+type SetExperienceResponse {
   updatedExperienceId: UUID!
 }
 
