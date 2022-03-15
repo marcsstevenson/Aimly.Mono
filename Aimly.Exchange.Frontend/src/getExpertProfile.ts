@@ -8,6 +8,7 @@ export const getExpertProfileQuery = graphql`
       name
       about
       industries
+      skills
       listOnMarket
     }
   }

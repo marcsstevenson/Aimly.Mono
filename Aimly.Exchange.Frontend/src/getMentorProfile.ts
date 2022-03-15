@@ -8,6 +8,7 @@ export const getMentorProfileQuery = graphql`
       name
       about
       industries
+      skills
       listOnMarket
     }
   }

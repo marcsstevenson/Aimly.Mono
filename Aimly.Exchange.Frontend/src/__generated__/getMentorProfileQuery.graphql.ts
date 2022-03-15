@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b3615fca76ea4c0b274ce7803609253c>>
+ * @generated SignedSource<<aad68ebeaeae1027cbf16ae88ef12bd1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,6 +21,7 @@ export type getMentorProfileQuery$data = {
     readonly name: string;
     readonly about: string;
     readonly industries: ReadonlyArray<string | null> | null;
+    readonly skills: ReadonlyArray<string | null> | null;
     readonly listOnMarket: boolean;
   } | null;
 };
@@ -100,6 +101,13 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "skills",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "listOnMarket",
         "storageKey": null
       }
@@ -131,16 +139,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "958e8fc5d88619d53df3f1f18713372b",
+    "cacheID": "a19cd1cab183ea299c8e548e9ff0977a",
     "id": null,
     "metadata": {},
     "name": "getMentorProfileQuery",
     "operationKind": "query",
-    "text": "query getMentorProfileQuery(\n  $userId: UUID!\n  $id: UUID!\n) {\n  getMentorProfile(userId: $userId, id: $id) {\n    userId\n    id\n    name\n    about\n    industries\n    listOnMarket\n  }\n}\n"
+    "text": "query getMentorProfileQuery(\n  $userId: UUID!\n  $id: UUID!\n) {\n  getMentorProfile(userId: $userId, id: $id) {\n    userId\n    id\n    name\n    about\n    industries\n    skills\n    listOnMarket\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "66324f25595d58b3e067c20138d114c4";
+(node as any).hash = "ffbfdf5303b967796714d4863ece786e";
 
 export default node;

@@ -24,6 +24,7 @@ import {
   useDeleteExpertProfileMutation$data,
   useDeleteExpertProfileMutationVariables,
 } from '__generated__/useDeleteExpertProfileMutation.graphql';
+import { SkillSelector } from 'components/shared/SkillSelector';
 
 interface Props {
   model: GetExpertProfileModelInput;
@@ -165,6 +166,22 @@ const ExpertProfileForm = (props: Props) => {
                           component={IndustrySelector}
                           id="industries"
                           name="industries"
+                        />
+                      </div>
+                    </div>
+                    <div className="sm:col-span-6">
+                      <label
+                        htmlFor="skills"
+                        className="text-xl font-extrabold text-gray-900 dark:text-gray-100"
+                      >
+                        Skills
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          className="form-input"
+                          component={SkillSelector}
+                          id="skills"
+                          name="skills"
                         />
                       </div>
                     </div>

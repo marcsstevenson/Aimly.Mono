@@ -17,12 +17,12 @@ interface Props extends FormikProps<string[]> {
 
 export const MetaDataOptionsEditor = (props: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [field, state, { setValue }] = useField<string[]>(props.field.name);
+  const [field, state, { setValue }] = useField<string[]>(props.field.name ?? []);
   const [isAdding, setIsAdding] = React.useState(false);
 
   const optionSelected = (option: string) => {
     // Add option to current list if not already included
-    const currentValues = state.value.filter((value) => value !== option);
+    const currentValues = state.value ? state.value.filter((value) => value !== option) : [];
     const newValues = [...currentValues, option].sort();
 
     setValue(newValues);

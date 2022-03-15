@@ -3,6 +3,7 @@ import { classNames } from 'utils/classNames';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import { NavLink } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
+import useNavigateToPage from 'components/shared/useNavigateToPage';
 
 interface Tab {
   name: string;
@@ -28,7 +29,18 @@ interface Props {
 }
 
 export const MarketTabs = (props: Props) => {
+  const navigateToPage = useNavigateToPage();
   const currentTab = useMemo<Tab>(() => getTabForPage(props.CurrentPage), [props.CurrentPage]);
+
+  const tabSelected = (name: string) => {
+    // Get the matching tab
+    let match = tabs.find((i) => i.name === name);
+
+    // Navigate to matching page if there is a match
+    if (match) {
+      navigateToPage(match.page);
+    }
+  };
 
   return (
     <div>
@@ -42,6 +54,9 @@ export const MarketTabs = (props: Props) => {
           name="tabs"
           className="focus:border-secondary-500 focus:ring-secondary-500 block w-full rounded-md border-gray-300"
           defaultValue={currentTab.name}
+          onChange={(e) => {
+            tabSelected(e.target.value);
+          }}
         >
           {tabs.map((tab) => (
             <option key={tab.name}>{tab.name}</option>

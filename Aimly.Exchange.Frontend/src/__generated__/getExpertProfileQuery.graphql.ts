@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<30372c6f08e996b777e8b83a48ec94d9>>
+ * @generated SignedSource<<6515afa430d7004599885f4a37b292df>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,6 +21,7 @@ export type getExpertProfileQuery$data = {
     readonly name: string;
     readonly about: string;
     readonly industries: ReadonlyArray<string | null> | null;
+    readonly skills: ReadonlyArray<string | null> | null;
     readonly listOnMarket: boolean;
   } | null;
 };
@@ -100,6 +101,13 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "skills",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "listOnMarket",
         "storageKey": null
       }
@@ -131,16 +139,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "51cf1e81a13be0e66ec9951d41b26a6f",
+    "cacheID": "a02a7fadeb9edeae42f3a2d9718916d5",
     "id": null,
     "metadata": {},
     "name": "getExpertProfileQuery",
     "operationKind": "query",
-    "text": "query getExpertProfileQuery(\n  $userId: UUID!\n  $id: UUID!\n) {\n  getExpertProfile(userId: $userId, id: $id) {\n    userId\n    id\n    name\n    about\n    industries\n    listOnMarket\n  }\n}\n"
+    "text": "query getExpertProfileQuery(\n  $userId: UUID!\n  $id: UUID!\n) {\n  getExpertProfile(userId: $userId, id: $id) {\n    userId\n    id\n    name\n    about\n    industries\n    skills\n    listOnMarket\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e848a1ab5acb91aa5e16ff0f8e9ebaf0";
+(node as any).hash = "5640698e89248401eb93db61f3a40033";
 
 export default node;

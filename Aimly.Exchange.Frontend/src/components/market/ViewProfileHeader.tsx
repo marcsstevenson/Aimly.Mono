@@ -44,15 +44,23 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
         {/* Industries */}
         {props.industries && props.industries.length > 0 && (
           <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
+            <span className="mr-1 mt-2 inline-flex rounded-full py-1 pr-1 text-sm font-medium text-gray-800 dark:text-gray-200">
+              Industries
+            </span>
             <MetaDataList dataList={props.industries} allowEdit={false} deleteTrigger={() => {}} />
           </div>
         )}
 
         {/* Skills */}
         {props.skills && props.skills.length > 0 && (
-          <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
-            <MetaDataList dataList={props.skills} allowEdit={false} deleteTrigger={() => {}} />
-          </div>
+          <>
+            <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
+              <span className="mr-1 mt-2 inline-flex rounded-full py-1 pr-1 text-sm font-medium text-gray-800 dark:text-gray-200">
+                Skills
+              </span>
+              <MetaDataList dataList={props.skills} allowEdit={false} deleteTrigger={() => {}} />
+            </div>
+          </>
         )}
       </div>
       <div className="col-span-8 border-b border-gray-200 dark:border-gray-500"></div>

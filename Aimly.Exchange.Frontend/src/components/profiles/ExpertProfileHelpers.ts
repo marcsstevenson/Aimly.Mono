@@ -13,6 +13,7 @@ export const PopulateInputModel = (mentorProfileId: string | null,
     name: loadedData?.name ?? '',
     about: loadedData?.about ?? '',
     industries: loadedData?.industries ?? [],
+    skills: loadedData?.skills ?? [],
     listOnMarket: loadedData?.listOnMarket ?? true,
   };
 
