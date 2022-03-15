@@ -48,23 +48,21 @@ export const PersonalProfileExperienceItem = ({
         </div>
       </div>
       {allowEdit && (
-        <div className="grid grid-cols-2 bg-gray-50 px-5 py-3 dark:bg-gray-800">
-          <div className="">
+        <div className="grid grid-cols-1 px-5 py-3">
+          <div className="justify-self-end">
+            <button
+              type="button"
+              onClick={triggerDelete}
+              className="text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500 mr-2 font-medium"
+            >
+              Delete
+            </button>
             <button
               type="button"
               onClick={triggerEdit}
               className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
             >
               Edit
-            </button>
-          </div>
-          <div className="justify-self-end">
-            <button
-              type="button"
-              onClick={triggerDelete}
-              className="text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500 font-medium"
-            >
-              Delete
             </button>
           </div>
         </div>

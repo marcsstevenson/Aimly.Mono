@@ -16,7 +16,7 @@ export const MetaDataList = ({ dataList, allowEdit, deleteTrigger }: Props) => {
           .map((item, index) => (
             <span
               key={index}
-              className="bg-secondary-700 mr-1 mt-2 inline-flex cursor-default items-center rounded-full py-1 pr-1 text-sm font-medium text-gray-200"
+              className="bg-secondary-700 mr-1 mt-2 inline-flex cursor-default items-center rounded-full py-1 px-1 text-sm font-medium text-gray-200"
             >
               <span className={classNames(allowEdit ? 'pl-2.5' : 'px-2.5')}>{item}</span>
               {allowEdit && (

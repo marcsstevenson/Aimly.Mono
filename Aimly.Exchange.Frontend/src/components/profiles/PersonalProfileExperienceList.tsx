@@ -212,7 +212,7 @@ export const PersonalProfileExperienceList = ({
         )}
       </div>
       <div>
-        <div className="mt-1">
+        <div className="default-divide mt-1">
           {employmentExperienceValues.map((item, index) => (
             <PersonalProfileExperienceItem
               key={index}
