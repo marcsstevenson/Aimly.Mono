@@ -2,37 +2,49 @@
 // allow the user to select one or more of them within a multi-select input.
 
 import React from 'react';
-import Select, { MultiValue } from 'react-select';
 import { useField } from 'formik';
-import { IndustryOptionsValues, optionType } from 'components/shared/IndustryOptions';
 import { FormikProps } from 'components/shared/FormikProps';
+import { MetaDataOptionsSelector } from 'components/shared/MetaDataOptionsSelector';
+import { MetaDataList } from 'components/shared/MetaDataList';
+import { PlusIcon } from '@heroicons/react/outline';
 
-const options: optionType[] = IndustryOptionsValues;
-
-export const IndustrySelector = (props: FormikProps<optionType[]>) => {
+export const IndustrySelector = (props: FormikProps<string[]>) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, state, { setValue }] = useField<string[]>(props.field.name);
+  const [isAdding, setIsAdding] = React.useState(false);
 
-  // Our state.initialValue is a string[]
-  // We need to filter our options (optionType[]) to those in the initialValue
-  // and set the filtered list as our defaultValue
-  const defaultValue = options.filter((option) => state.initialValue?.includes(option.value));
+  const optionSelected = (option: string) => {
+    // Add option to current list if not already included
+    const currentValues = state.value.filter((value) => value !== option);
+    const newValues = [...currentValues, option].sort();
 
-  const onChange = (newValue: MultiValue<optionType>) => {
-    // Map from optionType[] to string[]
-    setValue(newValue.map((o: optionType) => o.value));
+    setValue(newValues);
+    setIsAdding(false);
+  };
+
+  const onDeleteTrigger = (option: string) => {
+    // Just option out of current list
+    const newValues = state.value.filter((value) => value !== option);
+
+    setValue(newValues);
   };
 
   return (
-    <Select
-      form={ '' }
-      // {...props}
-      isMulti
-      className="form-input"
-      onChange={onChange}
-      options={options}
-      defaultValue={defaultValue}
-      isSearchable={true}
-    />
+    <>
+      {!isAdding && (
+        <button
+          type="button"
+          className="form-button-link"
+          onClick={() => {
+            setIsAdding(true);
+          }}
+        >
+          <PlusIcon className="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
+          Add
+        </button>
+      )}
+      {isAdding && <MetaDataOptionsSelector optionSelected={optionSelected} />}
+      <MetaDataList dataList={state.value} allowEdit={true} deleteTrigger={onDeleteTrigger} />
+    </>
   );
 };

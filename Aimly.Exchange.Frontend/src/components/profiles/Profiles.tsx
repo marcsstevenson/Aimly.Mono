@@ -53,7 +53,6 @@ const Profiles = () => {
             <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
               <Link
                 to={{ pathname: getPersonalProfileEditUrl() }}
-                type="button"
                 className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white"
               >
                 Edit personal profile

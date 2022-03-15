@@ -5,7 +5,7 @@ import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/ViewProfileInterfaces';
-import ShowBreakPoints from 'components/shared/ShowBreakPoints';
+import { MetaDataList } from 'components/shared/MetaDataList';
 
 const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
   return (
@@ -18,8 +18,8 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
         />
       </div>
       <div className="col-span-8 lg:col-span-4">
-        <div className="decoration-secondary-500 flex justify-center text-6xl text-gray-800 underline dark:text-gray-100 lg:justify-start">
-          {props.name}
+        <div className="decoration-secondary-500 flex justify-center text-4xl text-gray-800 underline dark:text-gray-100 sm:text-6xl lg:justify-start">
+          <p className="... overflow-hidden text-ellipsis"> {props.name}</p>
         </div>
       </div>
       <div className="col-span-6 space-y-6 lg:col-start-3">
@@ -43,29 +43,15 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
 
         {/* Industries */}
         {props.industries && props.industries.length > 0 && (
-          <div className="col-span-6 flex flex-row justify-center gap-x-2 lg:justify-start">
-            {props.industries.map((industry, index) => (
-              <div
-                key={index}
-                className="bg-secondary-600 rounded-full py-1 px-3 text-center text-white"
-              >
-                {industry}
-              </div>
-            ))}
+          <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
+            <MetaDataList dataList={props.industries} allowEdit={false} deleteTrigger={() => {}} />
           </div>
         )}
 
-        {/* skills */}
+        {/* Skills */}
         {props.skills && props.skills.length > 0 && (
-          <div className="col-span-6 flex flex-row justify-center gap-x-2 lg:justify-start">
-            {props.skills.map((skill, index) => (
-              <div
-                key={index}
-                className="bg-secondary-600 rounded-full py-1 px-3 text-center text-white"
-              >
-                {skill}
-              </div>
-            ))}
+          <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
+            <MetaDataList dataList={props.skills} allowEdit={false} deleteTrigger={() => {}} />
           </div>
         )}
       </div>

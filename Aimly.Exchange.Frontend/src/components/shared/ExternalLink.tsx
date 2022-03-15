@@ -17,9 +17,14 @@ const ExternalLink = ({ url }: Props) => {
   }, [url]);
 
   return (
-    <a className="default-a flex" target="_blank" rel="noopener noreferrer" href={href}>
+    <a
+      className="default-a ... flex overflow-hidden text-ellipsis"
+      target="_blank"
+      rel="noopener noreferrer"
+      href={href}
+    >
       <ExternalLinkIcon className="mr-2 h-5 w-5" aria-hidden="true" />
-      <span>{url}</span>
+      <p className="">{url}</p>
     </a>
   );
 };

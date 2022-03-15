@@ -446,7 +446,8 @@ type Query {
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]
   getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
-  getSkillOptions(nameStartingWith: String): [String]
+  skillOptions(nameStartingWith: String, tenantId: UUID): [String]
+  industryOptions(nameStartingWith: String, tenantId: UUID): [String]
   getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel

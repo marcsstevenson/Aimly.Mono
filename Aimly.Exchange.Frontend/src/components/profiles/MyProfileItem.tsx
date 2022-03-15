@@ -72,7 +72,7 @@ const MyProfileItem = (props: Props) => {
                 false
               ),
             }}
-            className="text-primary-700 hover:text-primary-900 dark:text-primary-300 dark:hover:text-primary-400 font-medium"
+            className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
           >
             Edit
           </Link>

@@ -17,9 +17,8 @@ interface Props {
   queryRef: PreloadedQuery<marketSearchQuery>;
 }
 
-export const MarketSearchResults = (props: Props) => {
+export const MarketSearchResults = ({ queryRef }: Props) => {
   const displayModeStorageItemName = 'market-display-mode';
-  const { queryRef } = props;
 
   // Return the current display mode using the localStorage value if any
   const getStartingDisplayMode = (): DisplayModeOptions => {
@@ -49,8 +48,6 @@ export const MarketSearchResults = (props: Props) => {
   };
 
   const response: marketSearchQuery$data = usePreloadedQuery<marketSearchQuery>(AppQuery, queryRef);
-
-  console.log(response);
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -194,7 +194,7 @@ export const PersonalProfileExperienceList = ({
       )}
       <div className="mb-3 grid grid-cols-2">
         <div className="">
-          <h2 className="default-h2">Experience (work in progress)</h2>
+          <h2 className="default-h2">Experience</h2>
         </div>
         {allowEdit && (
           <div className="ml-auto">

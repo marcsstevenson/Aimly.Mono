@@ -21,6 +21,7 @@ import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
 import { PersonalProfileExperienceList } from 'components/profiles/PersonalProfileExperienceList';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
+import { MetaDataOptionsSelector } from 'components/shared/MetaDataOptionsSelector';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -248,8 +249,25 @@ const PersonalProfileEdit = () => {
                       </div>
                     </div>
 
+                    <div className="sm:col-span-3">
+                      <label htmlFor="timezone" className="form-label">
+                        Your timezone
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          className="form-input"
+                          component={TimezoneSelectWrapper}
+                          id="timezone"
+                          name="timezone"
+                        />
+                      </div>
+                    </div>
+
                     <div className="sm:col-span-6">
-                      <label htmlFor="industries" className="form-label">
+                      <label
+                        htmlFor="industries"
+                        className="text-xl font-extrabold text-gray-900 dark:text-gray-100"
+                      >
                         Industries
                       </label>
                       <div className="mt-1">
@@ -262,8 +280,11 @@ const PersonalProfileEdit = () => {
                       </div>
                     </div>
 
-                    {/* <div className="sm:col-span-6">
-                      <label htmlFor="skills" className="form-label">
+                    <div className="sm:col-span-6">
+                      <label
+                        htmlFor="skills"
+                        className="text-xl font-extrabold text-gray-900 dark:text-gray-100"
+                      >
                         Skills
                       </label>
                       <div className="mt-1">
@@ -272,20 +293,6 @@ const PersonalProfileEdit = () => {
                           component={SkillSelector}
                           id="skills"
                           name="skills"
-                        />
-                      </div>
-                    </div> */}
-
-                    <div className="sm:col-span-3">
-                      <label htmlFor="timezone" className="form-label">
-                        Your timezone
-                      </label>
-                      <div className="mt-1">
-                        <Field
-                          className="form-input"
-                          component={TimezoneSelectWrapper}
-                          id="timezone"
-                          name="timezone"
                         />
                       </div>
                     </div>
