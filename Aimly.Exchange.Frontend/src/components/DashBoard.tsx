@@ -174,6 +174,19 @@ const DashBoard = () => {
                     near future.
                   </p>
                   <p className="mt-4">
+                    March 16th 2022 -{' '}
+                    <NavLink className="mr-1 font-medium" to={{ pathname: '/my-profiles' }}>
+                      Profiles
+                    </NavLink>
+                    can now have experience, skills and industries added to them. You have 148
+                    industries and over 50 thousand skills to choose from! The{' '}
+                    <NavLink className="mr-1 font-medium" to={{ pathname: '/market' }}>
+                      Market
+                    </NavLink>
+                    has been expanded to include the viewing of all profiles types. We have also
+                    implemented our first client Exchange for Catallyze!
+                  </p>
+                  <p className="mt-4">
                     March 7th 2022 - The{' '}
                     <NavLink className="mr-1 font-medium" to={{ pathname: '/market' }}>
                       Market
@@ -183,8 +196,8 @@ const DashBoard = () => {
                   </p>
                   <p className="mt-4">
                     Feb 24th 2022 - At time of writing, the{' '}
-                    <NavLink className="mr-1 font-medium" to={{ pathname: '/profiles' }}>
-                      Profiles
+                    <NavLink className="mr-1 font-medium" to={{ pathname: '/my-profiles' }}>
+                      My Profiles
                     </NavLink>
                     area is the most mature and will allow you to create and manage your own
                     profiles for personal, startups, mentors and experts.
