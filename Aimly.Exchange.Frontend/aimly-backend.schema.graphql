@@ -448,6 +448,7 @@ type Query {
   getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
   skillOptions(nameStartingWith: String, tenantId: UUID): [String]
   industryOptions(nameStartingWith: String, tenantId: UUID): [String]
+  metaDataOptions(nameStartingWith: String, type: String, tenantId: UUID): [String]
   getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel

@@ -4,10 +4,10 @@
 import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 
 import AppQuery, {
-  skillOptionsQuery,
-  skillOptionsQuery$data,
-  skillOptionsQuery$variables,
-} from '__generated__/skillOptionsQuery.graphql';
+  metaDataOptionsQuery,
+  metaDataOptionsQuery$data,
+  metaDataOptionsQuery$variables,
+} from '__generated__/metaDataOptionsQuery.graphql';
 import { PreloadedQuery, usePreloadedQuery, useQueryLoader } from 'react-relay';
 import { classNames } from 'utils/classNames';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
@@ -15,13 +15,16 @@ import { Combobox } from '@headlessui/react';
 import debounce from 'lodash.debounce';
 
 interface MetaDataOptionsListProps {
-  queryRef: PreloadedQuery<skillOptionsQuery>;
+  queryRef: PreloadedQuery<metaDataOptionsQuery>;
   query: string;
 }
 
 const MetaDataOptionsList = ({ queryRef, query }: MetaDataOptionsListProps) => {
-  const response: skillOptionsQuery$data = usePreloadedQuery<skillOptionsQuery>(AppQuery, queryRef);
-  const options = response.skillOptions;
+  const response: metaDataOptionsQuery$data = usePreloadedQuery<metaDataOptionsQuery>(
+    AppQuery,
+    queryRef
+  );
+  const options = response.metaDataOptions;
 
   return (
     <>
@@ -74,13 +77,21 @@ const MetaDataOptionsList = ({ queryRef, query }: MetaDataOptionsListProps) => {
 interface MetaDataOptionsSelectorProps {
   // Fires when the user selects an option
   optionSelected: (option: string) => void;
+  // The type of meta options to get
+  // At time of writing there is only Skill and Industry options
+  metaDataType: string;
+  tenantId?: string;
 }
 
-export const MetaDataOptionsSelector = ({ optionSelected }: MetaDataOptionsSelectorProps) => {
+export const MetaDataOptionsSelector = ({
+  optionSelected,
+  metaDataType,
+  tenantId,
+}: MetaDataOptionsSelectorProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [query, setQuery] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const [queryRef, loadQuery] = useQueryLoader<skillOptionsQuery>(AppQuery, null);
+  const [queryRef, loadQuery] = useQueryLoader<metaDataOptionsQuery>(AppQuery, null);
 
   // We want to focus on the input onload
   useEffect(() => {
@@ -90,8 +101,10 @@ export const MetaDataOptionsSelector = ({ optionSelected }: MetaDataOptionsSelec
   const refetch = useCallback(
     (searchTerm: string) => {
       setQuery(searchTerm);
-      const variables: skillOptionsQuery$variables = {
+      const variables: metaDataOptionsQuery$variables = {
         nameStartingWith: searchTerm,
+        type: metaDataType,
+        tenantId: tenantId,
       };
       // Load the query again using the same original variables.
       // Calling loadQuery will update the value of queryRef.
