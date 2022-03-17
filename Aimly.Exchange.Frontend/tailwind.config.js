@@ -27,5 +27,8 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    // This is added so that we can style articles made from a content editor
+    // https://tailwindcss.com/docs/typography-plugin
+    require('@tailwindcss/typography'),
   ],
 }

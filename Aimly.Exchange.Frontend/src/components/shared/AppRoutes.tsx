@@ -48,6 +48,9 @@ const TheSolution = lazy(() => import('components/for-startups/profile/edit/3-Th
 const Potential = lazy(() => import('components/for-startups/profile/edit/4-Potential'));
 const Customise = lazy(() => import('components/for-startups/profile/edit/5-Customise'));
 
+// Author
+const ContentEdit = lazy(() => import('components/author/ContentEdit'));
+
 export interface RouteItem {
   // The relative path for the route
   path: string;
@@ -58,6 +61,11 @@ export interface RouteItem {
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard },
   // { path: '/login', element: <GoDashboard />, page: Pages.Login },
+
+  // General pages
+  { path: '/help', element: <Help />, page: Pages.Help },
+  { path: '/settings', element: <Settings />, page: Pages.Settings },
+  { path: '*', element: <PageNotFound />, page: Pages.PageNotFound },
 
   // Market search
   { path: '/market', element: <MarketStartups />, page: Pages.Market },
@@ -130,9 +138,8 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/for-startups/profile/edit/Potential', element: <Potential />, page: Pages.Potential },
   { path: '/for-startups/profile/edit/Customise', element: <Customise />, page: Pages.Customise },
 
-  { path: '/help', element: <Help />, page: Pages.Help },
-  { path: '/settings', element: <Settings />, page: Pages.Settings },
-  { path: '*', element: <PageNotFound />, page: Pages.PageNotFound },
+  // Author
+  { path: '/author/edit', element: <ContentEdit />, page: Pages.ContentEdit },
 ];
 
 // Returns the path for a given

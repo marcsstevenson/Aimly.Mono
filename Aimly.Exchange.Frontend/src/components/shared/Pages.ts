@@ -34,6 +34,7 @@ enum Pages {
   TheSolution,
   Potential,
   Customise,
+  ContentEdit,
 }
 
 export default Pages;
