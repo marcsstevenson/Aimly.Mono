@@ -1,4 +1,4 @@
-import { ProfileTypeOption } from '__generated__/profileSearchQuery.graphql';
+import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
 import { getStartupEditUrl } from 'components/for-startups/UrlBuilder';
 import { getPersonalProfileEditUrl, getMentorProfileEditUrl, getExpertProfileEditUrl } from 'components/profiles/UrlBuilder';
 

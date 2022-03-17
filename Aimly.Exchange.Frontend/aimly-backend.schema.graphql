@@ -417,20 +417,6 @@ input NotesForCompanyCommandInput {
   afterDateTime: DateTime!
 }
 
-input ProfileSearchCommandInput {
-  userId: UUID!
-  typesFilter: [ProfileTypeOption!]
-}
-
-type ProfileSearchResult {
-  id: UUID!
-  name: String
-  profilePictureUrl: String
-  language: String
-  description: String
-  type: ProfileTypeOption!
-}
-
 enum ProfileTypeOption {
   PERSONAL
   STARTUP
@@ -441,7 +427,6 @@ enum ProfileTypeOption {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
-  profileSearch(command: ProfileSearchCommandInput): [ProfileSearchResult]
   getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]

@@ -1,9 +1,5 @@
-import React, { useContext, useMemo } from 'react';
-import { ProfileTypeOption } from '__generated__/profileSearchQuery.graphql';
-
+import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
 import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/solid';
-
-// : JSX.Element
 
 export const getIconForProfileTypeOptionType = (type: ProfileTypeOption) => {
   switch (type) {

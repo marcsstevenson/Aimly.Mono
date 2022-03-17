@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ProfileTypeOption } from '__generated__/profileSearchQuery.graphql';
 import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/solid';
 import { getUrlForProfileTypeOptionType } from 'components/shared/UrlForProfileTypeOptionType';
+import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
 
 export interface ProfileSearchResult {
   readonly profileId: any;
