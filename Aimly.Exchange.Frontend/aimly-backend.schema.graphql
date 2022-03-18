@@ -97,6 +97,12 @@ input AuthProfileInput {
   sub: String
 }
 
+type DashboardModel {
+  newPersonalProfiles: [MarketSearchResult]
+  newCompanyProfiles: [MarketSearchResult]
+  newUpdates: [UpdateModel]
+}
+
 """The `DateTime` scalar represents an ISO-8601 compliant date time type."""
 scalar DateTime
 
@@ -442,6 +448,7 @@ type Query {
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
   getViewExpertProfile(profileId: UUID!): ViewTalentProfileModel
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
+  dashboard(userId: UUID!): DashboardModel
   getViewCompanyProfile(companyProfileId: UUID!): ViewCompanyProfileModel
 }
 
@@ -504,6 +511,13 @@ input SetTheSolutionCommandInput {
 
 type SetTheSolutionResponse {
   updatedCompanyProfileId: UUID!
+}
+
+type UpdateModel {
+  title: String
+  image: String
+  content: String
+  created: DateTime!
 }
 
 input UserSearchCommandInput {
