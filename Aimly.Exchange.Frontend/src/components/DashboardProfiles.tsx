@@ -3,7 +3,7 @@
 import React from 'react';
 
 import MarketGridResult from 'components/market/MarketGridResult';
-import { AssociatedProfilesSet } from 'components/market/ViewProfileInterfaces';
+import { AssociatedProfilesSet } from 'components/market/view/ViewProfileInterfaces';
 
 const ViewAssociatedProfiles = ({ label, profiles }: AssociatedProfilesSet) => {
   return (

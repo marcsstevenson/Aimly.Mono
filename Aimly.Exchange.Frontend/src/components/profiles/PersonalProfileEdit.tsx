@@ -21,7 +21,6 @@ import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
 import { PersonalProfileExperienceList } from 'components/profiles/PersonalProfileExperienceList';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { MetaDataOptionsSelector } from 'components/shared/MetaDataOptionsSelector';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);

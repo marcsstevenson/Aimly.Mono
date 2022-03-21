@@ -7,7 +7,7 @@ import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { classNames } from 'utils/classNames';
 import { NavLink } from 'react-router-dom';
-import { getUrlForViewProfile } from 'components/shared/UrlForViewProfile';
+import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 
 export interface Props {
   result: MarketSearchResult | null | undefined;

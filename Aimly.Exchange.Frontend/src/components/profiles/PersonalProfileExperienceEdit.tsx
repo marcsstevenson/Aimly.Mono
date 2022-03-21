@@ -111,9 +111,6 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                   >
                     {title}
                   </Dialog.Title>
-                  {/* <div className="mt-2">
-                    <p className="text-sm text-gray-700 dark:text-gray-200">{props.Message}</p>
-                  </div> */}
                 </div>
               </div>
 

@@ -4,11 +4,11 @@
 import React from 'react';
 
 import TopGraphic from 'components/shared/TopGraphic';
-import ViewProfileHeader from 'components/market/ViewProfileHeader';
-import ViewAssociatedProfiles from 'components/market/ViewAssociatedProfiles';
-import ViewProfileLongFormElements from 'components/market/ViewProfileLongFormElements';
-import { ViewProfileProps } from 'components/market/ViewProfileInterfaces';
-import ViewExperienceList from 'components/market/ViewExperienceList';
+import ViewProfileHeader from 'components/market/view/ViewProfileHeader';
+import ViewAssociatedProfiles from 'components/market/view/ViewAssociatedProfiles';
+import ViewProfileLongFormElements from 'components/market/view/ViewProfileLongFormElements';
+import { ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
+import ViewExperienceList from 'components/market/view/ViewExperienceList';
 
 interface props {
   model: ViewProfileProps;
@@ -25,6 +25,8 @@ const ViewProfile = ({ model }: props) => {
           <div className="overflow-hidden rounded-lg bg-white drop-shadow-lg dark:bg-gray-800">
             <div className="grid grid-cols-6 space-y-12 p-6">
               <ViewProfileHeader
+                profileId={model.profileId}
+                profileType={model.profileType}
                 addressCity={model.addressCity}
                 addressRegion={model.addressRegion}
                 addressCountry={model.addressCountry}

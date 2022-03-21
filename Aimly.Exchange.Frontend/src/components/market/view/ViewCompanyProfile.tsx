@@ -4,8 +4,9 @@ import React, { useMemo } from 'react';
 import * as ViewCompanyProfileQuery from '__generated__/getViewCompanyProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
-import { LongFormElement, ViewProfileProps } from 'components/market/ViewProfileInterfaces';
-import ViewProfile from 'components/market/ViewProfile';
+import { LongFormElement, ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
+import ViewProfile from 'components/market/view/ViewProfile';
+import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 
 const ViewCompanyProfile = () => {
   // Read the Id from the route context
@@ -46,6 +47,8 @@ const ViewCompanyProfile = () => {
     // Copy values from the model to a model for the ViewProfile component
     const viewProfileProps = Object.assign(
       {
+        profileId: model?.id ?? '',
+        profileType: 'STARTUP' as ProfileTypeOption,
         name: model?.companyName,
         skills: null, // Now skills for company profiles
         title: 'Company Profile',

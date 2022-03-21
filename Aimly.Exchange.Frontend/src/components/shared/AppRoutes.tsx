@@ -7,7 +7,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
-import { profileId } from 'components/shared/UrlConstants';
+import { profileId, profileType } from 'components/shared/UrlConstants';
 import { LoadingArea } from 'components/shared/LoadingArea';
 
 // import ExternalApi from 'components/ExternalApi';
@@ -28,10 +28,13 @@ const MarketExpert = lazy(() => import('components/market/MarketExpert'));
 const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
 
 // View Profiles
-const ViewCompanyProfile = lazy(() => import('components/market/ViewCompanyProfile'));
-const ViewPersonalProfile = lazy(() => import('components/market/ViewPersonalProfile'));
-const ViewMentorProfile = lazy(() => import('components/market/ViewMentorProfile'));
-const ViewExpertProfile = lazy(() => import('components/market/ViewExpertProfile'));
+const ViewCompanyProfile = lazy(() => import('components/market/view/ViewCompanyProfile'));
+const ViewPersonalProfile = lazy(() => import('components/market/view/ViewPersonalProfile'));
+const ViewMentorProfile = lazy(() => import('components/market/view/ViewMentorProfile'));
+const ViewExpertProfile = lazy(() => import('components/market/view/ViewExpertProfile'));
+
+// Contact
+// const MarketContact = lazy(() => import('components/market/MarketContact'));
 
 // Edit Profiles
 const Profiles = lazy(() => import('components/profiles/Profiles'));
@@ -95,6 +98,13 @@ export const PrivateRoutes: RouteItem[] = [
     element: <ViewExpertProfile />,
     page: Pages.MarketViewExpertProfile,
   },
+
+  // Contact
+  // {
+  //   path: `/market/market-contact/:${profileType}/:${profileId}`,
+  //   element: <MarketContact />,
+  //   page: Pages.MarketContact,
+  // },
 
   // My profiles
   { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },

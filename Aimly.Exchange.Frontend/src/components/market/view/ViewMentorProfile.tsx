@@ -9,9 +9,9 @@ import {
   AssociatedProfilesSet,
   LongFormElement,
   ViewProfileProps,
-} from 'components/market/ViewProfileInterfaces';
-import ViewProfile from 'components/market/ViewProfile';
-import { MarketSearchResult } from './MarketSearchResultsProps';
+} from 'components/market/view/ViewProfileInterfaces';
+import ViewProfile from 'components/market/view/ViewProfile';
+import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 
 const ViewMentorProfile = () => {
   // Read the Id from the route context
@@ -78,6 +78,8 @@ const ViewMentorProfile = () => {
     // Copy values from the model to a model for the ViewProfile component
     const viewProfileProps = Object.assign(
       {
+        profileId: model?.id ?? '',
+        profileType: 'MENTOR' as ProfileTypeOption,
         name: model?.name,
         subTitle: model?.name,
         title: 'Mentor Profile',

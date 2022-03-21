@@ -3,8 +3,11 @@
 
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
+import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 
 export interface ViewProfileHeaderProps {
+  readonly profileId: string;
+  readonly profileType: ProfileTypeOption;
   readonly name: string | null | undefined;
   readonly subTitle: string | null | undefined;
   readonly profilePictureUrl: string | null | undefined;

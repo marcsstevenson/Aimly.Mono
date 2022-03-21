@@ -1,9 +1,9 @@
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import Pages from 'components/shared/Pages';
 import { GetPathForPage } from 'components/shared/AppRoutes';
-import { profileId } from 'components/shared/UrlConstants';
+import { profileId, profileType } from 'components/shared/UrlConstants';
 
-const build = (page: Pages, id: string): string => {
+export const buildForProfileId = (page: Pages, id: string): string => {
   return GetPathForPage(page).replace(`:${profileId}`, id);
 }
 
@@ -29,5 +29,10 @@ export const getUrlForViewProfile = (type: ProfileTypeOption, id: string): strin
       break;
   }
 
-  return build(page, id);
+  return buildForProfileId(page, id);
+};
+
+// Returns the URL to view a given profile type and id
+export const getUrlForContactProfile = (type: ProfileTypeOption, id: string): string => {
+  return buildForProfileId(Pages.MarketContact, id).replace(`:${profileType}`, type);
 };

@@ -20,6 +20,9 @@ enum Pages {
   MarketViewExpertProfile,
   MarketViewPersonalProfile,
 
+  // Contact
+  MarketContact,
+
   MyProfiles, // The place to add, edit, remove profiles for startups, mentors, etc
   Help,
   PersonalProfileEdit,

@@ -16,7 +16,7 @@ export const MetaDataList = ({ dataList, allowEdit, deleteTrigger }: Props) => {
           .map((item, index) => (
             <span
               key={index}
-              className="bg-secondary-700 mr-1 mt-2 inline-flex cursor-default items-center rounded-full py-1 px-1 text-sm font-medium text-gray-200"
+              className="bg-primary-700 mr-1 mt-2 inline-flex cursor-default items-center rounded-full py-1 px-1 text-sm font-medium text-gray-200"
             >
               <span className={classNames(allowEdit ? 'pl-2.5' : 'px-2.5')}>{item}</span>
               {allowEdit && (
@@ -25,7 +25,7 @@ export const MetaDataList = ({ dataList, allowEdit, deleteTrigger }: Props) => {
                   onClick={() => {
                     if (item !== null) deleteTrigger(item);
                   }}
-                  className="text-secondary-400 hover:bg-secondary-200 hover:text-secondary-500 focus:bg-secondary-500 ml-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full focus:text-white focus:outline-none"
+                  className="text-primary-400 hover:bg-primary-200 hover:text-primary-500 focus:bg-primary-500 ml-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full focus:text-white focus:outline-none"
                 >
                   <span className="sr-only">Remove</span>
                   <svg className="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
@@ -36,7 +36,7 @@ export const MetaDataList = ({ dataList, allowEdit, deleteTrigger }: Props) => {
             </span>
             // <div
             //   key={index}
-            //   className="bg-secondary-600 mt-2 rounded-full py-1 px-3 text-center text-white"
+            //   className="bg-primary-600 mt-2 rounded-full py-1 px-3 text-center text-white"
             // >
             //   {item}
             // </div>

@@ -8,8 +8,9 @@ import {
   AssociatedProfilesSet,
   LongFormElement,
   ViewProfileProps,
-} from 'components/market/ViewProfileInterfaces';
-import ViewProfile from 'components/market/ViewProfile';
+} from 'components/market/view/ViewProfileInterfaces';
+import ViewProfile from 'components/market/view/ViewProfile';
+import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 
 const ViewPersonalProfile = () => {
   // Read the Id from the route context
@@ -72,6 +73,8 @@ const ViewPersonalProfile = () => {
     // Copy values from the model to a model for the ViewProfile component
     const viewProfileProps = Object.assign(
       {
+        profileId: model?.id ?? '',
+        profileType: 'PERSONAL' as ProfileTypeOption,
         name: model?.fullName,
         title: 'Personal Profile',
         subTitle: null,
