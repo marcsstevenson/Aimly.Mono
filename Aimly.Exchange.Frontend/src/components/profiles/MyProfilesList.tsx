@@ -8,14 +8,12 @@ import MyProfileItem from './MyProfileItem';
 const MyProfilesList = () => {
   const { userId } = useContext(PrivateContext);
 
-  const myProfilesVariables = {
-    userId: userId,
-  };
-
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<myProfilesQuery>(
     node,
-    myProfilesVariables,
+    {
+      userId: userId,
+    },
     // Ideally we could use commitLocalUpdate to update the relay cache when setAboutYouMutation is called
     // However, for now, we'll simply always refresh this query when the component is mounted
     {

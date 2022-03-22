@@ -1,24 +1,21 @@
 // The purpose of this component is to display header detail for a profile
 
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/view/ViewProfileInterfaces';
 import { MetaDataList } from 'components/shared/MetaDataList';
-import { Link } from 'react-router-dom';
-import Pages from 'components/shared/Pages';
-import { GetPathForPage } from 'components/shared/AppRoutes';
 import { ChatIcon } from '@heroicons/react/outline';
-import { getUrlForContactProfile } from 'components/market/view/UrlForViewProfile';
+// import { getUrlForContactProfile } from 'components/market/view/UrlForViewProfile';
 import MarketContact from 'components/market/MarketContact';
 
 const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
   const [showContact, setShowContact] = useState(false);
-  const urlForContactProfile = useMemo(
-    () => getUrlForContactProfile(props.profileType, props.profileId),
-    [props.profileId, props.profileType]
-  );
+  // const urlForContactProfile = useMemo(
+  //   () => getUrlForContactProfile(props.profileType, props.profileId),
+  //   [props.profileId, props.profileType]
+  // );
 
   return (
     <>
@@ -79,16 +76,17 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
             <MetaDataList dataList={props.skills} allowEdit={false} deleteTrigger={() => {}} />
           </div>
         )}
-        <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
-          <button
-            // to={{ pathname: urlForContactProfile }}
-            onClick={() => setShowContact(true)}
-            className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
-          >
-            Contact
-            <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
-          </button>
-        </div>
+        {props.allowContact && (
+          <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
+            <button
+              onClick={() => setShowContact(true)}
+              className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
+            >
+              Contact
+              <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+        )}
       </div>
       <div className="col-span-8 border-b border-gray-200 dark:border-gray-500"></div>
     </>

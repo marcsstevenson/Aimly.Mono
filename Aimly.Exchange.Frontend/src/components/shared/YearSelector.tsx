@@ -1,10 +1,10 @@
 // The purpose of this component is to provide a list of year options for the user to select from.
 // Goes back 100 years
 
-import React, { useMemo, useState } from 'react';
-import { useField } from 'formik';
-import { ComboboxOption, GenericCombobox } from 'components/shared/GenericCombobox';
+import React, { useMemo } from 'react';
+import { ComboboxOption } from 'components/shared/GenericCombobox';
 import { FormikProps } from 'components/shared/FormikProps';
+import { GenericComboboxWrapper } from 'components/shared/GenericComboboxWrapper';
 
 const endYear = new Date().getFullYear() + 1; // Allow a little editing for anticipated experience (eg, during late December)
 const startYear = endYear - 101; // Goes back 100 years
@@ -14,34 +14,17 @@ export const YearSelector = ({
   // form,
   ...props
 }: FormikProps<number>) => {
-  const comboboxOptions = useMemo<ComboboxOption[]>(() => {
+  const comboboxOptions = useMemo<ComboboxOption<number>[]>(() => {
     let workingYear = endYear;
     var years = [];
     while (workingYear >= startYear) {
       years.push(workingYear--);
     }
 
-    return years.map((m) => {
-      return { id: m, name: m.toString() };
+    return years.map((y, i) => {
+      return { id: i, value: y, label: y.toString() };
     });
   }, []);
 
-  const [field, state, { setValue }] = useField<number>(props.field.name);
-
-  const [selectedOption, setSelectedOption] = useState<ComboboxOption>(
-    comboboxOptions.find((option) => state.initialValue === option.id) ?? comboboxOptions[0]
-  );
-
-  const onChange = (option: ComboboxOption) => {
-    setValue(option.id);
-    setSelectedOption(option);
-  };
-
-  return (
-    <GenericCombobox
-      options={comboboxOptions}
-      initiallySelected={selectedOption}
-      onChange={onChange}
-    />
-  );
+  return <GenericComboboxWrapper comboboxOptions={comboboxOptions} {...props} />;
 };

@@ -37,6 +37,7 @@ const ViewProfile = ({ model }: props) => {
                 profilePictureUrl={model.profilePictureUrl}
                 profilePictureRound={model.profilePictureRound}
                 website={model.website}
+                allowContact={model.allowContact}
               />
 
               {/* Long form elements */}

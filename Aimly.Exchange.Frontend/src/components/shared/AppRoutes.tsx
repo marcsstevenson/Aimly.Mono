@@ -37,7 +37,7 @@ const ViewExpertProfile = lazy(() => import('components/market/view/ViewExpertPr
 // const MarketContact = lazy(() => import('components/market/MarketContact'));
 
 // Edit Profiles
-const Profiles = lazy(() => import('components/profiles/Profiles'));
+const Profiles = lazy(() => import('components/profiles/MyProfiles'));
 const PersonalProfileEdit = lazy(() => import('components/profiles/PersonalProfileEdit'));
 const MentorProfileNew = lazy(() => import('components/profiles/MentorProfileNew'));
 const MentorProfileEdit = lazy(() => import('components/profiles/MentorProfileEdit'));

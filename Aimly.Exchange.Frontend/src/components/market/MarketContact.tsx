@@ -16,8 +16,11 @@ import {
 } from '__generated__/useMarketContactMutation.graphql';
 import useMarketContactMutation from 'useMarketContact';
 import { BudgetOptions } from 'components/shared/BudgetOptions';
-import { ComboboxOption, GenericCombobox2 } from 'components/shared/GenericCombobox2';
+import { ComboboxOption, GenericCombobox } from 'components/shared/GenericCombobox';
 import { GenericComboboxWrapper } from 'components/shared/GenericComboboxWrapper';
+import { myProfilesQuery, default as node } from '__generated__/myProfilesQuery.graphql';
+import { useLazyLoadQuery } from 'react-relay/hooks';
+import { notEmpty } from 'utils/NotEmpty';
 
 interface Props {
   show: boolean;
@@ -33,11 +36,17 @@ interface modelType extends MarketContactModelInput {
   agreed: boolean;
 }
 
+interface ProfileDetails {
+  readonly id: any;
+  readonly profileId: any;
+  readonly name: string | null;
+  readonly type: ProfileTypeOption;
+}
+
 const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
   // const [open, setOpen] = useState(true);
   const { userId } = useContext(PrivateContext);
-  const [working, setWorking] = useState(false);
-  // const [agreed, setAgreed] = useState(false);
+  // const [working, setWorking] = useState(false);
   const MarketContact = useMarketContactMutation();
   let model = useMemo<modelType>(() => {
     return {
@@ -56,13 +65,40 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
     return ['', ...BudgetOptions].map((option, i) => ({ id: i, value: option, label: option }));
   }, []);
 
+  // Lazy load this query because it is only relevant to this component
+  const myProfilesData = useLazyLoadQuery<myProfilesQuery>(node, {
+    userId: userId,
+  });
+
+  const profileComboboxOptions = useMemo<ComboboxOption<ProfileDetails>[]>(() => {
+    return (myProfilesData?.myProfiles ? myProfilesData.myProfiles?.filter(notEmpty) : [])
+      .filter(notEmpty)
+      .map((option, i) => ({
+        id: i,
+        value: option,
+        label: `${option.type} - ${option?.name}`,
+      }));
+  }, [myProfilesData.myProfiles]);
+
   const cancelButtonRef = useRef(null);
 
   const onSubmit = (model: MarketContactModelInput) => {
-    console.log('projectBudget', model.projectBudget);
+    // console.log('projectBudget', model.projectBudget);
     // setWorking(true);
-    // handleSave(model);
+
+    // Use the selected profile
+    if (selectedProfileOption) {
+      model.fromProfileId = selectedProfileOption.value.profileId;
+      model.fromProfileType = selectedProfileOption.value.type;
+    }
+
+    handleSave(model);
   };
+
+  const [selectedProfileOption, setSelectedProfileOption] =
+    useState<ComboboxOption<ProfileDetails> | null>(
+      profileComboboxOptions && profileComboboxOptions.length > 0 ? profileComboboxOptions[0] : null
+    );
 
   const handleSave = useCallback(
     (marketContactModelInput: MarketContactModelInput) => {
@@ -77,9 +113,16 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
     marketContactModel: MarketContactModelInput,
     response: useMarketContactMutation$data
   ): void => {
-    setWorking(false);
+    // setWorking(false);
     onDone();
   };
+
+  //profileCombobox
+
+  // const profileComboboxOnChange = (option: ComboboxOption<ProfileDetails>) => {
+  //   setValue(option.value);
+  //   setSelectedOption(option);
+  //   };
 
   return (
     <Transition.Root show={show} as={Fragment}>
@@ -155,7 +198,6 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
                             id="servicesNeeded"
                             as="textarea"
                             rows={8}
-                            placeholder=""
                             validate={validateRequiredString}
                             className={errors.servicesNeeded ? 'form-input-error' : 'form-input'}
                           />
@@ -168,7 +210,7 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
 
                       <div className="sm:col-span-3">
                         <label htmlFor="projectBudget" className="form-label">
-                          Project Budget (US$)
+                          Project Budget (US$) *
                         </label>
                         <div className="mt-1">
                           <Field
@@ -177,12 +219,30 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
                             id="projectBudget"
                             name="projectBudget"
                             validate={validateRequiredString}
-                            className={errors.projectBudget ? 'form-input-error' : 'form-input'}
+                            className={errors.projectBudget ? 'form-input-error' : ''}
                           />
                         </div>
                         {errors.projectBudget && touched.projectBudget && (
                           <div className="form-input-validation">{errors.projectBudget}</div>
                         )}
+                      </div>
+                      <div className="sm:col-span-6">
+                        <label htmlFor="comments" className="form-label">
+                          Your Related Profile
+                        </label>
+                        <div className="mt-1">
+                          <GenericCombobox
+                            options={profileComboboxOptions}
+                            initiallySelected={selectedProfileOption}
+                            onChange={(option) => {
+                              setSelectedProfileOption(option);
+                            }}
+                          />
+                        </div>
+                        <p className="form-input-comments">
+                          Your message will include a link to this profile for context and to
+                          expedite a discussion.
+                        </p>
                       </div>
                       <div className="sm:col-span-6">
                         <label htmlFor="comments" className="form-label">
@@ -215,7 +275,7 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
                           />
                           <label
                             htmlFor="agreed"
-                            className="ml-3 text-sm text-gray-500 dark:text-gray-300"
+                            className="ml-3 text-sm text-gray-700 dark:text-gray-100"
                           >
                             I acknowledge and agree that my profile information will be included
                             with this message (but limited to what can usually be displayed on the
@@ -232,7 +292,7 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
                       <button
                         type="submit"
                         className="disabled:bg-secondary-300 bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                        disabled={working || isValidating}
+                        disabled={isValidating || isSubmitting}
                       >
                         Send
                         <ChatIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -242,7 +302,7 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
                         className="focus:ring-secondary-500 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:text-gray-400 disabled:hover:bg-white sm:mt-0 sm:w-auto sm:text-sm"
                         onClick={() => onDone()}
                         ref={cancelButtonRef}
-                        disabled={working || isValidating}
+                        disabled={isValidating || isSubmitting}
                       >
                         Cancel
                       </button>

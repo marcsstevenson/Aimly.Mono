@@ -18,6 +18,7 @@ export interface ViewProfileHeaderProps {
   readonly addressCountry: string | null;
   readonly industries: ReadonlyArray<string | null> | null;
   readonly skills: ReadonlyArray<string | null> | null;
+  readonly allowContact: boolean;
 }
 export interface LongFormElement {
   readonly label: string;

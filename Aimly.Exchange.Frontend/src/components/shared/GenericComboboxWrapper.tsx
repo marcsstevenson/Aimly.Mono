@@ -2,14 +2,16 @@
 
 import React, { useState } from 'react';
 import { useField } from 'formik';
-import { ComboboxOption, GenericCombobox2 } from 'components/shared/GenericCombobox2';
+import { ComboboxOption, GenericCombobox } from 'components/shared/GenericCombobox';
 import { FormikProps } from 'components/shared/FormikProps';
 
-interface Props<T> extends FormikProps<T> {
+interface GenericComboboxWrapperProps<T> extends FormikProps<T> {
   comboboxOptions: ComboboxOption<T>[];
 }
 
-export const GenericComboboxWrapper = <T extends unknown>({ ...props }: Props<T>) => {
+export const GenericComboboxWrapper = <T extends unknown>({
+  ...props
+}: GenericComboboxWrapperProps<T>) => {
   const comboboxOptions = props.comboboxOptions;
 
   const [field, state, { setValue }] = useField<T>(props.field.name);
@@ -24,7 +26,7 @@ export const GenericComboboxWrapper = <T extends unknown>({ ...props }: Props<T>
   };
 
   return (
-    <GenericCombobox2
+    <GenericCombobox
       options={comboboxOptions}
       initiallySelected={selectedOption}
       onChange={onChange}

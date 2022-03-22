@@ -33,6 +33,6 @@ export const getUrlForViewProfile = (type: ProfileTypeOption, id: string): strin
 };
 
 // Returns the URL to view a given profile type and id
-export const getUrlForContactProfile = (type: ProfileTypeOption, id: string): string => {
-  return buildForProfileId(Pages.MarketContact, id).replace(`:${profileType}`, type);
-};
+// export const getUrlForContactProfile = (type: ProfileTypeOption, id: string): string => {
+//   return buildForProfileId(Pages.MarketContact, id).replace(`:${profileType}`, type);
+// };

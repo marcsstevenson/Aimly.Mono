@@ -92,6 +92,7 @@ const ViewExpertProfile = () => {
         profilePictureUrl: model?.parentProfile?.profilePictureUrl,
         profilePictureRound: true,
         employmentExperience: model?.parentProfile?.employmentExperience,
+        allowContact: true,
       },
       model // Copy all other properties that don't need manual mapping
     );

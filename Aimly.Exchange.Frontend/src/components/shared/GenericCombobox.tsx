@@ -6,42 +6,54 @@ import { classNames } from 'utils/classNames';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { Combobox } from '@headlessui/react';
 
-export interface ComboboxOption {
+export interface ComboboxOption<T> {
+  // An index for the option. Should be unique.
   id: number;
-  name: string;
+
+  // The value to select
+  value: T;
+
+  // A human readable label for the option
+  label: string;
+
+  imageUrl?: string;
 }
 
-export interface Props {
+export interface Props<T> {
   // A list of options to choose from
-  options: ComboboxOption[];
+  options: ComboboxOption<T>[];
 
   // An initially selected option
-  initiallySelected: ComboboxOption | null;
+  initiallySelected: ComboboxOption<T> | null;
 
-  onChange: (option: ComboboxOption) => void;
+  onChange?: (option: ComboboxOption<T>) => void;
 }
 
-export const GenericCombobox = ({ options, initiallySelected, onChange }: Props) => {
+export const GenericCombobox = <T extends unknown>({
+  options,
+  initiallySelected,
+  onChange,
+}: Props<T>) => {
   const [query, setQuery] = useState<string>('');
 
-  const filteredComboboxOptions = useMemo<ComboboxOption[]>(() => {
+  const filteredComboboxOptions = useMemo<ComboboxOption<T>[]>(() => {
     return query === ''
       ? options
       : options.filter((option) => {
-          return option.name.toLowerCase().includes(query.toLowerCase());
+          return option.label.toLowerCase().includes(query.toLowerCase());
         });
   }, [options, query]);
 
-  const onItemSelected = (comboboxOption: ComboboxOption) => {
+  const onItemSelected = (comboboxOption: ComboboxOption<T>) => {
     // Map from optionType[] to string[]
     // setValue(comboboxOption.id);
     setSelectedComboboxOption(comboboxOption);
 
     // Bubble up
-    onChange(comboboxOption);
+    if (onChange) onChange(comboboxOption);
   };
 
-  const [selectedComboboxOption, setSelectedComboboxOption] = useState<ComboboxOption>(
+  const [selectedComboboxOption, setSelectedComboboxOption] = useState<ComboboxOption<T>>(
     options.find((option) => initiallySelected?.id === option.id) ?? options[0]
   );
 
@@ -51,7 +63,7 @@ export const GenericCombobox = ({ options, initiallySelected, onChange }: Props)
         <Combobox.Input
           className="default-combo"
           onChange={(event) => setQuery(event.target.value)}
-          displayValue={(comboboxOption: ComboboxOption) => comboboxOption.name}
+          displayValue={(comboboxOption: ComboboxOption<T>) => comboboxOption.label}
         />
         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
           <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -75,7 +87,14 @@ export const GenericCombobox = ({ options, initiallySelected, onChange }: Props)
                 {({ active, selected }) => (
                   <>
                     <span className={classNames('block truncate', selected ? 'font-semibold' : '')}>
-                      {comboboxOption.name}
+                      {comboboxOption.imageUrl && (
+                        <img
+                          src="https://media-exp1.licdn.com/dms/image/C5603AQElIHFv1TDw_g/profile-displayphoto-shrink_800_800/0/1571008226920?e=1651708800&v=beta&t=cMucYzgnnS1BGsa2-ndIDEoP6_9_FL5aXDde226wqEs"
+                          alt=""
+                          className="h-6 w-6 flex-shrink-0 rounded-full"
+                        />
+                      )}
+                      {comboboxOption.label}
                     </span>
 
                     {selected && (
