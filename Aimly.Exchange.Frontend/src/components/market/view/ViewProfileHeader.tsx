@@ -7,15 +7,10 @@ import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/view/ViewProfileInterfaces';
 import { MetaDataList } from 'components/shared/MetaDataList';
 import { ChatIcon } from '@heroicons/react/outline';
-// import { getUrlForContactProfile } from 'components/market/view/UrlForViewProfile';
 import MarketContact from 'components/market/MarketContact';
 
 const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
   const [showContact, setShowContact] = useState(false);
-  // const urlForContactProfile = useMemo(
-  //   () => getUrlForContactProfile(props.profileType, props.profileId),
-  //   [props.profileId, props.profileType]
-  // );
 
   return (
     <>
@@ -76,7 +71,8 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
             <MetaDataList dataList={props.skills} allowEdit={false} deleteTrigger={() => {}} />
           </div>
         )}
-        {props.allowContact && (
+        {/* Disabled until the server side messaging is in place to handle these requests */}
+        {props.allowContact && false && (
           <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
             <button
               onClick={() => setShowContact(true)}

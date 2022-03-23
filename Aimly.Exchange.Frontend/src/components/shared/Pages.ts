@@ -23,6 +23,9 @@ enum Pages {
   // Contact
   // MarketContact,
 
+  // Messaging
+  MessagesHome,
+
   MyProfiles, // The place to add, edit, remove profiles for startups, mentors, etc
   Help,
   PersonalProfileEdit,

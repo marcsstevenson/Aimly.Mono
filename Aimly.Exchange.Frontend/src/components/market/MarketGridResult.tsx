@@ -49,12 +49,11 @@ const MarketGridResult = ({ result, index }: Props) => {
           <dl className="mt-1 flex flex-grow flex-col justify-between">
             <dt className="sr-only">Title</dt>
             <dd className="text-sm text-gray-500 dark:text-gray-400">{result?.description}</dd>
-            <dt className="sr-only">Role</dt>
-            <dd className="mt-3">
+            {/* <dd className="mt-3">
               <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
                 Active
               </span>
-            </dd>
+            </dd> */}
           </dl>
         </div>
         {/* <div>

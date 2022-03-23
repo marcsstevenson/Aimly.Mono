@@ -36,6 +36,9 @@ const ViewExpertProfile = lazy(() => import('components/market/view/ViewExpertPr
 // Contact
 // const MarketContact = lazy(() => import('components/market/MarketContact'));
 
+// Messaing
+const MessagesHome = lazy(() => import('components/messaging/MessagesHome'));
+
 // Edit Profiles
 const Profiles = lazy(() => import('components/profiles/MyProfiles'));
 const PersonalProfileEdit = lazy(() => import('components/profiles/PersonalProfileEdit'));
@@ -105,6 +108,9 @@ export const PrivateRoutes: RouteItem[] = [
   //   element: <MarketContact />,
   //   page: Pages.MarketContact,
   // },
+
+  // Messaing
+  { path: '/messages', element: <MessagesHome />, page: Pages.MessagesHome },
 
   // My profiles
   { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },
