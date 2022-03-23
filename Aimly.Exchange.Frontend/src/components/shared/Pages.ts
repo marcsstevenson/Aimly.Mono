@@ -4,6 +4,8 @@ enum Pages {
   Login,
   PageNotFound,
 
+  AcceptInvite,
+
   // Private
   DashBoard,
 

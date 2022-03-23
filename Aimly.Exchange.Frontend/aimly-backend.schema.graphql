@@ -356,6 +356,17 @@ input GetTheSolutionModelInput {
   externalFunding: String
 }
 
+input InviteCommandInput {
+  userId: UUID!
+  inviteCode: String
+  associationName: String
+}
+
+type InviteResponse {
+  success: Boolean!
+  companyName: String
+}
+
 input MarketContactModelInput {
   fromProfileId: UUID
   fromProfileType: ProfileTypeOption
@@ -407,6 +418,7 @@ type Mutation {
   deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   marketContact(userId: UUID!, marketContactModel: MarketContactModelInput): MarketContactResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
+  acceptInvite(input: InviteCommandInput): InviteResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse

@@ -20,6 +20,7 @@ import DashBoard from 'components/DashBoard';
 const Help = lazy(() => import('components/Help'));
 const Settings = lazy(() => import('components/Settings'));
 const PageNotFound = lazy(() => import('components/PageNotFound'));
+const AcceptInvite = lazy(() => import('components/AcceptInvite'));
 
 // Market search
 const MarketStartups = lazy(() => import('components/market/MarketStartups'));
@@ -36,7 +37,7 @@ const ViewExpertProfile = lazy(() => import('components/market/view/ViewExpertPr
 // Contact
 // const MarketContact = lazy(() => import('components/market/MarketContact'));
 
-// Messaing
+// Messaging
 const MessagesHome = lazy(() => import('components/messaging/MessagesHome'));
 
 // Edit Profiles
@@ -71,6 +72,7 @@ export const PrivateRoutes: RouteItem[] = [
   // General pages
   { path: '/help', element: <Help />, page: Pages.Help },
   { path: '/settings', element: <Settings />, page: Pages.Settings },
+  { path: '/accept-invite', element: <AcceptInvite />, page: Pages.AcceptInvite },
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound },
 
   // Market search
