@@ -1,4 +1,4 @@
-import { Auth0ProviderOptions } from "@auth0/auth0-react";
+import { Auth0ProviderOptions } from '@auth0/auth0-react';
 
 /**
  * Auth configuration
@@ -34,6 +34,12 @@ interface IConfig {
    * eg, https://api.aimly.io/graphql/
    */
   exchangeApiUri: string;
+
+  /**
+   * This is Id of the application for our
+   * SendBird integration
+   */
+  sendBirdAppId: string;
 }
 
 /**
@@ -44,11 +50,12 @@ export function getConfig(): IConfig {
   // Return from the environment variables
   return {
     Auth: {
-      domain: getFromEnvOrThrow("OAUTH_DOMAIN"),
-      clientId: getFromEnvOrThrow("OAUTH_CLIENT_ID"),
-      exchangeApiAudience: getFromEnv("OAUTH_EXCHANGE_API_AUDIENCE"),
+      domain: getFromEnvOrThrow('OAUTH_DOMAIN'),
+      clientId: getFromEnvOrThrow('OAUTH_CLIENT_ID'),
+      exchangeApiAudience: getFromEnv('OAUTH_EXCHANGE_API_AUDIENCE'),
     },
-    exchangeApiUri: getFromEnvOrThrow("EXCHANGE_API_URI"),
+    exchangeApiUri: getFromEnvOrThrow('EXCHANGE_API_URI'),
+    sendBirdAppId: getFromEnvOrThrow('SENDBIRD_APP_ID'),
   };
 }
 

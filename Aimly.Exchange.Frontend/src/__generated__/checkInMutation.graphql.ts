@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<89fa238714b17df07ec6e1bb33df3531>>
+ * @generated SignedSource<<6214040f810d1042a03e12da796f0c6d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -26,7 +26,10 @@ export type checkInMutation$variables = {
 };
 export type checkInMutationVariables = checkInMutation$variables;
 export type checkInMutation$data = {
-  readonly checkIn: any;
+  readonly checkIn2: {
+    readonly userId: any;
+    readonly publicId: any;
+  } | null;
 };
 export type checkInMutationResponse = checkInMutation$data;
 export type checkInMutation = {
@@ -52,8 +55,26 @@ v1 = [
         "variableName": "input"
       }
     ],
-    "kind": "ScalarField",
-    "name": "checkIn",
+    "concreteType": "CheckInResponse",
+    "kind": "LinkedField",
+    "name": "checkIn2",
+    "plural": false,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "publicId",
+        "storageKey": null
+      }
+    ],
     "storageKey": null
   }
 ];
@@ -75,16 +96,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "96bd0cd783620afd9fab1424eac37e34",
+    "cacheID": "744c49a9327d342952b4f21ad67d74a3",
     "id": null,
     "metadata": {},
     "name": "checkInMutation",
     "operationKind": "mutation",
-    "text": "mutation checkInMutation(\n  $input: AuthProfileInput\n) {\n  checkIn(input: $input)\n}\n"
+    "text": "mutation checkInMutation(\n  $input: AuthProfileInput\n) {\n  checkIn2(input: $input) {\n    userId\n    publicId\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ead6c0fb18dbe8c2f3ae4cbcdadbf14d";
+(node as any).hash = "f8306798872f7afb51c20538b7f6259c";
 
 export default node;

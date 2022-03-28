@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 
 interface ThemeContextType {
   theme: ThemeOption;
+  isDark: boolean;
   requestThemeChange: (themeOption: ThemeOption) => void;
 }
 
@@ -19,6 +20,8 @@ export enum ThemeOption {
 
 export const ThemeProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState<ThemeOption>(ThemeOption.system);
+  const [isDark, setIsDark] = useState<boolean>(false);
+
   const themeStorageItemName = 'color-theme';
 
   /// We need to ensure that the root element of the window has
@@ -41,6 +44,8 @@ export const ThemeProvider = ({ children }: Props) => {
       // Only remove if needed
       if (root.classList.contains(darkClass)) root.classList.remove(darkClass);
     }
+
+    setIsDark(isDark); // Save this to state for other components that need to know
   };
 
   const persistThemeOption = (themeOption: ThemeOption) => {
@@ -94,6 +99,8 @@ export const ThemeProvider = ({ children }: Props) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, requestThemeChange }}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, isDark, requestThemeChange }}>
+      {children}
+    </ThemeContext.Provider>
   );
 };

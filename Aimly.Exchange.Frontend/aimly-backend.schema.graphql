@@ -97,6 +97,11 @@ input AuthProfileInput {
   sub: String
 }
 
+type CheckInResponse {
+  userId: UUID!
+  publicId: UUID!
+}
+
 type DashboardModel {
   newPersonalProfiles: [MarketSearchResult]
   newCompanyProfiles: [MarketSearchResult]
@@ -411,7 +416,13 @@ type Mutation {
   Takes an auth profile model and either creates a user if unknown or updates a
   user if already known. The Id of the user is then returned.
   """
-  checkIn(input: AuthProfileInput): UUID!
+  checkIn(input: AuthProfileInput): UUID! @deprecated(reason: "See CheckIn2")
+
+  """
+  Takes an auth profile model and either creates a user if unknown or updates a
+  user if already known. The Id of the user is then returned.
+  """
+  checkIn2(input: AuthProfileInput): CheckInResponse
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
   accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
   setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse

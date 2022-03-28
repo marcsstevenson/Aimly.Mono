@@ -6,21 +6,23 @@ export interface PrivateContextType {
   // (note: this is set in one component and used in another, hence the need for parent state to link)
   isSidebarOpen: boolean;
   // Open or close the sidebar
-  setSidebarOpen:(isSidebarOpen: boolean) => void
+  setSidebarOpen: (isSidebarOpen: boolean) => void
   // The auth profile of the user
   user: User | null | undefined;
   // The Id of the user within the backend database
-  userId: string | null
+  userId: string | null;
+  publicId: string | null;
   // Check in the user with their Id
-  checkInUser:(userId: string) => void
+  checkInUser: (userId: string) => void;
 }
 
 export const PrivateContext = createContext<PrivateContextType>({
   isSidebarOpen: false,
-  setSidebarOpen: (isSidebarOpen: boolean) => {},
+  setSidebarOpen: (isSidebarOpen: boolean) => { },
   user: null,
   userId: null,
-  checkInUser: (userId: string) => {},
+  publicId: null,
+  checkInUser: (userId: string) => { },
 });
 
 // export const PrivateContext = createContext(null);

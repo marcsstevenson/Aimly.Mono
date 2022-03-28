@@ -1986,6 +1986,17 @@ p {
   min-height: 0px;
 }
 
+.min-h-fit {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
+.min-h-max {
+  min-height: -webkit-max-content;
+  min-height: max-content;
+}
+
 .w-6 {
   width: 1.5rem;
 }

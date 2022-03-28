@@ -14,9 +14,10 @@ const PrivateShell = (): JSX.Element => {
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [publicId, setPublicId] = useState<string | null>(null);
 
   // const [checkInMutation] = useCheckInMutation();
-  const { checkIn, checkedInUserId } = useCheckInMutation2();
+  const { checkIn, checkedInModel } = useCheckInMutation2();
 
   const location = useLocation();
 
@@ -32,6 +33,7 @@ const PrivateShell = (): JSX.Element => {
     setSidebarOpen: setSidebarOpen,
     user: user,
     userId: userId,
+    publicId: publicId,
     checkInUser: setUserId,
   };
 
@@ -43,9 +45,11 @@ const PrivateShell = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    console.log(checkedInUserId);
-    setUserId(checkedInUserId);
-  }, [checkedInUserId]);
+    if (checkedInModel) {
+      setUserId(checkedInModel.userId);
+      setPublicId(checkedInModel.publicId);
+    }
+  }, [checkedInModel]);
 
   if (error) {
     return <div>Oops... {error.message}</div>;
