@@ -1,8 +1,7 @@
-import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import useRelayEnvironment from 'useRelayEnvironment';
-import Footer from 'components/Footer';
 import ErrorBoundary from 'ErrorBoundary';
 import { LoadingArea } from 'components/shared/LoadingArea';
 import { useAuth0, withAuthenticationRequired, User } from '@auth0/auth0-react';
@@ -30,7 +29,7 @@ const App = (): JSX.Element => {
               {user && <PrivateShell />}
             </RelayEnvironmentProvider>
           </Suspense>
-          {error ? <div>Oops... {error?.message}</div> : <Footer />}
+          {error?.message ?? <div>Oops... {error?.message}</div>}
         </div>
       </ErrorBoundary>
     </BrowserRouter>

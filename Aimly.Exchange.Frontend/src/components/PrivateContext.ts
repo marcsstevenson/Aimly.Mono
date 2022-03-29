@@ -7,6 +7,9 @@ export interface PrivateContextType {
   isSidebarOpen: boolean;
   // Open or close the sidebar
   setSidebarOpen: (isSidebarOpen: boolean) => void
+  // If we are to display the footer
+  showFooter: boolean;
+  setShowFooter: (showFooter: boolean) => void
   // The auth profile of the user
   user: User | null | undefined;
   // The Id of the user within the backend database
@@ -19,6 +22,8 @@ export interface PrivateContextType {
 export const PrivateContext = createContext<PrivateContextType>({
   isSidebarOpen: false,
   setSidebarOpen: (isSidebarOpen: boolean) => { },
+  showFooter: true,
+  setShowFooter: (showFooter: boolean) => { },
   user: null,
   userId: null,
   publicId: null,

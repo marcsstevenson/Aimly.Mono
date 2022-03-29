@@ -187,3 +187,9 @@ body {
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+/* This is a quick override because we don't want to display
+ the user's Id within SendBird messaging */
+.sendbird-channel-header__title__right__user-id {
+  display: none !important;
+}

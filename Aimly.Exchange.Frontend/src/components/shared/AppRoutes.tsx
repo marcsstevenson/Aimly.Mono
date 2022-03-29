@@ -7,7 +7,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
-import { profileId, profileType } from 'components/shared/UrlConstants';
+import { profileId } from 'components/shared/UrlConstants';
 import { LoadingArea } from 'components/shared/LoadingArea';
 
 // import ExternalApi from 'components/ExternalApi';
@@ -63,45 +63,60 @@ export interface RouteItem {
   path: string;
   page: Pages;
   element: JSX.Element;
+  footer: boolean;
 }
 
 export const PrivateRoutes: RouteItem[] = [
-  { path: '/', element: <DashBoard />, page: Pages.DashBoard },
+  { path: '/', element: <DashBoard />, page: Pages.DashBoard, footer: true },
   // { path: '/login', element: <GoDashboard />, page: Pages.Login },
 
   // General pages
-  { path: '/help', element: <Help />, page: Pages.Help },
-  { path: '/settings', element: <Settings />, page: Pages.Settings },
-  { path: '/accept-invite', element: <AcceptInvite />, page: Pages.AcceptInvite },
-  { path: '*', element: <PageNotFound />, page: Pages.PageNotFound },
+  { path: '/help', element: <Help />, page: Pages.Help, footer: true },
+  { path: '/settings', element: <Settings />, page: Pages.Settings, footer: true },
+  { path: '/accept-invite', element: <AcceptInvite />, page: Pages.AcceptInvite, footer: true },
+  { path: '*', element: <PageNotFound />, page: Pages.PageNotFound, footer: true },
 
   // Market search
-  { path: '/market', element: <MarketStartups />, page: Pages.Market },
-  { path: '/market/start-ups', element: <MarketStartups />, page: Pages.MarketStartups },
-  { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors },
-  { path: '/market/experts', element: <MarketExpert />, page: Pages.MarketExperts },
-  { path: '/market/community', element: <MarketCommunity />, page: Pages.MarketCommunity },
+  { path: '/market', element: <MarketStartups />, page: Pages.Market, footer: true },
+  {
+    path: '/market/start-ups',
+    element: <MarketStartups />,
+    page: Pages.MarketStartups,
+    footer: true,
+  },
+  { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors, footer: true },
+  { path: '/market/experts', element: <MarketExpert />, page: Pages.MarketExperts, footer: true },
+  {
+    path: '/market/community',
+    element: <MarketCommunity />,
+    page: Pages.MarketCommunity,
+    footer: true,
+  },
 
   // View public profiles on market
   {
     path: `/market/company-profile/:${profileId}`,
     element: <ViewCompanyProfile />,
     page: Pages.MarketViewCompanyProfile,
+    footer: true,
   },
   {
     path: `/market/personal-profile/:${profileId}`,
     element: <ViewPersonalProfile />,
     page: Pages.MarketViewPersonalProfile,
+    footer: true,
   },
   {
     path: `/market/mentor-profile/:${profileId}`,
     element: <ViewMentorProfile />,
     page: Pages.MarketViewMentorProfile,
+    footer: true,
   },
   {
     path: `/market/expert-profile/:${profileId}`,
     element: <ViewExpertProfile />,
     page: Pages.MarketViewExpertProfile,
+    footer: true,
   },
 
   // Contact
@@ -111,53 +126,75 @@ export const PrivateRoutes: RouteItem[] = [
   //   page: Pages.MarketContact,
   // },
 
-  // Messaing
-  { path: '/messages', element: <MessagesHome />, page: Pages.MessagesHome },
+  // Messaging - NOTE: No footer
+  { path: '/messages', element: <MessagesHome />, page: Pages.MessagesHome, footer: false },
 
   // My profiles
-  { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles },
+  { path: '/my-profiles', element: <Profiles />, page: Pages.MyProfiles, footer: true },
   {
     path: '/my-profiles/personal-profile-edit',
     element: <PersonalProfileEdit />,
     page: Pages.PersonalProfileEdit,
+    footer: true,
   },
   {
     path: '/my-profiles/mentor-profile-new',
     element: <MentorProfileNew />,
     page: Pages.MentorProfileNew,
+    footer: true,
   },
   {
     path: '/my-profiles/mentor-profile-edit',
     element: <MentorProfileEdit />,
     page: Pages.MentorProfileEdit,
+    footer: true,
   },
   {
     path: '/my-profiles/expert-profile-new',
     element: <ExpertProfileNew />,
     page: Pages.ExpertProfileNew,
+    footer: true,
   },
   {
     path: '/my-profiles/expert-profile-edit',
     element: <ExpertProfileEdit />,
     page: Pages.ExpertProfileEdit,
+    footer: true,
   },
   // { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },
-  { path: '/for-startups/profile/edit/AboutYou', element: <AboutYou />, page: Pages.AboutYou },
+  {
+    path: '/for-startups/profile/edit/AboutYou',
+    element: <AboutYou />,
+    page: Pages.AboutYou,
+    footer: true,
+  },
   {
     path: '/for-startups/profile/edit/TheProblem',
     element: <TheProblem />,
     page: Pages.TheProblem,
+    footer: true,
   },
   {
     path: '/for-startups/profile/edit/TheSolution',
     element: <TheSolution />,
     page: Pages.TheSolution,
+    footer: true,
   },
-  { path: '/for-startups/profile/edit/Potential', element: <Potential />, page: Pages.Potential },
-  { path: '/for-startups/profile/edit/Customise', element: <Customise />, page: Pages.Customise },
+  {
+    path: '/for-startups/profile/edit/Potential',
+    element: <Potential />,
+    page: Pages.Potential,
+    footer: true,
+  },
+  {
+    path: '/for-startups/profile/edit/Customise',
+    element: <Customise />,
+    page: Pages.Customise,
+    footer: true,
+  },
 
   // Author
-  { path: '/author/edit', element: <ContentEdit />, page: Pages.ContentEdit },
+  { path: '/author/edit', element: <ContentEdit />, page: Pages.ContentEdit, footer: true },
 ];
 
 // Returns the path for a given
@@ -184,4 +221,17 @@ export const GetPrivateRoutes = (): JSX.Element => {
       </Routes>
     </Suspense>
   );
+};
+
+export const GetRouteItemForPath = (path: string): RouteItem | null => {
+  let match: RouteItem | null | undefined = null;
+
+  // Try the private routes first
+  match = PrivateRoutes.find((route) => route.path === path);
+
+  if (match) return match;
+
+  // throw new Error(`No path found for page: ${page}`);
+  console.log(`No RouteItem found for path: ${path}`);
+  return null;
 };
