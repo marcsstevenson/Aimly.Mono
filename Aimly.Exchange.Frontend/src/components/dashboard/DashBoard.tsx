@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import DashBoardHeader from 'components/DashBoardHeader';
-import DashBoardWelcome from 'components/DashBoardWelcome';
-import DashBoardUpdates from 'components/DashBoardUpdates';
+import DashBoardHeader from 'components/dashboard/DashBoardHeader';
+import DashBoardWelcome from 'components/dashboard/DashBoardWelcome';
+import DashBoardUpdates from 'components/dashboard/DashBoardUpdates';
 import * as DashboardQuery from '__generated__/dashboardQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { PrivateContext } from 'components/PrivateContext';
-import DashboardProfiles from 'components/DashboardProfiles';
+import DashboardProfiles from 'components/dashboard/DashboardProfiles';
 
 interface update {
   readonly title: string | null;

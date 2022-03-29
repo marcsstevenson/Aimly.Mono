@@ -2,7 +2,6 @@
 
 import React, { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
-// import './DashBoardUpdate.css';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import Pages from 'components/shared/Pages';
 

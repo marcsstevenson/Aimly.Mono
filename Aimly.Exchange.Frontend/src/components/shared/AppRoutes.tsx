@@ -14,7 +14,7 @@ import { LoadingArea } from 'components/shared/LoadingArea';
 // import GoDashboard from 'components/GoDashboard';
 
 // Always load pages
-import DashBoard from 'components/DashBoard';
+import DashBoard from 'components/dashboard/DashBoard';
 
 // General pages
 const Help = lazy(() => import('components/Help'));
