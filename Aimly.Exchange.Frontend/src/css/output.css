@@ -1993,6 +1993,10 @@ p {
   height: 90vh;
 }
 
+.h-20v {
+  height: 20vh;
+}
+
 .max-h-60 {
   max-height: 15rem;
 }
