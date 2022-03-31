@@ -5,6 +5,8 @@ export const checkInMutation = graphql`
     checkIn2(input: $input){
       userId
       publicId
+      fullName
+      pictureUrl
     }
   }
 `;

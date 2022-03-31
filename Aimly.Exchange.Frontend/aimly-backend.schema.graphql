@@ -100,6 +100,8 @@ input AuthProfileInput {
 type CheckInResponse {
   userId: UUID!
   publicId: UUID!
+  fullName: String
+  pictureUrl: String
 }
 
 type DashboardModel {
@@ -439,6 +441,9 @@ type Mutation {
   deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExperience(userId: UUID!, experienceModel: ExperienceModelInput): SetExperienceResponse
   deleteExperience(userId: UUID!, id: UUID!): DeleteResponse
+
+  """Logs the user into our messaging system"""
+  loginToMessaging(userId: UUID!, model: UserLoginModelInput): UserLoginResponse
 }
 
 type MyProfilesResult {
@@ -556,6 +561,17 @@ type UpdateModel {
   image: String
   content: String
   created: DateTime!
+}
+
+input UserLoginModelInput {
+  publicId: UUID!
+  fullName: String!
+  pictureUrl: String!
+}
+
+type UserLoginResponse {
+  accessToken: String
+  accessTokenExpiry: DateTime!
 }
 
 input UserSearchCommandInput {

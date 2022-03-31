@@ -9,6 +9,7 @@ import {
   UserCircleIcon,
   UserGroupIcon,
   XIcon,
+  ChatIcon,
 } from '@heroicons/react/outline';
 import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -23,6 +24,7 @@ const navigation = [
     current: false,
   },
   { name: 'Market', href: GetPathForPage(Pages.Market), icon: UserGroupIcon, current: false },
+  { name: 'Messages', href: GetPathForPage(Pages.MessagesHome), icon: ChatIcon, current: false },
   // { name: 'History', href: '#', icon: ClockIcon, current: false },
   // { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
   // { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },

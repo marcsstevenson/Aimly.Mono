@@ -2,16 +2,15 @@
 
 import { commitMutation, useRelayEnvironment } from 'react-relay';
 import { useState } from 'react';
-import { checkInMutation, AuthProfileInput } from '__generated__/checkInMutation.graphql';
+import {
+  checkInMutation,
+  AuthProfileInput,
+  checkInMutation$data,
+} from '__generated__/checkInMutation.graphql';
 import { checkInMutation as def } from 'checkInMutation';
 
-interface CheckedInModel {
-  userId: string;
-  publicId: string;
-}
-
 export default function useCheckInMutation2() {
-  const [checkedInModel, setResponse] = useState<CheckedInModel | null>(null);
+  const [checkedInModel, setResponse] = useState<checkInMutation$data | null>(null);
   const environment = useRelayEnvironment();
 
   const checkIn = (input: AuthProfileInput) => {
@@ -19,7 +18,7 @@ export default function useCheckInMutation2() {
       mutation: def,
       variables: { input },
       onCompleted: (response) => {
-        setResponse(response.checkIn2);
+        setResponse(response);
       } /* Mutation completed */,
       onError: (error) => {} /* Mutation errored */,
     });

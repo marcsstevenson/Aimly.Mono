@@ -7,11 +7,12 @@ import { buildSendBirdColourSet } from 'components/messaging/SendBirdColourSet';
 interface SendBirdAppProps {
   appId: string;
   userId: string;
+  accessToken: string;
 }
 
 // The purpose of this component is to wrap the standard SendbirdApp with the
 // required configuration such as appId, userId, theme, colour set and accessToken
-const UncustomisedSendBirdApp = ({ appId, userId }: SendBirdAppProps) => {
+const UncustomisedSendBirdApp = ({ appId, userId, accessToken }: SendBirdAppProps) => {
   const themeContext = useContext(ThemeContext);
 
   const chatTheme = useMemo<'light' | 'dark'>(() => {
@@ -32,7 +33,7 @@ const UncustomisedSendBirdApp = ({ appId, userId }: SendBirdAppProps) => {
     <SendbirdApp
       appId={appId}
       userId={userId}
-      accessToken={'e894c53f40e52e16bbbc49a8e53b339d7d47aa3d'}
+      accessToken={accessToken}
       theme={chatTheme}
       // This is a premium feature
       showSearchIcon={false}

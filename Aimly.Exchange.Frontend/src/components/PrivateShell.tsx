@@ -4,7 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import TopBar from './TopBar';
 import { GetPrivateRoutes, GetRouteItemForPath } from 'components/shared/AppRoutes';
 import SideBar from './SideBar';
-import { PrivateContext, PrivateContextType } from './PrivateContext';
+import { CheckedInUserModel, PrivateContext, PrivateContextType } from './PrivateContext';
 import useCheckInMutation2 from './useCheckInMutation2';
 import { LoadingArea } from 'components/shared/LoadingArea';
 import { useLocation } from 'react-router-dom';
@@ -15,6 +15,8 @@ const PrivateShell = (): JSX.Element => {
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showFooter, setShowFooter] = useState<boolean>(true);
+  const [checkedInUser, setCheckedInUser] = useState<CheckedInUserModel | null>(null);
+  const [messagingAccessToken, setMessagingAccessToken] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [publicId, setPublicId] = useState<string | null>(null);
 
@@ -31,8 +33,6 @@ const PrivateShell = (): JSX.Element => {
     if (routeItem) {
       setShowFooter(routeItem.footer);
     }
-
-    console.log(location);
   }, [location]);
 
   // Instantiate the initial state values
@@ -43,9 +43,12 @@ const PrivateShell = (): JSX.Element => {
     showFooter: showFooter,
     setShowFooter: setShowFooter,
     user: user,
-    userId: userId,
+    userId: checkedInUser?.userId ?? null,
+    checkedInUser: checkedInUser,
     publicId: publicId,
-    checkInUser: setUserId,
+    checkInUser: setCheckedInUser,
+    messagingAccessToken: messagingAccessToken,
+    loginToMessaging: setMessagingAccessToken,
   };
 
   // Check in the user
@@ -58,9 +61,11 @@ const PrivateShell = (): JSX.Element => {
   }, []); // This needs to be empty or it will trigger and infinite checkin loop
 
   useEffect(() => {
-    if (checkedInModel) {
-      setUserId(checkedInModel.userId);
-      setPublicId(checkedInModel.publicId);
+    if (checkedInModel?.checkIn2) {
+      console.log('setting checkedInModel', checkedInModel);
+      setCheckedInUser(checkedInModel.checkIn2);
+      setUserId(checkedInModel.checkIn2.userId);
+      setPublicId(checkedInModel.checkIn2.publicId);
     }
   }, [checkedInModel]);
 
@@ -76,8 +81,10 @@ const PrivateShell = (): JSX.Element => {
 
   return (
     <PrivateContext.Provider value={privateContextValue}>
-      {(!userId || testingCheckIn) && <LoadingArea title="Checking you in..." fullHeight={true} />}
-      {!testingCheckIn && userId && (
+      {(!checkedInUser || testingCheckIn) && (
+        <LoadingArea title="Checking you in..." fullHeight={true} />
+      )}
+      {!testingCheckIn && checkedInUser && (
         <div className="min-h-screen">
           <SideBar />
           <div className="flex min-h-screen flex-1 flex-col lg:pl-64">
