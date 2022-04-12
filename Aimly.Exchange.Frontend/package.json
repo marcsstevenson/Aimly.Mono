@@ -26,6 +26,7 @@
     "@auth0/auth0-react": "^1.9.0",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
+    "@microsoft/signalr": "^6.0.3",
     "@opentelemetry/tracing": "^0.24.0",
     "@tailwindcss/forms": "^0.5.0",
     "@tiptap/extension-image": "^2.0.0-beta.27",

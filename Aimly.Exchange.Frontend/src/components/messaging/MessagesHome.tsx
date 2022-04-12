@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useEffect, useState } from 'react';
+import React, { Suspense, useContext, useEffect } from 'react';
 import 'sendbird-uikit/dist/index.css';
 import { PrivateContext } from 'components/PrivateContext';
 import { getConfig } from 'config';

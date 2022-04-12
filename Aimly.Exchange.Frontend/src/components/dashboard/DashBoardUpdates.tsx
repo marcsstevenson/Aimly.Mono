@@ -37,7 +37,7 @@ const DashBoardUpdates = () => {
               // <div key={i} className="DashBoardUpdateImage flex flex-col space-y-4">
               //   <h2>{update.title}</h2>
               // </div>
-              <div className="relative">
+              <div key={i} className="relative">
                 <div className="absolute inset-x-0 bottom-0 h-1/2" />
                 <div className="mx-auto max-w-7xl">
                   <div className="relative sm:overflow-hidden sm:rounded-2xl">

@@ -28,6 +28,9 @@ export interface PrivateContextType {
   checkInUser: (checkedInUser: CheckedInUserModel) => void;
   messagingAccessToken: string | null;
   loginToMessaging: (accessToken: string) => void;
+
+  totalUnreadMessageCount: number;
+  setTotalUnreadMessageCount: (newValue: number) => void;
 }
 
 export const PrivateContext = createContext<PrivateContextType>({
@@ -42,6 +45,8 @@ export const PrivateContext = createContext<PrivateContextType>({
   checkInUser: (checkedInUser: CheckedInUserModel) => { },
   messagingAccessToken: null,
   loginToMessaging: (userId: string) => { },
+  totalUnreadMessageCount: 0,
+  setTotalUnreadMessageCount: (userId: number) => { },
 });
 
 // export const PrivateContext = createContext(null);

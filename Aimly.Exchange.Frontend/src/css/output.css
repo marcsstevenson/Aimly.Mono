@@ -1938,8 +1938,8 @@ p {
   height: 8rem;
 }
 
-.h-80v {
-  height: 80vh;
+.h-90v {
+  height: 90vh;
 }
 
 .h-3 {
@@ -1972,10 +1972,6 @@ p {
 
 .h-48 {
   height: 12rem;
-}
-
-.h-90v {
-  height: 90vh;
 }
 
 .max-h-60 {
@@ -2930,11 +2926,6 @@ p {
   padding-bottom: 1rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .px-2\.5 {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -2948,6 +2939,11 @@ p {
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .py-10 {
@@ -2968,6 +2964,21 @@ p {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-0\.5 {
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
 }
 
 .pt-10 {
@@ -3122,6 +3133,11 @@ p {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -3130,11 +3146,6 @@ p {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 
 .text-5xl {
@@ -3277,6 +3288,11 @@ p {
   color: rgb(226 232 240 / var(--tw-text-opacity));
 }
 
+.text-secondary-800 {
+  --tw-text-opacity: 1;
+  color: rgb(7 89 133 / var(--tw-text-opacity));
+}
+
 .text-green-400 {
   --tw-text-opacity: 1;
   color: rgb(74 222 128 / var(--tw-text-opacity));
@@ -3345,6 +3361,11 @@ p {
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+.text-validation-800 {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 
 .underline {

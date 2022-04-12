@@ -9,6 +9,7 @@ import useCheckInMutation2 from './useCheckInMutation2';
 import { LoadingArea } from 'components/shared/LoadingArea';
 import { useLocation } from 'react-router-dom';
 import Footer from 'components/Footer';
+import NotificationEventHandler from 'components/notifications/NotificationEventHandler';
 
 const PrivateShell = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0();
@@ -19,6 +20,7 @@ const PrivateShell = (): JSX.Element => {
   const [messagingAccessToken, setMessagingAccessToken] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [publicId, setPublicId] = useState<string | null>(null);
+  const [totalUnreadMessageCount, setTotalUnreadMessageCount] = useState<number>(10);
 
   // const [checkInMutation] = useCheckInMutation();
   const { checkIn, checkedInModel } = useCheckInMutation2();
@@ -49,6 +51,8 @@ const PrivateShell = (): JSX.Element => {
     checkInUser: setCheckedInUser,
     messagingAccessToken: messagingAccessToken,
     loginToMessaging: setMessagingAccessToken,
+    totalUnreadMessageCount: totalUnreadMessageCount,
+    setTotalUnreadMessageCount: setTotalUnreadMessageCount,
   };
 
   // Check in the user
@@ -86,6 +90,7 @@ const PrivateShell = (): JSX.Element => {
       )}
       {!testingCheckIn && checkedInUser && (
         <div className="min-h-screen">
+          <NotificationEventHandler />
           <SideBar />
           <div className="flex min-h-screen flex-1 flex-col lg:pl-64">
             <TopBar />

@@ -15,6 +15,7 @@ import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import TopLeftLogo from 'components/TopLeftLogo';
+import NotificationCounter from 'components/notifications/NotificationCounter';
 const navigation = [
   { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },
   {
@@ -37,7 +38,7 @@ const secondaryNavigation = [
 ];
 
 const SideBar = (): JSX.Element => {
-  const { isSidebarOpen, setSidebarOpen } = useContext(PrivateContext);
+  const { isSidebarOpen, setSidebarOpen, totalUnreadMessageCount } = useContext(PrivateContext);
   const { pathname } = useLocation();
 
   // We want to close the sidebar if the user clicks on a link and navigates to a different page
@@ -110,10 +111,17 @@ const SideBar = (): JSX.Element => {
                       }
                       aria-current={item.current ? 'page' : undefined}
                     >
-                      <item.icon
-                        className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
-                        aria-hidden="true"
-                      />
+                      {item.name === 'Messages' && totalUnreadMessageCount > 0 ? (
+                        <div className="mr-4">
+                          <NotificationCounter count={totalUnreadMessageCount} />
+                        </div>
+                      ) : (
+                        <item.icon
+                          className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
+                          aria-hidden="true"
+                        />
+                      )}
+
                       {item.name}
                     </NavLink>
                   ))}
@@ -170,10 +178,16 @@ const SideBar = (): JSX.Element => {
                   }
                   aria-current={item.current ? 'page' : undefined}
                 >
-                  <item.icon
-                    className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  />
+                  {item.name === 'Messages' && totalUnreadMessageCount > 0 ? (
+                    <div className="mr-4">
+                      <NotificationCounter count={totalUnreadMessageCount} />
+                    </div>
+                  ) : (
+                    <item.icon
+                      className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                  )}
                   {item.name}
                 </NavLink>
               ))}
