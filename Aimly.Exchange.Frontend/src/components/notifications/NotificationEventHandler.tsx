@@ -46,11 +46,6 @@ const NotificationEventHandler = () => {
     }
   }, [connection, setTotalUnreadMessageCount]);
 
-  // const sendMessage = async () => {
-  //   if (connection) await connection.send('SendMessage', inputText);
-  //   setInputText('');
-  // };
-
   return <></>;
 };
 

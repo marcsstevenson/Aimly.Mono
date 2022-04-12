@@ -20,7 +20,7 @@ const PrivateShell = (): JSX.Element => {
   const [messagingAccessToken, setMessagingAccessToken] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [publicId, setPublicId] = useState<string | null>(null);
-  const [totalUnreadMessageCount, setTotalUnreadMessageCount] = useState<number>(10);
+  const [totalUnreadMessageCount, setTotalUnreadMessageCount] = useState<number>(0);
 
   // const [checkInMutation] = useCheckInMutation();
   const { checkIn, checkedInModel } = useCheckInMutation2();
