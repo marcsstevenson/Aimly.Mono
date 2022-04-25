@@ -1,12 +1,11 @@
 resources:
   pipelines:
-    - pipeline: AimlyExchangeFrontend
-      source: AimlyExchangeFrontendBuild
+    - pipeline: AimlyAppXMantra
+      source: AimlyAppXMantraBuild
       trigger:
         branches:
           # - dev # Disabled for now to allow the Aimly release to stay untouched
-          - test
-          - prod
+          - xmantra
 
 # Exclude CI from the repository because we only want to use the resource trigger above
 trigger:
@@ -31,12 +30,12 @@ variables:
   target-resource-group: '$(workspace_name)-$(environment)' # Where the resources will be deployed. Eg, AimlyApp-Catallyze-prod
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
   # targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
-  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
-  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
-  target-storage-account: 'aimlyappcatallyzeprod' # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappxmantraprod
+  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappxmantraprod
+  target-storage-account: 'aimlyappxmantraprod' # Where the resources will be deployed, eg, aimlyappxmantraprod
   # targetcdnendpointraw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
-  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, aimlyappcatallyzestaticprod
-  target-cdn-endpoint: 'aimlyappcatallyzestaticprod' # Eg, aimlyappcatallyzestaticprod
+  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, aimlyappxmantrastaticprod
+  target-cdn-endpoint: 'aimlyappxmantrastaticprod' # Eg, aimlyappxmantrastaticprod
   # targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
   # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, aimlyappsharedprofileprod
   target-cdn-profile: 'aimlyappsharedprofileprod' # Eg, aimlyappsharedprofileprod
@@ -51,7 +50,7 @@ stages:
   - stage: Deploy
     jobs:
       - job: Deploy
-        displayName: Deploy to Blob Storage - aimlyexchangefrontend
+        displayName: Deploy to Blob Storage
         pool:
           vmImage: windows-latest
         steps:
