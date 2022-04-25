@@ -23,7 +23,7 @@ variables:
   company_name: 'Aimly'
   # TODO This should come from environment variables? We still need a different build per tenant :/ eg, Catallyze
   # Maybe read this from a file in the artifacts folder?
-  tenant_name: 'Catallyze'
+  tenant_name: 'XMantra'
   product-name: 'App'
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
