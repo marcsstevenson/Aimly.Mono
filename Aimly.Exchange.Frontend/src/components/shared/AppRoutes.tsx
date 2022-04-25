@@ -213,13 +213,11 @@ export const GetPathForPage = (page: Pages): string => {
 
 export const GetPrivateRoutes = (): JSX.Element => {
   return (
-    <Suspense fallback={<LoadingArea title={'Loading...'} fullHeight={true} />}>
-      <Routes>
-        {PrivateRoutes.map((routeItem) => (
-          <Route key={routeItem.path} path={routeItem.path} element={routeItem.element} />
-        ))}
-      </Routes>
-    </Suspense>
+    <Routes>
+      {PrivateRoutes.map((routeItem) => (
+        <Route key={routeItem.path} path={routeItem.path} element={routeItem.element} />
+      ))}
+    </Routes>
   );
 };
 
