@@ -44,7 +44,7 @@ variables:
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
   shared-key-vault: '$(company_name)-Shared-$(environment)'
   workspace_resource_group: '$(workspace_name)-Shared-$(environment)'
-  artifact-name: 'artifact_$(environment)'
+  artifact-name: 'artifact_xmantra'
 
 stages:
   - stage: Deploy
