@@ -5,6 +5,7 @@ enum Pages {
   PageNotFound,
 
   AcceptInvite,
+  CompanyInvite,
 
   // Private
   DashBoard,

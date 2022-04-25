@@ -15,6 +15,7 @@ import { LoadingArea } from 'components/shared/LoadingArea';
 
 // Always load pages
 import DashBoard from 'components/dashboard/DashBoard';
+import CompanyInvite from 'components/CompanyInvite';
 
 // General pages
 const Help = lazy(() => import('components/Help'));
@@ -74,6 +75,7 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/help', element: <Help />, page: Pages.Help, footer: true },
   { path: '/settings', element: <Settings />, page: Pages.Settings, footer: true },
   { path: '/accept-invite', element: <AcceptInvite />, page: Pages.AcceptInvite, footer: true },
+  { path: '/company-invite', element: <CompanyInvite />, page: Pages.CompanyInvite, footer: true },
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound, footer: true },
 
   // Market search
