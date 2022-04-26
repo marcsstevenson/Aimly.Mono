@@ -2,8 +2,8 @@ import React from 'react';
 
 import MarketSearch from 'components/market/MarketSearch';
 
-const MarketStartups = () => {
+const MarketCompanies = () => {
   return <MarketSearch CurrentProfileType="COMPANY" />;
 };
 
-export default MarketStartups;
+export default MarketCompanies;

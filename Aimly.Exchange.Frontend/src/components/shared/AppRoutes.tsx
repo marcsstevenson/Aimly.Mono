@@ -24,7 +24,7 @@ const PageNotFound = lazy(() => import('components/PageNotFound'));
 const AcceptInvite = lazy(() => import('components/AcceptInvite'));
 
 // Market search
-const MarketStartups = lazy(() => import('components/market/MarketStartups'));
+const MarketCompanies = lazy(() => import('components/market/MarketCompanies'));
 const MarketMentor = lazy(() => import('components/market/MarketMentor'));
 const MarketExpert = lazy(() => import('components/market/MarketExpert'));
 const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
@@ -79,11 +79,18 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound, footer: true },
 
   // Market search
-  { path: '/market', element: <MarketStartups />, page: Pages.Market, footer: true },
+  { path: '/market', element: <MarketCompanies />, page: Pages.Market, footer: true },
+  {
+    path: '/market/companies',
+    element: <MarketCompanies />,
+    page: Pages.MarketCompanies,
+    footer: true,
+  },
+  // 2022.04.26 - Deprecated - Delete this route eventually
   {
     path: '/market/start-ups',
-    element: <MarketStartups />,
-    page: Pages.MarketStartups,
+    element: <MarketCompanies />,
+    page: Pages.MarketCompanies,
     footer: true,
   },
   { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors, footer: true },

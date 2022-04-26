@@ -11,7 +11,7 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
-  { name: 'Startups', page: Pages.MarketStartups },
+  { name: 'Companies', page: Pages.MarketCompanies },
   { name: 'Mentors', page: Pages.MarketMentors },
   { name: 'Experts', page: Pages.MarketExperts },
   { name: 'Community', page: Pages.MarketCommunity },

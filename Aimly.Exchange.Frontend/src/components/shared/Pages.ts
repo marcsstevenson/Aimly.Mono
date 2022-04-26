@@ -12,7 +12,7 @@ enum Pages {
 
   // Market search
   Market,
-  MarketStartups,
+  MarketCompanies,
   MarketMentors,
   MarketExperts,
   MarketCommunity,
