@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2157a2e152da4e6bf13793726dc26a86>>
+ * @generated SignedSource<<b36597f60f7d3c6a09c8864deea6ae9e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "STARTUP" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type MarketContactModelInput = {
   fromProfileId?: any | null;
   fromProfileType?: ProfileTypeOption | null;

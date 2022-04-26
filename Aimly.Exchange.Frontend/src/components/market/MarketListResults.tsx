@@ -6,7 +6,7 @@ import { classNames } from 'utils/classNames';
 
 const MarketListResults = ({ marketSearchResults }: MarketSearchResultsProps) => {
   const getRoundedClassName = useCallback((type: ProfileTypeOption | null | undefined) => {
-    return type === 'STARTUP' ? 'rounded-md' : 'rounded-full';
+    return type === 'COMPANY' ? 'rounded-md' : 'rounded-full';
   }, []);
 
   const onImageError = (ev: any) => {

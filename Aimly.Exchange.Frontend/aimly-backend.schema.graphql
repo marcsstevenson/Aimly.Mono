@@ -161,6 +161,7 @@ type GetAboutYouModel {
   companyProfileId: UUID
   companyProfilePictureUrl: String
   companyName: String
+  type: String
   listOnMarket: Boolean!
   website: String
   numberOfFounders: Int
@@ -189,6 +190,7 @@ input GetAboutYouModelInput {
   companyProfileId: UUID
   companyProfilePictureUrl: String
   companyName: String
+  type: String
   listOnMarket: Boolean!
   website: String
   numberOfFounders: Int
@@ -202,18 +204,6 @@ input GetAboutYouModelInput {
   addressCountry: String
   postalCode: String
   postOfficeBoxNumber: String
-}
-
-type GetAccessResponse {
-  exceptionMessage: String
-  endpointUrl: String
-  identityId: String
-  token: String
-  expiresOn: DateTime!
-}
-
-input GetAccessToMeetingCommandInput {
-  userId: UUID!
 }
 
 type GetExpertProfileModel {
@@ -426,7 +416,9 @@ type Mutation {
   """
   checkIn2(input: AuthProfileInput): CheckInResponse
   addNoteToCompany(input: AddNoteToCompanyCommandInput): UUID
-  accessToMeeting(input: GetAccessToMeetingCommandInput): GetAccessResponse
+
+  """Logs the user into our messaging system"""
+  loginToMessaging(userId: UUID!, model: UserLoginModelInput): UserLoginResponse
   setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   marketContact(userId: UUID!, marketContactModel: MarketContactModelInput): MarketContactResponse
@@ -441,9 +433,6 @@ type Mutation {
   deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExperience(userId: UUID!, experienceModel: ExperienceModelInput): SetExperienceResponse
   deleteExperience(userId: UUID!, id: UUID!): DeleteResponse
-
-  """Logs the user into our messaging system"""
-  loginToMessaging(userId: UUID!, model: UserLoginModelInput): UserLoginResponse
 }
 
 type MyProfilesResult {
@@ -468,7 +457,7 @@ input NotesForCompanyCommandInput {
 
 enum ProfileTypeOption {
   PERSONAL
-  STARTUP
+  COMPANY
   MENTOR
   EXPERT
 }

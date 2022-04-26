@@ -5,7 +5,7 @@ export const getIconForProfileTypeOptionType = (type: ProfileTypeOption) => {
   switch (type) {
     case 'PERSONAL':
       return UserCircleIcon;
-    case 'STARTUP':
+    case 'COMPANY':
       return LightningBoltIcon;
     case 'MENTOR':
       return UserGroupIcon;

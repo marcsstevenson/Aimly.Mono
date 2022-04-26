@@ -32,7 +32,7 @@ const MyProfileItem = (props: Props) => {
     switch (props.item.type) {
       case 'PERSONAL':
         return <UserCircleIcon className={classNames} aria-hidden="true" />;
-      case 'STARTUP':
+      case 'COMPANY':
         return <LightningBoltIcon className={classNames} aria-hidden="true" />;
       case 'MENTOR':
         return <UserGroupIcon className={classNames} aria-hidden="true" />;

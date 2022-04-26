@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<84ab02e8ff234e4f80a015a4f6db5d1a>>
+ * @generated SignedSource<<67f288dc1693c58f7e7051fc75774503>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "STARTUP" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type getViewCompanyProfileQuery$variables = {
   companyProfileId: any;
 };

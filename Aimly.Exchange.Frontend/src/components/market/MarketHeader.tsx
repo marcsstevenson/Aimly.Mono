@@ -13,7 +13,7 @@ export const MarketHeader = ({ CurrentProfileType }: Props) => {
     switch (CurrentProfileType) {
       case 'MENTOR':
         return Pages.MarketMentors;
-      case 'STARTUP':
+      case 'COMPANY':
         return Pages.MarketStartups;
       case 'EXPERT':
         return Pages.MarketExperts;

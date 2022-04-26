@@ -37,7 +37,7 @@ The run it to update the target schema file: get-graphql-schema [OPTIONS] ENDPOI
 
 Eg:
 
-get-graphql-schema http://localhost:7071/api/graphql > aimly-backend.schema.graphql
+get-graphql-schema http://localhost:7071/api/graphqlschema > aimly-backend.schema.graphql
 
 [Refer here](https://www.npmjs.com/package/get-graphql-schema)
 

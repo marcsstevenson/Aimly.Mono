@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d8dfa7f0a6fd3f823b749ca97317430c>>
+ * @generated SignedSource<<6ddfe5339f448508c3015d1dd7a8317e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "STARTUP" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type MarketSearchCommandInput = {
   profileType: ProfileTypeOption;
   searchTerm?: string | null;
