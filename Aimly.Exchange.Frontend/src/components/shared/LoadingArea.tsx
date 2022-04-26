@@ -24,8 +24,12 @@ export const LoadingArea = ({ title, fullHeight }: Props) => (
               {title}
             </h1>
           )}
-          <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-            <img src={loadingImage} alt=""></img>{' '}
+          <div className="mt-10 flex justify-center space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+            <img
+              className="h-72"
+              src="https://aimlyappxmantraprod.blob.core.windows.net/images/X%20Mantra.png?sp=r&st=2022-04-26T20:25:38Z&se=3022-04-27T04:25:38Z&sv=2020-08-04&sr=b&sig=OYuYyH0B2oXJQFNcJcEAll2FEaLKKivdHwxtwklzT1w%3D"
+              alt=""
+            ></img>
           </div>
         </div>
       </main>
