@@ -78,6 +78,7 @@ const AboutYou = () => {
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
     companyProfileId: loadedData?.companyProfileId ?? null,
     companyName: loadedData?.companyName ?? '',
+    type: loadedData?.type ?? '',
     listOnMarket: loadedData?.listOnMarket ?? true,
     companyProfilePictureUrl: loadedData?.companyProfilePictureUrl ?? '',
     website: loadedData?.website ?? '',
@@ -327,7 +328,7 @@ const AboutYou = () => {
                     />
                   </div>
                 </div>
-                <div className="sm:col-span-2">
+                <div className="sm:col-span-3">
                   <label htmlFor="companyName" className="form-label">
                     Company name *
                   </label>
@@ -342,6 +343,22 @@ const AboutYou = () => {
                     />
                     {errors.companyName && touched.companyName && (
                       <div className="form-input-validation">{errors.companyName}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="sm:col-span-3">
+                  <label htmlFor="type" className="form-label">
+                    Company Stage
+                  </label>
+                  <div className="mt-1">
+                    <Field type="text" name="type" as="select" className="form-input">
+                      <option value="Concept">Concept</option>
+                      <option value="Prototype">Prototype</option>
+                      <option value="Venture">Venture</option>
+                      <option value="Enterprise">Enterprise</option>
+                    </Field>
+                    {errors.type && touched.type && (
+                      <div className="form-input-validation">{errors.type}</div>
                     )}
                   </div>
                 </div>

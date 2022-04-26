@@ -15,6 +15,7 @@ import { LoadingArea } from 'components/shared/LoadingArea';
 
 // Always load pages
 import DashBoard from 'components/dashboard/DashBoard';
+import CompanyInvite from 'components/CompanyInvite';
 
 // General pages
 const Help = lazy(() => import('components/Help'));
@@ -23,7 +24,7 @@ const PageNotFound = lazy(() => import('components/PageNotFound'));
 const AcceptInvite = lazy(() => import('components/AcceptInvite'));
 
 // Market search
-const MarketStartups = lazy(() => import('components/market/MarketStartups'));
+const MarketCompanies = lazy(() => import('components/market/MarketCompanies'));
 const MarketMentor = lazy(() => import('components/market/MarketMentor'));
 const MarketExpert = lazy(() => import('components/market/MarketExpert'));
 const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
@@ -74,14 +75,22 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/help', element: <Help />, page: Pages.Help, footer: true },
   { path: '/settings', element: <Settings />, page: Pages.Settings, footer: true },
   { path: '/accept-invite', element: <AcceptInvite />, page: Pages.AcceptInvite, footer: true },
+  { path: '/company-invite', element: <CompanyInvite />, page: Pages.CompanyInvite, footer: true },
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound, footer: true },
 
   // Market search
-  { path: '/market', element: <MarketStartups />, page: Pages.Market, footer: true },
+  { path: '/market', element: <MarketCompanies />, page: Pages.Market, footer: true },
+  {
+    path: '/market/companies',
+    element: <MarketCompanies />,
+    page: Pages.MarketCompanies,
+    footer: true,
+  },
+  // 2022.04.26 - Deprecated - Delete this route eventually
   {
     path: '/market/start-ups',
-    element: <MarketStartups />,
-    page: Pages.MarketStartups,
+    element: <MarketCompanies />,
+    page: Pages.MarketCompanies,
     footer: true,
   },
   { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors, footer: true },
@@ -213,13 +222,11 @@ export const GetPathForPage = (page: Pages): string => {
 
 export const GetPrivateRoutes = (): JSX.Element => {
   return (
-    <Suspense fallback={<LoadingArea title={'Loading...'} fullHeight={true} />}>
-      <Routes>
-        {PrivateRoutes.map((routeItem) => (
-          <Route key={routeItem.path} path={routeItem.path} element={routeItem.element} />
-        ))}
-      </Routes>
-    </Suspense>
+    <Routes>
+      {PrivateRoutes.map((routeItem) => (
+        <Route key={routeItem.path} path={routeItem.path} element={routeItem.element} />
+      ))}
+    </Routes>
   );
 };
 

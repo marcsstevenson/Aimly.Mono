@@ -16,7 +16,7 @@ export interface Props {
 
 const MarketGridResult = ({ result, index }: Props) => {
   const getRoundedClassName = useCallback((type: ProfileTypeOption | null | undefined) => {
-    return type === 'STARTUP' ? 'rounded-md' : 'rounded-full';
+    return type === 'COMPANY' ? 'rounded-md' : 'rounded-full';
   }, []);
 
   const onImageError = (ev: any) => {
@@ -30,7 +30,7 @@ const MarketGridResult = ({ result, index }: Props) => {
     >
       <NavLink
         to={{
-          pathname: getUrlForViewProfile(result?.type ?? 'STARTUP', result?.profileId ?? ''),
+          pathname: getUrlForViewProfile(result?.type ?? 'COMPANY', result?.profileId ?? ''),
         }}
       >
         <div className="flex flex-1 flex-col p-8">

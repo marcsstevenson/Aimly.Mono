@@ -6,7 +6,7 @@ export const getUrlForProfileTypeOptionType = (id: string, name: string | null |
   switch (type) {
     case 'PERSONAL':
       return getPersonalProfileEditUrl();
-    case 'STARTUP':
+    case 'COMPANY':
       return getStartupEditUrl(id, name, promptDelete);
     case 'MENTOR':
       return getMentorProfileEditUrl(id, promptDelete);

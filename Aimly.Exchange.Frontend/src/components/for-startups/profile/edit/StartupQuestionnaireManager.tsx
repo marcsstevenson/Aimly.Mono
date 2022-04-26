@@ -71,7 +71,7 @@ const StartupQuestionnaireManager = ({
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div>
-        <GenericHeader title="Startup Profile Builder" contextVal={null} />
+        <GenericHeader title="Company Profile Builder" contextVal={null} />
         <StartupQuestionnaireSteps currentStep={currentStep}></StartupQuestionnaireSteps>
       </div>
       <div></div>

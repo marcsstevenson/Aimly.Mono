@@ -73,7 +73,7 @@ const Profiles = () => {
               to={{ pathname: GetPathForPage(Pages.AboutYou) }}
               className="bg-secondary-800 hover:bg-secondary-900 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white md:py-4 md:px-10 md:text-lg"
             >
-              Startup
+              Company
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>

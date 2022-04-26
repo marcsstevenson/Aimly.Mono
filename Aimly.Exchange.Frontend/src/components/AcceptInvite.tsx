@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useAcceptInviteMutation$data } from '__generated__/useAcceptInviteMutation.graphql';
-//import type InviteCommandInput from '__generated__/useAcceptInviteMutation.graphql';
 import useAcceptInviteMutation from 'useAcceptInviteMutation';
 import Pages from 'components/shared/Pages';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/PrivateContext';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import { NavLink } from 'react-router-dom';
@@ -17,7 +15,6 @@ const AcceptInvite = () => {
   const [companyName, setCompanyName] = useState<string | null>(null);
   const [failedMessage, setFailedMessage] = useState<string | null>(null);
   const AcceptInvite = useAcceptInviteMutation();
-  const navigateToPage = useNavigateToPage();
 
   useEffect(() => {
     // Get the invite code and the name from query params
@@ -44,30 +41,29 @@ const AcceptInvite = () => {
       setFailedMessage('Processing failed :(');
     }
     setCompleted(true);
-    // navigateToPage(Pages.DashBoard);
   };
 
   return (
     <main>
-      <div className="bg-gray-900 pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14">
+      <div className="pt-10 dark:bg-gray-900 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14">
         <div className="mx-auto max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8">
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
               <div className="lg:py-24">
                 {!completed && (
                   <>
-                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-800 dark:text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                       <span className="block">Processing your</span>
                       <span className="text-secondary-400 block">invite</span>
                     </h1>
-                    <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                    <p className="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                       ...
                     </p>
                   </>
                 )}
                 {completed && success && (
                   <>
-                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-800 dark:text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                       <span className="block">Welcome to</span>
                       <span className="text-secondary-400 block">{companyName}!</span>
                     </h1>
@@ -81,7 +77,7 @@ const AcceptInvite = () => {
                         </NavLink>
                         <NavLink
                           to={{ pathname: GetPathForPage(Pages.Market) }}
-                          className="bg-secondary-500 flex items-center justify-center rounded-md border border-transparent bg-opacity-60 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-opacity-70 sm:px-8"
+                          className="bg-secondary-500 flex items-center justify-center rounded-md border border-transparent bg-opacity-60 px-4 py-3 text-base font-medium text-gray-800 shadow-sm hover:bg-opacity-70 dark:text-white sm:px-8"
                         >
                           Search the market
                         </NavLink>
@@ -91,10 +87,10 @@ const AcceptInvite = () => {
                 )}
                 {completed && !success && (
                   <>
-                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-800 dark:text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                       <span className="block">Oh dear</span>
                     </h1>
-                    <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                    <p className="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                       {failedMessage}
                     </p>
                   </>

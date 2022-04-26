@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3c5b93be64abb3e92121ebebf6a4e028>>
+ * @generated SignedSource<<5b1a5e41e35ecba641e608f42a8b53c8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "STARTUP" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type dashboardQuery$variables = {
   userId: any;
 };

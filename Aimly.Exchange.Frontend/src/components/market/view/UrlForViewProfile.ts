@@ -15,7 +15,7 @@ export const getUrlForViewProfile = (type: ProfileTypeOption, id: string): strin
     case 'PERSONAL':
       page = Pages.MarketViewPersonalProfile;
       break;
-    case 'STARTUP':
+    case 'COMPANY':
       page = Pages.MarketViewCompanyProfile;
       break;
     case 'MENTOR':

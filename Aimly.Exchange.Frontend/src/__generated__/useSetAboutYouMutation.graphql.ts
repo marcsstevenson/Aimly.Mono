@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6c2324d1316eab684b60ebd847792769>>
+ * @generated SignedSource<<d02d219d8734e12dfc4c79dce58e342b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,6 +25,7 @@ export type GetAboutYouModelInput = {
   companyProfileId?: any | null;
   companyProfilePictureUrl?: string | null;
   companyName?: string | null;
+  type?: string | null;
   listOnMarket: boolean;
   website?: string | null;
   numberOfFounders?: number | null;

@@ -1,12 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
+import useLocationQuery from 'components/shared/useLocationQuery';
 
 interface Props {
+  // presetSearchTerm: string;
   onChange: (searchTerm: string) => void;
 }
 
 export const MarketSearchInput = (props: Props) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const locationQuery = useLocationQuery();
+  const searchQueryStringVariable = 's';
+  // Do we have a search param? Use it if yes.
+  const searchQueryStringValue = locationQuery.get(searchQueryStringVariable);
+  const [searchTerm, setSearchTerm] = useState(searchQueryStringValue ?? '');
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Focus the input when the component is mounted

@@ -5,13 +5,14 @@ enum Pages {
   PageNotFound,
 
   AcceptInvite,
+  CompanyInvite,
 
   // Private
   DashBoard,
 
   // Market search
   Market,
-  MarketStartups,
+  MarketCompanies,
   MarketMentors,
   MarketExperts,
   MarketCommunity,
