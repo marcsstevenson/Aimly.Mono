@@ -24,7 +24,7 @@ export const LoadingArea = ({ title, fullHeight }: Props) => (
               {title}
             </h1>
           )}
-          <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+          <div className="mt-10 flex justify-center space-x-3 sm:border-l sm:border-transparent sm:pl-6">
             <img src={loadingImage} alt=""></img>{' '}
           </div>
         </div>

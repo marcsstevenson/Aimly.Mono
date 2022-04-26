@@ -6,7 +6,7 @@ import TopGraphic from 'components/shared/TopGraphic';
 export const Help = () => {
   return (
     <div>
-      <TopGraphic title="Help (work in progress)" context={null} />
+      <TopGraphic title="Help" context={null} />
 
       <main className="relative -mt-32">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
@@ -117,9 +117,8 @@ export const Help = () => {
                     </div>
                     <h3 className="text-lg font-medium text-white">Contact information</h3>
                     <p className="text-secondary-50 mt-6 max-w-3xl text-base">
-                      While we are still in an Alpha phase, we are open to feedback and suggestions
-                      on how we can improve your experience. Please do not hesitate to contact us as
-                      follows.
+                      Please do not hesitate to contact us for help, feedback and suggestions using
+                      this address.
                     </p>
                     <dl className="mt-8 space-y-6">
                       {/* <dt>
