@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GetCurrentTenant } from 'tenant/TenantValue';
+import { GetCurrentTenant } from 'tenant/TenantValues';
 
 // const socialIcons = new Map([
 //   [
