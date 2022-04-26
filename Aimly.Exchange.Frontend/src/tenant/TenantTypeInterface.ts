@@ -13,4 +13,11 @@ export interface TenantType {
   // This is used to alter the tailwind.condig.js file
   // Refer to that for a list of possible values
   secondaryColour: TailwindColourOptions;
+
+  socialLinks: SocialLink[] | null;
+}
+
+export interface SocialLink {
+  type: 'Discord' | 'Facebook' | 'GitHub' |'Instagram' | 'LinkedIn' | 'Twitter';
+  href: string;
 }
