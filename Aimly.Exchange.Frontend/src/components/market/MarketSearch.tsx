@@ -21,6 +21,7 @@ interface Props {
 const MarketSearch = ({ CurrentProfileType }: Props) => {
   const [haveSearchResults, setHaveSearchResults] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
+  const [lastSearchTerm, setLastSearchTerm] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [queryRef, loadQuery] = useQueryLoader<marketSearchQuery>(AppQuery, null);
   const navigate = useNavigate();
@@ -84,20 +85,25 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     [CurrentProfileType, currentPage, refetch, buildVariables, navigate, location.pathname]
   );
 
-  // Just run a full search onload for until the market is too large for this
-  useEffect(() => {
-    handleSearchRequest('');
-  }, [handleSearchRequest]); //locationQuery, handleSearchRequest
-
+  // Just run a full search onload until the market is too large for this
   // useEffect(() => {
-  //   console.log('MarketSearch.useEffect');
-  //   // Do we have a search param? Use it if yes.
-  //   const searchQueryStringValue = locationQuery.get(searchQueryStringVariable);
+  //   handleSearchRequest('');
+  // }, [handleSearchRequest]); //locationQuery, handleSearchRequest
 
-  //   if (searchQueryStringValue) {
-  //     handleSearchRequest(searchQueryStringValue);
-  //   }
-  // }, [locationQuery]); //locationQuery, handleSearchRequest
+  useEffect(() => {
+    console.log('MarketSearch.useEffect');
+    // Do we have a search param? Use it if yes.
+    const searchQueryStringValue = locationQuery.get(searchQueryStringVariable);
+
+    if (searchQueryStringValue && searchQueryStringValue.length > 0) {
+      if (searchQueryStringValue !== searchTerm) {
+        console.log('Search trigger from onload');
+        handleSearchRequest(searchQueryStringValue);
+      }
+    } else {
+      handleSearchRequest('');
+    }
+  }, [locationQuery]); //locationQuery, handleSearchRequest
 
   return (
     <div className="flex-1 pb-8">

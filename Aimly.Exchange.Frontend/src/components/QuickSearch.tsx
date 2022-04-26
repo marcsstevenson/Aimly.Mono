@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Pages from 'components/shared/Pages';
 import { useNavigate } from 'react-router-dom';
 
 import { SearchIcon } from '@heroicons/react/solid';
 import { GetPathForPage } from 'components/shared/AppRoutes';
+import useNavigateToPage from 'components/shared/useNavigateToPage';
 
 const QuickSearch = (): JSX.Element => {
-  const navigate = useNavigate();
-  // let [searchParams, setSearchParams] = useSearchParams();
+  const navigateToPage = useNavigateToPage();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    navigate(GetPathForPage(Pages.Market), {
-      // TODO - link the input to the search params for the market page
-      // search: searchParams,
-    });
+    console.log(event);
+
+    navigateToPage(Pages.Market, `?s=${searchTerm}`);
   };
 
   return (
@@ -39,10 +43,12 @@ const QuickSearch = (): JSX.Element => {
               font-medium leading-5
               text-gray-900 placeholder-gray-500
               shadow-sm
-              focus:outline-none dark:bg-gray-800 dark:focus:bg-white
+              focus:outline-none dark:bg-gray-800
               sm:text-sm"
             placeholder="Search market"
             type="search"
+            value={searchTerm}
+            onChange={handleChange}
           />
         </div>
       </form>
