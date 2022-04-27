@@ -12,7 +12,7 @@ const DashBoardWelcome = () => {
           </div>
           <div className="ml-3">
             <h3 className="text-2xl font-medium text-green-800">
-              Welcome to the Catallyze Exchange!
+              Welcome to the X Mantra Exchange!
             </h3>
             <div className="mt-2 text-sm text-green-700">
               <p>

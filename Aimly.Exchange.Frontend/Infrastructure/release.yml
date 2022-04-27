@@ -4,8 +4,8 @@ resources:
       source: AimlyAppXMantraBuild
       trigger:
         branches:
-          # - dev # Disabled for now to allow the Aimly release to stay untouched
-          - xmantra
+          exclude:
+            - '*'
 
 # Exclude CI from the repository because we only want to use the resource trigger above
 trigger:
@@ -38,7 +38,7 @@ variables:
   target-cdn-endpoint: 'aimlyappxmantrastaticprod' # Eg, aimlyappxmantrastaticprod
   # targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
   # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, aimlyappsharedprofileprod
-  target-cdn-profile: 'aimlyappsharedprofileprod' # Eg, aimlyappsharedprofileprod
+  target-cdn-profile: 'aimlyappxmantrastaticprod' # Eg, aimlyappsharedprofileprod
 
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
