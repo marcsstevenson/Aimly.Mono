@@ -6,6 +6,7 @@ import { PrivateContext } from 'components/PrivateContext';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import { NavLink } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
+import { inviteCodeValue, associationNameValue } from 'components/shared/UrlConstants';
 
 const AcceptInvite = () => {
   const { userId } = useContext(PrivateContext);
@@ -18,8 +19,8 @@ const AcceptInvite = () => {
 
   useEffect(() => {
     // Get the invite code and the name from query params
-    const inviteCode = locationQuery.get('c');
-    const associationName = locationQuery.get('n');
+    const inviteCode = locationQuery.get(inviteCodeValue);
+    const associationName = locationQuery.get(associationNameValue);
 
     if (inviteCode && associationName) {
       AcceptInvite(

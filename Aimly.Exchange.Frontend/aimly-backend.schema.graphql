@@ -485,12 +485,14 @@ type Query {
 }
 
 input SetAboutYouCommandInput {
+  inviteCode: String
   getAboutYouModel: GetAboutYouModelInput
 }
 
 type SetAboutYouResponse {
   updatedPersonalProfileId: UUID!
   updatedCompanyProfileId: UUID!
+  companyProfileShareId: UUID
 }
 
 type SetExperienceResponse {

@@ -27,10 +27,15 @@ export default function useSetAboutYouMutation() {
   const environment = useRelayEnvironment();
 
   const SetAboutYou = (
+    inviteCode: string | null,
     getAboutYouModel: GetAboutYouModelInput,
-    onCompleted: (response: useSetAboutYouMutation$data, companyName: string | null | undefined) => void
+    onCompleted: (
+      response: useSetAboutYouMutation$data,
+      companyName: string | null | undefined
+    ) => void
   ) => {
     const input: SetAboutYouCommandInput = {
+      inviteCode,
       getAboutYouModel,
     };
 

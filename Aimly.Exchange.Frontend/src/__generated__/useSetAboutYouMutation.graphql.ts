@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d02d219d8734e12dfc4c79dce58e342b>>
+ * @generated SignedSource<<c0c623932900918fcf613cef064399a5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,6 +10,7 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetAboutYouCommandInput = {
+  inviteCode?: string | null;
   getAboutYouModel?: GetAboutYouModelInput | null;
 };
 export type GetAboutYouModelInput = {
