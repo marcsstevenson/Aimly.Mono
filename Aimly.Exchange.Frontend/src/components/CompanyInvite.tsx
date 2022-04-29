@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Pages from 'components/shared/Pages';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import { ChevronRightIcon } from '@heroicons/react/solid';
 
 const CompanyInvite = () => {
+  const [searchParams] = useSearchParams();
+
+  const nextUrl = useMemo(() => {
+    // Simply pass along any query string that we have in our URL
+    // This is needed to relay an invite code to AboutYou
+    let queryString = '';
+
+    if (searchParams) {
+      queryString += `?${searchParams}`;
+    }
+
+    return GetPathForPage(Pages.AboutYou) + queryString;
+  }, []);
+
   return (
     <main>
       <div className="pt-10 dark:bg-gray-900 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14">
@@ -22,7 +36,7 @@ const CompanyInvite = () => {
                 <div className="mx-auto mt-10">
                   <div className="space-y-4 sm:mx-auto">
                     <NavLink
-                      to={{ pathname: GetPathForPage(Pages.AboutYou) }}
+                      to={{ pathname: nextUrl }}
                       className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
                     >
                       Continue

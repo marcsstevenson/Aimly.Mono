@@ -32,16 +32,19 @@ import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { LinkIcon } from '@heroicons/react/solid';
+import { inviteCodeValue } from 'components/shared/UrlConstants';
 
 const AboutYou = () => {
   const { user, userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
-  let locationQuery = useLocationQuery();
+  const locationQuery = useLocationQuery();
   const currentStep = 'AboutYou';
   const getAboutYouQueryVariables = {
     id: userId,
     companyProfileId: locationQuery.get(companyProfileId),
   };
+
+  const inviteCode = locationQuery.get(inviteCodeValue);
 
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<GetAboutYouQuery.getAboutYouQuery>(
@@ -65,6 +68,8 @@ const AboutYou = () => {
   );
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const conceptType = 'Concept';
+
   let model: GetAboutYouModelInput = {
     ...data.getAboutYou,
     userId: userId,
@@ -78,7 +83,7 @@ const AboutYou = () => {
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
     companyProfileId: loadedData?.companyProfileId ?? null,
     companyName: loadedData?.companyName ?? '',
-    type: loadedData?.type ?? '',
+    type: loadedData?.type ?? conceptType, // The default
     listOnMarket: loadedData?.listOnMarket ?? true,
     companyProfilePictureUrl: loadedData?.companyProfilePictureUrl ?? '',
     website: loadedData?.website ?? '',
@@ -117,7 +122,7 @@ const AboutYou = () => {
 
   const handleSave = useCallback(
     (getAboutYouModel: GetAboutYouModelInput) => {
-      return SetAboutYou(getAboutYouModel, handleSubmitCompleted);
+      return SetAboutYou(inviteCode, getAboutYouModel, handleSubmitCompleted);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [SetAboutYou]
@@ -352,7 +357,7 @@ const AboutYou = () => {
                   </label>
                   <div className="mt-1">
                     <Field type="text" name="type" as="select" className="form-input">
-                      <option value="Concept">Concept</option>
+                      <option value="Concept">{conceptType}</option>
                       <option value="Prototype">Prototype</option>
                       <option value="Venture">Venture</option>
                       <option value="Enterprise">Enterprise</option>
