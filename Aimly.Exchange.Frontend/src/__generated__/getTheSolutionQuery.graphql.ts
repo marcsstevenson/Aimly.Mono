@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<dc72e57c1a8f9bb04de84a1a3e5d0311>>
+ * @generated SignedSource<<d1c1b65644bb27e2f9ee76b0e376be08>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,6 +19,7 @@ export type getTheSolutionQuery$data = {
     readonly userId: any;
     readonly companyProfileId: any;
     readonly solutionNovelty: string | null;
+    readonly solutionDescription: string | null;
     readonly stateOfValidation: string | null;
     readonly competition: string | null;
     readonly positionVsCompetition: string | null;
@@ -91,6 +92,13 @@ v2 = [
         "args": null,
         "kind": "ScalarField",
         "name": "solutionNovelty",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "solutionDescription",
         "storageKey": null
       },
       {
@@ -177,16 +185,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "1851aee6f742c0f0bd481e73255364e5",
+    "cacheID": "fa32fcb2562c83b50972d7bb01f69069",
     "id": null,
     "metadata": {},
     "name": "getTheSolutionQuery",
     "operationKind": "query",
-    "text": "query getTheSolutionQuery(\n  $id: UUID!\n  $companyProfileId: UUID!\n) {\n  getTheSolution(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    companyProfileId\n    solutionNovelty\n    stateOfValidation\n    competition\n    positionVsCompetition\n    businessModel\n    traction\n    founders\n    currentAnnualRevenue\n    externalFunding\n  }\n}\n"
+    "text": "query getTheSolutionQuery(\n  $id: UUID!\n  $companyProfileId: UUID!\n) {\n  getTheSolution(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    companyProfileId\n    solutionNovelty\n    solutionDescription\n    stateOfValidation\n    competition\n    positionVsCompetition\n    businessModel\n    traction\n    founders\n    currentAnnualRevenue\n    externalFunding\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "a9b8b2f08bcb88807bf085dfd00b91e7";
+(node as any).hash = "c469535ff8ccb2c09563f408ee1acc95";
 
 export default node;

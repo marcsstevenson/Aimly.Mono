@@ -6,6 +6,7 @@ export const getTheSolutionQuery = graphql`
       userId
       companyProfileId
       solutionNovelty
+      solutionDescription
       stateOfValidation
       competition
       positionVsCompetition

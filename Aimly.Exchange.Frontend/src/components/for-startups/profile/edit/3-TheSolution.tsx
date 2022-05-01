@@ -45,6 +45,7 @@ const TheSolution = () => {
     userId: userId,
     companyProfileId: loadedData?.companyProfileId,
     solutionNovelty: loadedData?.solutionNovelty ?? '',
+    solutionDescription: loadedData?.solutionDescription ?? '',
     stateOfValidation: loadedData?.stateOfValidation ?? '',
     competition: loadedData?.competition ?? '',
     positionVsCompetition: loadedData?.positionVsCompetition ?? '',
@@ -104,6 +105,21 @@ const TheSolution = () => {
                       <Field
                         id="solutionNovelty"
                         name="solutionNovelty"
+                        as="textarea"
+                        rows={4}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-6">
+                    <label htmlFor="solutionDescription" className="form-label">
+                      Solution description
+                    </label>
+                    <p className="form-input-description">Describe your solution</p>
+                    <div className="mt-1">
+                      <Field
+                        id="solutionDescription"
+                        name="solutionDescription"
                         as="textarea"
                         rows={4}
                         className="form-input"
