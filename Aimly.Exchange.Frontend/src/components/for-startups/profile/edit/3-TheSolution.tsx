@@ -78,12 +78,13 @@ const TheSolution = () => {
       queryString += `?${searchParams}`;
     }
 
-    navigateToPage(Pages.Potential, queryString);
-  };
-
-  const onFinishHere = () => {
+    // navigateToPage(Pages.Potential, queryString);
     navigateToPage(Pages.MyProfiles);
   };
+
+  // const onFinishHere = () => {
+  //   navigateToPage(Pages.MyProfiles);
+  // };
 
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
@@ -272,20 +273,20 @@ const TheSolution = () => {
 
             <div className="py-5">
               <div className="flex justify-end">
-                <button
+                {/* <button
                   disabled={isSubmitting || isValidating}
                   type="button"
                   className="form-done"
                   onClick={() => onFinishHere()}
                 >
                   Finish here
-                </button>
+                </button> */}
                 <button
                   disabled={isSubmitting || isValidating}
                   type="submit"
                   className="form-next ml-3"
                 >
-                  Next
+                  Complete
                 </button>
               </div>
             </div>

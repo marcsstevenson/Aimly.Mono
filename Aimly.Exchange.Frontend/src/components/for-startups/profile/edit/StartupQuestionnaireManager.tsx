@@ -43,13 +43,13 @@ export const steps: StartupQuestionnaireStepOptions[] = [
     description: 'Your solution to the problem',
     status: StepStatusOptions.Complete,
   },
-  {
-    id: 0,
-    path: '/for-startups/profile/edit/Potential',
-    name: 'Potential',
-    description: 'How big an effect can you have?',
-    status: StepStatusOptions.Complete,
-  },
+  // {
+  //   id: 0,
+  //   path: '/for-startups/profile/edit/Potential',
+  //   name: 'Potential',
+  //   description: 'How big an effect can you have?',
+  //   status: StepStatusOptions.Complete,
+  // },
   // {
   //   id: 0,
   //   path: '/for-startups/profile/edit/Customise',
