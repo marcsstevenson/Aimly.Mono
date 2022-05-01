@@ -27,11 +27,13 @@ const CompanyInvite = () => {
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
               <div className="lg:py-24">
                 <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="text-secondary-400 block">Welcome!</span>
+                  <span className="text-secondary-400 block">
+                    LET'S SCALE AND GROW YOUR BUSINESS TOGETHER
+                  </span>
                 </h1>
                 <p className="mt-10">
-                  You have been invited to create a company profile on the Catallyze exchange.
-                  Please click here to continue.
+                  Please click CONTINUE to begin your application. Once submitted we will contact
+                  you to arrange a time to meet.
                 </p>
                 <div className="mx-auto mt-10">
                   <div className="space-y-4 sm:mx-auto">
@@ -50,8 +52,8 @@ const CompanyInvite = () => {
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
                 <img
                   className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                  src="https://images.unsplash.com/photo-1460467820054-c87ab43e9b59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1367&q=80"
-                  alt=""
+                  src="https://aimlyappcatallyzeprod.blob.core.windows.net/images/CatallyzeInvite.png?sp=r&st=2022-05-01T19:52:11Z&se=3022-05-02T03:52:11Z&sv=2020-08-04&sr=b&sig=bbmZmTuNj28WO4rd4wMRUik%2B01fGXz9724ha5Xtckyg%3D"
+                  alt="Welcome"
                 />
               </div>
             </div>
