@@ -1,6 +1,6 @@
 import graphql from 'babel-plugin-relay/macro';
 
-export const getAboutYouQuery = graphql`
+export const getViewCompanyProfileQuery = graphql`
   query getViewCompanyProfileQuery( $companyProfileId: UUID!) {
     getViewCompanyProfile(companyProfileId: $companyProfileId) {
       id

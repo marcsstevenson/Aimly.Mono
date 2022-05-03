@@ -1660,6 +1660,18 @@ p {
   grid-column: span 6 / span 6;
 }
 
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-10 {
+  grid-column: span 10 / span 10;
+}
+
+.col-start-2 {
+  grid-column-start: 2;
+}
+
 .m-4 {
   margin: 1rem;
 }
@@ -2265,6 +2277,10 @@ p {
           user-select: none;
 }
 
+.snap-end {
+  scroll-snap-align: end;
+}
+
 .grid-flow-row {
   grid-auto-flow: row;
 }
@@ -2279,6 +2295,10 @@ p {
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-cols-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -2299,6 +2319,10 @@ p {
 
 .place-content-center {
   place-content: center;
+}
+
+.place-content-end {
+  place-content: end;
 }
 
 .items-start {
@@ -2327,6 +2351,10 @@ p {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-items-end {
+  justify-items: end;
 }
 
 .gap-6 {
@@ -2447,6 +2475,10 @@ p {
 .divide-primary-900 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(15 23 42 / var(--tw-divide-opacity));
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .justify-self-end {
