@@ -34,7 +34,7 @@ const ViewSharedCompanyProfile = () => {
     <>
       {model && (
         <>
-          <TopGraphic title="Shared Company Profile" context={null} />
+          <TopGraphic title="Shared Company Profile" context={null} showBackButton={true} />
 
           <main className="relative -mt-32">
             <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">

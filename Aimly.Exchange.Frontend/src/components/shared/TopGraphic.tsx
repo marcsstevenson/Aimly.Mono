@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   title: string;
   context: string | null;
+  showBackButton: boolean;
 }
 
-const TopGraphic = ({ title, context }: Props) => {
+const TopGraphic = ({ title, context, showBackButton }: Props) => {
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -61,15 +62,17 @@ const TopGraphic = ({ title, context }: Props) => {
                     </h1>
                   )}
                 </div>
-                <div className="col-span-1 justify-self-end">
-                  <button
-                    type="button"
-                    onClick={goBack}
-                    className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-full border border-transparent p-2 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
-                  >
-                    <XIcon className="h-6 w-6" aria-hidden="true" aria-label="go back" />
-                  </button>
-                </div>
+                {showBackButton && (
+                  <div className="col-span-1 justify-self-end">
+                    <button
+                      type="button"
+                      onClick={goBack}
+                      className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-full border border-transparent p-2 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    >
+                      <XIcon className="h-6 w-6" aria-hidden="true" aria-label="go back" />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </header>

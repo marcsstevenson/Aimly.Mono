@@ -13,7 +13,7 @@ export const Settings = () => {
 
   return (
     <>
-      <TopGraphic title="Settings (work in progress)" context={null} />
+      <TopGraphic title="Settings (work in progress)" context={null} showBackButton={false} />
 
       <main className="relative -mt-32">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
