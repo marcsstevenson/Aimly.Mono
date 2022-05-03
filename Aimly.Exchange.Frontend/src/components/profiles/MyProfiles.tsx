@@ -17,12 +17,6 @@ export interface StatusType {
   classNames: string;
 }
 
-export const statuses: StatusType[] = [
-  { name: 'Success', classNames: 'bg-green-100 text-green-800' },
-  { name: 'Processing', classNames: 'bg-yellow-100 text-yellow-800' },
-  { name: 'Pending', classNames: 'bg-gray-100 text-gray-800' },
-];
-
 const Profiles = () => {
   const { user } = useContext(PrivateContext);
 

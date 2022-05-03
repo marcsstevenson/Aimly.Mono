@@ -465,6 +465,7 @@ enum ProfileTypeOption {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  sharedWithCompanies(userId: UUID!): [MyProfilesResult]
   myProfiles(userId: UUID!): [MyProfilesResult]
   getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
   skillOptions(nameStartingWith: String, tenantId: UUID): [String]

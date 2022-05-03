@@ -1,15 +1,19 @@
 import React, { useContext } from 'react';
 
 import { PrivateContext } from 'components/PrivateContext';
-import { myProfilesQuery, default as node } from '__generated__/myProfilesQuery.graphql';
+import {
+  sharedWithCompaniesQuery,
+  default as node,
+} from '__generated__/sharedWithCompaniesQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import MyProfileItem from 'components/profiles/MyProfileItem';
+import SharedWithProfileItem from 'components/sharing/SharedWithProfileItem';
 
-const MyProfilesList = () => {
+const SharedWithProfilesList = () => {
   const { userId } = useContext(PrivateContext);
 
+  // NOTE: Just companies at time of writing - other profile types to follow
   // Lazy load this query because it is only relevant to this component
-  const data = useLazyLoadQuery<myProfilesQuery>(
+  const data = useLazyLoadQuery<sharedWithCompaniesQuery>(
     node,
     {
       userId: userId,
@@ -23,11 +27,11 @@ const MyProfilesList = () => {
 
   return (
     <>
-      {data.myProfiles?.map((item, index) => (
-        <MyProfileItem key={index} item={item} />
+      {data.sharedWithCompanies?.map((item, index) => (
+        <SharedWithProfileItem key={index} item={item} />
       ))}
     </>
   );
 };
 
-export default MyProfilesList;
+export default SharedWithProfilesList;
