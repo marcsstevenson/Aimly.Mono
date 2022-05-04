@@ -31,11 +31,9 @@ const SharedWithProfilesList = () => {
         {data.sharedWithCompanies?.length} Profile
         {data.sharedWithCompanies?.length !== 1 ? 's' : ''}
       </div>
-      <div>
-        {data.sharedWithCompanies?.map((item, index) => (
-          <SharedWithProfileItem key={index} item={item} />
-        ))}
-      </div>
+      {data.sharedWithCompanies?.map((item, index) => (
+        <SharedWithProfileItem key={index} item={item} />
+      ))}
     </>
   );
 };
