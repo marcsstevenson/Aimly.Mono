@@ -18,7 +18,7 @@ const ViewProfile = ({ model }: props) => {
   console.log(model.website);
   return (
     <>
-      <TopGraphic title={model.title} context={null} />
+      <TopGraphic title={model.title} context={null} showBackButton={true} />
 
       <main className="relative -mt-32">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">

@@ -10,6 +10,7 @@ import {
   UserGroupIcon,
   XIcon,
   ChatIcon,
+  ShareIcon,
 } from '@heroicons/react/outline';
 import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -22,6 +23,12 @@ const navigation = [
     name: 'My Profiles',
     href: GetPathForPage(Pages.MyProfiles),
     icon: UserCircleIcon,
+    current: false,
+  },
+  {
+    name: 'Sharing',
+    href: GetPathForPage(Pages.SharedWithProfiles),
+    icon: ShareIcon,
     current: false,
   },
   { name: 'Market', href: GetPathForPage(Pages.Market), icon: UserGroupIcon, current: false },

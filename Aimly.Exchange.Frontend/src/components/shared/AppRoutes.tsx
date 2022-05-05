@@ -8,7 +8,6 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
 import { profileId } from 'components/shared/UrlConstants';
-import { LoadingArea } from 'components/shared/LoadingArea';
 
 // import ExternalApi from 'components/ExternalApi';
 // import GoDashboard from 'components/GoDashboard';
@@ -34,6 +33,10 @@ const ViewCompanyProfile = lazy(() => import('components/market/view/ViewCompany
 const ViewPersonalProfile = lazy(() => import('components/market/view/ViewPersonalProfile'));
 const ViewMentorProfile = lazy(() => import('components/market/view/ViewMentorProfile'));
 const ViewExpertProfile = lazy(() => import('components/market/view/ViewExpertProfile'));
+
+// Sharing
+const SharedWithProfiles = lazy(() => import('components/sharing/SharedWithProfiles'));
+const ViewSharedCompanyProfile = lazy(() => import('components/sharing/ViewSharedCompanyProfile'));
 
 // Contact
 // const MarketContact = lazy(() => import('components/market/MarketContact'));
@@ -86,13 +89,6 @@ export const PrivateRoutes: RouteItem[] = [
     page: Pages.MarketCompanies,
     footer: true,
   },
-  // 2022.04.26 - Deprecated - Delete this route eventually
-  {
-    path: '/market/start-ups',
-    element: <MarketCompanies />,
-    page: Pages.MarketCompanies,
-    footer: true,
-  },
   { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors, footer: true },
   { path: '/market/experts', element: <MarketExpert />, page: Pages.MarketExperts, footer: true },
   {
@@ -125,6 +121,20 @@ export const PrivateRoutes: RouteItem[] = [
     path: `/market/expert-profile/:${profileId}`,
     element: <ViewExpertProfile />,
     page: Pages.MarketViewExpertProfile,
+    footer: true,
+  },
+
+  // Sharing
+  {
+    path: `/sharing/shared-with`,
+    element: <SharedWithProfiles />,
+    page: Pages.SharedWithProfiles,
+    footer: true,
+  },
+  {
+    path: `/sharing/view-company-profile/:${profileId}`,
+    element: <ViewSharedCompanyProfile />,
+    page: Pages.ViewSharedCompanyProfile,
     footer: true,
   },
 

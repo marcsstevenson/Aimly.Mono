@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { PrivateContext } from 'components/PrivateContext';
 import { myProfilesQuery, default as node } from '__generated__/myProfilesQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import MyProfileItem from './MyProfileItem';
+import MyProfileItem from 'components/profiles/MyProfileItem';
 
 const MyProfilesList = () => {
   const { userId } = useContext(PrivateContext);

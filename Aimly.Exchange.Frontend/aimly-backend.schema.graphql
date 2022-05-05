@@ -465,6 +465,8 @@ enum ProfileTypeOption {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  viewFullCompanyProfile(companyProfileId: UUID!, userId: UUID!): ViewFullCompanyProfileModel
+  sharedWithCompanies(userId: UUID!): [MyProfilesResult]
   myProfiles(userId: UUID!): [MyProfilesResult]
   getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
   skillOptions(nameStartingWith: String, tenantId: UUID): [String]
@@ -595,6 +597,42 @@ type ViewCompanyProfileModel {
   problemDetails: String
   solutionDescription: String
   associatedProfiles: [MarketSearchResult]
+}
+
+type ViewFullCompanyProfileModel {
+  id: String
+  companyProfileId: UUID!
+  profilePictureUrl: String
+  industries: [String]
+  companyName: String
+  type: String
+  website: String
+  numberOfFounders: Int
+  floor: String
+  streetNumber: String
+  streetName: String
+  addressLocality: String
+  addressCity: String
+  addressRegion: String
+  addressCountry: String
+  postalCode: String
+  postOfficeBoxNumber: String
+  listOnMarket: Boolean!
+  purposeDetails: String
+  problemDetails: String
+  solutionNovelty: String
+  solutionDescription: String
+  stateOfValidation: String
+  competition: String
+  positionVsCompetition: String
+  businessModel: String
+  traction: String
+  founders: String
+  currentAnnualRevenue: String
+  externalFunding: String
+  value: String
+  potentialSize: String
+  potentialValue: String
 }
 
 type ViewPersonalProfileModel {

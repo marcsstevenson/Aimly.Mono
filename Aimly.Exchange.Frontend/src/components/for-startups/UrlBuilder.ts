@@ -2,7 +2,7 @@ import { companyProfileId, promptDeleteValue } from 'components/shared/UrlConsta
 import Pages from 'components/shared/Pages';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 
-const getStartupEditUrl = (id: string, name: string | null | undefined, promptDelete: boolean): string => {
+const getCompanyEditUrl = (id: string, name: string | null | undefined, promptDelete: boolean): string => {
   let qs = `?${companyProfileId}=${id}&context=${name}`
 
   if (promptDelete) {
@@ -12,4 +12,4 @@ const getStartupEditUrl = (id: string, name: string | null | undefined, promptDe
   return `${GetPathForPage(Pages.AboutYou)}${qs}`;
 };
 
-export { getStartupEditUrl }
+export { getCompanyEditUrl }
