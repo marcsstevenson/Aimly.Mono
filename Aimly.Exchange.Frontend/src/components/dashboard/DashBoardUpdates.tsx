@@ -64,7 +64,7 @@ const DashBoardUpdates = () => {
                         powered by the Aimly platform. We hope you love it!
                       </p> */}
                       <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-                        <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-3 sm:gap-5 sm:space-y-0">
+                        <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
                           <NavLink
                             to={{ pathname: GetPathForPage(Pages.MyProfiles) }}
                             className="text-secondary-700 hover:bg-secondary-50 flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium shadow-sm sm:px-8"
