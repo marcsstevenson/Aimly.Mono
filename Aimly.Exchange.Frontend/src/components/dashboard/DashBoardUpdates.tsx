@@ -57,7 +57,7 @@ const DashBoardUpdates = () => {
                     <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                       <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                         <span className="block text-white">Welcome to the</span>
-                        <span className="text-secondary-100 block">Catallyze Exchange</span>
+                        <span className="text-secondary-100 block">X Mantra Exchange</span>
                       </h1>
                       {/* <p className="text-secondary-200 mx-auto mt-6 max-w-lg text-center text-xl sm:max-w-3xl">
                         Catallyze is the first of what we plan to be many three sided exchanges
@@ -71,12 +71,12 @@ const DashBoardUpdates = () => {
                           >
                             Build your profile
                           </NavLink>
-                          <NavLink
+                          {/* <NavLink
                             to={{ pathname: becomeAClientLink }}
                             className="hover:bg-primary-500 bg-primary-400 text-primary-900 flex items-center justify-center rounded-md border border-transparent px-4 py-3 text-base font-medium shadow-sm sm:px-8"
                           >
                             Become a client
-                          </NavLink>
+                          </NavLink> */}
                           <NavLink
                             to={{ pathname: GetPathForPage(Pages.Market) }}
                             className="bg-secondary-500 flex items-center justify-center rounded-md border border-transparent bg-opacity-60 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-opacity-70 sm:px-8"
