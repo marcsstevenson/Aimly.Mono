@@ -364,6 +364,12 @@ type InviteResponse {
   companyName: String
 }
 
+"""
+The `Long` scalar type represents non-fractional signed whole 64-bit numeric
+values. Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
 input MarketContactModelInput {
   fromProfileId: UUID
   fromProfileType: ProfileTypeOption
@@ -419,10 +425,13 @@ type Mutation {
 
   """Logs the user into our messaging system"""
   loginToMessaging(userId: UUID!, model: UserLoginModelInput): UserLoginResponse
+
+  """Sends a message from one user to another"""
+  sendDirectMessage(command: SendDirectMessageCommandInput): Long!
+  setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
   setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   marketContact(userId: UUID!, marketContactModel: MarketContactModelInput): MarketContactResponse
-  setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
   acceptInvite(input: InviteCommandInput): InviteResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
@@ -467,6 +476,8 @@ type Query {
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
   viewFullCompanyProfile(companyProfileId: UUID!, userId: UUID!): ViewFullCompanyProfileModel
   sharedWithCompanies(userId: UUID!): [MyProfilesResult]
+  getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
+  getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]
   getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
   skillOptions(nameStartingWith: String, tenantId: UUID): [String]
@@ -474,8 +485,6 @@ type Query {
   metaDataOptions(nameStartingWith: String, type: String, tenantId: UUID): [String]
   getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
-  getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
-  getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
@@ -484,6 +493,12 @@ type Query {
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
   dashboard(userId: UUID!): DashboardModel
   getViewCompanyProfile(companyProfileId: UUID!): ViewCompanyProfileModel
+}
+
+input SendDirectMessageCommandInput {
+  fromUserId: String
+  toUserId: String
+  message: String
 }
 
 input SetAboutYouCommandInput {

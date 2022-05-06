@@ -75,10 +75,17 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
         {props.allowContact && false && (
           <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
             <button
+              // onClick={() => setShowContact(true)}
+              className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
+            >
+              Message
+              <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
               onClick={() => setShowContact(true)}
               className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
             >
-              Contact
+              Enquire
               <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </button>
           </div>
