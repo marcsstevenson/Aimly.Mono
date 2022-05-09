@@ -14,9 +14,10 @@ export const getAboutYouQuery = graphql`
       skills
       employmentExperience {
         id
-        description
+        stickToTop
         title
         organisation
+        description
         startMonth
         startYear
         endMonth

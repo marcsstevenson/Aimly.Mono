@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2f18b6d59a23816d9b430bb6a9d1e6c2>>
+ * @generated SignedSource<<94895fe7137366b467b8135b2405f8c2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,9 +28,10 @@ export type getViewMentorProfileQuery$data = {
       readonly about: string | null;
       readonly employmentExperience: ReadonlyArray<{
         readonly id: any | null;
-        readonly description: string | null;
+        readonly stickToTop: boolean;
         readonly title: string | null;
         readonly organisation: string | null;
+        readonly description: string | null;
         readonly startMonth: number;
         readonly startYear: number;
         readonly endMonth: number | null;
@@ -159,7 +160,7 @@ v3 = [
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "description",
+                "name": "stickToTop",
                 "storageKey": null
               },
               {
@@ -174,6 +175,13 @@ v3 = [
                 "args": null,
                 "kind": "ScalarField",
                 "name": "organisation",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "description",
                 "storageKey": null
               },
               {
@@ -254,16 +262,16 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "fe19b0f811cdb090d9cd39091f8d80c6",
+    "cacheID": "2ab49d4fea62bf3608517189c661392a",
     "id": null,
     "metadata": {},
     "name": "getViewMentorProfileQuery",
     "operationKind": "query",
-    "text": "query getViewMentorProfileQuery(\n  $profileId: UUID!\n) {\n  getViewMentorProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        description\n        title\n        organisation\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
+    "text": "query getViewMentorProfileQuery(\n  $profileId: UUID!\n) {\n  getViewMentorProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3ca7a91a797b29a13071c6c1132d0dc0";
+(node as any).hash = "68d7263697910529e5ba6fd58ded55f6";
 
 export default node;

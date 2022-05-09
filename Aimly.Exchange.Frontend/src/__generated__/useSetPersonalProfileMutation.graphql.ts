@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5b29346f7d63481325e3a66621e511ea>>
+ * @generated SignedSource<<c28bf2fcda1b90e44d2d5eb5d893642e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -29,9 +29,10 @@ export type GetPersonalProfileModelInput = {
 };
 export type ExperienceModelInput = {
   id?: any | null;
-  description?: string | null;
+  stickToTop: boolean;
   title?: string | null;
   organisation?: string | null;
+  description?: string | null;
   startMonth: number;
   startYear: number;
   endMonth?: number | null;
