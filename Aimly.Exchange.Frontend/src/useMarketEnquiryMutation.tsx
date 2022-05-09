@@ -6,46 +6,46 @@
 
 import { commitMutation, useRelayEnvironment } from 'react-relay';
 import {
-  useMarketContactMutation as mutationType,
-  MarketContactModelInput,
-  useMarketContactMutation$data,
-  useMarketContactMutation$variables,
-} from '__generated__/useMarketContactMutation.graphql';
+  useMarketEnquiryMutation as mutationType,
+  MarketEnquiryModelInput,
+  useMarketEnquiryMutation$data,
+  useMarketEnquiryMutation$variables,
+} from '__generated__/useMarketEnquiryMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 
 const def = graphql`
-  mutation useMarketContactMutation($userId: UUID!, $marketContactModel: MarketContactModelInput!) {
-    marketContact(userId: $userId, marketContactModel: $marketContactModel) {
+  mutation useMarketEnquiryMutation($userId: UUID!, $marketEnquiryModel: MarketEnquiryModelInput!) {
+    marketEnquiry(userId: $userId, marketEnquiryModel: $marketEnquiryModel) {
       error
     }
   }
 `;
 
-export default function useMarketContactMutation() {
+export default function useMarketEnquiryMutation() {
   const environment = useRelayEnvironment();
 
-  const MarketContact = (
+  const MarketEnquiry = (
     userIdInput: string,
-    marketContactModelInput: MarketContactModelInput,
+    marketEnquiryModelInput: MarketEnquiryModelInput,
     onCompleted: (
-      marketContactModel: MarketContactModelInput,
-      response: useMarketContactMutation$data
+      marketEnquiryModel: MarketEnquiryModelInput,
+      response: useMarketEnquiryMutation$data
     ) => void
   ) => {
-    const variables: useMarketContactMutation$variables = {
+    const variables: useMarketEnquiryMutation$variables = {
       userId: userIdInput,
-      marketContactModel: marketContactModelInput,
+      marketEnquiryModel: marketEnquiryModelInput,
     };
 
     return commitMutation<mutationType>(environment, {
       mutation: def,
       variables: variables,
       onCompleted: (response) => {
-        onCompleted(marketContactModelInput, response);
+        onCompleted(marketEnquiryModelInput, response);
       } /* Mutation completed */,
     });
   };
 
-  return MarketContact;
+  return MarketEnquiry;
 }

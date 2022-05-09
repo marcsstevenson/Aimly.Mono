@@ -79,6 +79,7 @@ const ViewExpertProfile = () => {
     const viewProfileProps = Object.assign(
       {
         profileId: model?.id ?? '',
+        profileUserPublicId: model?.parentProfile?.userPublicId,
         profileType: 'EXPERT' as ProfileTypeOption,
         name: model?.name,
         subTitle: model?.name,

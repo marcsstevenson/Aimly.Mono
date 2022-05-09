@@ -42,6 +42,7 @@ const ViewSharedCompanyProfile = () => {
                 <div className="grid grid-cols-6 space-y-12 p-6">
                   <ViewProfileHeader
                     profileId={model.companyProfileId}
+                    profileUserPublicId={ null }
                     profileType="COMPANY"
                     addressCity={model.addressCity}
                     addressRegion={model.addressRegion}

@@ -28,7 +28,7 @@ export default function useSendDirectMessageMutation() {
   ) => {
     return commitMutation<mutationType>(environment, {
       mutation: def,
-      variables: { sendDirectMessageCommand },
+      variables: { command: sendDirectMessageCommand },
       onCompleted: (response) => {
         onCompleted(response);
       } /* Mutation completed */,

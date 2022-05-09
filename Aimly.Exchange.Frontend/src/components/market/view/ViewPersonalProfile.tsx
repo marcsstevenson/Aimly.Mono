@@ -74,6 +74,7 @@ const ViewPersonalProfile = () => {
     const viewProfileProps = Object.assign(
       {
         profileId: model?.id ?? '',
+        profileUserPublicId: model?.userPublicId,
         profileType: 'PERSONAL' as ProfileTypeOption,
         name: model?.fullName,
         title: 'Personal Profile',

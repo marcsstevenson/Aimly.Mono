@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<414daed5f73c473f1d4dbe036297d5ff>>
+ * @generated SignedSource<<b3fe33961ccd684940fd065334c3c217>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,6 +20,7 @@ export type getViewExpertProfileQuery$data = {
     readonly parentProfile: {
       readonly id: string | null;
       readonly personalProfileId: any;
+      readonly userPublicId: any | null;
       readonly fullName: string | null;
       readonly givenName: string | null;
       readonly profilePictureUrl: string | null;
@@ -107,6 +108,13 @@ v3 = [
             "args": null,
             "kind": "ScalarField",
             "name": "personalProfileId",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "userPublicId",
             "storageKey": null
           },
           {
@@ -246,16 +254,16 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "70cc3495cc5b833ece1cbef117682b0d",
+    "cacheID": "3a98fabbdb1b65d65a2dd075a373b9a5",
     "id": null,
     "metadata": {},
     "name": "getViewExpertProfileQuery",
     "operationKind": "query",
-    "text": "query getViewExpertProfileQuery(\n  $profileId: UUID!\n) {\n  getViewExpertProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        description\n        title\n        organisation\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
+    "text": "query getViewExpertProfileQuery(\n  $profileId: UUID!\n) {\n  getViewExpertProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        description\n        title\n        organisation\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "675a18961fe747169a49c7578f01f819";
+(node as any).hash = "73d7ff5141950baf008e979b3843452e";
 
 export default node;

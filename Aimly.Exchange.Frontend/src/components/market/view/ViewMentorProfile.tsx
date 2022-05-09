@@ -79,6 +79,7 @@ const ViewMentorProfile = () => {
     const viewProfileProps = Object.assign(
       {
         profileId: model?.id ?? '',
+        profileUserPublicId: model?.parentProfile?.userPublicId,
         profileType: 'MENTOR' as ProfileTypeOption,
         name: model?.name,
         subTitle: model?.name,

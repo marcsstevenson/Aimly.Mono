@@ -48,6 +48,7 @@ const ViewCompanyProfile = () => {
     const viewProfileProps = Object.assign(
       {
         profileId: model?.id ?? '',
+        profileUserPublicId: null,
         profileType: 'COMPANY' as ProfileTypeOption,
         name: model?.companyName,
         skills: null, // Now skills for company profiles

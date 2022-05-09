@@ -370,7 +370,7 @@ values. Long can represent values between -(2^63) and 2^63 - 1.
 """
 scalar Long
 
-input MarketContactModelInput {
+input MarketEnquiryModelInput {
   fromProfileId: UUID
   fromProfileType: ProfileTypeOption
   toProfileId: UUID!
@@ -380,7 +380,7 @@ input MarketContactModelInput {
   projectBudget: String!
 }
 
-type MarketContactResponse {
+type MarketEnquiryResponse {
   error: String
 }
 
@@ -431,7 +431,7 @@ type Mutation {
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
   setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
-  marketContact(userId: UUID!, marketContactModel: MarketContactModelInput): MarketContactResponse
+  marketEnquiry(userId: UUID!, marketEnquiryModel: MarketEnquiryModelInput): MarketEnquiryResponse
   acceptInvite(input: InviteCommandInput): InviteResponse
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
@@ -653,6 +653,7 @@ type ViewFullCompanyProfileModel {
 type ViewPersonalProfileModel {
   id: String
   personalProfileId: UUID!
+  userPublicId: UUID
   fullName: String
   givenName: String
   profilePictureUrl: String

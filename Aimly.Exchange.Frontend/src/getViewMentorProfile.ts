@@ -8,6 +8,7 @@ export const getAboutYouQuery = graphql`
       parentProfile {
         id
         personalProfileId
+        userPublicId
         fullName
         givenName
         profilePictureUrl

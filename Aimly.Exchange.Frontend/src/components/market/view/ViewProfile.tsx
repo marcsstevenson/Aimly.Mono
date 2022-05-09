@@ -26,6 +26,7 @@ const ViewProfile = ({ model }: props) => {
             <div className="grid grid-cols-6 space-y-12 p-6">
               <ViewProfileHeader
                 profileId={model.profileId}
+                profileUserPublicId={model.profileUserPublicId}
                 profileType={model.profileType}
                 addressCity={model.addressCity}
                 addressRegion={model.addressRegion}

@@ -5,6 +5,7 @@ export const getAboutYouQuery = graphql`
     getViewPersonalProfile(personalProfileId: $personalProfileId) {
       id
       personalProfileId
+      userPublicId
       fullName
       profilePictureUrl
       linkedInProfile

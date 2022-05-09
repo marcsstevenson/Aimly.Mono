@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e007ed248084b6f20eccbe37d33aacd4>>
+ * @generated SignedSource<<00be1af924dcb9159978859a25efde3c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,7 @@ export type getViewPersonalProfileQuery$data = {
   readonly getViewPersonalProfile: {
     readonly id: string | null;
     readonly personalProfileId: any;
+    readonly userPublicId: any | null;
     readonly fullName: string | null;
     readonly profilePictureUrl: string | null;
     readonly linkedInProfile: string | null;
@@ -142,6 +143,13 @@ v5 = [
         "args": null,
         "kind": "ScalarField",
         "name": "personalProfileId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userPublicId",
         "storageKey": null
       },
       {
@@ -287,16 +295,16 @@ return {
     "selections": (v5/*: any*/)
   },
   "params": {
-    "cacheID": "aa6e2c1c34880baafdd80a5d85c0b164",
+    "cacheID": "7f0a04cbf9b0c56bc39c12ea3e1a1916",
     "id": null,
     "metadata": {},
     "name": "getViewPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getViewPersonalProfileQuery(\n  $personalProfileId: UUID!\n) {\n  getViewPersonalProfile(personalProfileId: $personalProfileId) {\n    id\n    personalProfileId\n    fullName\n    profilePictureUrl\n    linkedInProfile\n    about\n    industries\n    skills\n    employmentExperience {\n      id\n      description\n      title\n      organisation\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n    associatedStartupProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedMentorProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedExpertProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
+    "text": "query getViewPersonalProfileQuery(\n  $personalProfileId: UUID!\n) {\n  getViewPersonalProfile(personalProfileId: $personalProfileId) {\n    id\n    personalProfileId\n    userPublicId\n    fullName\n    profilePictureUrl\n    linkedInProfile\n    about\n    industries\n    skills\n    employmentExperience {\n      id\n      description\n      title\n      organisation\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n    associatedStartupProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedMentorProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedExpertProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d98cdbedc117089bbc56ecb1009b89b4";
+(node as any).hash = "e154bd4c23ec676f1233a52c580414b3";
 
 export default node;
