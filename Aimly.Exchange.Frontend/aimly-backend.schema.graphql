@@ -383,6 +383,7 @@ input MarketEnquiryModelInput {
 }
 
 type MarketEnquiryResponse {
+  emailSent: Boolean!
   error: String
 }
 

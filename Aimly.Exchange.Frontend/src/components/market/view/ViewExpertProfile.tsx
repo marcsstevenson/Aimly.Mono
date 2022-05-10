@@ -78,7 +78,7 @@ const ViewExpertProfile = () => {
     // Copy values from the model to a model for the ViewProfile component
     const viewProfileProps = Object.assign(
       {
-        profileId: model?.id ?? '',
+        profileId: model?.profileId ?? '',
         profileUserPublicId: model?.parentProfile?.userPublicId,
         profileType: 'EXPERT' as ProfileTypeOption,
         name: model?.name,

@@ -73,7 +73,7 @@ const ViewPersonalProfile = () => {
     // Copy values from the model to a model for the ViewProfile component
     const viewProfileProps = Object.assign(
       {
-        profileId: model?.id ?? '',
+        profileId: model?.personalProfileId ?? '',
         profileUserPublicId: model?.userPublicId,
         profileType: 'PERSONAL' as ProfileTypeOption,
         name: model?.fullName,
