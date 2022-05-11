@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<94895fe7137366b467b8135b2405f8c2>>
+ * @generated SignedSource<<1440d4036055689a6577efd62084611f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,6 +21,7 @@ export type getViewMentorProfileQuery$data = {
       readonly id: string | null;
       readonly personalProfileId: any;
       readonly userPublicId: any | null;
+      readonly listOnMarket: boolean;
       readonly fullName: string | null;
       readonly givenName: string | null;
       readonly profilePictureUrl: string | null;
@@ -116,6 +117,13 @@ v3 = [
             "args": null,
             "kind": "ScalarField",
             "name": "userPublicId",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "listOnMarket",
             "storageKey": null
           },
           {
@@ -262,16 +270,16 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "2ab49d4fea62bf3608517189c661392a",
+    "cacheID": "2d9f62420e6ebb0214247d599f359a19",
     "id": null,
     "metadata": {},
     "name": "getViewMentorProfileQuery",
     "operationKind": "query",
-    "text": "query getViewMentorProfileQuery(\n  $profileId: UUID!\n) {\n  getViewMentorProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
+    "text": "query getViewMentorProfileQuery(\n  $profileId: UUID!\n) {\n  getViewMentorProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      listOnMarket\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "68d7263697910529e5ba6fd58ded55f6";
+(node as any).hash = "f94782a345c2ca7ac8219edf4997099e";
 
 export default node;

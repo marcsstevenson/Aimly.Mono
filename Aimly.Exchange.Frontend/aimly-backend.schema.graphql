@@ -383,7 +383,8 @@ input MarketEnquiryModelInput {
 }
 
 type MarketEnquiryResponse {
-  emailSent: Boolean!
+  emailQueued: Boolean!
+  directMessageQueued: Boolean!
   error: String
 }
 
@@ -657,6 +658,7 @@ type ViewPersonalProfileModel {
   id: String
   personalProfileId: UUID!
   userPublicId: UUID
+  listOnMarket: Boolean!
   fullName: String
   givenName: String
   profilePictureUrl: String

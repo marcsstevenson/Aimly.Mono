@@ -65,8 +65,8 @@ const ViewMentorProfile = () => {
       type: profileTypeOption,
     };
 
-    // Mentors
-    if (model?.parentProfile) {
+    // Personal profile
+    if (model?.parentProfile?.listOnMarket) {
       value.push({ label: 'Personal profile', profiles: [personalProfile] }); //TODO
     }
 

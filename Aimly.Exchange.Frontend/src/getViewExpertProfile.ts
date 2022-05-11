@@ -9,6 +9,7 @@ export const getAboutYouQuery = graphql`
         id
         personalProfileId
         userPublicId
+        listOnMarket
         fullName
         givenName
         profilePictureUrl

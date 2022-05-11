@@ -65,8 +65,8 @@ const ViewExpertProfile = () => {
       type: profileTypeOption,
     };
 
-    // Experts
-    if (model?.parentProfile) {
+    // Personal profile
+    if (model?.parentProfile?.listOnMarket) {
       value.push({ label: 'Personal profile', profiles: [personalProfile] }); //TODO
     }
 
