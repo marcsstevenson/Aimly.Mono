@@ -18,7 +18,7 @@ import CompanyInvite from 'components/CompanyInvite';
 
 // General pages
 const Help = lazy(() => import('components/Help'));
-const Settings = lazy(() => import('components/Settings'));
+const SettingsEdit = lazy(() => import('components/settings/SettingsEdit'));
 const PageNotFound = lazy(() => import('components/PageNotFound'));
 const AcceptInvite = lazy(() => import('components/AcceptInvite'));
 
@@ -76,7 +76,7 @@ export const PrivateRoutes: RouteItem[] = [
 
   // General pages
   { path: '/help', element: <Help />, page: Pages.Help, footer: true },
-  { path: '/settings', element: <Settings />, page: Pages.Settings, footer: true },
+  { path: '/settings', element: <SettingsEdit />, page: Pages.Settings, footer: true },
   { path: '/accept-invite', element: <AcceptInvite />, page: Pages.AcceptInvite, footer: true },
   { path: '/company-invite', element: <CompanyInvite />, page: Pages.CompanyInvite, footer: true },
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound, footer: true },

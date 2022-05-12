@@ -4,7 +4,7 @@
 
 // ******************************************************************
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import DarkModeSelector from './DarkModeSelector';
 import Pages from 'components/shared/Pages';
@@ -16,6 +16,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import { getPersonalProfileEditUrl } from 'components/profiles/UrlBuilder';
+import { PrivateContext } from 'components/PrivateContext';
 
 const navigation = [
   { name: 'Home', href: '/', AuthenticatedOnly: false },
@@ -27,7 +28,8 @@ const navigation = [
 ];
 
 const NavBar = () => {
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { checkedInUser } = useContext(PrivateContext);
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const logoutWithRedirect = () =>
     logout({
@@ -129,8 +131,8 @@ const NavBar = () => {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={user?.picture}
-                          alt={user?.name}
+                          src={checkedInUser?.pictureUrl ?? ''}
+                          alt={checkedInUser?.fullName ?? ''}
                         />
                       </Menu.Button>
                     </div>

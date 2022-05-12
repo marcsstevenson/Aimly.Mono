@@ -35,6 +35,7 @@ import { LinkIcon } from '@heroicons/react/solid';
 import { inviteCodeValue } from 'components/shared/UrlConstants';
 
 const AboutYou = () => {
+  const { checkedInUser } = useContext(PrivateContext);
   const { user, userId } = useContext(PrivateContext);
   const navigateToPage = useNavigateToPage();
   const locationQuery = useLocationQuery();
@@ -74,7 +75,8 @@ const AboutYou = () => {
     ...data.getAboutYou,
     userId: userId,
     about: loadedData?.about ?? '',
-    personalProfilePictureUrl: loadedData?.personalProfilePictureUrl ?? user?.picture ?? '', // Note we are using the Auth profile values as the first fallback
+    personalProfilePictureUrl:
+      loadedData?.personalProfilePictureUrl ?? checkedInUser?.pictureUrl ?? user?.picture ?? '', // Note we are using the Auth profile values as the first fallback
     language: loadedData?.language ?? getUsersLanguage(),
     timezone: loadedData?.timezone ?? '',
     givenName: loadedData?.givenName ?? user?.given_name ?? '', // Note we are using the Auth profile values as the first fallback

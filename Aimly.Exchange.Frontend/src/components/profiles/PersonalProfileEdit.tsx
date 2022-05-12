@@ -137,9 +137,7 @@ const PersonalProfileEdit = () => {
                             className="form-input"
                           />
                         </div>
-                        <p className="form-input-description">
-                          A brief description for your personal profile.
-                        </p>
+                        <p className="form-input-description">A brief description of yourself.</p>
                       </div>
                     </div>
 
