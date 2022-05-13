@@ -36,7 +36,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
           searchTerm: searchTerm,
           profileType: profileType,
           currentPage: page,
-          pageSize: 9,
+          pageSize: 100,
           orderByAscending: true,
           orderBy: 'Name',
         },
