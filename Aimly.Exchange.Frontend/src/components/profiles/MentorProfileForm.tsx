@@ -140,7 +140,7 @@ const MentorProfileForm = (props: Props) => {
 
                     <div className="sm:col-span-6">
                       <label htmlFor="familyName" className="form-label">
-                        Profile name *
+                        Profile Title *
                       </label>
                       <div className="mt-1">
                         <Field
@@ -154,7 +154,10 @@ const MentorProfileForm = (props: Props) => {
                           <div className="form-input-validation">{errors.name}</div>
                         )}
                       </div>
-                      <p className="form-input-description">A short name for your profile</p>
+                      <p className="form-input-description">
+                        A short title for your profile. Examples "Copy Writer", "Marketing
+                        Specialist" or "Entrepreneur Mentor".
+                      </p>
                     </div>
                     <div className="sm:col-span-6">
                       <label htmlFor="phoneNumber" className="form-label">
