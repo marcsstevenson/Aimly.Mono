@@ -315,7 +315,6 @@ const AboutYou = () => {
                       type="text"
                       name="linkedInProfile"
                       id="linkedInProfile"
-                      autoComplete="family-name"
                       className="form-input"
                     />
                   </div>
