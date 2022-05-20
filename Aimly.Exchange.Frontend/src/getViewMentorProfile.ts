@@ -1,9 +1,12 @@
 import graphql from 'babel-plugin-relay/macro';
 
 export const getAboutYouQuery = graphql`
-  query getViewMentorProfileQuery( $profileId: UUID!) {
-    getViewMentorProfile(profileId: $profileId) {
+  query getViewMentorProfileQuery( $profileId: UUID! $userId: UUID ) {
+    getViewMentorProfile(profileId: $profileId userId: $userId) {
       id
+      listOnMarket
+      isUsersProfile
+      userCanAccessProfile
       profileId
       parentProfile {
         id

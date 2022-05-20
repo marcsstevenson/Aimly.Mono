@@ -7,6 +7,9 @@ import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql'
 
 export interface ViewProfileHeaderProps {
   readonly profileId: string;
+  readonly listOnMarket: boolean;
+  // readonly isUsersProfile: boolean;
+  readonly userCanAccessProfile: boolean;
   readonly profileUserPublicId: string | null;
   readonly profileType: ProfileTypeOption;
   readonly name: string | null | undefined;

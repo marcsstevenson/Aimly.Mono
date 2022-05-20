@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1aa11b11fee94547da3776b54b5c90eb>>
+ * @generated SignedSource<<eda2106b6d8d0aedd16c3d0ba064cf58>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,11 +12,15 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type getViewPersonalProfileQuery$variables = {
   personalProfileId: any;
+  userId?: any | null;
 };
 export type getViewPersonalProfileQueryVariables = getViewPersonalProfileQuery$variables;
 export type getViewPersonalProfileQuery$data = {
   readonly getViewPersonalProfile: {
     readonly id: string | null;
+    readonly listOnMarket: boolean;
+    readonly isUsersProfile: boolean;
+    readonly userCanAccessProfile: boolean;
     readonly personalProfileId: any;
     readonly userPublicId: any | null;
     readonly fullName: string | null;
@@ -74,6 +78,11 @@ var v0 = [
     "defaultValue": null,
     "kind": "LocalArgument",
     "name": "personalProfileId"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "userId"
   }
 ],
 v1 = {
@@ -131,6 +140,11 @@ v5 = [
         "kind": "Variable",
         "name": "personalProfileId",
         "variableName": "personalProfileId"
+      },
+      {
+        "kind": "Variable",
+        "name": "userId",
+        "variableName": "userId"
       }
     ],
     "concreteType": "ViewPersonalProfileModel",
@@ -139,6 +153,27 @@ v5 = [
     "plural": false,
     "selections": [
       (v1/*: any*/),
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "listOnMarket",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "isUsersProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userCanAccessProfile",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -303,16 +338,16 @@ return {
     "selections": (v5/*: any*/)
   },
   "params": {
-    "cacheID": "95f6607f6b551efe4b1a8640dfae06af",
+    "cacheID": "88ba0f0518b21d89b7c0817e46c1c020",
     "id": null,
     "metadata": {},
     "name": "getViewPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getViewPersonalProfileQuery(\n  $personalProfileId: UUID!\n) {\n  getViewPersonalProfile(personalProfileId: $personalProfileId) {\n    id\n    personalProfileId\n    userPublicId\n    fullName\n    profilePictureUrl\n    linkedInProfile\n    about\n    industries\n    skills\n    employmentExperience {\n      id\n      stickToTop\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n    associatedStartupProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedMentorProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedExpertProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
+    "text": "query getViewPersonalProfileQuery(\n  $personalProfileId: UUID!\n  $userId: UUID\n) {\n  getViewPersonalProfile(personalProfileId: $personalProfileId, userId: $userId) {\n    id\n    listOnMarket\n    isUsersProfile\n    userCanAccessProfile\n    personalProfileId\n    userPublicId\n    fullName\n    profilePictureUrl\n    linkedInProfile\n    about\n    industries\n    skills\n    employmentExperience {\n      id\n      stickToTop\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n    associatedStartupProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedMentorProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedExpertProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "6722f789c6642b0bf5f891b9fdc85e1b";
+(node as any).hash = "ae07923c7b86efe758c3d6e09d6ab411";
 
 export default node;

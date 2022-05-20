@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1440d4036055689a6577efd62084611f>>
+ * @generated SignedSource<<9c568d8db8b4347b96e0a6a8775b4047>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,11 +11,15 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getViewMentorProfileQuery$variables = {
   profileId: any;
+  userId?: any | null;
 };
 export type getViewMentorProfileQueryVariables = getViewMentorProfileQuery$variables;
 export type getViewMentorProfileQuery$data = {
   readonly getViewMentorProfile: {
     readonly id: string | null;
+    readonly listOnMarket: boolean;
+    readonly isUsersProfile: boolean;
+    readonly userCanAccessProfile: boolean;
     readonly profileId: any;
     readonly parentProfile: {
       readonly id: string | null;
@@ -57,6 +61,11 @@ var v0 = [
     "defaultValue": null,
     "kind": "LocalArgument",
     "name": "profileId"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "userId"
   }
 ],
 v1 = {
@@ -70,10 +79,17 @@ v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
+  "name": "listOnMarket",
+  "storageKey": null
+},
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
   "name": "about",
   "storageKey": null
 },
-v3 = [
+v4 = [
   {
     "alias": null,
     "args": [
@@ -81,6 +97,11 @@ v3 = [
         "kind": "Variable",
         "name": "profileId",
         "variableName": "profileId"
+      },
+      {
+        "kind": "Variable",
+        "name": "userId",
+        "variableName": "userId"
       }
     ],
     "concreteType": "ViewTalentProfileModel",
@@ -89,6 +110,21 @@ v3 = [
     "plural": false,
     "selections": [
       (v1/*: any*/),
+      (v2/*: any*/),
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "isUsersProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userCanAccessProfile",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -119,13 +155,7 @@ v3 = [
             "name": "userPublicId",
             "storageKey": null
           },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "listOnMarket",
-            "storageKey": null
-          },
+          (v2/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -154,7 +184,7 @@ v3 = [
             "name": "linkedInProfile",
             "storageKey": null
           },
-          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -233,7 +263,7 @@ v3 = [
         "name": "name",
         "storageKey": null
       },
-      (v2/*: any*/),
+      (v3/*: any*/),
       {
         "alias": null,
         "args": null,
@@ -258,7 +288,7 @@ return {
     "kind": "Fragment",
     "metadata": null,
     "name": "getViewMentorProfileQuery",
-    "selections": (v3/*: any*/),
+    "selections": (v4/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -267,19 +297,19 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "getViewMentorProfileQuery",
-    "selections": (v3/*: any*/)
+    "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "2d9f62420e6ebb0214247d599f359a19",
+    "cacheID": "5a5d903a96a565ee97c3a32fc2500c5c",
     "id": null,
     "metadata": {},
     "name": "getViewMentorProfileQuery",
     "operationKind": "query",
-    "text": "query getViewMentorProfileQuery(\n  $profileId: UUID!\n) {\n  getViewMentorProfile(profileId: $profileId) {\n    id\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      listOnMarket\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
+    "text": "query getViewMentorProfileQuery(\n  $profileId: UUID!\n  $userId: UUID\n) {\n  getViewMentorProfile(profileId: $profileId, userId: $userId) {\n    id\n    listOnMarket\n    isUsersProfile\n    userCanAccessProfile\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      listOnMarket\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f94782a345c2ca7ac8219edf4997099e";
+(node as any).hash = "73ed66aaa69bcc9c439119d4e4742c6e";
 
 export default node;

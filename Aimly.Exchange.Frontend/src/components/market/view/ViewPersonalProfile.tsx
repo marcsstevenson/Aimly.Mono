@@ -1,6 +1,6 @@
 // The purpose of this component is to display a public readonly profile for a startup personal
 
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import * as ViewPersonalProfileQuery from '__generated__/getViewPersonalProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
@@ -11,13 +11,16 @@ import {
 } from 'components/market/view/ViewProfileInterfaces';
 import ViewProfile from 'components/market/view/ViewProfile';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+import { PrivateContext } from 'components/PrivateContext';
 
 const ViewPersonalProfile = () => {
   // Read the Id from the route context
   const { profileId } = useParams();
+  const { checkedInUser } = useContext(PrivateContext);
 
   const viewPersonalProfileQueryVariables = {
     personalProfileId: profileId,
+    userId: checkedInUser?.userId,
   };
 
   // Lazy load this query because it is only relevant to this component

@@ -438,6 +438,7 @@ type Mutation {
   """Sends a message from one user to another"""
   sendDirectMessage(command: SendDirectMessageCommandInput): Long!
   setUserSettings(command: SetUserSettingsCommandInput): SetUserSettingsResponse
+  setCatallyzeUserSetup(command: SetCatallyzeUserSetupCommandInput): SetCatallyzeUserSetupResponse
   setPersonalProfile(input: SetPersonalProfileCommandInput): SetPersonalProfileResponse
   setMentorProfile(input: SetMentorProfileCommandInput): SetMentorProfileResponse
   deleteMentorProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
@@ -487,10 +488,10 @@ type Query {
   userSettings(userId: UUID!): GetUserSettingsModel
   viewFullCompanyProfile(companyProfileId: UUID!, userId: UUID!): ViewFullCompanyProfileModel
   sharedWithCompanies(userId: UUID!): [MyProfilesResult]
-  getViewPersonalProfile(personalProfileId: UUID!): ViewPersonalProfileModel
+  getViewPersonalProfile(personalProfileId: UUID!, userId: UUID): ViewPersonalProfileModel
   getPersonalProfile(userId: UUID!): GetPersonalProfileModel
   myProfiles(userId: UUID!): [MyProfilesResult]
-  getViewMentorProfile(profileId: UUID!): ViewTalentProfileModel
+  getViewMentorProfile(profileId: UUID!, userId: UUID): ViewTalentProfileModel
   skillOptions(nameStartingWith: String, tenantId: UUID): [String]
   industryOptions(nameStartingWith: String, tenantId: UUID): [String]
   metaDataOptions(nameStartingWith: String, type: String, tenantId: UUID): [String]
@@ -500,10 +501,10 @@ type Query {
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
   getAboutYou(command: GetAboutYouCommandInput): GetAboutYouModel
-  getViewExpertProfile(profileId: UUID!): ViewTalentProfileModel
+  getViewExpertProfile(profileId: UUID!, userId: UUID): ViewTalentProfileModel
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
   dashboard(userId: UUID!): DashboardModel
-  getViewCompanyProfile(companyProfileId: UUID!): ViewCompanyProfileModel
+  getViewCompanyProfile(companyProfileId: UUID!, userId: UUID): ViewCompanyProfileModel
 }
 
 input SendDirectMessageCommandInput {
@@ -521,6 +522,16 @@ type SetAboutYouResponse {
   updatedPersonalProfileId: UUID!
   updatedCompanyProfileId: UUID!
   companyProfileShareId: UUID
+}
+
+input SetCatallyzeUserSetupCommandInput {
+  userId: UUID!
+  profilePictureUrl: String
+}
+
+type SetCatallyzeUserSetupResponse {
+  userPictureUrlUpdated: Boolean!
+  personalProfileUpdated: Boolean!
 }
 
 type SetExperienceResponse {
@@ -631,10 +642,13 @@ type ViewCompanyProfileModel {
   addressCity: String
   addressRegion: String
   addressCountry: String
-  industries: [String]
   problemDetails: String
   solutionDescription: String
   associatedProfiles: [MarketSearchResult]
+  listOnMarket: Boolean!
+  isUsersProfile: Boolean!
+  userCanAccessProfile: Boolean!
+  industries: [String]
 }
 
 type ViewFullCompanyProfileModel {
@@ -677,18 +691,20 @@ type ViewPersonalProfileModel {
   id: String
   personalProfileId: UUID!
   userPublicId: UUID
-  listOnMarket: Boolean!
   fullName: String
   givenName: String
   profilePictureUrl: String
   linkedInProfile: String
   about: String
-  industries: [String]
   skills: [String]
   employmentExperience: [ExperienceModel]
   associatedStartupProfiles: [MarketSearchResult]
   associatedMentorProfiles: [MarketSearchResult]
   associatedExpertProfiles: [MarketSearchResult]
+  listOnMarket: Boolean!
+  isUsersProfile: Boolean!
+  userCanAccessProfile: Boolean!
+  industries: [String]
 }
 
 type ViewTalentProfileModel {
@@ -697,7 +713,10 @@ type ViewTalentProfileModel {
   parentProfile: ViewPersonalProfileModel
   name: String
   about: String
-  industries: [String]
   skills: [String]
+  listOnMarket: Boolean!
+  isUsersProfile: Boolean!
+  userCanAccessProfile: Boolean!
+  industries: [String]
 }
 

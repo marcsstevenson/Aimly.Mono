@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 import { PrivateContext } from 'components/PrivateContext';
 import TopGraphic from 'components/shared/TopGraphic';
 import ViewProfileHeader from 'components/market/view/ViewProfileHeader';
-import { ModuleResolutionKind } from 'typescript';
 
 const ViewSharedCompanyProfile = () => {
   // Read the Id from the route context
@@ -42,7 +41,9 @@ const ViewSharedCompanyProfile = () => {
                 <div className="grid grid-cols-6 space-y-12 p-6">
                   <ViewProfileHeader
                     profileId={model.companyProfileId}
-                    profileUserPublicId={ null }
+                    listOnMarket={true} // Not needed here
+                    userCanAccessProfile={true} // Not needed here
+                    profileUserPublicId={null}
                     profileType="COMPANY"
                     addressCity={model.addressCity}
                     addressRegion={model.addressRegion}

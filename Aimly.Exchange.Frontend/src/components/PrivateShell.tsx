@@ -66,7 +66,6 @@ const PrivateShell = (): JSX.Element => {
 
   useEffect(() => {
     if (checkedInModel?.checkIn2) {
-      console.log('setting checkedInModel', checkedInModel);
       setCheckedInUser(checkedInModel.checkIn2);
       setUserId(checkedInModel.checkIn2.userId);
       setPublicId(checkedInModel.checkIn2.publicId);

@@ -19,7 +19,6 @@ export interface StatusType {
 
 const Profiles = () => {
   const { checkedInUser } = useContext(PrivateContext);
-  const { user } = useContext(PrivateContext);
 
   return (
     <div className="flex-1 pb-8">

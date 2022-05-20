@@ -1,6 +1,6 @@
 // The purpose of this component is to display a public readonly profile for a startup mentor
 
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import * as ViewMentorProfileQuery from '__generated__/getViewMentorProfileQuery.graphql';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
@@ -12,13 +12,16 @@ import {
 } from 'components/market/view/ViewProfileInterfaces';
 import ViewProfile from 'components/market/view/ViewProfile';
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
+import { PrivateContext } from 'components/PrivateContext';
 
 const ViewMentorProfile = () => {
   // Read the Id from the route context
   const { profileId } = useParams();
+  const { checkedInUser } = useContext(PrivateContext);
 
   const viewMentorProfileQueryVariables = {
     profileId: profileId,
+    userId: checkedInUser?.userId,
   };
 
   // Lazy load this query because it is only relevant to this component
