@@ -26,7 +26,9 @@ const GenericHeader = (props: Props) => {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-6">
           <div className="col-span-4 col-start-2">
-            <h1 className="text-center text-2xl font-extrabold text-gray-100">{props.title}</h1>
+            <h1 className="text-center text-2xl font-extrabold text-gray-800 dark:text-gray-100">
+              {props.title}
+            </h1>
             {contextVal && (
               <h1 className="dark:text-secondary-400 text-secondary-700 text-center text-5xl font-extrabold">
                 {contextVal}
