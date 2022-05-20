@@ -61,7 +61,7 @@ const ViewPersonalProfile = () => {
 
     // Startups
     if (model?.associatedStartupProfiles && model.associatedStartupProfiles.length > 0) {
-      value.push({ label: 'Startups', profiles: model?.associatedStartupProfiles });
+      value.push({ label: 'Associations', profiles: model?.associatedStartupProfiles });
     }
 
     return value;
