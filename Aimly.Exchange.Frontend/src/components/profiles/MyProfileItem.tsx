@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/solid';
 import { getUrlForProfileTypeOptionType } from 'components/shared/UrlForProfileTypeOptionType';
 import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
+import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 
 export interface ProfileSearchResult {
   readonly profileId: any;
@@ -75,6 +76,17 @@ const MyProfileItem = (props: Props) => {
             className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
           >
             Edit
+          </Link>
+          <Link
+            to={{
+              pathname: getUrlForViewProfile(
+                props.item ? props.item.type : 'PERSONAL',
+                props.item?.profileId
+              ),
+            }}
+            className="text-primary-700 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-300 ml-2 font-medium"
+          >
+            View
           </Link>
         </div>
         {allowDelete && (

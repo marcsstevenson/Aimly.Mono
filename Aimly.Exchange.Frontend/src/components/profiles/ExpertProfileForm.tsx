@@ -71,7 +71,7 @@ const ExpertProfileForm = (props: Props) => {
       );
       navigate(path);
     } else {
-      let queryString = `?$id=${response.setExpertProfile?.updatedExpertProfileId}`;
+      const queryString = `?$id=${response.setExpertProfile?.updatedExpertProfileId}`;
 
       outro(queryString);
     }

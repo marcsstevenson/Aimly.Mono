@@ -71,7 +71,7 @@ const MentorProfileForm = (props: Props) => {
       );
       navigate(path);
     } else {
-      let queryString = `?$id=${response.setMentorProfile?.updatedMentorProfileId}`;
+      const queryString = `?$id=${response.setMentorProfile?.updatedMentorProfileId}`;
 
       outro(queryString);
     }

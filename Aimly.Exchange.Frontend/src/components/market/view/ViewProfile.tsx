@@ -15,7 +15,6 @@ interface props {
 }
 
 const ViewProfile = ({ model }: props) => {
-  console.log(model.website);
   return (
     <>
       <TopGraphic title={model.title} context={null} showBackButton={true} />

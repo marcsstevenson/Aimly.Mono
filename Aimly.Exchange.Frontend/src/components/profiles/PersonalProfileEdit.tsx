@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Pages from 'components/shared/Pages';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import useSetPersonalProfileMutation from 'useSetPersonalProfileMutation';
@@ -21,13 +21,17 @@ import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
 import { PersonalProfileExperienceList } from 'components/profiles/PersonalProfileExperienceList';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
+import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+import { useNavigate } from 'react-router-dom';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
+  const navigate = useNavigate();
   const navigateToPage = useNavigateToPage();
   const getPersonalProfileQueryVariables = {
     id: userId,
   };
+  const [viewAfterSave, setViewAfterSave] = useState(false);
 
   // Lazy load this query because it is only relevant to this component
   const data = useLazyLoadQuery<GetPersonalProfileQuery.getPersonalProfileQuery>(
@@ -84,9 +88,18 @@ const PersonalProfileEdit = () => {
 
   // This is called once the SetPersonalProfile mutation has completed
   const handleSubmitCompleted = (response: useSetPersonalProfileMutation$data): void => {
-    let queryString = `?$id=${response.setPersonalProfile?.updatedPersonalProfileId}`;
+    if (viewAfterSave) {
+      // Take the user to see their profile in the market
+      const path = getUrlForViewProfile(
+        'PERSONAL',
+        response.setPersonalProfile?.updatedPersonalProfileId ?? ''
+      );
+      navigate(path);
+    } else {
+      const queryString = `?$id=${response.setPersonalProfile?.updatedPersonalProfileId}`;
 
-    outro(queryString);
+      outro(queryString);
+    }
   };
 
   // Head back to profiles
@@ -322,9 +335,18 @@ const PersonalProfileEdit = () => {
                   <button
                     disabled={isSubmitting || isValidating}
                     type="submit"
-                    className="form-next ml-3"
+                    onClick={() => setViewAfterSave(false)}
+                    className="form-next bg-secondary-800 hover:bg-secondary-900 ml-3"
                   >
                     Save
+                  </button>
+                  <button
+                    disabled={isSubmitting || isValidating}
+                    type="submit"
+                    onClick={() => setViewAfterSave(true)}
+                    className="form-next ml-3"
+                  >
+                    Save and View
                   </button>
                 </div>
               </div>
