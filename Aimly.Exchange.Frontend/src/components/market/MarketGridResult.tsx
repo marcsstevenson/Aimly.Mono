@@ -15,8 +15,11 @@ export interface Props {
 }
 
 const MarketGridResult = ({ result, index }: Props) => {
-  const getRoundedClassName = useCallback((type: ProfileTypeOption | null | undefined) => {
-    return type === 'COMPANY' ? 'rounded-md' : 'rounded-full';
+  const getRoundedClassNames = useCallback((type: ProfileTypeOption | null | undefined) => {
+    // Company logos often contain transparent areas and this makes for a poor display
+    // if the logo is dark and our background is dark. For this reason, use a white bg
+    // for company profiles.
+    return type === 'COMPANY' ? 'rounded-md bg-gray-200' : 'rounded-full';
   }, []);
 
   const onImageError = (ev: any) => {
@@ -36,7 +39,7 @@ const MarketGridResult = ({ result, index }: Props) => {
         <div className="flex flex-1 flex-col p-8">
           <img
             className={classNames(
-              getRoundedClassName(result?.type),
+              getRoundedClassNames(result?.type),
               'mx-auto h-32 w-32 flex-shrink-0'
             )}
             src={result?.profilePictureUrl ?? resultIcon}
