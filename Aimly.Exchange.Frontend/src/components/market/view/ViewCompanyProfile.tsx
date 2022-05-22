@@ -57,13 +57,16 @@ const ViewCompanyProfile = () => {
         skills: null, // Now skills for company profiles
         title: 'Company Profile',
         subTitle: null,
-        // associatedProfilesSets: [],
-        associatedProfilesSets: [
-          {
-            label: 'Their Team',
-            profiles: model?.associatedProfiles,
-          },
-        ],
+        // Add "Their Team" if they have any associated profiles
+        associatedProfilesSets:
+          model?.associatedProfiles && model?.associatedProfiles?.length > 0
+            ? [
+                {
+                  label: 'Their Team',
+                  profiles: model?.associatedProfiles,
+                },
+              ]
+            : [],
         longFormElements: longFormElements,
         employmentExperience: null,
         profilePictureRound: false,
