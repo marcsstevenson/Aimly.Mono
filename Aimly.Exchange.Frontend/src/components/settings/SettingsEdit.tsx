@@ -84,9 +84,7 @@ const SettingsEdit = () => {
     setSaved(true);
   };
 
-  // Display saved message using toast
-  const outro = () => {};
-
+  // Run this when the form values change to handle profile picture
   const getData = (values: SetUserSettingsCommandInput) => {
     if (values.profilePictureUrl !== profilePictureUrl) {
       setProfilePictureUrl(values.profilePictureUrl);
