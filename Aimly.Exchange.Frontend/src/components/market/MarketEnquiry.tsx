@@ -11,10 +11,10 @@ import { PrivateContext } from 'components/PrivateContext';
 import validateRequiredString from 'validators/validateRequiredString';
 import validateTrue from 'validators/validateTrue';
 import {
-  MarketContactModelInput,
-  useMarketContactMutation$data,
-} from '__generated__/useMarketContactMutation.graphql';
-import useMarketContactMutation from 'useMarketContact';
+  MarketEnquiryModelInput,
+  useMarketEnquiryMutation$data,
+} from '__generated__/useMarketEnquiryMutation.graphql';
+import useMarketEnquiryMutation from 'useMarketEnquiryMutation';
 import { BudgetOptions } from 'components/shared/BudgetOptions';
 import { ComboboxOption, GenericCombobox } from 'components/shared/GenericCombobox';
 import { GenericComboboxWrapper } from 'components/shared/GenericComboboxWrapper';
@@ -32,7 +32,7 @@ interface Props {
   readonly profileType: ProfileTypeOption;
 }
 
-interface modelType extends MarketContactModelInput {
+interface modelType extends MarketEnquiryModelInput {
   agreed: boolean;
 }
 
@@ -43,11 +43,11 @@ interface ProfileDetails {
   readonly type: ProfileTypeOption;
 }
 
-const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
+const MarketEnquiry = ({ profileId, profileType, show, onDone }: Props) => {
   // const [open, setOpen] = useState(true);
   const { userId } = useContext(PrivateContext);
   // const [working, setWorking] = useState(false);
-  const MarketContact = useMarketContactMutation();
+  const MarketEnquiry = useMarketEnquiryMutation();
   let model = useMemo<modelType>(() => {
     return {
       fromProfileId: null,
@@ -82,7 +82,7 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
 
   const cancelButtonRef = useRef(null);
 
-  const onSubmit = (model: MarketContactModelInput) => {
+  const onSubmit = (model: MarketEnquiryModelInput) => {
     // console.log('projectBudget', model.projectBudget);
     // setWorking(true);
 
@@ -101,17 +101,17 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
     );
 
   const handleSave = useCallback(
-    (marketContactModelInput: MarketContactModelInput) => {
-      return userId ? MarketContact(userId, marketContactModelInput, handleSubmitCompleted) : null;
+    (marketContactModelInput: MarketEnquiryModelInput) => {
+      return userId ? MarketEnquiry(userId, marketContactModelInput, handleSubmitCompleted) : null;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [MarketContact]
+    [MarketEnquiry]
   );
 
   // This is called once the SetPersonalProfile mutation has completed
   const handleSubmitCompleted = (
-    marketContactModel: MarketContactModelInput,
-    response: useMarketContactMutation$data
+    marketContactModel: MarketEnquiryModelInput,
+    response: useMarketEnquiryMutation$data
   ): void => {
     // setWorking(false);
     onDone();
@@ -178,7 +178,7 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100"
                   >
-                    Send Message
+                    Market Enquiry
                   </Dialog.Title>
                 </div>
               </div>
@@ -318,4 +318,4 @@ const MarketContact = ({ profileId, profileType, show, onDone }: Props) => {
   );
 };
 
-export default MarketContact;
+export default MarketEnquiry;

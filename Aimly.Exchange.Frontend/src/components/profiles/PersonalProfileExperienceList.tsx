@@ -140,6 +140,7 @@ export const PersonalProfileExperienceList = ({
     if (response?.setExperience?.updatedExperienceId) {
       const updated: EmploymentExperience = {
         id: response?.setExperience?.updatedExperienceId,
+        stickToTop: experienceModel?.stickToTop ?? false,
         title: experienceModel?.title ?? '',
         description: experienceModel?.description ?? '',
         organisation: experienceModel?.organisation ?? '',

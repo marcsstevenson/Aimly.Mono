@@ -1,19 +1,22 @@
 // The purpose of this component is to display a public readonly profile for a startup company
 
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import * as ViewCompanyProfileQuery from '__generated__/getViewCompanyProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
 import { LongFormElement, ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
 import ViewProfile from 'components/market/view/ViewProfile';
 import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+import { PrivateContext } from 'components/PrivateContext';
 
 const ViewCompanyProfile = () => {
   // Read the Id from the route context
   const { profileId } = useParams();
+  const { checkedInUser } = useContext(PrivateContext);
 
   const viewCompanyProfileQueryVariables = {
     companyProfileId: profileId,
+    userId: checkedInUser?.userId,
   };
 
   // Lazy load this query because it is only relevant to this component
@@ -47,19 +50,23 @@ const ViewCompanyProfile = () => {
     // Copy values from the model to a model for the ViewProfile component
     const viewProfileProps = Object.assign(
       {
-        profileId: model?.id ?? '',
+        profileId: model?.companyProfileId ?? '',
+        profileUserPublicId: null,
         profileType: 'COMPANY' as ProfileTypeOption,
         name: model?.companyName,
         skills: null, // Now skills for company profiles
         title: 'Company Profile',
         subTitle: null,
-        // associatedProfilesSets: [],
-        associatedProfilesSets: [
-          {
-            label: 'Their Team',
-            profiles: model?.associatedProfiles,
-          },
-        ],
+        // Add "Their Team" if they have any associated profiles
+        associatedProfilesSets:
+          model?.associatedProfiles && model?.associatedProfiles?.length > 0
+            ? [
+                {
+                  label: 'Their Team',
+                  profiles: model?.associatedProfiles,
+                },
+              ]
+            : [],
         longFormElements: longFormElements,
         employmentExperience: null,
         profilePictureRound: false,

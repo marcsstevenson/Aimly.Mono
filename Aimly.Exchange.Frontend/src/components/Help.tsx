@@ -14,7 +14,7 @@ export const Help = () => {
             <div className="divide-y divide-gray-200 dark:divide-gray-700 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
               <div className="divide-y divide-gray-200 dark:divide-gray-700 lg:col-span-12">
                 {/* Privacy section */}
-                <div className="divide-y divide-gray-200 pt-6 dark:divide-gray-700">
+                <div className="divide-y divide-gray-200 py-6 dark:divide-gray-700">
                   <div className="relative overflow-hidden bg-gray-800 px-6 sm:px-10 xl:p-12">
                     <div
                       className="pointer-events-none absolute inset-0 sm:hidden"

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<827ad494a219b66a6d58ee6f4945a832>>
+ * @generated SignedSource<<f4e87ffac26122ce0794e748ebfc374e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -29,6 +29,7 @@ export type getPersonalProfileQuery$data = {
     readonly skills: ReadonlyArray<string | null> | null;
     readonly employmentExperience: ReadonlyArray<{
       readonly id: any | null;
+      readonly stickToTop: boolean;
       readonly title: string | null;
       readonly organisation: string | null;
       readonly description: string | null;
@@ -171,6 +172,13 @@ v1 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
+            "name": "stickToTop",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
             "name": "title",
             "storageKey": null
           },
@@ -241,16 +249,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "f748fb492ba10ecc1dbf71e401a90a4b",
+    "cacheID": "efac7a8baa48628467a1a2fb742f36b1",
     "id": null,
     "metadata": {},
     "name": "getPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    listOnMarket\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
+    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    listOnMarket\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      stickToTop\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b617754a2e3c78bb3c096a8c2a932b32";
+(node as any).hash = "b6e6f847225f0506f036b9e0b6186a15";
 
 export default node;

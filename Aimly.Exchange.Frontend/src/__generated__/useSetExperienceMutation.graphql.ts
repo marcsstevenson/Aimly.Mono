@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9f3bbb502470247b83772799034640a1>>
+ * @generated SignedSource<<7f905d95e63f251552280d901eeb1330>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,9 +11,10 @@
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type ExperienceModelInput = {
   id?: any | null;
-  description?: string | null;
+  stickToTop: boolean;
   title?: string | null;
   organisation?: string | null;
+  description?: string | null;
   startMonth: number;
   startYear: number;
   endMonth?: number | null;

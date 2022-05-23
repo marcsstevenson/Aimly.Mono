@@ -1,10 +1,14 @@
 import graphql from 'babel-plugin-relay/macro';
 
 export const getAboutYouQuery = graphql`
-  query getViewPersonalProfileQuery( $personalProfileId: UUID!) {
-    getViewPersonalProfile(personalProfileId: $personalProfileId) {
+  query getViewPersonalProfileQuery($personalProfileId: UUID! $userId: UUID) {
+    getViewPersonalProfile(personalProfileId: $personalProfileId userId: $userId) {
       id
+      listOnMarket
+      isUsersProfile
+      userCanAccessProfile
       personalProfileId
+      userPublicId
       fullName
       profilePictureUrl
       linkedInProfile
@@ -13,9 +17,10 @@ export const getAboutYouQuery = graphql`
       skills
       employmentExperience {
         id
-        description
+        stickToTop
         title
         organisation
+        description
         startMonth
         startYear
         endMonth

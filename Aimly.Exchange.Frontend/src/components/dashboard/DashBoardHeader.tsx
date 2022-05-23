@@ -3,7 +3,8 @@ import { PrivateContext } from 'components/PrivateContext';
 import { CheckCircleIcon, OfficeBuildingIcon } from '@heroicons/react/solid';
 
 const DashBoardHeader = () => {
-  const { user } = useContext(PrivateContext);
+  const { checkedInUser } = useContext(PrivateContext);
+
   // Returns morning, afternoon or evening depending on the time of day
   const getTimeOfDay = (): string => {
     const hour = new Date().getHours();
@@ -23,12 +24,20 @@ const DashBoardHeader = () => {
           <div className="min-w-0 flex-1">
             {/* Profile */}
             <div className="flex items-center">
-              <img className="hidden h-16 w-16 rounded-full sm:block" src={user?.picture} alt="" />
+              <img
+                className="hidden h-16 w-16 rounded-full sm:block"
+                src={checkedInUser?.pictureUrl ?? ''}
+                alt=""
+              />
               <div>
                 <div className="flex items-center">
-                  <img className="h-16 w-16 rounded-full sm:hidden" src={user?.picture} alt="" />
+                  <img
+                    className="h-16 w-16 rounded-full sm:hidden"
+                    src={checkedInUser?.pictureUrl ?? ''}
+                    alt=""
+                  />
                   <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 dark:text-gray-50 sm:truncate sm:leading-9">
-                    Good {getTimeOfDay()}, {user?.name}
+                    Good {getTimeOfDay()}, {checkedInUser?.fullName ?? ''}
                   </h1>
                 </div>
                 <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">

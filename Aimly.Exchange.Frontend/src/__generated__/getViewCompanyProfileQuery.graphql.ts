@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<67f288dc1693c58f7e7051fc75774503>>
+ * @generated SignedSource<<fc6422c85fa480cdc1b29b0d02fb0520>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,11 +12,15 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type getViewCompanyProfileQuery$variables = {
   companyProfileId: any;
+  userId?: any | null;
 };
 export type getViewCompanyProfileQueryVariables = getViewCompanyProfileQuery$variables;
 export type getViewCompanyProfileQuery$data = {
   readonly getViewCompanyProfile: {
     readonly id: string | null;
+    readonly listOnMarket: boolean;
+    readonly isUsersProfile: boolean;
+    readonly userCanAccessProfile: boolean;
     readonly companyProfileId: any;
     readonly companyName: string | null;
     readonly profilePictureUrl: string | null;
@@ -49,6 +53,11 @@ var v0 = [
     "defaultValue": null,
     "kind": "LocalArgument",
     "name": "companyProfileId"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "userId"
   }
 ],
 v1 = {
@@ -73,6 +82,11 @@ v3 = [
         "kind": "Variable",
         "name": "companyProfileId",
         "variableName": "companyProfileId"
+      },
+      {
+        "kind": "Variable",
+        "name": "userId",
+        "variableName": "userId"
       }
     ],
     "concreteType": "ViewCompanyProfileModel",
@@ -81,6 +95,27 @@ v3 = [
     "plural": false,
     "selections": [
       (v1/*: any*/),
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "listOnMarket",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "isUsersProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userCanAccessProfile",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -208,16 +243,16 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "d1c54ea4876b557238e97ef65abe110d",
+    "cacheID": "bcd13e958c9f22f9823381af1427ab31",
     "id": null,
     "metadata": {},
     "name": "getViewCompanyProfileQuery",
     "operationKind": "query",
-    "text": "query getViewCompanyProfileQuery(\n  $companyProfileId: UUID!\n) {\n  getViewCompanyProfile(companyProfileId: $companyProfileId) {\n    id\n    companyProfileId\n    companyName\n    profilePictureUrl\n    website\n    addressCity\n    addressRegion\n    addressCountry\n    industries\n    problemDetails\n    solutionDescription\n    associatedProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
+    "text": "query getViewCompanyProfileQuery(\n  $companyProfileId: UUID!\n  $userId: UUID\n) {\n  getViewCompanyProfile(companyProfileId: $companyProfileId, userId: $userId) {\n    id\n    listOnMarket\n    isUsersProfile\n    userCanAccessProfile\n    companyProfileId\n    companyName\n    profilePictureUrl\n    website\n    addressCity\n    addressRegion\n    addressCountry\n    industries\n    problemDetails\n    solutionDescription\n    associatedProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e645e0f7dc28bde07c2ac3fafe899fcd";
+(node as any).hash = "caa51a14a9318fe28817fcd3d3876a79";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b36597f60f7d3c6a09c8864deea6ae9e>>
+ * @generated SignedSource<<01c76cf1eb5d480971f9b5d0e5b9df20>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,7 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
-export type MarketContactModelInput = {
+export type MarketEnquiryModelInput = {
   fromProfileId?: any | null;
   fromProfileType?: ProfileTypeOption | null;
   toProfileId: any;
@@ -19,27 +19,27 @@ export type MarketContactModelInput = {
   comments?: string | null;
   projectBudget: string;
 };
-export type useMarketContactMutation$variables = {
+export type useMarketEnquiryMutation$variables = {
   userId: any;
-  marketContactModel: MarketContactModelInput;
+  marketEnquiryModel: MarketEnquiryModelInput;
 };
-export type useMarketContactMutationVariables = useMarketContactMutation$variables;
-export type useMarketContactMutation$data = {
-  readonly marketContact: {
+export type useMarketEnquiryMutationVariables = useMarketEnquiryMutation$variables;
+export type useMarketEnquiryMutation$data = {
+  readonly marketEnquiry: {
     readonly error: string | null;
   } | null;
 };
-export type useMarketContactMutationResponse = useMarketContactMutation$data;
-export type useMarketContactMutation = {
-  variables: useMarketContactMutationVariables;
-  response: useMarketContactMutation$data;
+export type useMarketEnquiryMutationResponse = useMarketEnquiryMutation$data;
+export type useMarketEnquiryMutation = {
+  variables: useMarketEnquiryMutationVariables;
+  response: useMarketEnquiryMutation$data;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "marketContactModel"
+  "name": "marketEnquiryModel"
 },
 v1 = {
   "defaultValue": null,
@@ -52,8 +52,8 @@ v2 = [
     "args": [
       {
         "kind": "Variable",
-        "name": "marketContactModel",
-        "variableName": "marketContactModel"
+        "name": "marketEnquiryModel",
+        "variableName": "marketEnquiryModel"
       },
       {
         "kind": "Variable",
@@ -61,9 +61,9 @@ v2 = [
         "variableName": "userId"
       }
     ],
-    "concreteType": "MarketContactResponse",
+    "concreteType": "MarketEnquiryResponse",
     "kind": "LinkedField",
-    "name": "marketContact",
+    "name": "marketEnquiry",
     "plural": false,
     "selections": [
       {
@@ -85,7 +85,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "useMarketContactMutation",
+    "name": "useMarketEnquiryMutation",
     "selections": (v2/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -97,20 +97,20 @@ return {
       (v0/*: any*/)
     ],
     "kind": "Operation",
-    "name": "useMarketContactMutation",
+    "name": "useMarketEnquiryMutation",
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "fdc968b03ae4c92839bdf4a67e19eb63",
+    "cacheID": "ce44b985cefbf91b3ba78602c16d9af1",
     "id": null,
     "metadata": {},
-    "name": "useMarketContactMutation",
+    "name": "useMarketEnquiryMutation",
     "operationKind": "mutation",
-    "text": "mutation useMarketContactMutation(\n  $userId: UUID!\n  $marketContactModel: MarketContactModelInput!\n) {\n  marketContact(userId: $userId, marketContactModel: $marketContactModel) {\n    error\n  }\n}\n"
+    "text": "mutation useMarketEnquiryMutation(\n  $userId: UUID!\n  $marketEnquiryModel: MarketEnquiryModelInput!\n) {\n  marketEnquiry(userId: $userId, marketEnquiryModel: $marketEnquiryModel) {\n    error\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d211ad1154a4930884059574eebfd434";
+(node as any).hash = "d0fa955d8b2859915a4d5cfe79f8e940";
 
 export default node;

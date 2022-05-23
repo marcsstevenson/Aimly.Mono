@@ -1,25 +1,43 @@
 // The purpose of this component is to display header detail for a profile
 
-import React, { useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/view/ViewProfileInterfaces';
 import { MetaDataList } from 'components/shared/MetaDataList';
 import { ChatIcon } from '@heroicons/react/outline';
-import MarketContact from 'components/market/MarketContact';
+import MarketMessage from 'components/market/MarketMessage';
+import MarketEnquiry from 'components/market/MarketEnquiry';
+import { PrivateContext } from 'components/PrivateContext';
 
 const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
-  const [showContact, setShowContact] = useState(false);
+  const { publicId } = useContext(PrivateContext);
+  const [showMarketEnquiry, setShowMarketEnquiry] = useState(false);
+  const [showMarketMessage, setShowMarketMessage] = useState(false);
+  const showMessingOptions = useMemo<boolean>(() => {
+    return props.profileUserPublicId !== null && props.profileUserPublicId !== publicId;
+  }, []);
 
   return (
     <>
-      <MarketContact
-        profileId={props.profileId}
-        profileType={props.profileType}
-        show={showContact}
-        onDone={() => setShowContact(false)}
-      />
+      {showMessingOptions && props.profileUserPublicId && publicId && (
+        <MarketMessage
+          userPublicId={publicId}
+          profileUserPublicId={props.profileUserPublicId}
+          show={showMarketMessage}
+          onDone={() => setShowMarketMessage(false)}
+        />
+      )}
+
+      {showMessingOptions && props.profileUserPublicId && (
+        <MarketEnquiry
+          profileId={props.profileId}
+          profileType={props.profileType}
+          show={showMarketEnquiry}
+          onDone={() => setShowMarketEnquiry(false)}
+        />
+      )}
 
       {/* <ShowBreakPoints /> */}
       <div className="col-span-8 mr-4 lg:col-span-2 lg:mt-0">
@@ -72,13 +90,20 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
           </div>
         )}
         {/* Disabled until the server side messaging is in place to handle these requests */}
-        {props.allowContact && false && (
+        {props.allowContact && showMessingOptions && (
           <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
             <button
-              onClick={() => setShowContact(true)}
+              onClick={() => setShowMarketMessage(true)}
               className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
             >
-              Contact
+              Message
+              <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              onClick={() => setShowMarketEnquiry(true)}
+              className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
+            >
+              Enquire
               <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </button>
           </div>

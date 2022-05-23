@@ -24,6 +24,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
   let model = useMemo<EmploymentExperience>(
     () =>
       props.model ?? {
+        stickToTop: false,
         title: '',
         description: '',
         endMonth: 1,
@@ -39,16 +40,17 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
   const title = useMemo<string>(() => `${isNew ? 'Add' : 'Edit'} Experience`, [isNew]);
 
   const [currentRole, setCurrentRole] = useState<boolean>(model?.endYear === null ? true : false);
+  const [stickToTop, setStickToTop] = useState<boolean>(model?.endYear === null ? true : false);
 
   const cancelButtonRef = useRef(null);
 
   const onSubmit = (model: EmploymentExperience) => {
-    // Remove the end year and month if the position is still current
     if (currentRole) {
-      model = { ...model, endYear: null, endMonth: null };
-      console.log('updated model', model);
+      // Remove the end year and month if the position is still current
+      model = { ...model, endYear: null, endMonth: null, stickToTop: stickToTop };
     } else {
-      console.log('untouched model', model);
+      // Ensure that stickToTop is false if not a current role
+      model = { ...model, stickToTop: false };
     }
 
     props.onConfirm(model);
@@ -173,6 +175,29 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                               className="text-sm text-gray-500 dark:text-gray-300"
                             >
                               I am still working in this role
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="sm:col-span-6">
+                        <div className="relative mt-1 flex items-start">
+                          <div className="flex h-5 items-center">
+                            <input
+                              id="stickToTop"
+                              aria-describedby="stick-to-top"
+                              name="stickToTop"
+                              type="checkbox"
+                              checked={stickToTop}
+                              onChange={() => setStickToTop(!stickToTop)}
+                            />
+                          </div>
+                          <div className="ml-3 text-sm">
+                            <label
+                              htmlFor="
+                              stickToTop"
+                              className="text-sm text-gray-500 dark:text-gray-300"
+                            >
+                              Stick to top of experience history
                             </label>
                           </div>
                         </div>

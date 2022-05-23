@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e007ed248084b6f20eccbe37d33aacd4>>
+ * @generated SignedSource<<eda2106b6d8d0aedd16c3d0ba064cf58>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,12 +12,17 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
 export type getViewPersonalProfileQuery$variables = {
   personalProfileId: any;
+  userId?: any | null;
 };
 export type getViewPersonalProfileQueryVariables = getViewPersonalProfileQuery$variables;
 export type getViewPersonalProfileQuery$data = {
   readonly getViewPersonalProfile: {
     readonly id: string | null;
+    readonly listOnMarket: boolean;
+    readonly isUsersProfile: boolean;
+    readonly userCanAccessProfile: boolean;
     readonly personalProfileId: any;
+    readonly userPublicId: any | null;
     readonly fullName: string | null;
     readonly profilePictureUrl: string | null;
     readonly linkedInProfile: string | null;
@@ -26,9 +31,10 @@ export type getViewPersonalProfileQuery$data = {
     readonly skills: ReadonlyArray<string | null> | null;
     readonly employmentExperience: ReadonlyArray<{
       readonly id: any | null;
-      readonly description: string | null;
+      readonly stickToTop: boolean;
       readonly title: string | null;
       readonly organisation: string | null;
+      readonly description: string | null;
       readonly startMonth: number;
       readonly startYear: number;
       readonly endMonth: number | null;
@@ -72,6 +78,11 @@ var v0 = [
     "defaultValue": null,
     "kind": "LocalArgument",
     "name": "personalProfileId"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "userId"
   }
 ],
 v1 = {
@@ -129,6 +140,11 @@ v5 = [
         "kind": "Variable",
         "name": "personalProfileId",
         "variableName": "personalProfileId"
+      },
+      {
+        "kind": "Variable",
+        "name": "userId",
+        "variableName": "userId"
       }
     ],
     "concreteType": "ViewPersonalProfileModel",
@@ -141,7 +157,35 @@ v5 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "listOnMarket",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "isUsersProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userCanAccessProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "personalProfileId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "userPublicId",
         "storageKey": null
       },
       {
@@ -189,7 +233,13 @@ v5 = [
         "plural": true,
         "selections": [
           (v1/*: any*/),
-          (v3/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "stickToTop",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -204,6 +254,7 @@ v5 = [
             "name": "organisation",
             "storageKey": null
           },
+          (v3/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -287,16 +338,16 @@ return {
     "selections": (v5/*: any*/)
   },
   "params": {
-    "cacheID": "aa6e2c1c34880baafdd80a5d85c0b164",
+    "cacheID": "88ba0f0518b21d89b7c0817e46c1c020",
     "id": null,
     "metadata": {},
     "name": "getViewPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getViewPersonalProfileQuery(\n  $personalProfileId: UUID!\n) {\n  getViewPersonalProfile(personalProfileId: $personalProfileId) {\n    id\n    personalProfileId\n    fullName\n    profilePictureUrl\n    linkedInProfile\n    about\n    industries\n    skills\n    employmentExperience {\n      id\n      description\n      title\n      organisation\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n    associatedStartupProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedMentorProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedExpertProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
+    "text": "query getViewPersonalProfileQuery(\n  $personalProfileId: UUID!\n  $userId: UUID\n) {\n  getViewPersonalProfile(personalProfileId: $personalProfileId, userId: $userId) {\n    id\n    listOnMarket\n    isUsersProfile\n    userCanAccessProfile\n    personalProfileId\n    userPublicId\n    fullName\n    profilePictureUrl\n    linkedInProfile\n    about\n    industries\n    skills\n    employmentExperience {\n      id\n      stickToTop\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n    associatedStartupProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedMentorProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    associatedExpertProfiles {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d98cdbedc117089bbc56ecb1009b89b4";
+(node as any).hash = "ae07923c7b86efe758c3d6e09d6ab411";
 
 export default node;

@@ -1,7 +1,7 @@
 // The purpose of this component is to provide a dropdown menu for the user
 // within the nav bar
 
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import Pages from 'components/shared/Pages';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Menu, Transition } from '@headlessui/react';
@@ -9,8 +9,10 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 import { NavLink } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import { getPersonalProfileEditUrl } from 'components/profiles/UrlBuilder';
+import { PrivateContext } from 'components/PrivateContext';
 
 const ProfileDropdown = (): JSX.Element => {
+  const { checkedInUser } = useContext(PrivateContext);
   const { user, logout } = useAuth0();
 
   const logoutWithRedirect = () =>
@@ -24,10 +26,14 @@ const ProfileDropdown = (): JSX.Element => {
       <Menu as="div" className="relative ml-3">
         <div>
           <Menu.Button className="focus:ring-primary-500 flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 dark:hover:bg-gray-800 lg:rounded-md lg:p-2 lg:hover:bg-gray-100">
-            <img className="h-8 w-8 rounded-full" src={user?.picture} alt={user?.name} />
+            <img
+              className="h-8 w-8 rounded-full"
+              src={checkedInUser?.pictureUrl ?? ''}
+              alt={checkedInUser?.fullName ?? ''}
+            />
             <span className="ml-3 hidden text-sm font-medium text-gray-700 dark:text-gray-200 lg:block">
               <span className="sr-only">Open user menu for </span>
-              {user?.name}
+              {checkedInUser?.fullName ?? ''}
             </span>
             <ChevronDownIcon
               className="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:block"

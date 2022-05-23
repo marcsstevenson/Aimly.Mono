@@ -25,6 +25,8 @@ import {
   useDeleteMentorProfileMutationVariables,
 } from '__generated__/useDeleteMentorProfileMutation.graphql';
 import { SkillSelector } from 'components/shared/SkillSelector';
+import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   model: GetMentorProfileModelInput;
@@ -32,11 +34,13 @@ interface Props {
 }
 
 const MentorProfileForm = (props: Props) => {
+  const navigate = useNavigate();
   const { getPromptForDeleteValue } = useUrlParser();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(
     props.allowDelete && getPromptForDeleteValue()
   );
   const [isDeleting, setIsDeleting] = useState(false);
+  const [viewAfterSave, setViewAfterSave] = useState(false);
 
   const navigateToPage = useNavigateToPage();
 
@@ -59,9 +63,18 @@ const MentorProfileForm = (props: Props) => {
 
   // This is called once the SetMentorProfile mutation has completed
   const handleSubmitCompleted = (response: useSetMentorProfileMutation$data): void => {
-    let queryString = `?$id=${response.setMentorProfile?.updatedMentorProfileId}`;
+    if (viewAfterSave) {
+      // Take the user to see their profile in the market
+      const path = getUrlForViewProfile(
+        'MENTOR',
+        response.setMentorProfile?.updatedMentorProfileId ?? ''
+      );
+      navigate(path);
+    } else {
+      const queryString = `?$id=${response.setMentorProfile?.updatedMentorProfileId}`;
 
-    outro(queryString);
+      outro(queryString);
+    }
   };
 
   // Head back to profiles
@@ -140,7 +153,7 @@ const MentorProfileForm = (props: Props) => {
 
                     <div className="sm:col-span-6">
                       <label htmlFor="familyName" className="form-label">
-                        Profile name *
+                        Profile Title *
                       </label>
                       <div className="mt-1">
                         <Field
@@ -154,7 +167,10 @@ const MentorProfileForm = (props: Props) => {
                           <div className="form-input-validation">{errors.name}</div>
                         )}
                       </div>
-                      <p className="form-input-description">A short name for your profile</p>
+                      <p className="form-input-description">
+                        A short title for your profile. Examples "Copy Writer", "Marketing
+                        Specialist" or "Entrepreneur Mentor".
+                      </p>
                     </div>
                     <div className="sm:col-span-6">
                       <label htmlFor="phoneNumber" className="form-label">
@@ -233,9 +249,18 @@ const MentorProfileForm = (props: Props) => {
                   <button
                     disabled={isSubmitting || isValidating}
                     type="submit"
-                    className="form-next ml-3"
+                    onClick={() => setViewAfterSave(false)}
+                    className="form-next bg-secondary-800 hover:bg-secondary-900 ml-3"
                   >
                     Save
+                  </button>
+                  <button
+                    disabled={isSubmitting || isValidating}
+                    type="submit"
+                    onClick={() => setViewAfterSave(true)}
+                    className="form-next ml-3"
+                  >
+                    Save and View
                   </button>
                 </div>
               </div>

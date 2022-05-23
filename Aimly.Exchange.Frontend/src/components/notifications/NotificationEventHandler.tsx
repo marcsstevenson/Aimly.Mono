@@ -12,7 +12,6 @@ const NotificationEventHandler = () => {
   useEffect(() => {
     const apiUri = process.env.REACT_APP_EXCHANGE_API_URI + '/api/';
     const publicId = checkedInUser?.publicId;
-    console.log('publicId', publicId);
 
     if (apiUri && publicId) {
       const connect = new HubConnectionBuilder()

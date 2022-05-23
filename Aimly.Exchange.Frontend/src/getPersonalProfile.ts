@@ -17,6 +17,7 @@ export const getPersonalProfileQuery = graphql`
       skills
       employmentExperience {
         id
+        stickToTop
         title
         organisation
         description

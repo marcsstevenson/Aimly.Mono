@@ -18,7 +18,7 @@ export interface StatusType {
 }
 
 const Profiles = () => {
-  const { user } = useContext(PrivateContext);
+  const { checkedInUser } = useContext(PrivateContext);
 
   return (
     <div className="flex-1 pb-8">
@@ -31,12 +31,16 @@ const Profiles = () => {
               <div className="flex items-center">
                 <img
                   className="hidden h-16 w-16 rounded-full sm:block"
-                  src={user?.picture}
+                  src={checkedInUser?.pictureUrl ?? ''}
                   alt=""
                 />
                 <div>
                   <div className="flex items-center">
-                    <img className="h-16 w-16 rounded-full sm:hidden" src={user?.picture} alt="" />
+                    <img
+                      className="h-16 w-16 rounded-full sm:hidden"
+                      src={checkedInUser?.pictureUrl ?? ''}
+                      alt=""
+                    />
                     <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 dark:text-gray-50 sm:truncate sm:leading-9">
                       Profile Management
                     </h1>
@@ -96,9 +100,7 @@ const Profiles = () => {
         <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-50">
           My Profiles
         </h2>
-        <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <MyProfilesList />
-        </div>
+        <MyProfilesList />
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ const App = (): JSX.Element => {
               {user && <PrivateShell />}
             </RelayEnvironmentProvider>
           </Suspense>
-          {error?.message ?? <div>Oops... {error?.message}</div>}
+          {error?.message ?? <div>{error?.message}</div>}
         </div>
       </ErrorBoundary>
     </BrowserRouter>
