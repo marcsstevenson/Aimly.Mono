@@ -193,3 +193,26 @@ body {
 .sendbird-channel-header__title__right__user-id {
   display: none !important;
 }
+
+/* Ripple effect for buttons */
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  cursor: pointer;
+}
+
+span.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}

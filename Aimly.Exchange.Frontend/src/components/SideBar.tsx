@@ -17,6 +17,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import TopLeftLogo from 'components/TopLeftLogo';
 import NotificationCounter from 'components/notifications/NotificationCounter';
+import SideBarButton from './SideBarButton';
 const navigation = [
   { name: 'Home', href: GetPathForPage(Pages.DashBoard), icon: HomeIcon, current: true },
   {
@@ -55,6 +56,7 @@ const SideBar = (): JSX.Element => {
 
   return (
     <>
+      {/* Sidebar for mobile */}
       <Transition.Root show={isSidebarOpen} as={Fragment}>
         <Dialog as="div" className="fixed inset-0 z-40 flex lg:hidden" onClose={setSidebarOpen}>
           <Transition.Child
@@ -174,47 +176,51 @@ const SideBar = (): JSX.Element => {
           >
             <div className="space-y-1 px-2">
               {navigation.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={{ pathname: item.href }}
-                  className={({ isActive }) =>
-                    (isActive
-                      ? 'bg-primary-700 text-white'
-                      : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
-                    '  group flex items-center rounded-md px-2 py-2 text-base font-medium'
-                  }
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name === 'Messages' && totalUnreadMessageCount > 0 ? (
-                    <div className="mr-4">
-                      <NotificationCounter count={totalUnreadMessageCount} />
-                    </div>
-                  ) : (
-                    <item.icon
-                      className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                  )}
-                  {item.name}
-                </NavLink>
-              ))}
-            </div>
-            <div className="mt-6 pt-6">
-              <div className="space-y-1 px-2">
-                {secondaryNavigation.map((item) => (
+                <SideBarButton key={item.name}>
                   <NavLink
-                    key={item.name}
                     to={{ pathname: item.href }}
                     className={({ isActive }) =>
                       (isActive
                         ? 'bg-primary-700 text-white'
                         : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
-                      '  group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6'
+                      '  group flex items-center rounded-md px-2 py-2 text-base font-medium'
                     }
+                    aria-current={item.current ? 'page' : undefined}
                   >
-                    <item.icon className="text-primary-200 mr-4 h-6 w-6" aria-hidden="true" />
-                    {item.name}
+                    <>
+                      {item.name === 'Messages' && totalUnreadMessageCount > 0 ? (
+                        <div className="mr-4">
+                          <NotificationCounter count={totalUnreadMessageCount} />
+                        </div>
+                      ) : (
+                        <item.icon
+                          className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
+                          aria-hidden="true"
+                        />
+                      )}
+                      <span>{item.name}</span>
+                    </>
                   </NavLink>
+                </SideBarButton>
+              ))}
+            </div>
+            <div className="mt-6 pt-6">
+              <div className="space-y-1 px-2">
+                {secondaryNavigation.map((item) => (
+                  <SideBarButton key={item.name}>
+                    <NavLink
+                      to={{ pathname: item.href }}
+                      className={({ isActive }) =>
+                        (isActive
+                          ? 'bg-primary-700 text-white'
+                          : ' text-primary-100 hover:bg-primary-600 hover:text-white') +
+                        '  group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6'
+                      }
+                    >
+                      <item.icon className="text-primary-200 mr-4 h-6 w-6" aria-hidden="true" />
+                      {item.name}
+                    </NavLink>
+                  </SideBarButton>
                 ))}
               </div>
             </div>
