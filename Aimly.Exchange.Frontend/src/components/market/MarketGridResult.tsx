@@ -19,7 +19,8 @@ const MarketGridResult = ({ result, index }: Props) => {
     // Company logos often contain transparent areas and this makes for a poor display
     // if the logo is dark and our background is dark. For this reason, use a white bg
     // for company profiles.
-    return type === 'COMPANY' ? 'rounded-md bg-gray-200' : 'rounded-full';
+    // Edit. Removed bg-gray-200 because it's very ugly.
+    return type === 'COMPANY' ? 'rounded-md' : 'rounded-full';
   }, []);
 
   const onImageError = (ev: any) => {

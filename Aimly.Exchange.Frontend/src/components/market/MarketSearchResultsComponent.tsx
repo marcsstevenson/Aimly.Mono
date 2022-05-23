@@ -26,7 +26,13 @@ export const MarketSearchResults = ({ queryRef }: Props) => {
           <div className="inline-block min-w-full py-6 align-middle sm:px-6 lg:px-8">
             <div className="overflow-hidden sm:rounded-lg">
               <div className="ml-auto flex items-center space-x-5 bg-gray-50 px-6 py-3 dark:bg-gray-800"></div>
-              <MarketGridResults marketSearchResults={response.marketSearch?.results} />
+              {response.marketSearch?.results && response.marketSearch?.results?.length > 0 ? (
+                <MarketGridResults marketSearchResults={response.marketSearch?.results} />
+              ) : (
+                <div className="text-secondary-500 bg-gray-50 px-5 pb-5 dark:bg-gray-800">
+                  No results.
+                </div>
+              )}
             </div>
           </div>
         </div>
