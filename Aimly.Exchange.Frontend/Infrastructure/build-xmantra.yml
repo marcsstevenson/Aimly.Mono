@@ -7,6 +7,9 @@ trigger:
   branches:
     include:
       - 'xmantra'
+    exclude:
+      - 'main'
+      - 'prod'
   paths:
     include:
       - Aimly.Exchange.Frontend
@@ -17,8 +20,7 @@ trigger:
 pr:
   branches:
     exclude:
-      - 'main'
-      - 'prod'
+      - '*'
 
 pool:
   vmImage: 'ubuntu-latest'
