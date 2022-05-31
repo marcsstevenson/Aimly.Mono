@@ -25,7 +25,7 @@ const HtmlDisplay = ({ content, className }: Props) => {
 
   return (
     <p
-      className={'prose dark:prose-invert ' + className}
+      className={'prose dark:prose-invert max-w-none ' + className}
       dangerouslySetInnerHTML={{ __html: sanitizer(content) }}
     ></p>
   );
