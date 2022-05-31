@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { PrivateContext } from 'components/PrivateContext';
 import TopGraphic from 'components/shared/TopGraphic';
 import ViewProfileHeader from 'components/market/view/ViewProfileHeader';
+import HtmlDisplay from 'components/shared/HtmlDisplay';
 
 const ViewSharedCompanyProfile = () => {
   // Read the Id from the route context
@@ -103,13 +104,17 @@ const ViewSharedCompanyProfile = () => {
                     <div className="grid gap-y-6 gap-x-4 sm:grid-cols-6">
                       <div className="sm:col-span-6">
                         <label className="form-label">Your Why (Why are you doing this?)</label>
-                        <div className="mt-1">{model.purposeDetails}</div>
+                        <div className="mt-1">
+                          <HtmlDisplay content={model.purposeDetails} />
+                        </div>
                       </div>
                       <div className="sm:col-span-6">
                         <label className="form-label">
                           The Problem (What is the problem that you aim to solve?)
                         </label>
-                        <div className="mt-1">{model.problemDetails}</div>
+                        <div className="mt-1">
+                          <HtmlDisplay content={model.problemDetails} />
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -14,7 +14,6 @@ body {
 /* Basic editor styles */
 .ProseMirror {
   padding: 1em;
-  @apply text-gray-600  dark:bg-gray-900  dark:text-white;
 }
 
 .ProseMirror ul,
@@ -28,7 +27,6 @@ body {
 .ProseMirror h4,
 .ProseMirror h5,
 .ProseMirror h6 {
-  line-height: 1.1;
   font-weight: bold;
 }
 
@@ -62,10 +60,22 @@ body {
   border-left: 2px solid rgba(13, 13, 13, 0.1);
 }
 
+/* Need a dark version of this */
 .ProseMirror hr {
   border: none;
   border-top: 2px solid rgba(13, 13, 13, 0.1);
   margin: 2rem 0;
+}
+
+/* Remove the standard focus border and replace with our style */
+.ProseMirror:focus {
+  outline: none;
+  @apply focus:border-secondary-500 focus:ring-secondary-500 focus:ring-2;
+}
+
+.error .ProseMirror {
+  outline: none;
+  @apply focus:border-validation-500 focus:ring-validation-500 focus:ring-2;
 }
 
 @layer components {
@@ -101,6 +111,10 @@ body {
 
   .form-next {
     @apply bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 disabled:bg-secondary-300 ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .form-next-dark {
+    @apply bg-secondary-800 hover:bg-secondary-900 focus:ring-secondary-500 disabled:bg-secondary-300 ml-3 inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .form-done {

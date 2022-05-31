@@ -13,6 +13,7 @@ import {
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';
+import validateRequiredHtml from 'validators/validateRequiredHtml';
 import GenericHeader from 'components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
@@ -27,6 +28,7 @@ import {
 import { SkillSelector } from 'components/shared/SkillSelector';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
+import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 
 interface Props {
   model: GetExpertProfileModelInput;
@@ -126,7 +128,7 @@ const ExpertProfileForm = (props: Props) => {
         />
 
         <Formik initialValues={model} onSubmit={onSubmit}>
-          {({ errors, touched, isValidating, isSubmitting }) => (
+          {({ errors, touched, isValidating, isSubmitting, isValid }) => (
             <Form className="space-y-8 divide-y divide-gray-200">
               <div className="space-y-8 divide-y divide-gray-200">
                 <div className="pt-8">
@@ -207,12 +209,11 @@ const ExpertProfileForm = (props: Props) => {
                       </label>
                       <div className="mt-1">
                         <Field
+                          component={ContentEditWrapper}
                           id="about"
                           name="about"
-                          as="textarea"
-                          rows={10}
-                          validate={validateRequiredString}
-                          className={errors.about ? 'form-input-error' : 'form-input'}
+                          required={true}
+                          validate={validateRequiredHtml}
                         />
                         {errors.about && touched.about && (
                           <div className="form-input-validation">{errors.about}</div>
@@ -239,15 +240,15 @@ const ExpertProfileForm = (props: Props) => {
                     </button>
                   )}
                   <button
-                    disabled={isSubmitting || isValidating}
+                    disabled={isSubmitting || isValidating || !isValid}
                     type="submit"
                     onClick={() => setViewAfterSave(false)}
-                    className="form-next bg-secondary-800 hover:bg-secondary-900 ml-3"
+                    className="form-next-dark ml-3"
                   >
                     Save
                   </button>
                   <button
-                    disabled={isSubmitting || isValidating}
+                    disabled={isSubmitting || isValidating || !isValid}
                     type="submit"
                     onClick={() => setViewAfterSave(true)}
                     className="form-next ml-3"

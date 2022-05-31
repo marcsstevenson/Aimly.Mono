@@ -33,6 +33,7 @@ import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { LinkIcon } from '@heroicons/react/solid';
 import { inviteCodeValue } from 'components/shared/UrlConstants';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
+import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 
 const AboutYou = () => {
   const { checkedInUser } = useContext(PrivateContext);
@@ -203,7 +204,7 @@ const AboutYou = () => {
       />
 
       <Formik initialValues={model} onSubmit={onSubmit}>
-        {({ errors, touched, isValidating, isSubmitting, values }) => {
+        {({ errors, touched, isValidating, isSubmitting, values, isValid }) => {
           getData(values);
 
           return (
@@ -237,13 +238,7 @@ const AboutYou = () => {
                           About you
                         </label>
                         <div className="mt-1">
-                          <Field
-                            id="about"
-                            name="about"
-                            as="textarea"
-                            rows={10}
-                            className="form-input"
-                          />
+                          <Field component={ContentEditWrapper} id="about" name="about" />
                         </div>
                         <p className="form-input-description">
                           A brief description for your personal profile.
@@ -537,7 +532,7 @@ const AboutYou = () => {
                     </button>
                   )}
                   <button
-                    disabled={isSubmitting || isValidating}
+                    disabled={isSubmitting || isValidating || !isValid}
                     type="submit"
                     className="form-next ml-3"
                   >

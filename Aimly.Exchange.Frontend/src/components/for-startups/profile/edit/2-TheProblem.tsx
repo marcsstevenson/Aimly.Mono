@@ -14,8 +14,9 @@ import * as GetTheProblemQuery from '__generated__/getTheProblemQuery.graphql';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { PrivateContext } from 'components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
-import validateRequiredString from 'validators/validateRequiredString';
+import validateRequiredHtml from 'validators/validateRequiredHtml';
 import { useSearchParams } from 'react-router-dom';
+import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 
 const TheProblem = () => {
   const { userId } = useContext(PrivateContext);
@@ -77,7 +78,7 @@ const TheProblem = () => {
   return (
     <StartupQuestionnaireManager currentStep={currentStep}>
       <Formik initialValues={model} onSubmit={onSubmit}>
-        {({ errors, touched, isValidating, isSubmitting }) => (
+        {({ errors, touched, isValidating, isSubmitting, isValid }) => (
           <Form className="space-y-8 divide-y divide-gray-200">
             <div className="space-y-8 divide-y divide-gray-200">
               <div className="pt-8">
@@ -89,12 +90,11 @@ const TheProblem = () => {
                     <p className="form-input-description">Why are you doing this?</p>
                     <div className="mt-1">
                       <Field
+                        component={ContentEditWrapper}
                         id="purposeDetails"
                         name="purposeDetails"
-                        as="textarea"
-                        rows={8}
-                        validate={validateRequiredString}
-                        className={errors.purposeDetails ? 'form-input-error' : 'form-input'}
+                        required={true}
+                        validate={validateRequiredHtml}
                       />
                       {errors.purposeDetails && touched.purposeDetails && (
                         <div className="form-input-validation">{errors.purposeDetails}</div>
@@ -110,12 +110,11 @@ const TheProblem = () => {
                     </p>
                     <div className="mt-1">
                       <Field
+                        component={ContentEditWrapper}
                         id="problemDetails"
                         name="problemDetails"
-                        as="textarea"
-                        rows={8}
-                        validate={validateRequiredString}
-                        className={errors.problemDetails ? 'form-input-error' : 'form-input'}
+                        required={true}
+                        validate={validateRequiredHtml}
                       />
                       {errors.problemDetails && touched.problemDetails && (
                         <div className="form-input-validation">{errors.problemDetails}</div>
@@ -129,7 +128,7 @@ const TheProblem = () => {
             <div className="py-5">
               <div className="flex justify-end">
                 <button
-                  disabled={isSubmitting || isValidating}
+                  disabled={isSubmitting || isValidating || !isValid}
                   type="submit"
                   className="form-next ml-3"
                 >

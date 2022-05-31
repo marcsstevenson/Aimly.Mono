@@ -23,6 +23,7 @@ import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
+import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -112,7 +113,7 @@ const PersonalProfileEdit = () => {
       <div>
         <GenericHeader title="Profile Builder" contextVal="Personal" />
         <Formik initialValues={model} onSubmit={onSubmit}>
-          {({ errors, touched, isValidating, isSubmitting }) => (
+          {({ errors, touched, isValidating, isSubmitting, isValid }) => (
             <Form className="default-divide space-y-8">
               <div className="default-divide space-y-8">
                 <div className="sm:col-span-6">
@@ -138,17 +139,11 @@ const PersonalProfileEdit = () => {
                   <div className="mt-6 flex flex-col lg:flex-row">
                     <div className="flex-grow space-y-6">
                       <div>
-                        <label htmlFor="about" className="form-label">
+                        <label htmlFor="about" className="form-label text-xl">
                           About
                         </label>
                         <div className="mt-1">
-                          <Field
-                            id="about"
-                            name="about"
-                            as="textarea"
-                            rows={10}
-                            className="form-input"
-                          />
+                          <Field component={ContentEditWrapper} id="about" name="about" />
                         </div>
                         <p className="form-input-description">A brief description of yourself.</p>
                       </div>
@@ -333,15 +328,15 @@ const PersonalProfileEdit = () => {
                     Cancel
                   </button>
                   <button
-                    disabled={isSubmitting || isValidating}
+                    disabled={isSubmitting || isValidating || !isValid}
                     type="submit"
                     onClick={() => setViewAfterSave(false)}
-                    className="form-next bg-secondary-800 hover:bg-secondary-900 ml-3"
+                    className="form-next-dark ml-3"
                   >
                     Save
                   </button>
                   <button
-                    disabled={isSubmitting || isValidating}
+                    disabled={isSubmitting || isValidating || !isValid}
                     type="submit"
                     onClick={() => setViewAfterSave(true)}
                     className="form-next ml-3"
