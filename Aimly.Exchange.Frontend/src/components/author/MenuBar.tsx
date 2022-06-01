@@ -87,6 +87,30 @@ export default ({ editor }: EditorProps) => {
       isActive: () => editor.isActive('orderedList'),
     },
     {
+      icon: 'align-left',
+      title: 'Align Left',
+      action: () => editor.chain().focus().setTextAlign('left').run(),
+      isActive: () => editor.isActive({ textAlign: 'left' }),
+    },
+    {
+      icon: 'align-center',
+      title: 'Align Center',
+      action: () => editor.chain().focus().setTextAlign('center').run(),
+      isActive: () => editor.isActive({ textAlign: 'center' }),
+    },
+    {
+      icon: 'align-right',
+      title: 'Align Right',
+      action: () => editor.chain().focus().setTextAlign('right').run(),
+      isActive: () => editor.isActive({ textAlign: 'right' }),
+    },
+    {
+      icon: 'align-justify',
+      title: 'Align Justify',
+      action: () => editor.chain().focus().setTextAlign('justify').run(),
+      isActive: () => editor.isActive({ textAlign: 'justify' }),
+    },
+    {
       icon: 'code-box-line',
       title: 'Code Block',
       action: () => editor.chain().focus().toggleCodeBlock().run(),

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
+import TextAlign from '@tiptap/extension-text-align';
 import MenuBar from 'components/author/MenuBar';
 import { classNames } from 'utils/classNames';
 
@@ -19,7 +20,13 @@ const ContentEdit = ({ content, onChange, required }: Props) => {
   const [valid, setValid] = React.useState(true);
 
   const editor = useEditor({
-    extensions: [StarterKit, Image],
+    extensions: [
+      StarterKit,
+      Image,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
+    ],
     content: content,
     // editable: false,
   });
