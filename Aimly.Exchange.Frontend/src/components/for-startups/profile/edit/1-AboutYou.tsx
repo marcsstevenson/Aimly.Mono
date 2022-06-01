@@ -34,6 +34,8 @@ import { LinkIcon } from '@heroicons/react/solid';
 import { inviteCodeValue } from 'components/shared/UrlConstants';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
+import ContentEdit from 'components/author/ContentEdit';
+import useDefaultEditor from 'components/author/useDefaultEditor';
 
 const AboutYou = () => {
   const { checkedInUser } = useContext(PrivateContext);
@@ -103,12 +105,15 @@ const AboutYou = () => {
     industries: loadedData?.industries ?? [],
   };
 
+  const editor = useDefaultEditor(model.about);
   const [profilePictureUrl, setProfilePictureUrl] = useState(model.companyProfilePictureUrl);
 
   const SetAboutYou = useSetAboutYouMutation();
   const DeleteCompanyProfile = useDeleteCompanyProfileMutation();
 
   const onSubmit = (getAboutYouModel: GetAboutYouModelInput) => {
+    getAboutYouModel.about = editor?.getHTML() ?? '';
+
     // Just relay the personal profile picture url to the backend for now (until we allow this to be updated)
     getAboutYouModel.personalProfilePictureUrl = model.personalProfilePictureUrl;
 
@@ -238,7 +243,8 @@ const AboutYou = () => {
                           About you
                         </label>
                         <div className="mt-1">
-                          <Field component={ContentEditWrapper} id="about" name="about" />
+                          <ContentEdit inputEditor={editor} />
+                          {/* <Field component={ContentEditWrapper} id="about" name="about" /> */}
                         </div>
                         <p className="form-input-description">
                           A brief description for your personal profile.

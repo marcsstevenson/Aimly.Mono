@@ -28,7 +28,8 @@ import {
 import { SkillSelector } from 'components/shared/SkillSelector';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
-import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
+import ContentEdit from 'components/author/ContentEdit';
+import useDefaultEditor from 'components/author/useDefaultEditor';
 
 interface Props {
   model: GetMentorProfileModelInput;
@@ -48,10 +49,13 @@ const MentorProfileForm = (props: Props) => {
 
   let model: GetMentorProfileModelInput = props.model;
 
+  const editor = useDefaultEditor(model.about);
   const SetMentorProfile = useSetMentorProfileMutation();
   const DeleteMentorProfile = useDeleteMentorProfileMutation();
 
   const onSubmit = (getMentorProfileModel: GetMentorProfileModelInput) => {
+    getMentorProfileModel.about = editor?.getHTML() ?? '';
+
     handleSave(getMentorProfileModel);
   };
 
@@ -208,13 +212,14 @@ const MentorProfileForm = (props: Props) => {
                         About *
                       </label>
                       <div className="mt-1">
-                        <Field
+                        <ContentEdit inputEditor={editor} />
+                        {/* <Field
                           component={ContentEditWrapper}
                           id="about"
                           name="about"
                           required={true}
                           validate={validateRequiredHtml}
-                        />
+                        /> */}
                         {errors.about && touched.about && (
                           <div className="form-input-validation">{errors.about}</div>
                         )}

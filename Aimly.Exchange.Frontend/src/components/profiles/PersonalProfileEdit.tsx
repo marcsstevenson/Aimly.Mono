@@ -24,6 +24,8 @@ import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
+import useDefaultEditor from 'components/author/useDefaultEditor';
+import ContentEdit from 'components/author/ContentEdit';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);
@@ -63,10 +65,12 @@ const PersonalProfileEdit = () => {
     skills: loadedData?.skills ?? [],
     employmentExperience: loadedData?.employmentExperience ?? [],
   };
-
+  const editor = useDefaultEditor(model.about);
   const SetPersonalProfile = useSetPersonalProfileMutation();
 
   const onSubmit = (getPersonalProfileModel: GetPersonalProfileModelInput) => {
+    getPersonalProfileModel.about = editor?.getHTML() ?? '';
+
     // Just relay the personal profile picture url to the backend for now (until we allow this to be updated)
     getPersonalProfileModel.personalProfilePictureUrl = model.personalProfilePictureUrl;
 
@@ -143,7 +147,8 @@ const PersonalProfileEdit = () => {
                           About
                         </label>
                         <div className="mt-1">
-                          <Field component={ContentEditWrapper} id="about" name="about" />
+                          <ContentEdit inputEditor={editor} />
+                          {/* <Field component={ContentEditWrapper} id="about" name="about" /> */}
                         </div>
                         <p className="form-input-description">A brief description of yourself.</p>
                       </div>

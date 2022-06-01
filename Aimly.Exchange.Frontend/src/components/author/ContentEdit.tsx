@@ -1,61 +1,64 @@
 import React, { useEffect } from 'react';
-import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import MenuBar from 'components/author/MenuBar';
 import { classNames } from 'utils/classNames';
+import useDefaultEditor from './useDefaultEditor';
 
 interface Props {
   content?: string;
   onChange?: (content: string) => void;
   required?: boolean;
+  inputEditor?: Editor | undefined | null;
 }
 
-const ContentEdit = ({ content, onChange, required }: Props) => {
+const ContentEdit = ({ content, onChange, required, inputEditor }: Props) => {
   if (required === undefined) {
     required = false;
   }
 
   const [valid, setValid] = React.useState(true);
+  const [lastValue, setLastValue] = React.useState(null);
 
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Image,
-      TextAlign.configure({
-        types: ['heading', 'paragraph'],
-      }),
-    ],
-    content: content,
-    // editable: false,
-  });
+  const defaultEditor = useDefaultEditor(content);
 
-  let filterTimeout: any;
-  useEffect(() => {
-    // this will clear filterTimeout when component unmounts
-    return () => {
-      clearTimeout(filterTimeout);
-    };
-  }, []);
+  const editor = inputEditor ?? defaultEditor;
+
+  // let filterTimeout: any;
+  // useEffect(() => {
+  //   // this will clear filterTimeout when component unmounts
+  //   return () => {
+  //     clearTimeout(filterTimeout);
+  //   };
+  // }, []);
 
   if (!editor) return <></>;
 
-  editor.on('update', ({ editor }) => {
-    if (!onChange) return;
+  // editor.on('blur', ({ editor }) => {
+  //   if (!onChange) return;
 
-    clearTimeout(filterTimeout);
-    // The content has changed.
-    filterTimeout = setTimeout(() => {
-      // Is the input valid?
-      setValid(!required || editor.getText().length > 0);
-      // console.log(editor.getText().length);
-      // console.log('valid', valid);
+  //   const html = editor.getHTML();
 
-      // Bubble the value back up
-      onChange(editor.getHTML());
-    }, 100);
-  });
+  //   // if (lastValue == html) {
+  //   //   return;
+  //   // }
+
+  //   // Update lastValue
+  //   // setLastValue(lastValue);
+  //   setUpdates(updates + 1);
+
+  //   // // clearTimeout(filterTimeout);
+  //   // // // The content has changed.
+  //   // // filterTimeout = setTimeout(() => {
+  //   // // Is the input valid?
+  //   setValid(!required || editor.getText().length > 0);
+
+  //   // // Bubble the value back up
+  //   onChange(editor.getHTML());
+  //   // }, 100);
+  // });
 
   // Add required check and error class if required and empty
 

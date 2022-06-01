@@ -17,6 +17,8 @@ import { Field, Form, Formik } from 'formik';
 import validateRequiredHtml from 'validators/validateRequiredHtml';
 import { useSearchParams } from 'react-router-dom';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
+import ContentEdit from 'components/author/ContentEdit';
+import useDefaultEditor from 'components/author/useDefaultEditor';
 
 const TheProblem = () => {
   const { userId } = useContext(PrivateContext);
@@ -50,9 +52,15 @@ const TheProblem = () => {
     problemDetails: loadedData?.problemDetails ?? '',
   };
 
+  const purposeDetailsEditor = useDefaultEditor(model.purposeDetails);
+  const problemDetailsEditor = useDefaultEditor(model.problemDetails);
+
   const SetTheProblem = useSetTheProblemMutation();
 
   const onSubmit = (getAboutYouModel: GetTheProblemModelInput) => {
+    getAboutYouModel.purposeDetails = purposeDetailsEditor?.getHTML() ?? '';
+    getAboutYouModel.problemDetails = problemDetailsEditor?.getHTML() ?? '';
+
     handleSave(getAboutYouModel);
   };
 
@@ -89,13 +97,14 @@ const TheProblem = () => {
                     </label>
                     <p className="form-input-description">Why are you doing this?</p>
                     <div className="mt-1">
-                      <Field
+                      <ContentEdit inputEditor={purposeDetailsEditor} />
+                      {/* <Field
                         component={ContentEditWrapper}
                         id="purposeDetails"
                         name="purposeDetails"
                         required={true}
                         validate={validateRequiredHtml}
-                      />
+                      /> */}
                       {errors.purposeDetails && touched.purposeDetails && (
                         <div className="form-input-validation">{errors.purposeDetails}</div>
                       )}
@@ -109,13 +118,14 @@ const TheProblem = () => {
                       What is the problem that you aim to solve?
                     </p>
                     <div className="mt-1">
-                      <Field
+                      <ContentEdit inputEditor={problemDetailsEditor} />
+                      {/* <Field
                         component={ContentEditWrapper}
                         id="problemDetails"
                         name="problemDetails"
                         required={true}
                         validate={validateRequiredHtml}
-                      />
+                      /> */}
                       {errors.problemDetails && touched.problemDetails && (
                         <div className="form-input-validation">{errors.problemDetails}</div>
                       )}
