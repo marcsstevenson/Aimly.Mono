@@ -1100,10 +1100,10 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
-"@headlessui/react@^1.5.0":
-  "integrity" "sha512-aaRnYxBb3MU2FNJf3Ut9RMTUqqU3as0aI1lQhgo2n9Fa67wRu14iOGqx93xB+uMNVfNwZ5B3y/Ndm7qZGuFeMQ=="
-  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.5.0.tgz"
-  "version" "1.5.0"
+"@headlessui/react@^1.6.4":
+  "integrity" "sha512-0yqz1scwbFtwljmbbKjXsSGl5ABEYNICVHZnMCWo0UtOZodo2Tpu94uOVgCRjRZ77l2WcTi2S0uidINDvG7lsA=="
+  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.6.4.tgz"
+  "version" "1.6.4"
 
 "@heroicons/react@^1.0.6":
   "integrity" "sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ=="

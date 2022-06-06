@@ -24,11 +24,11 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
-    "@headlessui/react": "^1.5.0",
+    "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@microsoft/signalr": "^6.0.3",
     "@opentelemetry/tracing": "^0.24.0",
-    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/forms": "^0.5.2",
     "@tiptap/extension-image": "^2.0.0-beta.27",
     "@tiptap/extension-text-align": "^2.0.0-beta.29",
     "@tiptap/react": "^2.0.0-beta.109",

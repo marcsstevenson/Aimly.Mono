@@ -21,24 +21,6 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
 
   return (
     <>
-      {showMessingOptions && props.profileUserPublicId && publicId && (
-        <MarketMessage
-          userPublicId={publicId}
-          profileUserPublicId={props.profileUserPublicId}
-          show={showMarketMessage}
-          onDone={() => setShowMarketMessage(false)}
-        />
-      )}
-
-      {showMessingOptions && props.profileUserPublicId && (
-        <MarketEnquiry
-          profileId={props.profileId}
-          profileType={props.profileType}
-          show={showMarketEnquiry}
-          onDone={() => setShowMarketEnquiry(false)}
-        />
-      )}
-
       {/* <ShowBreakPoints /> */}
       <div className="col-span-8 mr-4 lg:col-span-2 lg:mt-0">
         <ProfilePhotoViewer
@@ -110,6 +92,23 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
         )}
       </div>
       <div className="col-span-8 border-b border-gray-200 dark:border-gray-500"></div>
+      {showMessingOptions && props.profileUserPublicId && publicId && (
+        <MarketMessage
+          userPublicId={publicId}
+          profileUserPublicId={props.profileUserPublicId}
+          show={showMarketMessage}
+          onDone={() => setShowMarketMessage(false)}
+        />
+      )}
+
+      {showMessingOptions && props.profileUserPublicId && (
+        <MarketEnquiry
+          profileId={props.profileId}
+          profileType={props.profileType}
+          show={showMarketEnquiry}
+          onDone={() => setShowMarketEnquiry(false)}
+        />
+      )}
     </>
   );
 };

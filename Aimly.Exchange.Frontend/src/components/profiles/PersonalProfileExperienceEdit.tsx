@@ -74,7 +74,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -90,7 +90,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-gray-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6 sm:align-middle">
+            <Dialog.Panel className="inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-gray-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6 sm:align-middle">
               {/* Modal header */}
               <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
                 <button
@@ -316,7 +316,7 @@ export const PersonalProfileExperienceEdit = (props: Props) => {
                   </Form>
                 )}
               </Formik>
-            </div>
+            </Dialog.Panel>
           </Transition.Child>
         </div>
       </Dialog>
