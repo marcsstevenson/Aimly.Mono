@@ -17,7 +17,7 @@ const DashBoardUpdates = () => {
   const updates = useMemo<update[]>(() => {
     return [
       {
-        title: 'Catallyze Exchange Launched!',
+        title: 'Aimly Exchange Launched!',
         image:
           'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
         content: '',
@@ -57,10 +57,10 @@ const DashBoardUpdates = () => {
                     <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                       <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                         <span className="block text-white">Welcome to the</span>
-                        <span className="text-secondary-100 block">Catallyze Exchange</span>
+                        <span className="text-secondary-100 block">Aimly Exchange</span>
                       </h1>
                       {/* <p className="text-secondary-200 mx-auto mt-6 max-w-lg text-center text-xl sm:max-w-3xl">
-                        Catallyze is the first of what we plan to be many three sided exchanges
+                        Aimly is the first of what we plan to be many three sided exchanges
                         powered by the Aimly platform. We hope you love it!
                       </p> */}
                       <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">

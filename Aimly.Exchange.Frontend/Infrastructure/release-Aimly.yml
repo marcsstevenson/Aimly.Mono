@@ -1,12 +1,11 @@
 resources:
   pipelines:
-    - pipeline: AimlyExchangeFrontend
-      source: AimlyExchangeFrontendBuild
+    - pipeline: AimlyAppAimly
+      source: AimlyAppAimlyBuild
       trigger:
         branches:
-          # - dev # Disabled for now to allow the Aimly release to stay untouched
-          - test
-          - prod
+          exclude:
+            - '*'
 
 # Exclude CI from the repository because we only want to use the resource trigger above
 trigger:
@@ -24,34 +23,34 @@ variables:
   company_name: 'Aimly'
   # TODO This should come from environment variables? We still need a different build per tenant :/ eg, Catallyze
   # Maybe read this from a file in the artifacts folder?
-  tenant_name: 'Catallyze'
+  tenant_name: 'Aimly'
   product-name: 'App'
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
-  environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
+  environment: 'prod' # Alter this as needed if we want to have multiple environments per branch. eg test-2
   target-resource-group: '$(workspace_name)-$(environment)' # Where the resources will be deployed. Eg, AimlyApp-Catallyze-prod
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
   # targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
-  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
-  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
-  target-storage-account: 'aimlyappcatallyzeprod' # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappaimlyprod
+  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappaimlyprod
+  target-storage-account: 'aimlyappaimlyprod' # Where the resources will be deployed, eg, aimlyappaimlyprod
   # targetcdnendpointraw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
-  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, aimlyappcatallyzestaticprod
-  target-cdn-endpoint: 'aimlyappcatallyzestaticprod' # Eg, aimlyappcatallyzestaticprod
+  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, aimlyappaimlystaticprod
+  target-cdn-endpoint: 'aimlyappaimlystaticprod' # Eg, aimlyappaimlystaticprod
   # targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
   # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, aimlyappsharedprofileprod
-  target-cdn-profile: 'aimlyappsharedprofileprod' # Eg, aimlyappsharedprofileprod
+  target-cdn-profile: 'aimlyappaimlystaticprod' # Eg, aimlyappsharedprofileprod
 
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
   shared-key-vault: '$(company_name)-Shared-$(environment)'
   workspace_resource_group: '$(workspace_name)-Shared-$(environment)'
-  artifact-name: 'artifact_$(environment)'
+  artifact-name: 'artifact_aimly'
 
 stages:
   - stage: Deploy
     jobs:
       - job: Deploy
-        displayName: Deploy to Blob Storage - aimlyexchangefrontend
+        displayName: Deploy to Blob Storage
         pool:
           vmImage: windows-latest
         steps:
@@ -91,7 +90,7 @@ stages:
             inputs:
               buildType: 'specific'
               project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
-              pipeline: 'AimlyExchangeFrontendBuild'
+              pipeline: 'AimlyAppAimlyBuild'
               preferTriggeringPipeline: true
               buildVersionToDownload: 'latestFromBranch'
               branchName: '$(Build.SourceBranch)'
