@@ -484,8 +484,7 @@ select {
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 [multiple] {
@@ -494,16 +493,14 @@ select {
   background-repeat: unset;
   background-size: initial;
   padding-right: 0.75rem;
-  -webkit-print-color-adjust: unset;
-          color-adjust: unset;
+  print-color-adjust: unset;
 }
 
 [type='checkbox'],[type='radio'] {
   -webkit-appearance: none;
           appearance: none;
   padding: 0;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  print-color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
   background-origin: border-box;
@@ -586,6 +583,7 @@ select {
 }
 
 [type='file']:focus {
+  outline: 1px solid ButtonText;
   outline: 1px auto -webkit-focus-ring-color;
 }
 
@@ -2739,14 +2737,14 @@ p {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
-.bg-secondary-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
-}
-
 .bg-primary-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.bg-secondary-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
 }
 
 .bg-primary-400 {
@@ -3826,9 +3824,9 @@ span.ripple {
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-secondary-700:hover {
+.hover\:bg-primary-200:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-50:hover {
@@ -3836,9 +3834,9 @@ span.ripple {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-primary-200:hover {
+.hover\:bg-secondary-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-primary-500:hover {
@@ -4235,11 +4233,6 @@ span.ripple {
 .dark .dark\:hover\:bg-gray-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-}
-
-.dark .hover\:dark\:bg-gray-900:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .dark .hover\:dark\:bg-primary-700:hover {

@@ -104,6 +104,13 @@ type CheckInResponse {
   pictureUrl: String
 }
 
+type CreateAccountForEntityResponse {
+  accountLink: String
+  accountId: String
+  errorMessage: String
+  isSuccessful: Boolean!
+}
+
 type DashboardModel {
   newPersonalProfiles: [MarketSearchResult]
   newCompanyProfiles: [MarketSearchResult]
@@ -206,6 +213,20 @@ input GetAboutYouModelInput {
   addressCountry: String
   postalCode: String
   postOfficeBoxNumber: String
+}
+
+type GetAccountResponse {
+  accountId: String
+  type: String
+  payoutsEnabled: Boolean!
+  errorMessage: String
+  isSuccessful: Boolean!
+}
+
+type GetAccountsStatusResponse {
+  getAccountResponse: GetAccountResponse
+  errorMessage: String
+  isSuccessful: Boolean!
 }
 
 type GetExpertProfileModel {
@@ -419,6 +440,8 @@ type MarketSearchResults {
 }
 
 type Mutation {
+  createAccountForEntity(userId: UUID!, companyProfileId: UUID, refreshUrlPath: String, returnUrlPath: String): CreateAccountForEntityResponse
+
   """
   Takes an auth profile model and either creates a user if unknown or updates a
   user if already known. The Id of the user is then returned.
@@ -485,6 +508,8 @@ enum ProfileTypeOption {
 type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
+  accountsStatusForCompany(companyProfileId: UUID!): GetAccountsStatusResponse
+  accountsStatusForUser(userId: UUID!): GetAccountsStatusResponse
   userSettings(userId: UUID!): GetUserSettingsModel
   viewFullCompanyProfile(companyProfileId: UUID!, userId: UUID!): ViewFullCompanyProfileModel
   sharedWithCompanies(userId: UUID!): [MyProfilesResult]

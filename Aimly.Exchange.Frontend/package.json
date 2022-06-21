@@ -9,7 +9,8 @@
     "eject": "react-scripts eject",
     "spa": "react-scripts start",
     "tailwind": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
-    "relay": "relay-compiler"
+    "relay": "relay-compiler",
+    "schema": "get-graphql-schema http://localhost:7071/api/graphqlschema > aimly-backend.schema.graphql"
   },
   "relay": {
     "src": "./src/",
