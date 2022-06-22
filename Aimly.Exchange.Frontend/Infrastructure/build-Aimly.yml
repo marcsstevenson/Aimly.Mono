@@ -29,7 +29,7 @@ variables:
   # Create a variable which determines if we are to publish build artifacts for release
   # We will only publish if the source branch is dev, test or prod
   # TODO - remove main when we have a dev, test, prod setup for front ends
-  publish-artifact: in(variables['Build.SourceBranchName'], 'dev', 'test', 'prod')
+  # publish-artifact: in(variables['Build.SourceBranchName'], 'dev', 'test', 'prod')
   path-working-folder: 'Aimly.Exchange.Frontend'
 
 steps:
@@ -125,7 +125,8 @@ steps:
   # Publish Artifact
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact'
-    condition: and(succeeded(), variables['publish-artifact'])
+    # condition: and(succeeded(), variables['publish-artifact'])
+    condition: succeeded()
     inputs:
       pathtoPublish: '$(path-working-folder)/build'
       # Ensure that our artifact is specific to the branch name
