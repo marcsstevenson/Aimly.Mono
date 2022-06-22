@@ -1,11 +1,10 @@
 resources:
   pipelines:
-    - pipeline: AimlyMarketingFrontend
-      source: AimlyMarketingFrontendBuild
+    - pipeline: AimlyExchangeMarketing
+      source: AimlyExchangeMarketingBuild
       trigger:
         branches:
-          exclude:
-            - '*'
+          - prod
 
 # Exclude CI from the repository because we only want to use the resource trigger above
 trigger:
