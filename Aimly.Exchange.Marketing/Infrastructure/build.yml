@@ -28,7 +28,7 @@ variables:
   # We will only publish if the source branch is dev, test or prod
   # TODO - remove main when we have a dev, test, prod setup for front ends
   publish-artifact: in(variables['Build.SourceBranchName'], 'dev', 'test', 'prod')
-  path-working-folder: 'Aimly.Exchange.Frontend'
+  path-working-folder: 'Aimly.Exchange.Marketing'
 
 steps:
   - task: CmdLine@2
