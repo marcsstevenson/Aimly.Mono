@@ -4,7 +4,8 @@
 
 // ******************************************************************
 
-import React from 'react';
+import React, { useMemo } from 'react';
+import { getConfig } from 'config';
 import { NavLink } from 'react-router-dom';
 import DarkModeSelector from './DarkModeSelector';
 import Pages from 'components/shared/Pages';
@@ -13,29 +14,21 @@ import Pages from 'components/shared/Pages';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { useAuth0 } from '@auth0/auth0-react';
+
 import { GetPathForPage } from 'components/shared/AppRoutes';
-import { getPersonalProfileEditUrl } from 'components/private/profiles/UrlBuilder';
 
 const navigation = [
   { name: 'Home', href: '/', AuthenticatedOnly: false },
   { name: 'For Startups', href: '/for-startups', AuthenticatedOnly: false },
   { name: 'For Mentors', href: '/for-mentors', AuthenticatedOnly: false },
   { name: 'For Experts', href: '/for-experts', AuthenticatedOnly: false },
-  // { name: 'Community', href: '/Community', AuthenticatedOnly: false },
-  { name: 'Marketplace', href: '/Market', AuthenticatedOnly: true },
 ];
 
 const NavBar = () => {
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
-
-  const logoutWithRedirect = () =>
-    logout({
-      returnTo: window.location.origin,
-    });
+  const config = useMemo(() => getConfig(), []);
 
   return (
-    <Disclosure as="nav" className="bg-primary-600 z-20">
+    <Disclosure as="nav" className="z-20 bg-primary-600">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -82,96 +75,36 @@ const NavBar = () => {
                      * The component no longer handles the isAuthenticated case
                      * See ProfileDropdown.tsx for the updated version
                      */}
-                    {navigation
-                      .filter((i) => isAuthenticated || !i.AuthenticatedOnly)
-                      .map((item) => (
-                        <NavLink
-                          to={{ pathname: item.href }}
-                          key={item.name}
-                          className={({ isActive }) =>
-                            (isActive
-                              ? 'bg-gray-900 text-white'
-                              : ' block text-gray-300 hover:bg-gray-700 hover:text-white') +
-                            '  rounded-md px-3 py-2 text-base font-medium'
-                          }
-                        >
-                          {item.name}
-                        </NavLink>
-                      ))}
+                    {navigation.map((item) => (
+                      <NavLink
+                        to={{ pathname: item.href }}
+                        key={item.name}
+                        className={({ isActive }) =>
+                          (isActive
+                            ? 'bg-gray-900 text-white'
+                            : ' block text-gray-300 hover:bg-gray-700 hover:text-white') +
+                          '  rounded-md px-3 py-2 text-base font-medium'
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <DarkModeSelector />
 
-                {/* ********* Note *********
-                 * The component no longer handles the isAuthenticated case
-                 * See ProfileDropdown.tsx for the updated version
-                 */}
-                {!isAuthenticated && (
-                  <div
-                    className="ml-3 cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    onClick={() => loginWithRedirect()}
-                  >
+                <div className="ml-3 cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  <a href={config.exchangeAppUri} target="_blank">
                     Log in
-                  </div>
-                )}
+                  </a>
+                </div>
 
                 {/* ********* Note *********
                  * The component no longer handles the isAuthenticated case
                  * See ProfileDropdown.tsx for the updated version
                  */}
-
-                {isAuthenticated && (
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={user?.picture}
-                          alt={user?.name}
-                        />
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="dark:highlight-white/5 absolute top-full right-0 z-50 mt-6 w-36 overflow-hidden rounded-lg py-1 text-sm font-semibold text-gray-700 shadow-lg ring-1 ring-gray-900/10 dark:bg-gray-800 dark:text-gray-300 dark:ring-0">
-                        <Menu.Item>
-                          <NavLink
-                            to={{ pathname: getPersonalProfileEditUrl() }}
-                            className="hover:bg-primary-50 inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
-                          >
-                            Your Profile
-                          </NavLink>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <NavLink
-                            to={{ pathname: 'settings' }}
-                            className="hover:bg-primary-50 inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
-                          >
-                            Settings
-                          </NavLink>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <div
-                            onClick={() => logoutWithRedirect()}
-                            className="hover:bg-primary-50 inline-flex w-full cursor-pointer px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
-                          >
-                            Sign out
-                          </div>
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                )}
               </div>
             </div>
           </div>

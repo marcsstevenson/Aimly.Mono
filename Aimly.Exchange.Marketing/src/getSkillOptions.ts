@@ -1,7 +1,0 @@
-import graphql from 'babel-plugin-relay/macro';
-
-export const getSkillOptionsQuery = graphql`
-  query getSkillOptionsQuery($nameStartingWith: String) {
-    getSkillOptions(nameStartingWith: $nameStartingWith)
-  }
-`;

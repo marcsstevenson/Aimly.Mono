@@ -2,13 +2,11 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from './home/Home';
-import Login from 'components/Login';
 import StartupsHome from './for-startups/StartupsHome';
 import MentorsHome from './for-mentors/MentorsHome';
 import ExpertsHome from './for-experts/ExpertsHome';
 import NavBar from './NavBar';
 import PageNotFound from './PageNotFound';
-import LoginBridge from 'components/LoginBridge';
 
 const PublicShell = (): JSX.Element => {
   return (
@@ -16,9 +14,7 @@ const PublicShell = (): JSX.Element => {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/for-startups" element={<StartupsHome />} />
-        <Route path="/for-startups/profile/edit/AboutYou" element={<LoginBridge />} />
         <Route path="/for-mentors" element={<MentorsHome />} />
         <Route path="/for-experts" element={<ExpertsHome />} />
 
