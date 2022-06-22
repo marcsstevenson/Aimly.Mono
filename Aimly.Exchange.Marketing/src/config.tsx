@@ -34,6 +34,7 @@ interface IConfig {
    * eg, https://api.aimly.io/graphql/
    */
   exchangeApiUri: string;
+  exchangeAppUri: string;
 }
 
 /**
@@ -49,6 +50,7 @@ export function getConfig(): IConfig {
       exchangeApiAudience: getFromEnv("OAUTH_EXCHANGE_API_AUDIENCE"),
     },
     exchangeApiUri: getFromEnvOrThrow("EXCHANGE_API_URI"),
+    exchangeAppUri: getFromEnvOrThrow("REACT_APP_APP_URL"),
   };
 }
 
