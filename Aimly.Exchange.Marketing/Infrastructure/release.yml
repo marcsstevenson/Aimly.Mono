@@ -24,6 +24,7 @@ variables:
   # Maybe read this from a file in the artifacts folder?
   environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
+  target-resource-group: 'Aimly-Exchange-dev' # Where the resources will be deployed. Eg, AimlyApp-Catallyze-prod
   target-storage-account: 'aimlyexchangefrontend' # Where the resources will be deployed, eg, aimlyappcatallyzeprod
   target-cdn-endpoint: 'aimlyexchangefrontendstatic' # Eg, aimlyappcatallyzestaticprod
   target-cdn-profile: 'aimlyexchangefrontendstatic' # Eg, aimlyappsharedprofileprod
