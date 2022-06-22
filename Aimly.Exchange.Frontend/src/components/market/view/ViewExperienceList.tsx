@@ -15,6 +15,9 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
     return employmentExperience?.length ?? 1;
   }, []);
   const [isShowAll, setIsShowAll] = useState(employmentExperienceLength <= showIndex);
+  const [displayShowMoreOrLess, setDisplayShowMoreOrLess] = useState(
+    employmentExperienceLength > showIndex
+  );
 
   const showLess = () => {
     setIsShowAll(false);
@@ -43,7 +46,7 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
               />
             ))}
 
-          {!isShowAll && (
+          {displayShowMoreOrLess && !isShowAll && (
             <div
               className="hover:dark:bg-primary-700 p-5 hover:cursor-pointer hover:bg-gray-100"
               onClick={showAll}
@@ -54,7 +57,7 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
             </div>
           )}
 
-          {isShowAll && (
+          {displayShowMoreOrLess && isShowAll && (
             <div
               className="hover:dark:bg-primary-700 p-5 hover:cursor-pointer hover:bg-gray-100"
               onClick={showLess}
