@@ -78,7 +78,7 @@ stages:
             inputs:
               buildType: 'specific'
               project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
-              pipeline: 'AimlyExchangeFrontendBuild'
+              pipeline: 'AimlyExchangeMarketingBuild'
               preferTriggeringPipeline: true
               buildVersionToDownload: 'latestFromBranch'
               branchName: '$(Build.SourceBranch)'
