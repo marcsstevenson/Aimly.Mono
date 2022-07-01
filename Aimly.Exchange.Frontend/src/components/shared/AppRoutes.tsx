@@ -46,11 +46,11 @@ const MessagesHome = lazy(() => import('components/messaging/MessagesHome'));
 
 // Edit Profiles
 const Profiles = lazy(() => import('components/profiles/MyProfiles'));
-const PersonalProfileEdit = lazy(() => import('components/profiles/PersonalProfileEdit'));
+const PersonalProfileEdit = lazy(() => import('components/profiles/personal/PersonalProfileEdit'));
 const MentorProfileNew = lazy(() => import('components/profiles/MentorProfileNew'));
-const MentorProfileEdit = lazy(() => import('components/profiles/MentorProfileEdit'));
-const ExpertProfileNew = lazy(() => import('components/profiles/ExpertProfileNew'));
-const ExpertProfileEdit = lazy(() => import('components/profiles/ExpertProfileEdit'));
+const MentorProfileEdit = lazy(() => import('components/profiles/mentor/MentorProfileEdit'));
+const ExpertProfileNew = lazy(() => import('components/profiles/expert/ExpertProfileNew'));
+const ExpertProfileEdit = lazy(() => import('components/profiles/expert/ExpertProfileEdit'));
 
 // Startup profile builder
 const AboutYou = lazy(() => import('components/for-startups/profile/edit/1-AboutYou'));
@@ -61,6 +61,11 @@ const Customise = lazy(() => import('components/for-startups/profile/edit/5-Cust
 
 // Author
 const ContentEdit = lazy(() => import('components/author/ContentEdit'));
+
+// Accounts
+const AccountsHome = lazy(() => import('components/accounts/AccountsHome'));
+const AccountsSetupStart = lazy(() => import('components/accounts/AccountsSetupStart'));
+const AccountsSetupComplete = lazy(() => import('components/accounts/AccountsSetupComplete'));
 
 export interface RouteItem {
   // The relative path for the route
@@ -214,6 +219,21 @@ export const PrivateRoutes: RouteItem[] = [
 
   // Author
   { path: '/author/edit', element: <ContentEdit />, page: Pages.ContentEdit, footer: true },
+
+  // Accounts
+  { path: '/accounts/home', element: <AccountsHome />, page: Pages.AccountsHome, footer: true },
+  {
+    path: '/accounts/setup-start',
+    element: <AccountsSetupStart />,
+    page: Pages.AccountsSetupStart,
+    footer: true,
+  },
+  {
+    path: '/accounts/setup-complete',
+    element: <AccountsSetupComplete />,
+    page: Pages.AccountsSetupComplete,
+    footer: true,
+  },
 ];
 
 // Returns the path for a given

@@ -18,7 +18,7 @@ import GenericHeader from 'components/shared/GenericHeader';
 import { IndustrySelector } from 'components/shared/IndustrySelector';
 import { SkillSelector } from 'components/shared/SkillSelector';
 import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
-import { PersonalProfileExperienceList } from 'components/profiles/PersonalProfileExperienceList';
+import { PersonalProfileExperienceList } from 'components/profiles/personal/PersonalProfileExperienceList';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';

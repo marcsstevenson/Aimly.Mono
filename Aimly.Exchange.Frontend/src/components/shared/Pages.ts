@@ -33,6 +33,11 @@ enum Pages {
   // Messaging
   MessagesHome,
 
+  // Accounts
+  AccountsHome,
+  AccountsSetupStart,
+  AccountsSetupComplete,
+
   MyProfiles, // The place to add, edit, remove profiles for startups, mentors, etc
   Help,
   PersonalProfileEdit,

@@ -6,8 +6,8 @@
 import React, { useContext } from 'react';
 import { GetExpertProfileModelInput } from '__generated__/useSetExpertProfileMutation.graphql';
 import { PrivateContext } from 'components/PrivateContext';
-import ExpertProfileForm from 'components/profiles/ExpertProfileForm';
-import { PopulateInputModel } from 'components/profiles/ExpertProfileHelpers';
+import ExpertProfileForm from 'components/profiles/expert/ExpertProfileForm';
+import { PopulateInputModel } from 'components/profiles/expert/ExpertProfileHelpers';
 
 const ExpertProfileNew = () => {
   const { userId } = useContext(PrivateContext);

@@ -8,8 +8,8 @@ import { GetExpertProfileModelInput } from '__generated__/useSetExpertProfileMut
 import * as GetExpertProfileQuery from '__generated__/getExpertProfileQuery.graphql';
 import { PrivateContext } from 'components/PrivateContext';
 import useLocationQuery from 'components/shared/useLocationQuery';
-import ExpertProfileForm from 'components/profiles/ExpertProfileForm';
-import { PopulateInputModel } from 'components/profiles/ExpertProfileHelpers';
+import ExpertProfileForm from 'components/profiles/expert/ExpertProfileForm';
+import { PopulateInputModel } from 'components/profiles/expert/ExpertProfileHelpers';
 
 const ExpertProfileEdit = () => {
   const { userId } = useContext(PrivateContext);

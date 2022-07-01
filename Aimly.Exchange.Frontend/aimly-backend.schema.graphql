@@ -229,6 +229,50 @@ type GetAccountsStatusResponse {
   isSuccessful: Boolean!
 }
 
+type GetCompanyProfileModel {
+  id: UUID
+  companyName: String!
+  listOnMarket: Boolean!
+  profilePictureUrl: String
+  type: String
+  website: String
+  numberOfFounders: Int
+  industries: [String]
+  floor: String
+  streetNumber: String
+  streetName: String
+  addressLocality: String
+  addressCity: String
+  addressRegion: String
+  addressCountry: String
+  postalCode: String
+  postOfficeBoxNumber: String
+  problemDetails: String
+  solutionDescription: String
+}
+
+input GetCompanyProfileModelInput {
+  id: UUID
+  companyName: String!
+  listOnMarket: Boolean!
+  profilePictureUrl: String
+  type: String
+  website: String
+  numberOfFounders: Int
+  industries: [String]
+  floor: String
+  streetNumber: String
+  streetName: String
+  addressLocality: String
+  addressCity: String
+  addressRegion: String
+  addressCountry: String
+  postalCode: String
+  postOfficeBoxNumber: String
+  problemDetails: String
+  solutionDescription: String
+}
+
 type GetExpertProfileModel {
   userId: UUID!
   id: UUID
@@ -470,12 +514,13 @@ type Mutation {
   setTheSolution(input: SetTheSolutionCommandInput): SetTheSolutionResponse
   setTheProblem(input: SetTheProblemCommandInput): SetTheProblemResponse
   setPotential(input: SetPotentialCommandInput): SetPotentialResponse
-  deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setAboutYou(input: SetAboutYouCommandInput): SetAboutYouResponse
   setExpertProfile(input: SetExpertProfileCommandInput): SetExpertProfileResponse
   deleteExpertProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
   setExperience(userId: UUID!, experienceModel: ExperienceModelInput): SetExperienceResponse
   deleteExperience(userId: UUID!, id: UUID!): DeleteResponse
+  setCompanyProfile(input: SetCompanyProfileCommandInput): SetCompanyProfileResponse
+  deleteCompanyProfile(userId: UUID!, profileId: UUID!): DeleteProfileResponse
 }
 
 type MyProfilesResult {
@@ -530,6 +575,7 @@ type Query {
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
   dashboard(userId: UUID!): DashboardModel
   getViewCompanyProfile(companyProfileId: UUID!, userId: UUID): ViewCompanyProfileModel
+  getCompanyProfile(userId: UUID!, companyProfileId: UUID!): GetCompanyProfileModel
 }
 
 input SendDirectMessageCommandInput {
@@ -557,6 +603,15 @@ input SetCatallyzeUserSetupCommandInput {
 type SetCatallyzeUserSetupResponse {
   userPictureUrlUpdated: Boolean!
   personalProfileUpdated: Boolean!
+}
+
+input SetCompanyProfileCommandInput {
+  userId: UUID!
+  getCompanyProfileModel: GetCompanyProfileModelInput
+}
+
+type SetCompanyProfileResponse {
+  updatedCompanyProfileId: UUID!
 }
 
 type SetExperienceResponse {

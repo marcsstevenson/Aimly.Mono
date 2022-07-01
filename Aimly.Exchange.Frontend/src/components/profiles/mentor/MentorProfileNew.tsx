@@ -6,8 +6,8 @@
 import React, { useContext } from 'react';
 import { GetMentorProfileModelInput } from '__generated__/useSetMentorProfileMutation.graphql';
 import { PrivateContext } from 'components/PrivateContext';
-import MentorProfileForm from 'components/profiles/MentorProfileForm';
-import { PopulateInputModel } from 'components/profiles/MentorProfileHelpers';
+import MentorProfileForm from 'components/profiles/mentor/MentorProfileForm';
+import { PopulateInputModel } from 'components/profiles/mentor/MentorProfileHelpers';
 
 const MentorProfileNew = () => {
   const { userId } = useContext(PrivateContext);

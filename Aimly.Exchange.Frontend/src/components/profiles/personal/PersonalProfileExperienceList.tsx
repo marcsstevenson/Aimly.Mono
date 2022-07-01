@@ -5,8 +5,8 @@
 // * allow the user to delete existing experience
 import React, { useCallback, useState } from 'react';
 import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
-import { PersonalProfileExperienceItem } from 'components/profiles/PersonalProfileExperienceItem';
-import { PersonalProfileExperienceEdit } from 'components/profiles/PersonalProfileExperienceEdit';
+import { PersonalProfileExperienceItem } from 'components/profiles/personal/PersonalProfileExperienceItem';
+import { PersonalProfileExperienceEdit } from 'components/profiles/personal/PersonalProfileExperienceEdit';
 import { PlusIcon } from '@heroicons/react/outline';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 
