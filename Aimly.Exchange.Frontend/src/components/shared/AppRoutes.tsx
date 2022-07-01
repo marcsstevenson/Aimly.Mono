@@ -47,10 +47,12 @@ const MessagesHome = lazy(() => import('components/messaging/MessagesHome'));
 // Edit Profiles
 const Profiles = lazy(() => import('components/profiles/MyProfiles'));
 const PersonalProfileEdit = lazy(() => import('components/profiles/personal/PersonalProfileEdit'));
-const MentorProfileNew = lazy(() => import('components/profiles/MentorProfileNew'));
+const MentorProfileNew = lazy(() => import('components/profiles/mentor/MentorProfileNew'));
 const MentorProfileEdit = lazy(() => import('components/profiles/mentor/MentorProfileEdit'));
 const ExpertProfileNew = lazy(() => import('components/profiles/expert/ExpertProfileNew'));
 const ExpertProfileEdit = lazy(() => import('components/profiles/expert/ExpertProfileEdit'));
+const CompanyProfileNew = lazy(() => import('components/profiles/company/CompanyProfileNew'));
+const CompanyProfileEdit = lazy(() => import('components/profiles/company/CompanyProfileEdit'));
 
 // Startup profile builder
 const AboutYou = lazy(() => import('components/for-startups/profile/edit/1-AboutYou'));
@@ -183,6 +185,18 @@ export const PrivateRoutes: RouteItem[] = [
     path: '/my-profiles/expert-profile-edit',
     element: <ExpertProfileEdit />,
     page: Pages.ExpertProfileEdit,
+    footer: true,
+  },
+  {
+    path: '/my-profiles/company-profile-new',
+    element: <CompanyProfileNew />,
+    page: Pages.CompanyProfileNew,
+    footer: true,
+  },
+  {
+    path: '/my-profiles/company-profile-edit',
+    element: <CompanyProfileEdit />,
+    page: Pages.CompanyProfileEdit,
     footer: true,
   },
   // { path: '/external-api', element: <ExternalApi />, page: Pages.ExternalApi },

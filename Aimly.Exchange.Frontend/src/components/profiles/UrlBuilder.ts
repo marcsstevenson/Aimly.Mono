@@ -30,3 +30,15 @@ export const getExpertProfileEditUrl = (id: string, promptDelete: boolean): stri
   }
   return `${GetPathForPage(Pages.ExpertProfileEdit)}${qs}`;
 };
+
+export const getCompanyProfileNewUrl = (): string => {
+  return `${GetPathForPage(Pages.CompanyProfileNew)}`;
+};
+
+export const getCompanyProfileEditUrl = (id: string, promptDelete: boolean): string => {
+  let qs = `?id=${id}`
+  if (promptDelete) {
+    qs += `&${promptDeleteValue}=true`;
+  }
+  return `${GetPathForPage(Pages.CompanyProfileEdit)}${qs}`;
+};

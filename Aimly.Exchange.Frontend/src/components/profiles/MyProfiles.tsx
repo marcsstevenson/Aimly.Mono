@@ -10,6 +10,7 @@ import {
   getPersonalProfileEditUrl,
   getMentorProfileNewUrl,
   getExpertProfileNewUrl,
+  getCompanyProfileNewUrl,
 } from 'components/profiles/UrlBuilder';
 
 export interface StatusType {
@@ -51,7 +52,7 @@ const Profiles = () => {
             <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
               <Link
                 to={{ pathname: getPersonalProfileEditUrl() }}
-                className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white"
+                className="inline-flex items-center rounded-md border border-transparent bg-secondary-600 px-4 py-2 text-sm font-medium text-white hover:bg-secondary-700"
               >
                 Edit personal profile
               </Link>
@@ -68,8 +69,8 @@ const Profiles = () => {
         <div className="mt-2 sm:flex sm:justify-center lg:justify-start">
           <div className="rounded-md shadow">
             <Link
-              to={{ pathname: GetPathForPage(Pages.AboutYou) }}
-              className="bg-secondary-800 hover:bg-secondary-900 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white md:py-4 md:px-10 md:text-lg"
+              to={{ pathname: getCompanyProfileNewUrl() }}
+              className="flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-800 px-8 py-3 text-base font-medium text-white hover:bg-secondary-900 md:py-4 md:px-10 md:text-lg"
             >
               Company
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -78,7 +79,7 @@ const Profiles = () => {
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
             <Link
               to={{ pathname: getMentorProfileNewUrl() }}
-              className="bg-secondary-600 hover:bg-secondary-700 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white md:py-4 md:px-10 md:text-lg"
+              className="flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-600 px-8 py-3 text-base font-medium text-white hover:bg-secondary-700 md:py-4 md:px-10 md:text-lg"
             >
               Mentor
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -87,7 +88,7 @@ const Profiles = () => {
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
             <Link
               to={{ pathname: getExpertProfileNewUrl() }}
-              className="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white md:py-4 md:px-10 md:text-lg"
+              className="flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-500 px-8 py-3 text-base font-medium text-white hover:bg-secondary-600 md:py-4 md:px-10 md:text-lg"
             >
               Expert
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

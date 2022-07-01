@@ -2,7 +2,7 @@
 // * display the experience of the user
 import React, { useMemo, useState } from 'react';
 import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
-import { PersonalProfileExperienceItem } from 'components/profiles/PersonalProfileExperienceItem';
+import { PersonalProfileExperienceItem } from 'components/profiles/personal/PersonalProfileExperienceItem';
 
 export interface Props {
   employmentExperience: readonly (EmploymentExperience | null)[] | null;
@@ -48,7 +48,7 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
 
           {displayShowMoreOrLess && !isShowAll && (
             <div
-              className="hover:dark:bg-primary-700 p-5 hover:cursor-pointer hover:bg-gray-100"
+              className="p-5 hover:cursor-pointer hover:bg-gray-100 hover:dark:bg-primary-700"
               onClick={showAll}
             >
               <div className="flex justify-center">
@@ -59,7 +59,7 @@ const ViewExperienceList = ({ employmentExperience }: Props) => {
 
           {displayShowMoreOrLess && isShowAll && (
             <div
-              className="hover:dark:bg-primary-700 p-5 hover:cursor-pointer hover:bg-gray-100"
+              className="p-5 hover:cursor-pointer hover:bg-gray-100 hover:dark:bg-primary-700"
               onClick={showLess}
             >
               <div className="flex justify-center">Show less</div>

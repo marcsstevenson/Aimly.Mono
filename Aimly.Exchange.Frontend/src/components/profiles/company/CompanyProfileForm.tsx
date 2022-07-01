@@ -32,6 +32,8 @@ import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
 import { PrivateContext } from 'components/PrivateContext';
+import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
+import LinkIcon from '@heroicons/react/solid/LinkIcon';
 
 interface Props {
   model: GetCompanyProfileModelInput;
@@ -47,18 +49,22 @@ const CompanyProfileForm = (props: Props) => {
   );
   const [isDeleting, setIsDeleting] = useState(false);
   const [viewAfterSave, setViewAfterSave] = useState(false);
+  const conceptType = 'Concept';
 
   const navigateToPage = useNavigateToPage();
 
   let model: GetCompanyProfileModelInput = props.model;
 
+  const [profilePictureUrl, setProfilePictureUrl] = useState(model.profilePictureUrl);
   const problemDetailsEditor = useDefaultEditor(model.problemDetails);
+  const solutionDescriptionEditor = useDefaultEditor(model.solutionDescription);
 
   const SetCompanyProfile = useSetCompanyProfileMutation();
   const DeleteCompanyProfile = useDeleteCompanyProfileMutation();
 
   const onSubmit = (getCompanyProfileModel: GetCompanyProfileModelInput) => {
     getCompanyProfileModel.problemDetails = problemDetailsEditor?.getHTML() ?? '';
+    getCompanyProfileModel.solutionDescription = solutionDescriptionEditor?.getHTML() ?? '';
 
     handleSave(getCompanyProfileModel);
   };
@@ -80,7 +86,7 @@ const CompanyProfileForm = (props: Props) => {
     if (viewAfterSave) {
       // Take the user to see their profile in the market
       const path = getUrlForViewProfile(
-        'EXPERT',
+        'COMPANY',
         response.setCompanyProfile?.updatedCompanyProfileId ?? ''
       );
       navigate(path);
@@ -174,8 +180,8 @@ const CompanyProfileForm = (props: Props) => {
                       </label>
                       <div className="mt-1">
                         <Field
-                          id="name"
-                          name="name"
+                          id="companyName"
+                          name="companyName"
                           type="text"
                           validate={validateRequiredString}
                           className={errors.companyName ? 'form-input-error' : 'form-input'}
@@ -185,8 +191,86 @@ const CompanyProfileForm = (props: Props) => {
                         )}
                       </div>
                     </div>
+                    <div className="sm:col-span-3">
+                      <label htmlFor="website" className="form-label">
+                        Company website
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="website"
+                          id="website"
+                          autoComplete="url"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-1">
+                      <label htmlFor="numberOfFounders" className="form-label">
+                        Number of founders
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="number"
+                          min="1"
+                          name="numberOfFounders"
+                          id="numberOfFounders"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
                     <div className="sm:col-span-6">
-                      <label htmlFor="phoneNumber" className="form-label">
+                      <label htmlFor="type" className="form-label">
+                        Company Stage
+                      </label>
+                      <div className="mt-1">
+                        <Field type="text" name="type" as="select" className="form-input">
+                          <option value="Concept">{conceptType}</option>
+                          <option value="Prototype">Prototype</option>
+                          <option value="Venture">Venture</option>
+                          <option value="Enterprise">Enterprise</option>
+                        </Field>
+                        {errors.type && touched.type && (
+                          <div className="form-input-validation">{errors.type}</div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-4">
+                      <label htmlFor="profilePictureUrl" className="form-label">
+                        Company logo
+                      </label>
+                      <p className="form-input-description">
+                        This needs to be a square ratio image and ideally small (less than 100KB)
+                      </p>
+                      <div className="relative mt-1 rounded-md shadow-sm">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                          <LinkIcon
+                            className="h-5 w-5 text-gray-400 dark:text-gray-600"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <Field
+                          type="text"
+                          name="profilePictureUrl"
+                          id="profilePictureUrl"
+                          className="form-input pl-10"
+                          placeholder="https://path.to/my_logo.png"
+                          as="textarea"
+                          rows={4}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-end sm:col-span-2">
+                      <ProfilePhotoViewer
+                        profilePictureUrl={profilePictureUrl}
+                        imageRoundnessClass={'rounded-md'}
+                      />
+                    </div>
+
+                    <div className="sm:col-span-6">
+                      <label htmlFor="industries" className="form-label">
                         Industries
                       </label>
                       <div className="mt-1">
@@ -198,10 +282,89 @@ const CompanyProfileForm = (props: Props) => {
                         />
                       </div>
                     </div>
+
+                    <div className="sm:col-span-6">
+                      <label htmlFor="streetName" className="form-label">
+                        Company Street address
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="streetName"
+                          id="streetName"
+                          autoComplete="street-address"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="addressCity" className="form-label">
+                        Company City
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="addressCity"
+                          id="addressCity"
+                          autoComplete="address-level2"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="addressRegion" className="form-label">
+                        State / Province
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="addressRegion"
+                          id="addressRegion"
+                          autoComplete="address-level1"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="postalCode" className="form-label">
+                        ZIP / Postal code
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="postalCode"
+                          id="postalCode"
+                          autoComplete="postal-code"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label htmlFor="addressCountry" className="form-label">
+                        Country
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          id="addressCountry"
+                          name="addressCountry"
+                          autoComplete="country-name"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
                     <div className="sm:col-span-6">
                       <label htmlFor="familyName" className="form-label">
                         Your Problem
                       </label>
+                      <p className="form-input-description">
+                        What is the problem that you are solving?
+                      </p>
                       <div className="mt-1">
                         <ContentEdit inputEditor={problemDetailsEditor} />
                         {/* <Field
@@ -212,9 +375,23 @@ const CompanyProfileForm = (props: Props) => {
                           validate={validateRequiredHtml}
                         /> */}
                       </div>
-                      <p className="form-input-description">
-                        What is the problem that you aim to solve?
-                      </p>
+                    </div>
+
+                    <div className="sm:col-span-6">
+                      <label htmlFor="familyName" className="form-label">
+                        Your Solution
+                      </label>
+                      <p className="form-input-description">Describe your solution</p>
+                      <div className="mt-1">
+                        <ContentEdit inputEditor={solutionDescriptionEditor} />
+                        {/* <Field
+                          component={ContentEditWrapper}
+                          id="about"
+                          name="about"
+                          required={true}
+                          validate={validateRequiredHtml}
+                        /> */}
+                      </div>
                     </div>
                   </div>
                 </div>
