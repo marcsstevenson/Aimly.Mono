@@ -527,6 +527,7 @@ type MyProfilesResult {
   id: UUID!
   profileId: UUID!
   name: String
+  profilePictureUrl: String
   type: ProfileTypeOption!
 }
 
@@ -576,6 +577,7 @@ type Query {
   dashboard(userId: UUID!): DashboardModel
   getViewCompanyProfile(companyProfileId: UUID!, userId: UUID): ViewCompanyProfileModel
   getCompanyProfile(userId: UUID!, companyProfileId: UUID!): GetCompanyProfileModel
+  companiesForAdministration(userId: UUID!): [MyProfilesResult]
 }
 
 input SendDirectMessageCommandInput {

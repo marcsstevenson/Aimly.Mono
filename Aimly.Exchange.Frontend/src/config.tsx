@@ -40,6 +40,9 @@ interface IConfig {
    * SendBird integration
    */
   sendBirdAppId: string;
+
+  // The Id of our Google Analytics account - can be undefined
+  analyticsTrackingId: string | undefined;
 }
 
 /**
@@ -56,6 +59,7 @@ export function getConfig(): IConfig {
     },
     exchangeApiUri: getFromEnvOrThrow('EXCHANGE_API_URI'),
     sendBirdAppId: getFromEnvOrThrow('SENDBIRD_APP_ID'),
+    analyticsTrackingId: getFromEnv('ANALYTICS_TRACKING_ID'),
   };
 }
 

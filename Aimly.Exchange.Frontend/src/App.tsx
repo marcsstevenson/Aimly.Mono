@@ -7,10 +7,19 @@ import { LoadingArea } from 'components/shared/LoadingArea';
 import { useAuth0, withAuthenticationRequired, User } from '@auth0/auth0-react';
 import PrivateShell from 'components/PrivateShell';
 import Loading from 'components/Loading';
+import { getConfig } from 'config';
+import ReactGA from 'react-ga';
 
 const App = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0<User>();
   const getRelayEnvironment = useRelayEnvironment();
+  const config = getConfig();
+
+  // Initialise Google Analytics if we have a tracking Id
+  if (config.analyticsTrackingId) {
+    console.log('Initialising Google Analytics', config.analyticsTrackingId);
+    ReactGA.initialize(config.analyticsTrackingId);
+  }
 
   if (error) {
     // return <div>Oops... {error.message}</div>;

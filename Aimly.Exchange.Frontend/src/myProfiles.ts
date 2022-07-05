@@ -6,6 +6,7 @@ export const myProfilesQuery = graphql`
       id
       profileId
       name
+      profilePictureUrl
       type
     }
   }

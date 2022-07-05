@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ea7a7514cf9efbab7e13b679747ada10>>
+ * @generated SignedSource<<281f7980009f82d406494ee433470976>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,12 +10,12 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
-export type myProfilesQuery$variables = {
+export type companiesForAdministrationQuery$variables = {
   userId: any;
 };
-export type myProfilesQueryVariables = myProfilesQuery$variables;
-export type myProfilesQuery$data = {
-  readonly myProfiles: ReadonlyArray<{
+export type companiesForAdministrationQueryVariables = companiesForAdministrationQuery$variables;
+export type companiesForAdministrationQuery$data = {
+  readonly companiesForAdministration: ReadonlyArray<{
     readonly id: any;
     readonly profileId: any;
     readonly name: string | null;
@@ -23,10 +23,10 @@ export type myProfilesQuery$data = {
     readonly type: ProfileTypeOption;
   } | null> | null;
 };
-export type myProfilesQueryResponse = myProfilesQuery$data;
-export type myProfilesQuery = {
-  variables: myProfilesQueryVariables;
-  response: myProfilesQuery$data;
+export type companiesForAdministrationQueryResponse = companiesForAdministrationQuery$data;
+export type companiesForAdministrationQuery = {
+  variables: companiesForAdministrationQueryVariables;
+  response: companiesForAdministrationQuery$data;
 };
 
 const node: ConcreteRequest = (function(){
@@ -49,7 +49,7 @@ v1 = [
     ],
     "concreteType": "MyProfilesResult",
     "kind": "LinkedField",
-    "name": "myProfiles",
+    "name": "companiesForAdministration",
     "plural": true,
     "selections": [
       {
@@ -96,7 +96,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "myProfilesQuery",
+    "name": "companiesForAdministrationQuery",
     "selections": (v1/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -105,20 +105,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "myProfilesQuery",
+    "name": "companiesForAdministrationQuery",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "230d1a198809481fd64b5be9f7e21c4a",
+    "cacheID": "ba11dd03acb25fa66267849f693ef520",
     "id": null,
     "metadata": {},
-    "name": "myProfilesQuery",
+    "name": "companiesForAdministrationQuery",
     "operationKind": "query",
-    "text": "query myProfilesQuery(\n  $userId: UUID!\n) {\n  myProfiles(userId: $userId) {\n    id\n    profileId\n    name\n    profilePictureUrl\n    type\n  }\n}\n"
+    "text": "query companiesForAdministrationQuery(\n  $userId: UUID!\n) {\n  companiesForAdministration(userId: $userId) {\n    id\n    profileId\n    name\n    profilePictureUrl\n    type\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3183b012c329f8de06e1c7de317a6ddd";
+(node as any).hash = "60cb4433ca6d04a0e1e64605868d2240";
 
 export default node;

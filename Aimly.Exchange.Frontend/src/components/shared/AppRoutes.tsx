@@ -9,9 +9,6 @@ import { Route, Routes } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
 import { profileId } from 'components/shared/UrlConstants';
 
-// import ExternalApi from 'components/ExternalApi';
-// import GoDashboard from 'components/GoDashboard';
-
 // Always load pages
 import DashBoard from 'components/dashboard/DashBoard';
 import CompanyInvite from 'components/CompanyInvite';
