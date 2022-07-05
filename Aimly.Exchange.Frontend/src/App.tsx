@@ -10,16 +10,20 @@ import Loading from 'components/Loading';
 import { getConfig } from 'config';
 import ReactGA from 'react-ga';
 
+const config = getConfig();
+
+// Initialise Google Analytics if we have a tracking Id
+if (config.analyticsTrackingId) {
+  console.log('Initialising Google Analytics', config.analyticsTrackingId);
+  ReactGA.initialize(config.analyticsTrackingId, {
+    debug: true,
+  });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
 const App = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0<User>();
   const getRelayEnvironment = useRelayEnvironment();
-  const config = getConfig();
-
-  // Initialise Google Analytics if we have a tracking Id
-  if (config.analyticsTrackingId) {
-    console.log('Initialising Google Analytics', config.analyticsTrackingId);
-    ReactGA.initialize(config.analyticsTrackingId);
-  }
 
   if (error) {
     // return <div>Oops... {error.message}</div>;
