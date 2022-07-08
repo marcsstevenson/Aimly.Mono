@@ -1,6 +1,6 @@
 import { TenantType } from "./TenantTypeInterface";
-import { TailwindColourOptions } from "./TenantTypeInterface";
-const colors = require('tailwindcss/colors')
+// import { TailwindColourOptions } from "./TenantTypeInterface";
+// const colors = require('tailwindcss/colors')
 
 const CurrentTenant: TenantType = {
   name: 'Catallyze',
