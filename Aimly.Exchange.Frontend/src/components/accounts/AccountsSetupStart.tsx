@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { PrivateContext } from 'components/PrivateContext';
 import useCreateAccountForEntityMutation from 'useCreateAccountForEntityMutation';
 import { GetPathForPage } from 'components/shared/AppRoutes';
@@ -9,12 +9,17 @@ import {
   useCreateAccountForEntityMutation$data,
 } from '__generated__/useCreateAccountForEntityMutation.graphql';
 import Pages from 'components/shared/Pages';
+import useLocationQuery from 'components/shared/useLocationQuery';
 
 // The purpose of this component is to start the setup of the user's account profile
 // We call the CreateAccountForEntity mutation
 // and then redirect the user to the Account Provider's setup URL
 const AccountsSetupStart = () => {
   const { checkedInUser } = useContext(PrivateContext);
+  let locationQuery = useLocationQuery();
+  const companyProfileId = useMemo(() => {
+    return locationQuery.get('companyProfileId');
+  }, [locationQuery]);
   const CreateAccountForEntity = useCreateAccountForEntityMutation();
 
   const begin = useCallback(
@@ -22,7 +27,7 @@ const AccountsSetupStart = () => {
       // Get the account link for the account provider
       return CreateAccountForEntity(
         checkedInUser?.userId ?? '',
-        null,
+        companyProfileId,
         GetPathForPage(Pages.AccountsSetupStart),
         GetPathForPage(Pages.AccountsSetupComplete),
         handleBeginCompleted

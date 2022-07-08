@@ -232,7 +232,18 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '/author/edit', element: <ContentEdit />, page: Pages.ContentEdit, footer: true },
 
   // Accounts
-  { path: '/accounts/home', element: <AccountsHome />, page: Pages.AccountsHome, footer: true },
+  {
+    path: '/accounts/home',
+    element: <AccountsHome />,
+    page: Pages.AccountsHome,
+    footer: true,
+  },
+  {
+    path: `/accounts/home/:${profileId}`,
+    element: <AccountsHome />,
+    page: Pages.AccountsHome,
+    footer: true,
+  },
   {
     path: '/accounts/setup-start',
     element: <AccountsSetupStart />,
@@ -280,6 +291,6 @@ export const GetRouteItemForPath = (path: string): RouteItem | null => {
   if (match) return match;
 
   // throw new Error(`No path found for page: ${page}`);
-  console.log(`No RouteItem found for path: ${path}`);
+  // console.log(`No RouteItem found for path: ${path}`);
   return null;
 };

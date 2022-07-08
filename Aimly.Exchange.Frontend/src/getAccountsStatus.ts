@@ -1,8 +1,8 @@
 import graphql from 'babel-plugin-relay/macro';
 
-export const getAccountsStatusForUserQuery = graphql`
-  query getAccountsStatusForUserQuery($userId: UUID!) {
-    accountsStatusForUser(userId: $userId) {
+export const getAccountsStatusQuery = graphql`
+  query getAccountsStatusQuery($userId: UUID! $companyProfileId: UUID) {
+    accountsStatus(userId: $userId, companyProfileId: $companyProfileId) {
       getAccountResponse {
         accountId
         type

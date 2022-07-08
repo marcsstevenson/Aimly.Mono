@@ -21,7 +21,6 @@ interface Props {
 const MarketSearch = ({ CurrentProfileType }: Props) => {
   const [haveSearchResults, setHaveSearchResults] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
-  const [lastSearchTerm, setLastSearchTerm] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [queryRef, loadQuery] = useQueryLoader<marketSearchQuery>(AppQuery, null);
   const navigate = useNavigate();
@@ -58,19 +57,10 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     [loadQuery]
   );
 
-  const requestSearch = useCallback(
-    (searchTerm: string) => {
-      navigate(`${location.pathname}?s=${searchTerm}`);
-    },
-    [navigate, location.pathname]
-  );
-
   const handleSearchRequest = useCallback(
     (searchTerm: string) => {
       // Build the updated variables
       var variables = buildVariables(searchTerm, currentPage, CurrentProfileType);
-
-      console.log('searchTerm: ', searchTerm);
 
       // Remember the search term
       setSearchTerm(searchTerm);

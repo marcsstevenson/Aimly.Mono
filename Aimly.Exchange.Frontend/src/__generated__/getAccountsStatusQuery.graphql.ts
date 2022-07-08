@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c152483eb9872da803ab77e1696f970d>>
+ * @generated SignedSource<<fbfc03102d42225ef05d39f9adf05846>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,12 +9,13 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type getAccountsStatusForUserQuery$variables = {
+export type getAccountsStatusQuery$variables = {
   userId: any;
+  companyProfileId?: any | null;
 };
-export type getAccountsStatusForUserQueryVariables = getAccountsStatusForUserQuery$variables;
-export type getAccountsStatusForUserQuery$data = {
-  readonly accountsStatusForUser: {
+export type getAccountsStatusQueryVariables = getAccountsStatusQuery$variables;
+export type getAccountsStatusQuery$data = {
+  readonly accountsStatus: {
     readonly getAccountResponse: {
       readonly accountId: string | null;
       readonly type: string | null;
@@ -26,38 +27,46 @@ export type getAccountsStatusForUserQuery$data = {
     readonly isSuccessful: boolean;
   } | null;
 };
-export type getAccountsStatusForUserQueryResponse = getAccountsStatusForUserQuery$data;
-export type getAccountsStatusForUserQuery = {
-  variables: getAccountsStatusForUserQueryVariables;
-  response: getAccountsStatusForUserQuery$data;
+export type getAccountsStatusQueryResponse = getAccountsStatusQuery$data;
+export type getAccountsStatusQuery = {
+  variables: getAccountsStatusQueryVariables;
+  response: getAccountsStatusQuery$data;
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "userId"
-  }
-],
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "companyProfileId"
+},
 v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "userId"
+},
+v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "errorMessage",
   "storageKey": null
 },
-v2 = {
+v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "isSuccessful",
   "storageKey": null
 },
-v3 = [
+v4 = [
   {
     "alias": null,
     "args": [
+      {
+        "kind": "Variable",
+        "name": "companyProfileId",
+        "variableName": "companyProfileId"
+      },
       {
         "kind": "Variable",
         "name": "userId",
@@ -66,7 +75,7 @@ v3 = [
     ],
     "concreteType": "GetAccountsStatusResponse",
     "kind": "LinkedField",
-    "name": "accountsStatusForUser",
+    "name": "accountsStatus",
     "plural": false,
     "selections": [
       {
@@ -98,45 +107,51 @@ v3 = [
             "name": "payoutsEnabled",
             "storageKey": null
           },
-          (v1/*: any*/),
-          (v2/*: any*/)
+          (v2/*: any*/),
+          (v3/*: any*/)
         ],
         "storageKey": null
       },
-      (v1/*: any*/),
-      (v2/*: any*/)
+      (v2/*: any*/),
+      (v3/*: any*/)
     ],
     "storageKey": null
   }
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "getAccountsStatusForUserQuery",
-    "selections": (v3/*: any*/),
+    "name": "getAccountsStatusQuery",
+    "selections": (v4/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
-    "name": "getAccountsStatusForUserQuery",
-    "selections": (v3/*: any*/)
+    "name": "getAccountsStatusQuery",
+    "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "6a7f30ad14808eee70542aaf9784ff46",
+    "cacheID": "1607fa7aea827de811034308e07f5dd7",
     "id": null,
     "metadata": {},
-    "name": "getAccountsStatusForUserQuery",
+    "name": "getAccountsStatusQuery",
     "operationKind": "query",
-    "text": "query getAccountsStatusForUserQuery(\n  $userId: UUID!\n) {\n  accountsStatusForUser(userId: $userId) {\n    getAccountResponse {\n      accountId\n      type\n      payoutsEnabled\n      errorMessage\n      isSuccessful\n    }\n    errorMessage\n    isSuccessful\n  }\n}\n"
+    "text": "query getAccountsStatusQuery(\n  $userId: UUID!\n  $companyProfileId: UUID\n) {\n  accountsStatus(userId: $userId, companyProfileId: $companyProfileId) {\n    getAccountResponse {\n      accountId\n      type\n      payoutsEnabled\n      errorMessage\n      isSuccessful\n    }\n    errorMessage\n    isSuccessful\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "48fed09d3de2b1233d63c1fa7e869f09";
+(node as any).hash = "6a76b45e7e7cb7c49797af09ae4caa3a";
 
 export default node;

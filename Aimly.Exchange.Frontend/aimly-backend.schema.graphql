@@ -555,7 +555,7 @@ type Query {
   userSearch(command: UserSearchCommandInput): [UserSearchResult]
   notesForCompany(command: NotesForCompanyCommandInput): [NoteSearchResultModel]
   accountsStatusForCompany(companyProfileId: UUID!): GetAccountsStatusResponse
-  accountsStatusForUser(userId: UUID!): GetAccountsStatusResponse
+  accountsStatus(userId: UUID!, companyProfileId: UUID): GetAccountsStatusResponse
   userSettings(userId: UUID!): GetUserSettingsModel
   viewFullCompanyProfile(companyProfileId: UUID!, userId: UUID!): ViewFullCompanyProfileModel
   sharedWithCompanies(userId: UUID!): [MyProfilesResult]

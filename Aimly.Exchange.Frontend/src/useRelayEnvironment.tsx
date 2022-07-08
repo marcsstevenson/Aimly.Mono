@@ -25,7 +25,7 @@ export default function useRelayEnvironment() {
     const graphqlApi = REACT_APP_BACKEND_API + '/api/graphql';
     const token = await getAccessTokenSilently();
 
-    console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
+    //console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
 
     // Fetch data from GitHub's GraphQL API:
     const response = await fetch(graphqlApi, {

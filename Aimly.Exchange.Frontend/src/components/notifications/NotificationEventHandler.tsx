@@ -34,7 +34,7 @@ const NotificationEventHandler = () => {
         .start()
         .then(() => {
           connection.on('setTotalUnreadMessageCount', (message) => {
-            console.log('message', message);
+            // console.log('message', message);
 
             const totalUnreadMessageCount = parseInt(message);
 

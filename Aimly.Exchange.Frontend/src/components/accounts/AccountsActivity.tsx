@@ -10,7 +10,7 @@ import { classNames } from 'utils/classNames';
 import { PrivateContext } from 'components/PrivateContext';
 import CurrencyFormat from 'react-currency-format';
 import { NavLink } from 'react-router-dom';
-import AccountBalances from './AccountBalances';
+import AccountBalances from './AccountsStatus';
 
 export interface transactionType {
   name: string;
@@ -71,7 +71,7 @@ const transactions: transactionType[] = [
   },
 ];
 
-const AccountActivity = () => {
+const AccountsActivity = () => {
   return (
     <div>
       {/* This is just to trigger Tailwind to include the statusStyles classes in the output.css*/}
@@ -250,4 +250,4 @@ const AccountActivity = () => {
   );
 };
 
-export default AccountActivity;
+export default AccountsActivity;

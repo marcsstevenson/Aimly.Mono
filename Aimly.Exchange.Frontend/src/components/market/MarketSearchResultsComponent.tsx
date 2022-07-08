@@ -8,10 +8,6 @@ import AppQuery, {
   marketSearchQuery$data,
 } from '__generated__/marketSearchQuery.graphql';
 
-enum DisplayModeOptions {
-  grid,
-  list,
-}
 interface Props {
   queryRef: PreloadedQuery<marketSearchQuery>;
 }
@@ -29,7 +25,7 @@ export const MarketSearchResults = ({ queryRef }: Props) => {
               {response.marketSearch?.results && response.marketSearch?.results?.length > 0 ? (
                 <MarketGridResults marketSearchResults={response.marketSearch?.results} />
               ) : (
-                <div className="text-secondary-500 bg-gray-50 px-5 pb-5 dark:bg-gray-800">
+                <div className="bg-gray-50 px-5 pb-5 text-secondary-500 dark:bg-gray-800">
                   No results.
                 </div>
               )}

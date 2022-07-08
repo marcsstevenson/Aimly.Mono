@@ -14,13 +14,13 @@ import { PopulateInputModel } from 'components/profiles/expert/ExpertProfileHelp
 const ExpertProfileEdit = () => {
   const { userId } = useContext(PrivateContext);
   let locationQuery = useLocationQuery();
-  const mentorProfileId = useMemo(() => {
+  const profileId = useMemo(() => {
     return locationQuery.get('id');
   }, [locationQuery]);
 
   const getExpertProfileQueryVariables = {
     userId: userId,
-    id: mentorProfileId,
+    id: profileId,
   };
 
   // Lazy load this query because it is only relevant to this component
@@ -34,7 +34,7 @@ const ExpertProfileEdit = () => {
     }
   );
 
-  let model: GetExpertProfileModelInput = PopulateInputModel(mentorProfileId, userId, data);
+  let model: GetExpertProfileModelInput = PopulateInputModel(profileId, userId, data);
 
   return <ExpertProfileForm model={model} allowDelete={true} />;
 };
