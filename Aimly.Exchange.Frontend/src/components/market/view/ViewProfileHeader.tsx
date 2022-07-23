@@ -5,7 +5,7 @@ import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/view/ViewProfileInterfaces';
-import { MetaDataList } from 'components/shared/MetaDataList';
+import { MetaDataList } from 'components/shared/MetaData/MetaDataList';
 import { ChatIcon } from '@heroicons/react/outline';
 import MarketMessage from 'components/market/MarketMessage';
 import MarketEnquiry from 'components/market/MarketEnquiry';

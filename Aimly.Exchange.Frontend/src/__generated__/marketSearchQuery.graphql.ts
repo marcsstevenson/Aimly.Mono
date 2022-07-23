@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6ddfe5339f448508c3015d1dd7a8317e>>
+ * @generated SignedSource<<217f58068b360357ae6ee2cb38dde30c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,8 @@ export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "
 export type MarketSearchCommandInput = {
   profileType: ProfileTypeOption;
   searchTerm?: string | null;
+  skills?: ReadonlyArray<string | null> | null;
+  industries?: ReadonlyArray<string | null> | null;
   pageSize: number;
   currentPage: number;
   orderBy?: string | null;

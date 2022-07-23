@@ -25,7 +25,7 @@ import {
   useDeleteExpertProfileMutation$data,
   useDeleteExpertProfileMutationVariables,
 } from '__generated__/useDeleteExpertProfileMutation.graphql';
-import { SkillSelector } from 'components/shared/SkillSelector';
+import { SkillSelector } from 'components/shared/MetaData/SkillSelector';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
@@ -159,7 +159,7 @@ const ExpertProfileForm = (props: Props) => {
                     </div>
 
                     <div className="sm:col-span-6">
-                      <label htmlFor="familyName" className="form-label">
+                      <label htmlFor="name" className="form-label">
                         Profile Title *
                       </label>
                       <div className="mt-1">
@@ -180,7 +180,10 @@ const ExpertProfileForm = (props: Props) => {
                       </p>
                     </div>
                     <div className="sm:col-span-6">
-                      <label htmlFor="phoneNumber" className="form-label">
+                      <label
+                        htmlFor="industries"
+                        className="text-xl font-extrabold text-gray-900 dark:text-gray-100"
+                      >
                         Industries
                       </label>
                       <div className="mt-1">
@@ -209,9 +212,7 @@ const ExpertProfileForm = (props: Props) => {
                       </div>
                     </div>
                     <div className="sm:col-span-6">
-                      <label htmlFor="familyName" className="form-label">
-                        About *
-                      </label>
+                      <label className="form-label">About *</label>
                       <div className="mt-1">
                         <ContentEdit inputEditor={editor} />
                         {/* <Field

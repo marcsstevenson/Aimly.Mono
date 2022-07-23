@@ -25,7 +25,7 @@ import {
   useDeleteCompanyProfileMutation$data,
   useDeleteCompanyProfileMutationVariables,
 } from '__generated__/useDeleteCompanyProfileMutation.graphql';
-import { SkillSelector } from 'components/shared/SkillSelector';
+import { SkillSelector } from 'components/shared/MetaData/SkillSelector';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';

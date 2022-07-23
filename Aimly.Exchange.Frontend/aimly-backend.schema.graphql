@@ -461,10 +461,23 @@ type MarketEnquiryResponse {
 input MarketSearchCommandInput {
   profileType: ProfileTypeOption!
   searchTerm: String
+  skills: [String]
+  industries: [String]
   pageSize: Int!
   currentPage: Int!
   orderBy: String
   orderByAscending: Boolean!
+}
+
+type MarketSearchOption {
+  name: String
+  count: Int!
+}
+
+type MarketSearchOptionsResponse {
+  skillOptions: [MarketSearchOption]
+  industryOptions: [MarketSearchOption]
+  locationOptions: [MarketSearchOption]
 }
 
 type MarketSearchResult {
@@ -568,6 +581,7 @@ type Query {
   metaDataOptions(nameStartingWith: String, type: String, tenantId: UUID): [String]
   getMentorProfile(userId: UUID!, id: UUID!): GetMentorProfileModel
   marketSearch(marketSearchCommand: MarketSearchCommandInput): MarketSearchResults
+  marketOptionsSearch(profileType: ProfileTypeOption!): MarketSearchOptionsResponse
   getTheSolution(command: GetTheSolutionCommandInput): GetTheSolutionModel
   getTheProblem(command: GetTheProblemCommandInput): GetTheProblemModel
   getPotential(command: GetPotentialCommandInput): GetPotentialModel
