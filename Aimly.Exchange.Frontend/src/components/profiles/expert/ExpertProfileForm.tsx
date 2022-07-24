@@ -17,7 +17,7 @@ import validateRequiredHtml from 'validators/validateRequiredHtml';
 import GenericHeader from 'components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
 import { useState } from 'react';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 import { useUrlParser } from 'components/shared/useUrlParser';

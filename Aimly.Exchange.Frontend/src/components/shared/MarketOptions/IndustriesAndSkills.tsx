@@ -15,7 +15,7 @@ interface Props {
 
 /// Allows the user to select skills and industries to filter on
 /// for a given profile type
-const IndustriesAndSkills = ({ profileType }: Props) => {
+export const IndustriesAndSkills = ({ profileType }: Props) => {
   // Get a list of options for out profile type
 
   // Lazy load this query because it is only relevant to this component
@@ -32,7 +32,6 @@ const IndustriesAndSkills = ({ profileType }: Props) => {
   );
 
   const marketOptionsSearch = data.marketOptionsSearch;
-  data.marketOptionsSearch?.industryOptions;
 
   if (marketOptionsSearch === null || undefined) {
     return <></>;
@@ -52,5 +51,3 @@ const IndustriesAndSkills = ({ profileType }: Props) => {
     </div>
   );
 };
-
-export default IndustriesAndSkills;

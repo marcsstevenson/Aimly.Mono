@@ -18,12 +18,20 @@ export const MarketOptionsEditor = ({ options, initiallySelected }: Props) => {
   const [selected, setSelected] = useState<string[]>(initiallySelected ?? []);
   const [isAdding, setIsAdding] = React.useState(false);
 
-  const optionSelected = (selectedName: string) => {
+  const optionSelected = (selectedOption: MarketSearchOption) => {
     // Add option to current list if not already included
     const matchingOptions: string[] = options
-      .filter((option) => option.name !== selectedName)
+      .filter((option) => option.name == selectedOption.name)
       .map((i) => i.name)
       .filter((i): i is string => i !== null);
+
+    console.log('matchingOptions', matchingOptions);
+
+    console.log('selectedName', selectedOption.name);
+
+    const test = options.filter((option) => option.name == selectedOption.name);
+
+    console.log('test', test);
 
     // Combine and sort
     const newValues = [...matchingOptions, ...selected].sort();
@@ -32,9 +40,9 @@ export const MarketOptionsEditor = ({ options, initiallySelected }: Props) => {
     setIsAdding(false);
   };
 
-  const onDeleteTrigger = (option: string) => {
+  const onRemoveTrigger = (option: string) => {
     // Just option out of current list
-    const newValues = selected.filter((option) => option !== option);
+    const newValues = selected.filter((i) => i != option);
 
     setSelected(newValues);
   };
@@ -53,8 +61,18 @@ export const MarketOptionsEditor = ({ options, initiallySelected }: Props) => {
           Add
         </button>
       )}
-      {isAdding && <MarketOptionsSelector options={options} optionSelected={optionSelected} />}
-      <SelectedMarketOptions dataList={selected} allowEdit={true} deleteTrigger={onDeleteTrigger} />
+      {isAdding && (
+        <MarketOptionsSelector
+          options={options}
+          optionSelected={optionSelected}
+          selectedOptions={selected}
+        />
+      )}
+      <SelectedMarketOptions
+        selectedOptions={selected}
+        allowEdit={true}
+        removeTrigger={onRemoveTrigger}
+      />
     </>
   );
 };

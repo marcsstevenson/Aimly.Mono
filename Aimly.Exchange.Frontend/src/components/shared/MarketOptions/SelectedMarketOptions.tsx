@@ -2,15 +2,15 @@ import React from 'react';
 import { classNames } from 'utils/classNames';
 
 interface Props {
-  dataList: readonly (string | null)[];
+  selectedOptions: readonly (string | null)[];
   allowEdit: boolean;
-  deleteTrigger: (value: string) => void;
+  removeTrigger: (value: string) => void;
 }
-export const SelectedMarketOptions = ({ dataList, allowEdit, deleteTrigger }: Props) => {
+export const SelectedMarketOptions = ({ selectedOptions, allowEdit, removeTrigger }: Props) => {
   return (
     <div>
-      {dataList &&
-        dataList
+      {selectedOptions &&
+        selectedOptions
           .map((i) => i)
           .sort()
           .map((item, index) => (
@@ -23,7 +23,7 @@ export const SelectedMarketOptions = ({ dataList, allowEdit, deleteTrigger }: Pr
                 <button
                   type="button"
                   onClick={() => {
-                    if (item !== null) deleteTrigger(item);
+                    if (item !== null) removeTrigger(item);
                   }}
                   className="ml-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-primary-400 hover:bg-primary-200 hover:text-primary-500 focus:bg-primary-500 focus:text-white focus:outline-none"
                 >

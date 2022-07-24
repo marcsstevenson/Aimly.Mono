@@ -17,7 +17,7 @@ import validateRequiredHtml from 'validators/validateRequiredHtml';
 import GenericHeader from 'components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
 import { useState } from 'react';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 import { useUrlParser } from 'components/shared/useUrlParser';
@@ -25,7 +25,6 @@ import {
   useDeleteCompanyProfileMutation$data,
   useDeleteCompanyProfileMutationVariables,
 } from '__generated__/useDeleteCompanyProfileMutation.graphql';
-import { SkillSelector } from 'components/shared/MetaData/SkillSelector';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';

@@ -75,11 +75,6 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     [CurrentProfileType, currentPage, refetch, buildVariables, navigate, location.pathname]
   );
 
-  // Just run a full search onload until the market is too large for this
-  // useEffect(() => {
-  //   handleSearchRequest('');
-  // }, [handleSearchRequest]); //locationQuery, handleSearchRequest
-
   useEffect(() => {
     console.log('MarketSearch.useEffect');
     // Do we have a search param? Use it if yes.
@@ -99,7 +94,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     <div className="flex-1 pb-8">
       <PageHeader Title="Market" />
       <MarketHeader CurrentProfileType={CurrentProfileType} />
-      <MarketSearchInput onChange={handleSearchRequest} />
+      <MarketSearchInput CurrentProfileType={CurrentProfileType} onChange={handleSearchRequest} />
       <Suspense fallback={<LoadingArea title="Searching..." fullHeight={false} />}>
         {queryRef && <MarketSearchResults queryRef={queryRef} />}
       </Suspense>

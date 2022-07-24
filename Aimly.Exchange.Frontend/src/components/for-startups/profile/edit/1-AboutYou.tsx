@@ -25,7 +25,7 @@ import { companyProfileId, context } from 'components/shared/UrlConstants';
 import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
 import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
 import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
-import { IndustrySelector } from 'components/shared/IndustrySelector';
+import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
 import { useUrlParser } from 'components/shared/useUrlParser';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 import { Switch } from '@headlessui/react';
