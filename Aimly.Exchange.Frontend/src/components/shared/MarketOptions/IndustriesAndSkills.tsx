@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import {
   marketOptionsSearchQuery,
@@ -11,42 +11,51 @@ import { MarketSearchOption } from 'components/shared/MarketOptions/MarketSearch
 
 interface Props {
   profileType: ProfileTypeOption;
+  onChangeIndustries(industries: string[]): void;
+  onChangeSkills(skills: string[]): void;
 }
 
 /// Allows the user to select skills and industries to filter on
 /// for a given profile type
-export const IndustriesAndSkills = ({ profileType }: Props) => {
+export const IndustriesAndSkills = ({ profileType, onChangeIndustries, onChangeSkills }: Props) => {
   // Get a list of options for out profile type
 
   // Lazy load this query because it is only relevant to this component
-  const data = useLazyLoadQuery<marketOptionsSearchQuery>(
-    node,
-    {
-      profileType: profileType,
-    },
-    // Ideally we could use commitLocalUpdate to update the relay cache when setAboutYouMutation is called
-    // However, for now, we'll simply always refresh this query when the component is mounted
-    {
-      fetchPolicy: 'network-only',
-    }
-  );
+  const data = useLazyLoadQuery<marketOptionsSearchQuery>(node, {
+    profileType: profileType,
+  });
 
   const marketOptionsSearch = data.marketOptionsSearch;
 
-  if (marketOptionsSearch === null || undefined) {
-    return <></>;
-  }
+  const industryOptions = useMemo((): ReadonlyArray<MarketSearchOption> | undefined => {
+    return marketOptionsSearch?.industryOptions?.filter((i): i is MarketSearchOption => i !== null);
+  }, [marketOptionsSearch]);
 
-  const industryOptions: ReadonlyArray<MarketSearchOption> | undefined =
-    marketOptionsSearch.industryOptions?.filter((i): i is MarketSearchOption => i !== null);
+  const skillOptions = useMemo((): ReadonlyArray<MarketSearchOption> | undefined => {
+    return marketOptionsSearch?.skillOptions?.filter((i): i is MarketSearchOption => i !== null);
+  }, [marketOptionsSearch]);
 
   return (
     <div>
       {/* TODO 2022.07.22 - We need a selector for both skills and industries */}
       {/* TODO 2022.07.24 - We need to handle when the selected values change */}
       {/* Industries editor */}
-      {marketOptionsSearch?.industryOptions && (
-        <MarketOptionsEditor options={industryOptions!} initiallySelected={[]} />
+      {industryOptions && (
+        <MarketOptionsEditor
+          initiallySelected={[]}
+          options={industryOptions!}
+          title="Industry"
+          onChange={onChangeIndustries}
+        />
+      )}
+      {/* Skills editor */}
+      {skillOptions && (
+        <MarketOptionsEditor
+          initiallySelected={[]}
+          options={skillOptions!}
+          title="Skill"
+          onChange={onChangeSkills}
+        />
       )}
     </div>
   );

@@ -11,9 +11,11 @@ import { PlusIcon } from '@heroicons/react/outline';
 interface Props {
   initiallySelected: string[];
   options: ReadonlyArray<MarketSearchOption>;
+  title: string;
+  onChange(selected: string[]): void;
 }
 
-export const MarketOptionsEditor = ({ options, initiallySelected }: Props) => {
+export const MarketOptionsEditor = ({ initiallySelected, options, title, onChange }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selected, setSelected] = useState<string[]>(initiallySelected ?? []);
   const [isAdding, setIsAdding] = React.useState(false);
@@ -25,19 +27,14 @@ export const MarketOptionsEditor = ({ options, initiallySelected }: Props) => {
       .map((i) => i.name)
       .filter((i): i is string => i !== null);
 
-    console.log('matchingOptions', matchingOptions);
-
-    console.log('selectedName', selectedOption.name);
-
-    const test = options.filter((option) => option.name == selectedOption.name);
-
-    console.log('test', test);
-
     // Combine and sort
     const newValues = [...matchingOptions, ...selected].sort();
 
     setSelected(newValues);
     setIsAdding(false);
+
+    // Bubble the change up to the parent
+    onChange(newValues);
   };
 
   const onRemoveTrigger = (option: string) => {
@@ -45,22 +42,23 @@ export const MarketOptionsEditor = ({ options, initiallySelected }: Props) => {
     const newValues = selected.filter((i) => i != option);
 
     setSelected(newValues);
+
+    // Bubble the change up to the parent
+    onChange(newValues);
   };
 
   return (
     <>
-      {!isAdding && (
-        <button
-          type="button"
-          className="form-button-link"
-          onClick={() => {
-            setIsAdding(true);
-          }}
-        >
-          <PlusIcon className="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
-          Add
-        </button>
-      )}
+      <button
+        type="button"
+        className="form-button-link"
+        onClick={() => {
+          setIsAdding(true);
+        }}
+      >
+        <PlusIcon className="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
+        {title} Filter
+      </button>
       {isAdding && (
         <MarketOptionsSelector
           options={options}

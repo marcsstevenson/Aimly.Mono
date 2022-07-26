@@ -36,7 +36,7 @@ export const MarketOptionsList = ({ options }: MarketOptionsListProps) => {
                 {({ active, selected }) => (
                   <>
                     <span className={classNames('block truncate', selected ? 'font-semibold' : '')}>
-                      {option.name}({option.count})
+                      {option.name} ({option.count})
                     </span>
 
                     {selected && (

@@ -3,18 +3,26 @@ import { SearchIcon } from '@heroicons/react/solid';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { IndustriesAndSkills } from 'components/shared/MarketOptions/IndustriesAndSkills';
+import { MarketSearchRequest } from 'components/market/MarketSearchRequest';
+import { classNames } from 'utils/classNames';
+import { Switch } from '@headlessui/react';
 
 interface Props {
   CurrentProfileType: ProfileTypeOption;
-  onChange: (searchTerm: string) => void;
+  onChange: (request: MarketSearchRequest) => void;
 }
 
 export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
   const locationQuery = useLocationQuery();
   const searchQueryStringVariable = 's';
-  // Do we have a search param? Use it if yes.
-  const searchQueryStringValue = locationQuery.get(searchQueryStringVariable);
-  const [searchTerm, setSearchTerm] = useState(searchQueryStringValue ?? '');
+
+  // Populate the defaults using the query string
+  // search term
+  const [searchTerm, setSearchTerm] = useState(locationQuery.get(searchQueryStringVariable) ?? '');
+  // TODO: Add industries and skills from query string
+  const [industriesSelected, setIndustriesSelected] = useState<string[]>([]);
+  const [skillsSelected, setSkillsSelected] = useState<string[]>([]);
+
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Focus the input when the component is mounted
@@ -25,14 +33,55 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    onChange(searchTerm);
+    bubbleUp();
   };
+
+  const onChangeIndustries = (industries: string[]) => {
+    setIndustriesSelected(industries);
+    console.log('onChangeIndustries', industries);
+
+    // bubbleUp();
+
+    onChange({
+      searchTerm: searchTerm,
+      industries: industries ?? [],
+      skills: skillsSelected ?? [],
+    });
+  };
+
+  const onChangeSkills = (skills: string[]) => {
+    setSkillsSelected(skills);
+    console.log('onChangeSkills', skills);
+    // bubbleUp();
+
+    onChange({
+      searchTerm: searchTerm,
+      industries: industriesSelected ?? [],
+      skills: skills ?? [],
+    });
+  };
+
+  const bubbleUp = () => {
+    console.log('bubbleUp', {
+      searchTerm: searchTerm,
+      industries: industriesSelected ?? [],
+      skills: skillsSelected ?? [],
+    });
+
+    onChange({
+      searchTerm: searchTerm,
+      industries: industriesSelected ?? [],
+      skills: skillsSelected ?? [],
+    });
+  };
+
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
 
   return (
     <div className="mx-auto mb-3 bg-white dark:bg-gray-800">
       <form onSubmit={handleSubmit}>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="py-10 dark:text-white">
+        <div className="mx-auto max-w-6xl px-4 pb-4 sm:px-6 lg:px-8">
+          <div className="pt-10 pb-5 dark:text-white">
             <label htmlFor="search-field" className="sr-only">
               Search
             </label>
@@ -60,7 +109,32 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
               />
             </div>
           </div>
-          {/* <IndustriesAndSkills profileType={CurrentProfileType} /> */}
+          <div>
+            <span className="form-button-link">More</span>
+            <Switch
+              checked={showAdvanced}
+              onChange={setShowAdvanced}
+              className={classNames(
+                showAdvanced ? 'bg-secondary-500' : 'bg-gray-200',
+                'relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2'
+              )}
+            >
+              <span
+                aria-hidden="true"
+                className={classNames(
+                  showAdvanced ? 'translate-x-5' : 'translate-x-0',
+                  'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
+                )}
+              />
+            </Switch>
+          </div>
+          {showAdvanced && (
+            <IndustriesAndSkills
+              profileType={CurrentProfileType}
+              onChangeIndustries={onChangeIndustries}
+              onChangeSkills={onChangeSkills}
+            />
+          )}
         </div>
       </form>
     </div>
