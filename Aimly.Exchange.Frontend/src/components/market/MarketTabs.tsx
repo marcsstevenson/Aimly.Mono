@@ -4,16 +4,23 @@ import { GetPathForPage } from 'components/shared/AppRoutes';
 import { NavLink } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
+import { GetCurrentTenant } from 'tenant/TenantValues';
 
 interface Tab {
   name: string;
   page: Pages;
 }
 
+const currentTenant = GetCurrentTenant();
+
+const companies = currentTenant.companyOptions.pluralName;
+const mentors = currentTenant.mentorOptions.pluralName;
+const experts = currentTenant.expertOptions.pluralName;
+
 const tabs: Tab[] = [
-  { name: 'Companies', page: Pages.MarketCompanies },
-  { name: 'Mentors', page: Pages.MarketMentors },
-  { name: 'Experts', page: Pages.MarketExperts },
+  { name: companies, page: Pages.MarketCompanies },
+  { name: mentors, page: Pages.MarketMentors },
+  { name: experts, page: Pages.MarketExperts },
   { name: 'Community', page: Pages.MarketCommunity },
 ];
 
@@ -52,7 +59,7 @@ export const MarketTabs = (props: Props) => {
         <select
           id="tabs"
           name="tabs"
-          className="focus:border-secondary-500 focus:ring-secondary-500 block w-full rounded-md border-gray-300"
+          className="block w-full rounded-md border-gray-300 focus:border-secondary-500 focus:ring-secondary-500"
           defaultValue={currentTab.name}
           onChange={(e) => {
             tabSelected(e.target.value);

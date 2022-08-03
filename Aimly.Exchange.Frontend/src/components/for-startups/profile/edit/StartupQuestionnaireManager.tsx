@@ -1,6 +1,10 @@
 import React from 'react';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
 import GenericHeader from 'components/shared/GenericHeader';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const company = currentTenant.companyOptions.singularName;
 
 // export interface StartupQuestionnaireManagerState {
 //   test: string;
@@ -71,7 +75,7 @@ const StartupQuestionnaireManager = ({
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div>
-        <GenericHeader title="Company Profile Builder" contextVal={null} />
+        <GenericHeader title={company + ' Profile Builder'} contextVal={null} />
         <StartupQuestionnaireSteps currentStep={currentStep}></StartupQuestionnaireSteps>
       </div>
       <div></div>

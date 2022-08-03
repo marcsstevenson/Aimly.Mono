@@ -8,6 +8,7 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Pages from 'components/shared/Pages';
 import { profileId } from 'components/shared/UrlConstants';
+import { GetCurrentTenant } from 'tenant/TenantValues';
 
 // Always load pages
 import DashBoard from 'components/dashboard/DashBoard';
@@ -74,6 +75,16 @@ export interface RouteItem {
   footer: boolean;
 }
 
+const currentTenant = GetCurrentTenant();
+const companiesRoute = currentTenant.companyOptions.pluralName.toLocaleLowerCase();
+const companyRoute = currentTenant.companyOptions.singularName.toLocaleLowerCase();
+
+const mentorsRoute = currentTenant.mentorOptions.pluralName.toLocaleLowerCase();
+const mentorRoute = currentTenant.mentorOptions.singularName.toLocaleLowerCase();
+
+const expertsRoute = currentTenant.expertOptions.pluralName.toLocaleLowerCase();
+const expertRoute = currentTenant.expertOptions.singularName.toLocaleLowerCase();
+
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard, footer: true },
   // { path: '/login', element: <GoDashboard />, page: Pages.Login },
@@ -88,13 +99,23 @@ export const PrivateRoutes: RouteItem[] = [
   // Market search
   { path: '/market', element: <MarketCompanies />, page: Pages.Market, footer: true },
   {
-    path: '/market/companies',
+    path: '/market/' + companiesRoute,
     element: <MarketCompanies />,
     page: Pages.MarketCompanies,
     footer: true,
   },
-  { path: '/market/mentors', element: <MarketMentor />, page: Pages.MarketMentors, footer: true },
-  { path: '/market/experts', element: <MarketExpert />, page: Pages.MarketExperts, footer: true },
+  {
+    path: '/market/' + mentorsRoute,
+    element: <MarketMentor />,
+    page: Pages.MarketMentors,
+    footer: true,
+  },
+  {
+    path: '/market/' + expertsRoute,
+    element: <MarketExpert />,
+    page: Pages.MarketExperts,
+    footer: true,
+  },
   {
     path: '/market/community',
     element: <MarketCommunity />,
@@ -104,7 +125,7 @@ export const PrivateRoutes: RouteItem[] = [
 
   // View public profiles on market
   {
-    path: `/market/company-profile/:${profileId}`,
+    path: `/market/${companyRoute}-profile/:${profileId}`,
     element: <ViewCompanyProfile />,
     page: Pages.MarketViewCompanyProfile,
     footer: true,
@@ -116,13 +137,13 @@ export const PrivateRoutes: RouteItem[] = [
     footer: true,
   },
   {
-    path: `/market/mentor-profile/:${profileId}`,
+    path: `/market/${mentorRoute}-profile/:${profileId}`,
     element: <ViewMentorProfile />,
     page: Pages.MarketViewMentorProfile,
     footer: true,
   },
   {
-    path: `/market/expert-profile/:${profileId}`,
+    path: `/market/${expertRoute}-profile/:${profileId}`,
     element: <ViewExpertProfile />,
     page: Pages.MarketViewExpertProfile,
     footer: true,
@@ -136,7 +157,7 @@ export const PrivateRoutes: RouteItem[] = [
     footer: true,
   },
   {
-    path: `/sharing/view-company-profile/:${profileId}`,
+    path: `/sharing/view-${companyRoute}-profile/:${profileId}`,
     element: <ViewSharedCompanyProfile />,
     page: Pages.ViewSharedCompanyProfile,
     footer: true,
@@ -161,37 +182,37 @@ export const PrivateRoutes: RouteItem[] = [
     footer: true,
   },
   {
-    path: '/my-profiles/mentor-profile-new',
+    path: `/my-profiles/${mentorRoute}-profile-new`,
     element: <MentorProfileNew />,
     page: Pages.MentorProfileNew,
     footer: true,
   },
   {
-    path: '/my-profiles/mentor-profile-edit',
+    path: `/my-profiles/${mentorRoute}-profile-edit`,
     element: <MentorProfileEdit />,
     page: Pages.MentorProfileEdit,
     footer: true,
   },
   {
-    path: '/my-profiles/expert-profile-new',
+    path: `/my-profiles/${expertRoute}-profile-new`,
     element: <ExpertProfileNew />,
     page: Pages.ExpertProfileNew,
     footer: true,
   },
   {
-    path: '/my-profiles/expert-profile-edit',
+    path: `/my-profiles/${expertRoute}-profile-edit`,
     element: <ExpertProfileEdit />,
     page: Pages.ExpertProfileEdit,
     footer: true,
   },
   {
-    path: '/my-profiles/company-profile-new',
+    path: `/my-profiles/${companyRoute}-profile-new`,
     element: <CompanyProfileNew />,
     page: Pages.CompanyProfileNew,
     footer: true,
   },
   {
-    path: '/my-profiles/company-profile-edit',
+    path: `/my-profiles/${companyRoute}-profile-edit`,
     element: <CompanyProfileEdit />,
     page: Pages.CompanyProfileEdit,
     footer: true,

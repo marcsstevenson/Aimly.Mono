@@ -13,6 +13,10 @@ import {
 import ViewProfile from 'components/market/view/ViewProfile';
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 import { PrivateContext } from 'components/PrivateContext';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const expert = currentTenant.expertOptions.singularName;
 
 const ViewExpertProfile = () => {
   // Read the Id from the route context
@@ -86,7 +90,7 @@ const ViewExpertProfile = () => {
         profileType: 'EXPERT' as ProfileTypeOption,
         name: model?.name,
         subTitle: model?.name,
-        title: 'Expert Profile',
+        title: expert + ' Profile',
         associatedProfilesSets: associatedProfilesSets,
         longFormElements: longFormElements,
         addressCity: null,

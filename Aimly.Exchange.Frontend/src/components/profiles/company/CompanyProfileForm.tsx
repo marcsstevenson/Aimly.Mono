@@ -33,6 +33,11 @@ import useDefaultEditor from 'components/author/useDefaultEditor';
 import { PrivateContext } from 'components/PrivateContext';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LinkIcon from '@heroicons/react/solid/LinkIcon';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+
+const company = currentTenant.companyOptions.singularName;
 
 interface Props {
   model: GetCompanyProfileModelInput;
@@ -133,7 +138,7 @@ const CompanyProfileForm = (props: Props) => {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div>
         <GenericHeader
-          title="Company Profile Builder"
+          title={company + ' Profile Builder'}
           contextVal={model.id ? model.companyName : 'New'}
         />
 

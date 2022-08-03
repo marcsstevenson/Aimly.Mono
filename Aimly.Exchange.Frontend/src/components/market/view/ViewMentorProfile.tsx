@@ -13,6 +13,11 @@ import {
 import ViewProfile from 'components/market/view/ViewProfile';
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 import { PrivateContext } from 'components/PrivateContext';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+
+const mentor = currentTenant.mentorOptions.singularName;
 
 const ViewMentorProfile = () => {
   // Read the Id from the route context
@@ -86,7 +91,7 @@ const ViewMentorProfile = () => {
         profileType: 'MENTOR' as ProfileTypeOption,
         name: model?.name,
         subTitle: model?.name,
-        title: 'Mentor Profile',
+        title: mentor + ' Profile',
         associatedProfilesSets: associatedProfilesSets,
         longFormElements: longFormElements,
         addressCity: null,

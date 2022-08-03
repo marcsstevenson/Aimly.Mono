@@ -31,6 +31,11 @@ import { useNavigate } from 'react-router-dom';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+
+const expert = currentTenant.expertOptions.singularName;
 
 interface Props {
   model: GetExpertProfileModelInput;
@@ -120,7 +125,10 @@ const ExpertProfileForm = (props: Props) => {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div>
-        <GenericHeader title="Expert Profile Builder" contextVal={model.id ? model.name : 'New'} />
+        <GenericHeader
+          title={expert + ' Profile Builder'}
+          contextVal={model.id ? model.name : 'New'}
+        />
 
         <ConfirmDelete
           show={showDeleteConfirmation}

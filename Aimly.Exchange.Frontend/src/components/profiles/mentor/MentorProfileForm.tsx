@@ -31,6 +31,12 @@ import { useNavigate } from 'react-router-dom';
 import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
 
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+
+const mentor = currentTenant.mentorOptions.singularName;
+
 interface Props {
   model: GetMentorProfileModelInput;
   allowDelete: boolean;
@@ -119,7 +125,10 @@ const MentorProfileForm = (props: Props) => {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div>
-        <GenericHeader title="Mentor Profile Builder" contextVal={model.id ? model.name : 'New'} />
+        <GenericHeader
+          title={mentor + ' Profile Builder'}
+          contextVal={model.id ? model.name : 'New'}
+        />
 
         <ConfirmDelete
           show={showDeleteConfirmation}

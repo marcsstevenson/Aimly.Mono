@@ -12,6 +12,18 @@ const CurrentTenant: TenantType = {
     { type: 'LinkedIn', href: 'https://www.linkedin.com/company/catallyze/mycompany/' },
     { type: 'Twitter', href: 'https://twitter.com/catallyze' },
   ],
+  companyOptions: {
+    singularName: 'Venture',
+    pluralName: 'Ventures',
+  },
+  mentorOptions: {
+    singularName: 'Advisor',
+    pluralName: 'Advisors',
+  },
+  expertOptions: {
+    singularName: 'Expert',
+    pluralName: 'Experts',
+  }
 }
 
 export const GetCurrentTenant = (): TenantType => {

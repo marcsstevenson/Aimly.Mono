@@ -8,6 +8,10 @@ import { LongFormElement, ViewProfileProps } from 'components/market/view/ViewPr
 import ViewProfile from 'components/market/view/ViewProfile';
 import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { PrivateContext } from 'components/PrivateContext';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const company = currentTenant.companyOptions.singularName;
 
 const ViewCompanyProfile = () => {
   // Read the Id from the route context
@@ -55,7 +59,7 @@ const ViewCompanyProfile = () => {
         profileType: 'COMPANY' as ProfileTypeOption,
         name: model?.companyName,
         skills: null, // Now skills for company profiles
-        title: 'Company Profile',
+        title: company + ' Profile',
         subTitle: null,
         // Add "Their Team" if they have any associated profiles
         associatedProfilesSets:

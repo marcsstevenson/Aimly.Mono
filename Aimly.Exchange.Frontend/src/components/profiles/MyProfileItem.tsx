@@ -4,6 +4,7 @@ import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@her
 import { getUrlForProfileTypeOptionType } from 'components/shared/UrlForProfileTypeOptionType';
 import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+import { GetLabelForType } from 'components/shared/ProfileTypeHelpers';
 
 export interface ProfileSearchResult {
   readonly profileId: any;
@@ -51,7 +52,7 @@ const MyProfileItem = (props: Props) => {
           <div className="ml-5 w-0 flex-1">
             <dl>
               <dt className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
-                {props.item?.type}
+                {GetLabelForType(props.item?.type, true)}
               </dt>
               <dd>
                 <div className="text-lg font-medium text-gray-900 dark:text-gray-50">
@@ -73,7 +74,7 @@ const MyProfileItem = (props: Props) => {
                 false
               ),
             }}
-            className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
+            className="font-medium text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400"
           >
             Edit
           </Link>
@@ -84,7 +85,7 @@ const MyProfileItem = (props: Props) => {
                 props.item?.profileId
               ),
             }}
-            className="text-primary-700 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-300 ml-2 font-medium"
+            className="ml-2 font-medium text-primary-700 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-300"
           >
             View
           </Link>
@@ -100,7 +101,7 @@ const MyProfileItem = (props: Props) => {
                   true
                 ),
               }}
-              className="text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500 font-medium"
+              className="font-medium text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500"
             >
               Delete
             </Link>

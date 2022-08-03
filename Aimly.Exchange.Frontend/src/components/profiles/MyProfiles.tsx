@@ -12,6 +12,13 @@ import {
   getExpertProfileNewUrl,
   getCompanyProfileNewUrl,
 } from 'components/profiles/UrlBuilder';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+
+const company = currentTenant.companyOptions.singularName;
+const mentor = currentTenant.mentorOptions.singularName;
+const expert = currentTenant.expertOptions.singularName;
 
 export interface StatusType {
   name: string;
@@ -72,7 +79,7 @@ const Profiles = () => {
               to={{ pathname: getCompanyProfileNewUrl() }}
               className="flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-800 px-8 py-3 text-base font-medium text-white hover:bg-secondary-900 md:py-4 md:px-10 md:text-lg"
             >
-              Company
+              {company}
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
@@ -81,7 +88,7 @@ const Profiles = () => {
               to={{ pathname: getMentorProfileNewUrl() }}
               className="flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-600 px-8 py-3 text-base font-medium text-white hover:bg-secondary-700 md:py-4 md:px-10 md:text-lg"
             >
-              Mentor
+              {mentor}
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
@@ -90,7 +97,7 @@ const Profiles = () => {
               to={{ pathname: getExpertProfileNewUrl() }}
               className="flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-500 px-8 py-3 text-base font-medium text-white hover:bg-secondary-600 md:py-4 md:px-10 md:text-lg"
             >
-              Expert
+              {expert}
               <PlusIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </Link>
           </div>

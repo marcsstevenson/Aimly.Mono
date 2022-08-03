@@ -15,9 +15,25 @@ export interface TenantType {
   secondaryColour: TailwindColourOptions;
 
   socialLinks: SocialLink[] | null;
+
+  companyOptions: MarketCornerOptions;
+
+  mentorOptions: MarketCornerOptions;
+
+  expertOptions: MarketCornerOptions;
 }
 
 export interface SocialLink {
-  type: 'Discord' | 'Facebook' | 'GitHub' |'Instagram' | 'LinkedIn' | 'Twitter';
+  type: 'Discord' | 'Facebook' | 'GitHub' | 'Instagram' | 'LinkedIn' | 'Twitter';
   href: string;
+}
+
+export interface MarketCornerOptions {
+  // This relates to the tab on the market and the profile types that can be created.
+  // Eg, Companies
+  singularName: string;
+
+  // This relates to the profile types that can be created.
+  // Eg, Company
+  pluralName: string;
 }

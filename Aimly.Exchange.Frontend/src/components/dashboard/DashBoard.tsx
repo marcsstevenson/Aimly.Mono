@@ -6,6 +6,10 @@ import * as DashboardQuery from '__generated__/dashboardQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { PrivateContext } from 'components/PrivateContext';
 import DashboardProfiles from 'components/dashboard/DashboardProfiles';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const company = currentTenant.companyOptions.singularName;
 
 interface update {
   readonly title: string | null;
@@ -43,7 +47,7 @@ const DashBoard = () => {
             {data.dashboard?.newPersonalProfiles &&
               data.dashboard?.newPersonalProfiles.length > 0 && (
                 <DashboardProfiles
-                  label="Newest Company Profiles"
+                  label={'Newest ' + company + ' Profiles'}
                   profiles={data.dashboard?.newCompanyProfiles}
                 />
               )}
