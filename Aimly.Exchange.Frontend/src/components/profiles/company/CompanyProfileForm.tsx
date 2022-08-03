@@ -180,7 +180,7 @@ const CompanyProfileForm = (props: Props) => {
 
                     <div className="sm:col-span-6">
                       <label htmlFor="familyName" className="form-label">
-                        Company Name *
+                        {company + ' Name *'}
                       </label>
                       <div className="mt-1">
                         <Field
@@ -197,7 +197,7 @@ const CompanyProfileForm = (props: Props) => {
                     </div>
                     <div className="sm:col-span-3">
                       <label htmlFor="website" className="form-label">
-                        Company website
+                        {company + ' Website'}
                       </label>
                       <div className="mt-1">
                         <Field
@@ -226,7 +226,7 @@ const CompanyProfileForm = (props: Props) => {
                     </div>
                     <div className="sm:col-span-6">
                       <label htmlFor="type" className="form-label">
-                        Company Stage
+                        {company + ' Stage'}
                       </label>
                       <div className="mt-1">
                         <Field type="text" name="type" as="select" className="form-input">
@@ -243,7 +243,7 @@ const CompanyProfileForm = (props: Props) => {
 
                     <div className="sm:col-span-4">
                       <label htmlFor="profilePictureUrl" className="form-label">
-                        Company logo
+                        {company + ' logo'}
                       </label>
                       <p className="form-input-description">
                         This needs to be a square ratio image and ideally small (less than 100KB)
@@ -289,7 +289,7 @@ const CompanyProfileForm = (props: Props) => {
 
                     <div className="sm:col-span-6">
                       <label htmlFor="streetName" className="form-label">
-                        Company Street address
+                        {company + ' Street address'}
                       </label>
                       <div className="mt-1">
                         <Field
@@ -304,7 +304,7 @@ const CompanyProfileForm = (props: Props) => {
 
                     <div className="sm:col-span-2">
                       <label htmlFor="addressCity" className="form-label">
-                        Company City
+                        City
                       </label>
                       <div className="mt-1">
                         <Field

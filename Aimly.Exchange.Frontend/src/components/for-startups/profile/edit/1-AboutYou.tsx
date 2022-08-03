@@ -36,6 +36,10 @@ import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const company = currentTenant.companyOptions.singularName;
 
 const AboutYou = () => {
   const { checkedInUser } = useContext(PrivateContext);
@@ -341,7 +345,7 @@ const AboutYou = () => {
                   </div>
                   <div className="sm:col-span-3">
                     <label htmlFor="companyName" className="form-label">
-                      Company name *
+                      {company + ' Name *'}
                     </label>
                     <div className="mt-1">
                       <Field
@@ -359,7 +363,7 @@ const AboutYou = () => {
                   </div>
                   <div className="sm:col-span-3">
                     <label htmlFor="type" className="form-label">
-                      Company Stage
+                      {company + ' Stage'}
                     </label>
                     <div className="mt-1">
                       <Field type="text" name="type" as="select" className="form-input">
@@ -376,7 +380,7 @@ const AboutYou = () => {
 
                   <div className="sm:col-span-3">
                     <label htmlFor="website" className="form-label">
-                      Company website
+                      {company + ' Website'}
                     </label>
                     <div className="mt-1">
                       <Field
@@ -406,7 +410,7 @@ const AboutYou = () => {
 
                   <div className="sm:col-span-4">
                     <label htmlFor="companyProfilePictureUrl" className="form-label">
-                      Company logo
+                      {company + ' logo'}
                     </label>
                     <p className="form-input-description">
                       This needs to be a square ratio image and ideally small (less than 100KB)
@@ -450,7 +454,7 @@ const AboutYou = () => {
                   </div>
                   <div className="sm:col-span-6">
                     <label htmlFor="streetName" className="form-label">
-                      Company Street address
+                      {company + ' Street address'}
                     </label>
                     <div className="mt-1">
                       <Field
@@ -465,7 +469,7 @@ const AboutYou = () => {
 
                   <div className="sm:col-span-2">
                     <label htmlFor="addressCity" className="form-label">
-                      Company City
+                      City
                     </label>
                     <div className="mt-1">
                       <Field
