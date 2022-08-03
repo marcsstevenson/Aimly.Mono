@@ -1,6 +1,8 @@
 import React from 'react';
 import { BadgeCheckIcon } from '@heroicons/react/outline';
-import { NavLink } from 'react-router-dom';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
 
 const DashBoardWelcome = () => {
   return (
@@ -16,12 +18,13 @@ const DashBoardWelcome = () => {
             </h3> */}
             <div className="mt-2 text-sm text-green-700">
               <p className="mt-4">
-                For feedback, support and suggestions, please feel free to contact Marc at:
+                For feedback, support and suggestions, please feel free to contact{' '}
+                {currentTenant.supportEmailDetails.fullName} at:
                 <a
-                  className="hover:text-primary-500 ml-1 font-medium"
-                  href="mailto: marc.stevenson@aimly.io"
+                  className="ml-1 font-medium hover:text-primary-500"
+                  href={'mailto:' + currentTenant.supportEmailDetails.email}
                 >
-                  marc.stevenson@aimly.io
+                  {currentTenant.supportEmailDetails.email}
                 </a>
               </p>
             </div>

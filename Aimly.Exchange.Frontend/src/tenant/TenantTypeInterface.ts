@@ -21,6 +21,8 @@ export interface TenantType {
   mentorOptions: MarketCornerOptions;
 
   expertOptions: MarketCornerOptions;
+
+  supportEmailDetails: EmailDetails;
 }
 
 export interface SocialLink {
@@ -36,4 +38,9 @@ export interface MarketCornerOptions {
   // This relates to the profile types that can be created.
   // Eg, Company
   pluralName: string;
+}
+
+export interface EmailDetails {
+  fullName: string;
+  email: string;
 }

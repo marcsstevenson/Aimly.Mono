@@ -1,7 +1,9 @@
 import React from 'react';
 import { MailIcon } from '@heroicons/react/outline';
-
 import TopGraphic from 'components/shared/TopGraphic';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
 
 export const Help = () => {
   return (
@@ -116,9 +118,9 @@ export const Help = () => {
                       </svg>
                     </div>
                     <h3 className="text-lg font-medium text-white">Contact information</h3>
-                    <p className="text-secondary-50 mt-6 max-w-3xl text-base">
-                      Please do not hesitate to contact us for help, feedback and suggestions using
-                      this address.
+                    <p className="mt-6 max-w-3xl text-base text-secondary-50">
+                      Please do not hesitate to contact {currentTenant.supportEmailDetails.fullName}{' '}
+                      for help, feedback and suggestions using this address.
                     </p>
                     <dl className="mt-8 space-y-6">
                       {/* <dt>
@@ -134,16 +136,16 @@ export const Help = () => {
                       <dt>
                         <span className="sr-only">Email</span>
                       </dt>
-                      <dd className="text-secondary-50 flex text-base">
+                      <dd className="flex text-base text-secondary-50">
                         <MailIcon
-                          className="text-secondary-200 h-6 w-6 flex-shrink-0"
+                          className="h-6 w-6 flex-shrink-0 text-secondary-200"
                           aria-hidden="true"
                         />
                         <a
-                          className="hover:text-secondary-500 ml-3"
-                          href="mailto: marc.stevenson@aimly.io"
+                          className="ml-3 hover:text-secondary-500"
+                          href={'mailto:' + currentTenant.supportEmailDetails.email}
                         >
-                          marc.stevenson@aimly.io
+                          {currentTenant.supportEmailDetails.email}
                         </a>
                       </dd>
                     </dl>

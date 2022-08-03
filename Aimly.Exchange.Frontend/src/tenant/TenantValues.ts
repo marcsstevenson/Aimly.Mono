@@ -23,6 +23,10 @@ const CurrentTenant: TenantType = {
   expertOptions: {
     singularName: 'Expert',
     pluralName: 'Experts',
+  },
+  supportEmailDetails: {
+    fullName: 'Lisa Reznitschek',
+    email: 'lisa.reznitschek@catallyze.com',
   }
 }
 
