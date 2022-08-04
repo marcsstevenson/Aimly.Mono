@@ -84,6 +84,7 @@ const mentorRoute = currentTenant.mentorOptions.singularName.toLocaleLowerCase()
 
 const expertsRoute = currentTenant.expertOptions.pluralName.toLocaleLowerCase();
 const expertRoute = currentTenant.expertOptions.singularName.toLocaleLowerCase();
+const market = currentTenant.marketLabel.toLocaleLowerCase();
 
 export const PrivateRoutes: RouteItem[] = [
   { path: '/', element: <DashBoard />, page: Pages.DashBoard, footer: true },
@@ -97,27 +98,27 @@ export const PrivateRoutes: RouteItem[] = [
   { path: '*', element: <PageNotFound />, page: Pages.PageNotFound, footer: true },
 
   // Market search
-  { path: '/market', element: <MarketCompanies />, page: Pages.Market, footer: true },
+  { path: `/${market}`, element: <MarketCompanies />, page: Pages.Market, footer: true },
   {
-    path: '/market/' + companiesRoute,
+    path: `/${market}` + companiesRoute,
     element: <MarketCompanies />,
     page: Pages.MarketCompanies,
     footer: true,
   },
   {
-    path: '/market/' + mentorsRoute,
+    path: `/${market}` + mentorsRoute,
     element: <MarketMentor />,
     page: Pages.MarketMentors,
     footer: true,
   },
   {
-    path: '/market/' + expertsRoute,
+    path: `/${market}` + expertsRoute,
     element: <MarketExpert />,
     page: Pages.MarketExperts,
     footer: true,
   },
   {
-    path: '/market/community',
+    path: `/${market}/community`,
     element: <MarketCommunity />,
     page: Pages.MarketCommunity,
     footer: true,
@@ -125,25 +126,25 @@ export const PrivateRoutes: RouteItem[] = [
 
   // View public profiles on market
   {
-    path: `/market/${companyRoute}-profile/:${profileId}`,
+    path: `/${market}/${companyRoute}-profile/:${profileId}`,
     element: <ViewCompanyProfile />,
     page: Pages.MarketViewCompanyProfile,
     footer: true,
   },
   {
-    path: `/market/personal-profile/:${profileId}`,
+    path: `/${market}/personal-profile/:${profileId}`,
     element: <ViewPersonalProfile />,
     page: Pages.MarketViewPersonalProfile,
     footer: true,
   },
   {
-    path: `/market/${mentorRoute}-profile/:${profileId}`,
+    path: `/${market}/${mentorRoute}-profile/:${profileId}`,
     element: <ViewMentorProfile />,
     page: Pages.MarketViewMentorProfile,
     footer: true,
   },
   {
-    path: `/market/${expertRoute}-profile/:${profileId}`,
+    path: `/${market}/${expertRoute}-profile/:${profileId}`,
     element: <ViewExpertProfile />,
     page: Pages.MarketViewExpertProfile,
     footer: true,

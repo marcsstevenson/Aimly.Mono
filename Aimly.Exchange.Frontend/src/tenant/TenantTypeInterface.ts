@@ -23,6 +23,8 @@ export interface TenantType {
   expertOptions: MarketCornerOptions;
 
   supportEmailDetails: EmailDetails;
+
+  marketLabel: string;
 }
 
 export interface SocialLink {

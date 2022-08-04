@@ -27,7 +27,8 @@ const CurrentTenant: TenantType = {
   supportEmailDetails: {
     fullName: 'Lisa Reznitschek',
     email: 'lisa.reznitschek@catallyze.com',
-  }
+  },
+  marketLabel: 'Members',
 }
 
 export const GetCurrentTenant = (): TenantType => {

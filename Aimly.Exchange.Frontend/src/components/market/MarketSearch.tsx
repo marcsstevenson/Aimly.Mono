@@ -23,6 +23,11 @@ import {
   industriesQueryStringVariable,
 } from 'components/shared/MarketOptions/MarketSearchRequestHelpers';
 
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const marketLabel = currentTenant.marketLabel;
+
 interface Props {
   // CurrentPage: Pages;
   CurrentProfileType: ProfileTypeOption;
@@ -141,7 +146,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
 
   return (
     <div className="flex-1 pb-8">
-      <PageHeader Title="Market" />
+      <PageHeader Title={marketLabel} />
       <MarketHeader CurrentProfileType={CurrentProfileType} />
       <MarketSearchInput CurrentProfileType={CurrentProfileType} onChange={handleSearchRequest} />
       <Suspense fallback={<LoadingArea title="Searching..." fullHeight={false} />}>
