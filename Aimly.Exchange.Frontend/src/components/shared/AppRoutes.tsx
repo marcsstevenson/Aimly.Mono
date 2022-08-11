@@ -100,19 +100,19 @@ export const PrivateRoutes: RouteItem[] = [
   // Market search
   { path: `/${market}`, element: <MarketCompanies />, page: Pages.Market, footer: true },
   {
-    path: `/${market}` + companiesRoute,
+    path: `/${market}/` + companiesRoute,
     element: <MarketCompanies />,
     page: Pages.MarketCompanies,
     footer: true,
   },
   {
-    path: `/${market}` + mentorsRoute,
+    path: `/${market}/` + mentorsRoute,
     element: <MarketMentor />,
     page: Pages.MarketMentors,
     footer: true,
   },
   {
-    path: `/${market}` + expertsRoute,
+    path: `/${market}/` + expertsRoute,
     element: <MarketExpert />,
     page: Pages.MarketExperts,
     footer: true,
