@@ -13,6 +13,7 @@ import { GetCurrentTenant } from 'tenant/TenantValues';
 // Always load pages
 import DashBoard from 'components/dashboard/DashBoard';
 import CompanyInvite from 'components/CompanyInvite';
+import AboutUs from 'components/market/view/AboutUs';
 
 // General pages
 const Help = lazy(() => import('components/Help'));
@@ -147,6 +148,13 @@ export const PrivateRoutes: RouteItem[] = [
     path: `/${market}/${expertRoute}-profile/:${profileId}`,
     element: <ViewExpertProfile />,
     page: Pages.MarketViewExpertProfile,
+    footer: true,
+  },
+
+  {
+    path: `/AboutUs`,
+    element: <AboutUs />,
+    page: Pages.AboutUs,
     footer: true,
   },
 

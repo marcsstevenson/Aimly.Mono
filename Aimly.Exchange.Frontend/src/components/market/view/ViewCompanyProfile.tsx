@@ -4,11 +4,11 @@ import React, { useContext, useMemo } from 'react';
 import * as ViewCompanyProfileQuery from '__generated__/getViewCompanyProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
-import { LongFormElement, ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
+import { ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
 import ViewProfile from 'components/market/view/ViewProfile';
-import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { PrivateContext } from 'components/PrivateContext';
 import { GetCurrentTenant } from 'tenant/TenantValues';
+import { BuildViewProfileProps } from 'components/market/view/CompanyProfileUtils';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;
@@ -32,57 +32,11 @@ const ViewCompanyProfile = () => {
     }
   );
 
-  const model = data.getViewCompanyProfile;
-
-  // Build the long form elements
-  const longFormElements = useMemo<LongFormElement[]>(() => {
-    let longFormElements: LongFormElement[] = [];
-
-    if (model?.problemDetails && model.problemDetails.length > 0) {
-      longFormElements.push({ label: 'The Problem', content: model.problemDetails });
-    }
-
-    if (model?.solutionDescription && model.solutionDescription.length > 0) {
-      longFormElements.push({ label: 'The Solution', content: model.solutionDescription });
-    }
-
-    return longFormElements;
-  }, [model?.problemDetails, model?.solutionDescription]);
-
-  // Build the ViewProfileProps
   const viewProfileProps = useMemo<ViewProfileProps>(() => {
-    // Copy values from the model to a model for the ViewProfile component
-    const viewProfileProps = Object.assign(
-      {
-        profileId: model?.companyProfileId ?? '',
-        profileUserPublicId: null,
-        profileType: 'COMPANY' as ProfileTypeOption,
-        name: model?.companyName,
-        skills: null, // Now skills for company profiles
-        title: company + ' Profile',
-        subTitle: null,
-        // Add "Their Team" if they have any associated profiles
-        associatedProfilesSets:
-          model?.associatedProfiles && model?.associatedProfiles?.length > 0
-            ? [
-                {
-                  label: 'Their Team',
-                  profiles: model?.associatedProfiles,
-                },
-              ]
-            : [],
-        longFormElements: longFormElements,
-        employmentExperience: null,
-        profilePictureRound: false,
-        allowContact: false, //Not for company profiles
-      },
-      model // Copy all other properties that don't need manual mapping
-    );
+    return BuildViewProfileProps(company, data.getViewCompanyProfile);
+  }, [BuildViewProfileProps, data]);
 
-    return viewProfileProps;
-  }, [longFormElements, model]);
-
-  return <>{model && <ViewProfile model={viewProfileProps} />}</>;
+  return <>{data.getViewCompanyProfile && <ViewProfile model={viewProfileProps} />}</>;
 };
 
 export default ViewCompanyProfile;

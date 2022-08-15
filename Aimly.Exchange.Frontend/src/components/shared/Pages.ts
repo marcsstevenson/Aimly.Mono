@@ -23,6 +23,8 @@ enum Pages {
   MarketViewExpertProfile,
   MarketViewPersonalProfile,
 
+  AboutUs,
+
   // Sharing
   SharedWithProfiles,
   ViewSharedCompanyProfile,

@@ -8,6 +8,7 @@ import {
   QuestionMarkCircleIcon,
   UserCircleIcon,
   UserGroupIcon,
+  InformationCircleIcon,
   XIcon,
   ChatIcon,
   ShareIcon,
@@ -46,6 +47,7 @@ const navigation = [
   // { name: 'Reports', href: '#', icon: DocumentReportIcon, current: false },
 ];
 const secondaryNavigation = [
+  { name: 'About Us', href: GetPathForPage(Pages.AboutUs), icon: InformationCircleIcon },
   { name: 'Settings', href: GetPathForPage(Pages.Settings), icon: CogIcon },
   { name: 'Help', href: GetPathForPage(Pages.Help), icon: QuestionMarkCircleIcon },
   // { name: 'Privacy', href: '#', icon: ShieldCheckIcon },

@@ -590,6 +590,7 @@ type Query {
   getExpertProfile(userId: UUID!, id: UUID!): GetExpertProfileModel
   dashboard(userId: UUID!): DashboardModel
   getViewCompanyProfile(companyProfileId: UUID!, userId: UUID): ViewCompanyProfileModel
+  getViewTenantCompanyProfile: ViewCompanyProfileModel
   getCompanyProfile(userId: UUID!, companyProfileId: UUID!): GetCompanyProfileModel
   companiesForAdministration(userId: UUID!): [MyProfilesResult]
 }
