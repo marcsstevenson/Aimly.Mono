@@ -14,16 +14,22 @@ import NoAccess from 'components/market/view/NoAccess';
 
 interface props {
   model: ViewProfileProps;
+  showNotVisibleToOtherUsers?: boolean | undefined;
 }
 
-const ViewProfile = ({ model }: props) => {
+const ViewProfile = ({ model, showNotVisibleToOtherUsers }: props) => {
+  if (showNotVisibleToOtherUsers === undefined) showNotVisibleToOtherUsers = true;
+
   return (
     <>
       <TopGraphic title={model.title} context={null} showBackButton={true} />
 
       <main className="relative -mt-32">
+        <h1>{showNotVisibleToOtherUsers}</h1>
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
-          {model.userCanAccessProfile && !model.listOnMarket && <NotVisibleToOtherUsers />}
+          {showNotVisibleToOtherUsers === true &&
+            model.userCanAccessProfile &&
+            !model.listOnMarket && <NotVisibleToOtherUsers />}
           {!model.userCanAccessProfile && <NoAccess />}
           {model.userCanAccessProfile && (
             <div className="overflow-hidden rounded-lg bg-white drop-shadow-lg dark:bg-gray-800">

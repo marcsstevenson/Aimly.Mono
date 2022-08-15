@@ -25,7 +25,13 @@ const AboutUs = () => {
     return BuildViewProfileProps(company, data.getViewTenantCompanyProfile);
   }, [BuildViewProfileProps, data]);
 
-  return <>{data.getViewTenantCompanyProfile && <ViewProfile model={viewProfileProps} />}</>;
+  return (
+    <>
+      {data.getViewTenantCompanyProfile && (
+        <ViewProfile model={viewProfileProps} showNotVisibleToOtherUsers={false} />
+      )}
+    </>
+  );
 };
 
 export default AboutUs;
