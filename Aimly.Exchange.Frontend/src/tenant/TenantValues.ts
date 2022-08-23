@@ -21,8 +21,8 @@ const CurrentTenant: TenantType = {
     pluralName: 'Advisors',
   },
   expertOptions: {
-    singularName: 'Expert',
-    pluralName: 'Experts',
+    singularName: 'Resource',
+    pluralName: 'Resources',
   },
   supportEmailDetails: {
     fullName: 'Lisa Reznitschek',
