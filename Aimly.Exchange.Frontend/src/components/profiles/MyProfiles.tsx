@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Pages from 'components/shared/Pages';
 
-import { PlusIcon } from '@heroicons/react/solid';
+import { PlusIcon } from '@heroicons/react/20/solid';
 import { PrivateContext } from 'components/PrivateContext';
 import { Link } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';

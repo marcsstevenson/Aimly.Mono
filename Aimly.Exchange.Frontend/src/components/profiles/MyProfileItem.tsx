@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/solid';
+import { UserCircleIcon, BoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/20/solid';
 import { getUrlForProfileTypeOptionType } from 'components/shared/UrlForProfileTypeOptionType';
 import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
@@ -35,7 +35,7 @@ const MyProfileItem = (props: Props) => {
       case 'PERSONAL':
         return <UserCircleIcon className={classNames} aria-hidden="true" />;
       case 'COMPANY':
-        return <LightningBoltIcon className={classNames} aria-hidden="true" />;
+        return <BoltIcon className={classNames} aria-hidden="true" />;
       case 'MENTOR':
         return <UserGroupIcon className={classNames} aria-hidden="true" />;
       default:

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MailIcon } from '@heroicons/react/outline';
+import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import TopGraphic from 'components/shared/TopGraphic';
 import { GetCurrentTenant } from 'tenant/TenantValues';
 
@@ -137,7 +137,7 @@ export const Help = () => {
                         <span className="sr-only">Email</span>
                       </dt>
                       <dd className="flex text-base text-secondary-50">
-                        <MailIcon
+                        <EnvelopeIcon
                           className="h-6 w-6 flex-shrink-0 text-secondary-200"
                           aria-hidden="true"
                         />

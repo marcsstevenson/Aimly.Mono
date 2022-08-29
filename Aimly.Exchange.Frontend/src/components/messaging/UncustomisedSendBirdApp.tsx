@@ -36,7 +36,7 @@ const UncustomisedSendBirdApp = ({ appId, userId, accessToken }: SendBirdAppProp
       accessToken={accessToken}
       theme={chatTheme}
       // This is a premium feature
-      showSearchIcon={false}
+      // showMagnifyingGlassIcon={false}
       colorSet={myColorSet}
     />
   );

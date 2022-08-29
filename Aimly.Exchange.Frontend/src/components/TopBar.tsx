@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import ProfileDropdown from './ProfileDropdown';
 import QuickSearch from './QuickSearch';
 
-import { BellIcon, MenuAlt1Icon } from '@heroicons/react/outline';
+import { Bars3Icon } from '@heroicons/react/24/outline';
 
 import DarkModeSelector from 'components/DarkModeSelector';
 import { PrivateContext } from './PrivateContext';
@@ -15,11 +15,11 @@ const TopBar = (): JSX.Element => {
     <div className="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
       <button
         type="button"
-        className="focus:ring-primary-500 border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset lg:hidden"
+        className="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 lg:hidden"
         onClick={() => setSidebarOpen(true)}
       >
         <span className="sr-only">Open sidebar</span>
-        <MenuAlt1Icon className="h-6 w-6" aria-hidden="true" />
+        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
       </button>
       {/* Search bar */}
       <div className="flex flex-1 justify-between px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">

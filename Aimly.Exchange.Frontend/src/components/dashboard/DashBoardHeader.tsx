@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { PrivateContext } from 'components/PrivateContext';
-import { CheckCircleIcon, OfficeBuildingIcon } from '@heroicons/react/solid';
+import { CheckCircleIcon, BuildingOffice2Icon } from '@heroicons/react/20/solid';
 
 const DashBoardHeader = () => {
   const { checkedInUser } = useContext(PrivateContext);
@@ -43,7 +43,7 @@ const DashBoardHeader = () => {
                 <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
                   <dt className="sr-only">Company</dt>
                   <dd className="flex items-center text-sm font-medium capitalize text-gray-500 dark:text-gray-400 sm:mr-6">
-                    <OfficeBuildingIcon
+                    <BuildingOffice2Icon
                       className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500"
                       aria-hidden="true"
                     />

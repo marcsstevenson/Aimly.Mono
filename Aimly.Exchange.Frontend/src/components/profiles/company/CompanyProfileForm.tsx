@@ -32,7 +32,7 @@ import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
 import { PrivateContext } from 'components/PrivateContext';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
-import LinkIcon from '@heroicons/react/solid/LinkIcon';
+import LinkIcon from '@heroicons/react/20/solid/LinkIcon';
 import { GetCurrentTenant } from 'tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();

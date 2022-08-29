@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { SearchIcon } from '@heroicons/react/solid';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { IndustriesAndSkills } from 'components/shared/MarketOptions/IndustriesAndSkills';
@@ -90,7 +90,7 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
                 className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                 aria-hidden="true"
               >
-                <SearchIcon className="h-5 w-5" aria-hidden="true" />
+                <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
               </div>
               <input
                 id="search-field"

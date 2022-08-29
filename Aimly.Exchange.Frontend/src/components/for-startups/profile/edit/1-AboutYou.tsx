@@ -30,7 +30,7 @@ import { useUrlParser } from 'components/shared/useUrlParser';
 import { ConfirmDelete } from 'components/shared/ConfirmDelete';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { LinkIcon } from '@heroicons/react/solid';
+import { LinkIcon } from '@heroicons/react/20/solid';
 import { inviteCodeValue } from 'components/shared/UrlConstants';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import { ContentEditWrapper } from 'components/author/ContentEditWrapper';

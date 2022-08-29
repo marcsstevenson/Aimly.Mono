@@ -13,7 +13,7 @@ import validateEmail from 'validators/validateEmail';
 import GenericHeader from 'components/shared/GenericHeader';
 import { userSettingsQuery$variables } from '__generated__/userSettingsQuery.graphql';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
-import { CheckIcon } from '@heroicons/react/solid';
+import { CheckIcon } from '@heroicons/react/20/solid';
 
 const SettingsEdit = () => {
   const { userId, checkedInUser, checkInUser } = useContext(PrivateContext);

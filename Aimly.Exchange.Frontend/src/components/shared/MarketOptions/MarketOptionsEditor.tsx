@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { MarketSearchOption } from 'components/shared/MarketOptions/MarketSearchOption';
 import { MarketOptionsSelector } from 'components/shared/MarketOptions/MarketOptionsSelector';
 import { SelectedMarketOptions } from 'components/shared/MarketOptions/SelectedMarketOptions';
-import { PlusIcon } from '@heroicons/react/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 
 interface Props {
   initiallySelected: string[];

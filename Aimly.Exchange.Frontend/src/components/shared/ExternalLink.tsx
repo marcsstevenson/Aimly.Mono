@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 export interface Props {
   url: string;
@@ -23,7 +23,7 @@ const ExternalLink = ({ url }: Props) => {
       rel="noopener noreferrer"
       href={href}
     >
-      <ExternalLinkIcon className="mr-2 h-5 w-5" aria-hidden="true" />
+      <ArrowTopRightOnSquareIcon className="mr-2 h-5 w-5" aria-hidden="true" />
       <p className="">{url}</p>
     </a>
   );

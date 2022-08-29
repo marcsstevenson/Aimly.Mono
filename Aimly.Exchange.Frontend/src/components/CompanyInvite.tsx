@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import Pages from 'components/shared/Pages';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
-import { ChevronRightIcon } from '@heroicons/react/solid';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 const CompanyInvite = () => {
   const [searchParams] = useSearchParams();
@@ -27,7 +27,7 @@ const CompanyInvite = () => {
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
               <div className="lg:py-24">
                 <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="text-secondary-400 block">
+                  <span className="block text-secondary-400">
                     LET'S SCALE AND GROW YOUR BUSINESS TOGETHER
                   </span>
                 </h1>
@@ -39,7 +39,7 @@ const CompanyInvite = () => {
                   <div className="space-y-4 sm:mx-auto">
                     <NavLink
                       to={{ pathname: nextUrl }}
-                      className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+                      className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     >
                       Continue
                       <ChevronRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

@@ -1,16 +1,9 @@
 import React, { useContext } from 'react';
-import { ScaleIcon, RefreshIcon, BadgeCheckIcon } from '@heroicons/react/outline';
-import {
-  CashIcon,
-  CheckCircleIcon,
-  ChevronRightIcon,
-  OfficeBuildingIcon,
-} from '@heroicons/react/solid';
+
+// import { ScaleIcon, ArrowPathIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
+import { BanknotesIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { classNames } from 'utils/classNames';
-import { PrivateContext } from 'components/PrivateContext';
 import CurrencyFormat from 'react-currency-format';
-import { NavLink } from 'react-router-dom';
-import AccountBalances from './AccountsStatus';
 
 export interface transactionType {
   name: string;
@@ -96,7 +89,7 @@ const AccountsActivity = () => {
               >
                 <span className="flex items-center space-x-4">
                   <span className="flex flex-1 space-x-2 truncate">
-                    <CashIcon
+                    <BanknotesIcon
                       className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500"
                       aria-hidden="true"
                     />
@@ -175,7 +168,7 @@ const AccountsActivity = () => {
                             href={transaction.href}
                             className="group inline-flex space-x-2 truncate text-sm"
                           >
-                            <CashIcon
+                            <BanknotesIcon
                               className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500 dark:text-gray-500"
                               aria-hidden="true"
                             />

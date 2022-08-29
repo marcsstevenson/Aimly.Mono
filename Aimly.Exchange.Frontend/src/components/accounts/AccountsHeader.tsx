@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { PrivateContext } from 'components/PrivateContext';
-import { CheckCircleIcon, OfficeBuildingIcon } from '@heroicons/react/solid';
+import { CheckCircleIcon, BuildingOffice2Icon } from '@heroicons/react/20/solid';
 import { AccountsOption } from 'components/accounts/AccountsOption';
 import { classNames } from 'utils/classNames';
 

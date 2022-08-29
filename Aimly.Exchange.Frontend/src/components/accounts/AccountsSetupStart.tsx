@@ -12,7 +12,7 @@ import {
 import Pages from 'components/shared/Pages';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import { GetCurrentTenant } from 'tenant/TenantValues';
-import { ExternalLinkIcon } from '@heroicons/react/solid';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
 import { useNavigate } from 'react-router-dom';
 
 // The purpose of this component is to start the setup of the user's account profile
@@ -77,7 +77,7 @@ const AccountsSetupStart = () => {
               target={'_blank'}
               href="https://support.stripe.com/questions/know-your-customer-obligations"
             >
-              Details here <ExternalLinkIcon className="inline-block h-4 w-4" />
+              Details here <ArrowTopRightOnSquareIcon className="inline-block h-4 w-4" />
             </a>
           </p>
           <div className="mt-8 sm:mx-auto sm:max-w-lg sm:text-center lg:mx-0 lg:text-left">

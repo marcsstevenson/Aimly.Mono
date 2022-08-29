@@ -9,10 +9,10 @@ import {
   UserCircleIcon,
   UserGroupIcon,
   InformationCircleIcon,
-  XIcon,
-  ChatIcon,
+  XMarkIcon,
+  ChatBubbleLeftEllipsisIcon,
   ShareIcon,
-} from '@heroicons/react/outline';
+} from '@heroicons/react/24/outline';
 import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
@@ -40,7 +40,12 @@ const navigation = [
     current: false,
   },
   { name: marketLabel, href: GetPathForPage(Pages.Market), icon: UserGroupIcon, current: false },
-  { name: 'Messages', href: GetPathForPage(Pages.MessagesHome), icon: ChatIcon, current: false },
+  {
+    name: 'Messages',
+    href: GetPathForPage(Pages.MessagesHome),
+    icon: ChatBubbleLeftEllipsisIcon,
+    current: false,
+  },
   // { name: 'History', href: '#', icon: ClockIcon, current: false },
   // { name: 'Balances', href: '#', icon: ScaleIcon, current: false },
   // { name: 'Cards', href: '#', icon: CreditCardIcon, current: false },
@@ -104,7 +109,7 @@ const SideBar = (): JSX.Element => {
                     onClick={() => setSidebarOpen(false)}
                   >
                     <span className="sr-only">Close sidebar</span>
-                    <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                    <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
                   </button>
                 </div>
               </Transition.Child>

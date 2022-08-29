@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Pages from 'components/shared/Pages';
 import { useNavigate } from 'react-router-dom';
 
-import { SearchIcon } from '@heroicons/react/solid';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 
@@ -38,7 +38,7 @@ const QuickSearch = (): JSX.Element => {
             className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
             aria-hidden="true"
           >
-            <SearchIcon className="h-5 w-5" aria-hidden="true" />
+            <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
           </div>
           <input
             id="search-field"

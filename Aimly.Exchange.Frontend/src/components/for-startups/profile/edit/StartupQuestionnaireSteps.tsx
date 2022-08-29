@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { CheckIcon } from '@heroicons/react/solid';
+import { CheckIcon } from '@heroicons/react/20/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { steps, StepStatusOptions } from './StartupQuestionnaireManager';
@@ -67,7 +67,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="bg-secondary-600 flex h-10 w-10 items-center justify-center rounded-full">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary-600">
                           <CheckIcon className="h-6 w-6 text-white" aria-hidden="true" />
                         </span>
                       </span>
@@ -84,7 +84,7 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                 ) : step.status === StepStatusOptions.Current ? (
                   <span aria-current="step">
                     <span
-                      className="bg-secondary-600 absolute top-0 left-0 h-full w-1 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+                      className="absolute top-0 left-0 h-full w-1 bg-secondary-600 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
                       aria-hidden="true"
                     />
                     <span
@@ -94,14 +94,14 @@ export default function StartupQuestionnaireSteps({ currentStep }: StartupQuesti
                       )}
                     >
                       <span className="flex-shrink-0">
-                        <span className="border-secondary-600 flex h-10 w-10 items-center justify-center rounded-full border-2">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-secondary-600">
                           <span className="text-secondary-600 dark:text-secondary-200">
                             {step.id}
                           </span>
                         </span>
                       </span>
                       <span className="mt-0.5 ml-4 flex min-w-0 flex-col">
-                        <span className="text-secondary-600 dark:text-secondary-300 text-xs font-semibold uppercase tracking-wide">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-secondary-600 dark:text-secondary-300">
                           {step.name}
                         </span>
                         <span className="text-sm font-medium text-gray-500 dark:text-gray-300">

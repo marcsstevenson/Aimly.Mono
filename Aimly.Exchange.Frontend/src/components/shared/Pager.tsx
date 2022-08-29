@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 export interface Props {
   currentPage: number;
   pageSize: number;
@@ -48,7 +48,7 @@ export const Pager = (props: Props) => {
             <a
               href="#"
               aria-current="page"
-              className="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
+              className="border-indigo-500 bg-indigo-50 text-indigo-600 relative z-10 inline-flex items-center border px-4 py-2 text-sm font-medium"
             >
               1
             </a>

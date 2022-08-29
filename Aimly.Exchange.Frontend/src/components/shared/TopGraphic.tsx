@@ -3,7 +3,7 @@
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
 import { classNames } from 'utils/classNames';
-import { XIcon } from '@heroicons/react/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
@@ -20,7 +20,7 @@ const TopGraphic = ({ title, context, showBackButton }: Props) => {
   };
 
   return (
-    <Disclosure as="div" className="bg-primary-800 relative overflow-hidden pb-32">
+    <Disclosure as="div" className="relative overflow-hidden bg-primary-800 pb-32">
       {({ open }) => (
         <>
           <div
@@ -57,7 +57,7 @@ const TopGraphic = ({ title, context, showBackButton }: Props) => {
                 <div className="col-span-4 col-start-2">
                   <h1 className="text-center text-2xl font-extrabold text-gray-100">{title}</h1>
                   {context && (
-                    <h1 className="dark:text-primary-400 text-primary-700 text-center text-5xl font-extrabold">
+                    <h1 className="text-center text-5xl font-extrabold text-primary-700 dark:text-primary-400">
                       {context}
                     </h1>
                   )}
@@ -67,9 +67,9 @@ const TopGraphic = ({ title, context, showBackButton }: Props) => {
                     <button
                       type="button"
                       onClick={goBack}
-                      className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-full border border-transparent p-2 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+                      className="inline-flex items-center rounded-full border border-transparent bg-primary-600 p-2 text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     >
-                      <XIcon className="h-6 w-6" aria-hidden="true" aria-label="go back" />
+                      <XMarkIcon className="h-6 w-6" aria-hidden="true" aria-label="go back" />
                     </button>
                   </div>
                 )}

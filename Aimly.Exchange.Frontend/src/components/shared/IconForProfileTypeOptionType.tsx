@@ -1,12 +1,12 @@
 import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
-import { UserCircleIcon, LightningBoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/solid';
+import { UserCircleIcon, BoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/20/solid';
 
 export const getIconForProfileTypeOptionType = (type: ProfileTypeOption) => {
   switch (type) {
     case 'PERSONAL':
       return UserCircleIcon;
     case 'COMPANY':
-      return LightningBoltIcon;
+      return BoltIcon;
     case 'MENTOR':
       return UserGroupIcon;
     case 'EXPERT':

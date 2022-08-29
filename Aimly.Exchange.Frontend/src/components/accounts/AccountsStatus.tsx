@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { ScaleIcon, RefreshIcon, ArrowRightIcon } from '@heroicons/react/outline';
-import { CheckCircleIcon } from '@heroicons/react/solid';
+import { ScaleIcon, ArrowPathIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay/hooks';
 import Request, {
   getAccountsStatusQuery,
@@ -13,7 +13,7 @@ import Pages from 'components/shared/Pages';
 
 const cards = [
   { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
-  { name: 'Pending', href: '#', icon: RefreshIcon, amount: '$19,500.00' },
+  { name: 'Pending', href: '#', icon: ArrowPathIcon, amount: '$19,500.00' },
   { name: 'Processed (last 30 days)', href: '#', icon: CheckCircleIcon, amount: '$45,750.00' },
   // More items...
 ];

@@ -12,7 +12,7 @@ import Pages from 'components/shared/Pages';
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth0 } from '@auth0/auth0-react';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import { getPersonalProfileEditUrl } from 'components/profiles/UrlBuilder';
@@ -37,7 +37,7 @@ const NavBar = () => {
     });
 
   return (
-    <Disclosure as="nav" className="bg-primary-600 z-20">
+    <Disclosure as="nav" className="z-20 bg-primary-600">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -50,9 +50,9 @@ const NavBar = () => {
                 >
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -149,7 +149,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <NavLink
                             to={{ pathname: getPersonalProfileEditUrl() }}
-                            className="hover:bg-primary-50 inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
                           >
                             Your Profile
                           </NavLink>
@@ -157,7 +157,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <NavLink
                             to={{ pathname: 'settings' }}
-                            className="hover:bg-primary-50 inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
+                            className="inline-flex w-full px-2 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
                           >
                             Settings
                           </NavLink>
@@ -165,7 +165,7 @@ const NavBar = () => {
                         <Menu.Item>
                           <div
                             onClick={() => logoutWithRedirect()}
-                            className="hover:bg-primary-50 inline-flex w-full cursor-pointer px-2 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
+                            className="inline-flex w-full cursor-pointer px-2 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
                           >
                             Sign out
                           </div>

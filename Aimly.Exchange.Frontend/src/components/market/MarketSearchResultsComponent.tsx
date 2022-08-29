@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import MarketGridResults from 'components/market/MarketGridResults';
-import { ViewListIcon, ViewGridIcon } from '@heroicons/react/solid';
-import { classNames } from 'utils/classNames';
 import AppQuery, {
   marketSearchQuery,
   marketSearchQuery$data,

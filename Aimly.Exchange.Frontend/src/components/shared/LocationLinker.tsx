@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { LocationMarkerIcon } from '@heroicons/react/solid';
+import { MapPinIcon } from '@heroicons/react/20/solid';
 
 export interface Props {
   addressCity: string | null;
@@ -39,7 +39,7 @@ const LocationLinker = ({ addressCity, addressRegion, addressCountry }: Props) =
       rel="noopener noreferrer"
       href={`https://www.google.co.nz/maps/search/${encodeURIComponent(locationDisplay)}`}
     >
-      <LocationMarkerIcon className="mr-2 h-5 w-5" aria-hidden="true" />
+      <MapPinIcon className="mr-2 h-5 w-5" aria-hidden="true" />
       <span>{locationDisplay}</span>
     </a>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BriefcaseIcon } from '@heroicons/react/solid';
+import { BriefcaseIcon } from '@heroicons/react/20/solid';
 import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
 
 interface Props {
@@ -53,14 +53,14 @@ export const PersonalProfileExperienceItem = ({
             <button
               type="button"
               onClick={triggerDelete}
-              className="text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500 mr-2 font-medium"
+              className="mr-2 font-medium text-validation-700 hover:text-validation-900 dark:text-validation-400 dark:hover:text-validation-500"
             >
               Delete
             </button>
             <button
               type="button"
               onClick={triggerEdit}
-              className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
+              className="font-medium text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400"
             >
               Edit
             </button>

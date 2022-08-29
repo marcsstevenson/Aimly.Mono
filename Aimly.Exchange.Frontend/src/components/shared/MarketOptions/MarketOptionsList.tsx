@@ -3,7 +3,7 @@ import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react
 import { Combobox } from '@headlessui/react';
 import { MarketSearchOption } from 'components/shared/MarketOptions/MarketSearchOption';
 import { classNames } from 'utils/classNames';
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 
 interface MarketOptionsListProps {
   options: MarketSearchOption[];

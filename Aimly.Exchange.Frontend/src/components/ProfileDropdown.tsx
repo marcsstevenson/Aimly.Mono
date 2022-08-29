@@ -5,7 +5,7 @@ import React, { useContext, Fragment } from 'react';
 import Pages from 'components/shared/Pages';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { NavLink } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import { getPersonalProfileEditUrl } from 'components/profiles/UrlBuilder';
@@ -25,7 +25,7 @@ const ProfileDropdown = (): JSX.Element => {
       {/* Profile dropdown */}
       <Menu as="div" className="relative ml-3">
         <div>
-          <Menu.Button className="focus:ring-primary-500 flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 dark:hover:bg-gray-800 lg:rounded-md lg:p-2 lg:hover:bg-gray-100">
+          <Menu.Button className="flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:hover:bg-gray-800 lg:rounded-md lg:p-2 lg:hover:bg-gray-100">
             <img
               className="h-8 w-8 rounded-full"
               src={checkedInUser?.pictureUrl ?? ''}
@@ -57,7 +57,7 @@ const ProfileDropdown = (): JSX.Element => {
             <Menu.Item>
               <NavLink
                 to={{ pathname: getPersonalProfileEditUrl() }}
-                className="hover:bg-primary-50 block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 dark:text-gray-300 dark:hover:bg-gray-600"
               >
                 Your Profile
               </NavLink>
@@ -65,7 +65,7 @@ const ProfileDropdown = (): JSX.Element => {
             <Menu.Item>
               <NavLink
                 to={{ pathname: GetPathForPage(Pages.Settings) }}
-                className="hover:bg-primary-50 block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 dark:text-gray-300 dark:hover:bg-gray-600"
               >
                 Settings
               </NavLink>
@@ -73,7 +73,7 @@ const ProfileDropdown = (): JSX.Element => {
             <Menu.Item>
               <div
                 onClick={() => logoutWithRedirect()}
-                className="hover:bg-primary-50 inline-flex w-full cursor-pointer px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
+                className="inline-flex w-full cursor-pointer px-4 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-600"
               >
                 Sign out
               </div>

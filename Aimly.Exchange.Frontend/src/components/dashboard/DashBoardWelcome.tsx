@@ -1,5 +1,5 @@
 import React from 'react';
-import { BadgeCheckIcon } from '@heroicons/react/outline';
+import { CheckBadgeIcon } from '@heroicons/react/24/outline';
 import { GetCurrentTenant } from 'tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
@@ -10,7 +10,7 @@ const DashBoardWelcome = () => {
       <div className="mb-4 rounded-md bg-green-50 p-4">
         <div className="flex">
           <div className="flex-shrink-0">
-            <BadgeCheckIcon className="h-12 w-12 text-2xl text-green-400" aria-hidden="true" />
+            <CheckBadgeIcon className="h-12 w-12 text-2xl text-green-400" aria-hidden="true" />
           </div>
           <div className="ml-3">
             {/* <h3 className="text-2xl font-medium text-green-800">

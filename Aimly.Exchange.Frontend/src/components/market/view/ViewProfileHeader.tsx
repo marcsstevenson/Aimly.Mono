@@ -6,7 +6,7 @@ import LocationLinker from 'components/shared/LocationLinker';
 import ExternalLink from 'components/shared/ExternalLink';
 import { ViewProfileHeaderProps } from 'components/market/view/ViewProfileInterfaces';
 import { MetaDataList } from 'components/shared/MetaData/MetaDataList';
-import { ChatIcon } from '@heroicons/react/outline';
+import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline';
 import MarketMessage from 'components/market/MarketMessage';
 import MarketEnquiry from 'components/market/MarketEnquiry';
 import { PrivateContext } from 'components/PrivateContext';
@@ -29,7 +29,7 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
         />
       </div>
       <div className="col-span-8 lg:col-span-4">
-        <div className="decoration-secondary-500 flex justify-center text-4xl text-gray-800 underline dark:text-gray-100 sm:text-6xl lg:justify-start">
+        <div className="flex justify-center text-4xl text-gray-800 underline decoration-secondary-500 dark:text-gray-100 sm:text-6xl lg:justify-start">
           <p className="... overflow-hidden text-ellipsis"> {props.name}</p>
         </div>
       </div>
@@ -76,17 +76,17 @@ const ViewProfileHeader = (props: ViewProfileHeaderProps) => {
           <div className="col-span-6 flex flex-row flex-wrap justify-center gap-x-2 lg:justify-start">
             <button
               onClick={() => setShowMarketMessage(true)}
-              className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
+              className="inline-flex items-center rounded-md border border-transparent bg-secondary-600 px-4 py-2 text-sm font-medium text-white hover:bg-secondary-700 md:text-lg"
             >
               Message
-              <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+              <ChatBubbleLeftEllipsisIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </button>
             <button
               onClick={() => setShowMarketEnquiry(true)}
-              className="bg-secondary-600 hover:bg-secondary-700 inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white md:text-lg"
+              className="inline-flex items-center rounded-md border border-transparent bg-secondary-600 px-4 py-2 text-sm font-medium text-white hover:bg-secondary-700 md:text-lg"
             >
               Enquire
-              <ChatIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+              <ChatBubbleLeftEllipsisIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
             </button>
           </div>
         )}

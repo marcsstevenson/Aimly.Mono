@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import './MenuItem.scss';
-import remixiconUrl from 'remixicon/fonts/remixicon.symbol.svg';
+import remiXMarkIconUrl from 'remixicon/fonts/remixicon.symbol.svg';
 
 export default ({ icon, title, action, isActive = null }: any) => {
   const getButtonCss = useCallback((isActive: boolean) => {
@@ -22,7 +22,7 @@ export default ({ icon, title, action, isActive = null }: any) => {
       title={title}
     >
       <svg className="remix">
-        <use xlinkHref={`${remixiconUrl}#ri-${icon}`} />
+        <use xlinkHref={`${remiXMarkIconUrl}#ri-${icon}`} />
       </svg>
     </button>
   );
