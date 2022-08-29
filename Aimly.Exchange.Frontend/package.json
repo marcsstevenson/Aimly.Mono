@@ -56,7 +56,6 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
     "relay-runtime": "^13.0.1",
-    "remiXMarkIcon": "^2.5.0",
     "sass": "^1.49.9",
     "sendbird-calls": "^1.9.1",
     "sendbird-uikit": "^2.7.0",
