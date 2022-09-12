@@ -13,7 +13,6 @@ import {
 import useNavigateToPage from 'components/shared/useNavigateToPage';
 import { Field, Form, Formik } from 'formik';
 import validateRequiredString from 'validators/validateRequiredString';
-import validateRequiredHtml from 'validators/validateRequiredHtml';
 import GenericHeader from 'components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
 import { SwitchWrapper } from 'components/shared/SwitchWrapper';
@@ -27,7 +26,6 @@ import {
 } from '__generated__/useDeleteCompanyProfileMutation.graphql';
 import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
-import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
 import { PrivateContext } from 'components/PrivateContext';

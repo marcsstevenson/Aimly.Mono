@@ -221,6 +221,18 @@ export const PrivateRoutes: RouteItem[] = [
     footer: true,
   },
   {
+    path: `/my-profiles/${companyRoute}-profile-announcements`,
+    element: <CompanyProfileEdit />,
+    page: Pages.CompanyProfileAnnouncements,
+    footer: true,
+  },
+  {
+    path: `/my-profiles/${companyRoute}-profile-team-members`,
+    element: <CompanyProfileEdit />,
+    page: Pages.CompanyProfileTeamMembers,
+    footer: true,
+  },
+  {
     path: `/my-profiles/${companyRoute}-profile-edit`,
     element: <CompanyProfileEdit />,
     page: Pages.CompanyProfileEdit,

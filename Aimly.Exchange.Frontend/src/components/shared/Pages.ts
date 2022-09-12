@@ -49,6 +49,8 @@ enum Pages {
   ExpertProfileEdit,
   CompanyProfileNew,
   CompanyProfileEdit,
+  CompanyProfileAnnouncements,
+  CompanyProfileTeamMembers,
   Settings,
   ExternalApi,
   AboutYou,
