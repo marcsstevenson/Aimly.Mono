@@ -12,6 +12,12 @@ import {
 import ViewProfile from 'components/market/view/ViewProfile';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
 import { PrivateContext } from 'components/PrivateContext';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+
+const mentor = currentTenant.mentorOptions.singularName;
+const expert = currentTenant.expertOptions.singularName;
 
 const ViewPersonalProfile = () => {
   // Read the Id from the route context
@@ -51,12 +57,12 @@ const ViewPersonalProfile = () => {
 
     // Mentors
     if (model?.associatedMentorProfiles && model.associatedMentorProfiles.length > 0) {
-      value.push({ label: 'Mentor Profiles', profiles: model?.associatedMentorProfiles });
+      value.push({ label: mentor + ' Profiles', profiles: model?.associatedMentorProfiles });
     }
 
     // Experts
     if (model?.associatedExpertProfiles && model.associatedExpertProfiles.length > 0) {
-      value.push({ label: 'Expert Profiles', profiles: model?.associatedExpertProfiles });
+      value.push({ label: expert + ' Profiles', profiles: model?.associatedExpertProfiles });
     }
 
     // Startups
