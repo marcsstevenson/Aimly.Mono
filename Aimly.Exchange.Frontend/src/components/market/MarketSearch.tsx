@@ -117,6 +117,7 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
     // Do we need to trigger a search due to the query string containing a
     // different search request that what was last run?
     if (isEmpty(marketSearchRequestFromQuery)) {
+      console.log('Run a blank search');
       // Run a blank search
       handleSearchRequest(marketSearchRequestFromQuery);
     } else {
