@@ -1946,10 +1946,6 @@ p {
   margin-bottom: 0.75rem;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
 .ml-auto {
   margin-left: auto;
 }
@@ -1976,6 +1972,14 @@ p {
 
 .ml-16 {
   margin-left: 4rem;
+}
+
+.-ml-0\.5 {
+  margin-left: -0.125rem;
+}
+
+.-ml-0 {
+  margin-left: -0px;
 }
 
 .-ml-1 {
@@ -2601,6 +2605,12 @@ p {
   --tw-space-y-reverse: 0;
   margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+}
+
+.space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -4243,12 +4253,12 @@ span.ripple {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
-.dark .dark\:mb-5 {
-  margin-bottom: 1.25rem;
-}
-
 .dark .dark\:ml-0 {
   margin-left: 0px;
+}
+
+.dark .dark\:mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .dark .dark\:inline {

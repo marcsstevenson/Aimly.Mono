@@ -4,8 +4,12 @@ import Pages from 'components/shared/Pages';
 
 const CompanyProfileAnnouncements = () => {
   return (
-    <CompanyProfileTabs currentTab={Pages.CompanyProfileAnnouncements}>
-      <div>CompanyProfileAnnouncements</div>
+    <CompanyProfileTabs
+      title="Announcements"
+      contextVal="*** Company Name Here ***"
+      currentTab={Pages.CompanyProfileAnnouncements}
+    >
+      <div>Company Profile Announcements</div>
     </CompanyProfileTabs>
   );
 };

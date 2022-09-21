@@ -14,6 +14,7 @@ import { GetCurrentTenant } from 'tenant/TenantValues';
 import DashBoard from 'components/dashboard/DashBoard';
 import CompanyInvite from 'components/CompanyInvite';
 import AboutUs from 'components/market/view/AboutUs';
+import CompanyProfileAnnouncements from 'components/profiles/company/CompanyProfileAnnouncements';
 
 // General pages
 const Help = lazy(() => import('components/Help'));
@@ -222,7 +223,7 @@ export const PrivateRoutes: RouteItem[] = [
   },
   {
     path: `/my-profiles/${companyRoute}-profile-announcements`,
-    element: <CompanyProfileEdit />,
+    element: <CompanyProfileAnnouncements />,
     page: Pages.CompanyProfileAnnouncements,
     footer: true,
   },

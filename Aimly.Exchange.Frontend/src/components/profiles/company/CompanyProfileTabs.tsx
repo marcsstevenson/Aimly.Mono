@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { BuildingOfficeIcon, UserIcon, UsersIcon } from '@heroicons/react/20/solid';
+import { GlobeAmericasIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/20/solid';
 import { classNames } from 'utils/classNames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
 import Pages from 'components/shared/Pages';
+import GenericHeader from 'components/shared/GenericHeader';
 
 // This is the tabbing component for the company profile area
 // It allows navigation between the following areas
@@ -27,13 +28,13 @@ const tabs: Tab[] = [
   {
     name: 'Announcements',
     option: Pages.CompanyProfileAnnouncements,
-    icon: UserIcon,
+    icon: GlobeAmericasIcon,
     current: false,
   },
   {
     name: 'Profile',
     option: Pages.CompanyProfileEdit,
-    icon: BuildingOfficeIcon,
+    icon: UserCircleIcon,
     current: false,
   },
   {
@@ -45,6 +46,8 @@ const tabs: Tab[] = [
 ];
 
 export interface CompanyProfileTabsProps {
+  title: string;
+  contextVal: string;
   children: React.ReactNode;
   currentTab:
     | Pages.CompanyProfileAnnouncements
@@ -52,7 +55,12 @@ export interface CompanyProfileTabsProps {
     | Pages.CompanyProfileTeamMembers;
 }
 
-const CompanyProfileTabs = ({ children, currentTab }: CompanyProfileTabsProps) => {
+const CompanyProfileTabs = ({
+  title,
+  contextVal,
+  children,
+  currentTab,
+}: CompanyProfileTabsProps) => {
   const [searchParams] = useSearchParams();
 
   const configureTab = (tab: Tab) => {
@@ -75,7 +83,8 @@ const CompanyProfileTabs = ({ children, currentTab }: CompanyProfileTabsProps) =
   }, [searchParams, currentTab]);
 
   return (
-    <>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <GenericHeader title={title} contextVal={contextVal} />
       <div>
         <div className="sm:hidden">
           <label htmlFor="tabs" className="sr-only">
@@ -117,7 +126,7 @@ const CompanyProfileTabs = ({ children, currentTab }: CompanyProfileTabsProps) =
                     )}
                     aria-hidden="true"
                   />
-                  <span>{tab.name}</span>
+                  <span className="text-lg">{tab.name}</span>
                 </Link>
               ))}
             </nav>
@@ -125,7 +134,7 @@ const CompanyProfileTabs = ({ children, currentTab }: CompanyProfileTabsProps) =
         </div>
       </div>
       <div>{children}</div>
-    </>
+    </div>
   );
 };
 
