@@ -8,6 +8,8 @@
 //   ReactDOM.unmountComponentAtNode(div);
 // });
 
+import jest from 'jest';
+
 it('sums numbers', () => {
   expect(1 + 2).toEqual(3);
 });

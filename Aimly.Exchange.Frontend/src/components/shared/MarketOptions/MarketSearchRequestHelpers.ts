@@ -21,15 +21,15 @@ const buildQueryString = (request: MarketSearchRequest) => {
   let parts: string[] = [];
 
   if (request.searchTerm && request.searchTerm.length > 0) {
-    parts.push(`${searchQueryStringVariable}=${request.searchTerm}`);
+    parts.push(`${searchQueryStringVariable}=${encodeURIComponent(request.searchTerm)}`);
   }
 
   if (request.skills && request.skills.length > 0) {
-    parts.push(`${skillsQueryStringVariable}=${request.skills.join(',')}`);
+    parts.push(`${skillsQueryStringVariable}=${encodeURIComponent(request.skills.join(','))}`);
   }
 
   if (request.industries && request.industries.length > 0) {
-    parts.push(`${industriesQueryStringVariable}=${request.industries.join(',')}`);
+    parts.push(`${industriesQueryStringVariable}=${encodeURIComponent(request.industries.join(','))}`);
   }
 
   if (parts.length === 0) {
