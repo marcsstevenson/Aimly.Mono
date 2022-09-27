@@ -448,7 +448,7 @@ type InviteResponse {
   companyName: String
 }
 
-input ListCompanyAnnouncementCommandInput {
+input ListCompanyAnnouncementsCommandInput {
   userId: UUID!
   companyProfileId: UUID!
   publicResults: Boolean!
@@ -458,15 +458,15 @@ input ListCompanyAnnouncementCommandInput {
   orderByAscending: Boolean!
 }
 
-type ListCompanyAnnouncementModel {
+type ListCompanyAnnouncementsModel {
   id: UUID!
   title: String
   message: String
   created: DateTime!
 }
 
-type ListCompanyAnnouncementResults {
-  results: [ListCompanyAnnouncementModel]
+type ListCompanyAnnouncementsResults {
+  results: [ListCompanyAnnouncementsModel]
   totalResultCount: Int!
   currentPage: Int!
   totalPageCount: Int!
@@ -630,7 +630,7 @@ type Query {
   getViewCompanyProfile(companyProfileId: UUID!, userId: UUID): ViewCompanyProfileModel
   getViewTenantCompanyProfile: ViewCompanyProfileModel
   getCompanyProfile(userId: UUID!, companyProfileId: UUID!): GetCompanyProfileModel
-  listCompanyAnnouncement(marketSearchCommand: ListCompanyAnnouncementCommandInput): ListCompanyAnnouncementResults
+  listCompanyAnnouncements(command: ListCompanyAnnouncementsCommandInput): ListCompanyAnnouncementsResults
   getCompanyAnnouncement(userId: UUID!, companyAnnouncementId: UUID!, companyProfileId: UUID!): GetCompanyAnnouncementModel
   companiesForAdministration(userId: UUID!): [MyProfilesResult]
 }
