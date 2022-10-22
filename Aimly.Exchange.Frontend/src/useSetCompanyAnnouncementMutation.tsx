@@ -6,23 +6,26 @@
 
 import { commitMutation, useRelayEnvironment } from 'react-relay';
 import {
-  useMarketEnquiryMutation as mutationType,
+  useSetCompanyAnnouncementMutation as mutationType,
   MarketEnquiryModelInput,
-  useMarketEnquiryMutation$data,
-  useMarketEnquiryMutation$variables,
-} from '__generated__/useMarketEnquiryMutation.graphql';
+  useSetCompanyAnnouncementMutation$data,
+  useSetCompanyAnnouncementMutation$variables,
+} from '__generated__/useSetCompanyAnnouncementMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 
 const def = graphql`
-  mutation useMarketEnquiryMutation($userId: UUID!, $marketEnquiryModel: MarketEnquiryModelInput!) {
+  mutation useSetCompanyAnnouncementMutation(
+    $userId: UUID!
+    $marketEnquiryModel: MarketEnquiryModelInput!
+  ) {
     marketEnquiry(userId: $userId, marketEnquiryModel: $marketEnquiryModel) {
       error
     }
   }
 `;
 
-export default function useMarketEnquiryMutation() {
+export default function useSetCompanyAnnouncementMutation() {
   const environment = useRelayEnvironment();
 
   const MarketEnquiry = (
@@ -30,10 +33,10 @@ export default function useMarketEnquiryMutation() {
     marketEnquiryModelInput: MarketEnquiryModelInput,
     onCompleted: (
       marketEnquiryModel: MarketEnquiryModelInput,
-      response: useMarketEnquiryMutation$data
+      response: useSetCompanyAnnouncementMutation$data
     ) => void
   ) => {
-    const variables: useMarketEnquiryMutation$variables = {
+    const variables: useSetCompanyAnnouncementMutation$variables = {
       userId: userIdInput,
       marketEnquiryModel: marketEnquiryModelInput,
     };
