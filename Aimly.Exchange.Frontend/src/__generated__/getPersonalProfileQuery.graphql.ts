@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f4e87ffac26122ce0794e748ebfc374e>>
+ * @generated SignedSource<<8c5338474aa0b1103fef4847294c2489>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,11 +20,15 @@ export type getPersonalProfileQuery$data = {
     readonly about: string | null;
     readonly language: string | null;
     readonly personalProfilePictureUrl: string | null;
-    readonly timezone: string | null;
     readonly givenName: string | null;
     readonly familyName: string | null;
     readonly phoneNumber: string | null;
     readonly linkedInProfile: string | null;
+    readonly addressCity: string | null;
+    readonly addressRegion: string | null;
+    readonly postalCode: string | null;
+    readonly addressCountry: string | null;
+    readonly timezone: string | null;
     readonly industries: ReadonlyArray<string | null> | null;
     readonly skills: ReadonlyArray<string | null> | null;
     readonly employmentExperience: ReadonlyArray<{
@@ -108,13 +112,6 @@ v1 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "timezone",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
         "name": "givenName",
         "storageKey": null
       },
@@ -137,6 +134,41 @@ v1 = [
         "args": null,
         "kind": "ScalarField",
         "name": "linkedInProfile",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressCity",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressRegion",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "postalCode",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addressCountry",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "timezone",
         "storageKey": null
       },
       {
@@ -249,16 +281,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "efac7a8baa48628467a1a2fb742f36b1",
+    "cacheID": "d178266b7ecaa5ecd1be60caff307e9d",
     "id": null,
     "metadata": {},
     "name": "getPersonalProfileQuery",
     "operationKind": "query",
-    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    listOnMarket\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    industries\n    skills\n    employmentExperience {\n      id\n      stickToTop\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
+    "text": "query getPersonalProfileQuery(\n  $id: UUID!\n) {\n  getPersonalProfile(userId: $id) {\n    userId\n    listOnMarket\n    about\n    language\n    personalProfilePictureUrl\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    addressCity\n    addressRegion\n    postalCode\n    addressCountry\n    timezone\n    industries\n    skills\n    employmentExperience {\n      id\n      stickToTop\n      title\n      organisation\n      description\n      startMonth\n      startYear\n      endMonth\n      endYear\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b6e6f847225f0506f036b9e0b6186a15";
+(node as any).hash = "0000cd5d507fe46028848e7472350562";
 
 export default node;

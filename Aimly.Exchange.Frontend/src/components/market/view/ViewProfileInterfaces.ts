@@ -17,9 +17,9 @@ export interface ViewProfileHeaderProps {
   readonly profilePictureUrl: string | null | undefined;
   readonly profilePictureRound: boolean;
   readonly website: string | null | undefined;
-  readonly addressCity: string | null;
-  readonly addressRegion: string | null;
-  readonly addressCountry: string | null;
+  readonly addressCity: string | null | undefined;
+  readonly addressRegion: string | null | undefined;
+  readonly addressCountry: string | null | undefined;
   readonly industries: ReadonlyArray<string | null> | null;
   readonly skills: ReadonlyArray<string | null> | null;
   readonly allowContact: boolean;

@@ -59,8 +59,12 @@ const PersonalProfileEdit = () => {
     timezone: loadedData?.timezone ?? '',
     givenName: loadedData?.givenName ?? user?.given_name ?? '', // Note we are using the Auth profile values as the first fallback
     familyName: loadedData?.familyName ?? user?.family_name ?? '', // Note we are using the Auth profile values as the first fallback
-    phoneNumber: loadedData?.phoneNumber ?? '',
     linkedInProfile: loadedData?.linkedInProfile ?? getLinkedInProfileFromAuthHelper(user) ?? '',
+    phoneNumber: loadedData?.phoneNumber ?? '',
+    addressCity: loadedData?.addressCity ?? '',
+    addressRegion: loadedData?.addressRegion ?? '',
+    postalCode: loadedData?.postalCode ?? '',
+    addressCountry: loadedData?.addressCountry ?? '',
     industries: loadedData?.industries ?? [],
     skills: loadedData?.skills ?? [],
     employmentExperience: loadedData?.employmentExperience ?? [],
@@ -254,6 +258,66 @@ const PersonalProfileEdit = () => {
                           id="phoneNumber"
                           name="phoneNumber"
                           autoComplete="tel"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="addressCity" className="form-label">
+                        City
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="addressCity"
+                          id="addressCity"
+                          autoComplete="address-level2"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="addressRegion" className="form-label">
+                        State / Province
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="addressRegion"
+                          id="addressRegion"
+                          autoComplete="address-level1"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="postalCode" className="form-label">
+                        ZIP / Postal code
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          name="postalCode"
+                          id="postalCode"
+                          autoComplete="postal-code"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label htmlFor="addressCountry" className="form-label">
+                        Country
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          id="addressCountry"
+                          name="addressCountry"
+                          autoComplete="country-name"
                           className="form-input"
                         />
                       </div>

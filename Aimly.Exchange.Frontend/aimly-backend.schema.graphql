@@ -335,6 +335,10 @@ type GetPersonalProfileModel {
   givenName: String
   familyName: String
   phoneNumber: String
+  addressCity: String
+  addressRegion: String
+  postalCode: String
+  addressCountry: String
   linkedInProfile: String
   industries: [String]
   skills: [String]
@@ -351,6 +355,10 @@ input GetPersonalProfileModelInput {
   givenName: String
   familyName: String
   phoneNumber: String
+  addressCity: String
+  addressRegion: String
+  postalCode: String
+  addressCountry: String
   linkedInProfile: String
   industries: [String]
   skills: [String]
@@ -850,6 +858,9 @@ type ViewPersonalProfileModel {
   fullName: String
   givenName: String
   profilePictureUrl: String
+  addressCity: String
+  addressRegion: String
+  addressCountry: String
   linkedInProfile: String
   about: String
   skills: [String]

@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { MapPinIcon } from '@heroicons/react/20/solid';
 
 export interface Props {
-  addressCity: string | null;
-  addressRegion: string | null;
+  addressCity: string | null | undefined;
+  addressRegion: string | null | undefined;
   addressCountry: string;
 }
 

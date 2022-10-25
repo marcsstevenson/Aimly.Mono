@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8916204aec4acc551a4629855d368cb5>>
+ * @generated SignedSource<<970da6cf0109c7ab217bf8bfa57ed361>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -30,6 +30,9 @@ export type getViewExpertProfileQuery$data = {
       readonly givenName: string | null;
       readonly profilePictureUrl: string | null;
       readonly linkedInProfile: string | null;
+      readonly addressCity: string | null;
+      readonly addressRegion: string | null;
+      readonly addressCountry: string | null;
       readonly about: string | null;
       readonly employmentExperience: ReadonlyArray<{
         readonly id: any | null;
@@ -184,6 +187,27 @@ v4 = [
             "name": "linkedInProfile",
             "storageKey": null
           },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "addressCity",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "addressRegion",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "addressCountry",
+            "storageKey": null
+          },
           (v3/*: any*/),
           {
             "alias": null,
@@ -300,16 +324,16 @@ return {
     "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "e854411f265b16789509560d3c5a98e9",
+    "cacheID": "1eb7fea2162118e7467b4c3e3326847e",
     "id": null,
     "metadata": {},
     "name": "getViewExpertProfileQuery",
     "operationKind": "query",
-    "text": "query getViewExpertProfileQuery(\n  $profileId: UUID!\n  $userId: UUID\n) {\n  getViewExpertProfile(profileId: $profileId, userId: $userId) {\n    id\n    listOnMarket\n    isUsersProfile\n    userCanAccessProfile\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      listOnMarket\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
+    "text": "query getViewExpertProfileQuery(\n  $profileId: UUID!\n  $userId: UUID\n) {\n  getViewExpertProfile(profileId: $profileId, userId: $userId) {\n    id\n    listOnMarket\n    isUsersProfile\n    userCanAccessProfile\n    profileId\n    parentProfile {\n      id\n      personalProfileId\n      userPublicId\n      listOnMarket\n      fullName\n      givenName\n      profilePictureUrl\n      linkedInProfile\n      addressCity\n      addressRegion\n      addressCountry\n      about\n      employmentExperience {\n        id\n        stickToTop\n        title\n        organisation\n        description\n        startMonth\n        startYear\n        endMonth\n        endYear\n      }\n    }\n    name\n    about\n    industries\n    skills\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "662fa80db0ae046ac56ecefc20b95894";
+(node as any).hash = "ef06db10f0ba304f27a8f8e4b37eac19";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c28bf2fcda1b90e44d2d5eb5d893642e>>
+ * @generated SignedSource<<acfc5a8488cc5def7af360643e699cdf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,6 +22,10 @@ export type GetPersonalProfileModelInput = {
   givenName?: string | null;
   familyName?: string | null;
   phoneNumber?: string | null;
+  addressCity?: string | null;
+  addressRegion?: string | null;
+  postalCode?: string | null;
+  addressCountry?: string | null;
   linkedInProfile?: string | null;
   industries?: ReadonlyArray<string | null> | null;
   skills?: ReadonlyArray<string | null> | null;

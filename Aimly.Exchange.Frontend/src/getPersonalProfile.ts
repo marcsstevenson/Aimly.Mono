@@ -8,11 +8,16 @@ export const getPersonalProfileQuery = graphql`
       about
       language
       personalProfilePictureUrl
-      timezone
       givenName
       familyName
       phoneNumber
       linkedInProfile
+      linkedInProfile
+      addressCity
+      addressRegion
+      postalCode
+      addressCountry
+      timezone
       industries
       skills
       employmentExperience {

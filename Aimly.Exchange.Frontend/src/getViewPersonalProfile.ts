@@ -12,6 +12,9 @@ export const getAboutYouQuery = graphql`
       fullName
       profilePictureUrl
       linkedInProfile
+      addressCity
+      addressRegion
+      addressCountry
       about
       industries
       skills

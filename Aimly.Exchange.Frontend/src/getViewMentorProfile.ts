@@ -17,6 +17,9 @@ export const getAboutYouQuery = graphql`
         givenName
         profilePictureUrl
         linkedInProfile
+        addressCity
+        addressRegion
+        addressCountry
         about
         employmentExperience {
           id
