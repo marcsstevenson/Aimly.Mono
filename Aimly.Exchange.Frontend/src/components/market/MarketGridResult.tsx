@@ -1,7 +1,7 @@
 // The purpose of this component is to display a single result in the market grid.
 // The user should also be able to navigate to a detailed view of the profile.
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import resultIcon from 'assets/user-flat.svg';
 import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
@@ -26,6 +26,24 @@ const MarketGridResult = ({ result, index }: Props) => {
   const onImageError = (ev: any) => {
     ev.target.src = resultIcon;
   };
+
+  const locationDisplay = useMemo((): string | null => {
+    if (!result) {
+      return null;
+    }
+
+    var parts: string[] = [];
+
+    if (result?.addressCity && result.addressCity.length > 0) {
+      parts.push(result.addressCity);
+    }
+
+    if (result?.addressCountry && result.addressCountry.length > 0) {
+      parts.push(result.addressCountry);
+    }
+
+    return parts.join(', ');
+  }, [result]);
 
   return (
     <li
@@ -52,12 +70,11 @@ const MarketGridResult = ({ result, index }: Props) => {
           </h3>
           <dl className="mt-1 flex flex-grow flex-col justify-between">
             <dt className="sr-only">Title</dt>
-            <dd className="text-sm text-gray-500 dark:text-gray-400">{result?.description}</dd>
-            {/* <dd className="mt-3">
-              <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
-                Active
-              </span>
-            </dd> */}
+            {result?.description && result?.description.length > 0 ? (
+              <dd className="text-sm text-gray-500 dark:text-gray-400">{result?.description}</dd>
+            ) : (
+              <dd className="text-sm text-gray-500 dark:text-gray-400">{locationDisplay}</dd>
+            )}
           </dl>
         </div>
         {/* <div>

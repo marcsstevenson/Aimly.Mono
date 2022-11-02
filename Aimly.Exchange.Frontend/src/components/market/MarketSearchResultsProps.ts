@@ -11,4 +11,7 @@ export interface MarketSearchResult {
   readonly description: string | null;
   readonly profilePictureUrl: string | null | undefined;
   readonly type: ProfileTypeOption;
+  readonly addressCity?: string | null;
+  readonly addressCountry?: string | null;
+  readonly timezone?: string | null;
 }
