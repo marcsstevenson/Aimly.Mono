@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<217f58068b360357ae6ee2cb38dde30c>>
+ * @generated SignedSource<<7b452364d4a0f345b2db34d1d87e19f3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,6 +15,8 @@ export type MarketSearchCommandInput = {
   searchTerm?: string | null;
   skills?: ReadonlyArray<string | null> | null;
   industries?: ReadonlyArray<string | null> | null;
+  locations?: ReadonlyArray<string | null> | null;
+  timeZones?: ReadonlyArray<string | null> | null;
   pageSize: number;
   currentPage: number;
   orderBy?: string | null;
@@ -33,6 +35,9 @@ export type marketSearchQuery$data = {
       readonly description: string | null;
       readonly profilePictureUrl: string | null;
       readonly type: ProfileTypeOption;
+      readonly addressCity: string | null;
+      readonly addressCountry: string | null;
+      readonly timezone: string | null;
     } | null> | null;
     readonly totalResultCount: number;
     readonly currentPage: number;
@@ -117,6 +122,27 @@ v1 = [
             "kind": "ScalarField",
             "name": "type",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "addressCity",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "addressCountry",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "timezone",
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -164,16 +190,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "9fd82385613185dc7bf7b1c19776462b",
+    "cacheID": "8c75c6924e9bc9b6f71888f7070f2e94",
     "id": null,
     "metadata": {},
     "name": "marketSearchQuery",
     "operationKind": "query",
-    "text": "query marketSearchQuery(\n  $marketSearchCommand: MarketSearchCommandInput!\n) {\n  marketSearch(marketSearchCommand: $marketSearchCommand) {\n    results {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n    }\n    totalResultCount\n    currentPage\n    totalPageCount\n  }\n}\n"
+    "text": "query marketSearchQuery(\n  $marketSearchCommand: MarketSearchCommandInput!\n) {\n  marketSearch(marketSearchCommand: $marketSearchCommand) {\n    results {\n      id\n      profileId\n      name\n      description\n      profilePictureUrl\n      type\n      addressCity\n      addressCountry\n      timezone\n    }\n    totalResultCount\n    currentPage\n    totalPageCount\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7313129d2ea2285170d3580b51345f32";
+(node as any).hash = "f6335f41a5cfc3713ca057f8c882508f";
 
 export default node;

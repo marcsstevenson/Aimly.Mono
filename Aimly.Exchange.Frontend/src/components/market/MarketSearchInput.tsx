@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { IndustriesAndSkills } from 'components/shared/MarketOptions/IndustriesAndSkills';
+import { SearchOptions } from 'components/shared/MarketOptions/SearchOptions';
 import { MarketSearchRequest } from 'components/market/MarketSearchRequest';
 import { classNames } from 'utils/classNames';
 import { Switch } from '@headlessui/react';
@@ -19,9 +19,11 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
   // Populate the defaults using the query string
   // search term
   const [searchTerm, setSearchTerm] = useState(locationQuery.get(searchQueryStringVariable) ?? '');
-  // TODO: Add industries and skills from query string
+  // TODO: Add industries, skills, locations and timezones from query string
   const [industriesSelected, setIndustriesSelected] = useState<string[]>([]);
   const [skillsSelected, setSkillsSelected] = useState<string[]>([]);
+  const [locationsSelected, setLocationsSelected] = useState<string[]>([]);
+  const [timezonesSelected, setTimezonesSelected] = useState<string[]>([]);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -46,32 +48,54 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
       searchTerm: searchTerm,
       industries: industries ?? [],
       skills: skillsSelected ?? [],
+      locations: locationsSelected ?? [],
+      timeZones: timezonesSelected ?? [],
     });
   };
 
   const onChangeSkills = (skills: string[]) => {
     setSkillsSelected(skills);
-    console.log('onChangeSkills', skills);
-    // bubbleUp();
 
     onChange({
       searchTerm: searchTerm,
       industries: industriesSelected ?? [],
       skills: skills ?? [],
+      locations: locationsSelected ?? [],
+      timeZones: timezonesSelected ?? [],
     });
   };
 
-  const bubbleUp = () => {
-    console.log('bubbleUp', {
-      searchTerm: searchTerm,
-      industries: industriesSelected ?? [],
-      skills: skillsSelected ?? [],
-    });
+  const onChangeLocations = (locations: string[]) => {
+    setLocationsSelected(locations);
 
     onChange({
       searchTerm: searchTerm,
       industries: industriesSelected ?? [],
       skills: skillsSelected ?? [],
+      locations: locations ?? [],
+      timeZones: timezonesSelected ?? [],
+    });
+  };
+
+  const onChangeTimezones = (timezones: string[]) => {
+    setTimezonesSelected(timezones);
+
+    onChange({
+      searchTerm: searchTerm,
+      industries: industriesSelected ?? [],
+      skills: skillsSelected ?? [],
+      locations: locationsSelected ?? [],
+      timeZones: timezones ?? [],
+    });
+  };
+
+  const bubbleUp = () => {
+    onChange({
+      searchTerm: searchTerm,
+      industries: industriesSelected ?? [],
+      skills: skillsSelected ?? [],
+      locations: locationsSelected ?? [],
+      timeZones: timezonesSelected ?? [],
     });
   };
 
@@ -129,10 +153,12 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
             </Switch>
           </div>
           {showAdvanced && (
-            <IndustriesAndSkills
+            <SearchOptions
               profileType={CurrentProfileType}
               onChangeIndustries={onChangeIndustries}
               onChangeSkills={onChangeSkills}
+              onChangeLocations={onChangeLocations}
+              onChangeTimezones={onChangeTimezones}
             />
           )}
         </div>

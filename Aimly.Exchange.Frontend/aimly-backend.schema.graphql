@@ -507,6 +507,8 @@ input MarketSearchCommandInput {
   searchTerm: String
   skills: [String]
   industries: [String]
+  locations: [String]
+  timeZones: [String]
   pageSize: Int!
   currentPage: Int!
   orderBy: String
@@ -522,6 +524,7 @@ type MarketSearchOptionsResponse {
   skillOptions: [MarketSearchOption]
   industryOptions: [MarketSearchOption]
   locationOptions: [MarketSearchOption]
+  timezoneOptions: [MarketSearchOption]
 }
 
 type MarketSearchResult {
@@ -531,6 +534,9 @@ type MarketSearchResult {
   description: String
   profilePictureUrl: String
   type: ProfileTypeOption!
+  addressCity: String
+  addressCountry: String
+  timezone: String
 }
 
 type MarketSearchResults {

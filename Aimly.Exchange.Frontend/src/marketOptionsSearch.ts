@@ -15,6 +15,10 @@ export const marketOptionsSearchQuery = graphql`
         name
         count
       }
+      timezoneOptions {
+        name
+        count
+      }
     }
   }
 `;

@@ -21,6 +21,8 @@ import {
   searchQueryStringVariable,
   skillsQueryStringVariable,
   industriesQueryStringVariable,
+  locationsQueryStringVariable,
+  timezonesQueryStringVariable,
 } from 'components/shared/MarketOptions/MarketSearchRequestHelpers';
 
 import { GetCurrentTenant } from 'tenant/TenantValues';
@@ -46,14 +48,15 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
   const buildVariables = useCallback(
     (request: MarketSearchRequest, page: number, profileType: ProfileTypeOption) => {
       return {
-        // TODO: Add skills and industries to the request
         marketSearchCommand: {
           searchTerm: request.searchTerm,
           industries: request.industries,
           skills: request.skills,
+          locations: request.locations,
+          timeZones: request.timeZones,
           profileType: profileType,
           currentPage: page,
-          pageSize: 100,
+          pageSize: 200,
           orderByAscending: true,
           orderBy: 'Name',
         },
@@ -78,8 +81,6 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
   const handleSearchRequest = useCallback(
     (request: MarketSearchRequest) => {
       // Build the updated variables
-      console.log(handleSearchRequest, request);
-
       var variables = buildVariables(request, currentPage, CurrentProfileType);
 
       // Remember the search term
@@ -102,7 +103,9 @@ const MarketSearch = ({ CurrentProfileType }: Props) => {
       return buildFromQuery(
         locationQuery.get(searchQueryStringVariable),
         locationQuery.get(skillsQueryStringVariable),
-        locationQuery.get(industriesQueryStringVariable)
+        locationQuery.get(industriesQueryStringVariable),
+        locationQuery.get(locationsQueryStringVariable),
+        locationQuery.get(timezonesQueryStringVariable)
       );
     },
     [locationQuery]

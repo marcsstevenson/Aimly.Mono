@@ -1,12 +1,6 @@
 import jest from 'jest';
 import {
-  areSame,
-  isEmpty,
-  buildFromQuery,
   buildQueryString,
-  searchQueryStringVariable,
-  skillsQueryStringVariable,
-  industriesQueryStringVariable,
 } from 'components/shared/MarketOptions/MarketSearchRequestHelpers';
 import { MarketSearchRequest } from "components/market/MarketSearchRequest";
 
@@ -15,6 +9,8 @@ test('buildQueryString handles +', () => {
     searchTerm: 'a+b',
     skills: [],
     industries: [],
+    locations: [],
+    timeZones: [],
   };
 
   const queryString = buildQueryString(request);

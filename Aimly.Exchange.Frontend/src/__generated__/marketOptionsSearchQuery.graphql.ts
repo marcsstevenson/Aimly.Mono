@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b02c4e41cc3e989aa34e9e811ad12097>>
+ * @generated SignedSource<<ecc9d3780b2bbdd35b0fec30f44d5fc4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,6 +25,10 @@ export type marketOptionsSearchQuery$data = {
       readonly count: number;
     } | null> | null;
     readonly locationOptions: ReadonlyArray<{
+      readonly name: string | null;
+      readonly count: number;
+    } | null> | null;
+    readonly timezoneOptions: ReadonlyArray<{
       readonly name: string | null;
       readonly count: number;
     } | null> | null;
@@ -104,6 +108,16 @@ v2 = [
         "plural": true,
         "selections": (v1/*: any*/),
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "MarketSearchOption",
+        "kind": "LinkedField",
+        "name": "timezoneOptions",
+        "plural": true,
+        "selections": (v1/*: any*/),
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -127,16 +141,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "77f91ed96a937d27971d99762318928d",
+    "cacheID": "8df81e35199838caa5a0d0d2a7195a38",
     "id": null,
     "metadata": {},
     "name": "marketOptionsSearchQuery",
     "operationKind": "query",
-    "text": "query marketOptionsSearchQuery(\n  $profileType: ProfileTypeOption!\n) {\n  marketOptionsSearch(profileType: $profileType) {\n    skillOptions {\n      name\n      count\n    }\n    industryOptions {\n      name\n      count\n    }\n    locationOptions {\n      name\n      count\n    }\n  }\n}\n"
+    "text": "query marketOptionsSearchQuery(\n  $profileType: ProfileTypeOption!\n) {\n  marketOptionsSearch(profileType: $profileType) {\n    skillOptions {\n      name\n      count\n    }\n    industryOptions {\n      name\n      count\n    }\n    locationOptions {\n      name\n      count\n    }\n    timezoneOptions {\n      name\n      count\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d1093a7f21a82c26bf2a69006dc4503d";
+(node as any).hash = "9c6289fa1b76f0c57565569df903c576";
 
 export default node;

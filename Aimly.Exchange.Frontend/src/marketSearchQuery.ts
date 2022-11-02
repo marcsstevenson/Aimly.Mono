@@ -10,6 +10,9 @@ query marketSearchQuery($marketSearchCommand: MarketSearchCommandInput!) {
       description
       profilePictureUrl
       type
+      addressCity
+      addressCountry
+      timezone
     }
     totalResultCount
     currentPage

@@ -3,17 +3,23 @@ import { MarketSearchRequest } from "components/market/MarketSearchRequest";
 // Helper methods for the MarketSearchRequest interface
 
 const searchQueryStringVariable = 's';
-const skillsQueryStringVariable = 'sk';
 const industriesQueryStringVariable = 'in';
+const skillsQueryStringVariable = 'sk';
+const locationsQueryStringVariable = 'lo';
+const timezonesQueryStringVariable = 'tz';
 
 const buildFromQuery = (
   searchQueryValue: string | null,
   skillsQueryValue: string | null,
-  industriesQueryValue: string | null): MarketSearchRequest => {
+  industriesQueryValue: string | null,
+  locationsQueryValue: string | null,
+  timezonesQueryValue: string | null): MarketSearchRequest => {
   return {
     searchTerm: searchQueryValue ?? '',
     skills: skillsQueryValue?.split(',') ?? [],
     industries: industriesQueryValue?.split(',') ?? [],
+    locations: locationsQueryValue?.split(',') ?? [],
+    timeZones: timezonesQueryValue?.split(',') ?? [],
   };
 }
 
@@ -24,12 +30,20 @@ const buildQueryString = (request: MarketSearchRequest) => {
     parts.push(`${searchQueryStringVariable}=${encodeURIComponent(request.searchTerm)}`);
   }
 
+  if (request.industries && request.industries.length > 0) {
+    parts.push(`${industriesQueryStringVariable}=${encodeURIComponent(request.industries.join(','))}`);
+  }
+
   if (request.skills && request.skills.length > 0) {
     parts.push(`${skillsQueryStringVariable}=${encodeURIComponent(request.skills.join(','))}`);
   }
 
-  if (request.industries && request.industries.length > 0) {
-    parts.push(`${industriesQueryStringVariable}=${encodeURIComponent(request.industries.join(','))}`);
+  if (request.locations && request.locations.length > 0) {
+    parts.push(`${locationsQueryStringVariable}=${encodeURIComponent(request.locations.join(','))}`);
+  }
+
+  if (request.timeZones && request.timeZones.length > 0) {
+    parts.push(`${timezonesQueryStringVariable}=${encodeURIComponent(request.timeZones.join(','))}`);
   }
 
   if (parts.length === 0) {
@@ -109,4 +123,6 @@ export {
   searchQueryStringVariable,
   skillsQueryStringVariable,
   industriesQueryStringVariable,
+  locationsQueryStringVariable,
+  timezonesQueryStringVariable,
 };
