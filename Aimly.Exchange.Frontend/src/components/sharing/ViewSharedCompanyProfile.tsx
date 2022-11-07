@@ -8,6 +8,10 @@ import { PrivateContext } from 'components/PrivateContext';
 import TopGraphic from 'components/shared/TopGraphic';
 import ViewProfileHeader from 'components/market/view/ViewProfileHeader';
 import HtmlDisplay from 'components/shared/HtmlDisplay';
+import { GetCurrentTenant } from 'tenant/TenantValues';
+
+const currentTenant = GetCurrentTenant();
+const company = currentTenant.companyOptions.singularName;
 
 const ViewSharedCompanyProfile = () => {
   // Read the Id from the route context
@@ -34,7 +38,7 @@ const ViewSharedCompanyProfile = () => {
     <>
       {model && (
         <>
-          <TopGraphic title="Shared Company Profile" context={null} showBackButton={true} />
+          <TopGraphic title={`Shared ${company} Profile`} context={null} showBackButton={true} />
 
           <main className="relative -mt-32">
             <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserCircleIcon, BoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/20/solid';
 import { getUrlForViewProfile } from 'components/sharing/UrlForViewProfile';
 import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
+import { GetLabelForType } from 'components/shared/ProfileTypeHelpers';
 
 export interface ProfileSearchResult {
   readonly profileId: any;
@@ -50,7 +51,7 @@ const SharedWithProfileItem = (props: Props) => {
           <div className="ml-5 w-0 flex-1">
             <dl>
               <dt className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
-                {props.item?.type}
+                {GetLabelForType(props.item?.type, true)}
               </dt>
               <dd>
                 <div className="text-lg font-medium text-gray-900 dark:text-gray-50">
