@@ -15,6 +15,8 @@ export const getAboutYouQuery = graphql`
       companyProfileId
       companyProfilePictureUrl
       companyName
+      companyPhoneNumber
+      companyEmail
       type
       listOnMarket
       website

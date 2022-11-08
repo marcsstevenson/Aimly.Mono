@@ -82,7 +82,7 @@ const ViewSharedCompanyProfile = () => {
                         <div className="mt-1">{model.streetName}</div>
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="form-label">Company City</label>
+                        <label className="form-label">{company + ' City'}</label>
                         <div className="mt-1">{model.addressCity}</div>
                       </div>
                       <div className="sm:col-span-2">
@@ -96,6 +96,14 @@ const ViewSharedCompanyProfile = () => {
                       <div className="sm:col-span-2">
                         <label className="form-label">Country</label>
                         <div className="mt-1">{model.addressCountry}</div>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="form-label">PhoneNumber</label>
+                        <div className="mt-1">{model.companyPhoneNumber}</div>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="form-label">Email</label>
+                        <div className="mt-1">{model.companyEmail}</div>
                       </div>
                     </div>
                   </div>

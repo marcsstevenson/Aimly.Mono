@@ -33,10 +33,10 @@ import { SwitchWrapper } from 'components/shared/SwitchWrapper';
 import { LinkIcon } from '@heroicons/react/20/solid';
 import { inviteCodeValue } from 'components/shared/UrlConstants';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
-import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
 import ContentEdit from 'components/author/ContentEdit';
 import useDefaultEditor from 'components/author/useDefaultEditor';
 import { GetCurrentTenant } from 'tenant/TenantValues';
+import PrivateUntilShared from 'components/shared/PrivateUntilShared';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;
@@ -104,6 +104,8 @@ const AboutYou = () => {
     addressCity: loadedData?.addressCity ?? '',
     addressRegion: loadedData?.addressRegion ?? '',
     addressCountry: loadedData?.addressCountry ?? '',
+    companyPhoneNumber: loadedData?.companyPhoneNumber ?? '',
+    companyEmail: loadedData?.companyEmail ?? '',
     postalCode: loadedData?.postalCode ?? '',
     postOfficeBoxNumber: loadedData?.postOfficeBoxNumber ?? '',
     industries: loadedData?.industries ?? [],
@@ -332,6 +334,7 @@ const AboutYou = () => {
                   <div className="sm:col-span-3">
                     <label htmlFor="phoneNumber" className="form-label">
                       Your phone number
+                      <PrivateUntilShared />
                     </label>
                     <div className="mt-1">
                       <Field
@@ -364,6 +367,7 @@ const AboutYou = () => {
                   <div className="sm:col-span-3">
                     <label htmlFor="type" className="form-label">
                       {company + ' Stage'}
+                      <PrivateUntilShared />
                     </label>
                     <div className="mt-1">
                       <Field type="text" name="type" as="select" className="form-input">
@@ -396,6 +400,7 @@ const AboutYou = () => {
                   <div className="sm:col-span-1">
                     <label htmlFor="numberOfFounders" className="form-label">
                       Number of founders
+                      <PrivateUntilShared />
                     </label>
                     <div className="mt-1">
                       <Field
@@ -455,6 +460,7 @@ const AboutYou = () => {
                   <div className="sm:col-span-6">
                     <label htmlFor="streetName" className="form-label">
                       {company + ' Street address'}
+                      <PrivateUntilShared />
                     </label>
                     <div className="mt-1">
                       <Field
@@ -500,6 +506,7 @@ const AboutYou = () => {
                   <div className="sm:col-span-2">
                     <label htmlFor="postalCode" className="form-label">
                       ZIP / Postal code
+                      <PrivateUntilShared />
                     </label>
                     <div className="mt-1">
                       <Field
@@ -522,6 +529,38 @@ const AboutYou = () => {
                         id="addressCountry"
                         name="addressCountry"
                         autoComplete="country-name"
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label htmlFor="companyPhoneNumber" className="form-label">
+                      <span className="mr-1">{company + ' contact phone number'}</span>
+                      <PrivateUntilShared />
+                    </label>
+                    <div className="mt-1">
+                      <Field
+                        type="text"
+                        id="companyPhoneNumber"
+                        name="companyPhoneNumber"
+                        autoComplete="tel"
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label htmlFor="companyEmail" className="form-label">
+                      {company + ' contact email'}
+                      <PrivateUntilShared />
+                    </label>
+                    <div className="mt-1">
+                      <Field
+                        type="text"
+                        id="companyEmail"
+                        name="companyEmail"
+                        autoComplete="email"
                         className="form-input"
                       />
                     </div>

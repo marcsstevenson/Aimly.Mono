@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d20e8a9e95455bdbc6ce278ab5295dec>>
+ * @generated SignedSource<<c29276d225abccc8ef725f133045c10c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,6 +21,8 @@ export type viewFullCompanyProfileQuery$data = {
     readonly profilePictureUrl: string | null;
     readonly industries: ReadonlyArray<string | null> | null;
     readonly companyName: string | null;
+    readonly companyPhoneNumber: string | null;
+    readonly companyEmail: string | null;
     readonly type: string | null;
     readonly website: string | null;
     readonly numberOfFounders: number | null;
@@ -123,6 +125,20 @@ v1 = [
         "args": null,
         "kind": "ScalarField",
         "name": "companyName",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyPhoneNumber",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyEmail",
         "storageKey": null
       },
       {
@@ -343,16 +359,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "e0285f2545a67b545a76f9dacae1346d",
+    "cacheID": "a75b3c325ba691e9e460c3e475a7d55c",
     "id": null,
     "metadata": {},
     "name": "viewFullCompanyProfileQuery",
     "operationKind": "query",
-    "text": "query viewFullCompanyProfileQuery(\n  $companyProfileId: UUID!\n  $userId: UUID!\n) {\n  viewFullCompanyProfile(companyProfileId: $companyProfileId, userId: $userId) {\n    id\n    companyProfileId\n    profilePictureUrl\n    industries\n    companyName\n    type\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    listOnMarket\n    purposeDetails\n    problemDetails\n    solutionNovelty\n    solutionDescription\n    stateOfValidation\n    competition\n    positionVsCompetition\n    businessModel\n    traction\n    founders\n    currentAnnualRevenue\n    externalFunding\n    value\n    potentialSize\n    potentialValue\n  }\n}\n"
+    "text": "query viewFullCompanyProfileQuery(\n  $companyProfileId: UUID!\n  $userId: UUID!\n) {\n  viewFullCompanyProfile(companyProfileId: $companyProfileId, userId: $userId) {\n    id\n    companyProfileId\n    profilePictureUrl\n    industries\n    companyName\n    companyPhoneNumber\n    companyEmail\n    type\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    listOnMarket\n    purposeDetails\n    problemDetails\n    solutionNovelty\n    solutionDescription\n    stateOfValidation\n    competition\n    positionVsCompetition\n    businessModel\n    traction\n    founders\n    currentAnnualRevenue\n    externalFunding\n    value\n    potentialSize\n    potentialValue\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "42d3f7d32ead713c95dceb520977dfb3";
+(node as any).hash = "9d983314fbd415ddef805a507b298ccf";
 
 export default node;

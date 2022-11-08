@@ -10,6 +10,7 @@ import { PrivateContext } from 'components/PrivateContext';
 import useLocationQuery from 'components/shared/useLocationQuery';
 import CompanyProfileForm from 'components/profiles/company/CompanyProfileForm';
 import { PopulateInputModel } from 'components/profiles/company/CompanyProfileHelpers';
+import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
 
 const CompanyProfileEdit = () => {
   const { userId } = useContext(PrivateContext);
@@ -34,7 +35,7 @@ const CompanyProfileEdit = () => {
     }
   );
 
-  let model: GetCompanyProfileModelInput = PopulateInputModel(companyProfileId, userId, data);
+  let model: getCompanyProfileQuery$data = PopulateInputModel(companyProfileId, userId, data);
 
   return <CompanyProfileForm model={model} allowDelete={true} />;
 };

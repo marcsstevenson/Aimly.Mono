@@ -5,6 +5,8 @@ export const getCompanyProfileQuery = graphql`
     getCompanyProfile(userId: $userId companyProfileId: $companyProfileId) {
       id
       companyName
+      companyPhoneNumber
+      companyEmail
       listOnMarket
       profilePictureUrl
       type

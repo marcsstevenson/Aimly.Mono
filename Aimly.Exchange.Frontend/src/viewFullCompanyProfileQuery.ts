@@ -8,6 +8,8 @@ export const viewFullCompanyProfileQuery = graphql`
       profilePictureUrl
       industries
       companyName
+      companyPhoneNumber
+      companyEmail
       type
       website
       numberOfFounders

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d89c09fcf3a4b58c7ba672ea81af09c9>>
+ * @generated SignedSource<<c612f431696b09641d1aaf6de38adc7e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,6 +28,8 @@ export type getAboutYouQuery$data = {
     readonly companyProfileId: any | null;
     readonly companyProfilePictureUrl: string | null;
     readonly companyName: string | null;
+    readonly companyPhoneNumber: string | null;
+    readonly companyEmail: string | null;
     readonly type: string | null;
     readonly listOnMarket: boolean;
     readonly website: string | null;
@@ -175,6 +177,20 @@ v2 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "companyPhoneNumber",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyEmail",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "type",
         "storageKey": null
       },
@@ -297,16 +313,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "c3d58fa6fd34d77b37217be2f2766dd9",
+    "cacheID": "f9fd82285e0e51a5858c52baf770c293",
     "id": null,
     "metadata": {},
     "name": "getAboutYouQuery",
     "operationKind": "query",
-    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    type\n    listOnMarket\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    industries\n  }\n}\n"
+    "text": "query getAboutYouQuery(\n  $id: UUID!\n  $companyProfileId: UUID\n) {\n  getAboutYou(command: {userId: $id, companyProfileId: $companyProfileId}) {\n    userId\n    about\n    language\n    personalProfilePictureUrl\n    timezone\n    givenName\n    familyName\n    phoneNumber\n    linkedInProfile\n    companyProfileId\n    companyProfilePictureUrl\n    companyName\n    companyPhoneNumber\n    companyEmail\n    type\n    listOnMarket\n    website\n    numberOfFounders\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    industries\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "78823f7cf4c8ccbe099ee250f7a625de";
+(node as any).hash = "716747077da4faebfaafe2439a6acbd4";
 
 export default node;

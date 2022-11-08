@@ -174,6 +174,8 @@ type GetAboutYouModel {
   companyProfileId: UUID
   companyProfilePictureUrl: String
   companyName: String
+  companyPhoneNumber: String
+  companyEmail: String
   type: String
   listOnMarket: Boolean!
   website: String
@@ -203,6 +205,8 @@ input GetAboutYouModelInput {
   companyProfileId: UUID
   companyProfilePictureUrl: String
   companyName: String
+  companyPhoneNumber: String
+  companyEmail: String
   type: String
   listOnMarket: Boolean!
   website: String
@@ -259,6 +263,8 @@ type GetCompanyProfileModel {
   addressCountry: String
   postalCode: String
   postOfficeBoxNumber: String
+  companyPhoneNumber: String
+  companyEmail: String
   problemDetails: String
   solutionDescription: String
 }
@@ -281,6 +287,8 @@ input GetCompanyProfileModelInput {
   addressCountry: String
   postalCode: String
   postOfficeBoxNumber: String
+  companyPhoneNumber: String
+  companyEmail: String
   problemDetails: String
   solutionDescription: String
 }
@@ -839,6 +847,8 @@ type ViewFullCompanyProfileModel {
   addressCountry: String
   postalCode: String
   postOfficeBoxNumber: String
+  companyPhoneNumber: String
+  companyEmail: String
   listOnMarket: Boolean!
   purposeDetails: String
   problemDetails: String

@@ -20,10 +20,6 @@ const SharedWithProfileItem = (props: Props) => {
     return 'h-6 w-6 text-gray-400 dark:text-gray-500';
   }, []);
 
-  const allowDelete = useMemo(() => {
-    return props.item !== null && props.item.type !== 'PERSONAL';
-  }, [props.item]);
-
   // Return an icon element for the type given on the prop
   const icon: JSX.Element = useMemo(() => {
     if (!props.item) {

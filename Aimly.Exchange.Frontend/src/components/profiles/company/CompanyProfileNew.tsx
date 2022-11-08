@@ -8,12 +8,13 @@ import { GetCompanyProfileModelInput } from '__generated__/useSetCompanyProfileM
 import { PrivateContext } from 'components/PrivateContext';
 import CompanyProfileForm from 'components/profiles/company/CompanyProfileForm';
 import { PopulateInputModel } from 'components/profiles/company/CompanyProfileHelpers';
+import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
 
 const CompanyProfileNew = () => {
   const { userId } = useContext(PrivateContext);
 
   // Just new up a model to use with the defaults (no loaded data from the API)
-  let model: GetCompanyProfileModelInput = PopulateInputModel(null, userId, null);
+  let model: getCompanyProfileQuery$data = PopulateInputModel(null, userId, null);
 
   return <CompanyProfileForm model={model} allowDelete={false} />;
 };

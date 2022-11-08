@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<29c40d8369ec1bef50bb2c00e0bc58ec>>
+ * @generated SignedSource<<22f2582b605cc106f35a9ab40df25d44>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,8 @@ export type getCompanyProfileQuery$data = {
   readonly getCompanyProfile: {
     readonly id: any | null;
     readonly companyName: string;
+    readonly companyPhoneNumber: string | null;
+    readonly companyEmail: string | null;
     readonly listOnMarket: boolean;
     readonly profilePictureUrl: string | null;
     readonly type: string | null;
@@ -86,6 +88,20 @@ v2 = [
         "args": null,
         "kind": "ScalarField",
         "name": "companyName",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyPhoneNumber",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "companyEmail",
         "storageKey": null
       },
       {
@@ -235,16 +251,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "94d54140b016778484fc24884d91f7ae",
+    "cacheID": "2486b47cd5dbe282a824a3058fbc08b3",
     "id": null,
     "metadata": {},
     "name": "getCompanyProfileQuery",
     "operationKind": "query",
-    "text": "query getCompanyProfileQuery(\n  $userId: UUID!\n  $companyProfileId: UUID!\n) {\n  getCompanyProfile(userId: $userId, companyProfileId: $companyProfileId) {\n    id\n    companyName\n    listOnMarket\n    profilePictureUrl\n    type\n    website\n    numberOfFounders\n    industries\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    problemDetails\n    solutionDescription\n  }\n}\n"
+    "text": "query getCompanyProfileQuery(\n  $userId: UUID!\n  $companyProfileId: UUID!\n) {\n  getCompanyProfile(userId: $userId, companyProfileId: $companyProfileId) {\n    id\n    companyName\n    companyPhoneNumber\n    companyEmail\n    listOnMarket\n    profilePictureUrl\n    type\n    website\n    numberOfFounders\n    industries\n    floor\n    streetNumber\n    streetName\n    addressLocality\n    addressCity\n    addressRegion\n    addressCountry\n    postalCode\n    postOfficeBoxNumber\n    problemDetails\n    solutionDescription\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "842e448071de467efc170f9713c061b4";
+(node as any).hash = "a6c5e1bf764af2bb51d5fcf3626b7578";
 
 export default node;

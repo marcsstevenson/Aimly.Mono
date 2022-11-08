@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<795c2e5671fa8253fbf4b209059cf0eb>>
+ * @generated SignedSource<<a72290a9ced650a34c85ae876a84f7a5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -31,6 +31,8 @@ export type GetCompanyProfileModelInput = {
   addressCountry?: string | null;
   postalCode?: string | null;
   postOfficeBoxNumber?: string | null;
+  companyPhoneNumber?: string | null;
+  companyEmail?: string | null;
   problemDetails?: string | null;
   solutionDescription?: string | null;
 };

@@ -32,13 +32,15 @@ import { PrivateContext } from 'components/PrivateContext';
 import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
 import LinkIcon from '@heroicons/react/20/solid/LinkIcon';
 import { GetCurrentTenant } from 'tenant/TenantValues';
+import PrivateUntilShared from 'components/shared/PrivateUntilShared';
+import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
 
 const currentTenant = GetCurrentTenant();
 
 const company = currentTenant.companyOptions.singularName;
 
 interface Props {
-  model: GetCompanyProfileModelInput;
+  model: getCompanyProfileQuery$data;
   allowDelete: boolean;
 }
 
@@ -55,7 +57,7 @@ const CompanyProfileForm = (props: Props) => {
 
   const navigateToPage = useNavigateToPage();
 
-  let model: GetCompanyProfileModelInput = props.model;
+  let model = props.model.getCompanyProfile!;
 
   const [profilePictureUrl, setProfilePictureUrl] = useState(model.profilePictureUrl);
   const problemDetailsEditor = useDefaultEditor(model.problemDetails);
@@ -106,7 +108,7 @@ const CompanyProfileForm = (props: Props) => {
 
   const handleDelete = useCallback(
     () => {
-      if (model.id === null) return;
+      if (model?.id === null) return;
 
       setIsDeleting(true);
       const variables: useDeleteCompanyProfileMutationVariables = {
@@ -186,6 +188,7 @@ const CompanyProfileForm = (props: Props) => {
                           name="companyName"
                           type="text"
                           validate={validateRequiredString}
+                          autoComplete="organization"
                           className={errors.companyName ? 'form-input-error' : 'form-input'}
                         />
                         {errors.companyName && touched.companyName && (
@@ -288,6 +291,7 @@ const CompanyProfileForm = (props: Props) => {
                     <div className="sm:col-span-6">
                       <label htmlFor="streetName" className="form-label">
                         {company + ' Street address'}
+                        <PrivateUntilShared />
                       </label>
                       <div className="mt-1">
                         <Field
@@ -333,6 +337,7 @@ const CompanyProfileForm = (props: Props) => {
                     <div className="sm:col-span-2">
                       <label htmlFor="postalCode" className="form-label">
                         ZIP / Postal code
+                        <PrivateUntilShared />
                       </label>
                       <div className="mt-1">
                         <Field
@@ -355,6 +360,38 @@ const CompanyProfileForm = (props: Props) => {
                           id="addressCountry"
                           name="addressCountry"
                           autoComplete="country-name"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label htmlFor="companyPhoneNumber" className="form-label">
+                        <span className="mr-1">{company + ' contact phone number'}</span>
+                        <PrivateUntilShared />
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          id="companyPhoneNumber"
+                          name="companyPhoneNumber"
+                          autoComplete="tel"
+                          className="form-input"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label htmlFor="companyEmail" className="form-label">
+                        {company + ' contact email'}
+                        <PrivateUntilShared />
+                      </label>
+                      <div className="mt-1">
+                        <Field
+                          type="text"
+                          id="companyEmail"
+                          name="companyEmail"
+                          autoComplete="email"
                           className="form-input"
                         />
                       </div>
