@@ -13,20 +13,20 @@ const CurrentTenant: TenantType = {
     { type: 'Twitter', href: 'https://twitter.com/catallyze' },
   ],
   companyOptions: {
-    singularName: 'Venture',
-    pluralName: 'Ventures',
+    singularName: 'Company',
+    pluralName: 'Companies',
   },
   mentorOptions: {
-    singularName: 'Advisor',
-    pluralName: 'Advisors',
+    singularName: 'Coach',
+    pluralName: 'Coaches',
   },
   expertOptions: {
     singularName: 'Resource',
     pluralName: 'Resources',
   },
   supportEmailDetails: {
-    fullName: 'Lisa Reznitschek',
-    email: 'lisa.reznitschek@catallyze.com',
+    fullName: 'Kirrilee Sunderland',
+    email: 'kirrilee@qualitymindglobal.com',
   },
   marketLabel: 'Members',
 }

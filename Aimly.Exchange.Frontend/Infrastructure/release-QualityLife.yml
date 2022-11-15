@@ -1,7 +1,7 @@
 resources:
   pipelines:
-    - pipeline: AimlyAppAimly
-      source: AimlyAppAimlyBuild
+    - pipeline: AimlyAppQualityLife
+      source: AimlyAppQualityLifeBuild
       trigger:
         branches:
           exclude:
@@ -20,31 +20,31 @@ pr:
       - '*'
 
 variables:
-  company_name: 'Aimly'
+  company_name: 'QualityLife'
   # TODO This should come from environment variables? We still need a different build per tenant :/ eg, Catallyze
   # Maybe read this from a file in the artifacts folder?
-  tenant_name: 'Aimly'
+  tenant_name: 'QualityLife'
   product-name: 'App'
   workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
   environment: 'prod' # Alter this as needed if we want to have multiple environments per branch. eg test-2
   target-resource-group: '$(workspace_name)-$(environment)' # Where the resources will be deployed. Eg, AimlyApp-Catallyze-prod
   # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
   # targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
-  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappaimlyprod
-  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappaimlyprod
-  target-storage-account: 'aimlyappaimlyprod' # Where the resources will be deployed, eg, aimlyappaimlyprod
+  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
+  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
+  target-storage-account: 'AimlyAppQualityLifeprod' # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
   # targetcdnendpointraw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
-  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, aimlyappaimlystaticprod
-  target-cdn-endpoint: 'aimlyappaimlystaticprod' # Eg, aimlyappaimlystaticprod
+  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, AimlyAppQualityLifestaticprod
+  target-cdn-endpoint: 'AimlyAppQualityLifestaticprod' # Eg, AimlyAppQualityLifestaticprod
   # targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
-  # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, aimlyappsharedprofileprod
-  target-cdn-profile: 'aimlyappaimlystaticprod' # Eg, aimlyappsharedprofileprod
+  # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, AimlyAppsharedprofileprod
+  target-cdn-profile: 'AimlyAppQualityLifestaticprod' # Eg, AimlyAppsharedprofileprod
 
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
   shared-key-vault: '$(company_name)-Shared-$(environment)'
   workspace_resource_group: '$(workspace_name)-Shared-$(environment)'
-  artifact-name: 'artifact_aimly'
+  artifact-name: 'artifact_QualityLife'
 
 stages:
   - stage: Deploy
@@ -90,7 +90,7 @@ stages:
             inputs:
               buildType: 'specific'
               project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
-              pipeline: 'AimlyAppAimlyBuild'
+              pipeline: 'AimlyAppQualityLifeBuild'
               preferTriggeringPipeline: true
               buildVersionToDownload: 'latestFromBranch'
               branchName: '$(Build.SourceBranch)'

@@ -6,16 +6,16 @@
 trigger:
   branches:
     include:
-      - 'Aimly'
+      - 'QualityLife'
     exclude:
       - 'main'
       - 'dev'
       - 'prod'
   paths:
     include:
-      - Aimly.Exchange.Frontend
+      - QualityLife.Exchange.Frontend
     exclude:
-      - Aimly.Exchange.Frontend/Infrastructure
+      - QualityLife.Exchange.Frontend/Infrastructure
 
 # We do not want pull requests to trigger the build
 pr:
@@ -31,7 +31,7 @@ variables:
   # We will only publish if the source branch is dev, test or prod
   # TODO - remove main when we have a dev, test, prod setup for front ends
   # publish-artifact: in(variables['Build.SourceBranchName'], 'dev', 'test', 'prod')
-  path-working-folder: 'Aimly.Exchange.Frontend'
+  path-working-folder: 'QualityLife.Exchange.Frontend'
 
 steps:
   - task: CmdLine@2

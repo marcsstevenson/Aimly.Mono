@@ -8,8 +8,8 @@ module.exports = {
   colors: {},
   theme: {
     colors: {
-      primary: colors.indigo,
-      secondary: colors.indigo,
+      primary: colors.sky,
+      secondary: colors.sky,
       validation: colors.red,
       transparent: 'transparent',
       current: 'currentColor',
@@ -20,8 +20,10 @@ module.exports = {
       yellow: colors.yellow,
       red: colors.red,
       // teal: colors.teal,
-      // blue: colors.blue,
-      //sky: colors.sky,
+      sky: colors.sky,
+      // orange: colors.orange,
+      // amber: colors.amber,
+      // fuchsia: colors.fuchsia,
       // blueGray: colors.blueGray,
     },
     extend: {
