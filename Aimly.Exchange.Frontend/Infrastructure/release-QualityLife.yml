@@ -32,7 +32,7 @@ variables:
   # targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
   # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
   # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
-  target-storage-account: 'AimlyAppQualityLifeprod' # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
+  target-storage-account: 'aimlyappqualitylifeprod' # Where the resources will be deployed, eg, AimlyAppQualityLifeprod
   # targetcdnendpointraw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
   # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, AimlyAppQualityLifestaticprod
   target-cdn-endpoint: 'AimlyAppQualityLifestaticprod' # Eg, AimlyAppQualityLifestaticprod
