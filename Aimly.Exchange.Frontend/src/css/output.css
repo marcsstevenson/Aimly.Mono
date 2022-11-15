@@ -3563,12 +3563,12 @@ p {
 
 .text-primary-700 {
   --tw-text-opacity: 1;
-  color: rgb(51 65 85 / var(--tw-text-opacity));
+  color: rgb(224 231 255 / var(--tw-text-opacity));
 }
 
 .text-secondary-100 {
   --tw-text-opacity: 1;
-  color: rgb(224 231 255 / var(--tw-text-opacity));
+  color: rgb(49 46 129 / var(--tw-text-opacity));
 }
 
 .text-primary-900 {
@@ -3601,7 +3601,7 @@ p {
   color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
-.text-gray-100 {
+.text-primary-400 {
   --tw-text-opacity: 1;
   color: rgb(129 140 248 / var(--tw-text-opacity));
 }
