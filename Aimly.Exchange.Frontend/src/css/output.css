@@ -1187,15 +1187,15 @@ select {
   margin-bottom: 0;
 }
 
-input, 
-  select, 
+input, 
+  select, 
   textarea {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
-.dark input, .dark 
-  select, .dark 
+.dark input, .dark 
+  select, .dark 
   textarea {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
@@ -1764,32 +1764,12 @@ p {
   left: 50%;
 }
 
-.-left-5 {
-  left: -1.25rem;
-}
-
-.-top-2 {
-  top: -0.5rem;
-}
-
-.-left-48 {
-  left: -12rem;
-}
-
-.-left-16 {
-  left: -4rem;
-}
-
 .-left-20 {
   left: -5rem;
 }
 
-.-left-24 {
-  left: -6rem;
-}
-
-.-left-2 {
-  left: -0.5rem;
+.-top-2 {
+  top: -0.5rem;
 }
 
 .z-50 {
@@ -2000,10 +1980,6 @@ p {
 
 .ml-16 {
   margin-left: 4rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .-ml-0\.5 {
@@ -2930,7 +2906,7 @@ p {
 
 .bg-secondary-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
 
 .bg-validation-50 {
@@ -2946,11 +2922,6 @@ p {
 .bg-primary-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(165 180 252 / var(--tw-bg-opacity));
-}
-
-.bg-secondary-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
 
 .bg-primary-400 {
@@ -3040,7 +3011,8 @@ p {
 
 .from-primary-700 {
   --tw-gradient-from: #4338ca;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(67 56 202 / 0));
+  --tw-gradient-to: rgb(67 56 202 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .to-secondary-700 {
@@ -3541,9 +3513,9 @@ p {
   color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 
-.text-primary-700 {
+.text-green-800 {
   --tw-text-opacity: 1;
-  color: rgb(67 56 202 / var(--tw-text-opacity));
+  color: rgb(22 101 52 / var(--tw-text-opacity));
 }
 
 .text-yellow-800 {
@@ -3553,7 +3525,7 @@ p {
 
 .text-secondary-600 {
   --tw-text-opacity: 1;
-  color: rgb(2 132 199 / var(--tw-text-opacity));
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
 .text-green-400 {
@@ -3563,12 +3535,12 @@ p {
 
 .text-primary-700 {
   --tw-text-opacity: 1;
-  color: rgb(224 231 255 / var(--tw-text-opacity));
+  color: rgb(67 56 202 / var(--tw-text-opacity));
 }
 
 .text-secondary-100 {
   --tw-text-opacity: 1;
-  color: rgb(49 46 129 / var(--tw-text-opacity));
+  color: rgb(224 231 255 / var(--tw-text-opacity));
 }
 
 .text-primary-900 {
@@ -3579,11 +3551,6 @@ p {
 .text-green-700 {
   --tw-text-opacity: 1;
   color: rgb(21 128 61 / var(--tw-text-opacity));
-}
-
-.text-secondary-600 {
-  --tw-text-opacity: 1;
-  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
 .text-validation-600 {
@@ -3789,7 +3756,7 @@ p {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -3801,16 +3768,16 @@ body {
   padding: 1em;
 }
 
-.ProseMirror ul,
+.ProseMirror ul,
 .ProseMirror ol {
   padding: 0 1rem;
 }
 
-.ProseMirror h1,
-.ProseMirror h2,
-.ProseMirror h3,
-.ProseMirror h4,
-.ProseMirror h5,
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
 .ProseMirror h6 {
   font-weight: bold;
 }
@@ -3937,7 +3904,7 @@ body {
   background: transparent;
 }
 
-/* This is a quick override because we don't want to display
+/* This is a quick override because we don't want to display
  the user's Id within SendBird messaging */
 
 .sendbird-channel-header__title__right__user-id {
@@ -4098,7 +4065,7 @@ span.ripple {
 
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(199 210 254 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-900:hover {
@@ -4113,7 +4080,7 @@ span.ripple {
 
 .hover\:bg-primary-200:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+  background-color: rgb(199 210 254 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-primary-500:hover {
@@ -4186,7 +4153,7 @@ span.ripple {
 
 .hover\:text-primary-900:hover {
   --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
+  color: rgb(49 46 129 / var(--tw-text-opacity));
 }
 
 .hover\:text-primary-600:hover {
@@ -4211,7 +4178,7 @@ span.ripple {
 
 .hover\:text-validation-900:hover {
   --tw-text-opacity: 1;
-  color: rgb(49 46 129 / var(--tw-text-opacity));
+  color: rgb(127 29 29 / var(--tw-text-opacity));
 }
 
 .hover\:text-red-500:hover {
@@ -4477,11 +4444,6 @@ span.ripple {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
-.dark .dark\:text-primary-200 {
-  --tw-text-opacity: 1;
-  color: rgb(199 210 254 / var(--tw-text-opacity));
-}
-
 .dark .dark\:text-gray-50 {
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity));
@@ -4504,17 +4466,17 @@ span.ripple {
 
 .dark .dark\:text-primary-900 {
   --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
+  color: rgb(49 46 129 / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-primary-300 {
   --tw-text-opacity: 1;
-  color: rgb(203 213 225 / var(--tw-text-opacity));
+  color: rgb(165 180 252 / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-primary-200 {
   --tw-text-opacity: 1;
-  color: rgb(226 232 240 / var(--tw-text-opacity));
+  color: rgb(199 210 254 / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-secondary-400 {
@@ -4575,7 +4537,7 @@ span.ripple {
 
 .dark .hover\:dark\:bg-gray-900:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(67 56 202 / var(--tw-bg-opacity));
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:hover\:bg-gray-900:hover {
@@ -4590,7 +4552,7 @@ span.ripple {
 
 .dark .hover\:dark\:bg-primary-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+  background-color: rgb(67 56 202 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:hover\:text-gray-300:hover {
@@ -4605,7 +4567,7 @@ span.ripple {
 
 .dark .dark\:hover\:text-primary-400:hover {
   --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
+  color: rgb(129 140 248 / var(--tw-text-opacity));
 }
 
 .dark .dark\:hover\:text-primary-300:hover {
@@ -5507,4 +5469,4 @@ span.ripple {
   .\32xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
+}
