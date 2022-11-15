@@ -52,34 +52,28 @@ const DashBoardUpdates = () => {
                         src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
                         alt="People working on laptops"
                       />
-                      <div className="to-secondary-700 from-primary-700 absolute inset-0 bg-gradient-to-r mix-blend-multiply" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-secondary-700 mix-blend-multiply" />
                     </div>
                     <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                       <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                         <span className="block text-white">Welcome to the</span>
-                        <span className="text-secondary-100 block">Aimly Exchange</span>
+                        <span className="block text-secondary-100">Aimly Exchange</span>
                       </h1>
                       {/* <p className="text-secondary-200 mx-auto mt-6 max-w-lg text-center text-xl sm:max-w-3xl">
                         Aimly is the first of what we plan to be many three sided exchanges
                         powered by the Aimly platform. We hope you love it!
                       </p> */}
                       <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-                        <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-3 sm:gap-5 sm:space-y-0">
+                        <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
                           <NavLink
                             to={{ pathname: GetPathForPage(Pages.MyProfiles) }}
-                            className="text-secondary-700 hover:bg-secondary-50 flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium shadow-sm sm:px-8"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-secondary-700 shadow-sm hover:bg-secondary-50 sm:px-8"
                           >
                             Build your profile
                           </NavLink>
                           <NavLink
-                            to={{ pathname: becomeAClientLink }}
-                            className="hover:bg-primary-500 bg-primary-400 text-primary-900 flex items-center justify-center rounded-md border border-transparent px-4 py-3 text-base font-medium shadow-sm sm:px-8"
-                          >
-                            Become a client
-                          </NavLink>
-                          <NavLink
                             to={{ pathname: GetPathForPage(Pages.Market) }}
-                            className="bg-secondary-500 flex items-center justify-center rounded-md border border-transparent bg-opacity-60 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-opacity-70 sm:px-8"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-secondary-500 bg-opacity-60 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-opacity-70 sm:px-8"
                           >
                             Search the market
                           </NavLink>

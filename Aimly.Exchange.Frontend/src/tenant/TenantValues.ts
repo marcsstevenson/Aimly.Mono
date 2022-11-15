@@ -7,28 +7,28 @@ const CurrentTenant: TenantType = {
   primaryColour: 'slate',
   secondaryColour: 'sky',
   socialLinks: [
-    { type: 'Facebook', href: 'https://www.facebook.com/catallyze.movement' },
-    { type: 'Instagram', href: 'https://www.instagram.com/catallyze.movement/' },
+    { type: 'Facebook', href: '' },
+    { type: 'Instagram', href: '' },
     { type: 'LinkedIn', href: 'https://www.linkedin.com/company/catallyze/mycompany/' },
-    { type: 'Twitter', href: 'https://twitter.com/catallyze' },
+    { type: 'Twitter', href: '' },
   ],
   companyOptions: {
-    singularName: 'Venture',
-    pluralName: 'Ventures',
+    singularName: 'Company',
+    pluralName: 'Companies',
   },
   mentorOptions: {
-    singularName: 'Advisor',
-    pluralName: 'Advisors',
+    singularName: 'Mentor',
+    pluralName: 'Mentors',
   },
   expertOptions: {
-    singularName: 'Resource',
-    pluralName: 'Resources',
+    singularName: 'Experts',
+    pluralName: 'Experts',
   },
   supportEmailDetails: {
-    fullName: 'Lisa Reznitschek',
-    email: 'lisa.reznitschek@catallyze.com',
+    fullName: 'Marc Stevenson',
+    email: 'marc.stevenson@aimly.io',
   },
-  marketLabel: 'Members',
+  marketLabel: 'Market',
 }
 
 export const GetCurrentTenant = (): TenantType => {
