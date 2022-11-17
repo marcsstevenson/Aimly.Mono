@@ -31,6 +31,57 @@ export const PopulateInputModel = (companyProfileId: string | null,
   //   solutionDescription: loadedData?.solutionDescription ?? '',
   // };
 
+
+  const temp: getCompanyProfileQuery$data = {
+    getCompanyProfile: {
+      id: null,
+      companyName: '',
+      companyPhoneNumber: '',
+      companyEmail: '',
+      listOnMarket: true,
+      profilePictureUrl: '',
+      type: '',
+      website: '',
+      numberOfFounders: 1,
+      industries: [],
+      floor: '',
+      streetNumber: '',
+      streetName: '',
+      addressLocality: '',
+      addressCity: '',
+      addressRegion: '',
+      addressCountry: '',
+      postalCode: '',
+      postOfficeBoxNumber: '',
+      problemDetails: '',
+      solutionDescription: '',
+    }
+  }
+
   // return model;
-  return loadedData!;
+  return loadedData ?? {
+    getCompanyProfile: {
+      id: null,
+      companyName: '',
+      companyPhoneNumber: '',
+      companyEmail: '',
+      listOnMarket: true,
+      profilePictureUrl: '',
+      type: '',
+      website: '',
+      numberOfFounders: 1,
+      industries: [],
+      floor: '',
+      streetNumber: '',
+      streetName: '',
+      addressLocality: '',
+      addressCity: '',
+      addressRegion: '',
+      addressCountry: '',
+      postalCode: '',
+      postOfficeBoxNumber: '',
+      problemDetails: '',
+      solutionDescription: '',
+    }
+  };
 };
