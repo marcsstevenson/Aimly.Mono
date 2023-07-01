@@ -7,14 +7,19 @@ import {
   RequestParameters,
   CacheConfig,
 } from 'relay-runtime';
+import { AuthorizationParams } from '@auth0/auth0-spa-js';
 
 import { useAuth0 } from '@auth0/auth0-react';
+import { getConfig } from 'config';
 
 // Provides a method of getting our Relay environment
 // Auth0 is integrated with Relay and will automatically add a bearer token header
 // to each API request
 export default function useRelayEnvironment() {
   const { getAccessTokenSilently } = useAuth0();
+  const config = getConfig();
+
+  console.log(config);
 
   async function fetchRelay(
     params: RequestParameters,
@@ -23,9 +28,12 @@ export default function useRelayEnvironment() {
   ) {
     const REACT_APP_BACKEND_API = process.env.REACT_APP_EXCHANGE_API_URI;
     const graphqlApi = REACT_APP_BACKEND_API + '/api/graphql';
-    const token = await getAccessTokenSilently();
-
-    //console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
+    const authParams: AuthorizationParams = {
+      audience: config.Auth.exchangeApiAudience,
+    };
+    const token = await getAccessTokenSilently({
+      authorizationParams: authParams,
+    });
 
     // Fetch data from GitHub's GraphQL API:
     const response = await fetch(graphqlApi, {
