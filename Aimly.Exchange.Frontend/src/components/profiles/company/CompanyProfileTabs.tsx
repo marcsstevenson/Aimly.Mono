@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { GlobeAmericasIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/20/solid';
+import { ChatBubbleBottomCenterIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/20/solid';
 import { classNames } from 'utils/classNames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { GetPathForPage } from 'components/shared/AppRoutes';
@@ -19,7 +19,7 @@ interface Tab {
     | Pages.CompanyProfileAnnouncements
     | Pages.CompanyProfileEdit
     | Pages.CompanyProfileTeamMembers;
-  icon: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>>>;
   current: boolean;
   path?: string;
 }
@@ -28,7 +28,7 @@ const tabs: Tab[] = [
   {
     name: 'Announcements',
     option: Pages.CompanyProfileAnnouncements,
-    icon: GlobeAmericasIcon,
+    icon: ChatBubbleBottomCenterIcon,
     current: false,
   },
   {
