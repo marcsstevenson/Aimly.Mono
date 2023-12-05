@@ -1,0 +1,137 @@
+resources:
+  pipelines:
+    - pipeline: AimlyExchangeFrontend
+      source: AimlyExchangeFrontendBuild
+      trigger:
+        branches:
+          # - dev # Disabled for now to allow the Aimly release to stay untouched
+          - test
+          - prod
+
+# Exclude CI from the repository because we only want to use the resource trigger above
+trigger:
+  branches:
+    exclude:
+      - '*'
+
+# We do not want pull requests to trigger the release
+pr:
+  branches:
+    exclude:
+      - '*'
+
+variables:
+  company_name: 'Aimly'
+  # TODO This should come from environment variables? We still need a different build per tenant :/ eg, Catallyze
+  # Maybe read this from a file in the artifacts folder?
+  tenant_name: 'Aimly'
+  product-name: 'App'
+  workspace_name: '$(company_name)$(product-name)-$(tenant_name)' # eg, AimlyApp-Catallyze
+  environment: '$(Build.SourceBranchName)' # Alter this as needed if we want to have multiple environments per branch. eg test-2
+  target-resource-group: '$(workspace_name)-$(environment)' # Where the resources will be deployed. Eg, AimlyApp-Catallyze-prod
+  # This is the Azure connection that is specific for the environment. Some tasks to not have subscription Ids :/
+  # targetstorageaccountraw: '$(company_name)$(product-name)$(tenant_name)$(environment)'
+  # target-storage-account: $[lower(variables['targetstorageaccountraw'])] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  # target-storage-account: $[ lower('AimlyAppCatallyzestaticprod') ] # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  target-storage-account: 'aimlyappcatallyzeprod' # Where the resources will be deployed, eg, aimlyappcatallyzeprod
+  # targetcdnendpointraw: '$(company_name)$(product-name)$(tenant_name)static$(environment)'
+  # target-cdn-endpoint: $[lower(variables['targetcdnendpointraw'])] # Eg, aimlyappcatallyzestaticprod
+  target-cdn-endpoint: 'aimlyappcatallyzestaticprod' # Eg, aimlyappcatallyzestaticprod
+  # targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
+  # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, aimlyappsharedprofileprod
+  target-cdn-profile: 'aimlyappsharedprofileprod' # Eg, aimlyappsharedprofileprod
+
+  # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
+  azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
+  shared-key-vault: '$(company_name)-Shared-$(environment)'
+  workspace_resource_group: '$(workspace_name)-Shared-$(environment)'
+  artifact-name: 'artifact_$(environment)'
+
+stages:
+  - stage: Deploy
+    jobs:
+      - job: Deploy
+        displayName: Deploy to Blob Storage
+        pool:
+          vmImage: windows-latest
+        steps:
+          - checkout: none # Don't check out any git repos
+
+          # Get values from key vault
+          # The purpose of this task is to get all keys from the environment's shared key vault and use these to populate the product's key vault
+          # Note that the deployment-project secret value is used in further steps
+          - task: AzureKeyVault@1
+            inputs:
+              azureSubscription: '$(azure-resource-manager-connection)'
+              KeyVaultName: '$(shared-key-vault)'
+              SecretsFilter: '*'
+              RunAsPreJob: true
+
+          # We should now have access to these variables that have been populated from the shared Key Vault
+          #
+          # deployment-project
+          # deployment-location
+          # deployment-subscription-Id
+
+          # Output all environment variables for debugging purposes
+          - task: PowerShell@2
+            displayName: 'Display all environment variables'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "deployment-project - $DEPLOYMENT_PROJECT"
+
+                Write-Host "List all environment variables"
+
+                gci env:
+
+          # Download the finished artifact from the build pipeline
+          - task: DownloadPipelineArtifact@2
+            displayName: Download Build Pipeline Artifact
+            inputs:
+              buildType: 'specific'
+              project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
+              pipeline: 'AimlyExchangeFrontendBuild'
+              preferTriggeringPipeline: true
+              buildVersionToDownload: 'latestFromBranch'
+              branchName: '$(Build.SourceBranch)'
+              targetPath: '$(System.ArtifactsDirectory)'
+
+          - task: CmdLine@2
+            displayName: 'List directories for debugging'
+            inputs:
+              script: |
+                echo List the root dir
+                dir
+
+                echo Change to $(System.ArtifactsDirectory)
+                cd $(System.ArtifactsDirectory)
+
+                echo $(System.ArtifactsDirectory)
+                dir
+
+                echo artifact contents
+                cd $(artifact-name)
+                dir
+
+                echo build contents
+                cd build
+                dir
+
+          - task: AzureCLI@2
+            displayName: Upload to blob storage
+            inputs:
+              azureSubscription: 'DevEnvironment'
+              scriptType: 'ps'
+              scriptLocation: 'inlineScript'
+              # NOTE: that the key comes from the environment variable -
+              # NOTE: a container with the name $web must exist in the storage account
+              inlineScript: az storage blob upload-batch --account-name $(target-storage-account) --auth-mode key -d '$web' -s $(System.ArtifactsDirectory)\$(artifact-name) --overwrite true
+
+          - task: AzureCLI@2
+            displayName: Purge CDN endpoint
+            inputs:
+              azureSubscription: 'DevEnvironment'
+              scriptType: 'ps'
+              scriptLocation: 'inlineScript'
+              inlineScript: az cdn endpoint purge --content-paths  "/*" --profile-name $(target-cdn-profile) --name $(target-cdn-endpoint) --resource-group $(target-resource-group)

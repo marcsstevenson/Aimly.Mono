@@ -1,0 +1,131 @@
+# Build an Angular distribution for release
+
+# Trigger CI
+# but only for the master branch
+# and only for the home-site path
+trigger:
+  branches:
+    include:
+      - '*'
+  paths:
+    include:
+      - Aimly.Exchange.Frontend
+    exclude:
+      - Aimly.Exchange.Marketing
+      - Aimly.Exchange.Frontend/Infrastructure
+
+# We do not want pull requests to trigger the build
+pr:
+  branches:
+    exclude:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Create a variable which determines if we are to publish build artifacts for release
+  # We will only publish if the source branch is dev, test or prod
+  # TODO - remove main when we have a dev, test, prod setup for front ends
+  publish-artifact: in(variables['Build.SourceBranchName'], 'dev', 'test', 'prod')
+  path-working-folder: 'Aimly.Exchange.Frontend'
+
+steps:
+  - task: CmdLine@2
+    displayName: 'Listing directory'
+    inputs:
+      script: |
+        echo Listing Dir
+
+        dir
+
+  # Set Time Variables
+  - task: PowerShell@2
+    displayName: 'Set Time Variables'
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Set date.stamp variable.
+
+        Write-Host 'Setting date_stamp'
+        $date_stamp=Get-Date -Format "yyyy-MM-dd"
+        Write-Host "##vso[task.setvariable variable=date_stamp]$date_stamp"
+
+        Write-Host 'Setting date_time_stamp'
+        $date_time_stamp=Get-Date -Format "yyyy-MM-dd HH:mm"
+        Write-Host "##vso[task.setvariable variable=date_time_stamp]$date_time_stamp"
+
+  # Inject Variables dateTimeStamp.txt
+  - task: Tokenizer@0
+    displayName: 'Inject Variables dateTimeStamp.txt'
+    inputs:
+      sourceFilesPattern: '$(path-working-folder)/src/dateTimeStamp.txt'
+      tokenDataSource: 'environmentVariables'
+
+  # NPM Install
+  - task: Npm@1
+    displayName: 'NPM Install'
+    inputs:
+      command: 'install'
+      workingDir: '$(path-working-folder)'
+
+  # NPM Audit Fix
+  # - task: Npm@1
+  #   inputs:
+  #     command: 'custom'
+  #     workingDir: '$(path-working-folder)'
+  #     customCommand: 'audit fix'
+  #   displayName: 'NPM Audit Fix'
+
+  # Run Tests
+  # - task: Npm@1
+  #   displayName: 'NPM Tests'
+  #   inputs:
+  #     command: 'custom'
+  #     workingDir: '$(path-working-folder)'
+  #     customCommand: 'run test-ci'
+
+  # # Publish Test Results
+  # - task: PublishTestResults@2
+  #   condition: succeededOrFailed()
+  #   inputs:
+  #     testResultsFormat: 'JUnit'
+  #     testResultsFiles: '**/TESTS-*.xml'
+  #   displayName: 'Publish Test Results'
+
+  # NPM Build
+  - task: Npm@1
+    displayName: 'NPM Build'
+    inputs:
+      command: 'custom'
+      workingDir: '$(path-working-folder)'
+      customCommand: 'run build'
+
+  - task: CmdLine@2
+    displayName: 'List directories for debugging'
+    inputs:
+      script: |
+        echo List the root dir
+        dir
+
+        echo Change to $(path-working-folder)
+        cd $(path-working-folder)
+
+        echo $(path-working-folder)
+        dir
+
+        echo Change to build
+        cd build
+
+        echo build
+        dir
+
+  # Publish Artifact
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact'
+    condition: and(succeeded(), variables['publish-artifact'])
+    inputs:
+      pathtoPublish: '$(path-working-folder)/build'
+      # Ensure that our artifact is specific to the branch name
+      # to ensure that the release pipeline picks the correct artifact for the environment
+      artifactName: 'artifact_$(Build.SourceBranchName)'
