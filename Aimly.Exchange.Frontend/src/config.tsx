@@ -89,7 +89,9 @@ export function getProviderConfig(onRedirectCallback: any): Auth0ProviderOptions
     domain: config.Auth.domain,
     clientId: config.Auth.clientId,
     ...(config.Auth.exchangeApiAudience ? { audience: config.Auth.exchangeApiAudience } : null),
-    redirectUri: window.location.origin,
+    authorizationParams: {
+      redirect_uri: window.location.origin,
+    },
     onRedirectCallback,
   };
 

@@ -33,8 +33,8 @@ const NavBar = () => {
 
   const logoutWithRedirect = () =>
     logout({
-      returnTo: window.location.origin,
-    });
+      logoutParams: { returnTo: window.location.origin },
+  });
 
   return (
     <Disclosure as="nav" className="z-20 bg-primary-600">

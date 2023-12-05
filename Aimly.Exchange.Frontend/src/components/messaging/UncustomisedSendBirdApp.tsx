@@ -1,8 +1,9 @@
 import React, { useContext, useMemo } from 'react';
-import { App as SendbirdApp } from 'sendbird-uikit';
-import 'sendbird-uikit/dist/index.css';
+
 import { ThemeContext } from 'components/ThemeContext';
 import { buildSendBirdColourSet } from 'components/messaging/SendBirdColourSet';
+import SendbirdApp from '@sendbird/uikit-react/App';
+import '@sendbird/uikit-react/dist/index.css';
 
 interface SendBirdAppProps {
   appId: string;
