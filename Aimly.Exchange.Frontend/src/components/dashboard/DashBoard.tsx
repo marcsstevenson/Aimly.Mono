@@ -44,8 +44,8 @@ const DashBoard = () => {
                   profiles={data.dashboard?.newPersonalProfiles}
                 />
               )}
-            {data.dashboard?.newPersonalProfiles &&
-              data.dashboard?.newPersonalProfiles.length > 0 && (
+            {data.dashboard?.newCompanyProfiles &&
+              data.dashboard?.newCompanyProfiles.length > 0 && (
                 <DashboardProfiles
                   label={'Newest ' + company + ' Profiles'}
                   profiles={data.dashboard?.newCompanyProfiles}
