@@ -39,7 +39,7 @@ variables:
   target-cdn-endpoint: 'aimlyappcatallyzestaticprod' # Eg, aimlyappcatallyzestaticprod
   # targetcdnprofileraw: '$(company_name)$(product-name)shared$(environment)'
   # target-cdn-profile: $[lower(variables['targetcdnprofileraw'])] # Eg, aimlyappsharedprofileprod
-  target-cdn-profile: 'aimlyappsharedprofileprod' # Eg, aimlyappsharedprofileprod
+  target-cdn-profile: 'aimlyappcatallyzestaticprod' # Eg, aimlyappsharedprofileprod
 
   # This is the Azure connection that has access to all environments. Some tasks to have subscription Ids :)
   azure-resource-manager-connection: 'DevEnvironment' # This is the connection for all subscriptions
