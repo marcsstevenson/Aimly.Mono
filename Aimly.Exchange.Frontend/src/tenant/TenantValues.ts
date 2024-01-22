@@ -3,13 +3,13 @@ import { TenantType } from "./TenantTypeInterface";
 // const colors = require('tailwindcss/colors')
 
 const CurrentTenant: TenantType = {
-  name: 'Catallyze',
+  name: 'Amily',
   primaryColour: 'slate',
   secondaryColour: 'sky',
   socialLinks: [
     { type: 'Facebook', href: '' },
     { type: 'Instagram', href: '' },
-    { type: 'LinkedIn', href: 'https://www.linkedin.com/company/catallyze/mycompany/' },
+    { type: 'LinkedIn', href: 'https://www.linkedin.com/company/aimly-io' },
     { type: 'Twitter', href: '' },
   ],
   companyOptions: {
