@@ -1,3 +1,4 @@
+# Aimly App build
 # Build an Angular distribution for release
 
 # Trigger CI
@@ -7,14 +8,11 @@ trigger:
   branches:
     include:
       - 'Aimly'
-    exclude:
-      - 'main'
-      - 'dev'
-      - 'prod'
   paths:
     include:
       - Aimly.Exchange.Frontend
     exclude:
+      - Aimly.Exchange.Marketing
       - Aimly.Exchange.Frontend/Infrastructure
 
 # We do not want pull requests to trigger the build

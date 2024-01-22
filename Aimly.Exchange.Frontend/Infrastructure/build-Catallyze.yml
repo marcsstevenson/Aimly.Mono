@@ -1,3 +1,4 @@
+# Catallyze App build
 # Build an Angular distribution for release
 
 # Trigger CI
@@ -6,7 +7,11 @@
 trigger:
   branches:
     include:
-      - '*'
+      - 'catallyze'
+    exclude:
+      - 'main'
+      - 'dev'
+      - 'prod'
   paths:
     include:
       - Aimly.Exchange.Frontend
