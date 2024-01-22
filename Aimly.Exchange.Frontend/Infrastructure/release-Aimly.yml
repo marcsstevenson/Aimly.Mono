@@ -1,7 +1,7 @@
 resources:
   pipelines:
-    - pipeline: AimlyAppAimly
-      source: AimlyAppAimlyBuild
+    - pipeline: AimlyExchangeFrontend
+      source: AimlyExchangeFrontendBuild
       trigger:
         branches:
           exclude:
