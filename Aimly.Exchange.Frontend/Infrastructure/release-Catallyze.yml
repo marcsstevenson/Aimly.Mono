@@ -1,7 +1,7 @@
 resources:
   pipelines:
-    - pipeline: AimlyExchangeFrontend
-      source: AimlyExchangeFrontendBuild
+    - pipeline: AimlyAppCatallyzeBuild
+      source: AimlyAppCatallyzeBuild
       trigger:
         branches:
           # - dev # Disabled for now to allow the Aimly release to stay untouched
@@ -51,7 +51,7 @@ stages:
   - stage: Deploy
     jobs:
       - job: Deploy
-        displayName: Deploy to Blob Storage - aimlyexchangefrontend
+        displayName: Deploy to Blob Storage - AimlyAppCatallyze
         pool:
           vmImage: windows-latest
         steps:
@@ -91,7 +91,7 @@ stages:
             inputs:
               buildType: 'specific'
               project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
-              pipeline: 'AimlyExchangeFrontendBuild'
+              pipeline: 'AimlyAppCatallyzeBuild'
               preferTriggeringPipeline: true
               buildVersionToDownload: 'latestFromBranch'
               branchName: '$(Build.SourceBranch)'

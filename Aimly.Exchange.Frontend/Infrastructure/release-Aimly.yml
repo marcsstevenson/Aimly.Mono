@@ -1,7 +1,7 @@
 resources:
   pipelines:
-    - pipeline: AimlyExchangeFrontend
-      source: AimlyExchangeFrontendBuild
+    - pipeline: AimlyAppAimlyBuild
+      source: AimlyAppAimlyBuild
       trigger:
         branches:
           exclude:
@@ -90,7 +90,7 @@ stages:
             inputs:
               buildType: 'specific'
               project: '$(deployment-project)' # Get this using https://dev.azure.com/ludily/_apis/projects?api-version=6.0
-              pipeline: 'AimlyExchangeFrontendBuild'
+              pipeline: 'AimlyAppAimlyBuild'
               preferTriggeringPipeline: true
               buildVersionToDownload: 'latestFromBranch'
               branchName: '$(Build.SourceBranch)'
