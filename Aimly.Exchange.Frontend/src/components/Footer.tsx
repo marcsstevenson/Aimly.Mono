@@ -133,13 +133,11 @@ const Footer = () => {
             ))}
         </div>
         <p className="mt-8 text-center text-base text-gray-400">
-          &copy; 2022 Aimly. All rights reserved.
+          &copy; 2024 Aimly. All rights reserved.
         </p>
       </div>
     </footer>
   );
 };
-
-// Aimly 2022
 
 export default Footer;
