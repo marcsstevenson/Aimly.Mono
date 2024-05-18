@@ -90,6 +90,8 @@ const navigation = {
   ],
 };
 
+const currentYear = new Date().getFullYear();
+
 const Footer = () => {
   const currentTenant = GetCurrentTenant();
 
@@ -133,7 +135,7 @@ const Footer = () => {
             ))}
         </div>
         <p className="mt-8 text-center text-base text-gray-400">
-          &copy; 2024 Aimly. All rights reserved.
+          &copy; {currentYear} Aimly. All rights reserved.
         </p>
       </div>
     </footer>

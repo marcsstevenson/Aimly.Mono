@@ -62,6 +62,8 @@ const navigation = {
   ],
 };
 
+const currentYear = new Date().getFullYear();
+
 const Footer = () => (
   <footer className="border-t border-gray-200 py-12 dark:border-gray-500">
     <div className="mx-auto max-w-7xl overflow-hidden px-4 sm:px-6  lg:px-8">
@@ -86,7 +88,7 @@ const Footer = () => (
         ))}
       </div> */}
       <p className="mt-8 text-center text-base text-gray-400">
-        &copy; 2022 Aimly. All rights reserved.
+        &copy; {currentYear} Aimly. All rights reserved.
       </p>
     </div>
   </footer>
