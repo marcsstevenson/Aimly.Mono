@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './css/output.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -18,13 +18,14 @@ const providerConfig = getProviderConfig(onRedirectCallback);
 
 // console.log(user);
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+
+root.render(
   <ThemeProvider>
     <Auth0Provider {...providerConfig}>
       <App />
     </Auth0Provider>
-  </ThemeProvider>,
-  document.getElementById('root')
+  </ThemeProvider>
 );
 
 // If you want your app to work offline and load faster, you can change
