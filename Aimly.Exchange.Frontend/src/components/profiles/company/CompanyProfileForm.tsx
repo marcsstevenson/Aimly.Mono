@@ -2,6 +2,7 @@
 // and allow the user to edit it.
 // Both the CompanyProfileEdit and CompanyProfileNew components use this component.
 
+import _ from 'lodash';
 import React, { useCallback, useContext } from 'react';
 import Pages from 'components/shared/Pages';
 import useSetCompanyProfileMutation from 'useSetCompanyProfileMutation';
@@ -67,10 +68,19 @@ const CompanyProfileForm = (props: Props) => {
   const DeleteCompanyProfile = useDeleteCompanyProfileMutation();
 
   const onSubmit = (getCompanyProfileModel: GetCompanyProfileModelInput) => {
-    getCompanyProfileModel.problemDetails = problemDetailsEditor?.getHTML() ?? '';
-    getCompanyProfileModel.solutionDescription = solutionDescriptionEditor?.getHTML() ?? '';
+    // Deep clone the model using structuredClone
+    const mutableProfileModel = _.cloneDeep(getCompanyProfileModel);
 
-    handleSave(getCompanyProfileModel);
+    // Update the mutable clone
+    mutableProfileModel.problemDetails = problemDetailsEditor?.getHTML() ?? '';
+    mutableProfileModel.solutionDescription = solutionDescriptionEditor?.getHTML() ?? '';
+
+    // Call the save function with the updated model
+    handleSave(mutableProfileModel);
+
+    // getCompanyProfileModel.problemDetails = problemDetailsEditor?.getHTML() ?? '';
+    // getCompanyProfileModel.solutionDescription = solutionDescriptionEditor?.getHTML() ?? '';
+    // handleSave(getCompanyProfileModel);
   };
 
   const handleSave = useCallback(
