@@ -4,8 +4,9 @@ resources:
       source: AimlyAppAimlyBuild
       trigger:
         branches:
-          exclude:
-            - '*'
+          - prod
+          # exclude:
+          #   - '*'
 
 # Exclude CI from the repository because we only want to use the resource trigger above
 trigger:
