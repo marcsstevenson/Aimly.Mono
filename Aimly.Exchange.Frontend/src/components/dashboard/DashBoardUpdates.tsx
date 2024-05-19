@@ -13,29 +13,46 @@ interface update {
   readonly created: any;
 }
 
+// Create an array of image urls to use
+const imageUrls = [
+  'https://images.unsplash.com/photo-1484863137850-59afcfe05386?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1527792492728-08d07d011113?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1522881193457-37ae97c905bf?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1526328828355-69b01701ca6a?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1583127812417-7c06e950a432?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1630958234938-4f6a4a9dbf3a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+];
+
 const DashBoardUpdates = () => {
+  // Randomly select an image url from the array
+  const randomImageUrl = useMemo(() => {
+    return imageUrls[Math.floor(Math.random() * imageUrls.length)];
+  }, []);
+
   const updates = useMemo<update[]>(() => {
     return [
       {
         title: 'Aimly Exchange Launched!',
-        image:
-          'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        image: randomImageUrl,
         content: '',
         created: 'March 16th 2022',
       },
     ];
   }, []);
 
-  const becomeAClientLink = useMemo(() => {
-    return GetPathForPage(Pages.CompanyInvite) + `?${inviteCodeValue}=smyfivepoagg`;
-  }, []);
+  // const becomeAClientLink = useMemo(() => {
+  //   return GetPathForPage(Pages.CompanyInvite) + `?${inviteCodeValue}=smyfivepoagg`;
+  // }, []);
 
   return (
     <div className="overflow-hidden">
       <div className="space-y-6 px-4 py-6 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <span className="text-4xl text-gray-900 dark:text-gray-100">Updates</span>
-        </div>
+        </div> */}
         <div className="col-span-8 lg:col-span-4">
           {updates &&
             updates.map((update, i) => (
@@ -49,7 +66,7 @@ const DashBoardUpdates = () => {
                     <div className="absolute inset-0">
                       <img
                         className="h-full w-full object-cover"
-                        src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
+                        src={randomImageUrl}
                         alt="People working on laptops"
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-secondary-700 mix-blend-multiply" />
