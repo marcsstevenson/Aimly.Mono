@@ -26,7 +26,7 @@ const MentorsHero = () => {
             <div className="sm:text-center lg:text-left">
               <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Tap into a rich ecosystem of</span>{' '}
-                <span className="block text-primary-600 xl:inline"> Startups</span>
+                <span className="text-primary-600 block xl:inline"> Startups</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 dark:text-gray-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
                 It has never been a better time to startup but they need your help. Get mentoring
@@ -37,7 +37,8 @@ const MentorsHero = () => {
                   <a
                     href={config.exchangeAppUri}
                     target="_blank"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 md:py-4 md:px-10 md:text-lg"
+                    rel="noopener noreferrer"
+                    className="bg-primary-600 hover:bg-primary-700 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white md:py-4 md:px-10 md:text-lg"
                   >
                     Start mentoring
                     <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

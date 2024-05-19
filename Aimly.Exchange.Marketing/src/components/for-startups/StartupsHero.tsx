@@ -21,7 +21,7 @@ const StartupsHero = () => {
           <div className="sm:max-w-lg">
             <h1 className="font text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl">
               The time to startup is{' '}
-              <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-primary-500">
+              <span className="before:bg-primary-500 relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3">
                 <span className="relative text-white">NOW</span>
               </span>
             </h1>
@@ -101,7 +101,8 @@ const StartupsHero = () => {
             <a
               href={config.exchangeAppUri}
               target="_blank"
-              className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              rel="noopener noreferrer"
+              className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               Get started NOW
               <ChevronDoubleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
