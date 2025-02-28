@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import Pages from 'components/shared/Pages';
+import Pages from './shared/Pages';
 
 import { Dialog, Transition } from '@headlessui/react';
 import {
@@ -15,12 +15,12 @@ import {
 } from '@heroicons/react/24/outline';
 import { PrivateContext } from './PrivateContext';
 import { NavLink, useLocation } from 'react-router-dom';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import TopLeftLogo from 'components/TopLeftLogo';
-import NotificationCounter from 'components/notifications/NotificationCounter';
+import { GetPathForPage } from './shared/AppRoutes';
+import TopLeftLogo from './TopLeftLogo';
+import NotificationCounter from './notifications/NotificationCounter';
 import SideBarButton from './SideBarButton';
 
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { GetCurrentTenant } from '../tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 const marketLabel = currentTenant.marketLabel;
@@ -92,7 +92,7 @@ const SideBar = (): JSX.Element => {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div className="relative flex w-full max-w-xs flex-1 flex-col bg-primary-800 pt-5 pb-4">
+            <div className="bg-primary-800 relative flex w-full max-w-xs flex-1 flex-col pt-5 pb-4">
               <Transition.Child
                 as={Fragment}
                 enter="ease-in-out duration-300"
@@ -117,7 +117,7 @@ const SideBar = (): JSX.Element => {
                 <TopLeftLogo />
               </div>
               <nav
-                className="mt-5 h-full flex-shrink-0 divide-y divide-primary-900 overflow-y-auto"
+                className="divide-primary-900 mt-5 h-full flex-shrink-0 divide-y overflow-y-auto"
                 aria-label="Sidebar"
               >
                 <div className="space-y-1 px-2">
@@ -139,7 +139,7 @@ const SideBar = (): JSX.Element => {
                         </div>
                       ) : (
                         <item.icon
-                          className="mr-4 h-6 w-6 flex-shrink-0 text-primary-200"
+                          className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
                           aria-hidden="true"
                         />
                       )}
@@ -161,7 +161,7 @@ const SideBar = (): JSX.Element => {
                           '  group flex items-center rounded-md px-2 py-2 text-base font-medium'
                         }
                       >
-                        <item.icon className="mr-4 h-6 w-6 text-primary-200" aria-hidden="true" />
+                        <item.icon className="text-primary-200 mr-4 h-6 w-6" aria-hidden="true" />
                         {item.name}
                       </NavLink>
                     ))}
@@ -179,12 +179,12 @@ const SideBar = (): JSX.Element => {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex flex-grow flex-col overflow-y-auto border-r border-r-primary-900 bg-primary-800 pt-5 pb-4">
+        <div className="border-r-primary-900 bg-primary-800 flex flex-grow flex-col overflow-y-auto border-r pt-5 pb-4">
           <div className="flex flex-shrink-0 items-center px-4">
             <TopLeftLogo />
           </div>
           <nav
-            className="mt-5 flex flex-1 flex-col divide-y divide-primary-900 overflow-y-auto"
+            className="divide-primary-900 mt-5 flex flex-1 flex-col divide-y overflow-y-auto"
             aria-label="Sidebar"
           >
             <div className="space-y-1 px-2">
@@ -207,7 +207,7 @@ const SideBar = (): JSX.Element => {
                         </div>
                       ) : (
                         <item.icon
-                          className="mr-4 h-6 w-6 flex-shrink-0 text-primary-200"
+                          className="text-primary-200 mr-4 h-6 w-6 flex-shrink-0"
                           aria-hidden="true"
                         />
                       )}
@@ -230,7 +230,7 @@ const SideBar = (): JSX.Element => {
                         '  group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6'
                       }
                     >
-                      <item.icon className="mr-4 h-6 w-6 text-primary-200" aria-hidden="true" />
+                      <item.icon className="text-primary-200 mr-4 h-6 w-6" aria-hidden="true" />
                       {item.name}
                     </NavLink>
                   </SideBarButton>

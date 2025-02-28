@@ -1,5 +1,5 @@
-import { getMentorProfileQuery$data } from '__generated__/getMentorProfileQuery.graphql';
-import { GetMentorProfileModelInput } from '__generated__/useSetMentorProfileMutation.graphql';
+import { getMentorProfileQuery$data } from '@/__generated__/getMentorProfileQuery.graphql';
+import { GetMentorProfileModelInput } from '@/__generated__/useSetMentorProfileMutation.graphql';
 
 export const PopulateInputModel = (mentorProfileId: string | null,
   userId: string | null,

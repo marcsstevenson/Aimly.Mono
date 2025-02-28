@@ -1,6 +1,6 @@
 import React from 'react';
-import { MarketSearchResultsProps } from 'components/market/MarketSearchResultsProps';
-import MarketGridResult from 'components/market/MarketGridResult';
+import { MarketSearchResultsProps } from '@/components/market/MarketSearchResultsProps';
+import MarketGridResult from '@/components/market/MarketGridResult';
 
 const MarketGridResults = ({ marketSearchResults }: MarketSearchResultsProps) => {
   return (

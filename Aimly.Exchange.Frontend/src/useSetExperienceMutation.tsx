@@ -10,7 +10,7 @@ import {
   ExperienceModelInput,
   useSetExperienceMutation$data,
   useSetExperienceMutation$variables,
-} from '__generated__/useSetExperienceMutation.graphql';
+} from '@/__generated__/useSetExperienceMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

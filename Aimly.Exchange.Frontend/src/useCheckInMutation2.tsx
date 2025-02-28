@@ -6,8 +6,8 @@ import {
   checkInMutation,
   AuthProfileInput,
   checkInMutation$data,
-} from '__generated__/checkInMutation.graphql';
-import { checkInMutation as def } from 'checkInMutation';
+} from '@/__generated__/checkInMutation.graphql';
+import { checkInMutation as def } from './checkInMutation';
 
 export default function useCheckInMutation2() {
   const [checkedInModel, setResponse] = useState<checkInMutation$data | null>(null);

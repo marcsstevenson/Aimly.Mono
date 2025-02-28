@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SharedWithProfilesList from 'components/sharing/SharedWithProfilesList';
-import { PageHeader } from 'components/shared/PageHeader';
+import SharedWithProfilesList from '@/components/sharing/SharedWithProfilesList';
+import { PageHeader } from '@/components/shared/PageHeader';
 
 const SharedWithProfiles = () => {
   return (

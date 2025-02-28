@@ -9,7 +9,7 @@ import {
   useSetUserSettingsMutation as mutationType,
   SetUserSettingsCommandInput,
   useSetUserSettingsMutation$data,
-} from '__generated__/useSetUserSettingsMutation.graphql';
+} from '@/__generated__/useSetUserSettingsMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

@@ -1,42 +1,42 @@
 import React, { useCallback, useContext, useState } from 'react';
-import Pages from 'components/shared/Pages';
-import Loading from 'components/Loading';
+import Pages from '@/components/shared/Pages';
+import Loading from '@/components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
+import StartupQuestionnaireManager from '@/components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import useSetAboutYouMutation from 'useSetAboutYouMutation';
-import useDeleteCompanyProfileMutation from 'useDeleteCompanyProfileMutation';
+import useSetAboutYouMutation from '@/useSetAboutYouMutation';
+import useDeleteCompanyProfileMutation from '@/useDeleteCompanyProfileMutation';
 import {
   useDeleteCompanyProfileMutation$data,
   useDeleteCompanyProfileMutationVariables,
-} from '__generated__/useDeleteCompanyProfileMutation.graphql';
+} from '@/__generated__/useDeleteCompanyProfileMutation.graphql';
 
 import {
   GetAboutYouModelInput,
   useSetAboutYouMutation$data,
-} from '__generated__/useSetAboutYouMutation.graphql';
-import * as GetAboutYouQuery from '__generated__/getAboutYouQuery.graphql';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/PrivateContext';
+} from '@/__generated__/useSetAboutYouMutation.graphql';
+import * as GetAboutYouQuery from '@/__generated__/getAboutYouQuery.graphql';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
+import { PrivateContext } from '@/components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import validateRequiredString from 'validators/validateRequiredString';
-import { companyProfileId, context } from 'components/shared/UrlConstants';
-import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
-import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
-import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
-import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
-import { useUrlParser } from 'components/shared/useUrlParser';
-import { ConfirmDelete } from 'components/shared/ConfirmDelete';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import validateRequiredString from '@/validators/validateRequiredString';
+import { companyProfileId, context } from '@/components/shared/UrlConstants';
+import ProfilePhotoSelector from '@/components/shared/ProfilePhotoSelector';
+import { getLinkedInProfileFromAuthHelper } from '@/components/shared/LinkedInProfileAuthHelper';
+import { getUsersLanguage } from '@/components/shared/UsersLanguageHelper';
+import { IndustrySelector } from '@/components/shared/MetaData/IndustrySelector';
+import { useUrlParser } from '@/components/shared/useUrlParser';
+import { ConfirmDelete } from '@/components/shared/ConfirmDelete';
 import { Switch } from '@headlessui/react';
-import { SwitchWrapper } from 'components/shared/SwitchWrapper';
+import { SwitchWrapper } from '@/components/shared/SwitchWrapper';
 import { LinkIcon } from '@heroicons/react/20/solid';
-import { inviteCodeValue } from 'components/shared/UrlConstants';
-import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
-import ContentEdit from 'components/author/ContentEdit';
-import useDefaultEditor from 'components/author/useDefaultEditor';
-import { GetCurrentTenant } from 'tenant/TenantValues';
-import PrivateUntilShared from 'components/shared/PrivateUntilShared';
+import { inviteCodeValue } from '@/components/shared/UrlConstants';
+import ProfilePhotoViewer from '@/components/shared/ProfilePhotoViewer';
+import ContentEdit from '@/components/author/ContentEdit';
+import useDefaultEditor from '@/components/author/useDefaultEditor';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
+import PrivateUntilShared from '@/components/shared/PrivateUntilShared';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;

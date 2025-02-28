@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import Pages from 'components/shared/Pages';
-import { GetPathForPage } from 'components/shared/AppRoutes';
+import Pages from './shared/Pages';
+import { GetPathForPage } from './shared/AppRoutes';
 import React from 'react';
 
 const TopLeftLogo = () => (

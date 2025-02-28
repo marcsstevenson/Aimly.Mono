@@ -4,37 +4,37 @@
 
 import _ from 'lodash';
 import React, { useCallback, useContext } from 'react';
-import Pages from 'components/shared/Pages';
-import useSetCompanyProfileMutation from 'useSetCompanyProfileMutation';
-import useDeleteCompanyProfileMutation from 'useDeleteCompanyProfileMutation';
+import Pages from '@/components/shared/Pages';
+import useSetCompanyProfileMutation from '@/useSetCompanyProfileMutation';
+import useDeleteCompanyProfileMutation from '@/useDeleteCompanyProfileMutation';
 import {
   GetCompanyProfileModelInput,
   useSetCompanyProfileMutation$data,
-} from '__generated__/useSetCompanyProfileMutation.graphql';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
+} from '@/__generated__/useSetCompanyProfileMutation.graphql';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
 import { Field, Form, Formik } from 'formik';
-import validateRequiredString from 'validators/validateRequiredString';
-import GenericHeader from 'components/shared/GenericHeader';
+import validateRequiredString from '@/validators/validateRequiredString';
+import GenericHeader from '@/components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
-import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
+import { SwitchWrapper } from '@/components/shared/SwitchWrapper';
+import { IndustrySelector } from '@/components/shared/MetaData/IndustrySelector';
 import { useState } from 'react';
-import { ConfirmDelete } from 'components/shared/ConfirmDelete';
-import { useUrlParser } from 'components/shared/useUrlParser';
+import { ConfirmDelete } from '@/components/shared/ConfirmDelete';
+import { useUrlParser } from '@/components/shared/useUrlParser';
 import {
   useDeleteCompanyProfileMutation$data,
   useDeleteCompanyProfileMutationVariables,
-} from '__generated__/useDeleteCompanyProfileMutation.graphql';
-import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+} from '@/__generated__/useDeleteCompanyProfileMutation.graphql';
+import { getUrlForViewProfile } from '@/components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
-import ContentEdit from 'components/author/ContentEdit';
-import useDefaultEditor from 'components/author/useDefaultEditor';
-import { PrivateContext } from 'components/PrivateContext';
-import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
+import ContentEdit from '@/components/author/ContentEdit';
+import useDefaultEditor from '@/components/author/useDefaultEditor';
+import { PrivateContext } from '@/components/PrivateContext';
+import ProfilePhotoViewer from '@/components/shared/ProfilePhotoViewer';
 import LinkIcon from '@heroicons/react/20/solid/LinkIcon';
-import { GetCurrentTenant } from 'tenant/TenantValues';
-import PrivateUntilShared from 'components/shared/PrivateUntilShared';
-import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
+import PrivateUntilShared from '@/components/shared/PrivateUntilShared';
+import { getCompanyProfileQuery$data } from '@/__generated__/getCompanyProfileQuery.graphql';
 
 const currentTenant = GetCurrentTenant();
 

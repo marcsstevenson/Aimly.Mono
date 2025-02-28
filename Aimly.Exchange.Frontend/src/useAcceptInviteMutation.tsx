@@ -9,7 +9,7 @@ import {
   useAcceptInviteMutation as mutationType,
   InviteCommandInput,
   useAcceptInviteMutation$data,
-} from '__generated__/useAcceptInviteMutation.graphql';
+} from '@/__generated__/useAcceptInviteMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

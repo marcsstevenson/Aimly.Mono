@@ -10,7 +10,7 @@ import {
   SetPotentialCommandInput,
   GetPotentialModelInput,
   useSetPotentialMutation$data,
-} from '__generated__/useSetPotentialMutation.graphql';
+} from '@/__generated__/useSetPotentialMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

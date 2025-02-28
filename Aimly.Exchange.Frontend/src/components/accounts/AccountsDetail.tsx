@@ -1,17 +1,17 @@
 import React, { Suspense, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { CheckedInUserModel, PrivateContext } from 'components/PrivateContext';
+import { CheckedInUserModel, PrivateContext } from '@/components/PrivateContext';
 import { useLazyLoadQuery, useQueryLoader } from 'react-relay/hooks';
 
-import AccountsStatus from 'components/accounts/AccountsStatus';
-import AccountsActivity from 'components/accounts/AccountsActivity';
-import AccountsHeader from 'components/accounts/AccountsHeader';
-import { LoadingArea } from 'components/shared/LoadingArea';
+import AccountsStatus from '@/components/accounts/AccountsStatus';
+import AccountsActivity from '@/components/accounts/AccountsActivity';
+import AccountsHeader from '@/components/accounts/AccountsHeader';
+import { LoadingArea } from '@/components/shared/LoadingArea';
 
 import AccountsStatusQuery, {
   getAccountsStatusQuery,
   getAccountsStatusQuery$variables,
-} from '__generated__/getAccountsStatusQuery.graphql';
-import { AccountsOption } from 'components/accounts/AccountsOption';
+} from '@/__generated__/getAccountsStatusQuery.graphql';
+import { AccountsOption } from '@/components/accounts/AccountsOption';
 import { useNavigate, useParams } from 'react-router-dom';
 
 interface props {

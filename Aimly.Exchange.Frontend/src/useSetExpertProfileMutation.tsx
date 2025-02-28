@@ -10,7 +10,7 @@ import {
   SetExpertProfileCommandInput,
   GetExpertProfileModelInput,
   useSetExpertProfileMutation$data,
-} from '__generated__/useSetExpertProfileMutation.graphql';
+} from '@/__generated__/useSetExpertProfileMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

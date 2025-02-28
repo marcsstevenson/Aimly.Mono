@@ -1,19 +1,19 @@
 // The purpose of this component is to display a public readonly profile for a startup expert
 
 import React, { useContext, useMemo } from 'react';
-import * as ViewExpertProfileQuery from '__generated__/getViewExpertProfileQuery.graphql';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+import * as ViewExpertProfileQuery from '@/__generated__/getViewExpertProfileQuery.graphql';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
 import {
   AssociatedProfilesSet,
   LongFormElement,
   ViewProfileProps,
-} from 'components/market/view/ViewProfileInterfaces';
-import ViewProfile from 'components/market/view/ViewProfile';
-import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
-import { PrivateContext } from 'components/PrivateContext';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+} from '@/components/market/view/ViewProfileInterfaces';
+import ViewProfile from '@/components/market/view/ViewProfile';
+import { MarketSearchResult } from '@/components/market/MarketSearchResultsProps';
+import { PrivateContext } from '@/components/PrivateContext';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 const expert = currentTenant.expertOptions.singularName;

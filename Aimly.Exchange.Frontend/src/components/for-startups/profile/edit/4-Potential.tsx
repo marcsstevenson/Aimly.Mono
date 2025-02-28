@@ -1,18 +1,18 @@
 import React, { useCallback, useContext } from 'react';
-import Pages from 'components/shared/Pages';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import Loading from 'components/Loading';
+import Pages from '@/components/shared/Pages';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import Loading from '@/components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
+import StartupQuestionnaireManager from '@/components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import useSetPotentialMutation from 'useSetPotentialMutation';
+import useSetPotentialMutation from '@/useSetPotentialMutation';
 import {
   GetPotentialModelInput,
   useSetPotentialMutation$data,
-} from '__generated__/useSetPotentialMutation.graphql';
-import * as GetPotentialQuery from '__generated__/getPotentialQuery.graphql';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/PrivateContext';
+} from '@/__generated__/useSetPotentialMutation.graphql';
+import * as GetPotentialQuery from '@/__generated__/getPotentialQuery.graphql';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
+import { PrivateContext } from '@/components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
 import { useSearchParams } from 'react-router-dom';
 

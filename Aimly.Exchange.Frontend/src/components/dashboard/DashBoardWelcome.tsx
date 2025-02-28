@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckBadgeIcon } from '@heroicons/react/24/outline';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { GetCurrentTenant } from '../../tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 
@@ -21,7 +21,7 @@ const DashBoardWelcome = () => {
                 For feedback, support and suggestions, please feel free to contact{' '}
                 {currentTenant.supportEmailDetails.fullName} at:
                 <a
-                  className="ml-1 font-medium hover:text-primary-500"
+                  className="hover:text-primary-500 ml-1 font-medium"
                   href={'mailto:' + currentTenant.supportEmailDetails.email}
                 >
                   {currentTenant.supportEmailDetails.email}

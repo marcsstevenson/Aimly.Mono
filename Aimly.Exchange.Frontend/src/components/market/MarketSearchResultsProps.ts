@@ -1,4 +1,4 @@
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
 
 export interface MarketSearchResultsProps {
   marketSearchResults: ReadonlyArray<MarketSearchResult | null> | null | undefined;

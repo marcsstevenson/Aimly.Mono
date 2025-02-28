@@ -4,12 +4,12 @@
 
 import React, { useContext, useMemo } from 'react';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import { GetMentorProfileModelInput } from '__generated__/useSetMentorProfileMutation.graphql';
-import * as GetMentorProfileQuery from '__generated__/getMentorProfileQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import MentorProfileForm from 'components/profiles/mentor/MentorProfileForm';
-import { PopulateInputModel } from 'components/profiles/mentor/MentorProfileHelpers';
+import { GetMentorProfileModelInput } from '@/__generated__/useSetMentorProfileMutation.graphql';
+import * as GetMentorProfileQuery from '@/__generated__/getMentorProfileQuery.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import MentorProfileForm from '@/components/profiles/mentor/MentorProfileForm';
+import { PopulateInputModel } from '@/components/profiles/mentor/MentorProfileHelpers';
 
 const MentorProfileEdit = () => {
   const { userId } = useContext(PrivateContext);

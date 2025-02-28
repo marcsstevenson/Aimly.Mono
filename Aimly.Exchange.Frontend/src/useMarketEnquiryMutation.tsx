@@ -10,7 +10,7 @@ import {
   MarketEnquiryModelInput,
   useMarketEnquiryMutation$data,
   useMarketEnquiryMutation$variables,
-} from '__generated__/useMarketEnquiryMutation.graphql';
+} from '@/__generated__/useMarketEnquiryMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

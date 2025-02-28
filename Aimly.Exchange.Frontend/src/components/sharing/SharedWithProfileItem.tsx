@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { UserCircleIcon, BoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/20/solid';
-import { getUrlForViewProfile } from 'components/sharing/UrlForViewProfile';
-import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
-import { GetLabelForType } from 'components/shared/ProfileTypeHelpers';
+import { getUrlForViewProfile } from '@/components/sharing/UrlForViewProfile';
+import { ProfileTypeOption } from '@/__generated__/myProfilesQuery.graphql';
+import { GetLabelForType } from '@/components/shared/ProfileTypeHelpers';
 
 export interface ProfileSearchResult {
   readonly profileId: any;
@@ -67,7 +67,7 @@ const SharedWithProfileItem = (props: Props) => {
                 props.item?.profileId
               ),
             }}
-            className="font-medium text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400"
+            className="text-secondary-700 hover:text-secondary-900 dark:text-secondary-300 dark:hover:text-secondary-400 font-medium"
           >
             View
           </Link>

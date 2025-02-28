@@ -1,5 +1,5 @@
-import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
-import { GetCompanyProfileModelInput } from '__generated__/useSetCompanyProfileMutation.graphql';
+import { getCompanyProfileQuery$data } from '@/__generated__/getCompanyProfileQuery.graphql';
+import { GetCompanyProfileModelInput } from '@/__generated__/useSetCompanyProfileMutation.graphql';
 
 export const PopulateInputModel = (companyProfileId: string | null,
   userId: string | null,

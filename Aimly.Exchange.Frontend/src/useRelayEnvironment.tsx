@@ -10,7 +10,7 @@ import {
 import { AuthorizationParams } from '@auth0/auth0-spa-js';
 
 import { useAuth0 } from '@auth0/auth0-react';
-import { getConfig } from 'config';
+import { getConfig } from './config';
 
 // Provides a method of getting our Relay environment
 // Auth0 is integrated with Relay and will automatically add a bearer token header

@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useField } from 'formik';
-import { ComboboxOption, GenericCombobox } from 'components/shared/GenericCombobox';
-import { FormikProps } from 'components/shared/FormikProps';
+import { ComboboxOption, GenericCombobox } from '@/components/shared/GenericCombobox';
+import { FormikProps } from '@/components/shared/FormikProps';
 
 interface GenericComboboxWrapperProps<T> extends FormikProps<T> {
   comboboxOptions: ComboboxOption<T>[];

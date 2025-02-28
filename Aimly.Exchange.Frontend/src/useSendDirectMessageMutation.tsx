@@ -9,7 +9,7 @@ import {
   useSendDirectMessageMutation as mutationType,
   SendDirectMessageCommandInput,
   useSendDirectMessageMutation$data,
-} from '__generated__/useSendDirectMessageMutation.graphql';
+} from '@/__generated__/useSendDirectMessageMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

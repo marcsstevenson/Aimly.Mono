@@ -6,68 +6,68 @@
 
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Pages from 'components/shared/Pages';
-import { profileId } from 'components/shared/UrlConstants';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import Pages from './Pages';
+import { profileId } from './UrlConstants';
+import { GetCurrentTenant } from '../../tenant/TenantValues';
 
 // Always load pages
-import DashBoard from 'components/dashboard/DashBoard';
-import CompanyInvite from 'components/CompanyInvite';
-import AboutUs from 'components/market/view/AboutUs';
-import CompanyProfileAnnouncements from 'components/profiles/company/CompanyProfileAnnouncements';
+import DashBoard from '../dashboard/DashBoard';
+import CompanyInvite from '../CompanyInvite';
+import AboutUs from '../market/view/AboutUs';
+import CompanyProfileAnnouncements from '../profiles/company/CompanyProfileAnnouncements';
 
 // General pages
-const Help = lazy(() => import('components/Help'));
-const SettingsEdit = lazy(() => import('components/settings/SettingsEdit'));
-const PageNotFound = lazy(() => import('components/PageNotFound'));
-const AcceptInvite = lazy(() => import('components/AcceptInvite'));
+const Help = lazy(() => import('../Help'));
+const SettingsEdit = lazy(() => import('../settings/SettingsEdit'));
+const PageNotFound = lazy(() => import('../PageNotFound'));
+const AcceptInvite = lazy(() => import('../AcceptInvite'));
 
 // Market search
-const MarketCompanies = lazy(() => import('components/market/MarketCompanies'));
-const MarketMentor = lazy(() => import('components/market/MarketMentor'));
-const MarketExpert = lazy(() => import('components/market/MarketExpert'));
-const MarketCommunity = lazy(() => import('components/market/MarketCommunity'));
+const MarketCompanies = lazy(() => import('../market/MarketCompanies'));
+const MarketMentor = lazy(() => import('../market/MarketMentor'));
+const MarketExpert = lazy(() => import('../market/MarketExpert'));
+const MarketCommunity = lazy(() => import('../market/MarketCommunity'));
 
 // View Profiles
-const ViewCompanyProfile = lazy(() => import('components/market/view/ViewCompanyProfile'));
-const ViewPersonalProfile = lazy(() => import('components/market/view/ViewPersonalProfile'));
-const ViewMentorProfile = lazy(() => import('components/market/view/ViewMentorProfile'));
-const ViewExpertProfile = lazy(() => import('components/market/view/ViewExpertProfile'));
+const ViewCompanyProfile = lazy(() => import('../market/view/ViewCompanyProfile'));
+const ViewPersonalProfile = lazy(() => import('../market/view/ViewPersonalProfile'));
+const ViewMentorProfile = lazy(() => import('../market/view/ViewMentorProfile'));
+const ViewExpertProfile = lazy(() => import('../market/view/ViewExpertProfile'));
 
 // Sharing
-const SharedWithProfiles = lazy(() => import('components/sharing/SharedWithProfiles'));
-const ViewSharedCompanyProfile = lazy(() => import('components/sharing/ViewSharedCompanyProfile'));
+const SharedWithProfiles = lazy(() => import('../sharing/SharedWithProfiles'));
+const ViewSharedCompanyProfile = lazy(() => import('../sharing/ViewSharedCompanyProfile'));
 
 // Contact
 // const MarketContact = lazy(() => import('components/market/MarketContact'));
 
 // Messaging
-const MessagesHome = lazy(() => import('components/messaging/MessagesHome'));
+const MessagesHome = lazy(() => import('../messaging/MessagesHome'));
 
 // Edit Profiles
-const Profiles = lazy(() => import('components/profiles/MyProfiles'));
-const PersonalProfileEdit = lazy(() => import('components/profiles/personal/PersonalProfileEdit'));
-const MentorProfileNew = lazy(() => import('components/profiles/mentor/MentorProfileNew'));
-const MentorProfileEdit = lazy(() => import('components/profiles/mentor/MentorProfileEdit'));
-const ExpertProfileNew = lazy(() => import('components/profiles/expert/ExpertProfileNew'));
-const ExpertProfileEdit = lazy(() => import('components/profiles/expert/ExpertProfileEdit'));
-const CompanyProfileNew = lazy(() => import('components/profiles/company/CompanyProfileNew'));
-const CompanyProfileEdit = lazy(() => import('components/profiles/company/CompanyProfileEdit'));
+const Profiles = lazy(() => import('../profiles/MyProfiles'));
+const PersonalProfileEdit = lazy(() => import('../profiles/personal/PersonalProfileEdit'));
+const MentorProfileNew = lazy(() => import('../profiles/mentor/MentorProfileNew'));
+const MentorProfileEdit = lazy(() => import('../profiles/mentor/MentorProfileEdit'));
+const ExpertProfileNew = lazy(() => import('../profiles/expert/ExpertProfileNew'));
+const ExpertProfileEdit = lazy(() => import('../profiles/expert/ExpertProfileEdit'));
+const CompanyProfileNew = lazy(() => import('../profiles/company/CompanyProfileNew'));
+const CompanyProfileEdit = lazy(() => import('../profiles/company/CompanyProfileEdit'));
 
 // Startup profile builder
-const AboutYou = lazy(() => import('components/for-startups/profile/edit/1-AboutYou'));
-const TheProblem = lazy(() => import('components/for-startups/profile/edit/2-TheProblem'));
-const TheSolution = lazy(() => import('components/for-startups/profile/edit/3-TheSolution'));
-const Potential = lazy(() => import('components/for-startups/profile/edit/4-Potential'));
-const Customise = lazy(() => import('components/for-startups/profile/edit/5-Customise'));
+const AboutYou = lazy(() => import('../for-startups/profile/edit/1-AboutYou'));
+const TheProblem = lazy(() => import('../for-startups/profile/edit/2-TheProblem'));
+const TheSolution = lazy(() => import('../for-startups/profile/edit/3-TheSolution'));
+const Potential = lazy(() => import('../for-startups/profile/edit/4-Potential'));
+const Customise = lazy(() => import('../for-startups/profile/edit/5-Customise'));
 
 // Author
-const ContentEdit = lazy(() => import('components/author/ContentEdit'));
+const ContentEdit = lazy(() => import('../author/ContentEdit'));
 
 // Accounts
-const AccountsHome = lazy(() => import('components/accounts/AccountsHome'));
-const AccountsSetupStart = lazy(() => import('components/accounts/AccountsSetupStart'));
-const AccountsSetupComplete = lazy(() => import('components/accounts/AccountsSetupComplete'));
+const AccountsHome = lazy(() => import('../accounts/AccountsHome'));
+const AccountsSetupStart = lazy(() => import('../accounts/AccountsSetupStart'));
+const AccountsSetupComplete = lazy(() => import('../accounts/AccountsSetupComplete'));
 
 export interface RouteItem {
   // The relative path for the route

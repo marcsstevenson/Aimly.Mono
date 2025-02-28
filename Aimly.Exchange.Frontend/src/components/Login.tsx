@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { LoadingArea } from 'components/shared/LoadingArea';
+import { LoadingArea } from '@/components/shared/LoadingArea';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import Pages from 'components/shared/Pages';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
+import Pages from '@/components/shared/Pages';
 
 export const Login = () => {
   // const navigateToPage = useNavigateToPage();

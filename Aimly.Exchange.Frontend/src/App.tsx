@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
-import useRelayEnvironment from 'useRelayEnvironment';
-import ErrorBoundary from 'ErrorBoundary';
-import { LoadingArea } from 'components/shared/LoadingArea';
+import useRelayEnvironment from './useRelayEnvironment';
+import ErrorBoundary from './ErrorBoundary';
+import { LoadingArea } from './components/shared/LoadingArea';
 import { useAuth0, withAuthenticationRequired, User } from '@auth0/auth0-react';
-import PrivateShell from 'components/PrivateShell';
-import Loading from 'components/Loading';
+import PrivateShell from './components/PrivateShell';
+import Loading from './components/Loading';
 // import { getConfig } from 'config';
 // import ReactGA from 'react-ga';
 

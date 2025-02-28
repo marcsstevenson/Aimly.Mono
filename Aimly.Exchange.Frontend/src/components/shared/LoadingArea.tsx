@@ -1,8 +1,10 @@
 // The pourpose of this component is to display a large loading area
 
 import React from 'react';
-import loadingImage from 'assets/logo-loading.svg';
-import { classNames } from 'utils/classNames';
+
+import loadingImage from '../../assets/logo-loading.svg';
+
+import { classNames } from '../../utils/classNames';
 
 interface Props {
   title: string | null;

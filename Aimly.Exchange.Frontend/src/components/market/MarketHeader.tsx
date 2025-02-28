@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import Pages from 'components/shared/Pages';
-import { MarketTabs } from 'components/market/MarketTabs';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+import Pages from '@/components/shared/Pages';
+import { MarketTabs } from '@/components/market/MarketTabs';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
 
 interface Props {
   CurrentProfileType: ProfileTypeOption;

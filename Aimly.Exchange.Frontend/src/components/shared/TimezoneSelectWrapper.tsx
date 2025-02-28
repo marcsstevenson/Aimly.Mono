@@ -2,8 +2,8 @@
 // TimezoneSelect component.
 import React, { useMemo } from 'react';
 import timezones from 'timezones-list';
-import { ComboboxOption } from 'components/shared/GenericCombobox';
-import { GenericComboboxWrapper } from 'components/shared/GenericComboboxWrapper';
+import { ComboboxOption } from '@/components/shared/GenericCombobox';
+import { GenericComboboxWrapper } from '@/components/shared/GenericComboboxWrapper';
 
 // interface ComboboxOption<string> extends ComboboxOption {
 //   tzCode: string;

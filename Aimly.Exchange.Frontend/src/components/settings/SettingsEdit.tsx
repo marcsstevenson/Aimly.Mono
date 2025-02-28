@@ -1,18 +1,18 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import useSetUserSettingsMutation from 'useSetUserSettingsMutation';
+import useSetUserSettingsMutation from '@/useSetUserSettingsMutation';
 import {
   SetUserSettingsCommandInput,
   useSetUserSettingsMutation$data,
-} from '__generated__/useSetUserSettingsMutation.graphql';
-import * as GetUserSettingsQuery from '__generated__/userSettingsQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
+} from '@/__generated__/useSetUserSettingsMutation.graphql';
+import * as GetUserSettingsQuery from '@/__generated__/userSettingsQuery.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
-import validateRequiredString from 'validators/validateRequiredString';
-import validateEmail from 'validators/validateEmail';
-import GenericHeader from 'components/shared/GenericHeader';
-import { userSettingsQuery$variables } from '__generated__/userSettingsQuery.graphql';
-import ProfilePhotoViewer from 'components/shared/ProfilePhotoViewer';
+import validateRequiredString from '@/validators/validateRequiredString';
+import validateEmail from '@/validators/validateEmail';
+import GenericHeader from '@/components/shared/GenericHeader';
+import { userSettingsQuery$variables } from '@/__generated__/userSettingsQuery.graphql';
+import ProfilePhotoViewer from '@/components/shared/ProfilePhotoViewer';
 import { CheckIcon } from '@heroicons/react/20/solid';
 
 const SettingsEdit = () => {

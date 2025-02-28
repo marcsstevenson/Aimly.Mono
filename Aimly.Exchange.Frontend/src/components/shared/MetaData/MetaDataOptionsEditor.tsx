@@ -3,9 +3,9 @@
 
 import React from 'react';
 import { useField } from 'formik';
-import { FormikProps } from 'components/shared/FormikProps';
-import { MetaDataOptionsSelector } from 'components/shared/MetaData/MetaDataOptionsSelector';
-import { MetaDataList } from 'components/shared/MetaData/MetaDataList';
+import { FormikProps } from '@/components/shared/FormikProps';
+import { MetaDataOptionsSelector } from '@/components/shared/MetaData/MetaDataOptionsSelector';
+import { MetaDataList } from '@/components/shared/MetaData/MetaDataList';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 interface Props extends FormikProps<string[]> {

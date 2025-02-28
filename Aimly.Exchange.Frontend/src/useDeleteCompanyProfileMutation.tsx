@@ -9,7 +9,7 @@ import {
   useDeleteCompanyProfileMutation as mutationType,
   useDeleteCompanyProfileMutationVariables,
   useDeleteCompanyProfileMutation$data,
-} from '__generated__/useDeleteCompanyProfileMutation.graphql';
+} from '@/__generated__/useDeleteCompanyProfileMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

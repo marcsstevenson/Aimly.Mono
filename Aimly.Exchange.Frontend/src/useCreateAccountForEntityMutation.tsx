@@ -9,7 +9,7 @@ import {
   useCreateAccountForEntityMutation as mutationType,
   useCreateAccountForEntityMutation$data,
   useCreateAccountForEntityMutation$variables,
-} from '__generated__/useCreateAccountForEntityMutation.graphql';
+} from '@/__generated__/useCreateAccountForEntityMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

@@ -5,11 +5,11 @@ import { PreloadedQuery, usePreloadedQuery } from 'react-relay/hooks';
 import Request, {
   getAccountsStatusQuery,
   getAccountsStatusQuery$data,
-} from '__generated__/getAccountsStatusQuery.graphql';
+} from '@/__generated__/getAccountsStatusQuery.graphql';
 import { AccountsOption } from './AccountsOption';
 import { Link } from 'react-router-dom';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import Pages from 'components/shared/Pages';
+import { GetPathForPage } from '@/components/shared/AppRoutes';
+import Pages from '@/components/shared/Pages';
 
 const cards = [
   { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
@@ -57,7 +57,7 @@ const AccountsStatus = ({ accountsOption, getAccountsStatusRef }: Props) => {
           <Link
             to={{ pathname: accountSetupStartUrl }}
             type="button"
-            className="mt-4 inline-flex items-center rounded-md border border-transparent bg-secondary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2"
+            className="bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 mt-4 inline-flex items-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Continue to setup
             <ArrowRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -77,7 +77,7 @@ const AccountsStatus = ({ accountsOption, getAccountsStatusRef }: Props) => {
           <Link
             to={{ pathname: accountSetupStartUrl }}
             type="button"
-            className="mt-4 inline-flex items-center rounded-md border border-transparent bg-secondary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2"
+            className="bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 mt-4 inline-flex items-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Continue activating
             <ArrowRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />

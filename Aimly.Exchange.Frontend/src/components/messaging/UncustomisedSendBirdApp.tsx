@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 
-import { ThemeContext } from 'components/ThemeContext';
-import { buildSendBirdColourSet } from 'components/messaging/SendBirdColourSet';
+import { ThemeContext } from '@/components/ThemeContext';
+import { buildSendBirdColourSet } from '@/components/messaging/SendBirdColourSet';
 import SendbirdApp from '@sendbird/uikit-react/App';
 import '@sendbird/uikit-react/dist/index.css';
 

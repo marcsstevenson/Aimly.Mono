@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Pages from 'components/shared/Pages';
 import { useNavigate } from 'react-router-dom';
 
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
+import useNavigateToPage from './shared/useNavigateToPage';
 
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { GetCurrentTenant } from '../tenant/TenantValues';
+import Pages from './shared/Pages';
 
 const currentTenant = GetCurrentTenant();
 const marketLabel = currentTenant.marketLabel.toLocaleLowerCase();
@@ -43,12 +42,12 @@ const QuickSearch = (): JSX.Element => {
           <input
             id="search-field"
             name="search-field"
-            className="focus:ring-3 mt-3 block w-full rounded-md border-transparent
-              py-2 pl-10 pr-3 font-medium
-              leading-5 text-gray-900
-              placeholder-gray-500 shadow-sm
-              focus:outline-none
-              focus:ring-secondary-500 dark:bg-gray-800
+            className="focus:ring-3 focus:ring-secondary-500 mt-3 block w-full rounded-md
+              border-transparent py-2 pl-10 pr-3
+              font-medium leading-5
+              text-gray-900 placeholder-gray-500
+              shadow-sm
+              focus:outline-none dark:bg-gray-800
               sm:text-sm"
             placeholder={'Search ' + marketLabel}
             type="search"

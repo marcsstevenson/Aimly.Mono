@@ -2,7 +2,7 @@
 // values for known system variables
 
 import { useSearchParams } from 'react-router-dom';
-import { promptDeleteValue } from 'components/shared/UrlConstants';
+import { promptDeleteValue } from '@/components/shared/UrlConstants';
 
 const useUrlParser = () => {
   const [searchParams] = useSearchParams();

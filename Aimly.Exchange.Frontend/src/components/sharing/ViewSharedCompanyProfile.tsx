@@ -1,14 +1,14 @@
 // The purpose of this component is to display a public readonly profile for a startup company
 
 import React, { useContext } from 'react';
-import * as ViewFullCompanyProfileQuery from '__generated__/viewFullCompanyProfileQuery.graphql';
+import * as ViewFullCompanyProfileQuery from '@/__generated__/viewFullCompanyProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
-import { PrivateContext } from 'components/PrivateContext';
-import TopGraphic from 'components/shared/TopGraphic';
-import ViewProfileHeader from 'components/market/view/ViewProfileHeader';
-import HtmlDisplay from 'components/shared/HtmlDisplay';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { PrivateContext } from '@/components/PrivateContext';
+import TopGraphic from '@/components/shared/TopGraphic';
+import ViewProfileHeader from '@/components/market/view/ViewProfileHeader';
+import HtmlDisplay from '@/components/shared/HtmlDisplay';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;

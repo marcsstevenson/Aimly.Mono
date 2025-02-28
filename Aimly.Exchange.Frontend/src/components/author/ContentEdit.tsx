@@ -3,7 +3,7 @@ import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
-import MenuBar from 'components/author/MenuBar';
+import MenuBar from '@/components/author/MenuBar';
 import { classNames } from 'utils/classNames';
 import useDefaultEditor from './useDefaultEditor';
 

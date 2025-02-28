@@ -10,7 +10,7 @@ import {
   UserLoginModelInput,
   useLoginToMessagingMutation$data,
   useLoginToMessagingMutation$variables,
-} from '__generated__/useLoginToMessagingMutation.graphql';
+} from '@/__generated__/useLoginToMessagingMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

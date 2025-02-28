@@ -1,7 +1,7 @@
 import React from 'react';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import TopGraphic from 'components/shared/TopGraphic';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import TopGraphic from '@/components/shared/TopGraphic';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 
@@ -118,7 +118,7 @@ export const Help = () => {
                       </svg>
                     </div>
                     <h3 className="text-lg font-medium text-white">Contact information</h3>
-                    <p className="mt-6 max-w-3xl text-base text-secondary-50">
+                    <p className="text-secondary-50 mt-6 max-w-3xl text-base">
                       Please do not hesitate to contact {currentTenant.supportEmailDetails.fullName}{' '}
                       for help, feedback and suggestions using this address.
                     </p>
@@ -136,13 +136,13 @@ export const Help = () => {
                       <dt>
                         <span className="sr-only">Email</span>
                       </dt>
-                      <dd className="flex text-base text-secondary-50">
+                      <dd className="text-secondary-50 flex text-base">
                         <EnvelopeIcon
-                          className="h-6 w-6 flex-shrink-0 text-secondary-200"
+                          className="text-secondary-200 h-6 w-6 flex-shrink-0"
                           aria-hidden="true"
                         />
                         <a
-                          className="ml-3 hover:text-secondary-500"
+                          className="hover:text-secondary-500 ml-3"
                           href={'mailto:' + currentTenant.supportEmailDetails.email}
                         >
                           {currentTenant.supportEmailDetails.email}

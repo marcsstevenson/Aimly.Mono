@@ -3,11 +3,11 @@ import React, { useMemo } from 'react';
 import {
   marketOptionsSearchQuery,
   default as node,
-} from '__generated__/marketOptionsSearchQuery.graphql';
+} from '@/__generated__/marketOptionsSearchQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import { ProfileTypeOption } from '__generated__/marketOptionsSearchQuery.graphql';
-import { MarketOptionsEditor } from 'components/shared/MarketOptions/MarketOptionsEditor';
-import { MarketSearchOption } from 'components/shared/MarketOptions/MarketSearchOption';
+import { ProfileTypeOption } from '@/__generated__/marketOptionsSearchQuery.graphql';
+import { MarketOptionsEditor } from '@/components/shared/MarketOptions/MarketOptionsEditor';
+import { MarketSearchOption } from '@/components/shared/MarketOptions/MarketSearchOption';
 
 interface Props {
   profileType: ProfileTypeOption;

@@ -1,10 +1,10 @@
 import React from 'react';
-import Pages from 'components/shared/Pages';
-import Loading from 'components/Loading';
+import Pages from '@/components/shared/Pages';
+import Loading from '@/components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
-import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
-import { GetPathForPage } from 'components/shared/AppRoutes';
+import StartupQuestionnaireManager from '@/components/for-startups/profile/edit/StartupQuestionnaireManager';
+import { GetPathForPage } from '@/components/shared/AppRoutes';
 
 const Customise = () => {
   const navigate = useNavigate();

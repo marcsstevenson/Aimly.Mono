@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { SearchOptions } from 'components/shared/MarketOptions/SearchOptions';
-import { MarketSearchRequest } from 'components/market/MarketSearchRequest';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
+import { SearchOptions } from '@/components/shared/MarketOptions/SearchOptions';
+import { MarketSearchRequest } from '@/components/market/MarketSearchRequest';
 import { classNames } from 'utils/classNames';
 import { Switch } from '@headlessui/react';
 
@@ -120,11 +120,11 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
                 id="search-field"
                 name="search-field"
                 ref={searchInputRef}
-                className="block w-full rounded-xl border border-gray-300
-                py-3 pl-10 pr-5 font-medium leading-5
-                  text-gray-900 placeholder-gray-500
-                  focus:border-transparent focus:outline-none
-                  focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-900
+                className="focus:ring-secondary-500 block w-full rounded-xl border
+                border-gray-300 py-3 pl-10 pr-5 font-medium
+                  leading-5 text-gray-900
+                  placeholder-gray-500 focus:border-transparent
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-900
                   dark:text-gray-200 dark:placeholder-gray-400 dark:focus:bg-gray-800 sm:text-sm"
                 placeholder="Search..."
                 onChange={(event) => setSearchTerm(event.target.value)}
@@ -140,7 +140,7 @@ export const MarketSearchInput = ({ CurrentProfileType, onChange }: Props) => {
               onChange={setShowAdvanced}
               className={classNames(
                 showAdvanced ? 'bg-secondary-500' : 'bg-gray-200',
-                'relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2'
+                'focus:ring-secondary-500 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
               )}
             >
               <span

@@ -6,16 +6,16 @@
 
 import React, { Suspense, useContext, useEffect } from 'react';
 // import 'sendbird-uikit/dist/index.css';
-import { PrivateContext } from 'components/PrivateContext';
+import { PrivateContext } from '@/components/PrivateContext';
 import { getConfig } from 'config';
-// import CustomisedSendBirdApp from 'components/messaging/CustomisedSendBirdApp';
-import UncustomisedSendBirdApp from 'components/messaging/UncustomisedSendBirdApp';
-import { LoadingArea } from 'components/shared/LoadingArea';
-import useLoginToMessagingMutation from 'useLoginToMessagingMutation';
+// import CustomisedSendBirdApp from '@/components/messaging/CustomisedSendBirdApp';
+import UncustomisedSendBirdApp from '@/components/messaging/UncustomisedSendBirdApp';
+import { LoadingArea } from '@/components/shared/LoadingArea';
+import useLoginToMessagingMutation from '@/useLoginToMessagingMutation';
 import {
   UserLoginModelInput,
   useLoginToMessagingMutation$data,
-} from '__generated__/useLoginToMessagingMutation.graphql';
+} from '@/__generated__/useLoginToMessagingMutation.graphql';
 
 const MessagesHome = () => {
   const { checkedInUser, userId, messagingAccessToken, loginToMessaging } =

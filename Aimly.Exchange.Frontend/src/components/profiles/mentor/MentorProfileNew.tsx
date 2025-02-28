@@ -4,10 +4,10 @@
 // for a blank model (which is unnecessary traffic and confuses Relay).
 
 import React, { useContext } from 'react';
-import { GetMentorProfileModelInput } from '__generated__/useSetMentorProfileMutation.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import MentorProfileForm from 'components/profiles/mentor/MentorProfileForm';
-import { PopulateInputModel } from 'components/profiles/mentor/MentorProfileHelpers';
+import { GetMentorProfileModelInput } from '@/__generated__/useSetMentorProfileMutation.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
+import MentorProfileForm from '@/components/profiles/mentor/MentorProfileForm';
+import { PopulateInputModel } from '@/components/profiles/mentor/MentorProfileHelpers';
 
 const MentorProfileNew = () => {
   const { userId } = useContext(PrivateContext);

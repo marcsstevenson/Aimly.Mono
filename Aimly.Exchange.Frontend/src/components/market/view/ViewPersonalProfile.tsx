@@ -1,18 +1,18 @@
 // The purpose of this component is to display a public readonly profile for a startup personal
 
 import React, { useContext, useMemo } from 'react';
-import * as ViewPersonalProfileQuery from '__generated__/getViewPersonalProfileQuery.graphql';
+import * as ViewPersonalProfileQuery from '@/__generated__/getViewPersonalProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
 import {
   AssociatedProfilesSet,
   LongFormElement,
   ViewProfileProps,
-} from 'components/market/view/ViewProfileInterfaces';
-import ViewProfile from 'components/market/view/ViewProfile';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+} from '@/components/market/view/ViewProfileInterfaces';
+import ViewProfile from '@/components/market/view/ViewProfile';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 

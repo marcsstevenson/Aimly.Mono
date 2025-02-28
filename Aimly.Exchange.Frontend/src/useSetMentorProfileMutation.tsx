@@ -10,7 +10,7 @@ import {
   SetMentorProfileCommandInput,
   GetMentorProfileModelInput,
   useSetMentorProfileMutation$data,
-} from '__generated__/useSetMentorProfileMutation.graphql';
+} from '@/__generated__/useSetMentorProfileMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

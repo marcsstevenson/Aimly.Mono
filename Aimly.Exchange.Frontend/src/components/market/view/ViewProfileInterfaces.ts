@@ -1,9 +1,9 @@
 // The purpose of this file is to contain interfaces
 // relating to the viewing of profiles
 
-import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
-import { EmploymentExperience } from 'components/profiles/EmploymentExperience';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
+import { MarketSearchResult } from '@/components/market/MarketSearchResultsProps';
+import { EmploymentExperience } from '@/components/profiles/EmploymentExperience';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
 
 export interface ViewProfileHeaderProps {
   readonly profileId: string;

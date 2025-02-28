@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { classNames } from 'utils/classNames';
-import { GetPathForPage } from 'components/shared/AppRoutes';
+import { GetPathForPage } from '@/components/shared/AppRoutes';
 import { NavLink } from 'react-router-dom';
-import Pages from 'components/shared/Pages';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import Pages from '@/components/shared/Pages';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 interface Tab {
   name: string;
@@ -59,7 +59,7 @@ export const MarketTabs = (props: Props) => {
         <select
           id="tabs"
           name="tabs"
-          className="block w-full rounded-md border-gray-300 focus:border-secondary-500 focus:ring-secondary-500"
+          className="focus:border-secondary-500 focus:ring-secondary-500 block w-full rounded-md border-gray-300"
           defaultValue={currentTab.name}
           onChange={(e) => {
             tabSelected(e.target.value);

@@ -1,9 +1,9 @@
 // The purpose of this component is to display a public readonly profile for a startup company
 
-import * as ViewCompanyProfileQuery from '__generated__/getViewCompanyProfileQuery.graphql';
-import { LongFormElement } from 'components/market/view/ViewProfileInterfaces';
-import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import * as ViewTenantCompanyProfileQuery from '__generated__/getViewTenantCompanyProfileQuery.graphql';
+import * as ViewCompanyProfileQuery from '@/__generated__/getViewCompanyProfileQuery.graphql';
+import { LongFormElement } from '@/components/market/view/ViewProfileInterfaces';
+import { ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
+import * as ViewTenantCompanyProfileQuery from '@/__generated__/getViewTenantCompanyProfileQuery.graphql';
 
 interface CompanyProfileProps {
   readonly id: string | null;

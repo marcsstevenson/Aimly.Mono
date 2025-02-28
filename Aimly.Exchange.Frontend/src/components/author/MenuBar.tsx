@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Editor } from '@tiptap/react';
-import MenuItem from 'components/author/MenuItem';
+import MenuItem from '@/components/author/MenuItem';
 import './MenuBar.scss';
 
 interface EditorProps {

@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import DashBoardHeader from 'components/dashboard/DashBoardHeader';
-import DashBoardWelcome from 'components/dashboard/DashBoardWelcome';
-import DashBoardUpdates from 'components/dashboard/DashBoardUpdates';
-import * as DashboardQuery from '__generated__/dashboardQuery.graphql';
+import DashBoardHeader from '../dashboard/DashBoardHeader';
+import DashBoardWelcome from '../dashboard/DashBoardWelcome';
+import DashBoardUpdates from '../dashboard/DashBoardUpdates';
+import * as DashboardQuery from '../../__generated__/dashboardQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import { PrivateContext } from 'components/PrivateContext';
-import DashboardProfiles from 'components/dashboard/DashboardProfiles';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { PrivateContext } from '../PrivateContext';
+import DashboardProfiles from '../dashboard/DashboardProfiles';
+import { GetCurrentTenant } from '../../tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;

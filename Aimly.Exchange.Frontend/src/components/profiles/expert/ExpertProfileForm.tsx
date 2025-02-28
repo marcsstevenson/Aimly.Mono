@@ -3,35 +3,35 @@
 // Both the ExpertProfileEdit and ExpertProfileNew components use this component.
 
 import React, { useCallback } from 'react';
-import Pages from 'components/shared/Pages';
-import useSetExpertProfileMutation from 'useSetExpertProfileMutation';
-import useDeleteExpertProfileMutation from 'useDeleteExpertProfileMutation';
+import Pages from '@/components/shared/Pages';
+import useSetExpertProfileMutation from '@/useSetExpertProfileMutation';
+import useDeleteExpertProfileMutation from '@/useDeleteExpertProfileMutation';
 import {
   GetExpertProfileModelInput,
   useSetExpertProfileMutation$data,
-} from '__generated__/useSetExpertProfileMutation.graphql';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
+} from '@/__generated__/useSetExpertProfileMutation.graphql';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
 import { Field, Form, Formik } from 'formik';
-import validateRequiredString from 'validators/validateRequiredString';
-import validateRequiredHtml from 'validators/validateRequiredHtml';
-import GenericHeader from 'components/shared/GenericHeader';
+import validateRequiredString from '@/validators/validateRequiredString';
+import validateRequiredHtml from '@/validators/validateRequiredHtml';
+import GenericHeader from '@/components/shared/GenericHeader';
 import { Switch } from '@headlessui/react';
-import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
+import { SwitchWrapper } from '@/components/shared/SwitchWrapper';
+import { IndustrySelector } from '@/components/shared/MetaData/IndustrySelector';
 import { useState } from 'react';
-import { ConfirmDelete } from 'components/shared/ConfirmDelete';
-import { useUrlParser } from 'components/shared/useUrlParser';
+import { ConfirmDelete } from '@/components/shared/ConfirmDelete';
+import { useUrlParser } from '@/components/shared/useUrlParser';
 import {
   useDeleteExpertProfileMutation$data,
   useDeleteExpertProfileMutationVariables,
-} from '__generated__/useDeleteExpertProfileMutation.graphql';
-import { SkillSelector } from 'components/shared/MetaData/SkillSelector';
-import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+} from '@/__generated__/useDeleteExpertProfileMutation.graphql';
+import { SkillSelector } from '@/components/shared/MetaData/SkillSelector';
+import { getUrlForViewProfile } from '@/components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
-import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
-import ContentEdit from 'components/author/ContentEdit';
-import useDefaultEditor from 'components/author/useDefaultEditor';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { ContentEditWrapper } from '@/components/author/ContentEditWrapper';
+import ContentEdit from '@/components/author/ContentEdit';
+import useDefaultEditor from '@/components/author/useDefaultEditor';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 

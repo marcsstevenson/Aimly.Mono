@@ -1,5 +1,5 @@
-import { GetCurrentTenant } from 'tenant/TenantValues';
-import { TailwindColourOptions } from 'tenant/TenantTypeInterface';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
+import { TailwindColourOptions } from '@/tenant/TenantTypeInterface';
 const colors = require('tailwindcss/colors')
 
 interface tailwindColours {

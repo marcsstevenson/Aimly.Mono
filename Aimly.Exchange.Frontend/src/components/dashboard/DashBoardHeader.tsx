@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PrivateContext } from 'components/PrivateContext';
+import { PrivateContext } from '../PrivateContext';
 import { CheckCircleIcon, BuildingOffice2Icon } from '@heroicons/react/20/solid';
 
 const DashBoardHeader = () => {

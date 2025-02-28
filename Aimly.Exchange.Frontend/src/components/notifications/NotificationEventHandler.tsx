@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { useAuth0 } from '@auth0/auth0-react';
-import { PrivateContext } from 'components/PrivateContext';
+import { PrivateContext } from '../PrivateContext';
 
 const NotificationEventHandler = () => {
   const [connection, setConnection] = useState<null | HubConnection>(null);

@@ -1,5 +1,5 @@
-import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { ProfileTypeOption } from '@/__generated__/myProfilesQuery.graphql';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;

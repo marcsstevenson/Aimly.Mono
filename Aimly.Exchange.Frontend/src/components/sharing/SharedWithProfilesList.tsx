@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
-import { PrivateContext } from 'components/PrivateContext';
+import { PrivateContext } from '@/components/PrivateContext';
 import {
   sharedWithCompaniesQuery,
   default as node,
-} from '__generated__/sharedWithCompaniesQuery.graphql';
+} from '@/__generated__/sharedWithCompaniesQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import SharedWithProfileItem from 'components/sharing/SharedWithProfileItem';
+import SharedWithProfileItem from '@/components/sharing/SharedWithProfileItem';
 
 const SharedWithProfilesList = () => {
   const { userId } = useContext(PrivateContext);

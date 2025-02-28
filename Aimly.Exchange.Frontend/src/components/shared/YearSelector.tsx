@@ -2,9 +2,9 @@
 // Goes back 100 years
 
 import React, { useMemo } from 'react';
-import { ComboboxOption } from 'components/shared/GenericCombobox';
-import { FormikProps } from 'components/shared/FormikProps';
-import { GenericComboboxWrapper } from 'components/shared/GenericComboboxWrapper';
+import { ComboboxOption } from '@/components/shared/GenericCombobox';
+import { FormikProps } from '@/components/shared/FormikProps';
+import { GenericComboboxWrapper } from '@/components/shared/GenericComboboxWrapper';
 
 const endYear = new Date().getFullYear() + 1; // Allow a little editing for anticipated experience (eg, during late December)
 const startYear = endYear - 101; // Goes back 100 years

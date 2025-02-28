@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { useField } from 'formik';
-import ContentEdit from 'components/author/ContentEdit';
+import ContentEdit from '@/components/author/ContentEdit';
 
 export const ContentEditWrapper = (props: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -1,31 +1,31 @@
 import React, { useCallback, useContext, useState } from 'react';
-import Pages from 'components/shared/Pages';
+import Pages from '@/components/shared/Pages';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import useSetPersonalProfileMutation from 'useSetPersonalProfileMutation';
+import useSetPersonalProfileMutation from '@/useSetPersonalProfileMutation';
 import {
   GetPersonalProfileModelInput,
   useSetPersonalProfileMutation$data,
-} from '__generated__/useSetPersonalProfileMutation.graphql';
-import * as GetPersonalProfileQuery from '__generated__/getPersonalProfileQuery.graphql';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/PrivateContext';
+} from '@/__generated__/useSetPersonalProfileMutation.graphql';
+import * as GetPersonalProfileQuery from '@/__generated__/getPersonalProfileQuery.graphql';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
+import { PrivateContext } from '@/components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
-import validateRequiredString from 'validators/validateRequiredString';
-import ProfilePhotoSelector from 'components/shared/ProfilePhotoSelector';
-import { getLinkedInProfileFromAuthHelper } from 'components/shared/LinkedInProfileAuthHelper';
-import { getUsersLanguage } from 'components/shared/UsersLanguageHelper';
-import GenericHeader from 'components/shared/GenericHeader';
-import { IndustrySelector } from 'components/shared/MetaData/IndustrySelector';
-import { SkillSelector } from 'components/shared/MetaData/SkillSelector';
-import { TimezoneSelectWrapper } from 'components/shared/TimezoneSelectWrapper';
-import { PersonalProfileExperienceList } from 'components/profiles/personal/PersonalProfileExperienceList';
+import validateRequiredString from '@/validators/validateRequiredString';
+import ProfilePhotoSelector from '@/components/shared/ProfilePhotoSelector';
+import { getLinkedInProfileFromAuthHelper } from '@/components/shared/LinkedInProfileAuthHelper';
+import { getUsersLanguage } from '@/components/shared/UsersLanguageHelper';
+import GenericHeader from '@/components/shared/GenericHeader';
+import { IndustrySelector } from '@/components/shared/MetaData/IndustrySelector';
+import { SkillSelector } from '@/components/shared/MetaData/SkillSelector';
+import { TimezoneSelectWrapper } from '@/components/shared/TimezoneSelectWrapper';
+import { PersonalProfileExperienceList } from '@/components/profiles/personal/PersonalProfileExperienceList';
 import { Switch } from '@headlessui/react';
-import { SwitchWrapper } from 'components/shared/SwitchWrapper';
-import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+import { SwitchWrapper } from '@/components/shared/SwitchWrapper';
+import { getUrlForViewProfile } from '@/components/market/view/UrlForViewProfile';
 import { useNavigate } from 'react-router-dom';
-import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
-import useDefaultEditor from 'components/author/useDefaultEditor';
-import ContentEdit from 'components/author/ContentEdit';
+import { ContentEditWrapper } from '@/components/author/ContentEditWrapper';
+import useDefaultEditor from '@/components/author/useDefaultEditor';
+import ContentEdit from '@/components/author/ContentEdit';
 
 const PersonalProfileEdit = () => {
   const { user, userId } = useContext(PrivateContext);

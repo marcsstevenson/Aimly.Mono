@@ -1,24 +1,24 @@
 import React, { useCallback, useContext } from 'react';
-import Pages from 'components/shared/Pages';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import Loading from 'components/Loading';
+import Pages from '@/components/shared/Pages';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import Loading from '@/components/Loading';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import StartupQuestionnaireManager from 'components/for-startups/profile/edit/StartupQuestionnaireManager';
+import StartupQuestionnaireManager from '@/components/for-startups/profile/edit/StartupQuestionnaireManager';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import useSetTheProblemMutation from 'useSetTheProblemMutation';
+import useSetTheProblemMutation from '@/useSetTheProblemMutation';
 import {
   GetTheProblemModelInput,
   useSetTheProblemMutation$data,
-} from '__generated__/useSetTheProblemMutation.graphql';
-import * as GetTheProblemQuery from '__generated__/getTheProblemQuery.graphql';
-import useNavigateToPage from 'components/shared/useNavigateToPage';
-import { PrivateContext } from 'components/PrivateContext';
+} from '@/__generated__/useSetTheProblemMutation.graphql';
+import * as GetTheProblemQuery from '@/__generated__/getTheProblemQuery.graphql';
+import useNavigateToPage from '@/components/shared/useNavigateToPage';
+import { PrivateContext } from '@/components/PrivateContext';
 import { Field, Form, Formik } from 'formik';
-import validateRequiredHtml from 'validators/validateRequiredHtml';
+import validateRequiredHtml from '@/validators/validateRequiredHtml';
 import { useSearchParams } from 'react-router-dom';
-import { ContentEditWrapper } from 'components/author/ContentEditWrapper';
-import ContentEdit from 'components/author/ContentEdit';
-import useDefaultEditor from 'components/author/useDefaultEditor';
+import { ContentEditWrapper } from '@/components/author/ContentEditWrapper';
+import ContentEdit from '@/components/author/ContentEdit';
+import useDefaultEditor from '@/components/author/useDefaultEditor';
 
 const TheProblem = () => {
   const { userId } = useContext(PrivateContext);

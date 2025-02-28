@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { ThemeContext, ThemeOption } from 'components/ThemeContext';
+import { ThemeContext, ThemeOption } from './ThemeContext';
 
 const DarkModeSelector = () => {
   const themeContext = useContext(ThemeContext);

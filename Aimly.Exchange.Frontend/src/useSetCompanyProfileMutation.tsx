@@ -10,7 +10,7 @@ import {
   SetCompanyProfileCommandInput,
   GetCompanyProfileModelInput,
   useSetCompanyProfileMutation$data,
-} from '__generated__/useSetCompanyProfileMutation.graphql';
+} from '@/__generated__/useSetCompanyProfileMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

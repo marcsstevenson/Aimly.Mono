@@ -1,9 +1,9 @@
 import React from 'react';
 import StartupQuestionnaireSteps from './StartupQuestionnaireSteps';
-import GenericHeader from 'components/shared/GenericHeader';
-import { GetCurrentTenant } from 'tenant/TenantValues';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import Pages from 'components/shared/Pages';
+import GenericHeader from '@/components/shared/GenericHeader';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
+import { GetPathForPage } from '@/components/shared/AppRoutes';
+import Pages from '@/components/shared/Pages';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;

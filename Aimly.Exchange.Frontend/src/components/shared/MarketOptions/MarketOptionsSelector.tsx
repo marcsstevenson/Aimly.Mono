@@ -5,8 +5,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Combobox } from '@headlessui/react';
-import { MarketSearchOption } from 'components/shared/MarketOptions/MarketSearchOption';
-import { MarketOptionsList } from 'components/shared/MarketOptions/MarketOptionsList';
+import { MarketSearchOption } from '@/components/shared/MarketOptions/MarketSearchOption';
+import { MarketOptionsList } from '@/components/shared/MarketOptions/MarketOptionsList';
 
 interface MarketOptionsSelectorProps {
   // Fires when the user selects an option

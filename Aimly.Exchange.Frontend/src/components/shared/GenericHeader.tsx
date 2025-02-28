@@ -1,6 +1,6 @@
 import React from 'react';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import { context } from 'components/shared/UrlConstants';
+import useLocationQuery from './useLocationQuery';
+import { context } from './UrlConstants';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ const GenericHeader = (props: Props) => {
               {props.title}
             </h1>
             {contextVal && (
-              <h1 className="text-center text-5xl font-extrabold text-secondary-700 dark:text-secondary-400">
+              <h1 className="text-secondary-700 dark:text-secondary-400 text-center text-5xl font-extrabold">
                 {contextVal}
               </h1>
             )}
@@ -40,7 +40,7 @@ const GenericHeader = (props: Props) => {
               <button
                 type="button"
                 onClick={goBack}
-                className="inline-flex items-center rounded-full border border-transparent bg-primary-600 p-2 text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-flex items-center rounded-full border border-transparent p-2 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" aria-label="go back" />
               </button>

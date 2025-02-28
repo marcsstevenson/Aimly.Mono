@@ -10,7 +10,7 @@ import {
   SetTheProblemCommandInput,
   GetTheProblemModelInput,
   useSetTheProblemMutation$data,
-} from '__generated__/useSetTheProblemMutation.graphql';
+} from '@/__generated__/useSetTheProblemMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

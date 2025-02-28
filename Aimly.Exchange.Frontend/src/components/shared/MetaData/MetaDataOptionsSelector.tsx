@@ -7,7 +7,7 @@ import AppQuery, {
   metaDataOptionsQuery,
   metaDataOptionsQuery$data,
   metaDataOptionsQuery$variables,
-} from '__generated__/metaDataOptionsQuery.graphql';
+} from '@/__generated__/metaDataOptionsQuery.graphql';
 import { PreloadedQuery, usePreloadedQuery, useQueryLoader } from 'react-relay';
 import { classNames } from 'utils/classNames';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';

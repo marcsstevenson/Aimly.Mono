@@ -9,7 +9,7 @@ import {
   useDeleteExperienceMutation as mutationType,
   useDeleteExperienceMutationVariables,
   useDeleteExperienceMutation$data,
-} from '__generated__/useDeleteExperienceMutation.graphql';
+} from '@/__generated__/useDeleteExperienceMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import Pages from 'components/shared/Pages';
-import { GetPathForPage } from 'components/shared/AppRoutes';
+import Pages from './Pages';
+import { GetPathForPage } from './AppRoutes';
 
 // Takes a managed page enum value and navigates to it's matching path
 const useNavigateToPage = () => {

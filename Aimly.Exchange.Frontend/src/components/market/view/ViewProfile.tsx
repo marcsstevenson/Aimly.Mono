@@ -3,14 +3,14 @@
 
 import React from 'react';
 
-import TopGraphic from 'components/shared/TopGraphic';
-import ViewProfileHeader from 'components/market/view/ViewProfileHeader';
-import ViewAssociatedProfiles from 'components/market/view/ViewAssociatedProfiles';
-import ViewProfileLongFormElements from 'components/market/view/ViewProfileLongFormElements';
-import { ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
-import ViewExperienceList from 'components/market/view/ViewExperienceList';
-import NotVisibleToOtherUsers from 'components/market/view/NotVisibleToOtherUsers';
-import NoAccess from 'components/market/view/NoAccess';
+import TopGraphic from '../../shared/TopGraphic';
+import ViewProfileHeader from './ViewProfileHeader';
+import ViewAssociatedProfiles from './ViewAssociatedProfiles';
+import ViewProfileLongFormElements from './ViewProfileLongFormElements';
+import { ViewProfileProps } from './ViewProfileInterfaces';
+import ViewExperienceList from './ViewExperienceList';
+import NotVisibleToOtherUsers from './NotVisibleToOtherUsers';
+import NoAccess from './NoAccess';
 
 interface props {
   model: ViewProfileProps;

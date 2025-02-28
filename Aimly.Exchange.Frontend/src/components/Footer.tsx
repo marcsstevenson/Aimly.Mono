@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { GetCurrentTenant } from '../tenant/TenantValues';
 
 const navigation = {
   main: [

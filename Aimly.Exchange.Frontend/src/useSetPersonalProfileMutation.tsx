@@ -10,7 +10,7 @@ import {
   SetPersonalProfileCommandInput,
   GetPersonalProfileModelInput,
   useSetPersonalProfileMutation$data,
-} from '__generated__/useSetPersonalProfileMutation.graphql';
+} from '@/__generated__/useSetPersonalProfileMutation.graphql';
 
 import graphql from 'babel-plugin-relay/macro';
 

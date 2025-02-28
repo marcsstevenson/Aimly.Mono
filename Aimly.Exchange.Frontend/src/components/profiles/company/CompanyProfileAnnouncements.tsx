@@ -1,6 +1,6 @@
 import React from 'react';
 import CompanyProfileTabs from './CompanyProfileTabs';
-import Pages from 'components/shared/Pages';
+import Pages from '../../shared/Pages';
 
 const CompanyProfileAnnouncements = () => {
   return (

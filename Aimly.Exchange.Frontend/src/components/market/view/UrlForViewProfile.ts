@@ -1,7 +1,7 @@
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import Pages from 'components/shared/Pages';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import { profileId, profileType } from 'components/shared/UrlConstants';
+import { type ProfileTypeOption } from '../../../__generated__/marketSearchQuery.graphql';
+import Pages from '../../shared/Pages';
+import { GetPathForPage } from '../../shared/AppRoutes';
+import { profileId, profileType } from '../../shared/UrlConstants';
 
 export const buildForProfileId = (page: Pages, id: string): string => {
   return GetPathForPage(page).replace(`:${profileId}`, id);

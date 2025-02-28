@@ -1,7 +1,7 @@
 import jest from 'jest';
 import {
   buildQueryString,
-} from 'components/shared/MarketOptions/MarketSearchRequestHelpers';
+} from '@/components/shared/MarketOptions/MarketSearchRequestHelpers';
 import { MarketSearchRequest } from "components/market/MarketSearchRequest";
 
 test('buildQueryString handles +', () => {

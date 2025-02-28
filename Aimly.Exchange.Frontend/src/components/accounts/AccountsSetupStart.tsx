@@ -1,17 +1,17 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { PrivateContext } from 'components/PrivateContext';
-import useCreateAccountForEntityMutation from 'useCreateAccountForEntityMutation';
-import { GetPathForPage } from 'components/shared/AppRoutes';
+import { PrivateContext } from '@/components/PrivateContext';
+import useCreateAccountForEntityMutation from '@/useCreateAccountForEntityMutation';
+import { GetPathForPage } from '@/components/shared/AppRoutes';
 
 import stripeImage from 'assets/Stripe1.png';
 import {
   // GetAboutYouModelInput,
   useCreateAccountForEntityMutation$variables,
   useCreateAccountForEntityMutation$data,
-} from '__generated__/useCreateAccountForEntityMutation.graphql';
-import Pages from 'components/shared/Pages';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import { GetCurrentTenant } from 'tenant/TenantValues';
+} from '@/__generated__/useCreateAccountForEntityMutation.graphql';
+import Pages from '@/components/shared/Pages';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
 import { useNavigate } from 'react-router-dom';
 
@@ -64,7 +64,7 @@ const AccountsSetupStart = () => {
         <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
           <h1>
             <span className="mt-1 block text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl">
-              <span className="block text-secondary-600">Setup with Stripe</span>
+              <span className="text-secondary-600 block">Setup with Stripe</span>
             </span>
           </h1>
           <p className="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
@@ -91,7 +91,7 @@ const AccountsSetupStart = () => {
             </button>
             <button
               type="submit"
-              className="mt-3 w-full rounded-md border border-transparent bg-gray-800 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-100 sm:mt-0 sm:inline-flex sm:w-auto sm:flex-shrink-0 sm:items-center"
+              className="focus:ring-secondary-500 mt-3 w-full rounded-md border border-transparent bg-gray-800 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-100 sm:mt-0 sm:inline-flex sm:w-auto sm:flex-shrink-0 sm:items-center"
               onClick={begin}
             >
               Begin

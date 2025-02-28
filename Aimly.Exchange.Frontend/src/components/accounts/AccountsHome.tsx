@@ -1,17 +1,17 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { PrivateContext } from 'components/PrivateContext';
+import { PrivateContext } from '@/components/PrivateContext';
 import { useLazyLoadQuery, useQueryLoader } from 'react-relay/hooks';
 
-import AccountsStatus from 'components/accounts/AccountsStatus';
-import AccountsActivity from 'components/accounts/AccountsActivity';
-import AccountsHeader from 'components/accounts/AccountsHeader';
+import AccountsStatus from '@/components/accounts/AccountsStatus';
+import AccountsActivity from '@/components/accounts/AccountsActivity';
+import AccountsHeader from '@/components/accounts/AccountsHeader';
 import AppQuery, {
   companiesForAdministrationQuery,
   default as node,
   ProfileTypeOption,
-} from '__generated__/companiesForAdministrationQuery.graphql';
+} from '@/__generated__/companiesForAdministrationQuery.graphql';
 
-import { AccountsOption } from 'components/accounts/AccountsOption';
+import { AccountsOption } from '@/components/accounts/AccountsOption';
 import AccountsDetail from './AccountsDetail';
 
 // The purpose of this component is to display a summary of the accounts

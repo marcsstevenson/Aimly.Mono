@@ -1,18 +1,18 @@
 import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
-import { MarketSearchResults } from 'components/market/MarketSearchResultsComponent';
-import { MarketHeader } from 'components/market/MarketHeader';
-import { MarketSearchInput } from 'components/market/MarketSearchInput';
+import { MarketSearchResults } from '@/components/market/MarketSearchResultsComponent';
+import { MarketHeader } from '@/components/market/MarketHeader';
+import { MarketSearchInput } from '@/components/market/MarketSearchInput';
 import AppQuery, {
   marketSearchQuery,
   marketSearchQuery$variables,
-} from '__generated__/marketSearchQuery.graphql';
+} from '@/__generated__/marketSearchQuery.graphql';
 import { useQueryLoader } from 'react-relay';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { PageHeader } from 'components/shared/PageHeader';
+import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
+import { PageHeader } from '@/components/shared/PageHeader';
 import { useNavigate, useLocation } from 'react-router-dom';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import { LoadingArea } from 'components/shared/LoadingArea';
-import { MarketSearchRequest } from 'components/market/MarketSearchRequest';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import { LoadingArea } from '@/components/shared/LoadingArea';
+import { MarketSearchRequest } from '@/components/market/MarketSearchRequest';
 import {
   areSame,
   isEmpty,
@@ -23,9 +23,9 @@ import {
   industriesQueryStringVariable,
   locationsQueryStringVariable,
   timezonesQueryStringVariable,
-} from 'components/shared/MarketOptions/MarketSearchRequestHelpers';
+} from '@/components/shared/MarketOptions/MarketSearchRequestHelpers';
 
-import { GetCurrentTenant } from 'tenant/TenantValues';
+import { GetCurrentTenant } from '@/tenant/TenantValues';
 
 const currentTenant = GetCurrentTenant();
 const marketLabel = currentTenant.marketLabel;

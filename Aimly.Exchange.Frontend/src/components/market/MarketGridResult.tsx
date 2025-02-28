@@ -2,12 +2,12 @@
 // The user should also be able to navigate to a detailed view of the profile.
 
 import React, { useCallback, useMemo } from 'react';
-import resultIcon from 'assets/user-flat.svg';
-import { MarketSearchResult } from 'components/market/MarketSearchResultsProps';
-import { type ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { classNames } from 'utils/classNames';
+import resultIcon from '../../assets/user-flat.svg';
+import { MarketSearchResult } from '../market/MarketSearchResultsProps';
+import { type ProfileTypeOption } from '../../__generated__/marketSearchQuery.graphql';
+import { classNames } from '../../utils/classNames';
 import { NavLink } from 'react-router-dom';
-import { getUrlForViewProfile } from 'components/market/view/UrlForViewProfile';
+import { getUrlForViewProfile } from '../market/view/UrlForViewProfile';
 
 export interface Props {
   result: MarketSearchResult | null | undefined;
@@ -48,7 +48,7 @@ const MarketGridResult = ({ result, index }: Props) => {
   return (
     <li
       key={index}
-      className="col-span-1 flex min-w-[200px] flex-col divide-y divide-gray-200 rounded-lg border-2 border-transparent bg-white text-center shadow hover:border-secondary-400 dark:divide-gray-700 dark:bg-gray-900"
+      className="hover:border-secondary-400 col-span-1 flex min-w-[200px] flex-col divide-y divide-gray-200 rounded-lg border-2 border-transparent bg-white text-center shadow dark:divide-gray-700 dark:bg-gray-900"
     >
       <NavLink
         to={{

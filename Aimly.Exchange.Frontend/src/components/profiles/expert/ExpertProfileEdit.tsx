@@ -4,12 +4,12 @@
 
 import React, { useContext, useMemo } from 'react';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import { GetExpertProfileModelInput } from '__generated__/useSetExpertProfileMutation.graphql';
-import * as GetExpertProfileQuery from '__generated__/getExpertProfileQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import ExpertProfileForm from 'components/profiles/expert/ExpertProfileForm';
-import { PopulateInputModel } from 'components/profiles/expert/ExpertProfileHelpers';
+import { GetExpertProfileModelInput } from '@/__generated__/useSetExpertProfileMutation.graphql';
+import * as GetExpertProfileQuery from '@/__generated__/getExpertProfileQuery.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import ExpertProfileForm from '@/components/profiles/expert/ExpertProfileForm';
+import { PopulateInputModel } from '@/components/profiles/expert/ExpertProfileHelpers';
 
 const ExpertProfileEdit = () => {
   const { userId } = useContext(PrivateContext);

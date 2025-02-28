@@ -2,14 +2,14 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import TopBar from './TopBar';
-import { GetPrivateRoutes, GetRouteItemForPath } from 'components/shared/AppRoutes';
+import { GetPrivateRoutes, GetRouteItemForPath } from './shared/AppRoutes';
 import SideBar from './SideBar';
 import { CheckedInUserModel, PrivateContext, PrivateContextType } from './PrivateContext';
-import useCheckInMutation2 from 'useCheckInMutation2';
-import { LoadingArea } from 'components/shared/LoadingArea';
+import useCheckInMutation2 from '../useCheckInMutation2';
+import { LoadingArea } from './shared/LoadingArea';
 import { useLocation } from 'react-router-dom';
-import Footer from 'components/Footer';
-import NotificationEventHandler from 'components/notifications/NotificationEventHandler';
+import Footer from './Footer';
+import NotificationEventHandler from './notifications/NotificationEventHandler';
 
 const PrivateShell = (): JSX.Element => {
   const { isLoading, error, user } = useAuth0();

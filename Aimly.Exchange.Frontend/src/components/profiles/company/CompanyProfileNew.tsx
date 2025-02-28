@@ -4,11 +4,11 @@
 // for a blank model (which is unnecessary traffic and confuses Relay).
 
 import React, { useContext } from 'react';
-import { GetCompanyProfileModelInput } from '__generated__/useSetCompanyProfileMutation.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import CompanyProfileForm from 'components/profiles/company/CompanyProfileForm';
-import { PopulateInputModel } from 'components/profiles/company/CompanyProfileHelpers';
-import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
+import { GetCompanyProfileModelInput } from '@/__generated__/useSetCompanyProfileMutation.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
+import CompanyProfileForm from '@/components/profiles/company/CompanyProfileForm';
+import { PopulateInputModel } from '@/components/profiles/company/CompanyProfileHelpers';
+import { getCompanyProfileQuery$data } from '@/__generated__/getCompanyProfileQuery.graphql';
 
 const CompanyProfileNew = () => {
   const { userId } = useContext(PrivateContext);

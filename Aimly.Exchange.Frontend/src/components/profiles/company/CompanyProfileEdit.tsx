@@ -4,13 +4,13 @@
 
 import React, { useContext, useMemo } from 'react';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import { GetCompanyProfileModelInput } from '__generated__/useSetCompanyProfileMutation.graphql';
-import * as GetCompanyProfileQuery from '__generated__/getCompanyProfileQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import useLocationQuery from 'components/shared/useLocationQuery';
-import CompanyProfileForm from 'components/profiles/company/CompanyProfileForm';
-import { PopulateInputModel } from 'components/profiles/company/CompanyProfileHelpers';
-import { getCompanyProfileQuery$data } from '__generated__/getCompanyProfileQuery.graphql';
+import { GetCompanyProfileModelInput } from '@/__generated__/useSetCompanyProfileMutation.graphql';
+import * as GetCompanyProfileQuery from '@/__generated__/getCompanyProfileQuery.graphql';
+import { PrivateContext } from '@/components/PrivateContext';
+import useLocationQuery from '@/components/shared/useLocationQuery';
+import CompanyProfileForm from '@/components/profiles/company/CompanyProfileForm';
+import { PopulateInputModel } from '@/components/profiles/company/CompanyProfileHelpers';
+import { getCompanyProfileQuery$data } from '@/__generated__/getCompanyProfileQuery.graphql';
 
 const CompanyProfileEdit = () => {
   const { userId } = useContext(PrivateContext);

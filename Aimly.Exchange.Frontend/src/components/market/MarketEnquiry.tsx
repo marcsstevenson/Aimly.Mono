@@ -6,21 +6,22 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ChatBubbleLeftEllipsisIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Field, Form, Formik } from 'formik';
-import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import validateRequiredString from 'validators/validateRequiredString';
-import validateTrue from 'validators/validateTrue';
+
 import {
   MarketEnquiryModelInput,
+  ProfileTypeOption,
   useMarketEnquiryMutation$data,
-} from '__generated__/useMarketEnquiryMutation.graphql';
-import useMarketEnquiryMutation from 'useMarketEnquiryMutation';
-import { BudgetOptions } from 'components/shared/BudgetOptions';
-import { ComboboxOption, GenericCombobox } from 'components/shared/GenericCombobox';
-import { GenericComboboxWrapper } from 'components/shared/GenericComboboxWrapper';
-import { myProfilesQuery, default as node } from '__generated__/myProfilesQuery.graphql';
+} from '@/__generated__/useMarketEnquiryMutation.graphql';
+import { GenericComboboxWrapper } from '@/components/shared/GenericComboboxWrapper';
+import { myProfilesQuery, default as node } from '@/__generated__/myProfilesQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
-import { notEmpty } from 'utils/NotEmpty';
+import { BudgetOptions } from '@/components/shared/BudgetOptions';
+import { PrivateContext } from '@/components/PrivateContext';
+import validateRequiredString from '@/validators/validateRequiredString';
+import validateTrue from '@/validators/validateTrue';
+import useMarketEnquiryMutation from '@/useMarketEnquiryMutation';
+import { notEmpty } from '@/utils/NotEmpty';
+import { ComboboxOption, GenericCombobox } from '@/components/shared/GenericCombobox';
 
 interface Props {
   show: boolean;
@@ -162,7 +163,7 @@ const MarketEnquiry = ({ profileId, profileType, show, onDone }: Props) => {
               <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
                 <button
                   type="button"
-                  className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:bg-gray-800"
+                  className="focus:ring-secondary-500 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-800"
                   onClick={() => onDone()}
                 >
                   <span className="sr-only">Close</span>
@@ -170,9 +171,9 @@ const MarketEnquiry = ({ profileId, profileType, show, onDone }: Props) => {
                 </button>
               </div>
               <div className="sm:flex sm:items-start">
-                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary-100 sm:mx-0 sm:h-10 sm:w-10">
+                <div className="bg-secondary-100 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10">
                   <ChatBubbleLeftEllipsisIcon
-                    className="h-6 w-6 text-secondary-600"
+                    className="text-secondary-600 h-6 w-6"
                     aria-hidden="true"
                   />
                 </div>
@@ -294,7 +295,7 @@ const MarketEnquiry = ({ profileId, profileType, show, onDone }: Props) => {
                     <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                       <button
                         type="submit"
-                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-secondary-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 disabled:bg-secondary-300 sm:ml-3 sm:w-auto sm:text-sm"
+                        className="bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 disabled:bg-secondary-300 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                         disabled={isValidating || isSubmitting}
                       >
                         Send
@@ -305,7 +306,7 @@ const MarketEnquiry = ({ profileId, profileType, show, onDone }: Props) => {
                       </button>
                       <button
                         type="button"
-                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none  focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 disabled:text-gray-400 disabled:hover:bg-white sm:mt-0 sm:w-auto sm:text-sm"
+                        className="focus:ring-secondary-500 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-100  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:text-gray-400 disabled:hover:bg-white sm:mt-0 sm:w-auto sm:text-sm"
                         onClick={() => onDone()}
                         ref={cancelButtonRef}
                         disabled={isValidating || isSubmitting}

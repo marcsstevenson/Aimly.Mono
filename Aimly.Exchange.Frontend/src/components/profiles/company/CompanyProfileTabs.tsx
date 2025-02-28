@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { ChatBubbleBottomCenterIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/20/solid';
-import { classNames } from 'utils/classNames';
+import { classNames } from '../../../utils/classNames';
 import { Link, useSearchParams } from 'react-router-dom';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import Pages from 'components/shared/Pages';
-import GenericHeader from 'components/shared/GenericHeader';
+import { GetPathForPage } from '../../shared/AppRoutes';
+import Pages from '../../shared/Pages';
+import GenericHeader from '../../shared/GenericHeader';
 
 // This is the tabbing component for the company profile area
 // It allows navigation between the following areas
@@ -94,7 +94,7 @@ const CompanyProfileTabs = ({
           <select
             id="tabs"
             name="tabs"
-            className="block w-full rounded-md border-gray-300 focus:border-secondary-500 focus:ring-secondary-500"
+            className="focus:border-secondary-500 focus:ring-secondary-500 block w-full rounded-md border-gray-300"
             defaultValue={tabs.find((tab) => tab.current)?.name}
           >
             {tabs.map((tab) => (

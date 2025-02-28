@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useAcceptInviteMutation$data } from '__generated__/useAcceptInviteMutation.graphql';
-import useAcceptInviteMutation from 'useAcceptInviteMutation';
-import Pages from 'components/shared/Pages';
-import { PrivateContext } from 'components/PrivateContext';
-import useLocationQuery from 'components/shared/useLocationQuery';
+import { useAcceptInviteMutation$data } from '@/__generated__/useAcceptInviteMutation.graphql';
+import useAcceptInviteMutation from '@/useAcceptInviteMutation';
+import Pages from '@/components/shared/Pages';
+import { PrivateContext } from '@/components/PrivateContext';
+import useLocationQuery from '@/components/shared/useLocationQuery';
 import { NavLink } from 'react-router-dom';
-import { GetPathForPage } from 'components/shared/AppRoutes';
-import { inviteCodeValue, associationNameValue } from 'components/shared/UrlConstants';
+import { GetPathForPage } from '@/components/shared/AppRoutes';
+import { inviteCodeValue, associationNameValue } from '@/components/shared/UrlConstants';
 
 const AcceptInvite = () => {
   const { userId } = useContext(PrivateContext);

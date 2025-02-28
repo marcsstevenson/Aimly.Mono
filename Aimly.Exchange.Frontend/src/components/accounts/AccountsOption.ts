@@ -1,4 +1,4 @@
-import { ProfileTypeOption } from '__generated__/companiesForAdministrationQuery.graphql';
+import { ProfileTypeOption } from '@/__generated__/companiesForAdministrationQuery.graphql';
 
 export interface AccountsOption {
   id: string;

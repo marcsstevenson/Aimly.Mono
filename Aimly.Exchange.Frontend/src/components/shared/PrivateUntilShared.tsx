@@ -1,5 +1,5 @@
 import React from 'react';
-import ToolTip from 'components/shared/ToolTip';
+import ToolTip from '@/components/shared/ToolTip';
 
 const PrivateUntilShared = () => {
   return (

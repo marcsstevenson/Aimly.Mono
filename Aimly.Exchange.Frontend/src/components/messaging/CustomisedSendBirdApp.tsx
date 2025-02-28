@@ -9,8 +9,8 @@ export {};
 //   GroupChannelType,
 // } from 'sendbird-uikit';
 // import 'sendbird-uikit/dist/index.css';
-// import { ThemeContext } from 'components/ThemeContext';
-// import { buildSendBirdColourSet } from 'components/messaging/SendBirdColourSet';
+// import { ThemeContext } from '@/components/ThemeContext';
+// import { buildSendBirdColourSet } from '@/components/messaging/SendBirdColourSet';
 // import ChatHeader from './ChatHeader';
 // import ChannelPreview from './ChannelPreview';
 // import './SendBirdStyles.css';

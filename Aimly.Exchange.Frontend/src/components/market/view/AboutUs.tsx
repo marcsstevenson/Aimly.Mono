@@ -1,13 +1,13 @@
 import React, { useContext, useMemo } from 'react';
-import * as ViewTenantCompanyProfileQuery from '__generated__/getViewTenantCompanyProfileQuery.graphql';
+import * as ViewTenantCompanyProfileQuery from '../../../__generated__/getViewTenantCompanyProfileQuery.graphql';
 import { useLazyLoadQuery } from 'react-relay/hooks';
 import { useParams } from 'react-router-dom';
-import { LongFormElement, ViewProfileProps } from 'components/market/view/ViewProfileInterfaces';
-import ViewProfile from 'components/market/view/ViewProfile';
-import { ProfileTypeOption } from '__generated__/marketSearchQuery.graphql';
-import { PrivateContext } from 'components/PrivateContext';
-import { GetCurrentTenant } from 'tenant/TenantValues';
-import { BuildViewProfileProps } from 'components/market/view/CompanyProfileUtils';
+import { LongFormElement, ViewProfileProps } from './ViewProfileInterfaces';
+import ViewProfile from './ViewProfile';
+import { ProfileTypeOption } from '../../../__generated__/marketSearchQuery.graphql';
+import { PrivateContext } from '../../PrivateContext';
+import { GetCurrentTenant } from '../../../tenant/TenantValues';
+import { BuildViewProfileProps } from './CompanyProfileUtils';
 
 const currentTenant = GetCurrentTenant();
 const company = currentTenant.companyOptions.singularName;

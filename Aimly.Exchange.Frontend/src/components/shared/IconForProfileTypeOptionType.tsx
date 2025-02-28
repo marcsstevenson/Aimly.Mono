@@ -1,4 +1,4 @@
-import { ProfileTypeOption } from '__generated__/myProfilesQuery.graphql';
+import { ProfileTypeOption } from '@/__generated__/myProfilesQuery.graphql';
 import { UserCircleIcon, BoltIcon, UserGroupIcon, StarIcon } from '@heroicons/react/20/solid';
 
 export const getIconForProfileTypeOptionType = (type: ProfileTypeOption) => {
