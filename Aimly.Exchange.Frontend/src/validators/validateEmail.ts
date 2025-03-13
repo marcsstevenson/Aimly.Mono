@@ -1,6 +1,4 @@
 const validateEmail = (email: string): string | undefined => {
-  let error: string | undefined;
-
   if (!email) {
     return 'Required';
   }
