@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9f10a1cab3c462eb179233f1323ff65b>>
+ * @generated SignedSource<<6dead34f824b16707d5b1ac59c1b72d8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,23 +9,21 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
 export type sharedWithCompaniesQuery$variables = {
   userId: any;
 };
-export type sharedWithCompaniesQueryVariables = sharedWithCompaniesQuery$variables;
 export type sharedWithCompaniesQuery$data = {
   readonly sharedWithCompanies: ReadonlyArray<{
     readonly id: any;
+    readonly name: string | null | undefined;
     readonly profileId: any;
-    readonly name: string | null;
     readonly type: ProfileTypeOption;
-  } | null> | null;
+  } | null | undefined> | null | undefined;
 };
-export type sharedWithCompaniesQueryResponse = sharedWithCompaniesQuery$data;
 export type sharedWithCompaniesQuery = {
-  variables: sharedWithCompaniesQueryVariables;
   response: sharedWithCompaniesQuery$data;
+  variables: sharedWithCompaniesQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

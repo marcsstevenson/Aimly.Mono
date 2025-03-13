@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f06c078c269649c5c48a773c2ff68aa7>>
+ * @generated SignedSource<<cb4acca95408e07e5e023e48bf50db73>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,19 +10,17 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type useDeleteExpertProfileMutation$variables = {
-  userId: any;
   profileId: any;
+  userId: any;
 };
-export type useDeleteExpertProfileMutationVariables = useDeleteExpertProfileMutation$variables;
 export type useDeleteExpertProfileMutation$data = {
   readonly deleteExpertProfile: {
     readonly deletedProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useDeleteExpertProfileMutationResponse = useDeleteExpertProfileMutation$data;
 export type useDeleteExpertProfileMutation = {
-  variables: useDeleteExpertProfileMutationVariables;
   response: useDeleteExpertProfileMutation$data;
+  variables: useDeleteExpertProfileMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

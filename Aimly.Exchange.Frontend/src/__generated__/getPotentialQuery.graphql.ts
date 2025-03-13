@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1d43d40f6dd8ae049bb1a679bcfb71ef>>
+ * @generated SignedSource<<0501716e0fbe1b2ba74e676fc53a43f3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,23 +10,21 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getPotentialQuery$variables = {
-  id: any;
   companyProfileId: any;
+  id: any;
 };
-export type getPotentialQueryVariables = getPotentialQuery$variables;
 export type getPotentialQuery$data = {
   readonly getPotential: {
-    readonly userId: any;
     readonly companyProfileId: any;
-    readonly value: string | null;
-    readonly potentialSize: string | null;
-    readonly potentialValue: string | null;
-  } | null;
+    readonly potentialSize: string | null | undefined;
+    readonly potentialValue: string | null | undefined;
+    readonly userId: any;
+    readonly value: string | null | undefined;
+  } | null | undefined;
 };
-export type getPotentialQueryResponse = getPotentialQuery$data;
 export type getPotentialQuery = {
-  variables: getPotentialQueryVariables;
   response: getPotentialQuery$data;
+  variables: getPotentialQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

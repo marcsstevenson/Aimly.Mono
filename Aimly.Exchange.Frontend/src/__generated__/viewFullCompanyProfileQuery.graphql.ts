@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c29276d225abccc8ef725f133045c10c>>
+ * @generated SignedSource<<eb6499526dd9d39f1edd9246d254f5e1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,50 +13,48 @@ export type viewFullCompanyProfileQuery$variables = {
   companyProfileId: any;
   userId: any;
 };
-export type viewFullCompanyProfileQueryVariables = viewFullCompanyProfileQuery$variables;
 export type viewFullCompanyProfileQuery$data = {
   readonly viewFullCompanyProfile: {
-    readonly id: string | null;
+    readonly addressCity: string | null | undefined;
+    readonly addressCountry: string | null | undefined;
+    readonly addressLocality: string | null | undefined;
+    readonly addressRegion: string | null | undefined;
+    readonly businessModel: string | null | undefined;
+    readonly companyEmail: string | null | undefined;
+    readonly companyName: string | null | undefined;
+    readonly companyPhoneNumber: string | null | undefined;
     readonly companyProfileId: any;
-    readonly profilePictureUrl: string | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly companyName: string | null;
-    readonly companyPhoneNumber: string | null;
-    readonly companyEmail: string | null;
-    readonly type: string | null;
-    readonly website: string | null;
-    readonly numberOfFounders: number | null;
-    readonly floor: string | null;
-    readonly streetNumber: string | null;
-    readonly streetName: string | null;
-    readonly addressLocality: string | null;
-    readonly addressCity: string | null;
-    readonly addressRegion: string | null;
-    readonly addressCountry: string | null;
-    readonly postalCode: string | null;
-    readonly postOfficeBoxNumber: string | null;
+    readonly competition: string | null | undefined;
+    readonly currentAnnualRevenue: string | null | undefined;
+    readonly externalFunding: string | null | undefined;
+    readonly floor: string | null | undefined;
+    readonly founders: string | null | undefined;
+    readonly id: string | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
     readonly listOnMarket: boolean;
-    readonly purposeDetails: string | null;
-    readonly problemDetails: string | null;
-    readonly solutionNovelty: string | null;
-    readonly solutionDescription: string | null;
-    readonly stateOfValidation: string | null;
-    readonly competition: string | null;
-    readonly positionVsCompetition: string | null;
-    readonly businessModel: string | null;
-    readonly traction: string | null;
-    readonly founders: string | null;
-    readonly currentAnnualRevenue: string | null;
-    readonly externalFunding: string | null;
-    readonly value: string | null;
-    readonly potentialSize: string | null;
-    readonly potentialValue: string | null;
-  } | null;
+    readonly numberOfFounders: number | null | undefined;
+    readonly positionVsCompetition: string | null | undefined;
+    readonly postOfficeBoxNumber: string | null | undefined;
+    readonly postalCode: string | null | undefined;
+    readonly potentialSize: string | null | undefined;
+    readonly potentialValue: string | null | undefined;
+    readonly problemDetails: string | null | undefined;
+    readonly profilePictureUrl: string | null | undefined;
+    readonly purposeDetails: string | null | undefined;
+    readonly solutionDescription: string | null | undefined;
+    readonly solutionNovelty: string | null | undefined;
+    readonly stateOfValidation: string | null | undefined;
+    readonly streetName: string | null | undefined;
+    readonly streetNumber: string | null | undefined;
+    readonly traction: string | null | undefined;
+    readonly type: string | null | undefined;
+    readonly value: string | null | undefined;
+    readonly website: string | null | undefined;
+  } | null | undefined;
 };
-export type viewFullCompanyProfileQueryResponse = viewFullCompanyProfileQuery$data;
 export type viewFullCompanyProfileQuery = {
-  variables: viewFullCompanyProfileQueryVariables;
   response: viewFullCompanyProfileQuery$data;
+  variables: viewFullCompanyProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

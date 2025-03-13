@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<acfc5a8488cc5def7af360643e699cdf>>
+ * @generated SignedSource<<a4a26be2275f830d7ef9f7764039ca87>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,51 +10,49 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetPersonalProfileCommandInput = {
-  getPersonalProfileModel?: GetPersonalProfileModelInput | null;
+  getPersonalProfileModel?: GetPersonalProfileModelInput | null | undefined;
 };
 export type GetPersonalProfileModelInput = {
-  userId?: any | null;
+  about?: string | null | undefined;
+  addressCity?: string | null | undefined;
+  addressCountry?: string | null | undefined;
+  addressRegion?: string | null | undefined;
+  employmentExperience?: ReadonlyArray<ExperienceModelInput | null | undefined> | null | undefined;
+  familyName?: string | null | undefined;
+  givenName?: string | null | undefined;
+  industries?: ReadonlyArray<string | null | undefined> | null | undefined;
+  language?: string | null | undefined;
+  linkedInProfile?: string | null | undefined;
   listOnMarket: boolean;
-  language?: string | null;
-  personalProfilePictureUrl?: string | null;
-  about?: string | null;
-  timezone?: string | null;
-  givenName?: string | null;
-  familyName?: string | null;
-  phoneNumber?: string | null;
-  addressCity?: string | null;
-  addressRegion?: string | null;
-  postalCode?: string | null;
-  addressCountry?: string | null;
-  linkedInProfile?: string | null;
-  industries?: ReadonlyArray<string | null> | null;
-  skills?: ReadonlyArray<string | null> | null;
-  employmentExperience?: ReadonlyArray<ExperienceModelInput | null> | null;
+  personalProfilePictureUrl?: string | null | undefined;
+  phoneNumber?: string | null | undefined;
+  postalCode?: string | null | undefined;
+  skills?: ReadonlyArray<string | null | undefined> | null | undefined;
+  timezone?: string | null | undefined;
+  userId?: any | null | undefined;
 };
 export type ExperienceModelInput = {
-  id?: any | null;
-  stickToTop: boolean;
-  title?: string | null;
-  organisation?: string | null;
-  description?: string | null;
+  description?: string | null | undefined;
+  endMonth?: number | null | undefined;
+  endYear?: number | null | undefined;
+  id?: any | null | undefined;
+  organisation?: string | null | undefined;
   startMonth: number;
   startYear: number;
-  endMonth?: number | null;
-  endYear?: number | null;
+  stickToTop: boolean;
+  title?: string | null | undefined;
 };
 export type useSetPersonalProfileMutation$variables = {
   input: SetPersonalProfileCommandInput;
 };
-export type useSetPersonalProfileMutationVariables = useSetPersonalProfileMutation$variables;
 export type useSetPersonalProfileMutation$data = {
   readonly setPersonalProfile: {
     readonly updatedPersonalProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetPersonalProfileMutationResponse = useSetPersonalProfileMutation$data;
 export type useSetPersonalProfileMutation = {
-  variables: useSetPersonalProfileMutationVariables;
   response: useSetPersonalProfileMutation$data;
+  variables: useSetPersonalProfileMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

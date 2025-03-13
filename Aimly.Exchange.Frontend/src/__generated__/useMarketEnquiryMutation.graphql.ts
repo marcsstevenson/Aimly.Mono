@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<01c76cf1eb5d480971f9b5d0e5b9df20>>
+ * @generated SignedSource<<dbc6596a3e5c78816c9580e9d65be181>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,30 +9,28 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
 export type MarketEnquiryModelInput = {
-  fromProfileId?: any | null;
-  fromProfileType?: ProfileTypeOption | null;
+  comments?: string | null | undefined;
+  fromProfileId?: any | null | undefined;
+  fromProfileType?: ProfileTypeOption | null | undefined;
+  projectBudget: string;
+  servicesNeeded: string;
   toProfileId: any;
   toProfileType: ProfileTypeOption;
-  servicesNeeded: string;
-  comments?: string | null;
-  projectBudget: string;
 };
 export type useMarketEnquiryMutation$variables = {
-  userId: any;
   marketEnquiryModel: MarketEnquiryModelInput;
+  userId: any;
 };
-export type useMarketEnquiryMutationVariables = useMarketEnquiryMutation$variables;
 export type useMarketEnquiryMutation$data = {
   readonly marketEnquiry: {
-    readonly error: string | null;
-  } | null;
+    readonly error: string | null | undefined;
+  } | null | undefined;
 };
-export type useMarketEnquiryMutationResponse = useMarketEnquiryMutation$data;
 export type useMarketEnquiryMutation = {
-  variables: useMarketEnquiryMutationVariables;
   response: useMarketEnquiryMutation$data;
+  variables: useMarketEnquiryMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<26ecd2b3fcc0f4276c69ac363f1cea9c>>
+ * @generated SignedSource<<e545618a1593c3cc7459ba94a6cddd22>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,70 +9,68 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
 export type getViewPersonalProfileQuery$variables = {
   personalProfileId: any;
-  userId?: any | null;
+  userId?: any | null | undefined;
 };
-export type getViewPersonalProfileQueryVariables = getViewPersonalProfileQuery$variables;
 export type getViewPersonalProfileQuery$data = {
   readonly getViewPersonalProfile: {
-    readonly id: string | null;
-    readonly listOnMarket: boolean;
-    readonly isUsersProfile: boolean;
-    readonly userCanAccessProfile: boolean;
-    readonly personalProfileId: any;
-    readonly userPublicId: any | null;
-    readonly fullName: string | null;
-    readonly profilePictureUrl: string | null;
-    readonly linkedInProfile: string | null;
-    readonly addressCity: string | null;
-    readonly addressRegion: string | null;
-    readonly addressCountry: string | null;
-    readonly about: string | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly skills: ReadonlyArray<string | null> | null;
+    readonly about: string | null | undefined;
+    readonly addressCity: string | null | undefined;
+    readonly addressCountry: string | null | undefined;
+    readonly addressRegion: string | null | undefined;
+    readonly associatedExpertProfiles: ReadonlyArray<{
+      readonly description: string | null | undefined;
+      readonly id: any;
+      readonly name: string | null | undefined;
+      readonly profileId: any;
+      readonly profilePictureUrl: string | null | undefined;
+      readonly type: ProfileTypeOption;
+    } | null | undefined> | null | undefined;
+    readonly associatedMentorProfiles: ReadonlyArray<{
+      readonly description: string | null | undefined;
+      readonly id: any;
+      readonly name: string | null | undefined;
+      readonly profileId: any;
+      readonly profilePictureUrl: string | null | undefined;
+      readonly type: ProfileTypeOption;
+    } | null | undefined> | null | undefined;
+    readonly associatedStartupProfiles: ReadonlyArray<{
+      readonly description: string | null | undefined;
+      readonly id: any;
+      readonly name: string | null | undefined;
+      readonly profileId: any;
+      readonly profilePictureUrl: string | null | undefined;
+      readonly type: ProfileTypeOption;
+    } | null | undefined> | null | undefined;
     readonly employmentExperience: ReadonlyArray<{
-      readonly id: any | null;
-      readonly stickToTop: boolean;
-      readonly title: string | null;
-      readonly organisation: string | null;
-      readonly description: string | null;
+      readonly description: string | null | undefined;
+      readonly endMonth: number | null | undefined;
+      readonly endYear: number | null | undefined;
+      readonly id: any | null | undefined;
+      readonly organisation: string | null | undefined;
       readonly startMonth: number;
       readonly startYear: number;
-      readonly endMonth: number | null;
-      readonly endYear: number | null;
-    } | null> | null;
-    readonly associatedStartupProfiles: ReadonlyArray<{
-      readonly id: any;
-      readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
-      readonly type: ProfileTypeOption;
-    } | null> | null;
-    readonly associatedMentorProfiles: ReadonlyArray<{
-      readonly id: any;
-      readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
-      readonly type: ProfileTypeOption;
-    } | null> | null;
-    readonly associatedExpertProfiles: ReadonlyArray<{
-      readonly id: any;
-      readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
-      readonly type: ProfileTypeOption;
-    } | null> | null;
-  } | null;
+      readonly stickToTop: boolean;
+      readonly title: string | null | undefined;
+    } | null | undefined> | null | undefined;
+    readonly fullName: string | null | undefined;
+    readonly id: string | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly isUsersProfile: boolean;
+    readonly linkedInProfile: string | null | undefined;
+    readonly listOnMarket: boolean;
+    readonly personalProfileId: any;
+    readonly profilePictureUrl: string | null | undefined;
+    readonly skills: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly userCanAccessProfile: boolean;
+    readonly userPublicId: any | null | undefined;
+  } | null | undefined;
 };
-export type getViewPersonalProfileQueryResponse = getViewPersonalProfileQuery$data;
 export type getViewPersonalProfileQuery = {
-  variables: getViewPersonalProfileQueryVariables;
   response: getViewPersonalProfileQuery$data;
+  variables: getViewPersonalProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

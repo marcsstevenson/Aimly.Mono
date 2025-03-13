@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c75533feedc6e708cd6ca148db490c6d>>
+ * @generated SignedSource<<457a9c50c67d14cc85d4dd7975033ae9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,39 +9,37 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
-export type getViewTenantCompanyProfileQuery$variables = {};
-export type getViewTenantCompanyProfileQueryVariables = getViewTenantCompanyProfileQuery$variables;
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
+export type getViewTenantCompanyProfileQuery$variables = Record<PropertyKey, never>;
 export type getViewTenantCompanyProfileQuery$data = {
   readonly getViewTenantCompanyProfile: {
-    readonly id: string | null;
-    readonly listOnMarket: boolean;
-    readonly isUsersProfile: boolean;
-    readonly userCanAccessProfile: boolean;
-    readonly companyProfileId: any;
-    readonly companyName: string | null;
-    readonly profilePictureUrl: string | null;
-    readonly website: string | null;
-    readonly addressCity: string | null;
-    readonly addressRegion: string | null;
-    readonly addressCountry: string | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly problemDetails: string | null;
-    readonly solutionDescription: string | null;
+    readonly addressCity: string | null | undefined;
+    readonly addressCountry: string | null | undefined;
+    readonly addressRegion: string | null | undefined;
     readonly associatedProfiles: ReadonlyArray<{
+      readonly description: string | null | undefined;
       readonly id: any;
+      readonly name: string | null | undefined;
       readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
+      readonly profilePictureUrl: string | null | undefined;
       readonly type: ProfileTypeOption;
-    } | null> | null;
-  } | null;
+    } | null | undefined> | null | undefined;
+    readonly companyName: string | null | undefined;
+    readonly companyProfileId: any;
+    readonly id: string | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly isUsersProfile: boolean;
+    readonly listOnMarket: boolean;
+    readonly problemDetails: string | null | undefined;
+    readonly profilePictureUrl: string | null | undefined;
+    readonly solutionDescription: string | null | undefined;
+    readonly userCanAccessProfile: boolean;
+    readonly website: string | null | undefined;
+  } | null | undefined;
 };
-export type getViewTenantCompanyProfileQueryResponse = getViewTenantCompanyProfileQuery$data;
 export type getViewTenantCompanyProfileQuery = {
-  variables: getViewTenantCompanyProfileQueryVariables;
   response: getViewTenantCompanyProfileQuery$data;
+  variables: getViewTenantCompanyProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

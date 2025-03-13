@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1632ac4c2e4f01732a38cd303ac7de04>>
+ * @generated SignedSource<<e9cebb511a4dbbb3d8b4fe2f0291107b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,21 +10,19 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SendDirectMessageCommandInput = {
-  fromUserId?: string | null;
-  toUserId?: string | null;
-  message?: string | null;
+  fromUserId?: string | null | undefined;
+  message?: string | null | undefined;
+  toUserId?: string | null | undefined;
 };
 export type useSendDirectMessageMutation$variables = {
   command: SendDirectMessageCommandInput;
 };
-export type useSendDirectMessageMutationVariables = useSendDirectMessageMutation$variables;
 export type useSendDirectMessageMutation$data = {
   readonly sendDirectMessage: any;
 };
-export type useSendDirectMessageMutationResponse = useSendDirectMessageMutation$data;
 export type useSendDirectMessageMutation = {
-  variables: useSendDirectMessageMutationVariables;
   response: useSendDirectMessageMutation$data;
+  variables: useSendDirectMessageMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

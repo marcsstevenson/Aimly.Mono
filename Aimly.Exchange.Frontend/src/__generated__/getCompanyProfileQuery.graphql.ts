@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<22f2582b605cc106f35a9ab40df25d44>>
+ * @generated SignedSource<<eb802c61d20b0239acd5eb9f24c9d42a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,39 +10,37 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getCompanyProfileQuery$variables = {
-  userId: any;
   companyProfileId: any;
+  userId: any;
 };
-export type getCompanyProfileQueryVariables = getCompanyProfileQuery$variables;
 export type getCompanyProfileQuery$data = {
   readonly getCompanyProfile: {
-    readonly id: any | null;
+    readonly addressCity: string | null | undefined;
+    readonly addressCountry: string | null | undefined;
+    readonly addressLocality: string | null | undefined;
+    readonly addressRegion: string | null | undefined;
+    readonly companyEmail: string | null | undefined;
     readonly companyName: string;
-    readonly companyPhoneNumber: string | null;
-    readonly companyEmail: string | null;
+    readonly companyPhoneNumber: string | null | undefined;
+    readonly floor: string | null | undefined;
+    readonly id: any | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
     readonly listOnMarket: boolean;
-    readonly profilePictureUrl: string | null;
-    readonly type: string | null;
-    readonly website: string | null;
-    readonly numberOfFounders: number | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly floor: string | null;
-    readonly streetNumber: string | null;
-    readonly streetName: string | null;
-    readonly addressLocality: string | null;
-    readonly addressCity: string | null;
-    readonly addressRegion: string | null;
-    readonly addressCountry: string | null;
-    readonly postalCode: string | null;
-    readonly postOfficeBoxNumber: string | null;
-    readonly problemDetails: string | null;
-    readonly solutionDescription: string | null;
-  } | null;
+    readonly numberOfFounders: number | null | undefined;
+    readonly postOfficeBoxNumber: string | null | undefined;
+    readonly postalCode: string | null | undefined;
+    readonly problemDetails: string | null | undefined;
+    readonly profilePictureUrl: string | null | undefined;
+    readonly solutionDescription: string | null | undefined;
+    readonly streetName: string | null | undefined;
+    readonly streetNumber: string | null | undefined;
+    readonly type: string | null | undefined;
+    readonly website: string | null | undefined;
+  } | null | undefined;
 };
-export type getCompanyProfileQueryResponse = getCompanyProfileQuery$data;
 export type getCompanyProfileQuery = {
-  variables: getCompanyProfileQueryVariables;
   response: getCompanyProfileQuery$data;
+  variables: getCompanyProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

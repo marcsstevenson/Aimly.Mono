@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<903b8bd31f444dcc62065631e4381ebe>>
+ * @generated SignedSource<<f1224de910d1f8491dd0dcbf95f0ea0f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,35 +10,33 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type ListCompanyAnnouncementsCommandInput = {
-  userId: any;
   companyProfileId: any;
-  publicResults: boolean;
-  pageSize: number;
   currentPage: number;
-  orderBy?: string | null;
+  orderBy?: string | null | undefined;
   orderByAscending: boolean;
+  pageSize: number;
+  publicResults: boolean;
+  userId: any;
 };
 export type listCompanyAnnouncementsQuery$variables = {
   listCompanyAnnouncementsCommand: ListCompanyAnnouncementsCommandInput;
 };
-export type listCompanyAnnouncementsQueryVariables = listCompanyAnnouncementsQuery$variables;
 export type listCompanyAnnouncementsQuery$data = {
   readonly listCompanyAnnouncements: {
-    readonly results: ReadonlyArray<{
-      readonly id: any;
-      readonly title: string | null;
-      readonly message: string | null;
-      readonly created: any;
-    } | null> | null;
-    readonly totalResultCount: number;
     readonly currentPage: number;
+    readonly results: ReadonlyArray<{
+      readonly created: any;
+      readonly id: any;
+      readonly message: string | null | undefined;
+      readonly title: string | null | undefined;
+    } | null | undefined> | null | undefined;
     readonly totalPageCount: number;
-  } | null;
+    readonly totalResultCount: number;
+  } | null | undefined;
 };
-export type listCompanyAnnouncementsQueryResponse = listCompanyAnnouncementsQuery$data;
 export type listCompanyAnnouncementsQuery = {
-  variables: listCompanyAnnouncementsQueryVariables;
   response: listCompanyAnnouncementsQuery$data;
+  variables: listCompanyAnnouncementsQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

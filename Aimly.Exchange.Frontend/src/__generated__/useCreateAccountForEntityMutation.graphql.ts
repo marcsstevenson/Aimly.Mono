@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<54d711b84fe084599b0b48e5c67d9d15>>
+ * @generated SignedSource<<0a0c1360dc541827070f63f31205d5ba>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,24 +10,22 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type useCreateAccountForEntityMutation$variables = {
-  userId: any;
-  companyProfileId?: any | null;
+  companyProfileId?: any | null | undefined;
   refreshUrlPath: string;
   returnUrlPath: string;
+  userId: any;
 };
-export type useCreateAccountForEntityMutationVariables = useCreateAccountForEntityMutation$variables;
 export type useCreateAccountForEntityMutation$data = {
   readonly createAccountForEntity: {
-    readonly accountLink: string | null;
-    readonly accountId: string | null;
-    readonly errorMessage: string | null;
+    readonly accountId: string | null | undefined;
+    readonly accountLink: string | null | undefined;
+    readonly errorMessage: string | null | undefined;
     readonly isSuccessful: boolean;
-  } | null;
+  } | null | undefined;
 };
-export type useCreateAccountForEntityMutationResponse = useCreateAccountForEntityMutation$data;
 export type useCreateAccountForEntityMutation = {
-  variables: useCreateAccountForEntityMutationVariables;
   response: useCreateAccountForEntityMutation$data;
+  variables: useCreateAccountForEntityMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<aad68ebeaeae1027cbf16ae88ef12bd1>>
+ * @generated SignedSource<<6651266fda05111bf63a92a49e6ce2d4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,25 +10,23 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getMentorProfileQuery$variables = {
-  userId: any;
   id: any;
+  userId: any;
 };
-export type getMentorProfileQueryVariables = getMentorProfileQuery$variables;
 export type getMentorProfileQuery$data = {
   readonly getMentorProfile: {
-    readonly userId: any;
-    readonly id: any | null;
-    readonly name: string;
     readonly about: string;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly skills: ReadonlyArray<string | null> | null;
+    readonly id: any | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
     readonly listOnMarket: boolean;
-  } | null;
+    readonly name: string;
+    readonly skills: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly userId: any;
+  } | null | undefined;
 };
-export type getMentorProfileQueryResponse = getMentorProfileQuery$data;
 export type getMentorProfileQuery = {
-  variables: getMentorProfileQueryVariables;
   response: getMentorProfileQuery$data;
+  variables: getMentorProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5b1a5e41e35ecba641e608f42a8b53c8>>
+ * @generated SignedSource<<11e89b209aa2937389c797dc80cfc65d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,41 +9,39 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
 export type dashboardQuery$variables = {
   userId: any;
 };
-export type dashboardQueryVariables = dashboardQuery$variables;
 export type dashboardQuery$data = {
   readonly dashboard: {
-    readonly newPersonalProfiles: ReadonlyArray<{
-      readonly id: any;
-      readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
-      readonly type: ProfileTypeOption;
-    } | null> | null;
     readonly newCompanyProfiles: ReadonlyArray<{
+      readonly description: string | null | undefined;
       readonly id: any;
+      readonly name: string | null | undefined;
       readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
+      readonly profilePictureUrl: string | null | undefined;
       readonly type: ProfileTypeOption;
-    } | null> | null;
+    } | null | undefined> | null | undefined;
+    readonly newPersonalProfiles: ReadonlyArray<{
+      readonly description: string | null | undefined;
+      readonly id: any;
+      readonly name: string | null | undefined;
+      readonly profileId: any;
+      readonly profilePictureUrl: string | null | undefined;
+      readonly type: ProfileTypeOption;
+    } | null | undefined> | null | undefined;
     readonly newUpdates: ReadonlyArray<{
-      readonly title: string | null;
-      readonly image: string | null;
-      readonly content: string | null;
+      readonly content: string | null | undefined;
       readonly created: any;
-    } | null> | null;
-  } | null;
+      readonly image: string | null | undefined;
+      readonly title: string | null | undefined;
+    } | null | undefined> | null | undefined;
+  } | null | undefined;
 };
-export type dashboardQueryResponse = dashboardQuery$data;
 export type dashboardQuery = {
-  variables: dashboardQueryVariables;
   response: dashboardQuery$data;
+  variables: dashboardQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

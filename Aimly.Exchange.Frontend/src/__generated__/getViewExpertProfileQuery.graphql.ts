@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<970da6cf0109c7ab217bf8bfa57ed361>>
+ * @generated SignedSource<<bb114c1d6a10e8a672c449e2245db7ce>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,51 +11,49 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getViewExpertProfileQuery$variables = {
   profileId: any;
-  userId?: any | null;
+  userId?: any | null | undefined;
 };
-export type getViewExpertProfileQueryVariables = getViewExpertProfileQuery$variables;
 export type getViewExpertProfileQuery$data = {
   readonly getViewExpertProfile: {
-    readonly id: string | null;
-    readonly listOnMarket: boolean;
+    readonly about: string | null | undefined;
+    readonly id: string | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
     readonly isUsersProfile: boolean;
-    readonly userCanAccessProfile: boolean;
-    readonly profileId: any;
+    readonly listOnMarket: boolean;
+    readonly name: string | null | undefined;
     readonly parentProfile: {
-      readonly id: string | null;
-      readonly personalProfileId: any;
-      readonly userPublicId: any | null;
-      readonly listOnMarket: boolean;
-      readonly fullName: string | null;
-      readonly givenName: string | null;
-      readonly profilePictureUrl: string | null;
-      readonly linkedInProfile: string | null;
-      readonly addressCity: string | null;
-      readonly addressRegion: string | null;
-      readonly addressCountry: string | null;
-      readonly about: string | null;
+      readonly about: string | null | undefined;
+      readonly addressCity: string | null | undefined;
+      readonly addressCountry: string | null | undefined;
+      readonly addressRegion: string | null | undefined;
       readonly employmentExperience: ReadonlyArray<{
-        readonly id: any | null;
-        readonly stickToTop: boolean;
-        readonly title: string | null;
-        readonly organisation: string | null;
-        readonly description: string | null;
+        readonly description: string | null | undefined;
+        readonly endMonth: number | null | undefined;
+        readonly endYear: number | null | undefined;
+        readonly id: any | null | undefined;
+        readonly organisation: string | null | undefined;
         readonly startMonth: number;
         readonly startYear: number;
-        readonly endMonth: number | null;
-        readonly endYear: number | null;
-      } | null> | null;
-    } | null;
-    readonly name: string | null;
-    readonly about: string | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly skills: ReadonlyArray<string | null> | null;
-  } | null;
+        readonly stickToTop: boolean;
+        readonly title: string | null | undefined;
+      } | null | undefined> | null | undefined;
+      readonly fullName: string | null | undefined;
+      readonly givenName: string | null | undefined;
+      readonly id: string | null | undefined;
+      readonly linkedInProfile: string | null | undefined;
+      readonly listOnMarket: boolean;
+      readonly personalProfileId: any;
+      readonly profilePictureUrl: string | null | undefined;
+      readonly userPublicId: any | null | undefined;
+    } | null | undefined;
+    readonly profileId: any;
+    readonly skills: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly userCanAccessProfile: boolean;
+  } | null | undefined;
 };
-export type getViewExpertProfileQueryResponse = getViewExpertProfileQuery$data;
 export type getViewExpertProfileQuery = {
-  variables: getViewExpertProfileQueryVariables;
   response: getViewExpertProfileQuery$data;
+  variables: getViewExpertProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

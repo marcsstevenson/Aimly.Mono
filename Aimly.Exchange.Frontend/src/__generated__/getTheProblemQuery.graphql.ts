@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<835dd54a7b8c4c1c5c8e4208819c0ebe>>
+ * @generated SignedSource<<41dfc0aedc6a28d841f7a5359683fc13>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,22 +10,20 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getTheProblemQuery$variables = {
-  id: any;
   companyProfileId: any;
+  id: any;
 };
-export type getTheProblemQueryVariables = getTheProblemQuery$variables;
 export type getTheProblemQuery$data = {
   readonly getTheProblem: {
-    readonly userId: any;
     readonly companyProfileId: any;
-    readonly purposeDetails: string | null;
-    readonly problemDetails: string | null;
-  } | null;
+    readonly problemDetails: string | null | undefined;
+    readonly purposeDetails: string | null | undefined;
+    readonly userId: any;
+  } | null | undefined;
 };
-export type getTheProblemQueryResponse = getTheProblemQuery$data;
 export type getTheProblemQuery = {
-  variables: getTheProblemQueryVariables;
   response: getTheProblemQuery$data;
+  variables: getTheProblemQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d9616d2e21c29160ddd9cc4209f00243>>
+ * @generated SignedSource<<4dd0c8712c3a9c6085e643dabbc29ce4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,24 +10,22 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type InviteCommandInput = {
+  associationName?: string | null | undefined;
+  inviteCode?: string | null | undefined;
   userId: any;
-  inviteCode?: string | null;
-  associationName?: string | null;
 };
 export type useAcceptInviteMutation$variables = {
   input: InviteCommandInput;
 };
-export type useAcceptInviteMutationVariables = useAcceptInviteMutation$variables;
 export type useAcceptInviteMutation$data = {
   readonly acceptInvite: {
+    readonly companyName: string | null | undefined;
     readonly success: boolean;
-    readonly companyName: string | null;
-  } | null;
+  } | null | undefined;
 };
-export type useAcceptInviteMutationResponse = useAcceptInviteMutation$data;
 export type useAcceptInviteMutation = {
-  variables: useAcceptInviteMutationVariables;
   response: useAcceptInviteMutation$data;
+  variables: useAcceptInviteMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

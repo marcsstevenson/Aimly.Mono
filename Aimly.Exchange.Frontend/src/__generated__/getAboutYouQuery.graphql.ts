@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c612f431696b09641d1aaf6de38adc7e>>
+ * @generated SignedSource<<d99f0a1b9b39433c29d9b4a5c699d35c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,46 +10,44 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getAboutYouQuery$variables = {
+  companyProfileId?: any | null | undefined;
   id: any;
-  companyProfileId?: any | null;
 };
-export type getAboutYouQueryVariables = getAboutYouQuery$variables;
 export type getAboutYouQuery$data = {
   readonly getAboutYou: {
-    readonly userId: any | null;
-    readonly about: string | null;
-    readonly language: string | null;
-    readonly personalProfilePictureUrl: string | null;
-    readonly timezone: string | null;
-    readonly givenName: string | null;
-    readonly familyName: string | null;
-    readonly phoneNumber: string | null;
-    readonly linkedInProfile: string | null;
-    readonly companyProfileId: any | null;
-    readonly companyProfilePictureUrl: string | null;
-    readonly companyName: string | null;
-    readonly companyPhoneNumber: string | null;
-    readonly companyEmail: string | null;
-    readonly type: string | null;
+    readonly about: string | null | undefined;
+    readonly addressCity: string | null | undefined;
+    readonly addressCountry: string | null | undefined;
+    readonly addressLocality: string | null | undefined;
+    readonly addressRegion: string | null | undefined;
+    readonly companyEmail: string | null | undefined;
+    readonly companyName: string | null | undefined;
+    readonly companyPhoneNumber: string | null | undefined;
+    readonly companyProfileId: any | null | undefined;
+    readonly companyProfilePictureUrl: string | null | undefined;
+    readonly familyName: string | null | undefined;
+    readonly floor: string | null | undefined;
+    readonly givenName: string | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly language: string | null | undefined;
+    readonly linkedInProfile: string | null | undefined;
     readonly listOnMarket: boolean;
-    readonly website: string | null;
-    readonly numberOfFounders: number | null;
-    readonly floor: string | null;
-    readonly streetNumber: string | null;
-    readonly streetName: string | null;
-    readonly addressLocality: string | null;
-    readonly addressCity: string | null;
-    readonly addressRegion: string | null;
-    readonly addressCountry: string | null;
-    readonly postalCode: string | null;
-    readonly postOfficeBoxNumber: string | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-  } | null;
+    readonly numberOfFounders: number | null | undefined;
+    readonly personalProfilePictureUrl: string | null | undefined;
+    readonly phoneNumber: string | null | undefined;
+    readonly postOfficeBoxNumber: string | null | undefined;
+    readonly postalCode: string | null | undefined;
+    readonly streetName: string | null | undefined;
+    readonly streetNumber: string | null | undefined;
+    readonly timezone: string | null | undefined;
+    readonly type: string | null | undefined;
+    readonly userId: any | null | undefined;
+    readonly website: string | null | undefined;
+  } | null | undefined;
 };
-export type getAboutYouQueryResponse = getAboutYouQuery$data;
 export type getAboutYouQuery = {
-  variables: getAboutYouQueryVariables;
   response: getAboutYouQuery$data;
+  variables: getAboutYouQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

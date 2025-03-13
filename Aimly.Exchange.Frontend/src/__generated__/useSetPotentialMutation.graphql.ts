@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d3d4dd53e1a1117dbd3b3fe316222ebb>>
+ * @generated SignedSource<<7ae0460efc3e82abaa0927bbd0407a47>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,28 +10,26 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetPotentialCommandInput = {
-  getPotentialModel?: GetPotentialModelInput | null;
+  getPotentialModel?: GetPotentialModelInput | null | undefined;
 };
 export type GetPotentialModelInput = {
-  userId: any;
   companyProfileId: any;
-  value?: string | null;
-  potentialSize?: string | null;
-  potentialValue?: string | null;
+  potentialSize?: string | null | undefined;
+  potentialValue?: string | null | undefined;
+  userId: any;
+  value?: string | null | undefined;
 };
 export type useSetPotentialMutation$variables = {
   input: SetPotentialCommandInput;
 };
-export type useSetPotentialMutationVariables = useSetPotentialMutation$variables;
 export type useSetPotentialMutation$data = {
   readonly setPotential: {
     readonly updatedCompanyProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetPotentialMutationResponse = useSetPotentialMutation$data;
 export type useSetPotentialMutation = {
-  variables: useSetPotentialMutationVariables;
   response: useSetPotentialMutation$data;
+  variables: useSetPotentialMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

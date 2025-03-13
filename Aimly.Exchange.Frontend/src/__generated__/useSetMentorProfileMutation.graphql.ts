@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<89ccb16ec68a2e9c8d4294cc4b99c33d>>
+ * @generated SignedSource<<e115156f3132aa006ab785750eb06c82>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,30 +10,28 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetMentorProfileCommandInput = {
-  getMentorProfileModel?: GetMentorProfileModelInput | null;
+  getMentorProfileModel?: GetMentorProfileModelInput | null | undefined;
 };
 export type GetMentorProfileModelInput = {
-  userId: any;
-  id?: any | null;
-  name: string;
   about: string;
+  id?: any | null | undefined;
+  industries?: ReadonlyArray<string | null | undefined> | null | undefined;
   listOnMarket: boolean;
-  industries?: ReadonlyArray<string | null> | null;
-  skills?: ReadonlyArray<string | null> | null;
+  name: string;
+  skills?: ReadonlyArray<string | null | undefined> | null | undefined;
+  userId: any;
 };
 export type useSetMentorProfileMutation$variables = {
   input: SetMentorProfileCommandInput;
 };
-export type useSetMentorProfileMutationVariables = useSetMentorProfileMutation$variables;
 export type useSetMentorProfileMutation$data = {
   readonly setMentorProfile: {
     readonly updatedMentorProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetMentorProfileMutationResponse = useSetMentorProfileMutation$data;
 export type useSetMentorProfileMutation = {
-  variables: useSetMentorProfileMutationVariables;
   response: useSetMentorProfileMutation$data;
+  variables: useSetMentorProfileMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ecc9d3780b2bbdd35b0fec30f44d5fc4>>
+ * @generated SignedSource<<1a7355588b39dfb87d1b63ed11a1dc05>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,35 +9,33 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
 export type marketOptionsSearchQuery$variables = {
   profileType: ProfileTypeOption;
 };
-export type marketOptionsSearchQueryVariables = marketOptionsSearchQuery$variables;
 export type marketOptionsSearchQuery$data = {
   readonly marketOptionsSearch: {
-    readonly skillOptions: ReadonlyArray<{
-      readonly name: string | null;
-      readonly count: number;
-    } | null> | null;
     readonly industryOptions: ReadonlyArray<{
-      readonly name: string | null;
       readonly count: number;
-    } | null> | null;
+      readonly name: string | null | undefined;
+    } | null | undefined> | null | undefined;
     readonly locationOptions: ReadonlyArray<{
-      readonly name: string | null;
       readonly count: number;
-    } | null> | null;
+      readonly name: string | null | undefined;
+    } | null | undefined> | null | undefined;
+    readonly skillOptions: ReadonlyArray<{
+      readonly count: number;
+      readonly name: string | null | undefined;
+    } | null | undefined> | null | undefined;
     readonly timezoneOptions: ReadonlyArray<{
-      readonly name: string | null;
       readonly count: number;
-    } | null> | null;
-  } | null;
+      readonly name: string | null | undefined;
+    } | null | undefined> | null | undefined;
+  } | null | undefined;
 };
-export type marketOptionsSearchQueryResponse = marketOptionsSearchQuery$data;
 export type marketOptionsSearchQuery = {
-  variables: marketOptionsSearchQueryVariables;
   response: marketOptionsSearchQuery$data;
+  variables: marketOptionsSearchQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

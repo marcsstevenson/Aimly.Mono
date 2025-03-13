@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<369b02108a3b4b23cff8154256cd14ab>>
+ * @generated SignedSource<<91dabe4e7f2f12761d0a57554d03298c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,25 +10,23 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type UserLoginModelInput = {
-  publicId: any;
   fullName: string;
   pictureUrl: string;
+  publicId: any;
 };
 export type useLoginToMessagingMutation$variables = {
-  userId: any;
   model: UserLoginModelInput;
+  userId: any;
 };
-export type useLoginToMessagingMutationVariables = useLoginToMessagingMutation$variables;
 export type useLoginToMessagingMutation$data = {
   readonly loginToMessaging: {
-    readonly accessToken: string | null;
+    readonly accessToken: string | null | undefined;
     readonly accessTokenExpiry: any;
-  } | null;
+  } | null | undefined;
 };
-export type useLoginToMessagingMutationResponse = useLoginToMessagingMutation$data;
 export type useLoginToMessagingMutation = {
-  variables: useLoginToMessagingMutationVariables;
   response: useLoginToMessagingMutation$data;
+  variables: useLoginToMessagingMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

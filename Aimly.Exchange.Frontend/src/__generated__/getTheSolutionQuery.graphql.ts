@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d1c1b65644bb27e2f9ee76b0e376be08>>
+ * @generated SignedSource<<31c4fae320205eb75e597d5f2ea30096>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,30 +10,28 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getTheSolutionQuery$variables = {
-  id: any;
   companyProfileId: any;
+  id: any;
 };
-export type getTheSolutionQueryVariables = getTheSolutionQuery$variables;
 export type getTheSolutionQuery$data = {
   readonly getTheSolution: {
-    readonly userId: any;
+    readonly businessModel: string | null | undefined;
     readonly companyProfileId: any;
-    readonly solutionNovelty: string | null;
-    readonly solutionDescription: string | null;
-    readonly stateOfValidation: string | null;
-    readonly competition: string | null;
-    readonly positionVsCompetition: string | null;
-    readonly businessModel: string | null;
-    readonly traction: string | null;
-    readonly founders: string | null;
-    readonly currentAnnualRevenue: string | null;
-    readonly externalFunding: string | null;
-  } | null;
+    readonly competition: string | null | undefined;
+    readonly currentAnnualRevenue: string | null | undefined;
+    readonly externalFunding: string | null | undefined;
+    readonly founders: string | null | undefined;
+    readonly positionVsCompetition: string | null | undefined;
+    readonly solutionDescription: string | null | undefined;
+    readonly solutionNovelty: string | null | undefined;
+    readonly stateOfValidation: string | null | undefined;
+    readonly traction: string | null | undefined;
+    readonly userId: any;
+  } | null | undefined;
 };
-export type getTheSolutionQueryResponse = getTheSolutionQuery$data;
 export type getTheSolutionQuery = {
-  variables: getTheSolutionQueryVariables;
   response: getTheSolutionQuery$data;
+  variables: getTheSolutionQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

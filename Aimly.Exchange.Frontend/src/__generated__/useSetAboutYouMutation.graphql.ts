@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a320b3126b061dbbf5e55903fc4f66fd>>
+ * @generated SignedSource<<5fabdcf7b12ebffb2a3952afa9808019>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,53 +10,51 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetAboutYouCommandInput = {
-  inviteCode?: string | null;
-  getAboutYouModel?: GetAboutYouModelInput | null;
+  getAboutYouModel?: GetAboutYouModelInput | null | undefined;
+  inviteCode?: string | null | undefined;
 };
 export type GetAboutYouModelInput = {
-  userId?: any | null;
-  language?: string | null;
-  personalProfilePictureUrl?: string | null;
-  about?: string | null;
-  timezone?: string | null;
-  givenName?: string | null;
-  familyName?: string | null;
-  phoneNumber?: string | null;
-  linkedInProfile?: string | null;
-  companyProfileId?: any | null;
-  companyProfilePictureUrl?: string | null;
-  companyName?: string | null;
-  companyPhoneNumber?: string | null;
-  companyEmail?: string | null;
-  type?: string | null;
+  about?: string | null | undefined;
+  addressCity?: string | null | undefined;
+  addressCountry?: string | null | undefined;
+  addressLocality?: string | null | undefined;
+  addressRegion?: string | null | undefined;
+  companyEmail?: string | null | undefined;
+  companyName?: string | null | undefined;
+  companyPhoneNumber?: string | null | undefined;
+  companyProfileId?: any | null | undefined;
+  companyProfilePictureUrl?: string | null | undefined;
+  familyName?: string | null | undefined;
+  floor?: string | null | undefined;
+  givenName?: string | null | undefined;
+  industries?: ReadonlyArray<string | null | undefined> | null | undefined;
+  language?: string | null | undefined;
+  linkedInProfile?: string | null | undefined;
   listOnMarket: boolean;
-  website?: string | null;
-  numberOfFounders?: number | null;
-  industries?: ReadonlyArray<string | null> | null;
-  floor?: string | null;
-  streetNumber?: string | null;
-  streetName?: string | null;
-  addressLocality?: string | null;
-  addressCity?: string | null;
-  addressRegion?: string | null;
-  addressCountry?: string | null;
-  postalCode?: string | null;
-  postOfficeBoxNumber?: string | null;
+  numberOfFounders?: number | null | undefined;
+  personalProfilePictureUrl?: string | null | undefined;
+  phoneNumber?: string | null | undefined;
+  postOfficeBoxNumber?: string | null | undefined;
+  postalCode?: string | null | undefined;
+  streetName?: string | null | undefined;
+  streetNumber?: string | null | undefined;
+  timezone?: string | null | undefined;
+  type?: string | null | undefined;
+  userId?: any | null | undefined;
+  website?: string | null | undefined;
 };
 export type useSetAboutYouMutation$variables = {
   input: SetAboutYouCommandInput;
 };
-export type useSetAboutYouMutationVariables = useSetAboutYouMutation$variables;
 export type useSetAboutYouMutation$data = {
   readonly setAboutYou: {
-    readonly updatedPersonalProfileId: any;
     readonly updatedCompanyProfileId: any;
-  } | null;
+    readonly updatedPersonalProfileId: any;
+  } | null | undefined;
 };
-export type useSetAboutYouMutationResponse = useSetAboutYouMutation$data;
 export type useSetAboutYouMutation = {
-  variables: useSetAboutYouMutationVariables;
   response: useSetAboutYouMutation$data;
+  variables: useSetAboutYouMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

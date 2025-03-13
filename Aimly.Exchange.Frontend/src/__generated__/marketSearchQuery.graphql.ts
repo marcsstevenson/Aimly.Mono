@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7b452364d4a0f345b2db34d1d87e19f3>>
+ * @generated SignedSource<<c55685d5c5283c12e496fc963945e2f5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,45 +9,43 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type ProfileTypeOption = "PERSONAL" | "COMPANY" | "MENTOR" | "EXPERT" | "%future added value";
+export type ProfileTypeOption = "COMPANY" | "EXPERT" | "MENTOR" | "PERSONAL" | "%future added value";
 export type MarketSearchCommandInput = {
-  profileType: ProfileTypeOption;
-  searchTerm?: string | null;
-  skills?: ReadonlyArray<string | null> | null;
-  industries?: ReadonlyArray<string | null> | null;
-  locations?: ReadonlyArray<string | null> | null;
-  timeZones?: ReadonlyArray<string | null> | null;
-  pageSize: number;
   currentPage: number;
-  orderBy?: string | null;
+  industries?: ReadonlyArray<string | null | undefined> | null | undefined;
+  locations?: ReadonlyArray<string | null | undefined> | null | undefined;
+  orderBy?: string | null | undefined;
   orderByAscending: boolean;
+  pageSize: number;
+  profileType: ProfileTypeOption;
+  searchTerm?: string | null | undefined;
+  skills?: ReadonlyArray<string | null | undefined> | null | undefined;
+  timeZones?: ReadonlyArray<string | null | undefined> | null | undefined;
 };
 export type marketSearchQuery$variables = {
   marketSearchCommand: MarketSearchCommandInput;
 };
-export type marketSearchQueryVariables = marketSearchQuery$variables;
 export type marketSearchQuery$data = {
   readonly marketSearch: {
-    readonly results: ReadonlyArray<{
-      readonly id: any;
-      readonly profileId: any;
-      readonly name: string | null;
-      readonly description: string | null;
-      readonly profilePictureUrl: string | null;
-      readonly type: ProfileTypeOption;
-      readonly addressCity: string | null;
-      readonly addressCountry: string | null;
-      readonly timezone: string | null;
-    } | null> | null;
-    readonly totalResultCount: number;
     readonly currentPage: number;
+    readonly results: ReadonlyArray<{
+      readonly addressCity: string | null | undefined;
+      readonly addressCountry: string | null | undefined;
+      readonly description: string | null | undefined;
+      readonly id: any;
+      readonly name: string | null | undefined;
+      readonly profileId: any;
+      readonly profilePictureUrl: string | null | undefined;
+      readonly timezone: string | null | undefined;
+      readonly type: ProfileTypeOption;
+    } | null | undefined> | null | undefined;
     readonly totalPageCount: number;
-  } | null;
+    readonly totalResultCount: number;
+  } | null | undefined;
 };
-export type marketSearchQueryResponse = marketSearchQuery$data;
 export type marketSearchQuery = {
-  variables: marketSearchQueryVariables;
   response: marketSearchQuery$data;
+  variables: marketSearchQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

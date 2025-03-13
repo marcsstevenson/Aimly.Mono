@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f2aafc996889f54109cd8ae4135cc6d7>>
+ * @generated SignedSource<<b9a95b8cf8a76736177927aa4c58c0ec>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,30 +10,28 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetExpertProfileCommandInput = {
-  getExpertProfileModel?: GetExpertProfileModelInput | null;
+  getExpertProfileModel?: GetExpertProfileModelInput | null | undefined;
 };
 export type GetExpertProfileModelInput = {
-  userId: any;
-  id?: any | null;
-  name: string;
   about: string;
+  id?: any | null | undefined;
+  industries?: ReadonlyArray<string | null | undefined> | null | undefined;
   listOnMarket: boolean;
-  industries?: ReadonlyArray<string | null> | null;
-  skills?: ReadonlyArray<string | null> | null;
+  name: string;
+  skills?: ReadonlyArray<string | null | undefined> | null | undefined;
+  userId: any;
 };
 export type useSetExpertProfileMutation$variables = {
   input: SetExpertProfileCommandInput;
 };
-export type useSetExpertProfileMutationVariables = useSetExpertProfileMutation$variables;
 export type useSetExpertProfileMutation$data = {
   readonly setExpertProfile: {
     readonly updatedExpertProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetExpertProfileMutationResponse = useSetExpertProfileMutation$data;
 export type useSetExpertProfileMutation = {
-  variables: useSetExpertProfileMutationVariables;
   response: useSetExpertProfileMutation$data;
+  variables: useSetExpertProfileMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

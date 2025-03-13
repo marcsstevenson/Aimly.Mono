@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8c5338474aa0b1103fef4847294c2489>>
+ * @generated SignedSource<<beb1e7ad30d664c1f17f3882d65b5fb7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,42 +12,40 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type getPersonalProfileQuery$variables = {
   id: any;
 };
-export type getPersonalProfileQueryVariables = getPersonalProfileQuery$variables;
 export type getPersonalProfileQuery$data = {
   readonly getPersonalProfile: {
-    readonly userId: any | null;
-    readonly listOnMarket: boolean;
-    readonly about: string | null;
-    readonly language: string | null;
-    readonly personalProfilePictureUrl: string | null;
-    readonly givenName: string | null;
-    readonly familyName: string | null;
-    readonly phoneNumber: string | null;
-    readonly linkedInProfile: string | null;
-    readonly addressCity: string | null;
-    readonly addressRegion: string | null;
-    readonly postalCode: string | null;
-    readonly addressCountry: string | null;
-    readonly timezone: string | null;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly skills: ReadonlyArray<string | null> | null;
+    readonly about: string | null | undefined;
+    readonly addressCity: string | null | undefined;
+    readonly addressCountry: string | null | undefined;
+    readonly addressRegion: string | null | undefined;
     readonly employmentExperience: ReadonlyArray<{
-      readonly id: any | null;
-      readonly stickToTop: boolean;
-      readonly title: string | null;
-      readonly organisation: string | null;
-      readonly description: string | null;
+      readonly description: string | null | undefined;
+      readonly endMonth: number | null | undefined;
+      readonly endYear: number | null | undefined;
+      readonly id: any | null | undefined;
+      readonly organisation: string | null | undefined;
       readonly startMonth: number;
       readonly startYear: number;
-      readonly endMonth: number | null;
-      readonly endYear: number | null;
-    } | null> | null;
-  } | null;
+      readonly stickToTop: boolean;
+      readonly title: string | null | undefined;
+    } | null | undefined> | null | undefined;
+    readonly familyName: string | null | undefined;
+    readonly givenName: string | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly language: string | null | undefined;
+    readonly linkedInProfile: string | null | undefined;
+    readonly listOnMarket: boolean;
+    readonly personalProfilePictureUrl: string | null | undefined;
+    readonly phoneNumber: string | null | undefined;
+    readonly postalCode: string | null | undefined;
+    readonly skills: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly timezone: string | null | undefined;
+    readonly userId: any | null | undefined;
+  } | null | undefined;
 };
-export type getPersonalProfileQueryResponse = getPersonalProfileQuery$data;
 export type getPersonalProfileQuery = {
-  variables: getPersonalProfileQueryVariables;
   response: getPersonalProfileQuery$data;
+  variables: getPersonalProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

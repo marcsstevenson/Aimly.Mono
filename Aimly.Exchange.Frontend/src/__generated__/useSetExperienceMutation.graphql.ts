@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7f905d95e63f251552280d901eeb1330>>
+ * @generated SignedSource<<63f62990f338460dd7688e2ea820df9a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,30 +10,28 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type ExperienceModelInput = {
-  id?: any | null;
-  stickToTop: boolean;
-  title?: string | null;
-  organisation?: string | null;
-  description?: string | null;
+  description?: string | null | undefined;
+  endMonth?: number | null | undefined;
+  endYear?: number | null | undefined;
+  id?: any | null | undefined;
+  organisation?: string | null | undefined;
   startMonth: number;
   startYear: number;
-  endMonth?: number | null;
-  endYear?: number | null;
+  stickToTop: boolean;
+  title?: string | null | undefined;
 };
 export type useSetExperienceMutation$variables = {
-  userId: any;
   experienceModel: ExperienceModelInput;
+  userId: any;
 };
-export type useSetExperienceMutationVariables = useSetExperienceMutation$variables;
 export type useSetExperienceMutation$data = {
   readonly setExperience: {
     readonly updatedExperienceId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetExperienceMutationResponse = useSetExperienceMutation$data;
 export type useSetExperienceMutation = {
-  variables: useSetExperienceMutationVariables;
   response: useSetExperienceMutation$data;
+  variables: useSetExperienceMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

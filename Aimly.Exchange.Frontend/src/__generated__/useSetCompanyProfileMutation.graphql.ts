@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a72290a9ced650a34c85ae876a84f7a5>>
+ * @generated SignedSource<<8725d97a0b475b3b1e142ae562ddfc7a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,45 +10,43 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetCompanyProfileCommandInput = {
+  getCompanyProfileModel?: GetCompanyProfileModelInput | null | undefined;
   userId: any;
-  getCompanyProfileModel?: GetCompanyProfileModelInput | null;
 };
 export type GetCompanyProfileModelInput = {
-  id?: any | null;
+  addressCity?: string | null | undefined;
+  addressCountry?: string | null | undefined;
+  addressLocality?: string | null | undefined;
+  addressRegion?: string | null | undefined;
+  companyEmail?: string | null | undefined;
   companyName: string;
+  companyPhoneNumber?: string | null | undefined;
+  floor?: string | null | undefined;
+  id?: any | null | undefined;
+  industries?: ReadonlyArray<string | null | undefined> | null | undefined;
   listOnMarket: boolean;
-  profilePictureUrl?: string | null;
-  type?: string | null;
-  website?: string | null;
-  numberOfFounders?: number | null;
-  industries?: ReadonlyArray<string | null> | null;
-  floor?: string | null;
-  streetNumber?: string | null;
-  streetName?: string | null;
-  addressLocality?: string | null;
-  addressCity?: string | null;
-  addressRegion?: string | null;
-  addressCountry?: string | null;
-  postalCode?: string | null;
-  postOfficeBoxNumber?: string | null;
-  companyPhoneNumber?: string | null;
-  companyEmail?: string | null;
-  problemDetails?: string | null;
-  solutionDescription?: string | null;
+  numberOfFounders?: number | null | undefined;
+  postOfficeBoxNumber?: string | null | undefined;
+  postalCode?: string | null | undefined;
+  problemDetails?: string | null | undefined;
+  profilePictureUrl?: string | null | undefined;
+  solutionDescription?: string | null | undefined;
+  streetName?: string | null | undefined;
+  streetNumber?: string | null | undefined;
+  type?: string | null | undefined;
+  website?: string | null | undefined;
 };
 export type useSetCompanyProfileMutation$variables = {
   input: SetCompanyProfileCommandInput;
 };
-export type useSetCompanyProfileMutationVariables = useSetCompanyProfileMutation$variables;
 export type useSetCompanyProfileMutation$data = {
   readonly setCompanyProfile: {
     readonly updatedCompanyProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetCompanyProfileMutationResponse = useSetCompanyProfileMutation$data;
 export type useSetCompanyProfileMutation = {
-  variables: useSetCompanyProfileMutationVariables;
   response: useSetCompanyProfileMutation$data;
+  variables: useSetCompanyProfileMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

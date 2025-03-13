@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fbfc03102d42225ef05d39f9adf05846>>
+ * @generated SignedSource<<1305167182a00cee2cd87f9a9fbf7f87>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,27 +10,25 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getAccountsStatusQuery$variables = {
+  companyProfileId?: any | null | undefined;
   userId: any;
-  companyProfileId?: any | null;
 };
-export type getAccountsStatusQueryVariables = getAccountsStatusQuery$variables;
 export type getAccountsStatusQuery$data = {
   readonly accountsStatus: {
+    readonly errorMessage: string | null | undefined;
     readonly getAccountResponse: {
-      readonly accountId: string | null;
-      readonly type: string | null;
-      readonly payoutsEnabled: boolean;
-      readonly errorMessage: string | null;
+      readonly accountId: string | null | undefined;
+      readonly errorMessage: string | null | undefined;
       readonly isSuccessful: boolean;
-    } | null;
-    readonly errorMessage: string | null;
+      readonly payoutsEnabled: boolean;
+      readonly type: string | null | undefined;
+    } | null | undefined;
     readonly isSuccessful: boolean;
-  } | null;
+  } | null | undefined;
 };
-export type getAccountsStatusQueryResponse = getAccountsStatusQuery$data;
 export type getAccountsStatusQuery = {
-  variables: getAccountsStatusQueryVariables;
   response: getAccountsStatusQuery$data;
+  variables: getAccountsStatusQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

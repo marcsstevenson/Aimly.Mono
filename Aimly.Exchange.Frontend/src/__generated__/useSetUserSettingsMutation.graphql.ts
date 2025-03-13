@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<302db0df9488d1730c79fd5135c009b0>>
+ * @generated SignedSource<<524e877f430281e07dd16310a56e7d3b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,25 +10,23 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetUserSettingsCommandInput = {
+  email?: string | null | undefined;
+  profilePictureUrl?: string | null | undefined;
   userId: any;
-  profilePictureUrl?: string | null;
-  email?: string | null;
 };
 export type useSetUserSettingsMutation$variables = {
   command: SetUserSettingsCommandInput;
 };
-export type useSetUserSettingsMutationVariables = useSetUserSettingsMutation$variables;
 export type useSetUserSettingsMutation$data = {
   readonly setUserSettings: {
-    readonly userPictureUrlUpdated: boolean;
-    readonly userEmailUpdated: boolean;
     readonly personalProfileUpdated: boolean;
-  } | null;
+    readonly userEmailUpdated: boolean;
+    readonly userPictureUrlUpdated: boolean;
+  } | null | undefined;
 };
-export type useSetUserSettingsMutationResponse = useSetUserSettingsMutation$data;
 export type useSetUserSettingsMutation = {
-  variables: useSetUserSettingsMutationVariables;
   response: useSetUserSettingsMutation$data;
+  variables: useSetUserSettingsMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

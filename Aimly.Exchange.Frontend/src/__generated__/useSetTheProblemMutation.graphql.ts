@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9f448ac5ae83d243f90686d1514e79f2>>
+ * @generated SignedSource<<48a13b562fe7869554ed33c786ea9e69>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,27 +10,25 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetTheProblemCommandInput = {
-  getTheProblemModel?: GetTheProblemModelInput | null;
+  getTheProblemModel?: GetTheProblemModelInput | null | undefined;
 };
 export type GetTheProblemModelInput = {
-  userId: any;
   companyProfileId: any;
-  purposeDetails?: string | null;
-  problemDetails?: string | null;
+  problemDetails?: string | null | undefined;
+  purposeDetails?: string | null | undefined;
+  userId: any;
 };
 export type useSetTheProblemMutation$variables = {
   input: SetTheProblemCommandInput;
 };
-export type useSetTheProblemMutationVariables = useSetTheProblemMutation$variables;
 export type useSetTheProblemMutation$data = {
   readonly setTheProblem: {
     readonly updatedCompanyProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetTheProblemMutationResponse = useSetTheProblemMutation$data;
 export type useSetTheProblemMutation = {
-  variables: useSetTheProblemMutationVariables;
   response: useSetTheProblemMutation$data;
+  variables: useSetTheProblemMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

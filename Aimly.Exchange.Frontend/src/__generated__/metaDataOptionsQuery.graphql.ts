@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<020d56bea8ec1fe5a60bcdb467243bd0>>
+ * @generated SignedSource<<a5ace3b68e5ab094f1629ecfece43094>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,18 +10,16 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type metaDataOptionsQuery$variables = {
-  nameStartingWith?: string | null;
+  nameStartingWith?: string | null | undefined;
+  tenantId?: any | null | undefined;
   type: string;
-  tenantId?: any | null;
 };
-export type metaDataOptionsQueryVariables = metaDataOptionsQuery$variables;
 export type metaDataOptionsQuery$data = {
-  readonly metaDataOptions: ReadonlyArray<string | null> | null;
+  readonly metaDataOptions: ReadonlyArray<string | null | undefined> | null | undefined;
 };
-export type metaDataOptionsQueryResponse = metaDataOptionsQuery$data;
 export type metaDataOptionsQuery = {
-  variables: metaDataOptionsQueryVariables;
   response: metaDataOptionsQuery$data;
+  variables: metaDataOptionsQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

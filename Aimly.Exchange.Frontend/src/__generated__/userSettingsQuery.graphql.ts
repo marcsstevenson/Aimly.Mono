@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<249ab0d34c1b1c9995950feb6296357e>>
+ * @generated SignedSource<<b796ca1da1307ffd038171715d792722>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,17 +12,15 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type userSettingsQuery$variables = {
   userId: any;
 };
-export type userSettingsQueryVariables = userSettingsQuery$variables;
 export type userSettingsQuery$data = {
   readonly userSettings: {
-    readonly profilePictureUrl: string | null;
-    readonly email: string | null;
-  } | null;
+    readonly email: string | null | undefined;
+    readonly profilePictureUrl: string | null | undefined;
+  } | null | undefined;
 };
-export type userSettingsQueryResponse = userSettingsQuery$data;
 export type userSettingsQuery = {
-  variables: userSettingsQueryVariables;
   response: userSettingsQuery$data;
+  variables: userSettingsQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

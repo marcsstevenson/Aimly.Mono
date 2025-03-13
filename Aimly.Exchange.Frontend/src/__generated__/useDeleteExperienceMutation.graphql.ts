@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a0c9362d8ec170fa17bc438a7a63d2f6>>
+ * @generated SignedSource<<e8c9a739887d38b54c252d02720cad6d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,19 +10,17 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type useDeleteExperienceMutation$variables = {
-  userId: any;
   id: any;
+  userId: any;
 };
-export type useDeleteExperienceMutationVariables = useDeleteExperienceMutation$variables;
 export type useDeleteExperienceMutation$data = {
   readonly deleteExperience: {
     readonly deletedId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useDeleteExperienceMutationResponse = useDeleteExperienceMutation$data;
 export type useDeleteExperienceMutation = {
-  variables: useDeleteExperienceMutationVariables;
   response: useDeleteExperienceMutation$data;
+  variables: useDeleteExperienceMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

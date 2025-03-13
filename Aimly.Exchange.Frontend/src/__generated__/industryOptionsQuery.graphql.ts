@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1213fc55bf8f15279e32c6798b0348d2>>
+ * @generated SignedSource<<4ea43b8369e166f0acc86dc1ff7966f5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,17 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type industryOptionsQuery$variables = {
-  nameStartingWith?: string | null;
-  tenantId?: any | null;
+  nameStartingWith?: string | null | undefined;
+  tenantId?: any | null | undefined;
 };
-export type industryOptionsQueryVariables = industryOptionsQuery$variables;
 export type industryOptionsQuery$data = {
-  readonly industryOptions: ReadonlyArray<string | null> | null;
+  readonly industryOptions: ReadonlyArray<string | null | undefined> | null | undefined;
 };
-export type industryOptionsQueryResponse = industryOptionsQuery$data;
 export type industryOptionsQuery = {
-  variables: industryOptionsQueryVariables;
   response: industryOptionsQuery$data;
+  variables: industryOptionsQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

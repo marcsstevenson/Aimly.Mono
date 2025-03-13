@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<77fd99131f36d92d8231079860202030>>
+ * @generated SignedSource<<fba636cefa298220e0be521facaca79b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,35 +10,33 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type SetTheSolutionCommandInput = {
-  getTheSolutionModel?: GetTheSolutionModelInput | null;
+  getTheSolutionModel?: GetTheSolutionModelInput | null | undefined;
 };
 export type GetTheSolutionModelInput = {
-  userId: any;
+  businessModel?: string | null | undefined;
   companyProfileId: any;
-  solutionNovelty?: string | null;
-  solutionDescription?: string | null;
-  stateOfValidation?: string | null;
-  competition?: string | null;
-  positionVsCompetition?: string | null;
-  businessModel?: string | null;
-  traction?: string | null;
-  founders?: string | null;
-  currentAnnualRevenue?: string | null;
-  externalFunding?: string | null;
+  competition?: string | null | undefined;
+  currentAnnualRevenue?: string | null | undefined;
+  externalFunding?: string | null | undefined;
+  founders?: string | null | undefined;
+  positionVsCompetition?: string | null | undefined;
+  solutionDescription?: string | null | undefined;
+  solutionNovelty?: string | null | undefined;
+  stateOfValidation?: string | null | undefined;
+  traction?: string | null | undefined;
+  userId: any;
 };
 export type useSetTheSolutionMutation$variables = {
   input: SetTheSolutionCommandInput;
 };
-export type useSetTheSolutionMutationVariables = useSetTheSolutionMutation$variables;
 export type useSetTheSolutionMutation$data = {
   readonly setTheSolution: {
     readonly updatedCompanyProfileId: any;
-  } | null;
+  } | null | undefined;
 };
-export type useSetTheSolutionMutationResponse = useSetTheSolutionMutation$data;
 export type useSetTheSolutionMutation = {
-  variables: useSetTheSolutionMutationVariables;
   response: useSetTheSolutionMutation$data;
+  variables: useSetTheSolutionMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){

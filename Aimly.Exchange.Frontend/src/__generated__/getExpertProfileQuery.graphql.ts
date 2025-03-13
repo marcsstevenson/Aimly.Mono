@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6515afa430d7004599885f4a37b292df>>
+ * @generated SignedSource<<91d31d5b38e52edbb61985f17a3bf677>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,25 +10,23 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type getExpertProfileQuery$variables = {
-  userId: any;
   id: any;
+  userId: any;
 };
-export type getExpertProfileQueryVariables = getExpertProfileQuery$variables;
 export type getExpertProfileQuery$data = {
   readonly getExpertProfile: {
-    readonly userId: any;
-    readonly id: any | null;
-    readonly name: string;
     readonly about: string;
-    readonly industries: ReadonlyArray<string | null> | null;
-    readonly skills: ReadonlyArray<string | null> | null;
+    readonly id: any | null | undefined;
+    readonly industries: ReadonlyArray<string | null | undefined> | null | undefined;
     readonly listOnMarket: boolean;
-  } | null;
+    readonly name: string;
+    readonly skills: ReadonlyArray<string | null | undefined> | null | undefined;
+    readonly userId: any;
+  } | null | undefined;
 };
-export type getExpertProfileQueryResponse = getExpertProfileQuery$data;
 export type getExpertProfileQuery = {
-  variables: getExpertProfileQueryVariables;
   response: getExpertProfileQuery$data;
+  variables: getExpertProfileQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){

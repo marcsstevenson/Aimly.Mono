@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<360254a6420db1c9f96b41e459b513ed>>
+ * @generated SignedSource<<7541ea182f7118689c8ef62b2d5912bf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,33 +10,31 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type AuthProfileInput = {
-  given_name?: string | null;
-  family_name?: string | null;
-  nickname?: string | null;
-  name?: string | null;
-  picture?: string | null;
-  locale?: string | null;
-  updated_at?: any | null;
-  email?: string | null;
-  email_verified?: boolean | null;
-  sub?: string | null;
+  email?: string | null | undefined;
+  email_verified?: boolean | null | undefined;
+  family_name?: string | null | undefined;
+  given_name?: string | null | undefined;
+  locale?: string | null | undefined;
+  name?: string | null | undefined;
+  nickname?: string | null | undefined;
+  picture?: string | null | undefined;
+  sub?: string | null | undefined;
+  updated_at?: any | null | undefined;
 };
 export type checkInMutation$variables = {
-  input?: AuthProfileInput | null;
+  input?: AuthProfileInput | null | undefined;
 };
-export type checkInMutationVariables = checkInMutation$variables;
 export type checkInMutation$data = {
   readonly checkIn2: {
-    readonly userId: any;
+    readonly fullName: string | null | undefined;
+    readonly pictureUrl: string | null | undefined;
     readonly publicId: any;
-    readonly fullName: string | null;
-    readonly pictureUrl: string | null;
-  } | null;
+    readonly userId: any;
+  } | null | undefined;
 };
-export type checkInMutationResponse = checkInMutation$data;
 export type checkInMutation = {
-  variables: checkInMutationVariables;
   response: checkInMutation$data;
+  variables: checkInMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
