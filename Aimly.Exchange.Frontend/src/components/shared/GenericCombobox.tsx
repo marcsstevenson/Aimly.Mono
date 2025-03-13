@@ -2,7 +2,7 @@
 // that can be used for any type of single select requirements.
 
 import React, { useMemo, useState } from 'react';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Combobox } from '@headlessui/react';
 

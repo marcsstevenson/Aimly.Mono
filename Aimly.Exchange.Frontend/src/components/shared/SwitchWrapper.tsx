@@ -4,7 +4,7 @@
 import React from 'react';
 import { Switch } from '@headlessui/react';
 import { useField } from 'formik';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 
 export const SwitchWrapper = (props: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

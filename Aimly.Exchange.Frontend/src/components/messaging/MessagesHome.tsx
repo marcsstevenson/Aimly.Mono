@@ -7,7 +7,7 @@
 import React, { Suspense, useContext, useEffect } from 'react';
 // import 'sendbird-uikit/dist/index.css';
 import { PrivateContext } from '@/components/PrivateContext';
-import { getConfig } from 'config';
+import { getConfig } from '@/config';
 // import CustomisedSendBirdApp from '@/components/messaging/CustomisedSendBirdApp';
 import UncustomisedSendBirdApp from '@/components/messaging/UncustomisedSendBirdApp';
 import { LoadingArea } from '@/components/shared/LoadingArea';

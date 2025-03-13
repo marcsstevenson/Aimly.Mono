@@ -9,7 +9,7 @@ import AppQuery, {
   metaDataOptionsQuery$variables,
 } from '@/__generated__/metaDataOptionsQuery.graphql';
 import { PreloadedQuery, usePreloadedQuery, useQueryLoader } from 'react-relay';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Combobox } from '@headlessui/react';
 import debounce from 'lodash.debounce';

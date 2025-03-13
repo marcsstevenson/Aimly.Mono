@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 import { GetPathForPage } from '@/components/shared/AppRoutes';
 import { NavLink } from 'react-router-dom';
 import Pages from '@/components/shared/Pages';

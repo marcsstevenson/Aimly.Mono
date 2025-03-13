@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 // import { ScaleIcon, ArrowPathIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
 import { BanknotesIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 import CurrencyFormat from 'react-currency-format';
 
 export interface transactionType {

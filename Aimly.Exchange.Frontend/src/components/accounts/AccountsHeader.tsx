@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { PrivateContext } from '@/components/PrivateContext';
 import { CheckCircleIcon, BuildingOffice2Icon } from '@heroicons/react/20/solid';
 import { AccountsOption } from '@/components/accounts/AccountsOption';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 
 interface props {
   accountChange: (accountsOption: AccountsOption) => void;

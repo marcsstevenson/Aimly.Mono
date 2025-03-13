@@ -11,12 +11,12 @@ export default defineConfig(() => {
     },
     plugins: [react(), tsconfigPaths()],
     resolve: {
-      // alias: {
-      //   // This makes all imports from 'src' directory work
-      //   'components': path.resolve(__dirname, './src/components'),
-      //   // This makes the src directory the base for absolute imports
-      //   '@': path.resolve(__dirname, './src'),
-      // }
+      alias: [
+        {
+          find: '@',
+          replacement: path.resolve(__dirname, './src')
+        }
+      ]
     }
   };
 });

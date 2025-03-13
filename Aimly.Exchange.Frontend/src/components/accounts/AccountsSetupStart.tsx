@@ -3,7 +3,7 @@ import { PrivateContext } from '@/components/PrivateContext';
 import useCreateAccountForEntityMutation from '@/useCreateAccountForEntityMutation';
 import { GetPathForPage } from '@/components/shared/AppRoutes';
 
-import stripeImage from 'assets/Stripe1.png';
+import stripeImage from '@/assets/Stripe1.png';
 import {
   // GetAboutYouModelInput,
   useCreateAccountForEntityMutation$variables,

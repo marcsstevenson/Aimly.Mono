@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import './MenuItem.scss';
-import remixicons from 'assets/remixicon.symbol.svg';
+import remixicons from '@/assets/remixicon.symbol.svg';
 
 export default ({ icon, title, action, isActive = null }: any) => {
   const getButtonCss = useCallback((isActive: boolean) => {

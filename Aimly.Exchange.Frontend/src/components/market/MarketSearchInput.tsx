@@ -4,7 +4,7 @@ import useLocationQuery from '@/components/shared/useLocationQuery';
 import { type ProfileTypeOption } from '@/__generated__/marketSearchQuery.graphql';
 import { SearchOptions } from '@/components/shared/MarketOptions/SearchOptions';
 import { MarketSearchRequest } from '@/components/market/MarketSearchRequest';
-import { classNames } from 'utils/classNames';
+import { classNames } from '@/utils/classNames';
 import { Switch } from '@headlessui/react';
 
 interface Props {

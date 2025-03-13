@@ -1,6 +1,6 @@
 import React from 'react';
-import { classNames } from 'utils/classNames';
-import resultIcon from 'assets/user-flat.svg';
+import { classNames } from '@/utils/classNames';
+import resultIcon from '@/assets/user-flat.svg';
 
 export interface Props {
   profilePictureUrl: string | null | undefined;
