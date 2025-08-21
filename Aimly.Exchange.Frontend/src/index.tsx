@@ -4,12 +4,13 @@ import './css/output.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from '@auth0/auth0-react';
-import history from './utils/history';
 import { getProviderConfig } from './config';
 import { ThemeProvider } from './components/ThemeContext';
 
 const onRedirectCallback = (appState: any) => {
-  history.push(appState && appState.returnTo ? appState.returnTo : window.location.pathname);
+  // For React Router v6.2, use window.location to navigate
+  const returnTo = appState && appState.returnTo ? appState.returnTo : window.location.pathname;
+  window.location.replace(returnTo);
 };
 
 const providerConfig = getProviderConfig(onRedirectCallback);
